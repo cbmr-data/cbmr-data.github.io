@@ -81,7 +81,7 @@ See :ref:`p_usage_filesystem` for more information.
 
 .. _cbmr: https://cbmr.ku.dk/
 
-.. _data analytics platform: https://cbmr.ku.dk/research-facilities/phenomics/
+.. _data analytics platform: https://cbmr.ku.dk/research-facilities/data-analytics/
 
 .. _environment modules: https://modules.readthedocs.io/en/latest/
 

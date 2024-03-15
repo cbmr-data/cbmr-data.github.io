@@ -14,4 +14,4 @@ In addition, you may contact us via email at `SUND-CBMR-Esrum
 e-mail account when writing to us on this address. Mail from external
 addresses is currently blocked.
 
-.. _data analytics platform: https://cbmr.ku.dk/research-facilities/phenomics/
+.. _data analytics platform: https://cbmr.ku.dk/research-facilities/data-analytics/
