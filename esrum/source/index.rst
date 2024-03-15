@@ -38,6 +38,6 @@ documentation for the `UCPH computing/HPC Systems`_ on KUNet.
 
 .. _cbmr: https://cbmr.ku.dk/
 
-.. _data analytics platform: https://cbmr.ku.dk/research-facilities/phenomics/
+.. _data analytics platform: https://cbmr.ku.dk/research-facilities/data-analytics/
 
 .. _ucph computing/hpc systems: https://kunet.ku.dk/work-areas/research/Research%20Infrastructure/research-it/ucph-computing-hpc-systems/Pages/default.aspx
