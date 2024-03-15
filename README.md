@@ -1,13 +1,13 @@
 # CBMR Phenomics documentation
 
-This repository contains sources for public documentation and files related to usage of the esrum Esrum cluster administrated by CBMR phenomics. The documentation can be read at [cbmrphenomics.github.io](https://cbmrphenomics.github.io).
+This repository contains sources for public documentation and files related to usage of the esrum Esrum cluster administrated by CBMR phenomics. The documentation can be read at [cbmr-data.github.io](https://cbmr-data.github.io).
 
 ## Writing documentation
 
-Documentation in automatically deployed to `cbmrphenomics.github.io/`:
+Documentation in automatically deployed to `cbmr-data.github.io/`:
 
-1. Files in the `root/` folder are deployed directly to the root of `cbmrphenomics.github.io/`.
-2. The [sphinx](https://www.sphinx-doc.org/en/master/) project in the `esrum/` folder is deployed to `cbmrphenomics.github.io/esrum/`.
+1. Files in the `root/` folder are deployed directly to the root of `cbmr-data.github.io/`.
+2. The [sphinx](https://www.sphinx-doc.org/en/master/) project in the `esrum/` folder is deployed to `cbmr-data.github.io/esrum/`.
 
 To add additional sources of documentation, modify `.github/workflows/default.yaml`.
 
@@ -19,7 +19,7 @@ The `sphinx-autobuild` command can be used to automatically rebuild the document
 
 ```console
 pip install --user sphinx-autobuild
-cd /path/to/cbmrphenomics.github.io/esrum
+cd /path/to/cbmr-data.github.io/esrum
 # -a to disable incremental builds as this does not work for all file types
 # -q to slice output when autobuild triggers
 sphinx-autobuild ./source ./build -aq
@@ -32,7 +32,7 @@ Then go to [127.0.0.1:8000](http://127.0.0.1:8000/). The page automatically refr
 The `rstfmt` command can be used to automatically format `.rst` files for consistency:
 
 ```console
-cd /path/to/cbmrphenomics.github.io/esrum
+cd /path/to/cbmr-data.github.io/esrum
 find -name '*.rst' | rstfmt
 ```
 

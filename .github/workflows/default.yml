@@ -20,7 +20,7 @@ jobs:
     # Publish built docs to gh-pages branch
     - name: Commit documentation changes
       run: |
-        git clone https://github.com/cbmrphenomics/cbmrphenomics.github.io.git --branch gh-pages --single-branch gh-pages
+        git clone https://github.com/cbmr-data/cbmr-data.github.io.git --branch gh-pages --single-branch gh-pages
         rsync -a --checksum --delete --exclude '.*' --exclude /esrum root/ gh-pages/
         rsync -a --checksum --delete --exclude '.*' esrum/build/html/ gh-pages/esrum/
         cd gh-pages

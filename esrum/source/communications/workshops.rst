@@ -13,7 +13,7 @@
 #. Esrum Usage
 
 `Download slides
-<https://github.com/cbmrphenomics/cbmrphenomics.github.io/releases/download/20230921_workshop_1/2023-09-21.Esrum.Workshop.pdf>`__
+<https://github.com/cbmr-data/cbmr-data.github.io/releases/download/20230921_workshop_1/2023-09-21.Esrum.Workshop.pdf>`__
 
 *****************************
  Esrum Workshop [2023-09-28]
@@ -24,4 +24,4 @@
 #. Esrum Usage
 
 `Download slides
-<https://github.com/cbmrphenomics/cbmrphenomics.github.io/releases/download/20230921_workshop_1/2023-09-28.Esrum.Workshop.pdf>`__
+<https://github.com/cbmr-data/cbmr-data.github.io/releases/download/20230921_workshop_1/2023-09-28.Esrum.Workshop.pdf>`__
