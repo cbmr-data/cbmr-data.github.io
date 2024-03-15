@@ -1,0 +1,196 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>2. Overview &#8212; Esrum Cluster  documentation</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/playback.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/js/custom.js"></script>
+    <script src="_static/js/libgif.js"></script>
+    <script src="_static/bizstyle.js"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3. Guidelines" href="guidelines.html" />
+    <link rel="prev" title="1. Contact" href="contact.html" />
+    <script defer src="_static/js/playback.js"></script>
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="guidelines.html" title="3. Guidelines"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="contact.html" title="1. Contact"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Esrum Cluster  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. Overview</a><ul>
+<li><a class="reference internal" href="#architecture">2.1. Architecture</a></li>
+<li><a class="reference internal" href="#software">2.2. Software</a></li>
+<li><a class="reference internal" href="#projects-and-data-shares">2.3. Projects and data-shares</a></li>
+<li><a class="reference internal" href="#backup-policies-and-quotas">2.4. Backup policies and quotas</a></li>
+<li><a class="reference internal" href="#additional-resources">2.5. Additional resources</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="contact.html"
+                        title="previous chapter"><span class="section-number">1. </span>Contact</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="guidelines.html"
+                        title="next chapter"><span class="section-number">3. </span>Guidelines</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="overview">
+<span id="p-overview"></span><h1><span class="section-number">2. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<p>The Esrum cluster is a cluster managed by the <a class="reference external" href="https://cbmr.ku.dk/research-facilities/phenomics/">Data Analytics Platform</a>
+(formerly the Phenomics Platform) at <a class="reference external" href="https://cbmr.ku.dk/">CBMR</a>. Technical support and
+administration is handled by KU-IT via the <a class="reference external" href="https://serviceportal.ku.dk/">KU-IT Service portal</a>.</p>
+<div class="section" id="architecture">
+<h2><span class="section-number">2.1. </span>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h2>
+<p>The cluster consists of a head node, 8 compute nodes, a container node,
+and 1 GPU node:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 17%" />
+<col style="width: 9%" />
+<col style="width: 38%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Node</p></th>
+<th class="head"><p>RAM</p></th>
+<th class="head"><p>CPUs</p></th>
+<th class="head"><p>GPUs</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Head</p></td>
+<td><p>2 TB</p></td>
+<td><p>2x24 core AMD EPYC 7413</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>Compute</p></td>
+<td><p>2 TB</p></td>
+<td><p>2x32 core AMD EPYC 7543</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Container</p></td>
+<td><p>2 TB</p></td>
+<td><p>2x32 core AMD EPYC 7543</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>GPU</p></td>
+<td><p>4 TB</p></td>
+<td><p>2x32 core AMD EPYC 75F3</p></td>
+<td><p>2x NVIDIA A100 80GB</p></td>
+</tr>
+</tbody>
+</table>
+<p>Users connect to the &quot;head&quot; node, from which jobs can be submitted to
+the individual compute nodes using the <a class="reference external" href="https://slurm.schedmd.com/">Slurm</a> Workload Manager for
+running tasks. An <a class="reference internal" href="services/rstudio.html#p-usage-rstudio"><span class="std std-ref">R, RStudio, and Jupyter Notebooks</span></a> web server and a
+<a class="reference internal" href="services/shiny.html#p-usage-shiny"><span class="std std-ref">Public and private Shiny servers</span></a> server, both managed by KU-IT, are also available.</p>
+</div>
+<div class="section" id="software">
+<h2><span class="section-number">2.2. </span>Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h2>
+<p>The nodes all run Red Hat Enterprise Linux 8 and a range of scientific
+and other software is made available using <a class="reference internal" href="usage/modules.html#p-usage-modules"><span class="std std-ref">environment modules</span></a>. Missing software can be requested via KU-IT.</p>
+</div>
+<div class="section" id="projects-and-data-shares">
+<h2><span class="section-number">2.3. </span>Projects and data-shares<a class="headerlink" href="#projects-and-data-shares" title="Permalink to this headline">¶</a></h2>
+<p>Access is managed on a per-project level, and is administrated by the
+individual project owners, with each project folder containing a
+standard set of sub-folders (<code class="docutils literal notranslate"><span class="pre">apps</span></code>, <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">people</span></code>,
+<code class="docutils literal notranslate"><span class="pre">scratch</span></code>).</p>
+<p>Datasets used by several projects may made available via read-only
+network shares. As with projects, access is administered by the data
+owner.</p>
+<p>See the respective pages for <a class="reference internal" href="usage/access/index.html#p-usage-access"><span class="std std-ref">accessing</span></a> existing
+projects/data-shared and for <a class="reference internal" href="usage/projects.html#p-usage-projects"><span class="std std-ref">creating</span></a> new
+projects/data-shared.</p>
+</div>
+<div class="section" id="backup-policies-and-quotas">
+<h2><span class="section-number">2.4. </span>Backup policies and quotas<a class="headerlink" href="#backup-policies-and-quotas" title="Permalink to this headline">¶</a></h2>
+<p>Your <code class="docutils literal notranslate"><span class="pre">/home</span></code> and the <code class="docutils literal notranslate"><span class="pre">apps</span></code>. <code class="docutils literal notranslate"><span class="pre">data</span></code>, and <code class="docutils literal notranslate"><span class="pre">people</span></code> folders in
+each projects are automatically backed up. The <code class="docutils literal notranslate"><span class="pre">scratch</span></code> folders are
+NOT backed up. The specific frequency and duration of backups differ for
+each type of folder and may also differ for individual projects.</p>
+<p>As a rule folders for projects involving GDPR protected data (indicated
+by the project name ending with <code class="docutils literal notranslate"><span class="pre">-AUDIT</span></code>) is subject to more frequent
+backups. However, on-site backups are kept for a shorter time to prevent
+the unauthorized recovery of intentionally deleted data.</p>
+<p>See <a class="reference internal" href="usage/filesystem.html#p-usage-filesystem"><span class="std std-ref">Projects, data, and home folders</span></a> for more information.</p>
+</div>
+<div class="section" id="additional-resources">
+<h2><span class="section-number">2.5. </span>Additional resources<a class="headerlink" href="#additional-resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Official <a class="reference external" href="https://kunet.ku.dk/work-areas/research/Research%20Infrastructure/research-it/ucph-computing-hpc-systems/Pages/default.aspx">UCPH computing/HPC Systems</a> documentation on KUNet.</p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="guidelines.html" title="3. Guidelines"
+             >next</a></li>
+        <li class="right" >
+          <a href="contact.html" title="1. Contact"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Esrum Cluster  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, CBMR Phenomics.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

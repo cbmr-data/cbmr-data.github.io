@@ -1,0 +1,224 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>6.3. Batching commands outside Slurm &#8212; Esrum Cluster  documentation</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/playback.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/js/custom.js"></script>
+    <script src="../_static/js/libgif.js"></script>
+    <script src="../_static/bizstyle.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.4. Writing robust bash scripts" href="robust_scripts.html" />
+    <link rel="prev" title="6.2. Persistent sessions with tmux" href="tmux.html" />
+    <script defer src="../_static/js/playback.js"></script>
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="robust_scripts.html" title="6.4. Writing robust bash scripts"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="tmux.html" title="6.2. Persistent sessions with tmux"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">6. </span>Tips and tricks</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">6.3. Batching commands outside Slurm</a><ul>
+<li><a class="reference internal" href="#running-commands-sequentially-in-bash">6.3.1. Running commands sequentially in bash</a></li>
+<li><a class="reference internal" href="#running-commands-in-parallel-in-bash">6.3.2. Running commands in parallel in bash</a><ul>
+<li><a class="reference internal" href="#best-practices-for-reserving-resources">6.3.2.1. Best practices for reserving resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tmux.html"
+                        title="previous chapter"><span class="section-number">6.2. </span>Persistent sessions with tmux</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="robust_scripts.html"
+                        title="next chapter"><span class="section-number">6.4. </span>Writing robust bash scripts</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="batching-commands-outside-slurm">
+<span id="p-tips-batching"></span><h1><span class="section-number">6.3. </span>Batching commands outside Slurm<a class="headerlink" href="#batching-commands-outside-slurm" title="Permalink to this headline">¶</a></h1>
+<p>This section describes way to batch commands without using Slurm. This
+is intended to be used both with singular jobs and in conjunction with
+Slurm job arrays (see the <a class="reference internal" href="../usage/slurm/advanced.html#s-job-arrays"><span class="std std-ref">Monitoring your jobs</span></a> section), for example when
+you need to run a large number of small jobs.</p>
+<p>Running tasks as described on this page has a lower overhead than jobs
+scheduled tasks via Slurm, and is therefore well suited for running
+many, small tasks. However, for larger jobs you should still prefer job
+arrays if possible.</p>
+<p>This section covers basic loops in bash and the <cite>parallel</cite> command.
+Other options include <a class="reference external" href="https://man7.org/linux/man-pages/man1/xargs.1.html">xargs</a>, <a class="reference external" href="https://www.gnu.org/software/make/">make</a>, <a class="reference external" href="https://snakemake.readthedocs.io/">snakemake</a>, and much, much more.</p>
+<div class="section" id="running-commands-sequentially-in-bash">
+<h2><span class="section-number">6.3.1. </span>Running commands sequentially in bash<a class="headerlink" href="#running-commands-sequentially-in-bash" title="Permalink to this headline">¶</a></h2>
+<p>If you need to run a number of (very) short running commands, then it is
+likely more efficient to do so with a simple loop in your <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>
+script. For example, this script runs the <code class="docutils literal notranslate"><span class="pre">plonk</span></code> command on a number
+of population VCF files:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+module load plonk/3.14
+
+<span class="k">for</span> pop in CHB FIN GBR JPT PUR YRI<span class="p">;</span> <span class="k">do</span>
+  plonk --input <span class="s2">&quot;./my_data/</span><span class="si">${</span><span class="nv">pop</span><span class="si">}</span><span class="s2">.vcf&quot;</span> --output <span class="s2">&quot;./my_results/</span><span class="si">${</span><span class="nv">pop</span><span class="si">}</span><span class="s2">.out&quot;</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>The following command indexes a number of (small) BAM files in the
+current directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+module load samtools/1.17
+
+<span class="k">for</span> filename in ./*.bam<span class="p">;</span> <span class="k">do</span>
+  samtools index <span class="si">${</span><span class="nv">filename</span><span class="si">}</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>However, it is important to remember that the total runtime will be the
+<em>sum</em> of run-times for each task, since they are run one after the
+other. It is therefore not recommended to use loops like this for
+commands that take more than a few of minutes to complete!</p>
+</div>
+<div class="section" id="running-commands-in-parallel-in-bash">
+<h2><span class="section-number">6.3.2. </span>Running commands in parallel in bash<a class="headerlink" href="#running-commands-in-parallel-in-bash" title="Permalink to this headline">¶</a></h2>
+<p>The GNU <a class="reference external" href="https://www.gnu.org/software/parallel/">parallel</a> commands offers a range of options for running
+commands in parallel.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+module load plonk/3.14
+module load parallel/20230822
+
+parallel -P <span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span> <span class="se">\</span>
+  plonk --input <span class="s2">&quot;./my_data/{}.vcf&quot;</span> --output <span class="s2">&quot;./my_results/{}.out&quot;</span> <span class="se">\</span>
+  ::: CHB FIN GBR JPT PUR YRI
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">parallel</span></code> command will then execute <code class="docutils literal notranslate"><span class="pre">plonk</span></code> once for each of
+the values we specified after the <code class="docutils literal notranslate"><span class="pre">:::</span></code> and replace the text <code class="docutils literal notranslate"><span class="pre">{}</span></code>
+with the current value.</p>
+<p>The second <code class="docutils literal notranslate"><span class="pre">xargs</span></code> example above can be run in parallel as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+module load samtools/1.17
+module load parallel/20230822
+
+parallel -P <span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span> <span class="se">\</span>
+  samtools index <span class="s2">&quot;{}&quot;</span> <span class="se">\</span>
+  ::: ./*.bam
+</pre></div>
+</div>
+<p>If no <code class="docutils literal notranslate"><span class="pre">{}</span></code> is specified the value will be appended to the command.
+Additionally, <code class="docutils literal notranslate"><span class="pre">parallel</span></code> can read values from STDIN, meaning that the
+above could also be written as</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+module load samtools/1.17
+module load parallel/20230822
+
+ls ./*.bam <span class="p">|</span> parallel -P <span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span> samtools index
+</pre></div>
+</div>
+<p>Each line on STDIN is treated as one value.</p>
+<div class="section" id="best-practices-for-reserving-resources">
+<h3><span class="section-number">6.3.2.1. </span>Best practices for reserving resources<a class="headerlink" href="#best-practices-for-reserving-resources" title="Permalink to this headline">¶</a></h3>
+<p>Note that when you reserve resources for a job using <code class="docutils literal notranslate"><span class="pre">parallel</span></code> that
+you generally should not reserve enough cores to run all jobs at once.
+This is because tasks are likely to take different amount of times to
+run, sometimes significantly so, resulting in a (potentially large)
+number of CPUs being idle until the last task has finished.</p>
+<p>For this reason we advice that you do not reserve more CPUs than what is
+needed to run 1/3 to 1/2 of your jobs at once. This also allows you to
+queue that many more simultaneous jobs on Slurm, and will typically
+result in a overall greater throughput than simply using the maximum
+number of processes with <code class="docutils literal notranslate"><span class="pre">parallel</span></code>.</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">plonk</span></code> example from above:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+module load plonk/3.14
+module load parallel/20230822
+
+parallel -P <span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span> <span class="se">\</span>
+  plonk --input <span class="s2">&quot;./my_data/{}.vcf&quot;</span> --output <span class="s2">&quot;./my_results/{}.out&quot;</span> <span class="se">\</span>
+  ::: CHB FIN GBR JPT PUR YRI
+</pre></div>
+</div>
+<p>Let's say that <code class="docutils literal notranslate"><span class="pre">plonk</span></code> is able to use multiple threads and that I
+decide to use 4 threads per process. In that case, I could reserve 12
+threads for my job and then run 3 instances of <code class="docutils literal notranslate"><span class="pre">plonk</span></code> using
+<code class="docutils literal notranslate"><span class="pre">parallel</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --cpus-per-task=12</span>
+module load plonk/3.14
+module load parallel/20230822
+
+parallel -P <span class="m">3</span> <span class="se">\</span>
+  plonk --threads <span class="m">4</span> --input <span class="s2">&quot;./my_data/{}.vcf&quot;</span> --output <span class="s2">&quot;./my_results/{}.out&quot;</span> <span class="se">\</span>
+  ::: CHB FIN GBR JPT PUR YRI
+</pre></div>
+</div>
+<p>This however has the disadvantage that you have to make sure that
+<code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code>, <code class="docutils literal notranslate"><span class="pre">-P</span></code>, and <code class="docutils literal notranslate"><span class="pre">--threads</span></code> (or whatever option your
+software uses) all line up.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="robust_scripts.html" title="6.4. Writing robust bash scripts"
+             >next</a></li>
+        <li class="right" >
+          <a href="tmux.html" title="6.2. Persistent sessions with tmux"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">6. </span>Tips and tricks</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, CBMR Phenomics.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

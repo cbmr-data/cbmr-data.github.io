@@ -1,0 +1,379 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>6.1. Creating environment modules &#8212; Esrum Cluster  documentation</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/playback.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/js/custom.js"></script>
+    <script src="../_static/js/libgif.js"></script>
+    <script src="../_static/bizstyle.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.2. Persistent sessions with tmux" href="tmux.html" />
+    <link rel="prev" title="6. Tips and tricks" href="index.html" />
+    <script defer src="../_static/js/playback.js"></script>
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="tmux.html" title="6.2. Persistent sessions with tmux"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="index.html" title="6. Tips and tricks"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">6. </span>Tips and tricks</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">6.1. Creating environment modules</a><ul>
+<li><a class="reference internal" href="#creating-a-repository-for-modules">6.1.1. Creating a repository for modules</a></li>
+<li><a class="reference internal" href="#dependencies-and-conflicts">6.1.2. Dependencies and conflicts</a></li>
+<li><a class="reference internal" href="#building-more-complicated-software">6.1.3. Building more complicated software</a></li>
+<li><a class="reference internal" href="#installing-python-software">6.1.4. Installing Python software</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter"><span class="section-number">6. </span>Tips and tricks</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tmux.html"
+                        title="next chapter"><span class="section-number">6.2. </span>Persistent sessions with tmux</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="creating-environment-modules">
+<span id="p-tips-modules"></span><h1><span class="section-number">6.1. </span>Creating environment modules<a class="headerlink" href="#creating-environment-modules" title="Permalink to this headline">¶</a></h1>
+<p>This page gives a very brief run-down of how to create your own
+<a class="reference external" href="https://modules.sourceforge.net/">environment modules</a>. For more information see the <a class="reference external" href="https://modules.readthedocs.io/en/v4.5.2/">official
+documentation</a>. However, for most part you should be requesting modules
+from KU-IT (see <a class="reference internal" href="../usage/modules.html#s-requesting-missing-modules"><span class="std std-ref">Requesting missing modules</span></a>).</p>
+<p>To simplify things, this example makes use of a generalized template
+file (available for download <a class="reference download internal" download="" href="../_downloads/205446c721157b17b967fcaa201a4959/moduletemplate.tcl"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a>) for
+which only a handful of (highlighted) lines need to be changed:</p>
+<div class="highlight-tcl notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></div></td><td class="code"><div class="highlight"><pre><span></span>#%Module
+
+# Automatically determined name and version
+set name [file dirname [module-info name]]
+set version [file tail [module-info name]]
+
+<span class="hll"># FIXME: Update this line with a description of the software
+</span><span class="hll">set description &quot;description of software goes here&quot;
+</span><span class="hll"># FIXME: Replace `my-project` with the actual project name
+</span><span class="hll">set root /projects/my-project/apps/modules/software/${name}/${version}
+</span>
+prepend-path PATH ${root}/bin
+<span class="hll"># FIXME: If you need to export additional environment variables, then
+</span><span class="hll">#        add them here using `append-path`, `prepend-path` or `setenv`:
+</span><span class="hll">#        https://modules.readthedocs.io/en/latest/modulefile.html#mfcmd-prepend-path
+</span><span class="hll">#        https://modules.readthedocs.io/en/latest/modulefile.html#mfcmd-setenv
+</span>
+# Prevent loading multiple versions of the same software
+conflict &quot;${name}&quot;
+
+proc ModulesHelp { } {
+   global name version
+   puts stderr &quot;\tLoads the ${name} version ${version} environment&quot;
+   puts stderr &quot;\n\tFor further information, use &#39;module display [module-info name]&#39;&quot;
+}
+
+proc ModulesDisplay { } {
+   global description
+   puts stderr &quot;\n${description}&quot;
+}
+
+module-whatis &quot;${name} [file tail [module-info name]] - ${description}&quot;
+</pre></div>
+</td></tr></table></div>
+<p>For the purpose of this example we will make our own module for
+<code class="docutils literal notranslate"><span class="pre">seqtk</span></code> version 1.4.</p>
+<div class="section" id="creating-a-repository-for-modules">
+<h2><span class="section-number">6.1.1. </span>Creating a repository for modules<a class="headerlink" href="#creating-a-repository-for-modules" title="Permalink to this headline">¶</a></h2>
+<p>The recommended location for custom modules is the <code class="docutils literal notranslate"><span class="pre">apps</span></code> folder in
+the project for which the modules are meant to be used. In the following
+examples, we will assume that the project is named <code class="docutils literal notranslate"><span class="pre">my-project</span></code> and
+that the <code class="docutils literal notranslate"><span class="pre">apps</span></code> folder is therefore located at
+<code class="docutils literal notranslate"><span class="pre">/projects/my-project/apps</span></code>.</p>
+<p>The module repository will consist of two folders: A <code class="docutils literal notranslate"><span class="pre">modulefiles</span></code>
+folder containing the scripts needed to load software, and a
+<code class="docutils literal notranslate"><span class="pre">software</span></code> folder in which we will place the actual software loaded by
+the module files. This organization is designed to simplify maintenance.</p>
+<ol class="arabic">
+<li><p>Create a subfolder in the <code class="docutils literal notranslate"><span class="pre">apps</span></code> for your modules:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ mkdir -p /projects/my-project/apps/modules
+</pre></div>
+</div>
+</li>
+<li><p>Create a subfolder for the <code class="docutils literal notranslate"><span class="pre">seqtk</span></code> module scripts and a folder in
+which we can build our own copy of <code class="docutils literal notranslate"><span class="pre">seqtk</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ mkdir -p /projects/my-project/apps/modules/modulefiles/seqtk
+$ mkdir -p /projects/my-project/apps/modules/software/seqtk/1.4
+</pre></div>
+</div>
+<p>Note that we create a folder containing the version in <code class="docutils literal notranslate"><span class="pre">software</span></code>
+but <em>not</em> in <code class="docutils literal notranslate"><span class="pre">modulefiles</span></code>!</p>
+</li>
+<li><p>Save the module template shown above as
+<code class="docutils literal notranslate"><span class="pre">/projects/my-project/apps/modules/modulefiles/seqtk/1.23</span></code> and
+update the root path, the description, and the PATH as shown below.
+Note that this file does <em>not</em> have an extension.</p>
+<blockquote>
+<div><div class="highlight-tcl notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></div></td><td class="code"><div class="highlight"><pre><span></span>#%Module
+
+# Automatically determined name and version
+set name [file dirname [module-info name]]
+set version [file tail [module-info name]]
+
+<span class="hll">set description &quot;Toolkit for processing sequences in FASTA/Q formats&quot;
+</span><span class="hll">set root /projects/my-project/apps/modules/software/${name}/${version}
+</span>
+<span class="hll">prepend-path PATH ${root}/bin
+</span>
+# Prevent loading multiple versions of the same software
+conflict &quot;${name}&quot;
+
+module-whatis &quot;${name} [file tail [module-info name]] - ${description}&quot;
+
+proc ModulesHelp { } {
+   global name version
+   puts stderr &quot;\tLoads the ${name} version ${version} environment&quot;
+   puts stderr &quot;\n\tFor further information, use &#39;module display [module-info name]&#39;&quot;
+}
+
+proc ModulesDisplay { } {
+   global description
+   puts stderr &quot;\n${description}&quot;
+}
+</pre></div>
+</td></tr></table></div>
+</div></blockquote>
+<p>As this is a very simple module we only need to set the <code class="docutils literal notranslate"><span class="pre">PATH</span></code>
+environment variable.</p>
+</li>
+<li><p>Next download and compile <code class="docutils literal notranslate"><span class="pre">seqtk</span> <span class="pre">1.4</span></code>:</p>
+<blockquote>
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /projects/my-project/apps/modules/software/seqtk/1.4
+$ wget <span class="s2">&quot;https://github.com/lh3/seqtk/archive/refs/tags/v1.4.tar.gz&quot;</span>
+$ tar xvzf v1.4.tar.gz
+$ <span class="nb">cd</span> seqtk-1.4
+$ module load gcc
+$ make
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Place a symlink to the executable in a separate <code class="docutils literal notranslate"><span class="pre">bin</span></code> folder:</p>
+<blockquote>
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /projects/my-project/apps/modules/software/seqtk/1.4
+$ mkdir bin
+$ <span class="nb">cd</span> bin
+$ ln -s ../seqtk-1.4/seqtk
+</pre></div>
+</div>
+<p>You can also make a copy of the executable in the <code class="docutils literal notranslate"><span class="pre">bin</span></code> folder,
+but using a symlink makes it simpler to recompile the software if
+needed.</p>
+<p>The location of this <code class="docutils literal notranslate"><span class="pre">bin</span></code> folder is already specified in the
+template above. While it <em>is</em> possible to specify the software
+directory directly (e.g. <code class="docutils literal notranslate"><span class="pre">software/seqtk/1.4/seqtk-1.4/</span></code>), this
+is <em>not</em> recommended as it often includes files that do not belong
+in your PATH.</p>
+</div></blockquote>
+</li>
+<li><p>Finally, run <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">use</span></code> to registers your module repository so
+that you can load your modules:</p>
+<blockquote>
+<div><blockquote>
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ module use --prepend /projects/my-project/apps/modules/modulefiles/
+$ module avail
+------------------------ /home/zlc187/modules ------------------------
+seqtk/1.4
+$ module load seqtk/1.4
+./seqtk
+
+Usage:   seqtk &lt;command&gt; &lt;arguments&gt;
+Version: <span class="m">1</span>.4-r122
+</pre></div>
+</div>
+</div></blockquote>
+<p>The <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">use</span></code> command can optionally be added to your
+<code class="docutils literal notranslate"><span class="pre">.profile</span></code>, <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>, or similar to automatically enable this
+module repository when you login.</p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="dependencies-and-conflicts">
+<h2><span class="section-number">6.1.2. </span>Dependencies and conflicts<a class="headerlink" href="#dependencies-and-conflicts" title="Permalink to this headline">¶</a></h2>
+<p>Software may depend on other software to run (e.g. java based software
+needing a Java Runtime Environment (JRE) to run) or may conflict with
+other software (e.g. mamba and conda both providing the same commands).</p>
+<p>The template above automatically conflicts with different versions of
+the same program via the <code class="docutils literal notranslate"><span class="pre">conflict</span> <span class="pre">&quot;${name}&quot;</span></code> line, but it is also
+possible to add additional conflicts.</p>
+<p>To add a requirement, instead use <code class="docutils literal notranslate"><span class="pre">prereq</span> <span class="pre">module</span></code> where <code class="docutils literal notranslate"><span class="pre">module</span></code> is
+the name of the module that your module depends on. For example, if your
+program depends on <code class="docutils literal notranslate"><span class="pre">perl</span></code>, then you may add <code class="docutils literal notranslate"><span class="pre">prereq</span> <span class="pre">perl</span></code>. You may
+optionally specify the version of said module, e.g. <code class="docutils literal notranslate"><span class="pre">prereq</span>
+<span class="pre">perl/5.24.3</span></code>.</p>
+</div>
+<div class="section" id="building-more-complicated-software">
+<h2><span class="section-number">6.1.3. </span>Building more complicated software<a class="headerlink" href="#building-more-complicated-software" title="Permalink to this headline">¶</a></h2>
+<p>For more complicated software it is recommended to use the functionality
+that is often built to install it directly in the target directory. An
+example might look like the following:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ tar xvzf my-software-1.23.tar.gz
+$ <span class="nb">cd</span> my-software-1.23
+$ ./configure --prefix<span class="o">=</span>/projects/my-project/apps/modules/software/my-software/1.23
+$ make install
+</pre></div>
+</div>
+<p>Refer to the documentation for the software you are installing for more
+information.</p>
+</div>
+<div class="section" id="installing-python-software">
+<h2><span class="section-number">6.1.4. </span>Installing Python software<a class="headerlink" href="#installing-python-software" title="Permalink to this headline">¶</a></h2>
+<p>Making modules for python software is a bit more complicated, but can
+typically be accomplished as follows (using <a class="reference external" href="https://www.visidata.org/">visidata</a> as an example):</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic setup</span>
+$ mkdir -p /projects/my-project/apps/modules/software/visidata/2.11
+$ <span class="nb">cd</span> /projects/my-project/apps/modules/software/visidata/2.11
+<span class="c1"># Load the required version of Python (if any)</span>
+$ module load python/3.9.16
+<span class="c1"># Create a virtual environment in `./venv` to contain our software</span>
+$ python3 -m venv ./venv
+<span class="c1"># Install our desired software</span>
+$ ./venv/bin/pip install visidata
+<span class="c1"># Create a bin folder as described above</span>
+$ mkdir bin
+$ <span class="nb">cd</span> bin
+$ ln -s ../venv/bin/visidata
+</pre></div>
+</div>
+<p>Then all you need to do is to create a matching module file and save it
+as <code class="docutils literal notranslate"><span class="pre">/projects/my-project/apps/modules/modulefiles/visidata/2.11</span></code>. The
+python module loaded above <em>does not</em> need to be loaded before using
+this software.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not add the <code class="docutils literal notranslate"><span class="pre">venv/bin</span></code> folder to your PATH. This will override
+your default Python version and may result in accidental changes to
+the virtual environment, if you run <code class="docutils literal notranslate"><span class="pre">pip</span></code> or similar tools.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="tmux.html" title="6.2. Persistent sessions with tmux"
+             >next</a></li>
+        <li class="right" >
+          <a href="index.html" title="6. Tips and tricks"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">6. </span>Tips and tricks</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, CBMR Phenomics.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

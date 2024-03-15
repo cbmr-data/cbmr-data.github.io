@@ -1,0 +1,202 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>5.2. Running containerized software &#8212; Esrum Cluster  documentation</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/playback.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/js/custom.js"></script>
+    <script src="../_static/js/libgif.js"></script>
+    <script src="../_static/bizstyle.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5.3. Public and private Shiny servers" href="shiny.html" />
+    <link rel="prev" title="5.1. R, RStudio, and Jupyter Notebooks" href="rstudio.html" />
+    <script defer src="../_static/js/playback.js"></script>
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="shiny.html" title="5.3. Public and private Shiny servers"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="rstudio.html" title="5.1. R, RStudio, and Jupyter Notebooks"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">5. </span>Other services</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">5.2. Running containerized software</a><ul>
+<li><a class="reference internal" href="#singularity-containers">5.2.1. Singularity containers</a><ul>
+<li><a class="reference internal" href="#running-dockerhub-images">5.2.1.1. Running Dockerhub images</a></li>
+<li><a class="reference internal" href="#running-custom-docker-podman-images">5.2.1.2. Running custom Docker/Podman images</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#podman-containers">5.2.2. Podman containers</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="rstudio.html"
+                        title="previous chapter"><span class="section-number">5.1. </span>R, RStudio, and Jupyter Notebooks</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="shiny.html"
+                        title="next chapter"><span class="section-number">5.3. </span>Public and private Shiny servers</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="running-containerized-software">
+<span id="p-containers"></span><h1><span class="section-number">5.2. </span>Running containerized software<a class="headerlink" href="#running-containerized-software" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://www.ibm.com/topics/containerization">Containerization</a> is a technique for running jobs in an isolated and
+reproducible manner, by bundling all necessary dependencies up to and
+including entire operating systems and running the software using
+virtualization.</p>
+<p>The Esrum cluster supports two different methods for running
+containerized software:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://apptainer.org/">Singularity</a> (now renamed to <code class="docutils literal notranslate"><span class="pre">AppTainer</span></code>) for running containerized
+applications using the SLURM queuing system. Instructions are
+provided below for converting existing Docker/Podman containers.</p></li>
+<li><p><a class="reference external" href="https://podman.io/">Podman</a> for longer-running services on the specialized container
+node. Podman is <a class="reference external" href="https://www.docker.com/">Docker</a> compatible, but is designed from the ground
+up for running in user-space and therefore offers better security
+guarantees.</p></li>
+</ol>
+<div class="section" id="singularity-containers">
+<h2><span class="section-number">5.2.1. </span>Singularity containers<a class="headerlink" href="#singularity-containers" title="Permalink to this headline">¶</a></h2>
+<p>Singularity is available via <a class="reference internal" href="../usage/modules.html#p-usage-modules"><span class="std std-ref">Environment modules</span></a> and allows you to
+run containerized software as part of Slurm jobs. If possible, you
+should prefer to run your containerized tools in this manner.</p>
+<p>The following only covers the absolute basics. For more information
+please refer to the official <a class="reference external" href="https://docs.sylabs.io/guides/latest/user-guide/">Singularity documentation</a>.</p>
+<div class="section" id="running-dockerhub-images">
+<h3><span class="section-number">5.2.1.1. </span>Running Dockerhub images<a class="headerlink" href="#running-dockerhub-images" title="Permalink to this headline">¶</a></h3>
+<p>Container images available on <a class="reference external" href="https://hub.docker.com/">dockerhub</a> can be converted to singularity
+images in one step using the <code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">build</span></code> command. For the
+following example, we will download and run version <code class="docutils literal notranslate"><span class="pre">0.7.17</span></code> of the
+<a class="reference external" href="https://hub.docker.com/r/pegi3s/bwa">pegi3s/bwa</a> image on dockerhub:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> module load --auto singularity
+<span class="gp">$</span> singularity build --disable-cache pegi3s_bwa_0.7.17.sif docker://pegi3s/bwa:0.7.17
+</pre></div>
+</div>
+<p>This fetches the <code class="docutils literal notranslate"><span class="pre">pegi3s/bwa</span></code> image with the tag <code class="docutils literal notranslate"><span class="pre">0.7.17</span></code> and saves
+it to the local file <code class="docutils literal notranslate"><span class="pre">pegi3s_bwa_0.7.17.sif</span></code>. It is recommended that
+you save such images in the <code class="docutils literal notranslate"><span class="pre">/apps</span></code> folders of the project you are
+working on so that your collaborators can also access it.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">--disable-cache</span></code> option is optional but recommended, since
+Singularity will otherwise cache the individual parts of the image it
+downloaded in <code class="docutils literal notranslate"><span class="pre">~/.singularity</span></code>. As described in
+<a class="reference internal" href="../usage/filesystem.html#p-usage-filesystem"><span class="std std-ref">Projects, data, and home folders</span></a> your home is limited to 100 GB and larger
+docker images can easily take up GBs of space.</p>
+<p>Once you have run the <code class="docutils literal notranslate"><span class="pre">build</span></code> command, the image can be run using the
+<code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">run</span></code> command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span>  singularity run pegi3s_bwa_0.7.17.sif bwa
+
+<span class="go">Program: bwa (alignment via Burrows-Wheeler transformation)</span>
+<span class="go">Version: 0.7.17-r1188</span>
+<span class="go">Contact: Heng Li &lt;lh3@sanger.ac.uk&gt;</span>
+</pre></div>
+</div>
+<p>It is also possible to run dockerhub images &quot;directly&quot; by using a
+<code class="docutils literal notranslate"><span class="pre">docker://</span></code> URL instead of the path to a singularity image:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span>  singularity run docker://pegi3s/bwa:0.7.17 bwa
+</pre></div>
+</div>
+<p>However, this caches the image in your home folder as described above
+and it is therefore not recommended for the reasons described above.</p>
+</div>
+<div class="section" id="running-custom-docker-podman-images">
+<h3><span class="section-number">5.2.1.2. </span>Running custom Docker/Podman images<a class="headerlink" href="#running-custom-docker-podman-images" title="Permalink to this headline">¶</a></h3>
+<p>Docker/Podman images run on another system must be exported and
+converted before they can be run on Esrum. The <code class="docutils literal notranslate"><span class="pre">podman</span> <span class="pre">save</span></code> and the
+corresponding <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">save</span></code> command may be used to export an image to
+a single file:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> podman save my-image:v1.2.3 --output ~/my_image_v1.2.3.tar
+</pre></div>
+</div>
+<p>Once the image has been exported, you can transfer it to Esrum using
+<code class="docutils literal notranslate"><span class="pre">scp</span></code> or another suck method:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> scp ~/my_image_v1.2.3.tar abc1232@esrumhead01fl.unicph.domain:/projects/my_project/scratch/
+</pre></div>
+</div>
+<p>Finally, you can convert the image on esrum to the format used by
+singularity:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ssh abc123@esrumhead01fl.unicph.domain
+<span class="gp">$</span> module load --auto singularity
+<span class="gp">$</span> <span class="nb">cd</span> /projects/my_project/scratch/
+<span class="gp">$</span> singularity build my_image _v1.2.3.sif docker-archive://my_image_v1.2.3.tar
+</pre></div>
+</div>
+<p>The singularity image can then be run using the <code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">run</span></code>
+command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> singularity run my_image_v1.2.3.sif
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="podman-containers">
+<h2><span class="section-number">5.2.2. </span>Podman containers<a class="headerlink" href="#podman-containers" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">esrumcont01fl</span></code> node is dedicated to running containerized
+software that is not suitable for conversion to/running via Singularity.
+Please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us if you wish to run containers on the
+container node.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="shiny.html" title="5.3. Public and private Shiny servers"
+             >next</a></li>
+        <li class="right" >
+          <a href="rstudio.html" title="5.1. R, RStudio, and Jupyter Notebooks"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">5. </span>Other services</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, CBMR Phenomics.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

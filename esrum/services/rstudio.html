@@ -1,0 +1,377 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>5.1. R, RStudio, and Jupyter Notebooks &#8212; Esrum Cluster  documentation</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/playback.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/js/custom.js"></script>
+    <script src="../_static/js/libgif.js"></script>
+    <script src="../_static/bizstyle.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5.2. Running containerized software" href="containers.html" />
+    <link rel="prev" title="5. Other services" href="index.html" />
+    <script defer src="../_static/js/playback.js"></script>
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="containers.html" title="5.2. Running containerized software"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="index.html" title="5. Other services"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">5. </span>Other services</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">5.1. R, RStudio, and Jupyter Notebooks</a><ul>
+<li><a class="reference internal" href="#r">5.1.1. R</a></li>
+<li><a class="reference internal" href="#rstudio">5.1.2. RStudio</a></li>
+<li><a class="reference internal" href="#jupyter-notebook">5.1.3. Jupyter notebook</a><ul>
+<li><a class="reference internal" href="#port-forwarding-in-windows-mobaxterm">5.1.3.1. Port forwarding in Windows (MobaXterm)</a></li>
+<li><a class="reference internal" href="#port-forwarding-on-linux-osx">5.1.3.2. Port forwarding on Linux/OSX</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#troubleshooting">5.1.4. Troubleshooting</a><ul>
+<li><a class="reference internal" href="#r-libtk8-6-so-cannot-open-shared-object-file">5.1.4.1. R: libtk8.6.so: cannot open shared object file</a></li>
+<li><a class="reference internal" href="#rstudio-incorrect-or-invalid-username-password">5.1.4.2. RStudio: Incorrect or invalid username/password</a></li>
+<li><a class="reference internal" href="#rstudio-logging-in-takes-a-very-long-time">5.1.4.3. RStudio: Logging in takes a very long time</a></li>
+<li><a class="reference internal" href="#jupyter-notebooks-browser-error-when-opening-url">5.1.4.4. Jupyter Notebooks: Browser error when opening URL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter"><span class="section-number">5. </span>Other services</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="containers.html"
+                        title="next chapter"><span class="section-number">5.2. </span>Running containerized software</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="r-rstudio-and-jupyter-notebooks">
+<span id="p-usage-rstudio"></span><h1><span class="section-number">5.1. </span>R, RStudio, and Jupyter Notebooks<a class="headerlink" href="#r-rstudio-and-jupyter-notebooks" title="Permalink to this headline">¶</a></h1>
+<p>Users of the Esrum cluster have the option of using R, RStudio or
+Jupyter Notebooks to run their analyses. This section describes steps
+required to use these tools.</p>
+<div class="section" id="r">
+<h2><span class="section-number">5.1.1. </span>R<a class="headerlink" href="#r" title="Permalink to this headline">¶</a></h2>
+<p>R is available via the module system and modules may be installed in
+your home folder using the <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> module load --auto R/4.3.1
+<span class="go">Loading R/4.3.1</span>
+<span class="go">  Loading requirement: gcc/11.2.0</span>
+<span class="gp">$</span> R
+<span class="gp">&gt;</span> install.packages<span class="o">(</span><span class="s2">&quot;ggplot2&quot;</span><span class="o">)</span>
+<span class="go">Warning in install.packages(&quot;ggplot2&quot;) :</span>
+<span class="go">  &#39;lib = &quot;/opt/software/R/4.3.1/lib64/R/library&quot;&#39; is not writable</span>
+<span class="go">Would you like to use a personal library instead? (yes/No/cancel) yes</span>
+<span class="go">Would you like to create a personal library</span>
+<span class="go">‘/home/abc123/R/x86_64-pc-linux-gnu-library/4.3’</span>
+<span class="go">to install packages into? (yes/No/cancel) yes</span>
+</pre></div>
+</div>
+<p>When asked to pick a mirror, either pick <code class="docutils literal notranslate"><span class="pre">0-Cloud</span></code> by entering <code class="docutils literal notranslate"><span class="pre">1</span></code>
+and pressing enter, or enter the number corresponding to a location near
+you and press enter:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">--- Please select a CRAN mirror for use in this session ---</span>
+<span class="go">Secure CRAN mirrors</span>
+
+<span class="go">1: 0-Cloud [https]</span>
+<span class="go">[...]</span>
+
+<span class="go">Selection: 1</span>
+</pre></div>
+</div>
+<p>See below if you get an <code class="docutils literal notranslate"><span class="pre">libtk8.6.so:</span> <span class="pre">cannot</span> <span class="pre">open</span> <span class="pre">shared</span> <span class="pre">object</span> <span class="pre">file:</span>
+<span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory</span></code> or similar error.</p>
+</div>
+<div class="section" id="rstudio">
+<h2><span class="section-number">5.1.2. </span>RStudio<a class="headerlink" href="#rstudio" title="Permalink to this headline">¶</a></h2>
+<p>An <a class="reference external" href="https://posit.co/products/open-source/rstudio/">RStudio</a> server is made available at <a class="reference external" href="http://esrumcont01fl:8787/">http://esrumcont01fl:8787/</a>. To
+use this server, you must</p>
+<ol class="arabic simple">
+<li><p>Be a member of the <code class="docutils literal notranslate"><span class="pre">SRV-esrumcont-users</span></code> group. Simply follow the
+steps in the <a class="reference internal" href="../usage/access/access.html#s-applying-for-access"><span class="std std-ref">Applying for access to the cluster</span></a> section, and apply for
+access to this group.</p></li>
+<li><p>Be connected via the KU VPN (a wired connection at CBMR is <em>not</em>
+sufficient). See <a class="reference internal" href="../usage/access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> for more information.</p></li>
+</ol>
+<p>Once you have been been made a member of the <code class="docutils literal notranslate"><span class="pre">SRV-esrumcont-users</span></code> and
+connected using the VPN or a wired connection at CBMR, simply visit
+<a class="reference external" href="http://esrumcont01fl:8787/">http://esrumcont01fl:8787/</a> and login using your KU credentials.</p>
+<p>For your username you should use the short form:</p>
+<img alt="../_images/rstudio_login.png" class="align-center" src="../_images/rstudio_login.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The RStudio server is managed by KU-IT and we can only provide basic
+basic support for using this service.</p>
+</div>
+</div>
+<div class="section" id="jupyter-notebook">
+<h2><span class="section-number">5.1.3. </span>Jupyter notebook<a class="headerlink" href="#jupyter-notebook" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://jupyter.org/">Jupyter Notebooks</a> are available via the module system on Esrum and
+may be started as follows:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ module load jupyter-notebook
+$ jupyter notebook --no-browser --port<span class="o">=</span>XXXXX
+</pre></div>
+</div>
+<script>
+ document.write("The number used in the argument <code class=\"docutils literal notranslate\"><span class=\"pre\">--port=XXXXX</span></code> must be a value in the range 49152 to 65535, and must not be a number used by another user on Esrum. The number shown here was randomly selected for you and you can refresh this page for a different suggestion.")
+</script>
+<noscript>
+The XXXXX in the above command must be replaced with a valid port number. To avoid trouble you should pick a number in the range 49152 to 65535, and you must not pick a number used by another user on Esrum.
+</noscript><p>It is also recommended that you run your notebook in a tmux session or
+similar, to avoid the notebook shutting down if you lose connection to
+the server. See <a class="reference internal" href="../tips/tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> for more information.</p>
+<p>To actually connect to the notebook server, you will need to setup port
+forwarding using the port-number from your command.</p>
+<div class="section" id="port-forwarding-in-windows-mobaxterm">
+<h3><span class="section-number">5.1.3.1. </span>Port forwarding in Windows (MobaXterm)<a class="headerlink" href="#port-forwarding-in-windows-mobaxterm" title="Permalink to this headline">¶</a></h3>
+<p>The following instructions assume that you are using MobaXterm. If not,
+then please refer to the documentation for your tool of choice.</p>
+<ol class="arabic">
+<li><p>Install and configure MobaXterm as described in
+<a class="reference internal" href="../usage/access/connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a>.</p></li>
+<li><p>Click the middle <code class="docutils literal notranslate"><span class="pre">Tunneling</span></code> button on the toolbar.</p>
+<img alt="../_images/mobaxterm_tunnel_01.png" class="align-center" src="../_images/mobaxterm_tunnel_01.png" />
+</li>
+<li><p>Click the bottom-left <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">SSH</span> <span class="pre">Tunnel</span></code> button.</p>
+<img alt="../_images/mobaxterm_tunnel_02.png" class="align-center" src="../_images/mobaxterm_tunnel_02.png" />
+</li>
+<li><p>Fill out the tunnel dialogue as indicated, replacing <code class="docutils literal notranslate"><span class="pre">12356</span></code> with
+your chosen port number (e.g. XXXXX) and replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code> with
+your KU username. The full name of the SSH server (written in the top
+row on bottom right) is <code class="docutils literal notranslate"><span class="pre">esrumhead01fl.unicph.domain</span></code>. Finally
+click <code class="docutils literal notranslate"><span class="pre">Save</span></code>:</p>
+<img alt="../_images/mobaxterm_tunnel_03.png" class="align-center" src="../_images/mobaxterm_tunnel_03.png" />
+</li>
+<li><p>If the tunnel does not start automatically, press either the &quot;Play&quot;
+button or the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">all</span> <span class="pre">tunnels</span></code> button:</p>
+<img alt="../_images/mobaxterm_tunnel_04.png" class="align-center" src="../_images/mobaxterm_tunnel_04.png" />
+</li>
+<li><p>Enter your password and your SSH tunnel should now be active.</p></li>
+</ol>
+<p>Once you have configured MobaXterm and enabled port forwarding, you can
+open your notebook via the
+<code class="docutils literal notranslate"><span class="pre">http://localhost:XXXXX/?token=${long_text_here}</span></code> URL that Jupyter
+Notebook printed in your terminal.</p>
+</div>
+<div class="section" id="port-forwarding-on-linux-osx">
+<h3><span class="section-number">5.1.3.2. </span>Port forwarding on Linux/OSX<a class="headerlink" href="#port-forwarding-on-linux-osx" title="Permalink to this headline">¶</a></h3>
+<p>It is recommended to enable port forwarding using your <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code>
+file. This is accomplished by adding a <code class="docutils literal notranslate"><span class="pre">LocalForward</span></code> line to your
+entry for Esrum as shown below (see also the section about
+<a class="reference internal" href="../usage/access/connecting.html#s-connecting-linux"><span class="std std-ref">Connecting on Linux or OSX</span></a>):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Host esrum esrumhead01fl esrumhead01fl.unicph.domain
+    HostName esrumhead01fl.unicph.domain
+    User abc123
+
+    LocalForward XXXXX localhost:XXXXX
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">LocalForward</span></code> option consists of two parts: The port used by the
+notebook on Esrum (XXXXX), and the address via which the notebook on
+Esrum should be accessible on your PC (localhost:XXXXX).</p>
+<p>Alternatively, you can start start/stop port forwarding on demand by
+using an explicit SSH command. The <code class="docutils literal notranslate"><span class="pre">-N</span></code> option is optional and stops
+ssh from starting a shell once it has connected to Esrum:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ssh -N -L XXXXX:localhost:XXXXX abc123@esrumhead01fl.unicph.domain
+</pre></div>
+</div>
+<p>Once you have port forwarding is enabled, you can open your notebook via
+the <code class="docutils literal notranslate"><span class="pre">http://localhost:XXXXX/?token=${long_text_here}</span></code> URL that Jupyter
+Notebook printed in your terminal.</p>
+</div>
+</div>
+<div class="section" id="troubleshooting">
+<h2><span class="section-number">5.1.4. </span>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="r-libtk8-6-so-cannot-open-shared-object-file">
+<h3><span class="section-number">5.1.4.1. </span>R: libtk8.6.so: cannot open shared object file<a class="headerlink" href="#r-libtk8-6-so-cannot-open-shared-object-file" title="Permalink to this headline">¶</a></h3>
+<p>Users connecting to Esrum with X11 forwarding enabled, for example using
+mobaXterm with default settings, may observe the following error when
+running the <code class="docutils literal notranslate"><span class="pre">install.packages</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">--- Please select a CRAN mirror for use in this session ---</span>
+<span class="go">Error: .onLoad failed in loadNamespace() for &#39;tcltk&#39;, details:</span>
+<span class="go">  call: dyn.load(file, DLLpath = DLLpath, ...)</span>
+<span class="go">  error: unable to load shared object &#39;/opt/software/R/4.3.1/lib64/R/library/tcltk/libs/tcltk.so&#39;:</span>
+<span class="go">  libtk8.6.so: cannot open shared object file: No such file or directory</span>
+</pre></div>
+</div>
+<p>If so, then you must disable graphical menus before running
+<code class="docutils literal notranslate"><span class="pre">install.packages</span></code> by first entering the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;</span> options<span class="o">(</span>menu.graphics<span class="o">=</span>FALSE<span class="o">)</span>
+</pre></div>
+</div>
+<p>Then simply run <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> again.</p>
+<p>You can also set the R option permanently by running the following in
+your (bash) terminal:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">echo</span> <span class="s1">&#39;options(menu.graphics=FALSE)&#39;</span> <span class="p">|</span> tee -a ~/.Rprofile
+</pre></div>
+</div>
+</div>
+<div class="section" id="rstudio-incorrect-or-invalid-username-password">
+<h3><span class="section-number">5.1.4.2. </span>RStudio: Incorrect or invalid username/password<a class="headerlink" href="#rstudio-incorrect-or-invalid-username-password" title="Permalink to this headline">¶</a></h3>
+<p>Please make sure that you are entering your username in the short form
+and that you have been added as a member of the <code class="docutils literal notranslate"><span class="pre">SRV-esrumcont-users</span></code>
+group (see above). If the problem persists, please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us
+for assistance.</p>
+</div>
+<div class="section" id="rstudio-logging-in-takes-a-very-long-time">
+<h3><span class="section-number">5.1.4.3. </span>RStudio: Logging in takes a very long time<a class="headerlink" href="#rstudio-logging-in-takes-a-very-long-time" title="Permalink to this headline">¶</a></h3>
+<p>Similar to regular R, RStudio will automatically save the data you have
+loaded into your R session and will restore it when you return later, so
+that you can continue your work. However, this many result in large
+amounts of data being saved and loading this data may result in a large
+delay when you attempt to login at a later date.</p>
+<p>It is therefore recommended that you regularly clean up your workspace
+using the built in tools, when you no longer need to have the data
+loaded in R.</p>
+<p>You can remove individual bits of data using the <code class="docutils literal notranslate"><span class="pre">rm</span></code> function in R.
+This works both when using regular R and when using RStudio. The
+following gives two examples of using the <code class="docutils literal notranslate"><span class="pre">rm</span></code> function, one removing
+a single variable and the other removing <em>all</em> variables in the current
+session:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Remove the variable `my_variable`</span>
+<span class="nf">rm</span><span class="p">(</span><span class="n">my_variable</span><span class="p">)</span>
+
+<span class="c1"># 2. Remove all variables from your R session</span>
+<span class="nf">rm</span><span class="p">(</span><span class="n">list</span> <span class="o">=</span> <span class="nf">ls</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Alternatively you can remove all data saved in your R session using the
+broom icon on the <code class="docutils literal notranslate"><span class="pre">Environment</span></code> tab:</p>
+<img alt="../_images/rstudio_gc_01.png" class="align-center" src="../_images/rstudio_gc_01.png" />
+<img alt="../_images/rstudio_gc_02.png" class="align-center" src="../_images/rstudio_gc_02.png" />
+<p>If you wish to prevent this issue in the first case, then you can also
+turn off saving the data in your session on exit and/or turn off loading
+the saved data on startup. This is accomplished via the <code class="docutils literal notranslate"><span class="pre">Global</span>
+<span class="pre">Options...</span></code> accessible from the <code class="docutils literal notranslate"><span class="pre">Tools</span></code> menu:</p>
+<img alt="../_images/rstudio_gc_03.png" class="align-center" src="../_images/rstudio_gc_03.png" />
+<p>Should your R session have grown to such a size that you simply cannot
+login and clean it up, then it my be necessary to remove the files
+containing the data that R/RStudio has saved. This data is stored in two
+locations:</p>
+<ol class="arabic simple">
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">.RData</span></code> file in your home (<code class="docutils literal notranslate"><span class="pre">~/.RData</span></code>). This is where R
+saves your data if you answer yes <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">workspace</span> <span class="pre">image?</span> <span class="pre">[y/n/c]</span></code>
+when quitting R.</p></li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">environment</span></code> file in your RStudio session folder (<code class="docutils literal notranslate"><span class="pre">~/.local/share/rstudio/sessions/active/session-*/suspended-session-data/environment</span></code>).
+This is where Rstudio saves your data should your login time-out
+while using RStudio.</p></li>
+</ol>
+<p>Please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us and we can help you remove the correct files.</p>
+</div>
+<div class="section" id="jupyter-notebooks-browser-error-when-opening-url">
+<h3><span class="section-number">5.1.4.4. </span>Jupyter Notebooks: Browser error when opening URL<a class="headerlink" href="#jupyter-notebooks-browser-error-when-opening-url" title="Permalink to this headline">¶</a></h3>
+<p>Depending on your browser you may receive one of the following errors.
+The typical causes are listed, but the exact error message will depend
+on your browser. It is therefore helpful to review all possible causes
+listed here.</p>
+<p>When using Chrome, the cause is typically listed below the line that
+says &quot;This site can't be reached&quot;.</p>
+<ul>
+<li><p>&quot;The connection was reset&quot;</p>
+<p>This typically indicates that Jupyter Notebook isn't running on the
+server, or that it is running on a different port than the one you've
+forwarded. Check that Jupyter Notebook is running and make sure that
+your forwarded ports match those used by Jupyter Notebook on Esrum.</p>
+</li>
+<li><p>&quot;localhost refused to connect&quot; or &quot;Unable to connect&quot;</p>
+<p>This typically indicates that port forwarding isn't active, or that
+you have entered the wrong port number in your browser. Verify that
+port forwarding is active and that you are using the correct port
+number in the <code class="docutils literal notranslate"><span class="pre">localhost</span></code> URL.</p>
+</li>
+<li><p>&quot;Check if there is a typo in esrumcont01fl&quot; or &quot;We're having trouble
+finding that site&quot;</p>
+<p>You are must likely connecting from a network outside of KU. Make
+sure that you are using a wired connection at CBMR and/or that the
+VPN is activated and try again.</p>
+</li>
+</ul>
+<script defer>
+ var random_port = getEphemeralPort();
+
+ function updatePort(elem) {
+   if (elem.childNodes.length) {
+     elem.childNodes.forEach(updatePort);
+   } else if (elem.textContent) {
+     elem.textContent = elem.textContent.replaceAll("XXXXX", random_port);
+   }
+
+   if (elem.href && elem.href.includes("XXXXX")) {
+     elem.href = elem.href.replaceAll("XXXXX", random_port);
+     // open in new page
+     elem.target = "_blank";
+   }
+ };
+
+ document.addEventListener('DOMContentLoaded', function() {
+   updatePort(document.body);
+ });
+</script></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="containers.html" title="5.2. Running containerized software"
+             >next</a></li>
+        <li class="right" >
+          <a href="index.html" title="5. Other services"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">5. </span>Other services</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, CBMR Phenomics.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

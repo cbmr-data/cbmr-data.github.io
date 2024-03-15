@@ -1,0 +1,352 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>4.4. Environment modules &#8212; Esrum Cluster  documentation</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/playback.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/js/custom.js"></script>
+    <script src="../_static/js/libgif.js"></script>
+    <script src="../_static/bizstyle.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4.5. Transferring data" href="transfers.html" />
+    <link rel="prev" title="4.3.3. Using the GPU/hi-MEM node" href="slurm/gpu.html" />
+    <script defer src="../_static/js/playback.js"></script>
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="transfers.html" title="4.5. Transferring data"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="slurm/gpu.html" title="4.3.3. Using the GPU/hi-MEM node"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">4. </span>Using the cluster</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4.4. Environment modules</a><ul>
+<li><a class="reference internal" href="#basic-usage">4.4.1. Basic usage</a><ul>
+<li><a class="reference internal" href="#finding-available-modules">4.4.1.1. Finding available modules</a></li>
+<li><a class="reference internal" href="#loading-a-module">4.4.1.2. Loading a module</a></li>
+<li><a class="reference internal" href="#listing-and-unloading-loaded-modules">4.4.1.3. Listing and unloading loaded modules</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#making-your-analyses-reproducible">4.4.2. Making your analyses reproducible</a><ul>
+<li><a class="reference internal" href="#managing-modules-with-module-save-restore">4.4.2.1. Managing modules with <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">save/restore</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#shared-cbmr-modules">4.4.3. Shared CBMR modules</a></li>
+<li><a class="reference internal" href="#requesting-missing-modules">4.4.4. Requesting missing modules</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="slurm/gpu.html"
+                        title="previous chapter"><span class="section-number">4.3.3. </span>Using the GPU/hi-MEM node</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="transfers.html"
+                        title="next chapter"><span class="section-number">4.5. </span>Transferring data</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="environment-modules">
+<span id="p-usage-modules"></span><h1><span class="section-number">4.4. </span>Environment modules<a class="headerlink" href="#environment-modules" title="Permalink to this headline">¶</a></h1>
+<p>A wide range of scientific (and other) software is made available on
+Esrum via so-called <a class="reference external" href="https://modules.sourceforge.net/">Environment modules</a>. While environment modules
+add some complexity, they allow both different versions of software as
+well as mutually exclusive pieces of software to coexist, and simplify
+making your analyses reproducible.</p>
+<p>Modules on Esrum are primarily provided by KU-IT (see below), but users
+may also set up their own private or shared environment modules. See the
+<a class="reference internal" href="../tips/modules.html#p-tips-modules"><span class="std std-ref">Creating environment modules</span></a> section for more information.</p>
+<p>A collection of software managed by the Data Analytics team is also
+available. See the <a class="reference internal" href="#s-shared-modules"><span class="std std-ref">Shared CBMR modules</span></a> section below.</p>
+<div class="section" id="basic-usage">
+<h2><span class="section-number">4.4.1. </span>Basic usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
+<p>This section briefly describe how to carry out common tasks using the
+module system: Finding what modules are available, loading a module, and
+unloading them again. For more information see the <a class="reference external" href="https://modules.readthedocs.io/en/v4.5.2/">official
+documentation</a>.</p>
+<div class="section" id="finding-available-modules">
+<h3><span class="section-number">4.4.1.1. </span>Finding available modules<a class="headerlink" href="#finding-available-modules" title="Permalink to this headline">¶</a></h3>
+<p>The first step is to determine what modules are available on the server.
+This is accomplished with the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code> command, that lists all
+available modules by default:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ module avail
+-------------------------- /opt/software/modules --------------------------
+anaconda2/4.0.0            libpng/1.6.39               texlive/2023
+anaconda3/4.0.0            libtool/2.4.7               tiff/4.5.0
+anaconda3/5.3.1            libuv/1.44.2                topspin/4.1.4
+anaconda3/2020.11          libxkbcommon/1.3.0          trimgalore/0.6.6
+anaconda3/2021.05          libxscrnsaver/1.0.0         trnascan-se/2.0.11
+<span class="o">[</span>...<span class="o">]</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">avail</span></code> command can also be used to search for specific modules by
+specifying one or more keywords:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ module avail sam
+-------------------------- /opt/software/modules --------------------------
+samtools/1.12  samtools/1.17
+</pre></div>
+</div>
+</div>
+<div class="section" id="loading-a-module">
+<h3><span class="section-number">4.4.1.2. </span>Loading a module<a class="headerlink" href="#loading-a-module" title="Permalink to this headline">¶</a></h3>
+<p>The modules are loaded using the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code> command. This command
+adds the executable to your PATH and performs any other setup required
+to run the software.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ samtools
+-bash: samtools: <span class="nb">command</span> not found
+$ module load samtools
+$ samtools
+Program: samtools <span class="o">(</span>Tools <span class="k">for</span> alignments in the SAM format<span class="o">)</span>
+Version: <span class="m">1</span>.17 <span class="o">(</span>using htslib <span class="m">1</span>.17<span class="o">)</span>
+<span class="o">[</span>...<span class="o">]</span>
+</pre></div>
+</div>
+<p>Multiple modules may be specified per <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code> command and it is
+also possible to specify the exact version that you need, provided that
+a module is available for that version:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ module load samtools/1.12
+$ samtools
+Program: samtools <span class="o">(</span>Tools <span class="k">for</span> alignments in the SAM format<span class="o">)</span>
+Version: <span class="m">1</span>.12 <span class="o">(</span>using htslib <span class="m">1</span>.12<span class="o">)</span>
+<span class="o">[</span>...<span class="o">]</span>
+</pre></div>
+</div>
+<p>In some cases one module will require another module:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ module load bcftools
+Loading bcftools/1.16
+ERROR: bcftools/1.16 cannot be loaded due to missing prereq.
+   HINT: the following module must be loaded first: perl
+</pre></div>
+</div>
+<p>In that case you simply need to load the required module first. This can
+be done in done manually:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ module load perl
+$ module load bcftools
+</pre></div>
+</div>
+<p>Or automatically:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ module load --auto bcftools
+Loading bcftools/1.16
+  Loading requirement: perl/5.26.3
+</pre></div>
+</div>
+</div>
+<div class="section" id="listing-and-unloading-loaded-modules">
+<h3><span class="section-number">4.4.1.3. </span>Listing and unloading loaded modules<a class="headerlink" href="#listing-and-unloading-loaded-modules" title="Permalink to this headline">¶</a></h3>
+<p>The modules you have loaded can be listed using the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">list</span></code>
+command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ modules list
+Currently Loaded Modulefiles:
+ <span class="m">1</span><span class="o">)</span> perl/5.26.3   <span class="m">2</span><span class="o">)</span> bcftools/1.16   <span class="m">3</span><span class="o">)</span> samtools/1.12
+</pre></div>
+</div>
+<p>To remove a module that you no longer need, use the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">unload</span></code>
+command to unload a single module or the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code> command to
+unload all modules:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Unload the samtools module</span>
+$ module unload samtools
+<span class="c1"># Unload the remaining modules</span>
+$ module purge
+$ modules list
+No Modulefiles Currently Loaded.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="making-your-analyses-reproducible">
+<h2><span class="section-number">4.4.2. </span>Making your analyses reproducible<a class="headerlink" href="#making-your-analyses-reproducible" title="Permalink to this headline">¶</a></h2>
+<p>As described above you can load modules with or without versions
+specified. For a lot of software it is not very important that a
+specific version used, but even so it is highly recommended that you
+keep using the same versions of modules throughout a project.</p>
+<ol class="arabic simple">
+<li><p>This ensures that your results do not suddenly change if a new
+version of a piece of software is installed.</p></li>
+<li><p>It ensures that you can accurately report what versions of software
+were used when it is time to publish your results.</p></li>
+</ol>
+<p>The following section describes using the built-in <code class="docutils literal notranslate"><span class="pre">save/restore</span></code>
+commands to record and restoring your used modules, but it is also
+possible to do this by hand.</p>
+<div class="section" id="managing-modules-with-module-save-restore">
+<h3><span class="section-number">4.4.2.1. </span>Managing modules with <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">save/restore</span></code><a class="headerlink" href="#managing-modules-with-module-save-restore" title="Permalink to this headline">¶</a></h3>
+<p>To export a list of your currently used models, use the following
+command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ module config collection_pin_version <span class="m">1</span>
+$ module save ./modules.txt
+</pre></div>
+</div>
+<p>There are two important points here: Firstly, the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">config</span>
+<span class="pre">collection_pin_version</span> <span class="pre">1</span></code> command <em>must</em> be run first. If this is not
+done, then the specific versions of modules are not recorded.</p>
+<p>Secondly, the filename used in the second command (<code class="docutils literal notranslate"><span class="pre">./modules.txt</span></code>)
+<em>must</em> contain a directory component (e.g. <code class="docutils literal notranslate"><span class="pre">./</span></code>). If this is not done,
+then the list is saved in a local database rather than as a file. Saving
+the list as a local file is recommended as it allows other users to see
+what software you used.</p>
+<p>If used correctly, the <code class="docutils literal notranslate"><span class="pre">./modules.txt</span></code> file will contain the currently
+loaded modules, e.g:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ module list
+Currently Loaded Modulefiles:
+<span class="m">1</span><span class="o">)</span> gcc/11.2.0   <span class="m">2</span><span class="o">)</span> samtools/1.17   <span class="m">3</span><span class="o">)</span> perl/5.26.3   <span class="m">4</span><span class="o">)</span> bcftools/1.16
+$ module config collection_pin_version <span class="m">1</span>
+$ module save ./modules.txt
+$ cat modules.txt
+module use --append /opt/software/modules
+module load gcc/11.2.0
+module load samtools/1.17
+module load perl/5.26.3
+module load bcftools/1.16
+</pre></div>
+</div>
+<p>To load the saved modules, simply run <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">restore</span></code> with the same
+filename (and a directory component):</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ module list
+No Modulefiles Currently Loaded.
+$ module restore ./modules.txt
+$ module list
+Currently Loaded Modulefiles:
+<span class="m">1</span><span class="o">)</span> gcc/11.2.0   <span class="m">2</span><span class="o">)</span> samtools/1.17   <span class="m">3</span><span class="o">)</span> perl/5.26.3   <span class="m">4</span><span class="o">)</span> bcftools/1.16
+</pre></div>
+</div>
+<p>Alternative, use the <code class="docutils literal notranslate"><span class="pre">.</span></code> or <code class="docutils literal notranslate"><span class="pre">source</span></code> command to execute the content
+of the file in your current shell. This has the same effect as running
+<code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">restore</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">source</span> ./modules.txt
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ . ./modules.txt
+</pre></div>
+</div>
+<p>Simply running the script with <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">modules.sh</span></code> will not work.</p>
+</div>
+</div>
+<div class="section" id="shared-cbmr-modules">
+<span id="s-shared-modules"></span><h2><span class="section-number">4.4.3. </span>Shared CBMR modules<a class="headerlink" href="#shared-cbmr-modules" title="Permalink to this headline">¶</a></h2>
+<p>The Data Analytics team manages a small collection of modules for custom
+tools in the <cite>cbmr_shared</cite> project folder. If you have not already been
+given access to this project, then please follow the steps outlined in
+<a class="reference internal" href="access/access.html#s-applying-for-access"><span class="std std-ref">Applying for access to the cluster</span></a> and apply for access to the
+<code class="docutils literal notranslate"><span class="pre">COMP-PRJ-cbmr_shared</span></code> project.</p>
+<p>To make use of these modules, run the following command in your
+terminal:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ module use --prepend /projects/cbmr_shared/apps/modules/modulefiles/
+</pre></div>
+</div>
+<p>A small helper script is also available to run this command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">source</span> /projects/cbmr_shared/apps/modules/activate.sh
+Using modules in <span class="s1">&#39;/projects/cbmr_shared/apps/modules/modulefiles/&#39;</span>
+</pre></div>
+</div>
+<p>You can add the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">use</span></code> command to the end of your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code>
+file to make the shared modules available every time you connect to
+Esrum.</p>
+</div>
+<div class="section" id="requesting-missing-modules">
+<span id="s-requesting-missing-modules"></span><h2><span class="section-number">4.4.4. </span>Requesting missing modules<a class="headerlink" href="#requesting-missing-modules" title="Permalink to this headline">¶</a></h2>
+<p>If the software you need is not available as a module, you you can
+request it through KU-IT as described below. You are also welcome to
+<a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us if you need help determining the exact software
+and/or versions you need to request, or if you have other questions.</p>
+<p>To request software,</p>
+<ol class="arabic simple">
+<li><p>Login to the KU <a class="reference external" href="https://serviceportal.ku.dk/">IT Serviceportal</a>.</p></li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Ticket</span></code> / <code class="docutils literal notranslate"><span class="pre">Opret</span> <span class="pre">Sag</span></code> button.</p></li>
+<li><p>Select the <code class="docutils literal notranslate"><span class="pre">Research</span> <span class="pre">IT</span></code> / <code class="docutils literal notranslate"><span class="pre">Forsknings-IT</span></code> category.</p></li>
+<li><p>Then select the <code class="docutils literal notranslate"><span class="pre">Research</span> <span class="pre">Applications</span> <span class="pre">and</span> <span class="pre">Services</span></code> /
+<code class="docutils literal notranslate"><span class="pre">Forskningsapplikationer</span> <span class="pre">og</span> <span class="pre">Services</span></code> subcategory.</p></li>
+<li><p>Finally, select <code class="docutils literal notranslate"><span class="pre">Consultancy</span> <span class="pre">and</span> <span class="pre">Support</span></code> / <code class="docutils literal notranslate"><span class="pre">Rådgivning</span> <span class="pre">og</span>
+<span class="pre">support</span></code>.</p></li>
+<li><p>List what software you wish to have installed in the &quot;Please
+describe&quot; text-box (see below).</p></li>
+<li><p>Write &quot;esrumhead01fl.unicph.domain&quot; in the System name text-box.</p></li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">ADD</span> <span class="pre">TO</span> <span class="pre">CART</span></code> / <code class="docutils literal notranslate"><span class="pre">TILFØJ</span> <span class="pre">TIL</span> <span class="pre">KURV</span></code> button.</p></li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">SUBMIT</span> <span class="pre">ORDER</span></code> / <code class="docutils literal notranslate"><span class="pre">INDSEND</span> <span class="pre">ORDRE</span></code> button.</p></li>
+</ol>
+<p>Your request should include the following information:</p>
+<ol class="arabic simple">
+<li><p>The name of the software.</p></li>
+<li><p>The specific version requested (if any).</p></li>
+<li><p>The homepage of the software.</p></li>
+</ol>
+<p>A request may look like the following:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Requesting the addition of environment modules for the following software:</span>
+
+<span class="go">1. seqtk v1.4 (https://github.com/lh3/seqtk)</span>
+<span class="go">2. jq v1.5 (https://stedolan.github.io/jq/)</span>
+<span class="go">3. igzip v2.30.0 (https://github.com/intel/isa-l)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are not an employee at CBMR you may not have permission to
+open a ticket as described above. In that case simply
+<a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us with your request and we will forward it to
+KU-IT.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="transfers.html" title="4.5. Transferring data"
+             >next</a></li>
+        <li class="right" >
+          <a href="slurm/gpu.html" title="4.3.3. Using the GPU/hi-MEM node"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">4. </span>Using the cluster</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, CBMR Phenomics.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

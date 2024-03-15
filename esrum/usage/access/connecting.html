@@ -1,0 +1,299 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>4.1.2. Connecting to the cluster &#8212; Esrum Cluster  documentation</title>
+    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/js/custom.js"></script>
+    <script src="../../_static/js/libgif.js"></script>
+    <script src="../../_static/bizstyle.js"></script>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4.2. Projects, data, and home folders" href="../filesystem.html" />
+    <link rel="prev" title="4.1.1. Applying for access" href="access.html" />
+    <script defer src="../../_static/js/playback.js"></script>
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../filesystem.html" title="4.2. Projects, data, and home folders"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="access.html" title="4.1.1. Applying for access"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">4. </span>Using the cluster</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U"><span class="section-number">4.1. </span>Accessing the cluster</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4.1.2. Connecting to the cluster</a><ul>
+<li><a class="reference internal" href="#connecting-on-windows">4.1.2.1. Connecting on Windows</a><ul>
+<li><a class="reference internal" href="#configuring-mobaxterm">4.1.2.1.1. Configuring MobaXterm</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#connecting-on-linux-or-osx">4.1.2.2. Connecting on Linux or OSX</a></li>
+<li><a class="reference internal" href="#troubleshooting">4.1.2.3. Troubleshooting</a><ul>
+<li><a class="reference internal" href="#timeout-while-connecting-to-the-cluster">4.1.2.3.1. Timeout while connecting to the cluster</a></li>
+<li><a class="reference internal" href="#file-uploads-using-mobaxterm-never-start">4.1.2.3.2. File uploads using MobaXterm never start</a></li>
+<li><a class="reference internal" href="#ku-network-folders-in-ucph-are-not-available-when-using-mobaxterm">4.1.2.3.3. KU network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available when using MobaXterm</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="access.html"
+                        title="previous chapter"><span class="section-number">4.1.1. </span>Applying for access</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../filesystem.html"
+                        title="next chapter"><span class="section-number">4.2. </span>Projects, data, and home folders</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="connecting-to-the-cluster">
+<span id="p-usage-connecting"></span><h1><span class="section-number">4.1.2. </span>Connecting to the cluster<a class="headerlink" href="#connecting-to-the-cluster" title="Permalink to this headline">¶</a></h1>
+<p>If you have not already applied for and been granted access to the
+cluster, then please see the <a class="reference internal" href="index.html#p-usage-access"><span class="std std-ref">Accessing the cluster</span></a> page before
+continuing.</p>
+<p>The cluster's is accessible via SSH at <code class="docutils literal notranslate"><span class="pre">esrumhead01fl.unicph.domain</span></code>.
+This is the Esrum &quot;head&quot; node, which serves as the entry-point for the
+cluster and which gives you access to the job management system used for
+running software (see <a class="reference internal" href="../slurm/index.html#p-usage-slurm"><span class="std std-ref">Running jobs using Slurm</span></a>)</p>
+<p>To connect to the cluster you will typically need to be connected to the
+KU VPN. For information about connecting to the VPN, see the support
+pages on KUNet in <a class="reference external" href="https://kunet.ku.dk/medarbejderguide/Sider/It/Fjernadgang-vpn.aspx">Danish</a> and <a class="reference external" href="https://kunet.ku.dk/employee-guide/Pages/IT/Remote-access.aspx">English</a>.</p>
+<div class="section" id="connecting-on-windows">
+<h2><span class="section-number">4.1.2.1. </span>Connecting on Windows<a class="headerlink" href="#connecting-on-windows" title="Permalink to this headline">¶</a></h2>
+<p>Windows users will need to install a SSH client in order to be able to
+connect to the server. Options include <a class="reference external" href="https://mobaxterm.mobatek.net/">MobaXterm</a>, <a class="reference external" href="https://www.putty.org/">Putty</a>, and Windows
+Subsystem for Linux (<a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/about">WSL</a>), and much more. The following demonstrates
+how to setup MobaXterm. Please refer to the <a class="reference internal" href="#connecting-on-linux-or-osx">Connecting On Linux or
+OSX</a> section if using <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/about">WSL</a>.</p>
+<div class="section" id="configuring-mobaxterm">
+<span id="s-configure-mobaxterm"></span><h3><span class="section-number">4.1.2.1.1. </span>Configuring MobaXterm<a class="headerlink" href="#configuring-mobaxterm" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p>Install and open MobaXterm.</p></li>
+<li><p>Click left-most <code class="docutils literal notranslate"><span class="pre">Session</span></code> button on the toolbar.</p>
+<img alt="../../_images/mobaxterm_01.png" class="align-center" src="../../_images/mobaxterm_01.png" />
+</li>
+<li><p>Click on the left-most <code class="docutils literal notranslate"><span class="pre">SSH</span></code> button on the resulting <code class="docutils literal notranslate"><span class="pre">Session</span>
+<span class="pre">settings</span></code> dialog</p>
+<img alt="../../_images/mobaxterm_02.png" class="align-center" src="../../_images/mobaxterm_02.png" />
+</li>
+<li><p>Under <code class="docutils literal notranslate"><span class="pre">Basic</span> <span class="pre">SSH</span> <span class="pre">settings</span></code></p>
+<ol class="arabic simple">
+<li><p>Write <code class="docutils literal notranslate"><span class="pre">esrumhead01fl.unicph.domain</span></code> under <code class="docutils literal notranslate"><span class="pre">Remote</span> <span class="pre">Host</span></code></p></li>
+<li><p>Click the checkbox next to <code class="docutils literal notranslate"><span class="pre">Specify</span> <span class="pre">username</span></code> and enter your KU
+username (in the form <code class="docutils literal notranslate"><span class="pre">abc123</span></code>)</p></li>
+<li><p>Select <code class="docutils literal notranslate"><span class="pre">SCP</span> <span class="pre">(enhanced</span> <span class="pre">speed)</span></code> on the <code class="docutils literal notranslate"><span class="pre">SSH-browser</span></code> type
+drop-down menu. This is required for file-uploads to work.</p></li>
+</ol>
+<img alt="../../_images/mobaxterm_03.png" class="align-center" src="../../_images/mobaxterm_03.png" />
+</li>
+<li><p>Click on the <code class="docutils literal notranslate"><span class="pre">Bookmark</span> <span class="pre">settings</span></code> tab and</p>
+<ol class="arabic simple">
+<li><p>Write <code class="docutils literal notranslate"><span class="pre">Esrum</span></code> or a name you prefer under <code class="docutils literal notranslate"><span class="pre">Session</span> <span class="pre">Name</span></code></p></li>
+<li><p>Optionally click the <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">a</span> <span class="pre">desktop</span> <span class="pre">shortcut</span> <span class="pre">to</span> <span class="pre">this</span> <span class="pre">session</span></code>
+button. This will create a shortcut on your desktop that connects
+to Esrum.</p></li>
+</ol>
+<img alt="../../_images/mobaxterm_04.png" class="align-center" src="../../_images/mobaxterm_04.png" />
+</li>
+<li><p>Click OK and you should connect to the server. The first time you
+connect a new server you if you want to proceed. As this is the first
+time we are connecting to Esrum, simply press Accept:</p>
+<img alt="../../_images/mobaxterm_05.png" class="align-center" src="../../_images/mobaxterm_05.png" />
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you receive this question again later, then stop and
+double-check that you are connected via the KU VPN, as the message
+could indicate that you are not actually connecting to Esrum!</p>
+</div>
+</li>
+<li><p>You should now be able to login to the server:</p>
+<img alt="../../_images/mobaxterm_06.png" class="align-center" src="../../_images/mobaxterm_06.png" />
+</li>
+<li><p>For security reasons we recommend that you decline if asked if you
+want to save your password.</p></li>
+</ol>
+<p>To connect again another time, either use the desktop shortcut (if you
+created it), double click on <code class="docutils literal notranslate"><span class="pre">Esrum</span></code> in the list of sessions on the
+left side of MobaXterm, or select <code class="docutils literal notranslate"><span class="pre">Esrum</span></code> from the list that appears
+when clicking on the middle <code class="docutils literal notranslate"><span class="pre">Sessions</span></code> button on the main menu.</p>
+<blockquote>
+<div><img alt="../../_images/mobaxterm_07.png" class="align-center" src="../../_images/mobaxterm_07.png" />
+</div></blockquote>
+<p>Note that you must disable login using Kerberos (GSSAPI) if you wish to
+access the KU network drives (<code class="docutils literal notranslate"><span class="pre">H:</span></code> and <code class="docutils literal notranslate"><span class="pre">N:</span></code>) via Esrum. To do so,
+open the <code class="docutils literal notranslate"><span class="pre">Configuration</span></code> dialog as shown:</p>
+<blockquote>
+<div><img alt="../../_images/mobaxterm_08.png" class="align-center" src="../../_images/mobaxterm_08.png" />
+</div></blockquote>
+<p>Then untick the <code class="docutils literal notranslate"><span class="pre">GSSAPI</span> <span class="pre">Kerberos</span></code> checkbox as shown and click the
+<code class="docutils literal notranslate"><span class="pre">OK</span></code> button:</p>
+<blockquote>
+<div><img alt="../../_images/mobaxterm_09.png" class="align-center" src="../../_images/mobaxterm_09.png" />
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="connecting-on-linux-or-osx">
+<span id="s-connecting-linux"></span><h2><span class="section-number">4.1.2.2. </span>Connecting on Linux or OSX<a class="headerlink" href="#connecting-on-linux-or-osx" title="Permalink to this headline">¶</a></h2>
+<p>Linux and OSX users can connect to the cluster using the following
+terminal command, replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code> with your KU username:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ssh abc123@esrumhead01fl.unicph.domain
+</pre></div>
+</div>
+<img alt="../../_images/connecting_ssh.gif" class="gif" src="../../_images/connecting_ssh.gif" />
+<p>It is recommended to add an entry for the cluster to your
+<code class="docutils literal notranslate"><span class="pre">.ssh/config</span></code> file, replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code> with your KU username:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> cat ~/.ssh/config
+<span class="go">Host esrum esrumhead01fl esrumhead01fl.unicph.domain</span>
+<span class="go">    HostName esrumhead01fl.unicph.domain</span>
+<span class="go">    User abc123</span>
+</pre></div>
+</div>
+<p>This allows you connect to the server using the names <code class="docutils literal notranslate"><span class="pre">esrum</span></code>,
+<code class="docutils literal notranslate"><span class="pre">esrumhead01fl</span></code>, or <code class="docutils literal notranslate"><span class="pre">esrumhead01fl.unicph.domain</span></code>, and without
+having to specify your username:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ssh esrum
+<span class="go">abc123@esrumhead01fl.unicph.domain&#39;s password:</span>
+<span class="go">     __</span>
+<span class="go">    /  \</span>
+<span class="go">   _\__/  Welcome to esrumhead01fl</span>
+<span class="go">  (_)     University of Copenhagen</span>
+<span class="go">_____O______________________________________</span>
+<span class="go">Supported by UNICPH IT  it.ku.dk/english</span>
+
+
+<span class="go">Last login: Fri Oct 13 01:35:00 1980 from 127.0.0.1</span>
+<span class="gp">$</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that the cluster <em>does not</em> support authentication through a
+public SSH key and that you therefore have to enter your password
+when connecting to the server.</p>
+</div>
+</div>
+<div class="section" id="troubleshooting">
+<span id="s-connecting-troubleshooting"></span><h2><span class="section-number">4.1.2.3. </span>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<p>If have not already been granted access to the server, then please see
+the <a class="reference internal" href="index.html#p-usage-access"><span class="std std-ref">Accessing the cluster</span></a> page before continuing!</p>
+<div class="section" id="timeout-while-connecting-to-the-cluster">
+<h3><span class="section-number">4.1.2.3.1. </span>Timeout while connecting to the cluster<a class="headerlink" href="#timeout-while-connecting-to-the-cluster" title="Permalink to this headline">¶</a></h3>
+<p>You may experience timeout errors when you attempt to connect to the
+server:</p>
+<img alt="../../_images/connecting_ssh_timeout.gif" class="gif" src="../../_images/connecting_ssh_timeout.gif" />
+<ol class="arabic">
+<li><p>Firstly verify that you are correctly connected to the KU network:</p>
+<ol class="arabic simple">
+<li><p>You must either use a wired connection while physically at CBMR.</p></li>
+<li><p>Or you must connect via the KU VPN.</p></li>
+</ol>
+<p>It is not possible to connect to using WIFI at CBMR nor is it
+possible to from outside of CBMR without the use of the VPN. See the
+official VPN documentation in <a class="reference external" href="https://kunet.ku.dk/medarbejderguide/Sider/It/Fjernadgang-vpn.aspx">Danish</a> or <a class="reference external" href="https://kunet.ku.dk/employee-guide/Pages/IT/Remote-access.aspx">English</a> for more
+information.</p>
+</li>
+<li><p>If neither using a wired connection nor connecting the the KU VPN
+fixes the problem, you may need to create a support ticket to have KU
+IT permit you to connect to the server.</p>
+<ol class="arabic simple">
+<li><p>Login to the KU <a class="reference external" href="https://serviceportal.ku.dk/">IT Serviceportal</a>.</p></li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Ticket</span></code> / <code class="docutils literal notranslate"><span class="pre">Opret</span> <span class="pre">Sag</span></code> button.</p></li>
+<li><p>Select the <code class="docutils literal notranslate"><span class="pre">Research</span> <span class="pre">IT</span></code> / <code class="docutils literal notranslate"><span class="pre">Forsknings-IT</span></code> category.</p></li>
+<li><p>Then select the <code class="docutils literal notranslate"><span class="pre">Research</span> <span class="pre">Applications</span> <span class="pre">and</span> <span class="pre">Services</span></code> /
+<code class="docutils literal notranslate"><span class="pre">Forskningsapplikationer</span> <span class="pre">og</span> <span class="pre">Services</span></code> subcategory.</p></li>
+<li><p>Finally, select <code class="docutils literal notranslate"><span class="pre">Consultancy</span> <span class="pre">and</span> <span class="pre">Support</span></code> / <code class="docutils literal notranslate"><span class="pre">Rådgivning</span> <span class="pre">og</span>
+<span class="pre">support</span></code>.</p></li>
+<li><p>Write something like &quot;SSH connection times out when attempting to
+connect to esrumhead01fl.unicph.domain&quot; in the &quot;Please describe&quot;
+text-box and describe the steps you have taken to try to fix this
+problem: Tried wired connection at CBMR, tried VPN, etc.</p></li>
+<li><p>Write &quot;esrumhead01fl.unicph.domain&quot; in the System name text-box.</p></li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">to</span> <span class="pre">cart</span></code> button.</p></li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">SUBMIT</span> <span class="pre">ORDER</span></code> button.</p></li>
+</ol>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are not an employee at CBMR you may not have permission to
+open a ticket as described above. In that case simply
+<a class="reference internal" href="../../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us and we will forward your issue to KU-IT.</p>
+</div>
+</div>
+<div class="section" id="file-uploads-using-mobaxterm-never-start">
+<h3><span class="section-number">4.1.2.3.2. </span>File uploads using MobaXterm never start<a class="headerlink" href="#file-uploads-using-mobaxterm-never-start" title="Permalink to this headline">¶</a></h3>
+<p>Please make sure that your session is configured to use the <code class="docutils literal notranslate"><span class="pre">SCP</span>
+<span class="pre">(enhanced</span> <span class="pre">speed)</span></code> browser type. See step 4 in in the
+<a class="reference internal" href="#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section.</p>
+</div>
+<div class="section" id="ku-network-folders-in-ucph-are-not-available-when-using-mobaxterm">
+<h3><span class="section-number">4.1.2.3.3. </span>KU network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available when using MobaXterm<a class="headerlink" href="#ku-network-folders-in-ucph-are-not-available-when-using-mobaxterm" title="Permalink to this headline">¶</a></h3>
+<p>Please make sure that you have disabled use of <code class="docutils literal notranslate"><span class="pre">GSSAPI</span> <span class="pre">Kerberos</span></code> as
+described in the <a class="reference internal" href="#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../filesystem.html" title="4.2. Projects, data, and home folders"
+             >next</a></li>
+        <li class="right" >
+          <a href="access.html" title="4.1.1. Applying for access"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">4. </span>Using the cluster</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" ><span class="section-number">4.1. </span>Accessing the cluster</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, CBMR Phenomics.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

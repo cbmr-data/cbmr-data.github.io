@@ -1,0 +1,9 @@
+.warning {
+    background-color: rgb(242, 242, 242) !important;
+    border-color: #B35A5A !important;
+}
+
+.warning>.admonition-title {
+    background-color: #992222 !important;
+    border-bottom: #B35A5A !important;
+}

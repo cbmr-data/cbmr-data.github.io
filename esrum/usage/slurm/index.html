@@ -1,0 +1,123 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>4.3. Running jobs using Slurm &#8212; Esrum Cluster  documentation</title>
+    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/js/custom.js"></script>
+    <script src="../../_static/js/libgif.js"></script>
+    <script src="../../_static/bizstyle.js"></script>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4.3.1. Basic Slurm jobs" href="basics.html" />
+    <link rel="prev" title="4.2. Projects, data, and home folders" href="../filesystem.html" />
+    <script defer src="../../_static/js/playback.js"></script>
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="basics.html" title="4.3.1. Basic Slurm jobs"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="../filesystem.html" title="4.2. Projects, data, and home folders"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U"><span class="section-number">4. </span>Using the cluster</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../filesystem.html"
+                        title="previous chapter"><span class="section-number">4.2. </span>Projects, data, and home folders</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="basics.html"
+                        title="next chapter"><span class="section-number">4.3.1. </span>Basic Slurm jobs</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="running-jobs-using-slurm">
+<span id="p-usage-slurm"></span><h1><span class="section-number">4.3. </span>Running jobs using Slurm<a class="headerlink" href="#running-jobs-using-slurm" title="Permalink to this headline">¶</a></h1>
+<p>In order to run jobs on the Esrum cluster, you must connect to the head
+node (see <a class="reference internal" href="../access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a>) and queue them using the <a class="reference external" href="https://slurm.schedmd.com/overview.html">Slurm</a> job
+management system. <a class="reference external" href="https://slurm.schedmd.com/overview.html">Slurm</a> takes care of automatically queuing and
+distribute jobs on the compute and GPU nodes when the required resources
+are available.</p>
+<p>While it is permitted to run small jobs directly on the head node, more
+resource intensive jobs <em>must</em> be queued using Slurm. We <em>will</em>
+terminate jobs running on the head node without prior warning, if it is
+necessary to prevent them from impacting users of the cluster.</p>
+<p>The documentation for running jobs is split into three sections:</p>
+<ol class="arabic simple">
+<li><p>The <a class="reference internal" href="basics.html#p-usage-slurm-basics"><span class="std std-ref">Basic Slurm jobs</span></a> section describes the basic procedure
+of queuing jobs using the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command, requesting resources,
+monitoring your jobs, and running an interactive session.</p></li>
+<li><p>The <a class="reference internal" href="advanced.html#p-usage-slurm-advanced"><span class="std std-ref">Advanced Slurm jobs</span></a> section describes additional ways
+to monitor your jobs, how to batch multiple, similar jobs using
+<code class="docutils literal notranslate"><span class="pre">sbatch</span></code>, how to use <code class="docutils literal notranslate"><span class="pre">srun</span></code> for executing singular commands, and
+more.</p></li>
+<li><p>The <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU/hi-MEM node</span></a> section describes how to run jobs on the
+GPU/High-MEM node.</p></li>
+</ol>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">4.3.1. Basic Slurm jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.html">4.3.2. Advanced Slurm jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">4.3.3. Using the GPU/hi-MEM node</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="basics.html" title="4.3.1. Basic Slurm jobs"
+             >next</a></li>
+        <li class="right" >
+          <a href="../filesystem.html" title="4.2. Projects, data, and home folders"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">4. </span>Using the cluster</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, CBMR Phenomics.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

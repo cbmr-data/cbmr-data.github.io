@@ -1,0 +1,134 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>6. Tips and tricks &#8212; Esrum Cluster  documentation</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/playback.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/js/custom.js"></script>
+    <script src="../_static/js/libgif.js"></script>
+    <script src="../_static/bizstyle.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.1. Creating environment modules" href="modules.html" />
+    <link rel="prev" title="5.3. Public and private Shiny servers" href="../services/shiny.html" />
+    <script defer src="../_static/js/playback.js"></script>
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="modules.html" title="6.1. Creating environment modules"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="../services/shiny.html" title="5.3. Public and private Shiny servers"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Esrum Cluster  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../services/shiny.html"
+                        title="previous chapter"><span class="section-number">5.3. </span>Public and private Shiny servers</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="modules.html"
+                        title="next chapter"><span class="section-number">6.1. </span>Creating environment modules</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tips-and-tricks">
+<span id="p-tips"></span><h1><span class="section-number">6. </span>Tips and tricks<a class="headerlink" href="#tips-and-tricks" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">6.1. Creating environment modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#creating-a-repository-for-modules">6.1.1. Creating a repository for modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#dependencies-and-conflicts">6.1.2. Dependencies and conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#building-more-complicated-software">6.1.3. Building more complicated software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#installing-python-software">6.1.4. Installing Python software</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tmux.html">6.2. Persistent sessions with tmux</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tmux.html#getting-started">6.2.1. Getting started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tmux.html#creating-and-navigating-between-terminals">6.2.1.1. Creating and navigating between terminals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tmux.html#detaching-from-and-re-attaching-to-your-sessions">6.2.1.2. Detaching from and re-attaching to your sessions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tmux.html#naming-your-sessions-and-windows">6.2.1.3. Naming your sessions and windows</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tmux.html#basic-shortcuts">6.2.2. Basic shortcuts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tmux.html#additional-resources">6.2.3. Additional resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="batching_commands.html">6.3. Batching commands outside Slurm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="batching_commands.html#running-commands-sequentially-in-bash">6.3.1. Running commands sequentially in bash</a></li>
+<li class="toctree-l2"><a class="reference internal" href="batching_commands.html#running-commands-in-parallel-in-bash">6.3.2. Running commands in parallel in bash</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="batching_commands.html#best-practices-for-reserving-resources">6.3.2.1. Best practices for reserving resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="robust_scripts.html">6.4. Writing robust bash scripts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="robust_scripts.html#improving-default-bash-behavior">6.4.1. Improving default bash behavior</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="robust_scripts.html#prevent-use-of-undefined-variables">6.4.1.1. Prevent use of undefined variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="robust_scripts.html#stop-running-on-program-failures">6.4.1.2. Stop running on program failures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="robust_scripts.html#prevent-bash-from-updating-running-scripts">6.4.1.3. Prevent bash from updating running scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="robust_scripts.html#putting-it-all-together">6.4.1.4. Putting it all together</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="robust_scripts.html#checking-your-scripts-for-common-mistakes">6.4.2. Checking your scripts for common mistakes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="modules.html" title="6.1. Creating environment modules"
+             >next</a></li>
+        <li class="right" >
+          <a href="../services/shiny.html" title="5.3. Public and private Shiny servers"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Esrum Cluster  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, CBMR Phenomics.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

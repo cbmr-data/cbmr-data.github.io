@@ -1,0 +1,326 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>7. Troubleshooting &#8212; Esrum Cluster  documentation</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/playback.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/js/custom.js"></script>
+    <script src="_static/js/libgif.js"></script>
+    <script src="_static/bizstyle.js"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="8. Communications" href="communications/index.html" />
+    <link rel="prev" title="6.4. Writing robust bash scripts" href="tips/robust_scripts.html" />
+    <script defer src="_static/js/playback.js"></script>
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="communications/index.html" title="8. Communications"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="tips/robust_scripts.html" title="6.4. Writing robust bash scripts"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Esrum Cluster  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">7. Troubleshooting</a><ul>
+<li><a class="reference internal" href="#connecting-to-esrum">7.1. Connecting to Esrum</a><ul>
+<li><a class="reference internal" href="#timeout-while-connecting-to-the-cluster">7.1.1. Timeout while connecting to the cluster</a></li>
+<li><a class="reference internal" href="#file-uploads-using-mobaxterm-never-start">7.1.2. File uploads using MobaXterm never start</a></li>
+<li><a class="reference internal" href="#ku-network-folders-in-ucph-are-not-available-when-using-mobaxterm">7.1.3. KU network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available when using MobaXterm</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#slurm-basics">7.2. Slurm basics</a><ul>
+<li><a class="reference internal" href="#error-requested-node-configuration-is-not-available">7.2.1. Error: Requested node configuration is not available</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rstudio">7.3. Rstudio</a><ul>
+<li><a class="reference internal" href="#r-libtk8-6-so-cannot-open-shared-object-file">7.3.1. R: libtk8.6.so: cannot open shared object file</a></li>
+<li><a class="reference internal" href="#rstudio-incorrect-or-invalid-username-password">7.3.2. RStudio: Incorrect or invalid username/password</a></li>
+<li><a class="reference internal" href="#rstudio-logging-in-takes-a-very-long-time">7.3.3. RStudio: Logging in takes a very long time</a></li>
+<li><a class="reference internal" href="#jupyter-notebooks-browser-error-when-opening-url">7.3.4. Jupyter Notebooks: Browser error when opening URL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tips/robust_scripts.html"
+                        title="previous chapter"><span class="section-number">6.4. </span>Writing robust bash scripts</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="communications/index.html"
+                        title="next chapter"><span class="section-number">8. </span>Communications</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="troubleshooting">
+<h1><span class="section-number">7. </span>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h1>
+<p>This page gathers all troubleshooting steps from the other parts of this
+documentation for easy access.</p>
+<div class="section" id="connecting-to-esrum">
+<h2><span class="section-number">7.1. </span>Connecting to Esrum<a class="headerlink" href="#connecting-to-esrum" title="Permalink to this headline">¶</a></h2>
+<p>If have not already been granted access to the server, then please see
+the <a class="reference internal" href="usage/access/index.html#p-usage-access"><span class="std std-ref">Accessing the cluster</span></a> page before continuing!</p>
+<div class="section" id="timeout-while-connecting-to-the-cluster">
+<h3><span class="section-number">7.1.1. </span>Timeout while connecting to the cluster<a class="headerlink" href="#timeout-while-connecting-to-the-cluster" title="Permalink to this headline">¶</a></h3>
+<p>You may experience timeout errors when you attempt to connect to the
+server:</p>
+<img alt="_images/connecting_ssh_timeout.gif" class="gif" src="_images/connecting_ssh_timeout.gif" />
+<ol class="arabic">
+<li><p>Firstly verify that you are correctly connected to the KU network:</p>
+<ol class="arabic simple">
+<li><p>You must either use a wired connection while physically at CBMR.</p></li>
+<li><p>Or you must connect via the KU VPN.</p></li>
+</ol>
+<p>It is not possible to connect to using WIFI at CBMR nor is it
+possible to from outside of CBMR without the use of the VPN. See the
+official VPN documentation in <a class="reference external" href="https://kunet.ku.dk/medarbejderguide/Sider/It/Fjernadgang-vpn.aspx">Danish</a> or <a class="reference external" href="https://kunet.ku.dk/employee-guide/Pages/IT/Remote-access.aspx">English</a> for more
+information.</p>
+</li>
+<li><p>If neither using a wired connection nor connecting the the KU VPN
+fixes the problem, you may need to create a support ticket to have KU
+IT permit you to connect to the server.</p>
+<ol class="arabic simple">
+<li><p>Login to the KU <a class="reference external" href="https://serviceportal.ku.dk/">IT Serviceportal</a>.</p></li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Ticket</span></code> / <code class="docutils literal notranslate"><span class="pre">Opret</span> <span class="pre">Sag</span></code> button.</p></li>
+<li><p>Select the <code class="docutils literal notranslate"><span class="pre">Research</span> <span class="pre">IT</span></code> / <code class="docutils literal notranslate"><span class="pre">Forsknings-IT</span></code> category.</p></li>
+<li><p>Then select the <code class="docutils literal notranslate"><span class="pre">Research</span> <span class="pre">Applications</span> <span class="pre">and</span> <span class="pre">Services</span></code> /
+<code class="docutils literal notranslate"><span class="pre">Forskningsapplikationer</span> <span class="pre">og</span> <span class="pre">Services</span></code> subcategory.</p></li>
+<li><p>Finally, select <code class="docutils literal notranslate"><span class="pre">Consultancy</span> <span class="pre">and</span> <span class="pre">Support</span></code> / <code class="docutils literal notranslate"><span class="pre">Rådgivning</span> <span class="pre">og</span>
+<span class="pre">support</span></code>.</p></li>
+<li><p>Write something like &quot;SSH connection times out when attempting to
+connect to esrumhead01fl.unicph.domain&quot; in the &quot;Please describe&quot;
+text-box and describe the steps you have taken to try to fix this
+problem: Tried wired connection at CBMR, tried VPN, etc.</p></li>
+<li><p>Write &quot;esrumhead01fl.unicph.domain&quot; in the System name text-box.</p></li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">to</span> <span class="pre">cart</span></code> button.</p></li>
+<li><p>Click the <code class="docutils literal notranslate"><span class="pre">SUBMIT</span> <span class="pre">ORDER</span></code> button.</p></li>
+</ol>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are not an employee at CBMR you may not have permission to
+open a ticket as described above. In that case simply
+<a class="reference internal" href="contact.html#p-contact"><span class="std std-ref">Contact</span></a> us and we will forward your issue to KU-IT.</p>
+</div>
+</div>
+<div class="section" id="file-uploads-using-mobaxterm-never-start">
+<h3><span class="section-number">7.1.2. </span>File uploads using MobaXterm never start<a class="headerlink" href="#file-uploads-using-mobaxterm-never-start" title="Permalink to this headline">¶</a></h3>
+<p>Please make sure that your session is configured to use the <code class="docutils literal notranslate"><span class="pre">SCP</span>
+<span class="pre">(enhanced</span> <span class="pre">speed)</span></code> browser type. See step 4 in in the
+<a class="reference internal" href="usage/access/connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section.</p>
+</div>
+<div class="section" id="ku-network-folders-in-ucph-are-not-available-when-using-mobaxterm">
+<h3><span class="section-number">7.1.3. </span>KU network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available when using MobaXterm<a class="headerlink" href="#ku-network-folders-in-ucph-are-not-available-when-using-mobaxterm" title="Permalink to this headline">¶</a></h3>
+<p>Please make sure that you have disabled use of <code class="docutils literal notranslate"><span class="pre">GSSAPI</span> <span class="pre">Kerberos</span></code> as
+described in the <a class="reference internal" href="usage/access/connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section.</p>
+</div>
+</div>
+<div class="section" id="slurm-basics">
+<h2><span class="section-number">7.2. </span>Slurm basics<a class="headerlink" href="#slurm-basics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="error-requested-node-configuration-is-not-available">
+<h3><span class="section-number">7.2.1. </span>Error: Requested node configuration is not available<a class="headerlink" href="#error-requested-node-configuration-is-not-available" title="Permalink to this headline">¶</a></h3>
+<p>If you request too many CPUs (more than 128), or too much RAM (more than
+1993 GB for compute nodes and more than 3920 GB for the GPU node), then
+Slurm will report that the request cannot be satisfied:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># More than 128 CPUs requested</span>
+$ sbatch --cpus-per-task <span class="m">200</span> my_script.sh
+sbatch: error: CPU count per node can not be satisfied
+sbatch: error: Batch job submission failed: Requested node configuration is not available
+
+<span class="c1"># More than 1993 GB RAM requested on compute node</span>
+$ sbatch --mem 2000G my_script.sh
+sbatch: error: Memory specification can not be satisfied
+sbatch: error: Batch job submission failed: Requested node configuration is not available
+</pre></div>
+</div>
+<p>To solve this, simply reduce the number of CPUs and/or the amount of RAM
+requested to fit within the limits described above. If your task does
+require more than 1993 GB of RAM, then you also need to add the
+<code class="docutils literal notranslate"><span class="pre">--partition=gpuqueue</span></code>, so that your task gets scheduled on the
+GPU/High-MEM node.</p>
+<p>Additionally, you may receive this message if you request GPUs without
+specifying the correct queue or if you request too many GPUs:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># --partition=gpuqueue not specified</span>
+$ srun --gres<span class="o">=</span>gpu:a100:2 -- <span class="nb">echo</span> <span class="s2">&quot;Hello world!&quot;</span>
+srun: error: Unable to allocate resources: Requested node configuration is not available
+
+<span class="c1"># More than 2 GPUs requested</span>
+$ srun --partition<span class="o">=</span>gpuqueue --gres<span class="o">=</span>gpu:a100:3 -- <span class="nb">echo</span> <span class="s2">&quot;Hello world!&quot;</span>
+srun: error: Unable to allocate resources: Requested node configuration is not available
+</pre></div>
+</div>
+<p>To solve this error, simply avoid requesting more than 2 GPUs, and
+remember to include the <code class="docutils literal notranslate"><span class="pre">--partition=gpuqueue</span></code> option.</p>
+<p>See also the <a class="reference internal" href="usage/slurm/gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU/hi-MEM node</span></a> section.</p>
+</div>
+</div>
+<div class="section" id="rstudio">
+<h2><span class="section-number">7.3. </span>Rstudio<a class="headerlink" href="#rstudio" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="r-libtk8-6-so-cannot-open-shared-object-file">
+<h3><span class="section-number">7.3.1. </span>R: libtk8.6.so: cannot open shared object file<a class="headerlink" href="#r-libtk8-6-so-cannot-open-shared-object-file" title="Permalink to this headline">¶</a></h3>
+<p>Users connecting to Esrum with X11 forwarding enabled, for example using
+mobaXterm with default settings, may observe the following error when
+running the <code class="docutils literal notranslate"><span class="pre">install.packages</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">--- Please select a CRAN mirror for use in this session ---</span>
+<span class="go">Error: .onLoad failed in loadNamespace() for &#39;tcltk&#39;, details:</span>
+<span class="go">  call: dyn.load(file, DLLpath = DLLpath, ...)</span>
+<span class="go">  error: unable to load shared object &#39;/opt/software/R/4.3.1/lib64/R/library/tcltk/libs/tcltk.so&#39;:</span>
+<span class="go">  libtk8.6.so: cannot open shared object file: No such file or directory</span>
+</pre></div>
+</div>
+<p>If so, then you must disable graphical menus before running
+<code class="docutils literal notranslate"><span class="pre">install.packages</span></code> by first entering the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;</span> options<span class="o">(</span>menu.graphics<span class="o">=</span>FALSE<span class="o">)</span>
+</pre></div>
+</div>
+<p>Then simply run <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> again.</p>
+<p>You can also set the R option permanently by running the following in
+your (bash) terminal:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">echo</span> <span class="s1">&#39;options(menu.graphics=FALSE)&#39;</span> <span class="p">|</span> tee -a ~/.Rprofile
+</pre></div>
+</div>
+</div>
+<div class="section" id="rstudio-incorrect-or-invalid-username-password">
+<h3><span class="section-number">7.3.2. </span>RStudio: Incorrect or invalid username/password<a class="headerlink" href="#rstudio-incorrect-or-invalid-username-password" title="Permalink to this headline">¶</a></h3>
+<p>Please make sure that you are entering your username in the short form
+and that you have been added as a member of the <code class="docutils literal notranslate"><span class="pre">SRV-esrumcont-users</span></code>
+group (see above). If the problem persists, please <a class="reference internal" href="contact.html#p-contact"><span class="std std-ref">Contact</span></a> us
+for assistance.</p>
+</div>
+<div class="section" id="rstudio-logging-in-takes-a-very-long-time">
+<h3><span class="section-number">7.3.3. </span>RStudio: Logging in takes a very long time<a class="headerlink" href="#rstudio-logging-in-takes-a-very-long-time" title="Permalink to this headline">¶</a></h3>
+<p>Similar to regular R, RStudio will automatically save the data you have
+loaded into your R session and will restore it when you return later, so
+that you can continue your work. However, this many result in large
+amounts of data being saved and loading this data may result in a large
+delay when you attempt to login at a later date.</p>
+<p>It is therefore recommended that you regularly clean up your workspace
+using the built in tools, when you no longer need to have the data
+loaded in R.</p>
+<p>You can remove individual bits of data using the <code class="docutils literal notranslate"><span class="pre">rm</span></code> function in R.
+This works both when using regular R and when using RStudio. The
+following gives two examples of using the <code class="docutils literal notranslate"><span class="pre">rm</span></code> function, one removing
+a single variable and the other removing <em>all</em> variables in the current
+session:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Remove the variable `my_variable`</span>
+<span class="nf">rm</span><span class="p">(</span><span class="n">my_variable</span><span class="p">)</span>
+
+<span class="c1"># 2. Remove all variables from your R session</span>
+<span class="nf">rm</span><span class="p">(</span><span class="n">list</span> <span class="o">=</span> <span class="nf">ls</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Alternatively you can remove all data saved in your R session using the
+broom icon on the <code class="docutils literal notranslate"><span class="pre">Environment</span></code> tab:</p>
+<img alt="_images/rstudio_gc_01.png" class="align-center" src="_images/rstudio_gc_01.png" />
+<img alt="_images/rstudio_gc_02.png" class="align-center" src="_images/rstudio_gc_02.png" />
+<p>If you wish to prevent this issue in the first case, then you can also
+turn off saving the data in your session on exit and/or turn off loading
+the saved data on startup. This is accomplished via the <code class="docutils literal notranslate"><span class="pre">Global</span>
+<span class="pre">Options...</span></code> accessible from the <code class="docutils literal notranslate"><span class="pre">Tools</span></code> menu:</p>
+<img alt="_images/rstudio_gc_03.png" class="align-center" src="_images/rstudio_gc_03.png" />
+<p>Should your R session have grown to such a size that you simply cannot
+login and clean it up, then it my be necessary to remove the files
+containing the data that R/RStudio has saved. This data is stored in two
+locations:</p>
+<ol class="arabic simple">
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">.RData</span></code> file in your home (<code class="docutils literal notranslate"><span class="pre">~/.RData</span></code>). This is where R
+saves your data if you answer yes <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">workspace</span> <span class="pre">image?</span> <span class="pre">[y/n/c]</span></code>
+when quitting R.</p></li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">environment</span></code> file in your RStudio session folder (<code class="docutils literal notranslate"><span class="pre">~/.local/share/rstudio/sessions/active/session-*/suspended-session-data/environment</span></code>).
+This is where Rstudio saves your data should your login time-out
+while using RStudio.</p></li>
+</ol>
+<p>Please <a class="reference internal" href="contact.html#p-contact"><span class="std std-ref">Contact</span></a> us and we can help you remove the correct files.</p>
+</div>
+<div class="section" id="jupyter-notebooks-browser-error-when-opening-url">
+<h3><span class="section-number">7.3.4. </span>Jupyter Notebooks: Browser error when opening URL<a class="headerlink" href="#jupyter-notebooks-browser-error-when-opening-url" title="Permalink to this headline">¶</a></h3>
+<p>Depending on your browser you may receive one of the following errors.
+The typical causes are listed, but the exact error message will depend
+on your browser. It is therefore helpful to review all possible causes
+listed here.</p>
+<p>When using Chrome, the cause is typically listed below the line that
+says &quot;This site can't be reached&quot;.</p>
+<ul>
+<li><p>&quot;The connection was reset&quot;</p>
+<p>This typically indicates that Jupyter Notebook isn't running on the
+server, or that it is running on a different port than the one you've
+forwarded. Check that Jupyter Notebook is running and make sure that
+your forwarded ports match those used by Jupyter Notebook on Esrum.</p>
+</li>
+<li><p>&quot;localhost refused to connect&quot; or &quot;Unable to connect&quot;</p>
+<p>This typically indicates that port forwarding isn't active, or that
+you have entered the wrong port number in your browser. Verify that
+port forwarding is active and that you are using the correct port
+number in the <code class="docutils literal notranslate"><span class="pre">localhost</span></code> URL.</p>
+</li>
+<li><p>&quot;Check if there is a typo in esrumcont01fl&quot; or &quot;We're having trouble
+finding that site&quot;</p>
+<p>You are must likely connecting from a network outside of KU. Make
+sure that you are using a wired connection at CBMR and/or that the
+VPN is activated and try again.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="communications/index.html" title="8. Communications"
+             >next</a></li>
+        <li class="right" >
+          <a href="tips/robust_scripts.html" title="6.4. Writing robust bash scripts"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Esrum Cluster  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, CBMR Phenomics.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

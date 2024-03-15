@@ -1,0 +1,443 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>4.3.2. Advanced Slurm jobs &#8212; Esrum Cluster  documentation</title>
+    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/js/custom.js"></script>
+    <script src="../../_static/js/libgif.js"></script>
+    <script src="../../_static/bizstyle.js"></script>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4.3.3. Using the GPU/hi-MEM node" href="gpu.html" />
+    <link rel="prev" title="4.3.1. Basic Slurm jobs" href="basics.html" />
+    <script defer src="../../_static/js/playback.js"></script>
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="gpu.html" title="4.3.3. Using the GPU/hi-MEM node"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="basics.html" title="4.3.1. Basic Slurm jobs"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">4. </span>Using the cluster</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U"><span class="section-number">4.3. </span>Running jobs using Slurm</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4.3.2. Advanced Slurm jobs</a><ul>
+<li><a class="reference internal" href="#running-commands-using-srun">4.3.2.1. Running commands using srun</a><ul>
+<li><a class="reference internal" href="#cancelling-srun">4.3.2.1.1. Cancelling srun</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#monitoring-your-jobs">4.3.2.2. Monitoring your jobs</a><ul>
+<li><a class="reference internal" href="#monitoring-processes-in-jobs">4.3.2.2.1. Monitoring processes in jobs</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#running-multiple-tasks-using-arrays">4.3.2.3. Running multiple tasks using arrays</a><ul>
+<li><a class="reference internal" href="#limiting-simultaneous-jobs">4.3.2.3.1. Limiting simultaneous jobs</a></li>
+<li><a class="reference internal" href="#managing-job-arrays">4.3.2.3.2. Managing job arrays</a></li>
+<li><a class="reference internal" href="#mapping-task-ids-to-data">4.3.2.3.3. Mapping task IDs to data</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#additional-resources">4.3.2.4. Additional resources</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="basics.html"
+                        title="previous chapter"><span class="section-number">4.3.1. </span>Basic Slurm jobs</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="gpu.html"
+                        title="next chapter"><span class="section-number">4.3.3. </span>Using the GPU/hi-MEM node</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="advanced-slurm-jobs">
+<span id="p-usage-slurm-advanced"></span><h1><span class="section-number">4.3.2. </span>Advanced Slurm jobs<a class="headerlink" href="#advanced-slurm-jobs" title="Permalink to this headline">¶</a></h1>
+<p>The following page describes how to use the <code class="docutils literal notranslate"><span class="pre">srun</span></code> command to run
+simple commands on the cluster, how to queue batches of jobs using
+<code class="docutils literal notranslate"><span class="pre">sbatch</span></code>, including how to manage these jobs and how to map</p>
+<div class="section" id="running-commands-using-srun">
+<h2><span class="section-number">4.3.2.1. </span>Running commands using srun<a class="headerlink" href="#running-commands-using-srun" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">srun</span></code> command can be used to queue and execute simple commands on
+the compute nodes, and for most part it should feel no different than
+running a command without Slurm. Simply prefix your command with
+<code class="docutils literal notranslate"><span class="pre">srun</span></code> and the queuing system takes care of running it on the first
+available compute node:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> srun gzip chr20.fasta
+</pre></div>
+</div>
+<img alt="../../_images/srun_minimal.gif" class="gif" src="../../_images/srun_minimal.gif" />
+<p>Except for the <code class="docutils literal notranslate"><span class="pre">srun</span></code> prefix, this is exactly as if you ran the
+<code class="docutils literal notranslate"><span class="pre">gzip</span></code> command on the head node. However, if you need to pipe output
+to a file or to another command, then you <em>must</em> wrap your commands in a
+bash (or similar) script:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> srun bash my_script.sh
+</pre></div>
+</div>
+<img alt="../../_images/srun_wrapped.gif" class="gif" src="../../_images/srun_wrapped.gif" />
+<p>But at that point you might as well use <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> with the <code class="docutils literal notranslate"><span class="pre">--wait</span></code>
+option if simply you want to be able to wait for your script to finish.</p>
+<div class="section" id="cancelling-srun">
+<h3><span class="section-number">4.3.2.1.1. </span>Cancelling srun<a class="headerlink" href="#cancelling-srun" title="Permalink to this headline">¶</a></h3>
+<p>To cancel a job running with srun, simply press <cite>Ctrl + c</cite> twice within
+1 second:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ srun gzip chr20.fasta
+&lt;ctrl+c&gt; srun: interrupt <span class="o">(</span>one more within <span class="m">1</span> sec to abort<span class="o">)</span>
+srun: <span class="nv">StepId</span><span class="o">=</span><span class="m">8717</span>.0 task <span class="m">0</span>: running
+&lt;ctrl+c&gt; srun: sending Ctrl-C to <span class="nv">StepId</span><span class="o">=</span><span class="m">8717</span>.0
+srun: Job step aborted: Waiting up to <span class="m">32</span> seconds <span class="k">for</span> job step to finish.
+</pre></div>
+</div>
+<p>See also the <a class="reference internal" href="basics.html#s-cancelling-jobs"><span class="std std-ref">Cancelling jobs</span></a> section on the
+<a class="reference internal" href="basics.html#p-usage-slurm-basics"><span class="std std-ref">Basic Slurm jobs</span></a> page.</p>
+</div>
+</div>
+<div class="section" id="monitoring-your-jobs">
+<span id="s-job-arrays"></span><h2><span class="section-number">4.3.2.2. </span>Monitoring your jobs<a class="headerlink" href="#monitoring-your-jobs" title="Permalink to this headline">¶</a></h2>
+<p>Slurm offers a number of ways in which you may monitor your jobs:</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">squeue</span></code> command allows you to list jobs that have not yet
+finished (or failed). The recommended use is either <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">--me</span></code>
+to show all your jobs or <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">--job</span> <span class="pre">${JOB_ID}</span></code>, where
+<code class="docutils literal notranslate"><span class="pre">${JOB_ID}</span></code> is the ID of the job whose status you want to inspect.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">sacct</span></code> command allows you list jobs that have finished running
+(or failed).</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">--wait</span></code> option makes <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> wait until your job has
+completed before returning (similar to how <code class="docutils literal notranslate"><span class="pre">srun</span></code> works). This is
+for example useful if you want to queue and wait for jobs in a
+script.</p></li>
+<li><p>In addition to actively monitoring your jobs, it is possible to
+receive email notifications when your jobs are started, finish, fail,
+are requeued, or some combination. This is accomplished by using the
+<code class="docutils literal notranslate"><span class="pre">--mail-user</span></code> and <code class="docutils literal notranslate"><span class="pre">--mail-type</span></code> options:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ sbatch my_script.sh --mail-user<span class="o">=</span>abc123@ku.dk --mail-type<span class="o">=</span>END,FAIL
+Submitted batch job <span class="m">8503</span>
+</pre></div>
+</div>
+<p>When run like this, you will receive notifications at
+<code class="docutils literal notranslate"><span class="pre">abc123&#64;ku.dk</span></code> (remember to use your account KU email address!)
+when the job is completed or fails. The possible options are <code class="docutils literal notranslate"><span class="pre">NONE</span></code>
+(the default), <code class="docutils literal notranslate"><span class="pre">BEGIN</span></code>, <code class="docutils literal notranslate"><span class="pre">END</span></code>, <code class="docutils literal notranslate"><span class="pre">FAIL</span></code>, <code class="docutils literal notranslate"><span class="pre">REQUEUE</span></code>, <code class="docutils literal notranslate"><span class="pre">ALL</span></code>, or
+some combination as shown above.</p>
+</li>
+</ul>
+<div class="section" id="monitoring-processes-in-jobs">
+<span id="s-monitoring-processes-in-jobs"></span><h3><span class="section-number">4.3.2.2.1. </span>Monitoring processes in jobs<a class="headerlink" href="#monitoring-processes-in-jobs" title="Permalink to this headline">¶</a></h3>
+<p>In addition to monitoring jobs at a high level, it is possible to
+actively monitor the processes running in your jobs via (interactive)
+shells running on the same node as the job you wish to monitor. This is
+particularly useful to make sure that tasks make efficient use of the
+allocated resources.</p>
+<p>In these examples we will use the <code class="docutils literal notranslate"><span class="pre">htop</span></code> command to monitor our jobs,
+but you can use basic <code class="docutils literal notranslate"><span class="pre">top</span></code>, a <code class="docutils literal notranslate"><span class="pre">bash</span></code> shell, or any other command
+you prefer, but see the warning below regarding GPU resources.</p>
+<p>The first option for directly monitoring jobs is to request a job on the
+same server using the <code class="docutils literal notranslate"><span class="pre">--nodelist</span></code> option to specify the exact node
+you wish your job to monitor:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ squeue --me
+JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+ <span class="m">8503</span> standardq my_scrip   abc123  R       <span class="m">0</span>:02      <span class="m">1</span> esrumcmpn03fl
+$ srun --pty --nodelist esrumcmpn03fl htop
+</pre></div>
+</div>
+<p>This requests an interactive shell on the node on which our job is
+running ( <code class="docutils literal notranslate"><span class="pre">esrumcmpn03fl</span></code>) and starts the <code class="docutils literal notranslate"><span class="pre">htop</span></code> tool. This method
+requires that there are free resources on the node, but has the
+advantage that it does not impact your job.</p>
+<p>Alternatively, you can make use of (overlap) the resources used by the
+job you wish to monitor, which means that you can perform your
+monitoring even if the node is completely booked. This is done using the
+<code class="docutils literal notranslate"><span class="pre">--overlap</span></code> and <code class="docutils literal notranslate"><span class="pre">--jobid</span></code> command-line options:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ squeue --me
+JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+ <span class="m">8503</span> standardq my_scrip   abc123  R       <span class="m">0</span>:02      <span class="m">1</span> esrumcmpn03fl
+$ srun --pty --overlap --jobid <span class="m">8503</span> htop
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--jobid</span></code> option takes as its argument the ID of the job we wish
+to monitor, which we can obtain using for example the <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">--me</span></code>
+command (from the <code class="docutils literal notranslate"><span class="pre">JOBID</span></code> column).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It is not possible to use <code class="docutils literal notranslate"><span class="pre">--overlap</span></code> when you have reserved GPUs
+using the <code class="docutils literal notranslate"><span class="pre">--gres</span></code> option. This also means that you cannot monitor
+GPU resource usage in this manner, as other jobs on the same node
+cannot access already reserved GPUs.</p>
+</div>
+</div>
+</div>
+<div class="section" id="running-multiple-tasks-using-arrays">
+<h2><span class="section-number">4.3.2.3. </span>Running multiple tasks using arrays<a class="headerlink" href="#running-multiple-tasks-using-arrays" title="Permalink to this headline">¶</a></h2>
+<p>As suggested by the name, the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command is able to run jobs in
+batches. This is accomplished using &quot;job arrays&quot;, which allows you to
+automatically queue and run the same command on multiple inputs.</p>
+<p>For example, we could expand on the example above to gzip multiple
+chromosomes using a job array. To do so, we first need to update the
+script to make use of the <code class="docutils literal notranslate"><span class="pre">SLURM_ARRAY_TASK_ID</span></code> variable, which
+specifies the numerical ID of a task:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --cpus-per-task=8</span>
+<span class="c1">#SBATCH --time=60</span>
+<span class="c1">#SBATCH --array=1-3</span>
+
+module load igzip/2.30.0
+igzip --threads <span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span> <span class="s2">&quot;chr</span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span><span class="s2">.fasta&quot;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--array=1-3</span></code> option specifies that we want to run tasks 1, 2, and
+3, each of which is assigned 8 CPUs and each of which is given 60
+minutes to run.</p>
+<p>See the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> manual page for a description of ways in which to
+specify lists or ranges of task IDs. Values used with <code class="docutils literal notranslate"><span class="pre">--array</span></code> must
+be in the range 0 to 1000.</p>
+<p>Our script can then be run as before:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ls
+chr1.fasta chr2.fasta chr3.fasta my_script.sh
+$ sbatch my_script.sh
+Submitted batch job <span class="m">8504</span>
+$ squeue --me
+ JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+8504_1 standardq my_scrip   zlc187  R       <span class="m">0</span>:02      <span class="m">1</span> esrumcmpn01fl
+8504_2 standardq my_scrip   zlc187  R       <span class="m">0</span>:02      <span class="m">1</span> esrumcmpn01fl
+8504_3 standardq my_scrip   zlc187  R       <span class="m">0</span>:02      <span class="m">1</span> esrumcmpn01fl
+$ ls
+chr1.fasta.gz  chr3.fasta.gz  slurm-8507_1.out  slurm-8507_3.out
+chr2.fasta.gz  my_script.sh   slurm-8507_2.out
+</pre></div>
+</div>
+<p>An <code class="docutils literal notranslate"><span class="pre">.out</span></code> file is automatically created for each task.</p>
+<p>In this example there was a simple one-to-one mapping between the
+<code class="docutils literal notranslate"><span class="pre">SLURM_ARRAY_TASK_ID</span></code> and our data, but that is not always the case.
+The <a class="reference internal" href="#mapping-task-ids-to-data">Mapping task IDs to data</a> section below describes several ways you
+might use to map the <code class="docutils literal notranslate"><span class="pre">SLURM_ARRAY_TASK_ID</span></code> variable to more complex
+data/filenames.</p>
+<div class="section" id="limiting-simultaneous-jobs">
+<h3><span class="section-number">4.3.2.3.1. </span>Limiting simultaneous jobs<a class="headerlink" href="#limiting-simultaneous-jobs" title="Permalink to this headline">¶</a></h3>
+<p>By default Slurm will attempt to run every job in an array at the same
+time, provided that there are resources available. Since Esrum is a
+shared resource we ask that you consider how much of the cluster you'll
+be using and limit the number of simultaneous jobs.</p>
+<p>Limiting the number of simultaneous jobs is done by appending a <code class="docutils literal notranslate"><span class="pre">%</span></code>
+and a number at the end of the <code class="docutils literal notranslate"><span class="pre">--array</span></code> value. For example, in the
+following script we queue a job array containing 100 jobs, each
+requesting 8 CPUs. However, the <code class="docutils literal notranslate"><span class="pre">%16</span></code> appended to the <code class="docutils literal notranslate"><span class="pre">--array</span></code>
+ensures that at most 16 of these jobs are running at the same time:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --cpus-per-task=8</span>
+<span class="c1">#SBATCH --array=1-100%16</span>
+</pre></div>
+</div>
+<p>This ensures that we use no more than 1 compute node's worth of CPUs
+(128 CPUs per node) and thereby leave plenty of capacity available for
+other users.</p>
+<p>In addition to limiting the number of simultaneously running jobs, you
+can also give your jobs a lower priority using the <code class="docutils literal notranslate"><span class="pre">--nice</span></code> option:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH --nice</span>
+</pre></div>
+</div>
+<p>This ensures that other users' jobs, if any, will be run before jobs in
+your array and thereby prevent your job array from always using the
+maximum number of resources possible. Combined with a reasonable <code class="docutils literal notranslate"><span class="pre">%</span></code>
+limit this allows you to run more jobs simultaneously, than if you just
+used a <code class="docutils literal notranslate"><span class="pre">%</span></code> limit, without negatively impacting other users.</p>
+<p>Please reach out if you are running a large number of (job array) jobs
+and are in doubt about how many to run at the same time.</p>
+</div>
+<div class="section" id="managing-job-arrays">
+<h3><span class="section-number">4.3.2.3.2. </span>Managing job arrays<a class="headerlink" href="#managing-job-arrays" title="Permalink to this headline">¶</a></h3>
+<p>Job arrays can either be cancelled as a whole or in part. To cancel the
+entire job (all tasks in the array) simply use the primary job ID before
+the underscore/dot:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ scancel <span class="m">8504</span>
+</pre></div>
+</div>
+<p>To cancel part of a batch job/array, instead specify the ID of the
+sub-task after the ID of the batch job, using a dot (<code class="docutils literal notranslate"><span class="pre">.</span></code>) to separate
+the two IDs instead of an underscore (<code class="docutils literal notranslate"><span class="pre">_</span></code>):</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ scancel <span class="m">8504</span>.1
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>While it is possible to use <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> with jobs of any size, it
+should be remembered that Slurm imposes some overhead on jobs. It is
+therefore preferable to run jobs consisting of a large number of
+tasks in batches, instead of running each task individually.</p>
+</div>
+</div>
+<div class="section" id="mapping-task-ids-to-data">
+<h3><span class="section-number">4.3.2.3.3. </span>Mapping task IDs to data<a class="headerlink" href="#mapping-task-ids-to-data" title="Permalink to this headline">¶</a></h3>
+<p>Using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> arrays requires that you map a number (the array task
+ID) to a filename or similar. The above example assumed that filenames
+were numbered, but that is not always the case.</p>
+<p>The following describes a few ways in which you can map array task ID to
+filenames in a bash script.</p>
+<ol class="arabic">
+<li><p>Using numbered filenames:</p>
+<p>The example showed how to handle filenames where the numbers were
+simply written as 1, 2, etc:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simple numbering: sample1.vcf, sample2.vcf, etc.</span>
+<span class="nv">FILENAME</span><span class="o">=</span><span class="s2">&quot;sample</span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span><span class="s2">.vcf&quot;</span>
+</pre></div>
+</div>
+<p>However, it is also possible to format numbers in a more complicated
+manner (e.g. 001, 002, etc.), using for example the printf command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Formatted numbering: sample001.vcf, sample002.vcf, etc.</span>
+<span class="nv">FILENAME</span><span class="o">=</span><span class="k">$(</span><span class="nb">printf</span> <span class="s2">&quot;sample%03i.vcf&quot;</span> <span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span><span class="k">)</span>
+</pre></div>
+</div>
+<p>See above for an example script and the expected output.</p>
+</li>
+<li><p>Using a table of filenames:</p>
+<p>Given a text file <code class="docutils literal notranslate"><span class="pre">my_samples.txt</span></code> containing one filename per
+line:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/path/to/first_sample.vcf</span>
+<span class="go">/path/to/second_sample.vcf</span>
+<span class="go">/path/to/third_sample.vcf</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prints the Nth line</span>
+<span class="nv">FILENAME</span><span class="o">=</span><span class="k">$(</span>sed <span class="s2">&quot;</span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span><span class="s2">q;d&quot;</span> my_samples.txt<span class="k">)</span>
+</pre></div>
+</div>
+<p>A sbatch script could look as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --array=1-3</span>
+
+<span class="nv">FILENAME</span><span class="o">=</span><span class="k">$(</span>sed <span class="s2">&quot;</span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span><span class="s2">q;d&quot;</span> my_samples.txt<span class="k">)</span>
+
+module load htslib/1.18
+bgzip <span class="s2">&quot;</span><span class="si">${</span><span class="nv">FILENAME</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Using a table of numbered samples (<code class="docutils literal notranslate"><span class="pre">my_samples.tsv</span></code>):</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 19%" />
+<col style="width: 71%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>ID</p></td>
+<td><p>Name</p></td>
+<td><p>Path</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>first</p></td>
+<td><p>/path/to/first_sample.vcf</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>second</p></td>
+<td><p>/path/to/second_sample.vcf</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>third</p></td>
+<td><p>/path/to/third_sample.vcf</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find row where 1. column matches SLURM_ARRAY_TASK_ID and print 3. column</span>
+<span class="nv">FILENAME</span><span class="o">=</span><span class="k">$(</span>awk -v <span class="nv">ID</span><span class="o">=</span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span> <span class="s1">&#39;$1 == ID {print $3; exit}&#39;</span> my_samples.tsv<span class="k">)</span>
+</pre></div>
+</div>
+<p>By default <code class="docutils literal notranslate"><span class="pre">awk</span></code> will split columns by any whitespace, but if you
+have a tab separated file (<code class="docutils literal notranslate"><span class="pre">.tsv</span></code>) file it is worthwhile to specify
+this using the <code class="docutils literal notranslate"><span class="pre">FS</span></code> (field separator) option:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find row where 1. column matches SLURM_ARRAY_TASK_ID and print 3. column</span>
+<span class="nv">FILENAME</span><span class="o">=</span><span class="k">$(</span>awk -v <span class="nv">FS</span><span class="o">=</span><span class="s2">&quot;\t&quot;</span> -v <span class="nv">ID</span><span class="o">=</span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span> <span class="s1">&#39;$1 == ID {print $3; exit}&#39;</span> my_samples.tsv<span class="k">)</span>
+</pre></div>
+</div>
+<p>This ensures that <code class="docutils literal notranslate"><span class="pre">awk</span></code> returns the correct cell even if other
+cells contain whitespace.</p>
+<p>A sbatch script could look as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --array=1-3</span>
+
+<span class="c1"># Grab second column where the first column equals SLURM_ARRAY_TASK_ID</span>
+<span class="nv">NAME</span><span class="o">=</span><span class="k">$(</span>awk -v <span class="nv">FS</span><span class="o">=</span><span class="s2">&quot;\t&quot;</span> -v <span class="nv">ID</span><span class="o">=</span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span> <span class="s1">&#39;$1 == ID {print $2; exit}&#39;</span> my_samples.tsv<span class="k">)</span>
+<span class="c1"># Grab third column where the first column equals SLURM_ARRAY_TASK_ID</span>
+<span class="nv">FILENAME</span><span class="o">=</span><span class="k">$(</span>awk -v <span class="nv">FS</span><span class="o">=</span><span class="s2">&quot;\t&quot;</span> -v <span class="nv">ID</span><span class="o">=</span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span> <span class="s1">&#39;$1 == ID {print $3; exit}&#39;</span> my_samples.tsv<span class="k">)</span>
+
+module load htslib/1.18
+<span class="nb">echo</span> <span class="s2">&quot;Now processing sample &#39;</span><span class="si">${</span><span class="nv">NAME</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+bgzip <span class="s2">&quot;</span><span class="si">${</span><span class="nv">FILENAME</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="additional-resources">
+<h2><span class="section-number">4.3.2.4. </span>Additional resources<a class="headerlink" href="#additional-resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Slurm <a class="reference external" href="https://slurm.schedmd.com/overview.html">documentation</a></p></li>
+<li><p>Slurm <a class="reference external" href="https://slurm.schedmd.com/pdfs/summary.pdf">summary</a> (PDF)</p></li>
+<li><p>The <a class="reference external" href="https://slurm.schedmd.com/sbatch.html">sbatch manual page</a></p></li>
+<li><p>The <a class="reference external" href="https://slurm.schedmd.com/squeue.html">squeue manual page</a></p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="gpu.html" title="4.3.3. Using the GPU/hi-MEM node"
+             >next</a></li>
+        <li class="right" >
+          <a href="basics.html" title="4.3.1. Basic Slurm jobs"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">4. </span>Using the cluster</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" ><span class="section-number">4.3. </span>Running jobs using Slurm</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, CBMR Phenomics.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

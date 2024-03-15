@@ -1,0 +1,158 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>3. Guidelines &#8212; Esrum Cluster  documentation</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/playback.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/js/custom.js"></script>
+    <script src="_static/js/libgif.js"></script>
+    <script src="_static/bizstyle.js"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. Using the cluster" href="usage/index.html" />
+    <link rel="prev" title="2. Overview" href="overview.html" />
+    <script defer src="_static/js/playback.js"></script>
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="usage/index.html" title="4. Using the cluster"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="overview.html" title="2. Overview"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Esrum Cluster  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3. Guidelines</a><ul>
+<li><a class="reference internal" href="#basic-security">3.1. Basic security</a></li>
+<li><a class="reference internal" href="#data-storage">3.2. Data storage</a></li>
+<li><a class="reference internal" href="#running-tasks">3.3. Running tasks</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="overview.html"
+                        title="previous chapter"><span class="section-number">2. </span>Overview</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="usage/index.html"
+                        title="next chapter"><span class="section-number">4. </span>Using the cluster</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="guidelines">
+<span id="p-guidelines"></span><h1><span class="section-number">3. </span>Guidelines<a class="headerlink" href="#guidelines" title="Permalink to this headline">¶</a></h1>
+<p>The following describes the general guidelines for using the Esrum
+cluster. Failure to follow these guidelines may result in your tasks
+being terminated and may even result in your access to the cluster being
+revoked.</p>
+<p>Please also see the general KU resources for handling <a class="reference external" href="https://kunet.ku.dk/work-areas/research/data/personal-data/Pages/default.aspx">GDPR sensitive
+data</a>.</p>
+<div class="section" id="basic-security">
+<h2><span class="section-number">3.1. </span>Basic security<a class="headerlink" href="#basic-security" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Your account on Esrum is strictly personal and must not be shared.</p></li>
+<li><p>Never leave your computer unsecured while logged onto the cluster.
+Your computer <em>must</em> be locked or turned off whenever you leave it.</p></li>
+</ul>
+</div>
+<div class="section" id="data-storage">
+<h2><span class="section-number">3.2. </span>Data storage<a class="headerlink" href="#data-storage" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>GDPR protected data <em>must</em> be stored in audited folders. These can be
+recognized by the <code class="docutils literal notranslate"><span class="pre">-AUDIT</span></code> suffix, for example
+<code class="docutils literal notranslate"><span class="pre">/projects/name-AUDIT</span></code> or <code class="docutils literal notranslate"><span class="pre">/datasets/name-AUDIT</span></code>.</p></li>
+<li><p>Directory names and file names <em>must not</em> contain GDPR protected data
+or other confidential information, even if placed in an audited
+folder. This is because common operations expose this information to
+<em>all</em> users of the cluster. For the same reason, <em>do not</em> include
+such information in command-line arguments.</p></li>
+<li><p>Data <em>must not</em> be copied out of audited <code class="docutils literal notranslate"><span class="pre">/datasets</span></code> or
+<code class="docutils literal notranslate"><span class="pre">/projects</span></code> folders without permission from the relevant data
+controller. Instead use symbolic links if you need the data to be
+located in a more convenient location.</p></li>
+<li><p>Data must not leave the cluster without permission from the relevant
+data controllers.</p></li>
+<li><p>Do not store data or other files related to projects in your home
+folder. Your home folder is accessible only to you, unless you have
+provided written consent to KU-IT.</p></li>
+</ul>
+<p>See <a class="reference internal" href="usage/filesystem.html#p-usage-filesystem"><span class="std std-ref">Projects, data, and home folders</span></a> for more information.</p>
+</div>
+<div class="section" id="running-tasks">
+<h2><span class="section-number">3.3. </span>Running tasks<a class="headerlink" href="#running-tasks" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Do not run big jobs on the head node (<code class="docutils literal notranslate"><span class="pre">esrumhead01fl</span></code>), as doing so
+may impact the ability of everyone to use the cluster. However, we do
+permit small jobs on the head node, meaning a few cores <em>in total</em>
+and modest memory usage.</p></li>
+<li><p>Remember to be considerate to other users. For example, limit the
+number of jobs you are running simultaneously, so that others users
+can also run their jobs</p></li>
+<li><p>Please remember to close interactive shells, notebooks, containers,
+and other processes that you have started via Slurm or the container
+system. Resources that you have reserved are not made available for
+other users until your tasks have finished.</p></li>
+</ul>
+<p>See the <a class="reference internal" href="usage/slurm/index.html#p-usage-slurm"><span class="std std-ref">Running jobs using Slurm</span></a> page for more information about how to run
+your tasks on the cluster.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="usage/index.html" title="4. Using the cluster"
+             >next</a></li>
+        <li class="right" >
+          <a href="overview.html" title="2. Overview"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Esrum Cluster  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, CBMR Phenomics.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

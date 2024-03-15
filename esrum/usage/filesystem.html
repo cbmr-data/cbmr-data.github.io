@@ -1,0 +1,255 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>4.2. Projects, data, and home folders &#8212; Esrum Cluster  documentation</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/playback.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/js/custom.js"></script>
+    <script src="../_static/js/libgif.js"></script>
+    <script src="../_static/bizstyle.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4.3. Running jobs using Slurm" href="slurm/index.html" />
+    <link rel="prev" title="4.1.2. Connecting to the cluster" href="access/connecting.html" />
+    <script defer src="../_static/js/playback.js"></script>
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="slurm/index.html" title="4.3. Running jobs using Slurm"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="access/connecting.html" title="4.1.2. Connecting to the cluster"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">4. </span>Using the cluster</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4.2. Projects, data, and home folders</a><ul>
+<li><a class="reference internal" href="#your-home-folder">4.2.1. Your home folder</a><ul>
+<li><a class="reference internal" href="#ku-network-drives">4.2.1.1. KU network drives</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#your-project-folders">4.2.2. Your project folders</a></li>
+<li><a class="reference internal" href="#scratch-folders">4.2.3. Scratch folders</a></li>
+<li><a class="reference internal" href="#backups">4.2.4. Backups</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="access/connecting.html"
+                        title="previous chapter"><span class="section-number">4.1.2. </span>Connecting to the cluster</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="slurm/index.html"
+                        title="next chapter"><span class="section-number">4.3. </span>Running jobs using Slurm</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="projects-data-and-home-folders">
+<span id="p-usage-filesystem"></span><h1><span class="section-number">4.2. </span>Projects, data, and home folders<a class="headerlink" href="#projects-data-and-home-folders" title="Permalink to this headline">¶</a></h1>
+<p>This section describes the layout of your home folder on Esrum, as well
+as the location and layout of projects and data-shares.</p>
+<div class="section" id="your-home-folder">
+<span id="s-home-folder"></span><h2><span class="section-number">4.2.1. </span>Your home folder<a class="headerlink" href="#your-home-folder" title="Permalink to this headline">¶</a></h2>
+<p>The primary use of your home folder is to store your programs and
+scripts, configuration files, and similar files that are not related to
+specific projects. For this reason, your home cannot exceed 100 GB in
+size.</p>
+<p>However, we recommended to keep your scripts and similar files in your
+group project folder, to ensure that your group will have access to
+these now and in the future:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do <strong>not</strong> put project related files in your home folder! Only you
+have access to your home folder and it requires written permission
+from you if other users need to access files in your home after
+you've left CBMR.</p>
+<p>Your home should therefore be limited to your personal configuration
+files, installed programs, and whatever/tools scripts that are not
+required to reproduce your work in the projects you are working on.</p>
+</div>
+<div class="section" id="ku-network-drives">
+<h3><span class="section-number">4.2.1.1. </span>KU network drives<a class="headerlink" href="#ku-network-drives" title="Permalink to this headline">¶</a></h3>
+<p>When you login to Esrum for the first time, your home folder should
+contain a single folder named <code class="docutils literal notranslate"><span class="pre">ucph</span></code>. This folder in turn contains
+your KU network drives (formerly <code class="docutils literal notranslate"><span class="pre">H:</span></code> and <code class="docutils literal notranslate"><span class="pre">N:</span></code>).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Note that these drives are only accessible from the head node. If you
+need to analyze data located on either of these shared drives, then
+you will need to copy it an appropriate projects folder.</p>
+<p>Note furthermore that access to these folders will not be available
+if you login using Kerberos (GSSAPI). See the
+<a class="reference internal" href="access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page for instructions for how to disable
+this feature if you are using MobaXterm.</p>
+</div>
+</div>
+</div>
+<div class="section" id="your-project-folders">
+<span id="s-project-folders"></span><h2><span class="section-number">4.2.2. </span>Your project folders<a class="headerlink" href="#your-project-folders" title="Permalink to this headline">¶</a></h2>
+<p>The majority of your work on Esrum should take place in project folder
+corresponding either to your research group or to actual projects. This
+ensures that your collaborators can access your results and that nobody
+else can!</p>
+<p>Project folders are located in the <code class="docutils literal notranslate"><span class="pre">/projects</span></code> folder:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> ls -1 /projects
+<span class="go">phenomics-AUDIT</span>
+<span class="go">genotyping</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-AUDIT</span></code> suffix indicates that the phenomics project has been
+configured for work on GDPR data. All work on GDPR data should take
+place in project or data-shares (see below) marked with <code class="docutils literal notranslate"><span class="pre">-AUDIT</span></code> and
+<em>nowhere else</em>!</p>
+<p>To apply for access to a specific project follow the instructions in the
+<a class="reference internal" href="access/access.html#s-applying-for-access"><span class="std std-ref">Applying for access to the cluster</span></a> section, using the name of the project in
+the form <code class="docutils literal notranslate"><span class="pre">COMP-PRJ-genotyping</span></code>, replacing <code class="docutils literal notranslate"><span class="pre">genotyping</span></code> with the name
+of your project.</p>
+<p>Projects folder always contain the following four sub-folders:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">/projects/&lt;project-name&gt;/people</span></code></p>
+<p>Every member of a project has their own folder in <code class="docutils literal notranslate"><span class="pre">people</span></code>. It is
+suggested that you keep your scripts, configuration files,
+documentation, and the like in this folder. The <code class="docutils literal notranslate"><span class="pre">people</span></code> folder is
+automatically backed up every day.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/projects/&lt;project-name&gt;/apps</span></code></p>
+<p>The apps folder is intended for storing software shared between
+project members. See <a class="reference internal" href="../tips/modules.html#p-tips-modules"><span class="std std-ref">Creating environment modules</span></a> for how to setup a shared
+repository of software that can be used with the module system. The
+<code class="docutils literal notranslate"><span class="pre">apps</span></code> folder is automatically backed up every day.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/projects/&lt;project-name&gt;/data</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">data</span></code> folder is intended for datasets shared between project
+members. This could be your raw data or your results files from
+processing your raw data. The <code class="docutils literal notranslate"><span class="pre">data</span></code> folder is automatically backed
+up every day.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/projects/&lt;project-name&gt;/scratch</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">scratch</span></code> folder is intended for temporary files, as it is
+<em>not</em> backed up. It is also suitable for other files that do not need
+to be backed up, including for example publicly available datasets,
+large index files, and such.</p>
+</li>
+</ul>
+<p>Unlike your <code class="docutils literal notranslate"><span class="pre">/home</span></code> folder, there are no limits on how much you store
+in these folders.</p>
+</div>
+<div class="section" id="scratch-folders">
+<h2><span class="section-number">4.2.3. </span>Scratch folders<a class="headerlink" href="#scratch-folders" title="Permalink to this headline">¶</a></h2>
+<p>Every node on esrum (including the head node) has a 3 TB scratch drive
+available at <code class="docutils literal notranslate"><span class="pre">/scratch</span></code>. This is intended for short-lived temporary
+files generated as part of jobs running on the cluster, and can provide
+a significant performance benefit if a job for example writes a lot of
+small temporary files.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that unlike your home folder, <code class="docutils literal notranslate"><span class="pre">/projects</span></code>, and <code class="docutils literal notranslate"><span class="pre">/datasets</span></code>,
+the <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> folders are physically located on each node. Files
+written to <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> on one node are therefore <em>not</em> accessible on
+other nodes.</p>
+</div>
+<p>It is recommended that you create a sub-folder containing your KU-IT
+username when using the scratch-drive as part of your scripts:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> Create temporary folder in the form /scratch/abc123
+<span class="go">mkdir -p &quot;/scratch/${USER}&quot;</span>
+<span class="gp">#</span> Some software use the TMPDIR to place temporary files
+<span class="go">export TMPDIR=&quot;/scratch/${USER}&quot;</span>
+<span class="gp">#</span> Other software has options <span class="k">for</span> where to place temporary files
+<span class="go">mysoftware --in &quot;mydata&quot; --out &quot;myresults&quot; --temp &quot;/scratch/${USER}&quot;</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The scratch-drives have limited capacity and are <em>only</em> intended for
+short-lived, temporary files. Do not use it to store results and
+please remember to clean up after your jobs. Files left on the
+scratch-drive <em>will</em> be deleted.</p>
+</div>
+</div>
+<div class="section" id="backups">
+<h2><span class="section-number">4.2.4. </span>Backups<a class="headerlink" href="#backups" title="Permalink to this headline">¶</a></h2>
+<p>Backups are available your home folder and in project folders <code class="docutils literal notranslate"><span class="pre">/apps</span></code>,
+<code class="docutils literal notranslate"><span class="pre">/data</span></code>, and <code class="docutils literal notranslate"><span class="pre">/people</span></code> via special hidden <code class="docutils literal notranslate"><span class="pre">.snapshot</span></code> folders in
+the root of each of these folders. For example, to access the snapshots
+of the <code class="docutils literal notranslate"><span class="pre">/data</span></code> folder in the project <code class="docutils literal notranslate"><span class="pre">phenomics</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /projects/phenomics/data/.snapshot
+$ ls
+<span class="m">42</span>-Research-hourly-7D-2023-09-01_02:00
+<span class="m">42</span>-Research-daily-30D-2023-09-02_02:00
+<span class="m">42</span>-Research-weekly-104W-2023-09-03_02:00
+</pre></div>
+</div>
+<p>Each timestamped folder contains a full snapshot of the parent folder
+(<code class="docutils literal notranslate"><span class="pre">/home</span></code>, <code class="docutils literal notranslate"><span class="pre">/apps</span></code>, etc.) and you can copy data from these snapshots
+should you need to restore deleted or modified files.</p>
+<p>Snapshots of audited projects are only accessible for a limited time and
+you may therefore need to contact KU-IT to restore deleted data for such
+projects.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please contact KU-IT should you need to restore a large amount of
+deleted data.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="slurm/index.html" title="4.3. Running jobs using Slurm"
+             >next</a></li>
+        <li class="right" >
+          <a href="access/connecting.html" title="4.1.2. Connecting to the cluster"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">4. </span>Using the cluster</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, CBMR Phenomics.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,117 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Using Snakemake &#8212; Esrum Cluster  documentation</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/playback.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/js/custom.js"></script>
+    <script src="../_static/js/libgif.js"></script>
+    <script src="../_static/bizstyle.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <script defer src="../_static/js/playback.js"></script>
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="../index.html">Esrum Cluster  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Using Snakemake</a><ul>
+<li><a class="reference internal" href="#running-snakemake-jobs-via-slurm">Running snakemake jobs via Slurm</a></li>
+<li><a class="reference internal" href="#using-environment-modules">Using environment modules</a></li>
+<li><a class="reference internal" href="#limiting-simultaneously-running-nodes">Limiting simultaneously running nodes</a></li>
+<li><a class="reference internal" href="#suggested-profile">Suggested profile</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="using-snakemake">
+<span id="p-tips-snakemake"></span><h1>Using Snakemake<a class="headerlink" href="#using-snakemake" title="Permalink to this headline">¶</a></h1>
+<p>This page describes ways to use Snakemake on the esrum cluster.</p>
+<div class="section" id="running-snakemake-jobs-via-slurm">
+<h2>Running snakemake jobs via Slurm<a class="headerlink" href="#running-snakemake-jobs-via-slurm" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="using-environment-modules">
+<h2>Using environment modules<a class="headerlink" href="#using-environment-modules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="limiting-simultaneously-running-nodes">
+<h2>Limiting simultaneously running nodes<a class="headerlink" href="#limiting-simultaneously-running-nodes" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="suggested-profile">
+<h2>Suggested profile<a class="headerlink" href="#suggested-profile" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enable task execution using Slurm</span>
+<span class="na">slurm: true</span>
+<span class="c1"># The maximum number of simultaneous jobs submitted to Slurm</span>
+<span class="na">jobs: 16</span>
+<span class="c1"># Enable environment modules</span>
+<span class="na">use-envmodules: true</span>
+<span class="na">default-resources:</span>
+  <span class="c1"># Use default mem per CPU (~15 GB)</span>
+  <span class="na">- &quot;mem_mb_per_cpu</span><span class="o">=</span><span class="s">None&quot;</span>
+<span class="s">  # Use standard (non-GPU) queue by default;</span>
+<span class="s">  # this is not required, but shuts up a warning</span>
+<span class="s">  - &quot;slurm_partition=standardqueue&quot;</span>
+<span class="c1"># Wait up to 60 seconds for files saved on the shared file system;</span>
+<span class="c1"># this is done to prevent Snakemake from failing if the network file-</span>
+<span class="c1"># system is loaded</span>
+<span class="na">latency-wait: 60</span>
+<span class="c1"># Re-do incomplete tasks</span>
+<span class="na">rerun-incomplete: True</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="nav-item nav-item-0"><a href="../index.html">Esrum Cluster  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, CBMR Phenomics.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

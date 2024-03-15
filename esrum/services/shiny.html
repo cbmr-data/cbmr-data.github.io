@@ -1,0 +1,158 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>5.3. Public and private Shiny servers &#8212; Esrum Cluster  documentation</title>
+    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/playback.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/js/custom.js"></script>
+    <script src="../_static/js/libgif.js"></script>
+    <script src="../_static/bizstyle.js"></script>
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6. Tips and tricks" href="../tips/index.html" />
+    <link rel="prev" title="5.2. Running containerized software" href="containers.html" />
+    <script defer src="../_static/js/playback.js"></script>
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../tips/index.html" title="6. Tips and tricks"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="containers.html" title="5.2. Running containerized software"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">5. </span>Other services</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">5.3. Public and private Shiny servers</a><ul>
+<li><a class="reference internal" href="#the-public-shiny-server">5.3.1. The public Shiny server</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="containers.html"
+                        title="previous chapter"><span class="section-number">5.2. </span>Running containerized software</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../tips/index.html"
+                        title="next chapter"><span class="section-number">6. </span>Tips and tricks</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="public-and-private-shiny-servers">
+<span id="p-usage-shiny"></span><h1><span class="section-number">5.3. </span>Public and private Shiny servers<a class="headerlink" href="#public-and-private-shiny-servers" title="Permalink to this headline">¶</a></h1>
+<p>Users of the Esrum cluster have two options for running <a class="reference external" href="https://shiny.rstudio.com/">Shiny</a> servers:
+Either via a publicly accessible server for non-GDPR
+project/non-confidential data or by running Shiny directly or through
+Rstudio on data in access controlled projects.</p>
+<div class="section" id="the-public-shiny-server">
+<h2><span class="section-number">5.3.1. </span>The public Shiny server<a class="headerlink" href="#the-public-shiny-server" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>DO NOT put any GDPR projected or otherwise confidential data in your
+<code class="docutils literal notranslate"><span class="pre">SUN-CBMR-shinyapp</span></code> sub-folders, as these folders are publicly
+accessible. Files and folders in <code class="docutils literal notranslate"><span class="pre">SUN-CBMR-shinyapp</span></code> are
+additionally writable by all users with the access to the folder.</p>
+</div>
+<p>KU-IT makes a public <a class="reference external" href="https://shiny.rstudio.com/">Shiny</a> server available at
+<a class="reference external" href="https://shinyapp01.ku.dk/cbmr/">https://shinyapp01.ku.dk/cbmr/</a>. This server is accessible to <em>everyone</em>
+inside and outside KU. To make use of this service, you must first apply
+for access to the <code class="docutils literal notranslate"><span class="pre">N-SUN-CBMR-shinyapp-R</span></code> and the
+<code class="docutils literal notranslate"><span class="pre">N-SUN-CBMR-shinyapp-W</span></code> as described on the
+<a class="reference internal" href="../usage/access/access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a> page.</p>
+<p>Once you have been given access to these groups, you can access the
+<code class="docutils literal notranslate"><span class="pre">SUN-CBMR-shinyapp</span></code> at <code class="docutils literal notranslate"><span class="pre">~/ucph/ndir/SUN-CBMR-shinyapp/</span></code>. If you
+cannot access the <code class="docutils literal notranslate"><span class="pre">ndir</span></code> folder, then please see the
+<a class="reference internal" href="../usage/access/connecting.html#s-connecting-troubleshooting"><span class="std std-ref">Troubleshooting</span></a> section on the
+<a class="reference internal" href="../usage/access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page.</p>
+<p>It is strongly recommended that you create a folder with your username:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> mkdir -p ~/ucph/ndir/SUN-CBMR-shinyapp/<span class="nv">$USER</span>
+</pre></div>
+</div>
+<p>This creates a folder with your username and adds a shortcut to your
+home folder named <code class="docutils literal notranslate"><span class="pre">shiny</span></code>. To verify that everything is working
+correctly, create a file name <code class="docutils literal notranslate"><span class="pre">app.R</span></code> in
+<code class="docutils literal notranslate"><span class="pre">~/ucph/ndir/SUN-CBMR-shinyapp/$USER</span></code> with the following content:</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">shiny</span><span class="p">)</span>
+
+<span class="c1"># Define UI ----</span>
+<span class="n">ui</span> <span class="o">&lt;-</span> <span class="nf">fluidPage</span><span class="p">(</span>
+<span class="nf">titlePanel</span><span class="p">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="c1"># Define server logic ----</span>
+<span class="n">server</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="c1"># Run the app ----</span>
+<span class="nf">shinyApp</span><span class="p">(</span><span class="n">ui</span> <span class="o">=</span> <span class="n">ui</span><span class="p">,</span> <span class="n">server</span> <span class="o">=</span> <span class="n">server</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then visit <a class="reference external" href="https://shinyapp01.ku.dk/cbmr/">https://shinyapp01.ku.dk/cbmr/</a> and click on the folder
+corresponding to your username, and you should see the following in your
+browser:</p>
+<blockquote>
+<div><img alt="../_images/shiny_hello_world.png" class="align-center" src="../_images/shiny_hello_world.png" />
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../tips/index.html" title="6. Tips and tricks"
+             >next</a></li>
+        <li class="right" >
+          <a href="containers.html" title="5.2. Running containerized software"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">5. </span>Other services</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, CBMR Phenomics.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

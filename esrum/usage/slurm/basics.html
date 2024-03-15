@@ -1,0 +1,597 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>4.3.1. Basic Slurm jobs &#8212; Esrum Cluster  documentation</title>
+    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/js/custom.js"></script>
+    <script src="../../_static/js/libgif.js"></script>
+    <script src="../../_static/bizstyle.js"></script>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4.3.2. Advanced Slurm jobs" href="advanced.html" />
+    <link rel="prev" title="4.3. Running jobs using Slurm" href="index.html" />
+    <script defer src="../../_static/js/playback.js"></script>
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="advanced.html" title="4.3.2. Advanced Slurm jobs"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="index.html" title="4.3. Running jobs using Slurm"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">4. </span>Using the cluster</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U"><span class="section-number">4.3. </span>Running jobs using Slurm</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4.3.1. Basic Slurm jobs</a><ul>
+<li><a class="reference internal" href="#a-basic-job-script">4.3.1.1. A basic job script</a></li>
+<li><a class="reference internal" href="#queuing-a-job">4.3.1.2. Queuing a job</a></li>
+<li><a class="reference internal" href="#cancelling-jobs">4.3.1.3. Cancelling jobs</a></li>
+<li><a class="reference internal" href="#setting-options">4.3.1.4. Setting options</a></li>
+<li><a class="reference internal" href="#reserving-resources">4.3.1.5. Reserving resources</a><ul>
+<li><a class="reference internal" href="#best-practice-for-reserving-resources">4.3.1.5.1. Best practice for reserving resources</a></li>
+<li><a class="reference internal" href="#monitoring-resources-used-by-jobs">4.3.1.5.2. Monitoring resources used by jobs</a></li>
+<li><a class="reference internal" href="#common-options">4.3.1.5.3. Common options</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#interactive-sessions">4.3.1.6. Interactive sessions</a></li>
+<li><a class="reference internal" href="#sbatch-template-script">4.3.1.7. <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> template script</a></li>
+<li><a class="reference internal" href="#what-s-next">4.3.1.8. What's next</a></li>
+<li><a class="reference internal" href="#troubleshooting">4.3.1.9. Troubleshooting</a><ul>
+<li><a class="reference internal" href="#error-requested-node-configuration-is-not-available">4.3.1.9.1. Error: Requested node configuration is not available</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#additional-resources">4.3.1.10. Additional resources</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter"><span class="section-number">4.3. </span>Running jobs using Slurm</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="advanced.html"
+                        title="next chapter"><span class="section-number">4.3.2. </span>Advanced Slurm jobs</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="basic-slurm-jobs">
+<span id="p-usage-slurm-basics"></span><h1><span class="section-number">4.3.1. </span>Basic Slurm jobs<a class="headerlink" href="#basic-slurm-jobs" title="Permalink to this headline">¶</a></h1>
+<p>This section describes the basics of queuing jobs using on the Esrum
+cluster using the Slurm Workload Manager. This includes queuing tasks
+with the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command , monitoring jobs with <code class="docutils literal notranslate"><span class="pre">squeue</span></code> and
+<code class="docutils literal notranslate"><span class="pre">saccact</span></code>, cancelling jobs with <code class="docutils literal notranslate"><span class="pre">scancel</span></code>, and reserving resources
+for jobs that need more CPUs or more RAM.</p>
+<p>Users of the PBS (<code class="docutils literal notranslate"><span class="pre">qsub</span></code>) queuing system on e.g. <code class="docutils literal notranslate"><span class="pre">porus</span></code> or
+<code class="docutils literal notranslate"><span class="pre">computerome</span></code> can use this <a class="reference external" href="https://www.nrel.gov/hpc/assets/pdfs/pbs-to-slurm-translation-sheet.pdf">PBS to Slurm translation-sheet</a> to
+migrate <code class="docutils literal notranslate"><span class="pre">qsub</span></code> scripts/commands to <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>.</p>
+<div class="section" id="a-basic-job-script">
+<h2><span class="section-number">4.3.1.1. </span>A basic job script<a class="headerlink" href="#a-basic-job-script" title="Permalink to this headline">¶</a></h2>
+<p>In order to run a job using the Slurm workload manager, you must first
+write a shell script containing the commands that you want to execute.
+In the following example we just run a single command, <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;Hello,</span>
+<span class="pre">slurm!&quot;</span></code>, but scripts can contain any number of commands.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;Hello, slurm!&quot;</span>
+</pre></div>
+</div>
+<p>The script can be named anything you like and does not need to be
+executable (via <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span></code>), but the first line <em>must</em> contain a
+<a class="reference external" href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang</a> (the line starting with <code class="docutils literal notranslate"><span class="pre">#!</span></code>) to indicate how slurm should
+execute it.</p>
+<p>We use <code class="docutils literal notranslate"><span class="pre">#!/bin/bash</span></code> for the examples in this section, to indicate
+that they are bash scripts, but it is also possible to use other
+scripting languages by using the appropriate shebang (highlighted):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="ch">#!/usr/bin/env python3</span>
+</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, slurm!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Slurm scripts function like regular scripts for most part, meaning that
+the current directory corresponds to the directory in which you executed
+the script, that you can access environment variables set outside of the
+script, and that it is possible to pass command-line arguments to your
+scripts.</p>
+</div>
+<div class="section" id="queuing-a-job">
+<h2><span class="section-number">4.3.1.2. </span>Queuing a job<a class="headerlink" href="#queuing-a-job" title="Permalink to this headline">¶</a></h2>
+<p>In the following examples we will use the <code class="docutils literal notranslate"><span class="pre">igzip</span></code> command to compress
+a file. The <code class="docutils literal notranslate"><span class="pre">igzip</span></code> command is similar to <code class="docutils literal notranslate"><span class="pre">gzip</span></code> except that it is
+only available via a module, that it sacrifices compression ratio for
+speed, and that it supports multiple threads. This allows us to test
+those features with Slurm.</p>
+<p>We start with a simple script, with which we will compress the FASTA
+file <code class="docutils literal notranslate"><span class="pre">chr1.fasta</span></code>. This script is saved as <code class="docutils literal notranslate"><span class="pre">my_script.sh</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+module load igzip/2.30.0
+igzip --keep <span class="s2">&quot;chr1.fasta&quot;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">module</span></code> command is used load the required software from the KU-IT
+provided library of scientific and other software. The
+<a class="reference internal" href="../modules.html#p-usage-modules"><span class="std std-ref">Environment modules</span></a> page gives an introduction to using modules on
+Esrum, but for now all you need to know is that the above command makes
+the <code class="docutils literal notranslate"><span class="pre">igzip</span></code> tool available to us. We could also have loaded the module
+on the command-line before queuing the command, as Slurm will remember
+what modules we have loaded, but it is recommended to load all required
+software <em>in</em> your job scripts to ensure that they are reproducible.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">--keep</span></code> option for <code class="docutils literal notranslate"><span class="pre">igzip</span></code> is used to prevent igzip from
+deleting our input file when it is done.</p>
+<p>To queue this script, run the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command with the filename of
+the script as an argument:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ls
+chr1.fasta  my_script.sh
+$ sbatch my_script.sh
+Submitted batch job <span class="m">8503</span>
+</pre></div>
+</div>
+<p>Notice that we do not need to set the current working directory in our
+script (unlike PBS). As noted above, this defaults to the directory in
+which you queued the script. The number reported by sbatch is the job ID
+of your job (<code class="docutils literal notranslate"><span class="pre">JOBID</span></code>), which you will need should you want to cancel,
+pause, or otherwise manipulate your job (see below).</p>
+<p>You can check the status of your queued and running jobs using the
+<code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">--me</span></code> command. The <code class="docutils literal notranslate"><span class="pre">--me</span></code> option ensures that only <em>your</em>
+jobs are shown, rather than everyone's jobs:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ squeue --me
+JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+ <span class="m">8503</span> standardq my_scrip   abc123  R       <span class="m">0</span>:02      <span class="m">1</span> esrumcmpn01fl
+</pre></div>
+</div>
+<p>The ST column indicating the status of the job (R for running, PD for
+pending, <a class="reference external" href="https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES">and so on</a>).</p>
+<p>Completed jobs are removed from the <code class="docutils literal notranslate"><span class="pre">squeue</span></code> list and can instead be
+listed using <code class="docutils literal notranslate"><span class="pre">sacct</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ sacct
+       JobID    JobName  Partition    Account  AllocCPUS      State ExitCode
+------------ ---------- ---------- ---------- ---------- ---------- --------
+<span class="m">8503</span>         my_script+ standardq+                     <span class="m">1</span>  COMPLETED      <span class="m">0</span>:0
+<span class="m">8503</span>.batch        batch                                <span class="m">1</span>  COMPLETED      <span class="m">0</span>:0
+</pre></div>
+</div>
+<p>Once the job has started running (or has completed running), you will
+also find a file named <code class="docutils literal notranslate"><span class="pre">slurm-${JOBID}.out</span></code> in the current folder,
+where <code class="docutils literal notranslate"><span class="pre">${JOBID}</span></code> is the ID reported by <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> (<code class="docutils literal notranslate"><span class="pre">8503</span></code> in this
+example):</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ ls
+chr1.fasta  chr1.fasta.gz  my_script.sh  slurm-8503.out
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">slurm-8503.out</span></code> file contains any console output produced by your
+script/commands. This includes both STDOUT and STDERR by default, but
+this can be changed (see <a class="reference internal" href="#s-common-options"><span class="std std-ref">Common options</span></a>). So if we had
+misspelled the filename in our command then the resulting error message
+would be found in the <code class="docutils literal notranslate"><span class="pre">out</span></code> file:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ cat slurm-8503.out
+igzip: chr1.fast does not exist
+</pre></div>
+</div>
+</div>
+<div class="section" id="cancelling-jobs">
+<span id="s-cancelling-jobs"></span><h2><span class="section-number">4.3.1.3. </span>Cancelling jobs<a class="headerlink" href="#cancelling-jobs" title="Permalink to this headline">¶</a></h2>
+<p>Already running jobs can be cancelled using the <code class="docutils literal notranslate"><span class="pre">scancel</span></code> command and
+the ID of the job you want to cancel:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ squeue --me
+JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+ <span class="m">8503</span> standardq my_scrip   abc123  R       <span class="m">0</span>:02      <span class="m">1</span> esrumcmpn01fl
+$ scancel <span class="m">8503</span>
+</pre></div>
+</div>
+<p>Should you wish to cancel <em>all</em> your jobs, use the <code class="docutils literal notranslate"><span class="pre">-u</span></code> option:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ scancel -u <span class="si">${</span><span class="nv">USER</span><span class="si">}</span>
+</pre></div>
+</div>
+<p>When running batch jobs you can either cancel the entire job (array, see
+below) or individual sub-tasks. See the <a class="reference internal" href="advanced.html#s-job-arrays"><span class="std std-ref">Monitoring your jobs</span></a> section.</p>
+</div>
+<div class="section" id="setting-options">
+<h2><span class="section-number">4.3.1.4. </span>Setting options<a class="headerlink" href="#setting-options" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command offers two methods for setting options, such as
+resource requirements, notifications, etc (see e.g.
+<a class="reference internal" href="#s-common-options"><span class="std std-ref">Common options</span></a>). The first option is simply to specify the
+options on the command line (e.g. <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">--my-option</span> <span class="pre">my_script.sh</span></code>).</p>
+<p>Note that options for <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> <em>must</em> be placed before the filename
+for your script. Options placed <em>after</em> the filename for your script
+(e.g. <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">my_script.sh</span> <span class="pre">--my-option</span></code>) will instead be passed
+directly to that script. This makes it simple to generalize scripts
+using standard scripting techniques.</p>
+<p>The second option, which we recommend for resource requirements and the
+like, is to use <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> comments.</p>
+<p>For example, instead of queuing our job with the command</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ sbatch --my-option my_script.sh
+</pre></div>
+</div>
+<p>We could instead modify <code class="docutils literal notranslate"><span class="pre">my_script.sh</span></code> by adding a line containing
+<code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--my-option</span></code> near the top of the file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="hll"><span class="c1">#SBATCH --my-option</span>
+</span>
+module load igzip/2.30.0
+igzip --keep <span class="s2">&quot;chr1.fasta&quot;</span>
+</pre></div>
+</div>
+<p>If we do so, then running <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">my_script.sh</span></code> becomes the equivalent
+of running <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">--my-option</span> <span class="pre">my_script.sh</span></code>. This had the advantage
+that our options are recorded along with the commands, and that we do
+not have to remember to specify those options every time we run <code class="docutils literal notranslate"><span class="pre">sbatch</span>
+<span class="pre">my_script.sh</span></code>.</p>
+<p>This documentation will make use of <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> comments, but remember
+that you can also specify them directly on the command-line. If you
+specify options on the command-line, then they take precedence above
+options specified using <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> comments.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> lines must be at the top of the file, before any
+other commands or the like. Moreover, there must be no spaces before
+or after the <code class="docutils literal notranslate"><span class="pre">#</span></code> in the <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> comments. Other comments (lines
+starting with <code class="docutils literal notranslate"><span class="pre">#</span></code>) are allowed before and after the <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code>
+comments.</p>
+<p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> comments can also be used with other scripting languages,
+provided that you follow the rules described above, but note that
+source-code formatters like <code class="docutils literal notranslate"><span class="pre">black</span></code> may add spaces after the <code class="docutils literal notranslate"><span class="pre">#</span></code>
+and thereby break the <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> comments.</p>
+</div>
+</div>
+<div class="section" id="reserving-resources">
+<span id="id1"></span><h2><span class="section-number">4.3.1.5. </span>Reserving resources<a class="headerlink" href="#reserving-resources" title="Permalink to this headline">¶</a></h2>
+<p>By default a <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> will request 1 CPU and just under 15 GB of ram
+per reserved CPU. Jobs will not be executed before the requested
+resources are available on a node and your jobs cannot exceed the amount
+of resources you've requested.</p>
+<p>Should your job require more CPUs, then you can request them using the
+<code class="docutils literal notranslate"><span class="pre">-c</span></code> or <code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code> option. The following script runs a job
+with 8 CPUs, and is therefore automatically assigned 8 * 15 ~= 120
+gigabytes of RAM:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="hll"><span class="c1">#SBATCH --cpus-per-task 8</span>
+</span>
+module load igzip/2.30.0
+<span class="hll">igzip --keep --threads <span class="m">8</span> <span class="s2">&quot;chr1.fasta&quot;</span>
+</span></pre></div>
+</div>
+<p>Notice that we need to not only reserve the CPUs, but we in almost all
+cases also need tell to our programs to actually use those CPUs. With
+<code class="docutils literal notranslate"><span class="pre">igzip</span></code> this is accomplished by using the <code class="docutils literal notranslate"><span class="pre">--threads</span></code> option as
+shown above. If this is not done then the reserved CPUs will have no
+effect on how long it takes for your program to run!</p>
+<p>To avoid having to write the same number of threads multiple times, we
+can instead use hte <code class="docutils literal notranslate"><span class="pre">${SLURM_CPUS_PER_TASK}</span></code> variable, which is
+automatically set to the number of CPUs we've requested:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --cpus-per-task 8</span>
+
+module load igzip/2.30.0
+<span class="hll">igzip --keep --threads <span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span> <span class="s2">&quot;chr1.fasta&quot;</span>
+</span></pre></div>
+</div>
+<p>The amount of RAM allocated by default should be sufficient for most
+tasks, but when needed you can request additional RAM using either the
+<code class="docutils literal notranslate"><span class="pre">--mem-per-cpu</span></code> or the <code class="docutils literal notranslate"><span class="pre">--mem</span></code> options. The <code class="docutils literal notranslate"><span class="pre">--mem-per-cpu</span></code> option
+allow you to request an amount of memory that depends on the number of
+CPUs you request (defaulting to just under 15 GB per CPU), while the
+<code class="docutils literal notranslate"><span class="pre">--mem</span></code> option allows you to request a specific amount of memory
+regardless of how many (or how few) CPUs you reserve.</p>
+<p>The following script a task with 8 CPUs and 512 gigabytes of RAM:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --cpus-per-task 8</span>
+<span class="hll"><span class="c1">#SBATCH --mem 512G</span>
+</span>
+module load igzip/2.30.0
+igzip --keep --threads <span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span> <span class="s2">&quot;chr1.fasta&quot;</span>
+</pre></div>
+</div>
+<p>The same total could have been requested by using <code class="docutils literal notranslate"><span class="pre">#SBATCH</span>
+<span class="pre">--mem-per-cpu</span> <span class="pre">64G</span></code> instead of <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--mem</span> <span class="pre">512G</span></code>.</p>
+<p>As described in the <a class="reference internal" href="../../overview.html#p-overview"><span class="std std-ref">Overview</span></a>, each node has 128 CPUs available
+and 2 TB of RAM, of which 1993 GB can be reserved by Slurm. The GPU node
+has 4 TB of RAM available, of which 3920 GB can be reserved by Slurm,
+and may be used for jobs that have very high memory requirements.
+However, since we only have one GPU node we ask that you use the regular
+nodes unless your jobs actually require that much RAM. See the
+<a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU/hi-MEM node</span></a> section for how to use the GPU node with or
+without reserving a GPU.</p>
+<div class="section" id="best-practice-for-reserving-resources">
+<h3><span class="section-number">4.3.1.5.1. </span>Best practice for reserving resources<a class="headerlink" href="#best-practice-for-reserving-resources" title="Permalink to this headline">¶</a></h3>
+<p>Determining how many CPUs and how much memory you need to reserve for
+your jobs can be difficult:</p>
+<p>Few programs benefit from using a lot of threads (CPUs) due to overhead
+and due to limits to how much of a given process can be parallelized
+(see <a class="reference external" href="https://en.wikipedia.org/wiki/Amdahl%27s_law">Amdahl's law</a>).
+Maximum throughput is often limited by how fast the software can
+read/write data.</p>
+<p>We therefore recommended that you</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Always refer to the documentation and recommendations for the
+specific software you are using!</p></li>
+<li><p>Test the effect of the number of threads you are using before
+starting a lot of jobs.</p></li>
+<li><p>Start with fewer CPUs and increase it only when there is a benefit
+to doing so. You can for example start with 2, 4, or 8 CPUs per
+task, and only increasing the number after it has been determined
+that the software benefits from the additional CPUs.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="monitoring-resources-used-by-jobs">
+<h3><span class="section-number">4.3.1.5.2. </span>Monitoring resources used by jobs<a class="headerlink" href="#monitoring-resources-used-by-jobs" title="Permalink to this headline">¶</a></h3>
+<p>Once you have actually started running a job, you have several options
+for monitoring resource usage:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">/usr/bin/time</span> <span class="pre">-f</span> <span class="pre">&quot;CPU</span> <span class="pre">=</span> <span class="pre">%P,</span> <span class="pre">MEM</span> <span class="pre">=</span> <span class="pre">%MKB&quot;</span></code> command can be used to
+estimate the efficiency from using multiple threads and to show how much
+memory a program used:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> /usr/bin/time -f <span class="s2">&quot;CPU = %P, MEM = %M&quot;</span> my-command --threads <span class="m">1</span> ...
+<span class="go">CPU = 99%, MEM = 840563KB</span>
+<span class="gp">$</span> /usr/bin/time -f <span class="s2">&quot;CPU = %P, MEM = %M&quot;</span> my-command --threads <span class="m">4</span> ...
+<span class="go">CPU = 345%, MEM = 892341KB</span>
+<span class="gp">$</span> /usr/bin/time -f <span class="s2">&quot;CPU = %P, MEM = %M&quot;</span> my-command --threads <span class="m">8</span> ...
+<span class="go">CPU = 605%, MEM = 936324KB</span>
+</pre></div>
+</div>
+<p>In this example increasing the number of threads/CPUs to 4 did not
+result in a 4x increase in CPU usage, but only an 3.5x increase with 4
+CPUs and only a 6x increase with 8 CPUs. Here it would be more efficient
+to run to tasks with 4 CPUs rather than one task with 8 CPUs.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">sacct</span></code> command may be used to review the average CPU usage, the
+peak memory usage, disk I/O, and more for completed jobs. This makes it
+easier to verify that you are not needlessly reserving resources. A
+helper script is provided that summarizes some of this information in an
+easily readable form:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">source</span> /projects/cbmr_shared/apps/modules/activate.sh
+<span class="gp">$</span> module load sacct-usage
+<span class="gp">$</span> sacct-usage
+<span class="go">      Age  User    Job   State         Elapsed  CPUs  CPUsWasted  ExtraMem  ExtraMemWasted  CPUHoursWasted</span>
+<span class="go">13:32:04s  abc123  1     FAILED     252:04:52s     8         6.9     131.4           131.4         4012.14</span>
+<span class="go">10:54:32s  abc123  2[1]  COMPLETED   02:49:25s    32        15.7       0.0             0.0           44.38</span>
+<span class="go">01:48:43s  abc123  3     COMPLETED   01:00:53s    24         2.4       0.0             0.0            2.43</span>
+</pre></div>
+</div>
+<p>The important information is found in the <code class="docutils literal notranslate"><span class="pre">CPUsWasted</span></code> column and the
+<code class="docutils literal notranslate"><span class="pre">ExtraMemWasted</span></code> column, which show the number CPUs that went unused
+on average the memory that was requested that went unused. Note that
+<code class="docutils literal notranslate"><span class="pre">ExtraMem</span></code> only counts memory requested <em>in addition</em> to the default
+allocation of ~16GB of RAM per CPU. That is because any additional
+reserved memory results in CPUs going unused <em>unless</em> a user explicitly
+asks for less RAM than the default ~16GB per CPU.</p>
+<p>The final column indicates that number of CPU hours your job wasted,
+calculated as the length of time your job ran multiplied by the number
+of reserved CPUs wasted and the number of CPUs that would have been able
+to get the default 16GB of RAM had <code class="docutils literal notranslate"><span class="pre">ExtraMemWasted</span></code> been zero. Aim for
+your jobs to resemble the third job, not the second job and especially
+not the first job in the example!</p>
+<p>When reserving jobs with additional resources it can also be useful to
+monitor CPU/memory usage in real time. This can help diagnose poor
+resource usage much faster than waiting for the program to finish
+running. See the <a class="reference internal" href="advanced.html#s-monitoring-processes-in-jobs"><span class="std std-ref">Monitoring processes in jobs</span></a> section for
+information about how to do so.</p>
+<p>Because of this it is often more efficient to split your job into
+multiple sub-jobs (for example one job per chromosome) rather than
+increasing the number of threads used for the individual jobs. See the
+<a class="reference internal" href="advanced.html#p-usage-slurm-advanced"><span class="std std-ref">Advanced Slurm jobs</span></a> page for more information about batching
+jobs.</p>
+</div>
+<div class="section" id="common-options">
+<span id="s-common-options"></span><h3><span class="section-number">4.3.1.5.3. </span>Common options<a class="headerlink" href="#common-options" title="Permalink to this headline">¶</a></h3>
+<p>The following provides a brief overview of common options for <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>
+not mentioned above. All of these options may be specified using
+<code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> comments.</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">--job-name</span></code> option allows you to give a name to your job. This
+shows up when using <code class="docutils literal notranslate"><span class="pre">squeue</span></code>, <code class="docutils literal notranslate"><span class="pre">sacct</span></code> and more. If not specified,
+the name of your script is used instead.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">--output</span></code> and <code class="docutils literal notranslate"><span class="pre">--error</span></code> options allow you to specify where
+Slurm writes your scripts STDOUT and STDERR. The filenames should
+always include the text <code class="docutils literal notranslate"><span class="pre">%j</span></code>, which is replaced with the job ID.
+See the manual page for usage. Note also that the destination folder
+<em>must</em> exist or no output will be saved!</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--time</span></code> can be used to limit the maximum running time of your
+script. We do not require that <code class="docutils literal notranslate"><span class="pre">--time</span></code> is set, but it may be
+useful to automatically stop jobs that unexpectedly take too long to
+run. See the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> manual page for how to specify time limits.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--test-only</span></code> can be used to test your batch scripts. Combine it
+with <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> to verify that your options are correctly set
+before queuing your job:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ sbatch --test-only --verbose my_script.sh
+sbatch: defined options
+sbatch: -------------------- --------------------
+sbatch: cpus-per-task       : <span class="m">8</span>
+sbatch: test-only           : <span class="nb">set</span>
+sbatch: <span class="nb">time</span>                : <span class="m">01</span>:00:00
+sbatch: verbose             : <span class="m">1</span>
+sbatch: -------------------- --------------------
+sbatch: end of defined options
+<span class="o">[</span>...<span class="o">]</span>
+sbatch: Job <span class="m">8568</span> to start at <span class="m">2023</span>-06-28T12:15:32 using <span class="m">8</span> processors on nodes esrumcmpn02fl in partition standardqueue
+</pre></div>
+</div>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">--wait</span></code> option can be used to make the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> block until
+the queued tasks have completed. This can be useful if you want to
+run sbatch from another script.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="interactive-sessions">
+<h2><span class="section-number">4.3.1.6. </span>Interactive sessions<a class="headerlink" href="#interactive-sessions" title="Permalink to this headline">¶</a></h2>
+<p>If you need to run an interactive process, for example if you need to
+use an interactive R shell to process a large dataset, or if you just
+need to experiment with running an computationally heavy process, then
+you can start a shell on one of the compute nodes as follows:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[abc123@esrumhead01fl ~] $</span> srun --pty -- /bin/bash
+<span class="gp">[abc123@esrumcmpn07fl ~] $</span>
+</pre></div>
+</div>
+<p>Note how the hostname displayed changes from <code class="docutils literal notranslate"><span class="pre">esrumhead01fl</span></code> to
+<code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl</span></code>, where <code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl</span></code> may be any one of the Esrum
+compute nodes.</p>
+<p>You can now run interactive programs, for example an R shell, or test
+computationally expensive tools or scripts. However, note that you
+<em>cannot</em> start jobs using Slurm in an interactive shell; jobs can only
+be started from the head node.</p>
+<p><code class="docutils literal notranslate"><span class="pre">srun</span></code> takes most of the same arguments as <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>, including those
+used for reserving additional resources if you need more than the
+default 1 CPU and 15 GB of RAM:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> srun --cpus-per-task <span class="m">4</span> --mem 128G --pty -- /bin/bash
+</pre></div>
+</div>
+<p>It is also possible to start an interactive session on the GPU/High-MEM
+nodes. See the <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU/hi-MEM node</span></a> page for more information. See
+the <a class="reference internal" href="advanced.html#p-usage-slurm-advanced"><span class="std std-ref">Advanced Slurm jobs</span></a> page for more information about the
+<code class="docutils literal notranslate"><span class="pre">srun</span></code> command.</p>
+<p>Once you are done, be sure to exit the interactive shell by using the
+<code class="docutils literal notranslate"><span class="pre">exit</span></code> command or pressing <code class="docutils literal notranslate"><span class="pre">Ctrl+D</span></code>, so that the resources reserved
+for your shell are made available to other users!</p>
+</div>
+<div class="section" id="sbatch-template-script">
+<h2><span class="section-number">4.3.1.7. </span><code class="docutils literal notranslate"><span class="pre">sbatch</span></code> template script<a class="headerlink" href="#sbatch-template-script" title="Permalink to this headline">¶</a></h2>
+<p>The following is a simple template for use with the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command.
+This script can also be downloaded <a class="reference download internal" download="" href="../../_downloads/228ce910c2ad03d01324f772cfe339e6/my_sbatch.sh"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a>.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># The following are commonly used options for running jobs. Remove one</span>
+<span class="c1"># &quot;#&quot; from the &quot;##SBATCH&quot; lines (changing them to &quot;#SBATCH&quot;) to enable</span>
+<span class="c1"># a given option.</span>
+
+<span class="c1"># The number of CPUs (cores) used by your task. Defaults to 1.</span>
+<span class="c1">##SBATCH --cpus-per-task=1</span>
+<span class="c1"># The amount of RAM used by your task. Tasks are automatically assigned 15G</span>
+<span class="c1"># per CPU (set above) if this option is not set.</span>
+<span class="c1">##SBATCH --mem=15G</span>
+<span class="c1"># Set a maximum runtime in hours:minutes:seconds. No default limit.</span>
+<span class="c1">##SBATCH --time=1:00:00</span>
+<span class="c1"># Request a GPU on the GPU code. Use `--gres=gpu:a100:2` to request both GPUs.</span>
+<span class="c1">##SBATCH --partition=gpuqueue --gres=gpu:a100:1</span>
+<span class="c1"># Send notifications when job ends. Remember to update the email address!</span>
+<span class="c1">##SBATCH --mail-user=abc123@ku.dk --mail-type=END,FAIL</span>
+
+<span class="c1">########################</span>
+<span class="c1"># Your commands go here:</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;Hello world!&quot;</span>
+</pre></div>
+</div>
+<p>See also the <a class="reference internal" href="../../tips/robust_scripts.html#p-tips-robustscripts"><span class="std std-ref">Writing robust bash scripts</span></a> page for tips on how to write
+more robust bash scripts. A template using those recommendations is
+available for download <a class="reference download internal" download="" href="../../_downloads/82a50c88dfbea8f697cd89345d1665b1/robust_sbatch.sh"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a>.</p>
+</div>
+<div class="section" id="what-s-next">
+<span id="s-slurm-basics-troubleshooting"></span><h2><span class="section-number">4.3.1.8. </span>What's next<a class="headerlink" href="#what-s-next" title="Permalink to this headline">¶</a></h2>
+<p>The next section of the documentation covers advanced usage of Slurm,
+including how to run jobs on the High-MEM/GPU node. However, if you have
+not already done so then it is recommended that you read the
+<a class="reference internal" href="../modules.html#p-usage-modules"><span class="std std-ref">Environment modules</span></a> page for an introduction on how to use the module
+system on Esrum to load the software you need for your work.</p>
+</div>
+<div class="section" id="troubleshooting">
+<h2><span class="section-number">4.3.1.9. </span>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="error-requested-node-configuration-is-not-available">
+<h3><span class="section-number">4.3.1.9.1. </span>Error: Requested node configuration is not available<a class="headerlink" href="#error-requested-node-configuration-is-not-available" title="Permalink to this headline">¶</a></h3>
+<p>If you request too many CPUs (more than 128), or too much RAM (more than
+1993 GB for compute nodes and more than 3920 GB for the GPU node), then
+Slurm will report that the request cannot be satisfied:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># More than 128 CPUs requested</span>
+$ sbatch --cpus-per-task <span class="m">200</span> my_script.sh
+sbatch: error: CPU count per node can not be satisfied
+sbatch: error: Batch job submission failed: Requested node configuration is not available
+
+<span class="c1"># More than 1993 GB RAM requested on compute node</span>
+$ sbatch --mem 2000G my_script.sh
+sbatch: error: Memory specification can not be satisfied
+sbatch: error: Batch job submission failed: Requested node configuration is not available
+</pre></div>
+</div>
+<p>To solve this, simply reduce the number of CPUs and/or the amount of RAM
+requested to fit within the limits described above. If your task does
+require more than 1993 GB of RAM, then you also need to add the
+<code class="docutils literal notranslate"><span class="pre">--partition=gpuqueue</span></code>, so that your task gets scheduled on the
+GPU/High-MEM node.</p>
+<p>Additionally, you may receive this message if you request GPUs without
+specifying the correct queue or if you request too many GPUs:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># --partition=gpuqueue not specified</span>
+$ srun --gres<span class="o">=</span>gpu:a100:2 -- <span class="nb">echo</span> <span class="s2">&quot;Hello world!&quot;</span>
+srun: error: Unable to allocate resources: Requested node configuration is not available
+
+<span class="c1"># More than 2 GPUs requested</span>
+$ srun --partition<span class="o">=</span>gpuqueue --gres<span class="o">=</span>gpu:a100:3 -- <span class="nb">echo</span> <span class="s2">&quot;Hello world!&quot;</span>
+srun: error: Unable to allocate resources: Requested node configuration is not available
+</pre></div>
+</div>
+<p>To solve this error, simply avoid requesting more than 2 GPUs, and
+remember to include the <code class="docutils literal notranslate"><span class="pre">--partition=gpuqueue</span></code> option.</p>
+<p>See also the <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU/hi-MEM node</span></a> section.</p>
+</div>
+</div>
+<div class="section" id="additional-resources">
+<h2><span class="section-number">4.3.1.10. </span>Additional resources<a class="headerlink" href="#additional-resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Slurm <a class="reference external" href="https://slurm.schedmd.com/overview.html">documentation</a></p></li>
+<li><p>Slurm <a class="reference external" href="https://slurm.schedmd.com/pdfs/summary.pdf">summary</a> (PDF)</p></li>
+<li><p>The <a class="reference external" href="https://slurm.schedmd.com/sbatch.html">sbatch manual page</a></p></li>
+<li><p>The <a class="reference external" href="https://slurm.schedmd.com/srun.html">srun manual page</a></p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="advanced.html" title="4.3.2. Advanced Slurm jobs"
+             >next</a></li>
+        <li class="right" >
+          <a href="index.html" title="4.3. Running jobs using Slurm"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">4. </span>Using the cluster</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" ><span class="section-number">4.3. </span>Running jobs using Slurm</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, CBMR Phenomics.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

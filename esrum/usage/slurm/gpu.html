@@ -1,0 +1,205 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>4.3.3. Using the GPU/hi-MEM node &#8212; Esrum Cluster  documentation</title>
+    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+    
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/js/custom.js"></script>
+    <script src="../../_static/js/libgif.js"></script>
+    <script src="../../_static/bizstyle.js"></script>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4.4. Environment modules" href="../modules.html" />
+    <link rel="prev" title="4.3.2. Advanced Slurm jobs" href="advanced.html" />
+    <script defer src="../../_static/js/playback.js"></script>
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../modules.html" title="4.4. Environment modules"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="advanced.html" title="4.3.2. Advanced Slurm jobs"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">4. </span>Using the cluster</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U"><span class="section-number">4.3. </span>Running jobs using Slurm</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4.3.3. Using the GPU/hi-MEM node</a><ul>
+<li><a class="reference internal" href="#monitoring-gpu-utilization">4.3.3.1. Monitoring GPU utilization</a><ul>
+<li><a class="reference internal" href="#troubleshooting">4.3.3.1.1. Troubleshooting</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#error-requested-node-configuration-is-not-available">4.3.3.2. Error: Requested node configuration is not available</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="advanced.html"
+                        title="previous chapter"><span class="section-number">4.3.2. </span>Advanced Slurm jobs</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../modules.html"
+                        title="next chapter"><span class="section-number">4.4. </span>Environment modules</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="using-the-gpu-hi-mem-node">
+<span id="p-usage-slurm-gpu"></span><h1><span class="section-number">4.3.3. </span>Using the GPU/hi-MEM node<a class="headerlink" href="#using-the-gpu-hi-mem-node" title="Permalink to this headline">¶</a></h1>
+<p>This section describes how to schedule a task on the GPU/hi-MEM node.
+The GPU node is intended for tasks that need to use GPUs and for tasks
+that have very high memory requirements (more than 2 TB).</p>
+<p>To schedule a task on the GPU node you need to select the GPU queue and
+(optionally) specify the number of Nvidia A100 GPUs needed (1 or 2). For
+example, the following command queues the command <code class="docutils literal notranslate"><span class="pre">my-gpu-command</span></code> and
+requests a single A100 GPU:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> srun --partition<span class="o">=</span>gpuqueue --gres<span class="o">=</span>gpu:a100:1 -- my-gpu-command
+</pre></div>
+</div>
+<p>Alternatively you may reserve both GPUs:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> srun --partition<span class="o">=</span>gpuqueue --gres<span class="o">=</span>gpu:a100:2 -- my-gpu-command
+</pre></div>
+</div>
+<p>If you on not need to use a GPU, then you can omit the <code class="docutils literal notranslate"><span class="pre">--gres</span></code>
+option:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> srun --partition<span class="o">=</span>gpuqueue -- my-command
+</pre></div>
+</div>
+<p>As above you must also specify your CPU and RAM requirements using
+<code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code> and <code class="docutils literal notranslate"><span class="pre">--mem</span></code>.</p>
+<div class="section" id="monitoring-gpu-utilization">
+<h2><span class="section-number">4.3.3.1. </span>Monitoring GPU utilization<a class="headerlink" href="#monitoring-gpu-utilization" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Due to changes to Slurm settings, to ensure that jobs cannot
+access resources that were not reserved for them, it is currently
+not possible to monitor GPUs usage from a different job using the
+instructions below. The documentation will be updates shortly.</p>
+</div>
+</div></blockquote>
+<p>Slurm does not provide any means of monitoring the actual GPU
+utilization, but tools such as <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> can be used to monitor
+performance metrics. And since we are not going to actually <em>use</em> the
+GPU, we can simply omit the <code class="docutils literal notranslate"><span class="pre">--gres</span></code> option.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you need to make use of GPU resources (passive monitoring
+excluded), then you <em>must</em> also specify the appropriate <code class="docutils literal notranslate"><span class="pre">--gres</span></code>
+option. Failure to do so will result in your jobs being terminated!</p>
+</div>
+<p>This allows slurm to run the monitoring task even when the GPUs are
+reserved:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> srun --partition<span class="o">=</span>gpuqueue -- nvidia-smi -l <span class="m">5</span>
+<span class="go">Thu Jun  8 12:18:15 2023</span>
+<span class="go">+-----------------------------------------------------------------------------+</span>
+<span class="go">| NVIDIA-SMI 525.60.13    Driver Version: 525.60.13    CUDA Version: 12.0     |</span>
+<span class="go">|-------------------------------+----------------------+----------------------+</span>
+<span class="go">| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |</span>
+<span class="go">| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |</span>
+<span class="go">|                               |                      |               MIG M. |</span>
+<span class="go">|===============================+======================+======================|</span>
+<span class="go">|   0  NVIDIA A100 80G...  On   | 00000000:27:00.0 Off |                    0 |</span>
+<span class="go">| N/A   43C    P0    47W / 300W |      0MiB / 81920MiB |      0%      Default |</span>
+<span class="go">|                               |                      |             Disabled |</span>
+<span class="go">+-------------------------------+----------------------+----------------------+</span>
+<span class="go">|   1  NVIDIA A100 80G...  On   | 00000000:A3:00.0 Off |                    0 |</span>
+<span class="go">| N/A   43C    P0    45W / 300W |      0MiB / 81920MiB |      0%      Default |</span>
+<span class="go">|                               |                      |             Disabled |</span>
+<span class="go">+-------------------------------+----------------------+----------------------+</span>
+
+<span class="go">+-----------------------------------------------------------------------------+</span>
+<span class="go">| Processes:                                                                  |</span>
+<span class="go">|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |</span>
+<span class="go">|        ID   ID                                                   Usage      |</span>
+<span class="go">|=============================================================================|</span>
+<span class="go">|  No running processes found                                                 |</span>
+<span class="go">+-----------------------------------------------------------------------------+</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">gpustat</span></code> tool provides a more convenient overview but must be
+installed via <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install gpustat
+<span class="gp">$</span> srun --partition<span class="o">=</span>gpuqueue --pty -- gpustat -i <span class="m">5</span>
+<span class="go">esrumgpun01fl.unicph.domain  Thu Jun  8 12:20:24 2023  525.60.13</span>
+<span class="go">[0] NVIDIA A100 80GB PCIe | 43°C,   0 % |     0 / 81920 MB |</span>
+<span class="go">[1] NVIDIA A100 80GB PCIe | 43°C,   0 % |     0 / 81920 MB |</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--pty</span></code> option is used in order to support colored, full-screen
+output despite not running an interactive actual shell. As an
+alternative, you can also start an interactive shell on the GPU node and
+run <code class="docutils literal notranslate"><span class="pre">gpustats</span></code> or <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> that way:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> srun --partition<span class="o">=</span>gpuqueue --pty -- /bin/bash
+<span class="gp">$</span> gpustat -i <span class="m">5</span>
+</pre></div>
+</div>
+<div class="section" id="troubleshooting">
+<h3><span class="section-number">4.3.3.1.1. </span>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="error-requested-node-configuration-is-not-available">
+<h2><span class="section-number">4.3.3.2. </span>Error: Requested node configuration is not available<a class="headerlink" href="#error-requested-node-configuration-is-not-available" title="Permalink to this headline">¶</a></h2>
+<p>See the Slurm Basics <a class="reference internal" href="basics.html#s-slurm-basics-troubleshooting"><span class="std std-ref">What's next</span></a> section.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../modules.html" title="4.4. Environment modules"
+             >next</a></li>
+        <li class="right" >
+          <a href="advanced.html" title="4.3.2. Advanced Slurm jobs"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Esrum Cluster  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">4. </span>Using the cluster</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" ><span class="section-number">4.3. </span>Running jobs using Slurm</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, CBMR Phenomics.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>
