@@ -146,7 +146,9 @@ command (from the ``JOBID`` column).
    It is not possible to use ``--overlap`` when you have reserved GPUs
    using the ``--gres`` option. This also means that you cannot monitor
    GPU resource usage in this manner, as other jobs on the same node
-   cannot access already reserved GPUs.
+   cannot access already reserved GPUs. See the
+   :ref:`s_monitoring_gpu_utilization` section for instructions on how
+   to monitor GPU utilization.
 
 *************************************
  Running multiple tasks using arrays
