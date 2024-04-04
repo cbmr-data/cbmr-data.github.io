@@ -444,6 +444,8 @@ not mentioned above. All of these options may be specified using
    the queued tasks have completed. This can be useful if you want to
    run sbatch from another script.
 
+.. _s_interactive_session:
+
 **********************
  Interactive sessions
 **********************
@@ -483,6 +485,26 @@ the :ref:`p_usage_slurm_advanced` page for more information about the
 Once you are done, be sure to exit the interactive shell by using the
 ``exit`` command or pressing ``Ctrl+D``, so that the resources reserved
 for your shell are made available to other users!
+
+Running graphical programs
+==========================
+
+Should you need to run a graphical program in an interactive session,
+then you must 1) enable X11 forwarding in the program you use to connect
+to the cluster (e.g. using ``-X`` option with ``ssh``), and 2) specify
+the ``--x11`` option when starting your interactive session:
+
+.. code-block::
+
+   $ ssh -X esrumhead01fl
+   $ srun --pty --x11 -- /bin/bash
+   $ xclock
+
+If X11 forwarding is correctly enabled in your client, then you should
+see a small clock application on your desktop:
+
+.. image:: /usage/slurm/images/xclock.png
+   :align: center
 
 ****************************
  ``sbatch`` template script
