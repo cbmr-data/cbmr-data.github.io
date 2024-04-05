@@ -1,8 +1,15 @@
 .. _p_communications_workshop:
 
-###########
- Workshops
-###########
+###################################
+ Workshops and other presentations
+###################################
+
+***************************************
+ Esrum group presentation [2024-03-20]
+***************************************
+
+`Download slides
+<https://github.com/cbmr-data/cbmr-data.github.io/releases/download/group_presentation_1/2024-03-20.Esrum.short.intro.pdf>`__
 
 *****************************
  Esrum Workshop [2023-09-21]

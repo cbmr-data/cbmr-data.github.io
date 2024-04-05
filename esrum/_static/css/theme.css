@@ -1,9 +1,15 @@
-.warning {
-    background-color: rgb(242, 242, 242) !important;
-    border-color: #B35A5A !important;
+.admonition-title {
+    /* Greater emphasis on tip, warning, etc. labels */
+    font-weight: bold !important;
 }
 
-.warning>.admonition-title {
-    background-color: #992222 !important;
-    border-bottom: #B35A5A !important;
+section {
+    /* Disable highlighting of linked to section */
+    --color-highlight-on-target: var(--color-background-primary)
+}
+
+div[class*=" highlight-"],
+div[class^="highlight-"] {
+    /* Indent code-blocks */
+    margin-left: 1em;
 }

@@ -1,205 +1,464 @@
-
-
 <!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="search" title="Search" href="../../search.html" /><link rel="next" title="4.4. Environment modules" href="../modules.html" /><link rel="prev" title="4.3.2. Advanced Slurm jobs" href="advanced.html" />
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta charset="utf-8" />
-    <title>4.3.3. Using the GPU/hi-MEM node &#8212; Esrum Cluster  documentation</title>
-    <link rel="stylesheet" href="../../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+        <title>4.3.3. Using the GPU/hi-MEM node - Esrum Cluster documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e2322aab" />
     
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/language_data.js"></script>
-    <script src="../../_static/js/custom.js"></script>
-    <script src="../../_static/js/libgif.js"></script>
-    <script src="../../_static/bizstyle.js"></script>
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="4.4. Environment modules" href="../modules.html" />
-    <link rel="prev" title="4.3.2. Advanced Slurm jobs" href="advanced.html" />
-    <script defer src="../../_static/js/playback.js"></script>
+    
 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../modules.html" title="4.4. Environment modules"
-             accesskey="N">next</a></li>
-        <li class="right" >
-          <a href="advanced.html" title="4.3.2. Advanced Slurm jobs"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Esrum Cluster  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">4. </span>Using the cluster</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U"><span class="section-number">4.3. </span>Running jobs using Slurm</a> &#187;</li> 
-      </ul>
-    </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../../index.html">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">4.3.3. Using the GPU/hi-MEM node</a><ul>
-<li><a class="reference internal" href="#monitoring-gpu-utilization">4.3.3.1. Monitoring GPU utilization</a><ul>
-<li><a class="reference internal" href="#troubleshooting">4.3.3.1.1. Troubleshooting</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#error-requested-node-configuration-is-not-available">4.3.3.2. Error: Requested node configuration is not available</a></li>
-</ul>
-</li>
-</ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="advanced.html"
-                        title="previous chapter"><span class="section-number">4.3.2. </span>Advanced Slurm jobs</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="../modules.html"
-                        title="next chapter"><span class="section-number">4.4. </span>Environment modules</a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-        </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Esrum Cluster  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
       </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">Esrum Cluster  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../contact.html">1. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">2. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guidelines.html">3. Guidelines</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">4. Using the cluster</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 4. Using the cluster</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../access/index.html">4.1. Accessing the cluster</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 4.1. Accessing the cluster</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../access/access.html">4.1.1. Applying for access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../access/connecting.html">4.1.2. Connecting to the cluster</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../filesystem.html">4.2. Projects, data, and home folders</a></li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">4.3. Running jobs using Slurm</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of 4.3. Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="basics.html">4.3.1. Basic Slurm jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced.html">4.3.2. Advanced Slurm jobs</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">4.3.3. Using the GPU/hi-MEM node</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../modules.html">4.4. Environment modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transfers.html">4.5. Transferring data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../services/index.html">5. Other services</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 5. Other services</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../services/rstudio.html">5.1. R, RStudio, and Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../services/containers.html">5.2. Running containerized software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../services/shiny.html">5.3. Public and private Shiny servers</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../tips/index.html">6. Tips and tricks</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 6. Tips and tricks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tips/modules.html">6.1. Creating environment modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tips/tmux.html">6.2. Persistent sessions with tmux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tips/batching_commands.html">6.3. Batching commands outside Slurm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tips/robust_scripts.html">6.4. Writing robust bash scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting.html">7. Troubleshooting</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../communications/index.html">8. Communications</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 8. Communications</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../communications/welcome.html">8.1. Welcome to CBMRs Compute Cluster Esrum!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../communications/workshops.html">8.2. Workshops and other presentations</a></li>
+</ul>
+</li>
+</ul>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="using-the-gpu-hi-mem-node">
-<span id="p-usage-slurm-gpu"></span><h1><span class="section-number">4.3.3. </span>Using the GPU/hi-MEM node<a class="headerlink" href="#using-the-gpu-hi-mem-node" title="Permalink to this headline">¶</a></h1>
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="using-the-gpu-hi-mem-node">
+<span id="p-usage-slurm-gpu"></span><h1><span class="section-number">4.3.3. </span>Using the GPU/hi-MEM node<a class="headerlink" href="#using-the-gpu-hi-mem-node" title="Permalink to this heading">#</a></h1>
 <p>This section describes how to schedule a task on the GPU/hi-MEM node.
 The GPU node is intended for tasks that need to use GPUs and for tasks
 that have very high memory requirements (more than 2 TB).</p>
-<p>To schedule a task on the GPU node you need to select the GPU queue and
-(optionally) specify the number of Nvidia A100 GPUs needed (1 or 2). For
-example, the following command queues the command <code class="docutils literal notranslate"><span class="pre">my-gpu-command</span></code> and
-requests a single A100 GPU:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> srun --partition<span class="o">=</span>gpuqueue --gres<span class="o">=</span>gpu:a100:1 -- my-gpu-command
+<section id="running-software-on-the-gpu-node">
+<h2><span class="section-number">4.3.3.1. </span>Running software on the GPU node<a class="headerlink" href="#running-software-on-the-gpu-node" title="Permalink to this heading">#</a></h2>
+<p>It is possible to use the GPU node in an interactive session (see
+below), but since we have few GPUs available we ask that you limit the
+usage of interactive sessions <em>as much as possible</em>. This ensures that
+the GPUs are available for use when you (or other users) are not
+actively using them.</p>
+<p>The recommended way to use the GPUs is therefore to submit a job to
+Slurm using the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command. To do so you need to specify two
+options as part of your <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="hll"><span class="c1">#SBATCH --partition=gpuqueue --gres=gpu:1</span>
+</span>
+nvidia-smi<span class="w"> </span>-L
 </pre></div>
 </div>
-<p>Alternatively you may reserve both GPUs:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> srun --partition<span class="o">=</span>gpuqueue --gres<span class="o">=</span>gpu:a100:2 -- my-gpu-command
+<p>There are two required options:</p>
+<ol class="arabic simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">--partition=gpuqueue</span></code> option ensures that we are running on
+the GPU Slurm job queue, which is distinct from the standard Slurm
+job queue that only has access to normal compute nodes.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">--gres=gpu:1</span></code> asks Slurm to make 1 GPU available to our job.
+This can be increased to <code class="docutils literal notranslate"><span class="pre">2</span></code> to reserve both GPUs, but because of
+the limited number of GPUs we ask that you only reserve 1 GPU per
+job, which is normally also more efficient.</p></li>
+</ol>
+<p>This script can then be submitted as usual:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbatch<span class="w"> </span>my_gpu_job.sh
+Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">217218</span>
+$<span class="w"> </span>cat<span class="w"> </span>slurm-217218.out
+GPU<span class="w"> </span><span class="m">0</span>:<span class="w"> </span>NVIDIA<span class="w"> </span>A100<span class="w"> </span>80GB<span class="w"> </span>PCIe<span class="w"> </span><span class="o">(</span>UUID:<span class="w"> </span>GPU-4f2ff8df-0d18-a99b-9fb8-67aa0867f7a3<span class="o">)</span>
 </pre></div>
 </div>
-<p>If you on not need to use a GPU, then you can omit the <code class="docutils literal notranslate"><span class="pre">--gres</span></code>
-option:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> srun --partition<span class="o">=</span>gpuqueue -- my-command
+<p>See the <a class="reference internal" href="basics.html#p-usage-slurm-basics"><span class="std std-ref">Basic Slurm jobs</span></a> and <a class="reference internal" href="advanced.html#p-usage-slurm-advanced"><span class="std std-ref">Advanced Slurm jobs</span></a>
+pages for information about reserving additional CPUs, more RAM, and for
+setting other Slurm settings for your jobs.</p>
+<section id="running-an-interactive-session">
+<h3><span class="section-number">4.3.3.1.1. </span>Running an interactive session<a class="headerlink" href="#running-an-interactive-session" title="Permalink to this heading">#</a></h3>
+<p>It is also possible to reserve GPUs for interactive sessions should you
+need to experiment with running a piece of software or should the
+software itself be interactive. See the <a class="reference internal" href="basics.html#s-interactive-session"><span class="std std-ref">Interactive sessions</span></a>
+section for information about interactive sessions, including
+information about running programs with graphical interfaces.</p>
+<p>To start an interactive session using a GPU you simply apply the same
+<code class="docutils literal notranslate"><span class="pre">--partition</span></code> and <code class="docutils literal notranslate"><span class="pre">--gres</span></code> options as above:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--gres<span class="o">=</span>gpu:a100:1<span class="w"> </span>--<span class="w"> </span>/bin/bash
 </pre></div>
 </div>
-<p>As above you must also specify your CPU and RAM requirements using
-<code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code> and <code class="docutils literal notranslate"><span class="pre">--mem</span></code>.</p>
-<div class="section" id="monitoring-gpu-utilization">
-<h2><span class="section-number">4.3.3.1. </span>Monitoring GPU utilization<a class="headerlink" href="#monitoring-gpu-utilization" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Due to changes to Slurm settings, to ensure that jobs cannot
-access resources that were not reserved for them, it is currently
-not possible to monitor GPUs usage from a different job using the
-instructions below. The documentation will be updates shortly.</p>
-</div>
-</div></blockquote>
-<p>Slurm does not provide any means of monitoring the actual GPU
-utilization, but tools such as <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> can be used to monitor
-performance metrics. And since we are not going to actually <em>use</em> the
-GPU, we can simply omit the <code class="docutils literal notranslate"><span class="pre">--gres</span></code> option.</p>
+<p>Interactive sessions should only be used for tasks that <em>cannot</em> be run
+via <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> and the sessions should be closed as soon as you are done
+running your software. This ensures that the GPUs are available to other
+users.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>If you need to make use of GPU resources (passive monitoring
-excluded), then you <em>must</em> also specify the appropriate <code class="docutils literal notranslate"><span class="pre">--gres</span></code>
-option. Failure to do so will result in your jobs being terminated!</p>
+<p>Interactive sessions left running on the GPU node may be terminated
+without warning.</p>
 </div>
-<p>This allows slurm to run the monitoring task even when the GPUs are
-reserved:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> srun --partition<span class="o">=</span>gpuqueue -- nvidia-smi -l <span class="m">5</span>
-<span class="go">Thu Jun  8 12:18:15 2023</span>
-<span class="go">+-----------------------------------------------------------------------------+</span>
-<span class="go">| NVIDIA-SMI 525.60.13    Driver Version: 525.60.13    CUDA Version: 12.0     |</span>
-<span class="go">|-------------------------------+----------------------+----------------------+</span>
-<span class="go">| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |</span>
-<span class="go">| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |</span>
-<span class="go">|                               |                      |               MIG M. |</span>
-<span class="go">|===============================+======================+======================|</span>
-<span class="go">|   0  NVIDIA A100 80G...  On   | 00000000:27:00.0 Off |                    0 |</span>
-<span class="go">| N/A   43C    P0    47W / 300W |      0MiB / 81920MiB |      0%      Default |</span>
-<span class="go">|                               |                      |             Disabled |</span>
-<span class="go">+-------------------------------+----------------------+----------------------+</span>
-<span class="go">|   1  NVIDIA A100 80G...  On   | 00000000:A3:00.0 Off |                    0 |</span>
-<span class="go">| N/A   43C    P0    45W / 300W |      0MiB / 81920MiB |      0%      Default |</span>
-<span class="go">|                               |                      |             Disabled |</span>
-<span class="go">+-------------------------------+----------------------+----------------------+</span>
-
-<span class="go">+-----------------------------------------------------------------------------+</span>
-<span class="go">| Processes:                                                                  |</span>
-<span class="go">|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |</span>
-<span class="go">|        ID   ID                                                   Usage      |</span>
-<span class="go">|=============================================================================|</span>
-<span class="go">|  No running processes found                                                 |</span>
-<span class="go">+-----------------------------------------------------------------------------+</span>
+</section>
+</section>
+<section id="monitoring-gpu-utilization">
+<span id="s-monitoring-gpu-utilization"></span><h2><span class="section-number">4.3.3.2. </span>Monitoring GPU utilization<a class="headerlink" href="#monitoring-gpu-utilization" title="Permalink to this heading">#</a></h2>
+<p>It is highly recommended to monitor GPU utilization when you run jobs on
+the GPU node: To make full use of the hardware you want to keep GPU
+utilization at 100% and to do so you typically want to load as much data
+into GPU memory as possible. The exact way in which you can accomplish
+this depends on the software you are running, but can often be
+accomplished by increasing the size of the batches you are processing.</p>
+<p>The way in which you are using the GPUs will affect how you can monitor
+them, depending on whether or not you have reserved a GPU for an
+interactive session:</p>
+<section id="monitoring-an-interactive-session">
+<h3><span class="section-number">4.3.3.2.1. </span>Monitoring an interactive session<a class="headerlink" href="#monitoring-an-interactive-session" title="Permalink to this heading">#</a></h3>
+<p>If you are running a job in an interactive session, then you can monitor
+the reserved GPU(s) directly using the <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nvidia-smi<span class="w"> </span>-l<span class="w"> </span><span class="m">5</span>
+<span class="go">Thu Apr  4 14:30:46 2024</span>
+<span class="go">+---------------------------------------------------------------------------------------+</span>
+<span class="go">| NVIDIA-SMI 545.23.08              Driver Version: 545.23.08    CUDA Version: 12.3     |</span>
+<span class="go">|-----------------------------------------+----------------------+----------------------+</span>
+<span class="go">| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |</span>
+<span class="go">| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |</span>
+<span class="go">|                                         |                      |               MIG M. |</span>
+<span class="go">|=========================================+======================+======================|</span>
+<span class="go">|   0  NVIDIA A100 80GB PCIe          On  | 00000000:27:00.0 Off |                    0 |</span>
+<span class="go">| N/A   57C    P0             307W / 300W |  52357MiB / 81920MiB |         99%  Default |</span>
+<span class="go">|                                         |                      |             Disabled |</span>
+<span class="go">+-----------------------------------------+----------------------+----------------------+</span>
+<span class="go">|   1  NVIDIA A100 80GB PCIe          On  | 00000000:A3:00.0 Off |                    0 |</span>
+<span class="go">| N/A   56C    P0             298W / 300W |  58893MiB / 81920MiB |        100%  Default |</span>
+<span class="go">|                                         |                      |             Disabled |</span>
+<span class="go">+-----------------------------------------+----------------------+----------------------+</span>
+<span class="go">+---------------------------------------------------------------------------------------+</span>
+<span class="go">| Processes:                                                                            |</span>
+<span class="go">|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |</span>
+<span class="go">|        ID   ID                                                                 Usage  |</span>
+<span class="go">|=======================================================================================|</span>
+<span class="go">|    0   N/A  N/A   2807877  C   dorado                                        52344MiB |</span>
+<span class="go">|    1   N/A  N/A   2807849  C   dorado                                        58880MiB |</span>
+<span class="go">+---------------------------------------------------------------------------------------+</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">gpustat</span></code> tool provides a more convenient overview but must be
-installed via <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install gpustat
-<span class="gp">$</span> srun --partition<span class="o">=</span>gpuqueue --pty -- gpustat -i <span class="m">5</span>
-<span class="go">esrumgpun01fl.unicph.domain  Thu Jun  8 12:20:24 2023  525.60.13</span>
-<span class="go">[0] NVIDIA A100 80GB PCIe | 43°C,   0 % |     0 / 81920 MB |</span>
-<span class="go">[1] NVIDIA A100 80GB PCIe | 43°C,   0 % |     0 / 81920 MB |</span>
+<p>This will print resource usage for the GPUs you have reserved for your
+interactive session (and only for those GPUs), and continue to print it
+every 5 seconds afterwards via <code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">5</span></code>. Other monitoring tools are
+available (for example <code class="docutils literal notranslate"><span class="pre">gpustat</span></code>), but are outside the scope of this
+documentation.</p>
+</section>
+<section id="monitoring-a-slurm-job">
+<h3><span class="section-number">4.3.3.2.2. </span>Monitoring a Slurm job<a class="headerlink" href="#monitoring-a-slurm-job" title="Permalink to this heading">#</a></h3>
+<p>If you have started a standard (non-interactive) job via Slurm, then you
+will not be able to directly run <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> nor will you be able to
+join the running job using <code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">-j</span></code> (due to the way Slurm handles
+special resources). We have therefore setup a log-file on the
+<code class="docutils literal notranslate"><span class="pre">esrumgpun01fl</span></code> node that contains the output from the <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code>
+command as shown above.</p>
+<p>Use the following command to watch the content of this log-file:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--<span class="w"> </span>watch<span class="w"> </span>-n<span class="w"> </span><span class="m">15</span><span class="w"> </span>-d<span class="w"> </span>cat<span class="w"> </span>/scratch/gpus/nvidia-smi.txt
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">--pty</span></code> option is used in order to support colored, full-screen
-output despite not running an interactive actual shell. As an
-alternative, you can also start an interactive shell on the GPU node and
-run <code class="docutils literal notranslate"><span class="pre">gpustats</span></code> or <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> that way:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> srun --partition<span class="o">=</span>gpuqueue --pty -- /bin/bash
-<span class="gp">$</span> gpustat -i <span class="m">5</span>
-</pre></div>
-</div>
-<div class="section" id="troubleshooting">
-<h3><span class="section-number">4.3.3.1.1. </span>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h3>
-</div>
-</div>
-<div class="section" id="error-requested-node-configuration-is-not-available">
-<h2><span class="section-number">4.3.3.2. </span>Error: Requested node configuration is not available<a class="headerlink" href="#error-requested-node-configuration-is-not-available" title="Permalink to this headline">¶</a></h2>
+<p>This prints the contents of the log-file every 15 seconds and optionally
+highlights the changes since the last <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> run (remove the
+<code class="docutils literal notranslate"><span class="pre">-d</span></code> option to disable).</p>
+<p>This command does <em>not</em> reserve a GPU and while we ask that you remember
+to terminate this command when you no longer need to monitor the GPUs,
+it is not as urgent as for interactive sessions where you <em>have</em>
+reserved a GPU.</p>
+</section>
+</section>
+<section id="troubleshooting">
+<h2><span class="section-number">4.3.3.3. </span>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
+<section id="error-requested-node-configuration-is-not-available">
+<h3><span class="section-number">4.3.3.3.1. </span>Error: Requested node configuration is not available<a class="headerlink" href="#error-requested-node-configuration-is-not-available" title="Permalink to this heading">#</a></h3>
 <p>See the Slurm Basics <a class="reference internal" href="basics.html#s-slurm-basics-troubleshooting"><span class="std std-ref">What's next</span></a> section.</p>
-</div>
-</div>
+</section>
+</section>
+</section>
 
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../modules.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title"><span class="section-number">4.4. </span>Environment modules</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="advanced.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title"><span class="section-number">4.3.2. </span>Advanced Slurm jobs</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, CBMR Phenomics
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">4.3.3. Using the GPU/hi-MEM node</a><ul>
+<li><a class="reference internal" href="#running-software-on-the-gpu-node">4.3.3.1. Running software on the GPU node</a><ul>
+<li><a class="reference internal" href="#running-an-interactive-session">4.3.3.1.1. Running an interactive session</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#monitoring-gpu-utilization">4.3.3.2. Monitoring GPU utilization</a><ul>
+<li><a class="reference internal" href="#monitoring-an-interactive-session">4.3.3.2.1. Monitoring an interactive session</a></li>
+<li><a class="reference internal" href="#monitoring-a-slurm-job">4.3.3.2.2. Monitoring a Slurm job</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#troubleshooting">4.3.3.3. Troubleshooting</a><ul>
+<li><a class="reference internal" href="#error-requested-node-configuration-is-not-available">4.3.3.3.1. Error: Requested node configuration is not available</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
           </div>
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../modules.html" title="4.4. Environment modules"
-             >next</a></li>
-        <li class="right" >
-          <a href="advanced.html" title="4.3.2. Advanced Slurm jobs"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">Esrum Cluster  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" ><span class="section-number">4. </span>Using the cluster</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" ><span class="section-number">4.3. </span>Running jobs using Slurm</a> &#187;</li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2023, CBMR Phenomics.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
-    </div>
-  </body>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../_static/js/custom.js?v=7a324050"></script>
+    <script src="../../_static/js/libgif.js?v=7adcb026"></script>
+    <script src="../../_static/js/playback.js?v=c0a59f95"></script>
+    </body>
 </html>

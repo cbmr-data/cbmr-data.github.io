@@ -12,20 +12,22 @@ administration is handled by KU-IT via the `KU-IT Service portal`_.
  Architecture
 **************
 
-The cluster consists of a head node, 8 compute nodes, a container node,
-and 1 GPU node:
+The cluster consists of a head node, 12 compute nodes, 1 GPU/Hi-mem
+node, 1 Rstudio server, and 1 server for running containers:
 
-+---+-----------+------+-------------------------+---------------------+
-|   | Node      | RAM  | CPUs                    | GPUs                |
-+===+===========+======+=========================+=====================+
-| 1 | Head      | 2 TB | 2x24 core AMD EPYC 7413 |                     |
-+---+-----------+------+-------------------------+---------------------+
-| 8 | Compute   | 2 TB | 2x32 core AMD EPYC 7543 |                     |
-+---+-----------+------+-------------------------+---------------------+
-| 1 | Container | 2 TB | 2x32 core AMD EPYC 7543 |                     |
-+---+-----------+------+-------------------------+---------------------+
-| 1 | GPU       | 4 TB | 2x32 core AMD EPYC 75F3 | 2x NVIDIA A100 80GB |
-+---+-----------+------+-------------------------+---------------------+
++----+--------------+------+-------------------------+---------------------+-----------------+
+|    | Node         | RAM  | CPUs                    | GPUs                | Name            |
++====+==============+======+=========================+=====================+=================+
+| 1  | Head         | 2 TB | 2x24 core AMD EPYC 7413 |                     | *esrumhead01fl* |
++----+--------------+------+-------------------------+---------------------+-----------------+
+| 12 | Compute      | 2 TB | 2x32 core AMD EPYC 7543 |                     | *esrumcmpn\*fl* |
++----+--------------+------+-------------------------+---------------------+-----------------+
+| 1  | GPU / Hi-mem | 4 TB | 2x32 core AMD EPYC 75F3 | 2x NVIDIA A100 80GB | *esrumgpun01fl* |
++----+--------------+------+-------------------------+---------------------+-----------------+
+| 1  | Rstudio      | 2 TB | 2x32 core AMD EPYC 7543 |                     | *esrumweb01fl*  |
++----+--------------+------+-------------------------+---------------------+-----------------+
+| 1  | Container    | 2 TB | 2x32 core AMD EPYC 7543 |                     | *esrumcont01fl* |
++----+--------------+------+-------------------------+---------------------+-----------------+
 
 Users connect to the "head" node, from which jobs can be submitted to
 the individual compute nodes using the Slurm_ Workload Manager for

@@ -13,25 +13,25 @@ as the location and layout of projects and data-shares.
  Your home folder
 ******************
 
-The primary use of your home folder is to store your programs and
-scripts, configuration files, and similar files that are not related to
-specific projects. For this reason, your home cannot exceed 100 GB in
-size.
+Your home folder can hold 100GB of data and is meant to store your
+personal programs and related caches, configuration files, and similar
+files that are not related to your projects.
 
-However, we recommended to keep your scripts and similar files in your
-group project folder, to ensure that your group will have access to
-these now and in the future:
+We recommended that you to keep your non-project related scripts and
+other such files in your group project folder. Project folders are
+preserved even after you have left CBMR, so any scripts or other files
+that your colleagues may depend on should be stored there.
 
 .. warning::
 
-   Do **not** put project related files in your home folder! Only you
-   have access to your home folder and it requires written permission
-   from you if other users need to access files in your home after
-   you've left CBMR.
+   Only you have access to your home folder! Do **not** put project
+   related files or anything else your colleagues may depend on in your
+   home folder!
 
-   Your home should therefore be limited to your personal configuration
-   files, installed programs, and whatever/tools scripts that are not
-   required to reproduce your work in the projects you are working on.
+.. tip::
+
+   You can check the remaining capacity in your home folder using the
+   ``df -h ~`` command.
 
 KU network drives
 =================

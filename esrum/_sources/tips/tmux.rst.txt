@@ -147,30 +147,29 @@ releasing those keys, and *then* pressing the specified button and
 
 **Creating new terminals in a session**
 
-   -  ``CTRL+b c`` Creates a new terminal in the current session.
+-  ``CTRL+b c`` Creates a new terminal in the current session.
 
 **Switching between sessions and windows**
 
-   -  ``CTRL+b n`` Switches to the next window (terminal)
-   -  ``CTRL+b p`` Switches to the previous window (terminal)
-   -  ``CTRL+b s`` Switches to a different session (group of terminals)
+-  ``CTRL+b n`` Switches to the next window (terminal)
+-  ``CTRL+b p`` Switches to the previous window (terminal)
+-  ``CTRL+b s`` Switches to a different session (group of terminals)
 
 **Renaming sessions and windows**
 
-   -  ``CTRL+b ,`` Renames the current window (terminal)
-   -  ``CTRL+b $`` Renames the current session (group of terminals)
+-  ``CTRL+b ,`` Renames the current window (terminal)
+-  ``CTRL+b $`` Renames the current session (group of terminals)
 
 **Detaching from tmux**
 
-   -  ``CTRL+b d`` Detaches from the current session (group of
-      terminals). Tmux keeps running after this along with your
-      terminals.
+-  ``CTRL+b d`` Detaches from the current session (group of terminals).
+   Tmux keeps running after this along with your terminals.
 
 **Scrolling in a tmux window**
 
-   -  ``CTRL+b PageUp`` Enables scrolling with PageUp/PageDown and arrow
-      keys. Press ESC to exit scrolling mode. Current line-number is
-      indicated in yellow in the top right corner.
+-  ``CTRL+b PageUp`` Enables scrolling with PageUp/PageDown and arrow
+   keys. Press ESC to exit scrolling mode. Current line-number is
+   indicated in yellow in the top right corner.
 
 **********************
  Additional resources

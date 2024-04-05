@@ -1,90 +1,238 @@
-
-
 <!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="search" title="Search" href="../search.html" /><link rel="next" title="4.5. Transferring data" href="transfers.html" /><link rel="prev" title="4.3.3. Using the GPU/hi-MEM node" href="slurm/gpu.html" />
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta charset="utf-8" />
-    <title>4.4. Environment modules &#8212; Esrum Cluster  documentation</title>
-    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/playback.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+        <title>4.4. Environment modules - Esrum Cluster documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/playback.css?v=2c0b8537" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e2322aab" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
-    <script src="../_static/js/custom.js"></script>
-    <script src="../_static/js/libgif.js"></script>
-    <script src="../_static/bizstyle.js"></script>
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.5. Transferring data" href="transfers.html" />
-    <link rel="prev" title="4.3.3. Using the GPU/hi-MEM node" href="slurm/gpu.html" />
-    <script defer src="../_static/js/playback.js"></script>
+    
 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="transfers.html" title="4.5. Transferring data"
-             accesskey="N">next</a></li>
-        <li class="right" >
-          <a href="slurm/gpu.html" title="4.3.3. Using the GPU/hi-MEM node"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Esrum Cluster  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">4. </span>Using the cluster</a> &#187;</li> 
-      </ul>
-    </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">4.4. Environment modules</a><ul>
-<li><a class="reference internal" href="#basic-usage">4.4.1. Basic usage</a><ul>
-<li><a class="reference internal" href="#finding-available-modules">4.4.1.1. Finding available modules</a></li>
-<li><a class="reference internal" href="#loading-a-module">4.4.1.2. Loading a module</a></li>
-<li><a class="reference internal" href="#listing-and-unloading-loaded-modules">4.4.1.3. Listing and unloading loaded modules</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#making-your-analyses-reproducible">4.4.2. Making your analyses reproducible</a><ul>
-<li><a class="reference internal" href="#managing-modules-with-module-save-restore">4.4.2.1. Managing modules with <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">save/restore</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#shared-cbmr-modules">4.4.3. Shared CBMR modules</a></li>
-<li><a class="reference internal" href="#requesting-missing-modules">4.4.4. Requesting missing modules</a></li>
-</ul>
-</li>
-</ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="slurm/gpu.html"
-                        title="previous chapter"><span class="section-number">4.3.3. </span>Using the GPU/hi-MEM node</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="transfers.html"
-                        title="next chapter"><span class="section-number">4.5. </span>Transferring data</a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-        </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Esrum Cluster  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
       </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">Esrum Cluster  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">1. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">2. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guidelines.html">3. Guidelines</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">4. Using the cluster</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 4. Using the cluster</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="access/index.html">4.1. Accessing the cluster</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 4.1. Accessing the cluster</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="access/access.html">4.1.1. Applying for access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="access/connecting.html">4.1.2. Connecting to the cluster</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="filesystem.html">4.2. Projects, data, and home folders</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="slurm/index.html">4.3. Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of 4.3. Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="slurm/basics.html">4.3.1. Basic Slurm jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slurm/advanced.html">4.3.2. Advanced Slurm jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slurm/gpu.html">4.3.3. Using the GPU/hi-MEM node</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">4.4. Environment modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfers.html">4.5. Transferring data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../services/index.html">5. Other services</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 5. Other services</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../services/rstudio.html">5.1. R, RStudio, and Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/containers.html">5.2. Running containerized software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/shiny.html">5.3. Public and private Shiny servers</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tips/index.html">6. Tips and tricks</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 6. Tips and tricks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tips/modules.html">6.1. Creating environment modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tips/tmux.html">6.2. Persistent sessions with tmux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tips/batching_commands.html">6.3. Batching commands outside Slurm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tips/robust_scripts.html">6.4. Writing robust bash scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">7. Troubleshooting</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../communications/index.html">8. Communications</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 8. Communications</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../communications/welcome.html">8.1. Welcome to CBMRs Compute Cluster Esrum!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../communications/workshops.html">8.2. Workshops and other presentations</a></li>
+</ul>
+</li>
+</ul>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="environment-modules">
-<span id="p-usage-modules"></span><h1><span class="section-number">4.4. </span>Environment modules<a class="headerlink" href="#environment-modules" title="Permalink to this headline">¶</a></h1>
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="environment-modules">
+<span id="p-usage-modules"></span><h1><span class="section-number">4.4. </span>Environment modules<a class="headerlink" href="#environment-modules" title="Permalink to this heading">#</a></h1>
 <p>A wide range of scientific (and other) software is made available on
 Esrum via so-called <a class="reference external" href="https://modules.sourceforge.net/">Environment modules</a>. While environment modules
 add some complexity, they allow both different versions of software as
@@ -95,103 +243,103 @@ may also set up their own private or shared environment modules. See the
 <a class="reference internal" href="../tips/modules.html#p-tips-modules"><span class="std std-ref">Creating environment modules</span></a> section for more information.</p>
 <p>A collection of software managed by the Data Analytics team is also
 available. See the <a class="reference internal" href="#s-shared-modules"><span class="std std-ref">Shared CBMR modules</span></a> section below.</p>
-<div class="section" id="basic-usage">
-<h2><span class="section-number">4.4.1. </span>Basic usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
+<section id="basic-usage">
+<h2><span class="section-number">4.4.1. </span>Basic usage<a class="headerlink" href="#basic-usage" title="Permalink to this heading">#</a></h2>
 <p>This section briefly describe how to carry out common tasks using the
 module system: Finding what modules are available, loading a module, and
 unloading them again. For more information see the <a class="reference external" href="https://modules.readthedocs.io/en/v4.5.2/">official
 documentation</a>.</p>
-<div class="section" id="finding-available-modules">
-<h3><span class="section-number">4.4.1.1. </span>Finding available modules<a class="headerlink" href="#finding-available-modules" title="Permalink to this headline">¶</a></h3>
+<section id="finding-available-modules">
+<h3><span class="section-number">4.4.1.1. </span>Finding available modules<a class="headerlink" href="#finding-available-modules" title="Permalink to this heading">#</a></h3>
 <p>The first step is to determine what modules are available on the server.
 This is accomplished with the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code> command, that lists all
 available modules by default:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ module avail
--------------------------- /opt/software/modules --------------------------
-anaconda2/4.0.0            libpng/1.6.39               texlive/2023
-anaconda3/4.0.0            libtool/2.4.7               tiff/4.5.0
-anaconda3/5.3.1            libuv/1.44.2                topspin/4.1.4
-anaconda3/2020.11          libxkbcommon/1.3.0          trimgalore/0.6.6
-anaconda3/2021.05          libxscrnsaver/1.0.0         trnascan-se/2.0.11
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>avail
+--------------------------<span class="w"> </span>/opt/software/modules<span class="w"> </span>--------------------------
+anaconda2/4.0.0<span class="w">            </span>libpng/1.6.39<span class="w">               </span>texlive/2023
+anaconda3/4.0.0<span class="w">            </span>libtool/2.4.7<span class="w">               </span>tiff/4.5.0
+anaconda3/5.3.1<span class="w">            </span>libuv/1.44.2<span class="w">                </span>topspin/4.1.4
+anaconda3/2020.11<span class="w">          </span>libxkbcommon/1.3.0<span class="w">          </span>trimgalore/0.6.6
+anaconda3/2021.05<span class="w">          </span>libxscrnsaver/1.0.0<span class="w">         </span>trnascan-se/2.0.11
 <span class="o">[</span>...<span class="o">]</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">avail</span></code> command can also be used to search for specific modules by
 specifying one or more keywords:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ module avail sam
--------------------------- /opt/software/modules --------------------------
-samtools/1.12  samtools/1.17
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>avail<span class="w"> </span>sam
+--------------------------<span class="w"> </span>/opt/software/modules<span class="w"> </span>--------------------------
+samtools/1.12<span class="w">  </span>samtools/1.17
 </pre></div>
 </div>
-</div>
-<div class="section" id="loading-a-module">
-<h3><span class="section-number">4.4.1.2. </span>Loading a module<a class="headerlink" href="#loading-a-module" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="loading-a-module">
+<h3><span class="section-number">4.4.1.2. </span>Loading a module<a class="headerlink" href="#loading-a-module" title="Permalink to this heading">#</a></h3>
 <p>The modules are loaded using the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code> command. This command
 adds the executable to your PATH and performs any other setup required
 to run the software.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ samtools
--bash: samtools: <span class="nb">command</span> not found
-$ module load samtools
-$ samtools
-Program: samtools <span class="o">(</span>Tools <span class="k">for</span> alignments in the SAM format<span class="o">)</span>
-Version: <span class="m">1</span>.17 <span class="o">(</span>using htslib <span class="m">1</span>.17<span class="o">)</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>samtools
+-bash:<span class="w"> </span>samtools:<span class="w"> </span><span class="nb">command</span><span class="w"> </span>not<span class="w"> </span>found
+$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>samtools
+$<span class="w"> </span>samtools
+Program:<span class="w"> </span>samtools<span class="w"> </span><span class="o">(</span>Tools<span class="w"> </span><span class="k">for</span><span class="w"> </span>alignments<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>SAM<span class="w"> </span>format<span class="o">)</span>
+Version:<span class="w"> </span><span class="m">1</span>.17<span class="w"> </span><span class="o">(</span>using<span class="w"> </span>htslib<span class="w"> </span><span class="m">1</span>.17<span class="o">)</span>
 <span class="o">[</span>...<span class="o">]</span>
 </pre></div>
 </div>
 <p>Multiple modules may be specified per <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code> command and it is
 also possible to specify the exact version that you need, provided that
 a module is available for that version:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ module load samtools/1.12
-$ samtools
-Program: samtools <span class="o">(</span>Tools <span class="k">for</span> alignments in the SAM format<span class="o">)</span>
-Version: <span class="m">1</span>.12 <span class="o">(</span>using htslib <span class="m">1</span>.12<span class="o">)</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>samtools/1.12
+$<span class="w"> </span>samtools
+Program:<span class="w"> </span>samtools<span class="w"> </span><span class="o">(</span>Tools<span class="w"> </span><span class="k">for</span><span class="w"> </span>alignments<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>SAM<span class="w"> </span>format<span class="o">)</span>
+Version:<span class="w"> </span><span class="m">1</span>.12<span class="w"> </span><span class="o">(</span>using<span class="w"> </span>htslib<span class="w"> </span><span class="m">1</span>.12<span class="o">)</span>
 <span class="o">[</span>...<span class="o">]</span>
 </pre></div>
 </div>
 <p>In some cases one module will require another module:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ module load bcftools
-Loading bcftools/1.16
-ERROR: bcftools/1.16 cannot be loaded due to missing prereq.
-   HINT: the following module must be loaded first: perl
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>bcftools
+Loading<span class="w"> </span>bcftools/1.16
+ERROR:<span class="w"> </span>bcftools/1.16<span class="w"> </span>cannot<span class="w"> </span>be<span class="w"> </span>loaded<span class="w"> </span>due<span class="w"> </span>to<span class="w"> </span>missing<span class="w"> </span>prereq.
+<span class="w">   </span>HINT:<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>module<span class="w"> </span>must<span class="w"> </span>be<span class="w"> </span>loaded<span class="w"> </span>first:<span class="w"> </span>perl
 </pre></div>
 </div>
 <p>In that case you simply need to load the required module first. This can
 be done in done manually:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ module load perl
-$ module load bcftools
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>perl
+$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>bcftools
 </pre></div>
 </div>
 <p>Or automatically:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ module load --auto bcftools
-Loading bcftools/1.16
-  Loading requirement: perl/5.26.3
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>--auto<span class="w"> </span>bcftools
+Loading<span class="w"> </span>bcftools/1.16
+<span class="w">  </span>Loading<span class="w"> </span>requirement:<span class="w"> </span>perl/5.26.3
 </pre></div>
 </div>
-</div>
-<div class="section" id="listing-and-unloading-loaded-modules">
-<h3><span class="section-number">4.4.1.3. </span>Listing and unloading loaded modules<a class="headerlink" href="#listing-and-unloading-loaded-modules" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="listing-and-unloading-loaded-modules">
+<h3><span class="section-number">4.4.1.3. </span>Listing and unloading loaded modules<a class="headerlink" href="#listing-and-unloading-loaded-modules" title="Permalink to this heading">#</a></h3>
 <p>The modules you have loaded can be listed using the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">list</span></code>
 command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ modules list
-Currently Loaded Modulefiles:
- <span class="m">1</span><span class="o">)</span> perl/5.26.3   <span class="m">2</span><span class="o">)</span> bcftools/1.16   <span class="m">3</span><span class="o">)</span> samtools/1.12
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>modules<span class="w"> </span>list
+Currently<span class="w"> </span>Loaded<span class="w"> </span>Modulefiles:
+<span class="w"> </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>perl/5.26.3<span class="w">   </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>bcftools/1.16<span class="w">   </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>samtools/1.12
 </pre></div>
 </div>
 <p>To remove a module that you no longer need, use the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">unload</span></code>
 command to unload a single module or the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code> command to
 unload all modules:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Unload the samtools module</span>
-$ module unload samtools
+$<span class="w"> </span>module<span class="w"> </span>unload<span class="w"> </span>samtools
 <span class="c1"># Unload the remaining modules</span>
-$ module purge
-$ modules list
-No Modulefiles Currently Loaded.
+$<span class="w"> </span>module<span class="w"> </span>purge
+$<span class="w"> </span>modules<span class="w"> </span>list
+No<span class="w"> </span>Modulefiles<span class="w"> </span>Currently<span class="w"> </span>Loaded.
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="making-your-analyses-reproducible">
-<h2><span class="section-number">4.4.2. </span>Making your analyses reproducible<a class="headerlink" href="#making-your-analyses-reproducible" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="making-your-analyses-reproducible">
+<h2><span class="section-number">4.4.2. </span>Making your analyses reproducible<a class="headerlink" href="#making-your-analyses-reproducible" title="Permalink to this heading">#</a></h2>
 <p>As described above you can load modules with or without versions
 specified. For a lot of software it is not very important that a
 specific version used, but even so it is highly recommended that you
@@ -205,12 +353,12 @@ were used when it is time to publish your results.</p></li>
 <p>The following section describes using the built-in <code class="docutils literal notranslate"><span class="pre">save/restore</span></code>
 commands to record and restoring your used modules, but it is also
 possible to do this by hand.</p>
-<div class="section" id="managing-modules-with-module-save-restore">
-<h3><span class="section-number">4.4.2.1. </span>Managing modules with <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">save/restore</span></code><a class="headerlink" href="#managing-modules-with-module-save-restore" title="Permalink to this headline">¶</a></h3>
+<section id="managing-modules-with-module-save-restore">
+<h3><span class="section-number">4.4.2.1. </span>Managing modules with <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">save/restore</span></code><a class="headerlink" href="#managing-modules-with-module-save-restore" title="Permalink to this heading">#</a></h3>
 <p>To export a list of your currently used models, use the following
 command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ module config collection_pin_version <span class="m">1</span>
-$ module save ./modules.txt
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>config<span class="w"> </span>collection_pin_version<span class="w"> </span><span class="m">1</span>
+$<span class="w"> </span>module<span class="w"> </span>save<span class="w"> </span>./modules.txt
 </pre></div>
 </div>
 <p>There are two important points here: Firstly, the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">config</span>
@@ -223,44 +371,44 @@ the list as a local file is recommended as it allows other users to see
 what software you used.</p>
 <p>If used correctly, the <code class="docutils literal notranslate"><span class="pre">./modules.txt</span></code> file will contain the currently
 loaded modules, e.g:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ module list
-Currently Loaded Modulefiles:
-<span class="m">1</span><span class="o">)</span> gcc/11.2.0   <span class="m">2</span><span class="o">)</span> samtools/1.17   <span class="m">3</span><span class="o">)</span> perl/5.26.3   <span class="m">4</span><span class="o">)</span> bcftools/1.16
-$ module config collection_pin_version <span class="m">1</span>
-$ module save ./modules.txt
-$ cat modules.txt
-module use --append /opt/software/modules
-module load gcc/11.2.0
-module load samtools/1.17
-module load perl/5.26.3
-module load bcftools/1.16
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>list
+Currently<span class="w"> </span>Loaded<span class="w"> </span>Modulefiles:
+<span class="m">1</span><span class="o">)</span><span class="w"> </span>gcc/11.2.0<span class="w">   </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>samtools/1.17<span class="w">   </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>perl/5.26.3<span class="w">   </span><span class="m">4</span><span class="o">)</span><span class="w"> </span>bcftools/1.16
+$<span class="w"> </span>module<span class="w"> </span>config<span class="w"> </span>collection_pin_version<span class="w"> </span><span class="m">1</span>
+$<span class="w"> </span>module<span class="w"> </span>save<span class="w"> </span>./modules.txt
+$<span class="w"> </span>cat<span class="w"> </span>modules.txt
+module<span class="w"> </span>use<span class="w"> </span>--append<span class="w"> </span>/opt/software/modules
+module<span class="w"> </span>load<span class="w"> </span>gcc/11.2.0
+module<span class="w"> </span>load<span class="w"> </span>samtools/1.17
+module<span class="w"> </span>load<span class="w"> </span>perl/5.26.3
+module<span class="w"> </span>load<span class="w"> </span>bcftools/1.16
 </pre></div>
 </div>
 <p>To load the saved modules, simply run <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">restore</span></code> with the same
 filename (and a directory component):</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ module list
-No Modulefiles Currently Loaded.
-$ module restore ./modules.txt
-$ module list
-Currently Loaded Modulefiles:
-<span class="m">1</span><span class="o">)</span> gcc/11.2.0   <span class="m">2</span><span class="o">)</span> samtools/1.17   <span class="m">3</span><span class="o">)</span> perl/5.26.3   <span class="m">4</span><span class="o">)</span> bcftools/1.16
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>list
+No<span class="w"> </span>Modulefiles<span class="w"> </span>Currently<span class="w"> </span>Loaded.
+$<span class="w"> </span>module<span class="w"> </span>restore<span class="w"> </span>./modules.txt
+$<span class="w"> </span>module<span class="w"> </span>list
+Currently<span class="w"> </span>Loaded<span class="w"> </span>Modulefiles:
+<span class="m">1</span><span class="o">)</span><span class="w"> </span>gcc/11.2.0<span class="w">   </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>samtools/1.17<span class="w">   </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>perl/5.26.3<span class="w">   </span><span class="m">4</span><span class="o">)</span><span class="w"> </span>bcftools/1.16
 </pre></div>
 </div>
 <p>Alternative, use the <code class="docutils literal notranslate"><span class="pre">.</span></code> or <code class="docutils literal notranslate"><span class="pre">source</span></code> command to execute the content
 of the file in your current shell. This has the same effect as running
 <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">restore</span></code>:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">source</span> ./modules.txt
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>./modules.txt
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ . ./modules.txt
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>.<span class="w"> </span>./modules.txt
 </pre></div>
 </div>
 <p>Simply running the script with <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">modules.sh</span></code> will not work.</p>
-</div>
-</div>
-<div class="section" id="shared-cbmr-modules">
-<span id="s-shared-modules"></span><h2><span class="section-number">4.4.3. </span>Shared CBMR modules<a class="headerlink" href="#shared-cbmr-modules" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="shared-cbmr-modules">
+<span id="s-shared-modules"></span><h2><span class="section-number">4.4.3. </span>Shared CBMR modules<a class="headerlink" href="#shared-cbmr-modules" title="Permalink to this heading">#</a></h2>
 <p>The Data Analytics team manages a small collection of modules for custom
 tools in the <cite>cbmr_shared</cite> project folder. If you have not already been
 given access to this project, then please follow the steps outlined in
@@ -268,20 +416,20 @@ given access to this project, then please follow the steps outlined in
 <code class="docutils literal notranslate"><span class="pre">COMP-PRJ-cbmr_shared</span></code> project.</p>
 <p>To make use of these modules, run the following command in your
 terminal:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ module use --prepend /projects/cbmr_shared/apps/modules/modulefiles/
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>use<span class="w"> </span>--prepend<span class="w"> </span>/projects/cbmr_shared/apps/modules/modulefiles/
 </pre></div>
 </div>
 <p>A small helper script is also available to run this command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">source</span> /projects/cbmr_shared/apps/modules/activate.sh
-Using modules in <span class="s1">&#39;/projects/cbmr_shared/apps/modules/modulefiles/&#39;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/projects/cbmr_shared/apps/modules/activate.sh
+Using<span class="w"> </span>modules<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s1">&#39;/projects/cbmr_shared/apps/modules/modulefiles/&#39;</span>
 </pre></div>
 </div>
 <p>You can add the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">use</span></code> command to the end of your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code>
 file to make the shared modules available every time you connect to
 Esrum.</p>
-</div>
-<div class="section" id="requesting-missing-modules">
-<span id="s-requesting-missing-modules"></span><h2><span class="section-number">4.4.4. </span>Requesting missing modules<a class="headerlink" href="#requesting-missing-modules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="requesting-missing-modules">
+<span id="s-requesting-missing-modules"></span><h2><span class="section-number">4.4.4. </span>Requesting missing modules<a class="headerlink" href="#requesting-missing-modules" title="Permalink to this heading">#</a></h2>
 <p>If the software you need is not available as a module, you you can
 request it through KU-IT as described below. You are also welcome to
 <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us if you need help determining the exact software
@@ -322,31 +470,94 @@ open a ticket as described above. In that case simply
 <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us with your request and we will forward it to
 KU-IT.</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="transfers.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title"><span class="section-number">4.5. </span>Transferring data</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="slurm/gpu.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title"><span class="section-number">4.3.3. </span>Using the GPU/hi-MEM node</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, CBMR Phenomics
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">4.4. Environment modules</a><ul>
+<li><a class="reference internal" href="#basic-usage">4.4.1. Basic usage</a><ul>
+<li><a class="reference internal" href="#finding-available-modules">4.4.1.1. Finding available modules</a></li>
+<li><a class="reference internal" href="#loading-a-module">4.4.1.2. Loading a module</a></li>
+<li><a class="reference internal" href="#listing-and-unloading-loaded-modules">4.4.1.3. Listing and unloading loaded modules</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#making-your-analyses-reproducible">4.4.2. Making your analyses reproducible</a><ul>
+<li><a class="reference internal" href="#managing-modules-with-module-save-restore">4.4.2.1. Managing modules with <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">save/restore</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#shared-cbmr-modules">4.4.3. Shared CBMR modules</a></li>
+<li><a class="reference internal" href="#requesting-missing-modules">4.4.4. Requesting missing modules</a></li>
+</ul>
+</li>
+</ul>
 
           </div>
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="transfers.html" title="4.5. Transferring data"
-             >next</a></li>
-        <li class="right" >
-          <a href="slurm/gpu.html" title="4.3.3. Using the GPU/hi-MEM node"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Esrum Cluster  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">4. </span>Using the cluster</a> &#187;</li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2023, CBMR Phenomics.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
-    </div>
-  </body>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../_static/js/custom.js?v=7a324050"></script>
+    <script src="../_static/js/libgif.js?v=7adcb026"></script>
+    <script src="../_static/js/playback.js?v=c0a59f95"></script>
+    </body>
 </html>

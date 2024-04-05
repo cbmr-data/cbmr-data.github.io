@@ -1,86 +1,238 @@
-
-
 <!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="search" title="Search" href="../search.html" /><link rel="next" title="6.3. Batching commands outside Slurm" href="batching_commands.html" /><link rel="prev" title="6.1. Creating environment modules" href="modules.html" />
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta charset="utf-8" />
-    <title>6.2. Persistent sessions with tmux &#8212; Esrum Cluster  documentation</title>
-    <link rel="stylesheet" href="../_static/bizstyle.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/playback.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+        <title>6.2. Persistent sessions with tmux - Esrum Cluster documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/playback.css?v=2c0b8537" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e2322aab" />
     
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
-    <script src="../_static/js/custom.js"></script>
-    <script src="../_static/js/libgif.js"></script>
-    <script src="../_static/bizstyle.js"></script>
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6.3. Batching commands outside Slurm" href="batching_commands.html" />
-    <link rel="prev" title="6.1. Creating environment modules" href="modules.html" />
-    <script defer src="../_static/js/playback.js"></script>
+    
 
-  </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="batching_commands.html" title="6.3. Batching commands outside Slurm"
-             accesskey="N">next</a></li>
-        <li class="right" >
-          <a href="modules.html" title="6.1. Creating environment modules"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Esrum Cluster  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><span class="section-number">6. </span>Tips and tricks</a> &#187;</li> 
-      </ul>
-    </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">6.2. Persistent sessions with tmux</a><ul>
-<li><a class="reference internal" href="#getting-started">6.2.1. Getting started</a><ul>
-<li><a class="reference internal" href="#creating-and-navigating-between-terminals">6.2.1.1. Creating and navigating between terminals</a></li>
-<li><a class="reference internal" href="#detaching-from-and-re-attaching-to-your-sessions">6.2.1.2. Detaching from and re-attaching to your sessions</a></li>
-<li><a class="reference internal" href="#naming-your-sessions-and-windows">6.2.1.3. Naming your sessions and windows</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#basic-shortcuts">6.2.2. Basic shortcuts</a></li>
-<li><a class="reference internal" href="#additional-resources">6.2.3. Additional resources</a></li>
-</ul>
-</li>
-</ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="modules.html"
-                        title="previous chapter"><span class="section-number">6.1. </span>Creating environment modules</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="batching_commands.html"
-                        title="next chapter"><span class="section-number">6.3. </span>Batching commands outside Slurm</a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-        </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Esrum Cluster  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
       </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">Esrum Cluster  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">1. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">2. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guidelines.html">3. Guidelines</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/index.html">4. Using the cluster</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 4. Using the cluster</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../usage/access/index.html">4.1. Accessing the cluster</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 4.1. Accessing the cluster</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../usage/access/access.html">4.1.1. Applying for access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage/access/connecting.html">4.1.2. Connecting to the cluster</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/filesystem.html">4.2. Projects, data, and home folders</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../usage/slurm/index.html">4.3. Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of 4.3. Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../usage/slurm/basics.html">4.3.1. Basic Slurm jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage/slurm/advanced.html">4.3.2. Advanced Slurm jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage/slurm/gpu.html">4.3.3. Using the GPU/hi-MEM node</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/modules.html">4.4. Environment modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/transfers.html">4.5. Transferring data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../services/index.html">5. Other services</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 5. Other services</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../services/rstudio.html">5.1. R, RStudio, and Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/containers.html">5.2. Running containerized software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/shiny.html">5.3. Public and private Shiny servers</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">6. Tips and tricks</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 6. Tips and tricks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="modules.html">6.1. Creating environment modules</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">6.2. Persistent sessions with tmux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="batching_commands.html">6.3. Batching commands outside Slurm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="robust_scripts.html">6.4. Writing robust bash scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">7. Troubleshooting</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../communications/index.html">8. Communications</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 8. Communications</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../communications/welcome.html">8.1. Welcome to CBMRs Compute Cluster Esrum!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../communications/workshops.html">8.2. Workshops and other presentations</a></li>
+</ul>
+</li>
+</ul>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="persistent-sessions-with-tmux">
-<span id="p-tips-tmux"></span><h1><span class="section-number">6.2. </span>Persistent sessions with tmux<a class="headerlink" href="#persistent-sessions-with-tmux" title="Permalink to this headline">¶</a></h1>
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="persistent-sessions-with-tmux">
+<span id="p-tips-tmux"></span><h1><span class="section-number">6.2. </span>Persistent sessions with tmux<a class="headerlink" href="#persistent-sessions-with-tmux" title="Permalink to this heading">#</a></h1>
 <p>This section describes how to use <a class="reference external" href="https://github.com/tmux/tmux/wiki">tmux</a> to manage multiple sets of
 terminals, to name your terminals to remind yourself what you were
 working with, and to leave your terminals running in the background when
@@ -95,12 +247,12 @@ keep using those.</p>
 <p>The following gives brief introduction to using <a class="reference external" href="https://github.com/tmux/tmux/wiki">tmux</a>. A more detailed
 <a class="reference external" href="https://github.com/tmux/tmux/wiki/Getting-Started">getting started</a> guide can be found in the official <a class="reference external" href="https://github.com/tmux/tmux/wiki">tmux</a>
 documentation.</p>
-<div class="section" id="getting-started">
-<h2><span class="section-number">6.2.1. </span>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<section id="getting-started">
+<h2><span class="section-number">6.2.1. </span>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h2>
 <p>To get started, <code class="docutils literal notranslate"><span class="pre">cd</span></code> to the directory you wish to work in and run
 <code class="docutils literal notranslate"><span class="pre">tmux</span></code> or the longer (but equivalent) command <code class="docutils literal notranslate"><span class="pre">tmux</span> <span class="pre">new</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> /projects/my_project/people/abc123
-<span class="gp">$</span> tmux
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/projects/my_project/people/abc123
+<span class="gp">$ </span>tmux
 </pre></div>
 </div>
 <img alt="../_images/tmux_new.gif" class="gif" src="../_images/tmux_new.gif" />
@@ -110,8 +262,8 @@ start with the current working directory set to
 <code class="docutils literal notranslate"><span class="pre">/projects/my_project/people/abc123</span></code>. The benefit of changing your
 working directory before starting tmux is that all terminals opened in
 that session will start in that directory.</p>
-<div class="section" id="creating-and-navigating-between-terminals">
-<h3><span class="section-number">6.2.1.1. </span>Creating and navigating between terminals<a class="headerlink" href="#creating-and-navigating-between-terminals" title="Permalink to this headline">¶</a></h3>
+<section id="creating-and-navigating-between-terminals">
+<h3><span class="section-number">6.2.1.1. </span>Creating and navigating between terminals<a class="headerlink" href="#creating-and-navigating-between-terminals" title="Permalink to this heading">#</a></h3>
 <p>You start your new session with a single, blank terminal, but you can
 create any number of additional terminals using the <code class="docutils literal notranslate"><span class="pre">Ctrl+b</span> <span class="pre">c</span></code>
 keyboard shortcut. To use this shortcut first press <code class="docutils literal notranslate"><span class="pre">Ctrl+b</span></code>, then
@@ -123,16 +275,16 @@ between them using <code class="docutils literal notranslate"><span class="pre">
 <p>To close the terminals you've created, use either the <code class="docutils literal notranslate"><span class="pre">exit</span></code> command
 or press <code class="docutils literal notranslate"><span class="pre">CTRL+d</span></code> while on an empty line:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span><span class="c1">## either</span>
-<span class="gp">$</span> <span class="nb">exit</span>
+<span class="gp">$ </span><span class="nb">exit</span>
 <span class="gp">#</span><span class="c1">## or</span>
-<span class="gp">$</span> &lt;press CTRL+d&gt;
+<span class="gp">$ </span>&lt;press<span class="w"> </span>CTRL+d&gt;
 </pre></div>
 </div>
 <p><a class="reference external" href="https://github.com/tmux/tmux/wiki">tmux</a> will exit with the message <code class="docutils literal notranslate"><span class="pre">[exited]</span></code> once the last terminal in
 the current session has been closed.</p>
-</div>
-<div class="section" id="detaching-from-and-re-attaching-to-your-sessions">
-<h3><span class="section-number">6.2.1.2. </span>Detaching from and re-attaching to your sessions<a class="headerlink" href="#detaching-from-and-re-attaching-to-your-sessions" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="detaching-from-and-re-attaching-to-your-sessions">
+<h3><span class="section-number">6.2.1.2. </span>Detaching from and re-attaching to your sessions<a class="headerlink" href="#detaching-from-and-re-attaching-to-your-sessions" title="Permalink to this heading">#</a></h3>
 <p>Instead of existing your terminal, tmux gives you the option of
 &quot;detaching&quot; from the session. This leaves everything running on the
 server until you re-attach to the session. You will typically detach
@@ -144,16 +296,16 @@ safely disconnect from the server:</p>
 (command to re-open your running sessions, optionally specifying the
 name of the session you wish to open (see also below):</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span><span class="c1">## either</span>
-<span class="gp">$</span> tmux attach
+<span class="gp">$ </span>tmux<span class="w"> </span>attach
 <span class="gp">#</span><span class="c1">## or</span>
-<span class="gp">$</span> tmux attach -t project
+<span class="gp">$ </span>tmux<span class="w"> </span>attach<span class="w"> </span>-t<span class="w"> </span>project
 </pre></div>
 </div>
 <p>Alternatively, you can use the keyboard shortcut <code class="docutils literal notranslate"><span class="pre">CTRL+b</span> <span class="pre">s</span></code> to switch
 to the correct session after you've attached tmux.</p>
-</div>
-<div class="section" id="naming-your-sessions-and-windows">
-<h3><span class="section-number">6.2.1.3. </span>Naming your sessions and windows<a class="headerlink" href="#naming-your-sessions-and-windows" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="naming-your-sessions-and-windows">
+<h3><span class="section-number">6.2.1.3. </span>Naming your sessions and windows<a class="headerlink" href="#naming-your-sessions-and-windows" title="Permalink to this heading">#</a></h3>
 <p>tmux allows you to give custom names to each session (group of
 terminals) and each window (terminal), in order to help you
 differentiate between them. This is not required, but is is recommended
@@ -162,16 +314,16 @@ to do so if you work on multiple things at once.</p>
 give the session a name with <code class="docutils literal notranslate"><span class="pre">-s</span></code> and the window can be given a name
 with <code class="docutils literal notranslate"><span class="pre">-n</span></code> as follows. However, this can only if you are not already in
 an active tmux session:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> tmux new -s project -n task
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tmux<span class="w"> </span>new<span class="w"> </span>-s<span class="w"> </span>project<span class="w"> </span>-n<span class="w"> </span>task
 </pre></div>
 </div>
 <img alt="../_images/tmux_new_named.gif" class="gif" src="../_images/tmux_new_named.gif" />
 <p>To rename an existing tmux session or window, you instead need to use
 the <a class="reference internal" href="#basic-shortcuts">basic shortcuts</a> described below.</p>
-</div>
-</div>
-<div class="section" id="basic-shortcuts">
-<h2><span class="section-number">6.2.2. </span>Basic shortcuts<a class="headerlink" href="#basic-shortcuts" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="basic-shortcuts">
+<h2><span class="section-number">6.2.2. </span>Basic shortcuts<a class="headerlink" href="#basic-shortcuts" title="Permalink to this heading">#</a></h2>
 <p>The following lists the basic shortcuts that you need to work with tmux.
 Additional shortcuts can be found in the tmux <a class="reference external" href="https://man.openbsd.org/OpenBSD-current/man1/tmux.1#DEFAULT_KEY_BINDINGS">manual page</a> (<code class="docutils literal notranslate"><span class="pre">man</span>
 <span class="pre">tmux</span></code>).</p>
@@ -179,70 +331,118 @@ Additional shortcuts can be found in the tmux <a class="reference external" href
 releasing those keys, and <em>then</em> pressing the specified button and
 <em>only</em> the specified button.</p>
 <p><strong>Creating new terminals in a session</strong></p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">CTRL+b</span> <span class="pre">c</span></code> Creates a new terminal in the current session.</p></li>
 </ul>
-</div></blockquote>
 <p><strong>Switching between sessions and windows</strong></p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">CTRL+b</span> <span class="pre">n</span></code> Switches to the next window (terminal)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CTRL+b</span> <span class="pre">p</span></code> Switches to the previous window (terminal)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CTRL+b</span> <span class="pre">s</span></code> Switches to a different session (group of terminals)</p></li>
 </ul>
-</div></blockquote>
 <p><strong>Renaming sessions and windows</strong></p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">CTRL+b</span> <span class="pre">,</span></code> Renames the current window (terminal)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">CTRL+b</span> <span class="pre">$</span></code> Renames the current session (group of terminals)</p></li>
 </ul>
-</div></blockquote>
 <p><strong>Detaching from tmux</strong></p>
-<blockquote>
-<div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">CTRL+b</span> <span class="pre">d</span></code> Detaches from the current session (group of
-terminals). Tmux keeps running after this along with your
-terminals.</p></li>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CTRL+b</span> <span class="pre">d</span></code> Detaches from the current session (group of terminals).
+Tmux keeps running after this along with your terminals.</p></li>
 </ul>
-</div></blockquote>
 <p><strong>Scrolling in a tmux window</strong></p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">CTRL+b</span> <span class="pre">PageUp</span></code> Enables scrolling with PageUp/PageDown and arrow
 keys. Press ESC to exit scrolling mode. Current line-number is
 indicated in yellow in the top right corner.</p></li>
 </ul>
-</div></blockquote>
-</div>
-<div class="section" id="additional-resources">
-<h2><span class="section-number">6.2.3. </span>Additional resources<a class="headerlink" href="#additional-resources" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
+</section>
+<section id="additional-resources">
+<h2><span class="section-number">6.2.3. </span>Additional resources<a class="headerlink" href="#additional-resources" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
 
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="batching_commands.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title"><span class="section-number">6.3. </span>Batching commands outside Slurm</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="modules.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title"><span class="section-number">6.1. </span>Creating environment modules</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, CBMR Phenomics
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">6.2. Persistent sessions with tmux</a><ul>
+<li><a class="reference internal" href="#getting-started">6.2.1. Getting started</a><ul>
+<li><a class="reference internal" href="#creating-and-navigating-between-terminals">6.2.1.1. Creating and navigating between terminals</a></li>
+<li><a class="reference internal" href="#detaching-from-and-re-attaching-to-your-sessions">6.2.1.2. Detaching from and re-attaching to your sessions</a></li>
+<li><a class="reference internal" href="#naming-your-sessions-and-windows">6.2.1.3. Naming your sessions and windows</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#basic-shortcuts">6.2.2. Basic shortcuts</a></li>
+<li><a class="reference internal" href="#additional-resources">6.2.3. Additional resources</a></li>
+</ul>
+</li>
+</ul>
 
           </div>
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="batching_commands.html" title="6.3. Batching commands outside Slurm"
-             >next</a></li>
-        <li class="right" >
-          <a href="modules.html" title="6.1. Creating environment modules"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">Esrum Cluster  documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" ><span class="section-number">6. </span>Tips and tricks</a> &#187;</li> 
-      </ul>
-    </div>
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2023, CBMR Phenomics.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
-    </div>
-  </body>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../_static/js/custom.js?v=7a324050"></script>
+    <script src="../_static/js/libgif.js?v=7adcb026"></script>
+    <script src="../_static/js/playback.js?v=c0a59f95"></script>
+    </body>
 </html>
