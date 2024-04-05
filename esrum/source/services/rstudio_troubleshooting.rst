@@ -33,7 +33,7 @@ RStudio: Incorrect or invalid username/password
 ===============================================
 
 Please make sure that you are entering your username in the short form
-and that you have been added as a member of the ``SRV-esrumcont-users``
+and that you have been added as a member of the ``SRV-esrumweb-users``
 group (see above). If the problem persists, please :ref:`p_contact` us
 for assistance.
 
@@ -86,10 +86,12 @@ login and clean it up, then it my be necessary to remove the files
 containing the data that R/RStudio has saved. This data is stored in two
 locations:
 
-1. In the ``.RData`` file in your home (``~/.RData``). This is where R
+#. In the ``.RData`` file in your home (``~/.RData``). This is where R
    saves your data if you answer yes ``Save workspace image? [y/n/c]``
    when quitting R.
-2. In the ``environment`` file in your RStudio session folder (``~/.local/share/rstudio/sessions/active/session-*/suspended-session-data/environment``).
+
+#. In the ``environment`` file in your RStudio session folder
+   (``~/.local/share/rstudio/sessions/active/session-*/suspended-session-data/environment``).
    This is where Rstudio saves your data should your login time-out
    while using RStudio.
 
@@ -120,7 +122,7 @@ says "This site can't be reached".
    port forwarding is active and that you are using the correct port
    number in the ``localhost`` URL.
 
--  "Check if there is a typo in esrumcont01fl" or "We're having trouble
+-  "Check if there is a typo in esrumweb01fl" or "We're having trouble
    finding that site"
 
    You are must likely connecting from a network outside of KU. Make

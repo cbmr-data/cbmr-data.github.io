@@ -50,19 +50,19 @@ No such file or directory`` or similar error.
  RStudio
 *********
 
-An RStudio_ server is made available at http://esrumcont01fl:8787/. To
+An RStudio_ server is made available at http://esrumweb01fl:8787/. To
 use this server, you must
 
-#. Be a member of the ``SRV-esrumcont-users`` group. Simply follow the
+#. Be a member of the ``SRV-esrumweb-users`` group. Simply follow the
    steps in the :ref:`s_applying_for_access` section, and apply for
    access to this group.
 
 #. Be connected via the KU VPN (a wired connection at CBMR is *not*
    sufficient). See :ref:`p_usage_connecting` for more information.
 
-Once you have been been made a member of the ``SRV-esrumcont-users`` and
+Once you have been been made a member of the ``SRV-esrumweb-users`` and
 connected using the VPN or a wired connection at CBMR, simply visit
-http://esrumcont01fl:8787/ and login using your KU credentials.
+http://esrumweb01fl:8787/ and login using your KU credentials.
 
 For your username you should use the short form:
 
