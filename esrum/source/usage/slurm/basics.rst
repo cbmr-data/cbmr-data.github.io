@@ -320,16 +320,16 @@ read/write data.
 
 We therefore recommended that you
 
-   -  Always refer to the documentation and recommendations for the
-      specific software you are using!
+-  Always refer to the documentation and recommendations for the
+   specific software you are using!
 
-   -  Test the effect of the number of threads you are using before
-      starting a lot of jobs.
+-  Test the effect of the number of threads you are using before
+   starting a lot of jobs.
 
-   -  Start with fewer CPUs and increase it only when there is a benefit
-      to doing so. You can for example start with 2, 4, or 8 CPUs per
-      task, and only increasing the number after it has been determined
-      that the software benefits from the additional CPUs.
+-  Start with fewer CPUs and increase it only when there is a benefit to
+   doing so. You can for example start with 2, 4, or 8 CPUs per task,
+   and only increasing the number after it has been determined that the
+   software benefits from the additional CPUs.
 
 Monitoring resources used by jobs
 =================================
