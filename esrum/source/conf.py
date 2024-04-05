@@ -32,7 +32,10 @@ smartquotes = False
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = "bizstyle"
+# https://pradyunsg.me/furo/
+# Install the "furo" theme with `pip install furo`
+html_theme = "furo"
+
 html_static_path = ["_static"]
 html_css_files = [
     "css/playback.css",
@@ -41,4 +44,5 @@ html_css_files = [
 html_js_files = [
     "js/custom.js",
     "js/libgif.js",
+    "js/playback.js",
 ]
