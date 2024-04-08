@@ -9,6 +9,7 @@ related services, projects, and datasets. Once you have access the
 second page describes how to connect to the cluster.
 
 .. toctree::
+   :maxdepth: 2
 
    access
    connecting
