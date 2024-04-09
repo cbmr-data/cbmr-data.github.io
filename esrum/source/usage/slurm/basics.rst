@@ -306,6 +306,17 @@ nodes unless your jobs actually require that much RAM. See the
 :ref:`p_usage_slurm_gpu` section for how to use the GPU node with or
 without reserving a GPU.
 
+.. warning::
+
+   The ``--nodes`` option and the ``--ntasks`` option will start
+   *identical* tasks on one or more nodes, so you should *not* be using
+   these options unless your tools are specifically designed for this!
+   Otherwise each instance will try to write to the same output file(s)
+   and will produce results that are very likely corrupt.
+
+   If you need to run the same command on a set of files/samples, then
+   see the :ref:`s_job_arrays` section.
+
 Best practice for reserving resources
 =====================================
 
