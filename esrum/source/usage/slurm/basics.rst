@@ -49,7 +49,7 @@ Slurm scripts function like regular scripts for most part, meaning that
 the current directory corresponds to the directory in which you executed
 the script, that you can access environment variables set outside of the
 script, and that it is possible to pass command-line arguments to your
-scripts.
+scripts (see below).
 
 ***************
  Queuing a job
@@ -99,6 +99,62 @@ which you queued the script. The number reported by sbatch is the job ID
 of your job (``JOBID``), which you will need should you want to cancel,
 pause, or otherwise manipulate your job (see below).
 
+Once the job has started running (or has completed running), you will
+also find a file named ``slurm-${JOBID}.out`` in the current folder,
+where ``${JOBID}`` is the ID reported by ``sbatch`` (``8503`` in this
+example):
+
+.. code-block:: shell
+
+   $ ls
+   chr1.fasta  chr1.fasta.gz  my_script.sh  slurm-8503.out
+
+The ``slurm-8503.out`` file contains any console output produced by your
+script/commands. This includes both STDOUT and STDERR by default, but
+this can be changed (see :ref:`s_common_options`). So if we had
+misspelled the filename in our command then the resulting error message
+would be found in the ``out`` file:
+
+.. code-block:: shell
+
+   $ cat slurm-8503.out
+   igzip: chr1.fast does not exist
+
+Passing arguments to sbatch scripts
+===================================
+
+Arguments specified after the name of the ``sbatch`` script are passed
+to that script, just as if you were running it normally. This allows us
+to update our script above to take a filename on the command line
+instead of hard-coding that filename:
+
+.. code-block:: shell
+
+   #!/bin/bash
+
+   module load igzip/2.30.0
+   igzip --keep "${1}"
+
+We can then invoke the script using ``sbatch`` as above, specifying the
+name of the file we wanted to compress on the command-line:
+
+.. code-block:: shell
+
+   $ sbatch my_script.sh "chr1.fasta"
+
+This is equivalent to the original script, except that we can now easily
+submit a job for any file that we want to process, without having to
+update our script every time.
+
+For further information, see `this
+<https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script>`_
+this tutorial for a brief overview of ways to use command-line arguments
+in a bash script.
+
+**********************
+ Monitoring your jobs
+**********************
+
 You can check the status of your queued and running jobs using the
 ``squeue --me`` command. The ``--me`` option ensures that only *your*
 jobs are shown, rather than everyone's jobs:
@@ -123,27 +179,6 @@ listed using ``sacct``:
    ------------ ---------- ---------- ---------- ---------- ---------- --------
    8503         my_script+ standardq+                     1  COMPLETED      0:0
    8503.batch        batch                                1  COMPLETED      0:0
-
-Once the job has started running (or has completed running), you will
-also find a file named ``slurm-${JOBID}.out`` in the current folder,
-where ``${JOBID}`` is the ID reported by ``sbatch`` (``8503`` in this
-example):
-
-.. code-block:: shell
-
-   $ ls
-   chr1.fasta  chr1.fasta.gz  my_script.sh  slurm-8503.out
-
-The ``slurm-8503.out`` file contains any console output produced by your
-script/commands. This includes both STDOUT and STDERR by default, but
-this can be changed (see :ref:`s_common_options`). So if we had
-misspelled the filename in our command then the resulting error message
-would be found in the ``out`` file:
-
-.. code-block:: shell
-
-   $ cat slurm-8503.out
-   igzip: chr1.fast does not exist
 
 .. _s_cancelling_jobs:
 
