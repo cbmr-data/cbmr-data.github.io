@@ -168,37 +168,49 @@ specifies the numerical ID of a task:
    #!/bin/bash
    #SBATCH --cpus-per-task=8
    #SBATCH --time=60
-   #SBATCH --array=1-3
+   #SBATCH --array=1-5%3
 
    module load igzip/2.30.0
    igzip --threads ${SLURM_CPUS_PER_TASK} "chr${SLURM_ARRAY_TASK_ID}.fasta"
 
-The ``--array=1-3`` option specifies that we want to run tasks 1, 2, and
-3, each of which is assigned 8 CPUs and each of which is given 60
-minutes to run.
+The ``--array=1-5%3`` option specifies that we want to run 5 tasks,
+numbered 1 to 5, each of which is assigned 8 CPUs and each of which is
+given 60 minutes to run. The ``%3`` furthermore tells Slurm that at most
+3 tasks can be run simultaneously (see below).
 
-See the ``sbatch`` manual page for a description of ways in which to
-specify lists or ranges of task IDs. Values used with ``--array`` must
-be in the range 0 to 1000.
+The above simply uses a contiguous range of job IDs, but it is also
+possible to specify a combination individual values (``--array=1,2,3``),
+ranges (``--array=1-10,20-30``), and more. See the ``sbatch`` manual
+page for a description of ways in which to specify lists or ranges of
+task IDs.
+
+.. note::
+
+   Values used with ``--array`` must be in the range 0 to 1000.
 
 Our script can then be run as before:
 
 .. code-block:: shell
 
    $ ls
-   chr1.fasta chr2.fasta chr3.fasta my_script.sh
+   chr1.fasta chr2.fasta chr3.fasta chr4.fasta chr5.fasta my_script.sh
    $ sbatch my_script.sh
    Submitted batch job 8504
    $ squeue --me
     JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-   8504_1 standardq my_scrip   zlc187  R       0:02      1 esrumcmpn01fl
-   8504_2 standardq my_scrip   zlc187  R       0:02      1 esrumcmpn01fl
-   8504_3 standardq my_scrip   zlc187  R       0:02      1 esrumcmpn01fl
+   8504_1 standardq my_scrip   abc123  R       0:02      1 esrumcmpn01fl
+   8504_2 standardq my_scrip   abc123  R       0:02      1 esrumcmpn01fl
+   8504_3 standardq my_scrip   abc123  R       0:02      1 esrumcmpn01fl
+   8504_4 standardq my_scrip   abc123  R       0:02      1 esrumcmpn01fl
+   8504_5 standardq my_scrip   abc123  R       0:02      1 esrumcmpn01fl
    $ ls
-   chr1.fasta.gz  chr3.fasta.gz  slurm-8507_1.out  slurm-8507_3.out
-   chr2.fasta.gz  my_script.sh   slurm-8507_2.out
+   chr1.fasta.gz  chr4.fasta.gz  slurm-8507_1.out  slurm-8507_4.out
+   chr2.fasta.gz  chr5.fasta.gz  slurm-8507_2.out  slurm-8507_5.out
+   chr3.fasta.gz  my_script.sh   slurm-8507_3.out
 
-An ``.out`` file is automatically created for each task.
+Unlike a normal ``sbatch`` command, where Slurm creates a single
+``.out`` file, an ``sbatch --array`` command will create an ``.out``
+file is for each task in the array.
 
 In this example there was a simple one-to-one mapping between the
 ``SLURM_ARRAY_TASK_ID`` and our data, but that is not always the case.
@@ -212,13 +224,15 @@ Limiting simultaneous jobs
 By default Slurm will attempt to run every job in an array at the same
 time, provided that there are resources available. Since Esrum is a
 shared resource we ask that you consider how much of the cluster you'll
-be using and limit the number of simultaneous jobs.
+be using and limit the number of simultaneous jobs to a reasonable
+number.
 
 Limiting the number of simultaneous jobs is done by appending a ``%``
-and a number at the end of the ``--array`` value. For example, in the
-following script we queue a job array containing 100 jobs, each
-requesting 8 CPUs. However, the ``%16`` appended to the ``--array``
-ensures that at most 16 of these jobs are running at the same time:
+and a number at the end of the ``--array`` value as shown above. For
+example, in the following script we queue a job array containing 100
+jobs, each requesting 8 CPUs. However, the ``%16`` appended to the
+``--array`` ensures that at most 16 of these jobs are running at the
+same time:
 
 .. code-block:: bash
 
