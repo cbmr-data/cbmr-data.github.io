@@ -76,8 +76,8 @@ It is also possible to run dockerhub images "directly" by using a
 
    $  singularity run docker://pegi3s/bwa:0.7.17 bwa
 
-However, this caches the image in your home folder as described above
-and it is therefore not recommended for the reasons described above.
+However, this caches the image in your home folder and it is therefore
+not recommended for the reasons described above.
 
 Running custom Docker/Podman images
 ===================================
