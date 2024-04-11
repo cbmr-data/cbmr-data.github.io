@@ -7,6 +7,14 @@
 This section describes the layout of your home folder on Esrum, as well
 as the location and layout of projects and data-shares.
 
+.. warning::
+
+   Every folder described below is located on a network drive, except
+   for the per-node ``/scratch`` folders. A consequence of this is that
+   a file created on one node may not be visible on other nodes until
+   some time later. This typically takes in the order of 10-20 seconds
+   depending on the network load.
+
 .. _s_home_folder:
 
 ******************

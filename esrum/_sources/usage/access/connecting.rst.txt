@@ -88,26 +88,29 @@ Configuring MobaXterm
 #. For security reasons we recommend that you decline if asked if you
    want to save your password.
 
+Reconnecting with MobaXterm
+===========================
+
 To connect again another time, either use the desktop shortcut (if you
 created it), double click on ``Esrum`` in the list of sessions on the
 left side of MobaXterm, or select ``Esrum`` from the list that appears
 when clicking on the middle ``Sessions`` button on the main menu.
 
-   .. image:: images/mobaxterm_07.png
-      :align: center
+.. image:: images/mobaxterm_07.png
+   :align: center
 
 Note that you must disable login using Kerberos (GSSAPI) if you wish to
 access the KU network drives (``H:`` and ``N:``) via Esrum. To do so,
 open the ``Configuration`` dialog as shown:
 
-   .. image:: images/mobaxterm_08.png
-      :align: center
+.. image:: images/mobaxterm_08.png
+   :align: center
 
 Then untick the ``GSSAPI Kerberos`` checkbox as shown and click the
 ``OK`` button:
 
-   .. image:: images/mobaxterm_09.png
-      :align: center
+.. image:: images/mobaxterm_09.png
+   :align: center
 
 .. _s_connecting_linux:
 

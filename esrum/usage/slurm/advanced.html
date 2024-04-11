@@ -360,34 +360,46 @@ specifies the numerical ID of a task:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH --cpus-per-task=8</span>
 <span class="c1">#SBATCH --time=60</span>
-<span class="c1">#SBATCH --array=1-3</span>
+<span class="c1">#SBATCH --array=1-5%3</span>
 
 module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
 igzip<span class="w"> </span>--threads<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span><span class="w"> </span><span class="s2">&quot;chr</span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span><span class="s2">.fasta&quot;</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">--array=1-3</span></code> option specifies that we want to run tasks 1, 2, and
-3, each of which is assigned 8 CPUs and each of which is given 60
-minutes to run.</p>
-<p>See the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> manual page for a description of ways in which to
-specify lists or ranges of task IDs. Values used with <code class="docutils literal notranslate"><span class="pre">--array</span></code> must
-be in the range 0 to 1000.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">--array=1-5%3</span></code> option specifies that we want to run 5 tasks,
+numbered 1 to 5, each of which is assigned 8 CPUs and each of which is
+given 60 minutes to run. The <code class="docutils literal notranslate"><span class="pre">%3</span></code> furthermore tells Slurm that at most
+3 tasks can be run simultaneously (see below).</p>
+<p>The above simply uses a contiguous range of job IDs, but it is also
+possible to specify a combination individual values (<code class="docutils literal notranslate"><span class="pre">--array=1,2,3</span></code>),
+ranges (<code class="docutils literal notranslate"><span class="pre">--array=1-10,20-30</span></code>), and more. See the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> manual
+page for a description of ways in which to specify lists or ranges of
+task IDs.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Values used with <code class="docutils literal notranslate"><span class="pre">--array</span></code> must be in the range 0 to 1000.</p>
+</div>
 <p>Our script can then be run as before:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls
-chr1.fasta<span class="w"> </span>chr2.fasta<span class="w"> </span>chr3.fasta<span class="w"> </span>my_script.sh
+chr1.fasta<span class="w"> </span>chr2.fasta<span class="w"> </span>chr3.fasta<span class="w"> </span>chr4.fasta<span class="w"> </span>chr5.fasta<span class="w"> </span>my_script.sh
 $<span class="w"> </span>sbatch<span class="w"> </span>my_script.sh
 Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">8504</span>
 $<span class="w"> </span>squeue<span class="w"> </span>--me
 <span class="w"> </span>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
-8504_1<span class="w"> </span>standardq<span class="w"> </span>my_scrip<span class="w">   </span>zlc187<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:02<span class="w">      </span><span class="m">1</span><span class="w"> </span>esrumcmpn01fl
-8504_2<span class="w"> </span>standardq<span class="w"> </span>my_scrip<span class="w">   </span>zlc187<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:02<span class="w">      </span><span class="m">1</span><span class="w"> </span>esrumcmpn01fl
-8504_3<span class="w"> </span>standardq<span class="w"> </span>my_scrip<span class="w">   </span>zlc187<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:02<span class="w">      </span><span class="m">1</span><span class="w"> </span>esrumcmpn01fl
+8504_1<span class="w"> </span>standardq<span class="w"> </span>my_scrip<span class="w">   </span>abc123<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:02<span class="w">      </span><span class="m">1</span><span class="w"> </span>esrumcmpn01fl
+8504_2<span class="w"> </span>standardq<span class="w"> </span>my_scrip<span class="w">   </span>abc123<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:02<span class="w">      </span><span class="m">1</span><span class="w"> </span>esrumcmpn01fl
+8504_3<span class="w"> </span>standardq<span class="w"> </span>my_scrip<span class="w">   </span>abc123<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:02<span class="w">      </span><span class="m">1</span><span class="w"> </span>esrumcmpn01fl
+8504_4<span class="w"> </span>standardq<span class="w"> </span>my_scrip<span class="w">   </span>abc123<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:02<span class="w">      </span><span class="m">1</span><span class="w"> </span>esrumcmpn01fl
+8504_5<span class="w"> </span>standardq<span class="w"> </span>my_scrip<span class="w">   </span>abc123<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:02<span class="w">      </span><span class="m">1</span><span class="w"> </span>esrumcmpn01fl
 $<span class="w"> </span>ls
-chr1.fasta.gz<span class="w">  </span>chr3.fasta.gz<span class="w">  </span>slurm-8507_1.out<span class="w">  </span>slurm-8507_3.out
-chr2.fasta.gz<span class="w">  </span>my_script.sh<span class="w">   </span>slurm-8507_2.out
+chr1.fasta.gz<span class="w">  </span>chr4.fasta.gz<span class="w">  </span>slurm-8507_1.out<span class="w">  </span>slurm-8507_4.out
+chr2.fasta.gz<span class="w">  </span>chr5.fasta.gz<span class="w">  </span>slurm-8507_2.out<span class="w">  </span>slurm-8507_5.out
+chr3.fasta.gz<span class="w">  </span>my_script.sh<span class="w">   </span>slurm-8507_3.out
 </pre></div>
 </div>
-<p>An <code class="docutils literal notranslate"><span class="pre">.out</span></code> file is automatically created for each task.</p>
+<p>Unlike a normal <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command, where Slurm creates a single
+<code class="docutils literal notranslate"><span class="pre">.out</span></code> file, an <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">--array</span></code> command will create an <code class="docutils literal notranslate"><span class="pre">.out</span></code>
+file is for each task in the array.</p>
 <p>In this example there was a simple one-to-one mapping between the
 <code class="docutils literal notranslate"><span class="pre">SLURM_ARRAY_TASK_ID</span></code> and our data, but that is not always the case.
 The <a class="reference internal" href="#mapping-task-ids-to-data">Mapping task IDs to data</a> section below describes several ways you
@@ -398,12 +410,14 @@ data/filenames.</p>
 <p>By default Slurm will attempt to run every job in an array at the same
 time, provided that there are resources available. Since Esrum is a
 shared resource we ask that you consider how much of the cluster you'll
-be using and limit the number of simultaneous jobs.</p>
+be using and limit the number of simultaneous jobs to a reasonable
+number.</p>
 <p>Limiting the number of simultaneous jobs is done by appending a <code class="docutils literal notranslate"><span class="pre">%</span></code>
-and a number at the end of the <code class="docutils literal notranslate"><span class="pre">--array</span></code> value. For example, in the
-following script we queue a job array containing 100 jobs, each
-requesting 8 CPUs. However, the <code class="docutils literal notranslate"><span class="pre">%16</span></code> appended to the <code class="docutils literal notranslate"><span class="pre">--array</span></code>
-ensures that at most 16 of these jobs are running at the same time:</p>
+and a number at the end of the <code class="docutils literal notranslate"><span class="pre">--array</span></code> value as shown above. For
+example, in the following script we queue a job array containing 100
+jobs, each requesting 8 CPUs. However, the <code class="docutils literal notranslate"><span class="pre">%16</span></code> appended to the
+<code class="docutils literal notranslate"><span class="pre">--array</span></code> ensures that at most 16 of these jobs are running at the
+same time:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH --cpus-per-task=8</span>
 <span class="c1">#SBATCH --array=1-100%16</span>
