@@ -1,6 +1,6 @@
-# CBMR Phenomics documentation
+# CBMR Data Analytics Documentation
 
-This repository contains sources for public documentation and files related to usage of the esrum Esrum cluster administrated by CBMR phenomics. The documentation can be read at [cbmr-data.github.io](https://cbmr-data.github.io).
+This repository contains sources for public documentation and files related to usage of the esrum Esrum cluster administrated by CBMR data analytics. The documentation can be read at [cbmr-data.github.io](https://cbmr-data.github.io).
 
 ## Writing documentation
 
@@ -20,6 +20,7 @@ The `sphinx-autobuild` command can be used to automatically rebuild the document
 ```console
 pip install --user sphinx-autobuild
 cd /path/to/cbmr-data.github.io/esrum
+pip install -r requirements.txt
 # -a to disable incremental builds as this does not work for all file types
 # -q to slice output when autobuild triggers
 sphinx-autobuild ./source ./build -aq
