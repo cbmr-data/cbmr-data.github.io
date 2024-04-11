@@ -18,7 +18,7 @@ To add additional sources of documentation, modify `.github/workflows/default.ya
 The `sphinx-autobuild` command can be used to automatically rebuild the documentation when you make changes:
 
 ```console
-pip install --user sphinx-autobuild
+pip install --user sphinx-autobuild furo==2024.1.29
 cd /path/to/cbmr-data.github.io/esrum
 pip install -r requirements.txt
 # -a to disable incremental builds as this does not work for all file types
