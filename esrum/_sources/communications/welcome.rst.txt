@@ -29,4 +29,4 @@ email address. You are also welcome to visit us in person in room
 
 Best regards,
 
-The Phenomics/Data Analytics Platform
+Data Analytics Platform
