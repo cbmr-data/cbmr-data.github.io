@@ -5,8 +5,11 @@
 ##########
 
 The Esrum cluster is a cluster managed by the `Data Analytics Platform`_
-(formerly the Phenomics Platform) at CBMR_. Technical support and
-administration is handled by KU-IT via the `KU-IT Service portal`_.
+(formerly the Phenomics Platform) at CBMR_. Hosting and technical
+support is handled by KU-IT_.
+
+In addition to the documentation provided here, KU-IT also provides
+documentation for the `UCPH computing/HPC Systems`_ on KUNet.
 
 **************
  Architecture
@@ -87,7 +90,7 @@ See :ref:`p_usage_filesystem` for more information.
 
 .. _environment modules: https://modules.readthedocs.io/en/latest/
 
-.. _ku-it service portal: https://serviceportal.ku.dk/
+.. _ku-it: https://it.ku.dk
 
 .. _slurm: https://slurm.schedmd.com/
 

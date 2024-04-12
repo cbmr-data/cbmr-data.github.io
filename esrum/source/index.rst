@@ -18,9 +18,6 @@ about how and where to contact us.
 -  For ways to make working on the cluster easier, see the :ref:`p_tips`
    page.
 
-In addition to the documentation provided here, KU-IT also provides
-documentation for the `UCPH computing/HPC Systems`_ on KUNet.
-
 .. toctree::
    :numbered:
    :maxdepth: 2
