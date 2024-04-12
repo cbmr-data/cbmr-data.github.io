@@ -36,6 +36,13 @@ smartquotes = False
 # Install the "furo" theme with `pip install furo`
 html_theme = "furo"
 
+# Add an edit button to every page
+html_theme_options = {
+    "source_repository": "https://github.com/cbmr-data/cbmr-data.github.io/",
+    "source_branch": "main",
+    "source_directory": "esrum/source",
+}
+
 html_static_path = ["_static"]
 html_css_files = [
     "css/playback.css",
