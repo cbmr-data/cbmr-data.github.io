@@ -7,7 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "Esrum Cluster"
-copyright = "2023-2024, CBMR Data Analytics"
+copyright = "2023-2024, CBMR Data Analytics; licensed under CC-BY 4.0"
 author = "CBMR Data Analytics"
 
 # -- General configuration ---------------------------------------------------

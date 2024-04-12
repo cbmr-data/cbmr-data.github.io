@@ -22,6 +22,10 @@ You are always welcome to contact us if you have questions or problems
 relating to the cluster. See the :ref:`p_contact` page for information
 about how and where to contact us.
 
+This documentation is licensed under the `Creative Commons CC-BY 4.0
+license`_; you are free to use it as you see fit provided that you give
+appropriate credit.
+
 .. toctree::
    :numbered:
    :maxdepth: 2
@@ -38,6 +42,8 @@ about how and where to contact us.
    communications/index
 
 .. _cbmr: https://cbmr.ku.dk/
+
+.. _creative commons cc-by 4.0 license: https://creativecommons.org/licenses/by/4.0/
 
 .. _data analytics platform: https://cbmr.ku.dk/research-facilities/data-analytics/
 
