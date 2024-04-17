@@ -77,7 +77,11 @@ data-sets:
 
 If your script requires a heterogenous set of input files or options to
 run, then it is recommended to use an argument parser such as the
-argparser_ R library. This script can also be downloaded :download:`here
+argparser_ R library. To use the argparser library you must first
+install it using the ``install.packages("argparser")`` command.
+
+The following is a brief example of how you might use the ``argparser``
+library and it can also be downloaded :download:`here
 <scripts/argparser.R>`.
 
 .. literalinclude:: scripts/argparser.R
