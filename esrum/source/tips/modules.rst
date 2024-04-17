@@ -10,10 +10,11 @@ documentation`_. However, for most part you should be requesting modules
 from KU-IT (see :ref:`s_requesting_missing_modules`).
 
 To simplify things, this example makes use of a generalized template
-file (available for download :download:`here <moduletemplate.tcl>`) for
-which only a handful of (highlighted) lines need to be changed:
+file (available for download :download:`here
+<scripts/moduletemplate.tcl>`) for which only a handful of (highlighted)
+lines need to be changed:
 
-.. literalinclude:: moduletemplate.tcl
+.. literalinclude:: scripts/moduletemplate.tcl
    :language: tcl
    :linenos:
    :emphasize-lines: 7-10,13-16
@@ -58,7 +59,7 @@ the module files. This organization is designed to simplify maintenance.
    update the root path, the description, and the PATH as shown below.
    Note that this file does *not* have an extension.
 
-      .. literalinclude:: moduletemplate.seqtk.tcl
+      .. literalinclude:: scripts/moduletemplate.seqtk.tcl
          :language: tcl
          :linenos:
          :emphasize-lines: 7-8,10
