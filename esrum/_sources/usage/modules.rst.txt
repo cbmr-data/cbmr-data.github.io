@@ -107,6 +107,9 @@ Or automatically:
    Loading bcftools/1.16
      Loading requirement: perl/5.26.3
 
+Note that it is *not* recommended to use the ``--auto`` option when
+loading R; see the :ref:`p_usage_rstudio` page for more information.
+
 Listing and unloading loaded modules
 ====================================
 

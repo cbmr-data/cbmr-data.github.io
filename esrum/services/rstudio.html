@@ -246,11 +246,121 @@ Jupyter Notebooks to run their analyses. This section describes steps
 required to use these tools.</p>
 <section id="r">
 <h2><span class="section-number">5.1.1. </span>R<a class="headerlink" href="#r" title="Permalink to this heading">#</a></h2>
-<p>R is available via the module system and modules may be installed in
-your home folder using the <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>--auto<span class="w"> </span>R/4.3.1
-<span class="go">Loading R/4.3.1</span>
-<span class="go">  Loading requirement: gcc/11.2.0</span>
+<p>Several versions of R are available via the module system. To load
+these, you need to load the version of R you want <em>and</em> a version of
+gcc, which is required to install/load modules.</p>
+<section id="compatibility-with-the-rstudio-server">
+<h3><span class="section-number">5.1.1.1. </span>Compatibility with the Rstudio server<a class="headerlink" href="#compatibility-with-the-rstudio-server" title="Permalink to this heading">#</a></h3>
+<p>We <em>highly</em> recommend that you always use <code class="docutils literal notranslate"><span class="pre">gcc/8.5.0</span></code> and <code class="docutils literal notranslate"><span class="pre">R/4.3.2</span></code>
+(or another version of <code class="docutils literal notranslate"><span class="pre">R/4.3.x</span></code>) when loading R on the head or
+compute nodes, since this ensures compatibility between all servers on
+Esrum:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
+</pre></div>
+</div>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">--auto</span></code> option will instead load the latest version of gcc,
+currently version <code class="docutils literal notranslate"><span class="pre">11.2.0</span></code>.</p>
+<p>R modules installed using versions of R other than <code class="docutils literal notranslate"><span class="pre">4.3.x</span></code> will simply
+not be available on the RStudio server and you will need to install them
+again.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Using a GCC version greater than 8.x with <code class="docutils literal notranslate"><span class="pre">R/4.3.x</span></code> may cause
+modules you install to fail to load on the Rstudio server with the
+following error:</p>
+<p>See the Troubleshooting section below for more information.</p>
+</div>
+</section>
+<section id="submitting-r-scripts-using-slurm">
+<h3><span class="section-number">5.1.1.2. </span>Submitting R scripts using Slurm<a class="headerlink" href="#submitting-r-scripts-using-slurm" title="Permalink to this heading">#</a></h3>
+<p>The recommended way to run R on Esrum is as non-interactive scripts
+submitted to slurm. This not only ensures that your analyses do not
+impact other users, but also makes make your analyses reproducible.</p>
+<p>To run an R script on the command-line, simply use the <code class="docutils literal notranslate"><span class="pre">Rscript</span></code>
+command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>my_script.R
+cat<span class="o">(</span><span class="s2">&quot;Hello, world!\n&quot;</span><span class="o">)</span>
+$<span class="w"> </span>Rscript<span class="w"> </span>my_script.R
+Hello,<span class="w"> </span>world!
+</pre></div>
+</div>
+<p>For simple scripts you can use the <code class="docutils literal notranslate"><span class="pre">commandArgs</span></code> function to pass
+arguments to your scripts, allowing you to use them to process arbitrary
+data-sets:</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">args</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">commandArgs</span><span class="p">(</span><span class="n">trailingOnly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;Hello, &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="s">&quot;!\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>Rscript<span class="w"> </span>my_script.R<span class="w"> </span>world
+<span class="go">Hello, world!</span>
+</pre></div>
+</div>
+<p>If your script requires a heterogenous set of input files or options to
+run, then it is recommended to use an argument parser such as the
+<a class="reference external" href="https://cran.r-project.org/web/packages/argparser/index.html">argparser</a> R library. This script can also be downloaded <a class="reference download internal" download="" href="../_downloads/4cffb1257281bb7de8b3917b47b00bc1/argparser.R"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a>.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="c1">#!/usr/bin/env Rscript</span>
+<span class="w">   </span><span class="nf">library</span><span class="p">(</span><span class="n">argparser</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">parser</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">arg_parser</span><span class="p">(</span><span class="s">&quot;This is my script!&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">parser</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">add_argument</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;input_file&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">help</span><span class="o">=</span><span class="s">&quot;My data&quot;</span><span class="p">)</span>
+<span class="w">   </span><span class="n">parser</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">add_argument</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--p-value&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">default</span><span class="o">=</span><span class="m">0.05</span><span class="p">,</span><span class="w"> </span><span class="n">help</span><span class="o">=</span><span class="s">&quot;Maximum P-value&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">args</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">parse_args</span><span class="p">(</span><span class="n">parser</span><span class="p">)</span>
+<span class="w">   </span><span class="nf">cat</span><span class="p">(</span><span class="s">&quot;I would process the file&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="o">$</span><span class="n">input_file</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;with a max P-value of&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="o">$</span><span class="n">p_value</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;\n&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This allows you to document your command-line options, specify default
+values, and much more:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>Rscript<span class="w"> </span>my_script.R
+usage:<span class="w"> </span>my_script.R<span class="w"> </span><span class="o">[</span>--<span class="o">]</span><span class="w"> </span><span class="o">[</span>--help<span class="o">]</span><span class="w"> </span><span class="o">[</span>--opts<span class="w"> </span>OPTS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--p-value<span class="w"> </span>P-VALUE<span class="o">]</span>
+<span class="w">    </span>input_file
+
+This<span class="w"> </span>is<span class="w"> </span>my<span class="w"> </span>script!
+
+positional<span class="w"> </span>arguments:
+input_file<span class="w">     </span>My<span class="w"> </span>data
+
+flags:
+-h,<span class="w"> </span>--help<span class="w">     </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+
+optional<span class="w"> </span>arguments:
+-x,<span class="w"> </span>--opts<span class="w">     </span>RDS<span class="w"> </span>file<span class="w"> </span>containing<span class="w"> </span>argument<span class="w"> </span>values
+-p,<span class="w"> </span>--p-value<span class="w">  </span>Maximum<span class="w"> </span>P-value<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span><span class="m">0</span>.05<span class="o">]</span>
+
+Error<span class="w"> </span><span class="k">in</span><span class="w"> </span>parse_args<span class="o">(</span>parser<span class="o">)</span><span class="w"> </span>:
+Missing<span class="w"> </span>required<span class="w"> </span>arguments:<span class="w"> </span>expecting<span class="w"> </span><span class="m">1</span><span class="w"> </span>values<span class="w"> </span>but<span class="w"> </span>got<span class="w"> </span><span class="m">0</span><span class="w"> </span>values:<span class="w"> </span><span class="o">()</span>.
+Execution<span class="w"> </span>halted
+$<span class="w"> </span>Rscript<span class="w"> </span>my_script.R<span class="w"> </span>my_data.tsv
+I<span class="w"> </span>would<span class="w"> </span>process<span class="w"> </span>the<span class="w"> </span>file<span class="w"> </span>my_data.tsv<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>max<span class="w"> </span>P-value<span class="w"> </span>of<span class="w"> </span><span class="m">0</span>.05
+</pre></div>
+</div>
+<p>Finally, you write can write a small bash script to automatically load
+the required version of R and to call your script when you submit it to
+Slurm (using your preferred version of R):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cat<span class="w"> </span>run_rscript.sh
+<span class="gp">#</span>!/bin/bash
+
+<span class="go">module load gcc/8.5.0 R/4.1.2</span>
+<span class="go">Rscript &quot;${@}&quot;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">&quot;${&#64;}&quot;</span></code> safely passes all your command-line arguments to
+<code class="docutils literal notranslate"><span class="pre">Rscript</span></code>, even if they contain spaces. This wrapper script can then
+be used to submit/call any of your R-scripts:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>run_rscript.sh<span class="w"> </span>my_script.R<span class="w"> </span>my_data.tsv<span class="w"> </span>--p-value<span class="w"> </span><span class="m">0</span>.01
+<span class="go">Submitted batch job 18090212</span>
+<span class="gp">$ </span>cat<span class="w"> </span>slurm-18090212.out
+<span class="go">I would process the file my_data.tsv with a max P-value of 0.01</span>
+</pre></div>
+</div>
+</section>
+<section id="installing-r-modules">
+<h3><span class="section-number">5.1.1.3. </span>Installing R modules<a class="headerlink" href="#installing-r-modules" title="Permalink to this heading">#</a></h3>
+<p>Modules may be installed in your home folder using the
+<code class="docutils literal notranslate"><span class="pre">install.packages</span></code> command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.1
 <span class="gp">$ </span>R
 <span class="go">&gt; install.packages(&quot;ggplot2&quot;)</span>
 <span class="go">Warning in install.packages(&quot;ggplot2&quot;) :</span>
@@ -273,11 +383,10 @@ you and press enter:</p>
 <span class="go">Selection: 1</span>
 </pre></div>
 </div>
-<p>See below if you get an <code class="docutils literal notranslate"><span class="pre">libtk8.6.so:</span> <span class="pre">cannot</span> <span class="pre">open</span> <span class="pre">shared</span> <span class="pre">object</span> <span class="pre">file:</span>
-<span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory</span></code> or similar error.</p>
+</section>
 </section>
 <section id="rstudio">
-<h2><span class="section-number">5.1.2. </span>RStudio<a class="headerlink" href="#rstudio" title="Permalink to this heading">#</a></h2>
+<span id="s-rstudio"></span><h2><span class="section-number">5.1.2. </span>RStudio<a class="headerlink" href="#rstudio" title="Permalink to this heading">#</a></h2>
 <p>An <a class="reference external" href="https://posit.co/products/open-source/rstudio/">RStudio</a> server is made available at <a class="reference external" href="http://esrumweb01fl:8787/">http://esrumweb01fl:8787/</a>. To
 use this server, you must</p>
 <ol class="arabic simple">
@@ -292,11 +401,44 @@ connected using the VPN or a wired connection at CBMR, simply visit
 <a class="reference external" href="http://esrumweb01fl:8787/">http://esrumweb01fl:8787/</a> and login using your KU credentials.</p>
 <p>For your username you should use the short form:</p>
 <img alt="../_images/rstudio_login.png" class="align-center" src="../_images/rstudio_login.png" />
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The RStudio server is managed by KU-IT and we can only provide basic
-basic support for using this service.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The RStudio server is <em>only</em> for running R. If you need to run other
+tasks then you <em>must</em> connect to the head node and run them using
+Slurm as described in <a class="reference internal" href="../usage/slurm/index.html#p-usage-slurm"><span class="std std-ref">Running jobs using Slurm</span></a>.</p>
+<p>Resource intensive tasks running on the RStudio server will likely
+negatively impact everyone using the service and we will therefore
+terminate such tasks without warning if we deem it necessary.</p>
 </div>
+<section id="rstudio-server-best-practice">
+<h3><span class="section-number">5.1.2.1. </span>RStudio server best practice<a class="headerlink" href="#rstudio-server-best-practice" title="Permalink to this heading">#</a></h3>
+<p>Since the RStudio server is a shared resource where that many users may
+be using simultaneously, we ask that you show consideration towards
+other users of the server.</p>
+<p>In particular,</p>
+<ul>
+<li><p>Try to limit the size of the data-sets you work with on the RStudio
+server. Since <em>all</em> data has to be read from (or written to) network
+drives, one person reading or writing a large amount of data can
+cause significant slow-downs for <em>everyone</em> using the service.</p>
+<p>We therefore recommend that you load a (small) subset of your data in
+Rstudio, that you use that subset of data to develop your analyses
+processes, and that you use that to process your complete dataset via
+an R-script submitted to Slurm as described in <a class="reference internal" href="../usage/slurm/index.html#p-usage-slurm"><span class="std std-ref">Running jobs using Slurm</span></a>.</p>
+<p>See also above for a brief example of how to submit R scripts to
+Slurm.</p>
+</li>
+<li><p>Don't keep data in memory that you do not need. Data that you no
+longer need can be freed with the <code class="docutils literal notranslate"><span class="pre">rm</span></code> function or using the broom
+icon on the <code class="docutils literal notranslate"><span class="pre">Environment</span></code> tab in Rstudio, as described below. This
+also helps prevent RStudio from filling your home folder when your
+session is closed (see Troubleshooting below).</p></li>
+<li><p>Do not run resource intensive tasks via the embedded terminal. As
+noted above, such tasks will be terminated without warning if deemed
+to have a negative impact on other users. Instead such tasks should
+be run using Slurm as described in <a class="reference internal" href="../usage/slurm/index.html#p-usage-slurm"><span class="std std-ref">Running jobs using Slurm</span></a>.</p></li>
+</ul>
+</section>
 </section>
 <section id="jupyter-notebook">
 <h2><span class="section-number">5.1.3. </span>Jupyter notebook<a class="headerlink" href="#jupyter-notebook" title="Permalink to this heading">#</a></h2>
@@ -400,15 +542,63 @@ your (bash) terminal:</p>
 </pre></div>
 </div>
 </section>
+<section id="r-libstdc-so-6-version-glibcxx-3-4-26-not-found">
+<h3><span class="section-number">5.1.4.2. </span>R: libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found<a class="headerlink" href="#r-libstdc-so-6-version-glibcxx-3-4-26-not-found" title="Permalink to this heading">#</a></h3>
+<p>If you build an R library on the head/compute nodes using a version of
+the GCC module other than <code class="docutils literal notranslate"><span class="pre">gcc/8.5.0</span></code>, then this library may fail to
+load on the RStudio node or when <code class="docutils literal notranslate"><span class="pre">gcc/8.5.0</span></code> is loaded on the
+head/compute nodes:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>R
+<span class="go">&gt; library(wk)</span>
+<span class="go">Error: package or namespace load failed for ‘wk’ in dyn.load(file, DLLpath = DLLpath, ...):</span>
+<span class="go">unable to load shared object &#39;/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so&#39;:</span>
+<span class="go">/lib64/libstdc++.so.6: version `GLIBCXX_3.4.26&#39; not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so)</span>
+</pre></div>
+</div>
+<p>To fix his, you will need to reinstall the affected R libraries using
+one of two methods:</p>
+<ol class="arabic">
+<li><p>Connect to the RStudio server as described in the <a class="reference internal" href="#s-rstudio"><span class="std std-ref">RStudio</span></a>
+section, and simply install the affected packages using the
+<code class="docutils literal notranslate"><span class="pre">install.packages</span></code> function:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; install.packages(&quot;wk&quot;)</span>
+</pre></div>
+</div>
+<p>You may need to repeat this step multiple times, for every package
+that fails to load.</p>
+</li>
+<li><p>Connect to the head node or a compute node, and take care to load the
+correct version of GCC before loading R:</p>
+<blockquote>
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
+$<span class="w"> </span>R
+&gt;<span class="w"> </span>install.packages<span class="o">(</span><span class="s2">&quot;wk&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+<p>The name of the affected module can be determined by looking at the
+error message above. In particular, the path
+<code class="docutils literal notranslate"><span class="pre">/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so</span></code>
+contains a pair of folders named <code class="docutils literal notranslate"><span class="pre">R/x86_64-pc-linux-gnu-library</span></code>,
+which specifies the kind of system we are running on. Immediately after
+that we find the package name, namely <code class="docutils literal notranslate"><span class="pre">wk</span></code> in this case.</p>
+<p>Check each error message you get after running <code class="docutils literal notranslate"><span class="pre">library()</span></code> to identify
+the package that is currently failing. It is typical that multiple
+packages are affected and the name in the error message may not
+correspond to the name of the library you passed to the <code class="docutils literal notranslate"><span class="pre">library()</span></code>
+function!</p>
+</section>
 <section id="rstudio-incorrect-or-invalid-username-password">
-<h3><span class="section-number">5.1.4.2. </span>RStudio: Incorrect or invalid username/password<a class="headerlink" href="#rstudio-incorrect-or-invalid-username-password" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.4.3. </span>RStudio: Incorrect or invalid username/password<a class="headerlink" href="#rstudio-incorrect-or-invalid-username-password" title="Permalink to this heading">#</a></h3>
 <p>Please make sure that you are entering your username in the short form
 and that you have been added as a member of the <code class="docutils literal notranslate"><span class="pre">SRV-esrumweb-users</span></code>
 group (see above). If the problem persists, please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us
 for assistance.</p>
 </section>
 <section id="rstudio-logging-in-takes-a-very-long-time">
-<h3><span class="section-number">5.1.4.3. </span>RStudio: Logging in takes a very long time<a class="headerlink" href="#rstudio-logging-in-takes-a-very-long-time" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.4.4. </span>RStudio: Logging in takes a very long time<a class="headerlink" href="#rstudio-logging-in-takes-a-very-long-time" title="Permalink to this heading">#</a></h3>
 <p>Similar to regular R, RStudio will automatically save the data you have
 loaded into your R session and will restore it when you return later, so
 that you can continue your work. However, this many result in large
@@ -454,7 +644,7 @@ while using RStudio.</p></li>
 <p>Please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us and we can help you remove the correct files.</p>
 </section>
 <section id="jupyter-notebooks-browser-error-when-opening-url">
-<h3><span class="section-number">5.1.4.4. </span>Jupyter Notebooks: Browser error when opening URL<a class="headerlink" href="#jupyter-notebooks-browser-error-when-opening-url" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.4.5. </span>Jupyter Notebooks: Browser error when opening URL<a class="headerlink" href="#jupyter-notebooks-browser-error-when-opening-url" title="Permalink to this heading">#</a></h3>
 <p>Depending on your browser you may receive one of the following errors.
 The typical causes are listed, but the exact error message will depend
 on your browser. It is therefore helpful to review all possible causes
@@ -561,8 +751,16 @@ VPN is activated and try again.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">5.1. R, RStudio, and Jupyter Notebooks</a><ul>
-<li><a class="reference internal" href="#r">5.1.1. R</a></li>
-<li><a class="reference internal" href="#rstudio">5.1.2. RStudio</a></li>
+<li><a class="reference internal" href="#r">5.1.1. R</a><ul>
+<li><a class="reference internal" href="#compatibility-with-the-rstudio-server">5.1.1.1. Compatibility with the Rstudio server</a></li>
+<li><a class="reference internal" href="#submitting-r-scripts-using-slurm">5.1.1.2. Submitting R scripts using Slurm</a></li>
+<li><a class="reference internal" href="#installing-r-modules">5.1.1.3. Installing R modules</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rstudio">5.1.2. RStudio</a><ul>
+<li><a class="reference internal" href="#rstudio-server-best-practice">5.1.2.1. RStudio server best practice</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#jupyter-notebook">5.1.3. Jupyter notebook</a><ul>
 <li><a class="reference internal" href="#port-forwarding-in-windows-mobaxterm">5.1.3.1. Port forwarding in Windows (MobaXterm)</a></li>
 <li><a class="reference internal" href="#port-forwarding-on-linux-osx">5.1.3.2. Port forwarding on Linux/OSX</a></li>
@@ -570,9 +768,10 @@ VPN is activated and try again.</p>
 </li>
 <li><a class="reference internal" href="#troubleshooting">5.1.4. Troubleshooting</a><ul>
 <li><a class="reference internal" href="#r-libtk8-6-so-cannot-open-shared-object-file">5.1.4.1. R: libtk8.6.so: cannot open shared object file</a></li>
-<li><a class="reference internal" href="#rstudio-incorrect-or-invalid-username-password">5.1.4.2. RStudio: Incorrect or invalid username/password</a></li>
-<li><a class="reference internal" href="#rstudio-logging-in-takes-a-very-long-time">5.1.4.3. RStudio: Logging in takes a very long time</a></li>
-<li><a class="reference internal" href="#jupyter-notebooks-browser-error-when-opening-url">5.1.4.4. Jupyter Notebooks: Browser error when opening URL</a></li>
+<li><a class="reference internal" href="#r-libstdc-so-6-version-glibcxx-3-4-26-not-found">5.1.4.2. R: libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found</a></li>
+<li><a class="reference internal" href="#rstudio-incorrect-or-invalid-username-password">5.1.4.3. RStudio: Incorrect or invalid username/password</a></li>
+<li><a class="reference internal" href="#rstudio-logging-in-takes-a-very-long-time">5.1.4.4. RStudio: Logging in takes a very long time</a></li>
+<li><a class="reference internal" href="#jupyter-notebooks-browser-error-when-opening-url">5.1.4.5. Jupyter Notebooks: Browser error when opening URL</a></li>
 </ul>
 </li>
 </ul>

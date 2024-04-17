@@ -12,14 +12,136 @@ required to use these tools.
  R
 ***
 
-R is available via the module system and modules may be installed in
-your home folder using the ``install.packages`` command:
+Several versions of R are available via the module system. To load
+these, you need to load the version of R you want *and* a version of
+gcc, which is required to install/load modules.
+
+Compatibility with the Rstudio server
+=====================================
+
+We *highly* recommend that you always use ``gcc/8.5.0`` and ``R/4.3.2``
+(or another version of ``R/4.3.x``) when loading R on the head or
+compute nodes, since this ensures compatibility between all servers on
+Esrum:
+
+.. code-block:: shell
+
+   $ module load gcc/8.5.0 R/4.3.2
+
+Using the ``--auto`` option will instead load the latest version of gcc,
+currently version ``11.2.0``.
+
+R modules installed using versions of R other than ``4.3.x`` will simply
+not be available on the RStudio server and you will need to install them
+again.
+
+.. warning::
+
+   Using a GCC version greater than 8.x with ``R/4.3.x`` may cause
+   modules you install to fail to load on the Rstudio server with the
+   following error:
+
+   See the Troubleshooting section below for more information.
+
+Submitting R scripts using Slurm
+================================
+
+The recommended way to run R on Esrum is as non-interactive scripts
+submitted to slurm. This not only ensures that your analyses do not
+impact other users, but also makes make your analyses reproducible.
+
+To run an R script on the command-line, simply use the ``Rscript``
+command:
+
+.. code-block:: shell
+
+   $ cat my_script.R
+   cat("Hello, world!\n")
+   $ Rscript my_script.R
+   Hello, world!
+
+For simple scripts you can use the ``commandArgs`` function to pass
+arguments to your scripts, allowing you to use them to process arbitrary
+data-sets:
+
+.. code-block:: R
+
+   args <- commandArgs(trailingOnly = TRUE)
+
+   cat("Hello, ", args[1], "!\n", sep="")
+
+.. code-block:: console
+
+   $ Rscript my_script.R world
+   Hello, world!
+
+If your script requires a heterogenous set of input files or options to
+run, then it is recommended to use an argument parser such as the
+argparser_ R library. This script can also be downloaded :download:`here
+<scripts/argparser.R>`.
+
+.. literalinclude:: scripts/argparser.R
+   :language: R
+
+This allows you to document your command-line options, specify default
+values, and much more:
+
+.. code-block:: shell
+
+   $ Rscript my_script.R
+   usage: my_script.R [--] [--help] [--opts OPTS] [--p-value P-VALUE]
+       input_file
+
+   This is my script!
+
+   positional arguments:
+   input_file     My data
+
+   flags:
+   -h, --help     show this help message and exit
+
+   optional arguments:
+   -x, --opts     RDS file containing argument values
+   -p, --p-value  Maximum P-value [default: 0.05]
+
+   Error in parse_args(parser) :
+   Missing required arguments: expecting 1 values but got 0 values: ().
+   Execution halted
+   $ Rscript my_script.R my_data.tsv
+   I would process the file my_data.tsv with a max P-value of 0.05
+
+Finally, you write can write a small bash script to automatically load
+the required version of R and to call your script when you submit it to
+Slurm (using your preferred version of R):
+
+.. code-block:: console
+
+   $ cat run_rscript.sh
+   #!/bin/bash
+
+   module load gcc/8.5.0 R/4.1.2
+   Rscript "${@}"
+
+The ``"${@}"`` safely passes all your command-line arguments to
+``Rscript``, even if they contain spaces. This wrapper script can then
+be used to submit/call any of your R-scripts:
+
+.. code-block:: console
+
+   $ sbatch run_rscript.sh my_script.R my_data.tsv --p-value 0.01
+   Submitted batch job 18090212
+   $ cat slurm-18090212.out
+   I would process the file my_data.tsv with a max P-value of 0.01
+
+Installing R modules
+====================
+
+Modules may be installed in your home folder using the
+``install.packages`` command:
 
 .. code:: console
 
-   $ module load --auto R/4.3.1
-   Loading R/4.3.1
-     Loading requirement: gcc/11.2.0
+   $ module load gcc/8.5.0 R/4.3.1
    $ R
    > install.packages("ggplot2")
    Warning in install.packages("ggplot2") :
@@ -43,8 +165,7 @@ you and press enter:
 
    Selection: 1
 
-See below if you get an ``libtk8.6.so: cannot open shared object file:
-No such file or directory`` or similar error.
+.. _s_rstudio:
 
 *********
  RStudio
@@ -69,10 +190,48 @@ For your username you should use the short form:
 .. image:: images/rstudio_login.png
    :align: center
 
-.. note::
+.. warning::
 
-   The RStudio server is managed by KU-IT and we can only provide basic
-   basic support for using this service.
+   The RStudio server is *only* for running R. If you need to run other
+   tasks then you *must* connect to the head node and run them using
+   Slurm as described in :ref:`p_usage_slurm`.
+
+   Resource intensive tasks running on the RStudio server will likely
+   negatively impact everyone using the service and we will therefore
+   terminate such tasks without warning if we deem it necessary.
+
+RStudio server best practice
+============================
+
+Since the RStudio server is a shared resource where that many users may
+be using simultaneously, we ask that you show consideration towards
+other users of the server.
+
+In particular,
+
+-  Try to limit the size of the data-sets you work with on the RStudio
+   server. Since *all* data has to be read from (or written to) network
+   drives, one person reading or writing a large amount of data can
+   cause significant slow-downs for *everyone* using the service.
+
+   We therefore recommend that you load a (small) subset of your data in
+   Rstudio, that you use that subset of data to develop your analyses
+   processes, and that you use that to process your complete dataset via
+   an R-script submitted to Slurm as described in :ref:`p_usage_slurm`.
+
+   See also above for a brief example of how to submit R scripts to
+   Slurm.
+
+-  Don't keep data in memory that you do not need. Data that you no
+   longer need can be freed with the ``rm`` function or using the broom
+   icon on the ``Environment`` tab in Rstudio, as described below. This
+   also helps prevent RStudio from filling your home folder when your
+   session is closed (see Troubleshooting below).
+
+-  Do not run resource intensive tasks via the embedded terminal. As
+   noted above, such tasks will be terminated without warning if deemed
+   to have a negative impact on other users. Instead such tasks should
+   be run using Slurm as described in :ref:`p_usage_slurm`.
 
 ******************
  Jupyter notebook
@@ -204,6 +363,8 @@ Notebook printed in your terminal.
       updatePort(document.body);
     });
    </script>
+
+.. _argparser: https://cran.r-project.org/web/packages/argparser/index.html
 
 .. _jupyter notebooks: https://jupyter.org/
 

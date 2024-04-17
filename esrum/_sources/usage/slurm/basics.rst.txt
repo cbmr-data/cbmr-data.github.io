@@ -557,14 +557,15 @@ see a small clock application on your desktop:
 ****************************
 
 The following is a simple template for use with the ``sbatch`` command.
-This script can also be downloaded :download:`here <my_sbatch.sh>`.
+This script can also be downloaded :download:`here
+<scripts/my_sbatch.sh>`.
 
-.. literalinclude:: my_sbatch.sh
+.. literalinclude:: scripts/my_sbatch.sh
    :language: sh
 
 See also the :ref:`p_tips_robustscripts` page for tips on how to write
 more robust bash scripts. A template using those recommendations is
-available for download :download:`here <robust_sbatch.sh>`.
+available for download :download:`here <scripts/robust_sbatch.sh>`.
 
 .. _s_slurm_basics_troubleshooting:
 

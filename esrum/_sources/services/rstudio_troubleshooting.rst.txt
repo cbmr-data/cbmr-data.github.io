@@ -1,3 +1,4 @@
+
 R: libtk8.6.so: cannot open shared object file
 ==============================================
 
@@ -28,6 +29,58 @@ your (bash) terminal:
 .. code:: console
 
    $ echo 'options(menu.graphics=FALSE)' | tee -a ~/.Rprofile
+
+R: libstdc++.so.6: version ``'GLIBCXX_3.4.26'`` not found
+=========================================================
+
+If you build an R library on the head/compute nodes using a version of
+the GCC module other than ``gcc/8.5.0``, then this library may fail to
+load on the RStudio node or when ``gcc/8.5.0`` is loaded on the
+head/compute nodes:
+
+.. code-block::
+
+   $ R
+   > library(wk)
+   Error: package or namespace load failed for ‘wk’ in dyn.load(file, DLLpath = DLLpath, ...):
+   unable to load shared object '/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so':
+   /lib64/libstdc++.so.6: version `GLIBCXX_3.4.26' not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so)
+
+To fix his, you will need to reinstall the affected R libraries using
+one of two methods:
+
+#. Connect to the RStudio server as described in the :ref:`s_rstudio`
+   section, and simply install the affected packages using the
+   ``install.packages`` function:
+
+   .. code-block::
+
+      > install.packages("wk")
+
+   You may need to repeat this step multiple times, for every package
+   that fails to load.
+
+#. Connect to the head node or a compute node, and take care to load the
+   correct version of GCC before loading R:
+
+      .. code-block:: shell
+
+         $ module load gcc/8.5.0 R/4.3.2
+         $ R
+         > install.packages("wk")
+
+The name of the affected module can be determined by looking at the
+error message above. In particular, the path
+``/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so``
+contains a pair of folders named ``R/x86_64-pc-linux-gnu-library``,
+which specifies the kind of system we are running on. Immediately after
+that we find the package name, namely ``wk`` in this case.
+
+Check each error message you get after running ``library()`` to identify
+the package that is currently failing. It is typical that multiple
+packages are affected and the name in the error message may not
+correspond to the name of the library you passed to the ``library()``
+function!
 
 RStudio: Incorrect or invalid username/password
 ===============================================
