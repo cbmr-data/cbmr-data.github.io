@@ -63,11 +63,11 @@ one of two methods:
 #. Connect to the head node or a compute node, and take care to load the
    correct version of GCC before loading R:
 
-      .. code-block:: shell
+   .. code-block:: shell
 
-         $ module load gcc/8.5.0 R/4.3.2
-         $ R
-         > install.packages("wk")
+      $ module load gcc/8.5.0 R/4.3.2
+      $ R
+      > install.packages("wk")
 
 The name of the affected module can be determined by looking at the
 error message above. In particular, the path
