@@ -63,11 +63,11 @@ one of two methods:
 #. Connect to the head node or a compute node, and take care to load the
    correct version of GCC before loading R:
 
-      .. code-block:: shell
+   .. code-block:: shell
 
-         $ module load gcc/8.5.0 R/4.3.2
-         $ R
-         > install.packages("wk")
+      $ module load gcc/8.5.0 R/4.3.2
+      $ R
+      > install.packages("wk")
 
 The name of the affected module can be determined by looking at the
 error message above. In particular, the path
@@ -76,11 +76,42 @@ contains a pair of folders named ``R/x86_64-pc-linux-gnu-library``,
 which specifies the kind of system we are running on. Immediately after
 that we find the package name, namely ``wk`` in this case.
 
-Check each error message you get after running ``library()`` to identify
-the package that is currently failing. It is typical that multiple
-packages are affected and the name in the error message may not
-correspond to the name of the library you passed to the ``library()``
-function!
+You can identify all affected packages in your "global" R library by
+running the following commands:
+
+.. code-block:: shell
+
+   module load gcc/8.5.0 R/4.3.2
+   # cd to your R library
+   cd ~/R/x86_64-pc-linux-gnu-library/4.3/
+   # Test every installed library
+   for lib in $(ls);do echo "Testing ${lib}"; Rscript <(echo "library(${lib})") > /dev/null;done
+
+Output will look like the following:
+
+.. code-block:: shell
+
+   Testing httpuv
+   Testing igraph
+   Error: package or namespace load failed for ‘igraph’ in dyn.load(file, DLLpath = DLLpath, ...):
+   unable to load shared object '/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/igraph/libs/igraph.so':
+   /opt/software/gcc/8.5.0/lib64/libstdc++.so.6: version `GLIBCXX_3.4.29' not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/igraph/libs/igraph.so)
+   Execution halted
+   Testing isoband
+   Error: package or namespace load failed for ‘isoband’ in dyn.load(file, DLLpath = DLLpath, ...):
+   unable to load shared object '/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so':
+   /opt/software/gcc/8.5.0/lib64/libstdc++.so.6: version `GLIBCXX_3.4.29' not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so)
+   Execution halted
+   Testing labeling
+   Testing later
+
+Locate the error messages like the one shown above in the output and and
+reinstall the affected libraries using the ``install.packages`` command:
+
+.. code-block:: shell
+
+   $ R
+   > install.packages(c("igraph", "isoband"))
 
 RStudio: Incorrect or invalid username/password
 ===============================================
