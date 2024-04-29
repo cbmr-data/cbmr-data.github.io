@@ -126,11 +126,11 @@ in these folders.
  Scratch folders
 *****************
 
-Every node on esrum (including the head node) has a 3 TB scratch drive
-available at ``/scratch``. This is intended for short-lived temporary
-files generated as part of jobs running on the cluster, and can provide
-a significant performance benefit if a job for example writes a lot of
-small temporary files.
+Every node on esrum (including the head node) has a 1.5-3 TB scratch
+drive available at ``/scratch``. This is intended for short-lived
+temporary files generated as part of jobs running on the cluster, and
+can provide a significant performance benefit if a job for example
+writes a lot of small temporary files.
 
 .. note::
 
