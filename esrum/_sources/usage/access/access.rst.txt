@@ -28,6 +28,14 @@ An official guide to the identity system used is available here_.
    in the resulting list. Wait for the check mark to turn green and then
    click the ``Next`` button.
 
+   .. note::
+
+      If you get a yellow popup with the message "Cannot Add Access
+      Item. The item you are trying to select is already assigned", then
+      you have already been granted access and you can simply proceed to
+      the :ref:`s_applying_for_projects` section or the
+      :ref:`p_usage_connecting` page.
+
 #. Verify that you are applying for access to ``SRV-esrumhead-users``.
    Do *not* apply for access to the ``SRV-esrumhead-admin`` group. Once
    you have verified that you are applying for access the correct group,
