@@ -10,7 +10,12 @@ server:
 .. image:: /usage/images/connecting_ssh_timeout.gif
    :class: gif
 
-#. Firstly verify that you are correctly connected to the KU network:
+#. Firstly verify that you are (still) a member of the appropriate group
+   as described in :ref:`s_applying_for_access`, as KU-IT may
+   automatically revoke your memberships under certain conditions. No
+   notifications are sent when that happens!
+
+#. Secondly verify that you are correctly connected to the KU network:
 
    #. You must either use a wired connection while physically at CBMR.
    #. Or you must connect via the KU VPN.
