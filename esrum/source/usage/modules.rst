@@ -264,16 +264,16 @@ To request software,
 
 #. Login to the KU `IT Serviceportal`_.
 #. Click the ``Create Ticket`` / ``Opret Sag`` button.
-#. Select the ``Research IT`` / ``Forsknings-IT`` category.
-#. Then select the ``Research Applications and Services`` /
-   ``Forskningsapplikationer og Services`` subcategory.
-#. Finally, select ``Consultancy and Support`` / ``Rådgivning og
-   support``.
+#. Tick/select the ``Research IT`` / ``Forsknings IT`` category in the
+   category/filters list on the left side of the screen.
+#. Click the ``Research Applications Counseling and Support`` /
+   ``Forskningsapplikationer Rådgivning og support`` button.
+#. Click the ``REQUEST`` / ``Bestil`` button.
 #. List what software you wish to have installed in the "Please
    describe" text-box (see below).
 #. Write "esrumhead01fl.unicph.domain" in the System name text-box.
-#. Click the ``ADD TO CART`` / ``TILFØJ TIL KURV`` button.
-#. Click the ``SUBMIT ORDER`` / ``INDSEND ORDRE`` button.
+#. Click the ``Review & submit`` / ``Gennemse & bestil`` button.
+#. Review your ticket and then click the ``Submit`` / ``Bestil`` button.
 
 Your request should include the following information:
 

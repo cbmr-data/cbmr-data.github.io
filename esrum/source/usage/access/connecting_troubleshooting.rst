@@ -33,13 +33,13 @@ server:
 
    #. Click the ``Create Ticket`` / ``Opret Sag`` button.
 
-   #. Select the ``Research IT`` / ``Forsknings-IT`` category.
+   #. Tick/select the ``Research IT`` / ``Forsknings IT`` category in
+      the category/filters list on the left side of the screen.
 
-   #. Then select the ``Research Applications and Services`` /
-      ``Forskningsapplikationer og Services`` subcategory.
+   #. Click the ``Research Applications Counseling and Support`` /
+      ``Forskningsapplikationer Rådgivning og support`` button.
 
-   #. Finally, select ``Consultancy and Support`` / ``Rådgivning og
-      support``.
+   #. Click the ``REQUEST`` / ``Bestil`` button.
 
    #. Write something like "SSH connection times out when attempting to
       connect to esrumhead01fl.unicph.domain" in the "Please describe"
@@ -48,9 +48,10 @@ server:
 
    #. Write "esrumhead01fl.unicph.domain" in the System name text-box.
 
-   #. Click the ``Add to cart`` button.
+   #. Click the ``Review & submit`` / ``Gennemse & bestil`` button.
 
-   #. Click the ``SUBMIT ORDER`` button.
+   #. Review your ticket and then click the ``Submit`` / ``Bestil``
+      button.
 
 .. warning::
 
