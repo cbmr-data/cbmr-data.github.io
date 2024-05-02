@@ -1,13 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 
 <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>CBMR Data Analytics</title>
-    <meta http-equiv="refresh" content="0; url='esrum/" />
+    <link rel='stylesheet' href='https://unpkg.com/purecss@2.1.0/build/pure-min.css'
+        integrity='sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH' crossorigin='anonymous'>
+    <style type='text/css'>
+        body {
+            background-color: #E3E2DE;
+        }
+
+        div#layout {
+            max-width: 920px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: smaller;
+        }
+
+        div.title {
+            color: white;
+            background-color: #901a1e;
+
+            margin: -10px !important;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        h2>a:any-link {
+            color: white;
+        }
+
+        div.pure-u-2-5>div {
+            margin: 5px !important;
+        }
+
+        div.pure-u-2-5>p {
+            margin: 15px !important;
+        }
+
+        div>p {
+            font-size: medium !important;
+        }
+
+        div.pure-g {
+            justify-content: center;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        div.title>h1,
+        div.title>h2 {
+            padding: 5px;
+        }
+
+        .section {
+            background-color: #FFF;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 10px;
+            padding-top: 0px;
+        }
+    </style>
 </head>
 
 <body>
-    <p>Click <a href="esrum/">here</a> if you are not automatically redirected!</p>
+    <div id='layout'>
+        <div class="title">
+            <h1>CBMR Data Analytics</h1>
+        </div>
+        <div class="section">
+            <p style="padding-top: 15px;">The <a href="https://cbmr.ku.dk/research-facilities/data-analytics/">Data
+                    Analytics Platform</a> at the Novo Nordisk Foundation
+                <a href="https://cbmr.ku.dk/">Center for Basic Metabolic
+                    Research</a> enables scientists and collaborators at the
+                center to seamlessly integrate multidimensional,
+                high-resolution data from diverse sources in a
+                state-of-the-art computing environment.
+            </p>
+            <p>For this purpose, the Data Analytics Platform makes
+                available the following resources:</p>
+            <div class="pure-g">
+                <div class="pure-u-2-5">
+                    <div class="title narrow-title">
+                        <h2><a href="https://cbmr-data.github.io/esrum/">HPC
+                                Cluster</a></h2>
+                    </div>
+                    <p>The HPC cluster "Esrum" is available to all employees
+                        at CBMR, as well as their collaborators.</p>
+                    <p>Click <a href="https://cbmr-data.github.io/esrum/">here</a> for
+                        documentation about how to gain access to and use the
+                        cluster.</p>
+                </div>
+                <div class="pure-u-2-5">
+                    <div class="title narrow-title">
+                        <h2><a href="https://cbmrcatapp01fl.unicph.domain/">Cohort
+                                Catalog</a></h2>
+                    </div>
+                    <p>The cohort catalog provides an overview of human
+                        cohorts managed by the platform.</p>
+                    <p>Click <a href="https://cbmrcatapp01fl.unicph.domain/">here</a> to
+                        access the catalog. Note that access requires using the
+                        <a href="https://kunet.ku.dk/employee-guide/Pages/IT/Remote-access.aspx">
+                            VPN</a>.
+                    </p>
+                </div>
+            </div>
+            <div class="pure-g">
+                <div class="pure-u-2-5">
+                    <div class="title narrow-title">
+                        <h2><a href="https://github.com/cbmr-data">Software</a></h2>
+                    </div>
+                    <p>Open-source software developed by the platform is
+                        hosted on our GitHub page.</p>
+                    <p>Click <a href="https://github.com/cbmr-data">here</a>
+                        to view our projects.</p>
+                </div>
+                <div class="pure-u-2-5">
+                    <div class="title narrow-title">
+                        <h2><a href="https://cbmr-data.github.io/esrum/contact.html">Contact
+                                Us</a></h2>
+                    </div>
+                    <p>The Data Analytics provides support in person, via
+                        email, and via Slack.</p>
+                    <p>Click <a href="https://cbmr-data.github.io/esrum/contact.html">here</a>
+                        for more information.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p style="font-size: smaller; text-align: center; color: grey;">
+        This page was built using <a href="https://purecss.io/">Pure</a>.</p>
 </body>
 
 </html>
