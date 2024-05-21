@@ -251,11 +251,12 @@ Esrum.
 
 .. _s_requesting_missing_modules:
 
-****************************
- Requesting missing modules
-****************************
+*****************************
+ Requesting software modules
+*****************************
 
-If the software you need is not available as a module, you you can
+If the software you need is not available as a module, or if the
+specific version you need is not available as a module, then you you can
 request it through KU-IT as described below. You are also welcome to
 :ref:`p_contact` us if you need help determining the exact software
 and/or versions you need to request, or if you have other questions.
