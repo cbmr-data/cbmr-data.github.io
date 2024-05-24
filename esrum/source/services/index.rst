@@ -8,5 +8,6 @@
    :maxdepth: 2
 
    rstudio
+   jupyter
    containers
    shiny
