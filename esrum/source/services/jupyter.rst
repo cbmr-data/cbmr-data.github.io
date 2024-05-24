@@ -106,24 +106,8 @@ Notebook printed in your terminal.
 .. raw:: html
 
    <script defer>
-    var random_port = getEphemeralPort();
-
-    function updatePort(elem) {
-      if (elem.childNodes.length) {
-        elem.childNodes.forEach(updatePort);
-      } else if (elem.textContent) {
-        elem.textContent = elem.textContent.replaceAll("XXXXX", random_port);
-      }
-
-      if (elem.href && elem.href.includes("XXXXX")) {
-        elem.href = elem.href.replaceAll("XXXXX", random_port);
-        // open in new page
-        elem.target = "_blank";
-      }
-    };
-
     document.addEventListener('DOMContentLoaded', function() {
-      updatePort(document.body);
+      replaceTextContent(document.body, "XXXXX", getEphemeralPort());
     });
    </script>
 
