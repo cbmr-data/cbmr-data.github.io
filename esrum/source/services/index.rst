@@ -7,6 +7,7 @@
 .. toctree::
    :maxdepth: 2
 
+   r
    rstudio
    jupyter
    containers

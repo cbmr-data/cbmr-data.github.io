@@ -17,6 +17,12 @@ documentation for easy access.
 
 .. include:: usage/slurm/basics_troubleshooting.rst
 
+***
+ R
+***
+
+.. include:: services/r_troubleshooting.rst
+
 *********
  Rstudio
 *********
