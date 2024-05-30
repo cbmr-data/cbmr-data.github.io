@@ -38,7 +38,7 @@ the GCC module other than ``gcc/8.5.0``, then this library may fail to
 load on the RStudio node or when ``gcc/8.5.0`` is loaded on the
 head/compute nodes:
 
-.. code-block::
+.. code::
 
    $ R
    > library(wk)
@@ -53,7 +53,7 @@ one of two methods:
    section, and simply install the affected packages using the
    ``install.packages`` function:
 
-   .. code-block::
+   .. code::
 
       > install.packages("wk")
 
@@ -63,7 +63,7 @@ one of two methods:
 # . Connect to the head node or a compute node, and take care to load the
    correct version of GCC before loading R:
 
-   .. code-block:: shell
+   .. code:: shell
 
       $ module load gcc/8.5.0 R/4.3.2
       $ R
@@ -79,7 +79,7 @@ that we find the package name, namely ``wk`` in this case.
 You can identify all affected packages in your "global" R library by
 running the following commands:
 
-.. code-block:: shell
+.. code:: shell
 
    module load gcc/8.5.0 R/4.3.2
 
@@ -89,11 +89,12 @@ running the following commands:
 
 # Test every installed library
 
-   for lib in $(ls);do echo "Testing ${lib}"; Rscript <(echo "library(${lib})") > /dev/null;done
+   for lib in $(ls);do echo "Testing ${lib}"; Rscript <(echo
+   "library(${lib})") > /dev/null;done
 
 Output will look like the following:
 
-.. code-block:: shell
+.. code:: shell
 
    Testing httpuv
    Testing igraph
@@ -112,7 +113,7 @@ Output will look like the following:
 Locate the error messages like the one shown above in the output and and
 reinstall the affected libraries using the ``install.packages`` command:
 
-.. code-block:: shell
+.. code:: shell
 
    $ R
    > install.packages(c("igraph", "isoband"))
