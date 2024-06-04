@@ -179,9 +179,11 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../services/index.html">5. Other services</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 5. Other services</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../services/rstudio.html">5.1. R, RStudio, and Jupyter Notebooks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../services/containers.html">5.2. Running containerized software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../services/shiny.html">5.3. Public and private Shiny servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/r.html">5.1. R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/rstudio.html">5.2. RStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/jupyter.html">5.3. Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/containers.html">5.4. Running containerized software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/shiny.html">5.5. Public and private Shiny servers</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../tips/index.html">6. Tips and tricks</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 6. Tips and tricks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -189,10 +191,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../tips/tmux.html">6.2. Persistent sessions with tmux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tips/batching_commands.html">6.3. Batching commands outside Slurm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tips/robust_scripts.html">6.4. Writing robust bash scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tips/snakemake.html">6.5. Using Snakemake on Esrum</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">7. Troubleshooting</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../communications/index.html">8. Communications</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 8. Communications</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../communications/index.html">8. Outreach</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 8. Outreach</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../communications/welcome.html">8.1. Welcome to CBMRs Compute Cluster Esrum!</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../communications/workshops.html">8.2. Workshops and other presentations</a></li>
 </ul>
@@ -272,11 +275,23 @@ anaconda3/2021.05<span class="w">          </span>libxscrnsaver/1.0.0<span class
 <span class="o">[</span>...<span class="o">]</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">avail</span></code> command can also be used to search for specific modules by
-specifying one or more keywords:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>avail<span class="w"> </span>sam
+<p>The <code class="docutils literal notranslate"><span class="pre">avail</span></code> command can also be used to list module versions by name:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>avail<span class="w"> </span>samtools
 --------------------------<span class="w"> </span>/opt/software/modules<span class="w"> </span>--------------------------
 samtools/1.12<span class="w">  </span>samtools/1.17
+</pre></div>
+</div>
+<p>If you are not sure of the exact name of a module, then the <code class="docutils literal notranslate"><span class="pre">search</span></code>
+command can be used to search module names and descriptions:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>search<span class="w"> </span>conda
+<span class="w"> </span>--------------------------<span class="w"> </span>/opt/software/modules<span class="w"> </span>---------------------------
+<span class="w">     </span>cellranger/3.1.0:<span class="w"> </span>a<span class="w"> </span><span class="nb">set</span><span class="w"> </span>of<span class="w"> </span>analysis<span class="w"> </span>pipelines<span class="w"> </span>that<span class="w"> </span>process<span class="w"> </span><span class="o">[</span>...<span class="o">]</span>
+<span class="w">     </span>cellranger/6.1.1:<span class="w"> </span>a<span class="w"> </span><span class="nb">set</span><span class="w"> </span>of<span class="w"> </span>analysis<span class="w"> </span>pipelines<span class="w"> </span>that<span class="w"> </span>process<span class="w"> </span><span class="o">[</span>...<span class="o">]</span>
+<span class="w">     </span>cellranger/6.1.2:<span class="w"> </span>a<span class="w"> </span><span class="nb">set</span><span class="w"> </span>of<span class="w"> </span>analysis<span class="w"> </span>pipelines<span class="w"> </span>that<span class="w"> </span>process<span class="w"> </span><span class="o">[</span>...<span class="o">]</span>
+<span class="w">          </span>mamba/1.4.1:<span class="w"> </span>a<span class="w"> </span>fast,<span class="w"> </span>robust,<span class="w"> </span>and<span class="w"> </span>cross-platform<span class="w"> </span>package<span class="w"> </span><span class="o">[</span>...<span class="o">]</span>
+<span class="w">         </span>mamba/23.3.1:<span class="w"> </span>a<span class="w"> </span>fast,<span class="w"> </span>robust,<span class="w"> </span>and<span class="w"> </span>cross-platform<span class="w"> </span>package<span class="w"> </span><span class="o">[</span>...<span class="o">]</span>
+<span class="w">      </span>miniconda/4.9.2:<span class="w"> </span>free<span class="w"> </span>minimal<span class="w"> </span>installer<span class="w"> </span><span class="k">for</span><span class="w"> </span>conda
+<span class="w">     </span>miniconda/4.10.4:<span class="w"> </span>free<span class="w"> </span>minimal<span class="w"> </span>installer<span class="w"> </span><span class="k">for</span><span class="w"> </span>conda
 </pre></div>
 </div>
 </section>
@@ -324,7 +339,7 @@ Loading<span class="w"> </span>bcftools/1.16
 </pre></div>
 </div>
 <p>Note that it is <em>not</em> recommended to use the <code class="docutils literal notranslate"><span class="pre">--auto</span></code> option when
-loading R; see the <a class="reference internal" href="../services/rstudio.html#p-usage-rstudio"><span class="std std-ref">R, RStudio, and Jupyter Notebooks</span></a> page for more information.</p>
+loading R; see the <a class="reference internal" href="../services/rstudio.html#p-service-rstudio"><span class="std std-ref">RStudio</span></a> page for more information.</p>
 </section>
 <section id="listing-and-unloading-loaded-modules">
 <h3><span class="section-number">4.4.1.3. </span>Listing and unloading loaded modules<a class="headerlink" href="#listing-and-unloading-loaded-modules" title="Permalink to this heading">#</a></h3>
@@ -567,7 +582,7 @@ KU-IT.</p>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
-    <script src="../_static/js/custom.js?v=7a324050"></script>
+    <script src="../_static/js/custom.js?v=3a8ddbd3"></script>
     <script src="../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../_static/js/playback.js?v=c0a59f95"></script>
     </body>

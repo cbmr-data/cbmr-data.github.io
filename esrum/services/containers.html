@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="search" title="Search" href="../search.html" /><link rel="next" title="5.3. Public and private Shiny servers" href="shiny.html" /><link rel="prev" title="5.1. R, RStudio, and Jupyter Notebooks" href="rstudio.html" />
+<link rel="search" title="Search" href="../search.html" /><link rel="next" title="5.5. Public and private Shiny servers" href="shiny.html" /><link rel="prev" title="5.3. Jupyter Notebooks" href="jupyter.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
-        <title>5.2. Running containerized software - Esrum Cluster documentation</title>
+        <title>5.4. Running containerized software - Esrum Cluster documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -179,9 +179,11 @@
 </ul>
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">5. Other services</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 5. Other services</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="rstudio.html">5.1. R, RStudio, and Jupyter Notebooks</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">5.2. Running containerized software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shiny.html">5.3. Public and private Shiny servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r.html">5.1. R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rstudio.html">5.2. RStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">5.3. Jupyter Notebooks</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">5.4. Running containerized software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shiny.html">5.5. Public and private Shiny servers</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../tips/index.html">6. Tips and tricks</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 6. Tips and tricks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -189,10 +191,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../tips/tmux.html">6.2. Persistent sessions with tmux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tips/batching_commands.html">6.3. Batching commands outside Slurm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tips/robust_scripts.html">6.4. Writing robust bash scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tips/snakemake.html">6.5. Using Snakemake on Esrum</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">7. Troubleshooting</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../communications/index.html">8. Communications</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 8. Communications</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../communications/index.html">8. Outreach</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 8. Outreach</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../communications/welcome.html">8.1. Welcome to CBMRs Compute Cluster Esrum!</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../communications/workshops.html">8.2. Workshops and other presentations</a></li>
 </ul>
@@ -240,7 +243,7 @@
         </div>
         <article role="main">
           <section id="running-containerized-software">
-<span id="p-containers"></span><h1><span class="section-number">5.2. </span>Running containerized software<a class="headerlink" href="#running-containerized-software" title="Permalink to this heading">#</a></h1>
+<span id="p-containers"></span><h1><span class="section-number">5.4. </span>Running containerized software<a class="headerlink" href="#running-containerized-software" title="Permalink to this heading">#</a></h1>
 <p><a class="reference external" href="https://www.ibm.com/topics/containerization">Containerization</a> is a technique for running jobs in an isolated and
 reproducible manner, by bundling all necessary dependencies up to and
 including entire operating systems and running the software using
@@ -257,14 +260,14 @@ up for running in user-space and therefore offers better security
 guarantees.</p></li>
 </ol>
 <section id="singularity-containers">
-<h2><span class="section-number">5.2.1. </span>Singularity containers<a class="headerlink" href="#singularity-containers" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.4.1. </span>Singularity containers<a class="headerlink" href="#singularity-containers" title="Permalink to this heading">#</a></h2>
 <p>Singularity is available via <a class="reference internal" href="../usage/modules.html#p-usage-modules"><span class="std std-ref">Environment modules</span></a> and allows you to
 run containerized software as part of Slurm jobs. If possible, you
 should prefer to run your containerized tools in this manner.</p>
 <p>The following only covers the absolute basics. For more information
 please refer to the official <a class="reference external" href="https://docs.sylabs.io/guides/latest/user-guide/">Singularity documentation</a>.</p>
 <section id="running-dockerhub-images">
-<h3><span class="section-number">5.2.1.1. </span>Running Dockerhub images<a class="headerlink" href="#running-dockerhub-images" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.4.1.1. </span>Running Dockerhub images<a class="headerlink" href="#running-dockerhub-images" title="Permalink to this heading">#</a></h3>
 <p>Container images available on <a class="reference external" href="https://hub.docker.com/">dockerhub</a> can be converted to singularity
 images in one step using the <code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">build</span></code> command. For the
 following example, we will download and run version <code class="docutils literal notranslate"><span class="pre">0.7.17</span></code> of the
@@ -300,7 +303,7 @@ docker images can easily take up GBs of space.</p>
 not recommended for the reasons described above.</p>
 </section>
 <section id="running-custom-docker-podman-images">
-<h3><span class="section-number">5.2.1.2. </span>Running custom Docker/Podman images<a class="headerlink" href="#running-custom-docker-podman-images" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.4.1.2. </span>Running custom Docker/Podman images<a class="headerlink" href="#running-custom-docker-podman-images" title="Permalink to this heading">#</a></h3>
 <p>Docker/Podman images run on another system must be exported and
 converted before they can be run on Esrum. The <code class="docutils literal notranslate"><span class="pre">podman</span> <span class="pre">save</span></code> and the
 corresponding <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">save</span></code> command may be used to export an image to
@@ -329,7 +332,7 @@ command:</p>
 </section>
 </section>
 <section id="podman-containers">
-<h2><span class="section-number">5.2.2. </span>Podman containers<a class="headerlink" href="#podman-containers" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.4.2. </span>Podman containers<a class="headerlink" href="#podman-containers" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">esrumcont01fl</span></code> node is dedicated to running containerized
 software that is not suitable for conversion to/running via Singularity.
 Please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us if you wish to run containers on the
@@ -347,18 +350,18 @@ container node.</p>
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title"><span class="section-number">5.3. </span>Public and private Shiny servers</div>
+                <div class="title"><span class="section-number">5.5. </span>Public and private Shiny servers</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="rstudio.html">
+          <a class="prev-page" href="jupyter.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title"><span class="section-number">5.1. </span>R, RStudio, and Jupyter Notebooks</div>
+                <div class="title"><span class="section-number">5.3. </span>Jupyter Notebooks</div>
                 
               </div>
             </a>
@@ -392,13 +395,13 @@ container node.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">5.2. Running containerized software</a><ul>
-<li><a class="reference internal" href="#singularity-containers">5.2.1. Singularity containers</a><ul>
-<li><a class="reference internal" href="#running-dockerhub-images">5.2.1.1. Running Dockerhub images</a></li>
-<li><a class="reference internal" href="#running-custom-docker-podman-images">5.2.1.2. Running custom Docker/Podman images</a></li>
+<li><a class="reference internal" href="#">5.4. Running containerized software</a><ul>
+<li><a class="reference internal" href="#singularity-containers">5.4.1. Singularity containers</a><ul>
+<li><a class="reference internal" href="#running-dockerhub-images">5.4.1.1. Running Dockerhub images</a></li>
+<li><a class="reference internal" href="#running-custom-docker-podman-images">5.4.1.2. Running custom Docker/Podman images</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#podman-containers">5.2.2. Podman containers</a></li>
+<li><a class="reference internal" href="#podman-containers">5.4.2. Podman containers</a></li>
 </ul>
 </li>
 </ul>
@@ -414,7 +417,7 @@ container node.</p>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
-    <script src="../_static/js/custom.js?v=7a324050"></script>
+    <script src="../_static/js/custom.js?v=3a8ddbd3"></script>
     <script src="../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../_static/js/playback.js?v=c0a59f95"></script>
     </body>

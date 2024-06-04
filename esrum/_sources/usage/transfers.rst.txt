@@ -8,6 +8,12 @@ This section describes how to perform bulk data transfers between Esrum,
 your PC/Laptop, and services such as SIF/Erda or Computerome. Several of
 these sections may be useful on other systems than Esrum.
 
+File transfers (including project-to-project transfers) should generally
+be run on a compute node, as high amounts of network traffic may degrade
+performance on the head node for all users of the cluster. See the
+:ref:`s_interactive_session` section for how to open a shell on a
+compute node.
+
 If you have an existing compute project or dataset on a KU-IT managed
 cluster, then you may be able to connect it directly to the Esrum
 cluster and thereby remove the need for transferring data entirely.

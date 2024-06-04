@@ -17,8 +17,20 @@ documentation for easy access.
 
 .. include:: usage/slurm/basics_troubleshooting.rst
 
+***
+ R
+***
+
+.. include:: services/r_troubleshooting.rst
+
 *********
  Rstudio
 *********
 
 .. include:: services/rstudio_troubleshooting.rst
+
+*******************
+ Jupyter Notebooks
+*******************
+
+.. include:: services/jupyter_troubleshooting.rst

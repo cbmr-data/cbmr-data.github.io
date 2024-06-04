@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="search" title="Search" href="../search.html" />
+<link rel="search" title="Search" href="../search.html" /><link rel="next" title="7. Troubleshooting" href="../troubleshooting.html" /><link rel="prev" title="6.4. Writing robust bash scripts" href="robust_scripts.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
-        <title>Using Snakemake - Esrum Cluster documentation</title>
+        <title>6.5. Using Snakemake on Esrum - Esrum Cluster documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -157,7 +157,7 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../contact.html">1. Contact</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">2. Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guidelines.html">3. Guidelines</a></li>
@@ -179,20 +179,23 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../services/index.html">5. Other services</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 5. Other services</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../services/rstudio.html">5.1. R, RStudio, and Jupyter Notebooks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../services/containers.html">5.2. Running containerized software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../services/shiny.html">5.3. Public and private Shiny servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/r.html">5.1. R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/rstudio.html">5.2. RStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/jupyter.html">5.3. Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/containers.html">5.4. Running containerized software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../services/shiny.html">5.5. Public and private Shiny servers</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="index.html">6. Tips and tricks</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 6. Tips and tricks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">6. Tips and tricks</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 6. Tips and tricks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="modules.html">6.1. Creating environment modules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tmux.html">6.2. Persistent sessions with tmux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batching_commands.html">6.3. Batching commands outside Slurm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="robust_scripts.html">6.4. Writing robust bash scripts</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">6.5. Using Snakemake on Esrum</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">7. Troubleshooting</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../communications/index.html">8. Communications</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 8. Communications</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../communications/index.html">8. Outreach</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 8. Outreach</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../communications/welcome.html">8.1. Welcome to CBMRs Compute Cluster Esrum!</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../communications/workshops.html">8.2. Workshops and other presentations</a></li>
 </ul>
@@ -239,38 +242,206 @@
           </label>
         </div>
         <article role="main">
-          <section id="using-snakemake">
-<span id="p-tips-snakemake"></span><h1>Using Snakemake<a class="headerlink" href="#using-snakemake" title="Permalink to this heading">#</a></h1>
-<p>This page describes ways to use Snakemake on the esrum cluster.</p>
+          <section id="using-snakemake-on-esrum">
+<span id="p-tips-snakemake"></span><h1><span class="section-number">6.5. </span>Using Snakemake on Esrum<a class="headerlink" href="#using-snakemake-on-esrum" title="Permalink to this heading">#</a></h1>
+<p>This page describes how to best use Snakemake on the Esrum cluster. As
+this suggests setting a number of options (described below), a basic
+profile file is provided below to automatically set these.</p>
+<p>Snakemake must either be run in a Slurm job or Snakemake must be
+configured to run the individual rules in the <code class="docutils literal notranslate"><span class="pre">Snakefile</span></code> via Slurm as
+described below.</p>
 <section id="running-snakemake-jobs-via-slurm">
-<h2>Running snakemake jobs via Slurm<a class="headerlink" href="#running-snakemake-jobs-via-slurm" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.5.1. </span>Running snakemake jobs via Slurm<a class="headerlink" href="#running-snakemake-jobs-via-slurm" title="Permalink to this heading">#</a></h2>
+<p>The recommended way to use Snakemake with Slurm is to use the
+<code class="docutils literal notranslate"><span class="pre">--slurm</span></code> and <code class="docutils literal notranslate"><span class="pre">--jobs</span> <span class="pre">N</span></code> options, where the <code class="docutils literal notranslate"><span class="pre">N</span></code> is the maximum
+number of jobs you want to queue simultaneously:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>snakemake/7.30.1
+<span class="gp">$ </span>snakemake<span class="w"> </span>--slurm<span class="w"> </span>--jobs<span class="w"> </span><span class="m">32</span>
+</pre></div>
+</div>
+<p>This command will queue at most 32 jobs on Slurm. Note that we do not
+need to specify the maximum number of CPUs (via <code class="docutils literal notranslate"><span class="pre">--cores</span></code>), since
+Slurm will take care that.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some older tutorials may suggest setting Slurm options via the
+Snakemake <code class="docutils literal notranslate"><span class="pre">--cluster</span></code> option and similar. However, with modern
+versions of Snakemake it is sufficient to add <code class="docutils literal notranslate"><span class="pre">--slurm</span></code> when
+running Snakemake and that is the method we recommend using.</p>
+</div>
+<p>Running Snakemake with <code class="docutils literal notranslate"><span class="pre">--slurm</span></code> has a number of advantages over
+running Snakemake in a Slurm job (via <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> or <code class="docutils literal notranslate"><span class="pre">srun</span></code>) or in an
+interactive session on a compute node:</p>
+<ul class="simple">
+<li><p>Resources are only reserved for the duration of individual rules,
+meaning other jobs (yours and those of other users) can make use of
+those resources.</p></li>
+<li><p>Your can run more jobs simultaneously than can fit on a single
+compute node.</p></li>
+<li><p>You can run a mix of jobs that require GPUs and jobs that do not
+require GPUs.</p></li>
+</ul>
+<p>However, there are also some disadvantages:</p>
+<ul class="simple">
+<li><p>Running a rule via Slurm adds some overhead, which may result in a
+significant increase in the runtime for very brief rules.</p></li>
+<li><p>Rules queued via Slurm are not necessarily terminate if you stop
+snakemake, meaning that you may have to terminate these yourself. See
+the <a class="reference internal" href="../usage/slurm/basics.html#p-usage-slurm-basics"><span class="std std-ref">Basic Slurm jobs</span></a> page for information about how to
+query and scancel running/queued jobs on Slurm.</p></li>
+</ul>
+<section id="requesting-cpus">
+<h3><span class="section-number">6.5.1.1. </span>Requesting CPUs<a class="headerlink" href="#requesting-cpus" title="Permalink to this heading">#</a></h3>
+<p>Snakemake will automatically request a number of CPUs corresponding to
+the number of threads used by a rule:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rule</span> <span class="n">my_rule</span><span class="p">:</span>
+    <span class="nb">input</span><span class="p">:</span> <span class="o">...</span>
+    <span class="n">output</span><span class="p">:</span> <span class="o">...</span>
+    <span class="n">threads</span><span class="p">:</span> <span class="mi">8</span>
+</pre></div>
+</div>
+<p>Snakemake will in other words reserve 8 CPUs for the above rule when
+submitting it through Slurm.</p>
+</section>
+<section id="requesting-memory">
+<h3><span class="section-number">6.5.1.2. </span>Requesting memory<a class="headerlink" href="#requesting-memory" title="Permalink to this heading">#</a></h3>
+<p>Snakemake will by default estimate the amount of memory needed for a
+rule as a function of the input data (<code class="docutils literal notranslate"><span class="pre">max(2*input.size_mb,</span> <span class="pre">1000)</span></code>),
+corresponding to two times the size of the input but no less than 1000
+MB.</p>
+<p>This is, however, frequently less than the Slurm default of ~16 GB per
+CPU reserved, and we therefore recommend overriding this default using
+the <code class="docutils literal notranslate"><span class="pre">--default-resources</span></code> option:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">snakemake --default-resources mem_mb_per_cpu=15948</span>
+</pre></div>
+</div>
+<p>This corresponds to the behavior of <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> and <code class="docutils literal notranslate"><span class="pre">srun</span></code>.</p>
+<p>Should a job require more memory than the default ~16 GB per CPU, then
+you can request additional memory using the <code class="docutils literal notranslate"><span class="pre">resources</span></code> section of
+your rule:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rule</span> <span class="n">my_rule</span><span class="p">:</span>
+    <span class="nb">input</span><span class="p">:</span> <span class="o">...</span>
+    <span class="n">output</span><span class="p">:</span> <span class="o">...</span>
+    <span class="n">resources</span><span class="p">:</span>
+        <span class="n">mem_mb</span><span class="p">:</span> <span class="mi">65536</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">mem_mb</span></code> specifies a <em>total</em> amount of memory to reserve in MB and
+the above example therefore requests 64 GB for this specific rule.</p>
+</section>
+<section id="using-the-gpu-high-mem-queue">
+<h3><span class="section-number">6.5.1.3. </span>Using the GPU/high-MEM queue<a class="headerlink" href="#using-the-gpu-high-mem-queue" title="Permalink to this heading">#</a></h3>
+<p>Running a job on the GPU/high-MEM is accomplished by specifying that you
+want to use the <code class="docutils literal notranslate"><span class="pre">gpuqueue</span></code> by adding <code class="docutils literal notranslate"><span class="pre">slurm_partition=&quot;gpuqueue&quot;</span></code> to
+the <code class="docutils literal notranslate"><span class="pre">resources</span></code> section of your rule. Once you have done so, you can
+reserve GPUs as shown below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rule</span> <span class="n">gpu_example</span><span class="p">:</span>
+    <span class="nb">input</span><span class="p">:</span> <span class="s2">&quot;my_input.dat&quot;</span>
+    <span class="n">output</span><span class="p">:</span> <span class="s2">&quot;my_output.dat&quot;</span>
+    <span class="n">shell</span><span class="p">:</span> <span class="s2">&quot;my-command </span><span class="si">{input}</span><span class="s2"> &gt; </span><span class="si">{output}</span><span class="s2">&quot;</span>
+    <span class="n">resources</span><span class="p">:</span>
+        <span class="c1"># Run this task on the GPU queue</span>
+        <span class="n">slurm_partition</span><span class="o">=</span><span class="s2">&quot;gpuqueue&quot;</span><span class="p">,</span>
+        <span class="c1"># Reserve 1 GPU for this job</span>
+        <span class="n">slurm_extra</span><span class="o">=</span><span class="s2">&quot;--gres=gpu:1&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>If you need memory rather than GPUs, then you specify the amount needed
+in MB using the <code class="docutils literal notranslate"><span class="pre">mem_mb</span></code> resource as described above:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rule</span> <span class="n">high_mem_example</span><span class="p">:</span>
+    <span class="nb">input</span><span class="p">:</span> <span class="s2">&quot;my_input.dat&quot;</span>
+    <span class="n">output</span><span class="p">:</span> <span class="s2">&quot;my_output.dat&quot;</span>
+    <span class="n">shell</span><span class="p">:</span> <span class="s2">&quot;my-command </span><span class="si">{input}</span><span class="s2"> &gt; </span><span class="si">{output}</span><span class="s2">&quot;</span>
+    <span class="n">resources</span><span class="p">:</span>
+        <span class="c1"># Run this task on the GPU queue</span>
+        <span class="n">slurm_partition</span><span class="o">=</span><span class="s2">&quot;gpuqueue&quot;</span><span class="p">,</span>
+        <span class="c1"># Reserve 3 TB of memory (specified in MB)</span>
+        <span class="n">mem_mb</span><span class="o">=</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">,</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do <em>not</em> reserve GPUs if you do not need to use them; we only have a
+few GPUs, so we will terminate jobs found to be unnecessarily
+reserving GPU resources.</p>
+</div>
+</section>
 </section>
 <section id="using-environment-modules">
-<h2>Using environment modules<a class="headerlink" href="#using-environment-modules" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.5.2. </span>Using environment modules<a class="headerlink" href="#using-environment-modules" title="Permalink to this heading">#</a></h2>
+<p>Snakemake can automatically load environment required by a rule. This
+requires either that the <code class="docutils literal notranslate"><span class="pre">--use-envmodules</span></code> option is specified on the
+command-line or that <code class="docutils literal notranslate"><span class="pre">use-envmodules</span></code> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code> in your
+profile (see below). When that is done, Snakemake will automatically
+load the environment modules listed in the <code class="docutils literal notranslate"><span class="pre">envmodules</span></code> section of a
+rule:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rule</span> <span class="n">my_rule</span><span class="p">:</span>
+    <span class="nb">input</span><span class="p">:</span> <span class="s2">&quot;my_input.bam&quot;</span>
+    <span class="n">output</span><span class="p">:</span> <span class="s2">&quot;my_output.stats.txt&quot;</span>
+    <span class="n">shell</span><span class="p">:</span> <span class="s2">&quot;samtools stats </span><span class="si">{input}</span><span class="s2"> &gt; </span><span class="si">{output}</span><span class="s2">&quot;</span>
+    <span class="n">envmodules</span><span class="p">:</span>
+        <span class="s2">&quot;libdeflate/1.18&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;samtools-libdeflate/1.18&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Remember to specify version numbers for the module you are using;
+this helps ensures that your analyses are reproducible and that they
+wont suddenly break when new versions of modules are added.</p>
+</div>
 </section>
-<section id="limiting-simultaneously-running-nodes">
-<h2>Limiting simultaneously running nodes<a class="headerlink" href="#limiting-simultaneously-running-nodes" title="Permalink to this heading">#</a></h2>
+<section id="other-recommended-options">
+<h2><span class="section-number">6.5.3. </span>Other recommended options<a class="headerlink" href="#other-recommended-options" title="Permalink to this heading">#</a></h2>
+<p>This section describes a handful of settings that</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--latency-wait</span> <span class="pre">60</span></code>: This option increases the length of time
+snakemake will wait for missing output files to appear. This is
+required when using <code class="docutils literal notranslate"><span class="pre">--slurm</span></code> since a job will be running on a
+different node than snakemake itself and since it may take some
+amount of times for files to propagate over the network filesystem.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--rerun-incomplete</span></code>: This option ensures that snakemake reruns
+jobs that were not run to completion.</p></li>
+</ul>
+<p>The profile below enables you to automatically set these options.</p>
 </section>
-<section id="suggested-profile">
-<h2>Suggested profile<a class="headerlink" href="#suggested-profile" title="Permalink to this heading">#</a></h2>
-<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enable task execution using Slurm</span>
-<span class="na">slurm</span><span class="o">:</span><span class="w"> </span><span class="s">true</span>
-<span class="c1"># The maximum number of simultaneous jobs submitted to Slurm</span>
-<span class="na">jobs</span><span class="o">:</span><span class="w"> </span><span class="s">16</span>
-<span class="c1"># Enable environment modules</span>
-<span class="na">use-envmodules</span><span class="o">:</span><span class="w"> </span><span class="s">true</span>
-<span class="na">default-resources</span><span class="o">:</span>
-<span class="w">  </span><span class="c1"># Use default mem per CPU (~15 GB)</span>
-<span class="w">  </span><span class="na">- &quot;mem_mb_per_cpu</span><span class="o">=</span><span class="s">None&quot;</span>
-<span class="w">  </span><span class="c1"># Use standard (non-GPU) queue by default;</span>
-<span class="w">  </span><span class="c1"># this is not required, but shuts up a warning</span>
-<span class="w">  </span><span class="na">- &quot;slurm_partition</span><span class="o">=</span><span class="s">standardqueue&quot;</span>
-<span class="c1"># Wait up to 60 seconds for files saved on the shared file system;</span>
-<span class="c1"># this is done to prevent Snakemake from failing if the network file-</span>
-<span class="c1"># system is loaded</span>
-<span class="na">latency-wait</span><span class="o">:</span><span class="w"> </span><span class="s">60</span>
-<span class="c1"># Re-do incomplete tasks</span>
-<span class="na">rerun-incomplete</span><span class="o">:</span><span class="w"> </span><span class="s">True</span>
+<section id="snakemake-profile">
+<h2><span class="section-number">6.5.4. </span>Snakemake profile<a class="headerlink" href="#snakemake-profile" title="Permalink to this heading">#</a></h2>
+<p>The recommended profile is also available at
+<code class="docutils literal notranslate"><span class="pre">/projects/cbmr_shared/apps/config/snakemake/latest</span></code>. This is a
+symlink pointing to the latest version of the profile</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Maximum number of jobs to queue at once</span>
+<span class="nt">jobs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32</span>
+<span class="c1"># Use slurm for queuing jobs</span>
+<span class="nt">slurm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="c1"># (Optional) Enable the use of environmental modules</span>
+<span class="nt">use-envmodules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="c1"># Wait up to 60 seconds for the network file system</span>
+<span class="nt">latency-wait</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span>
+<span class="c1"># Re-run incomplete jobs</span>
+<span class="nt">rerun-incomplete</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+
+<span class="c1"># Standard slurm resources; these match the `sbatch` defaults:</span>
+<span class="nt">default-resources</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Use standard queue by default (silences warning)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;slurm_partition=standardqueue&quot;</span>
+<span class="w">  </span><span class="c1"># Same mem-per-CPU as Slurm defaults</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;mem_mb_per_cpu=15948&quot;</span>
+<span class="w">  </span><span class="c1"># (Optional) Runtime limit in minutes to catch jobs that hang</span>
+<span class="w">  </span><span class="c1">#- &quot;runtime=720&quot;</span>
+</pre></div>
+</div>
+<p>This profile is also available at
+<code class="docutils literal notranslate"><span class="pre">/projects/cbmr_shared/apps/config/snakemake/</span></code>.</p>
+<p>To make use of the profile, run Snakemake with the <code class="docutils literal notranslate"><span class="pre">--profile</span></code>
+argument and the location of the folder containing your profile:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>snakemake<span class="w"> </span>--profile<span class="w"> </span>/projects/cbmr_shared/apps/config/snakemake/latest
+</pre></div>
+</div>
+<p>Options specified in this profile can be overridden on the command-line
+simply by specifying the option again:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>snakemake<span class="w"> </span>--profile<span class="w"> </span>/projects/cbmr_shared/apps/config/snakemake/latest<span class="w"> </span>--jobs<span class="w"> </span><span class="m">16</span>
 </pre></div>
 </div>
 </section>
@@ -281,8 +452,26 @@
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="../troubleshooting.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title"><span class="section-number">7. </span>Troubleshooting</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="robust_scripts.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title"><span class="section-number">6.4. </span>Writing robust bash scripts</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -313,11 +502,16 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Using Snakemake</a><ul>
-<li><a class="reference internal" href="#running-snakemake-jobs-via-slurm">Running snakemake jobs via Slurm</a></li>
-<li><a class="reference internal" href="#using-environment-modules">Using environment modules</a></li>
-<li><a class="reference internal" href="#limiting-simultaneously-running-nodes">Limiting simultaneously running nodes</a></li>
-<li><a class="reference internal" href="#suggested-profile">Suggested profile</a></li>
+<li><a class="reference internal" href="#">6.5. Using Snakemake on Esrum</a><ul>
+<li><a class="reference internal" href="#running-snakemake-jobs-via-slurm">6.5.1. Running snakemake jobs via Slurm</a><ul>
+<li><a class="reference internal" href="#requesting-cpus">6.5.1.1. Requesting CPUs</a></li>
+<li><a class="reference internal" href="#requesting-memory">6.5.1.2. Requesting memory</a></li>
+<li><a class="reference internal" href="#using-the-gpu-high-mem-queue">6.5.1.3. Using the GPU/high-MEM queue</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-environment-modules">6.5.2. Using environment modules</a></li>
+<li><a class="reference internal" href="#other-recommended-options">6.5.3. Other recommended options</a></li>
+<li><a class="reference internal" href="#snakemake-profile">6.5.4. Snakemake profile</a></li>
 </ul>
 </li>
 </ul>
@@ -333,7 +527,7 @@
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
-    <script src="../_static/js/custom.js?v=7a324050"></script>
+    <script src="../_static/js/custom.js?v=3a8ddbd3"></script>
     <script src="../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../_static/js/playback.js?v=c0a59f95"></script>
     </body>

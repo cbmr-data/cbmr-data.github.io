@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="search" title="Search" href="../search.html" /><link rel="next" title="5.2. Running containerized software" href="containers.html" /><link rel="prev" title="5. Other services" href="index.html" />
+<link rel="search" title="Search" href="../search.html" /><link rel="next" title="5.3. Jupyter Notebooks" href="jupyter.html" /><link rel="prev" title="5.1. R" href="r.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
-        <title>5.1. R, RStudio, and Jupyter Notebooks - Esrum Cluster documentation</title>
+        <title>5.2. RStudio - Esrum Cluster documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -179,9 +179,11 @@
 </ul>
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">5. Other services</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 5. Other services</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">5.1. R, RStudio, and Jupyter Notebooks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="containers.html">5.2. Running containerized software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shiny.html">5.3. Public and private Shiny servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r.html">5.1. R</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">5.2. RStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">5.3. Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="containers.html">5.4. Running containerized software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shiny.html">5.5. Public and private Shiny servers</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../tips/index.html">6. Tips and tricks</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 6. Tips and tricks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -189,10 +191,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../tips/tmux.html">6.2. Persistent sessions with tmux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tips/batching_commands.html">6.3. Batching commands outside Slurm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tips/robust_scripts.html">6.4. Writing robust bash scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tips/snakemake.html">6.5. Using Snakemake on Esrum</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">7. Troubleshooting</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../communications/index.html">8. Communications</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 8. Communications</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../communications/index.html">8. Outreach</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 8. Outreach</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../communications/welcome.html">8.1. Welcome to CBMRs Compute Cluster Esrum!</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../communications/workshops.html">8.2. Workshops and other presentations</a></li>
 </ul>
@@ -239,159 +242,10 @@
           </label>
         </div>
         <article role="main">
-          <section id="r-rstudio-and-jupyter-notebooks">
-<span id="p-usage-rstudio"></span><h1><span class="section-number">5.1. </span>R, RStudio, and Jupyter Notebooks<a class="headerlink" href="#r-rstudio-and-jupyter-notebooks" title="Permalink to this heading">#</a></h1>
-<p>Users of the Esrum cluster have the option of using R, RStudio or
-Jupyter Notebooks to run their analyses. This section describes steps
-required to use these tools.</p>
-<section id="r">
-<h2><span class="section-number">5.1.1. </span>R<a class="headerlink" href="#r" title="Permalink to this heading">#</a></h2>
-<p>Several versions of R are available via the module system. To load
-these, you need to load the version of R you want <em>and</em> a version of
-gcc, which is required to install/load modules.</p>
-<section id="compatibility-with-the-rstudio-server">
-<h3><span class="section-number">5.1.1.1. </span>Compatibility with the Rstudio server<a class="headerlink" href="#compatibility-with-the-rstudio-server" title="Permalink to this heading">#</a></h3>
-<p>We <em>highly</em> recommend that you always use <code class="docutils literal notranslate"><span class="pre">gcc/8.5.0</span></code> and <code class="docutils literal notranslate"><span class="pre">R/4.3.2</span></code>
-(or another version of <code class="docutils literal notranslate"><span class="pre">R/4.3.x</span></code>) when loading R on the head or
-compute nodes, since this ensures compatibility between all servers on
-Esrum:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
-</pre></div>
-</div>
-<p>Using the <code class="docutils literal notranslate"><span class="pre">--auto</span></code> option will instead load the latest version of gcc,
-currently version <code class="docutils literal notranslate"><span class="pre">11.2.0</span></code>.</p>
-<p>R modules installed using versions of R other than <code class="docutils literal notranslate"><span class="pre">4.3.x</span></code> will simply
-not be available on the RStudio server and you will need to install them
-again.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Using a GCC version greater than 8.x with <code class="docutils literal notranslate"><span class="pre">R/4.3.x</span></code> may cause
-modules you install to fail to load on the Rstudio server with the
-following error:</p>
-<p>See the Troubleshooting section below for more information.</p>
-</div>
-</section>
-<section id="submitting-r-scripts-using-slurm">
-<h3><span class="section-number">5.1.1.2. </span>Submitting R scripts using Slurm<a class="headerlink" href="#submitting-r-scripts-using-slurm" title="Permalink to this heading">#</a></h3>
-<p>The recommended way to run R on Esrum is as non-interactive scripts
-submitted to slurm. This not only ensures that your analyses do not
-impact other users, but also makes make your analyses reproducible.</p>
-<p>To run an R script on the command-line, simply use the <code class="docutils literal notranslate"><span class="pre">Rscript</span></code>
-command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>my_script.R
-cat<span class="o">(</span><span class="s2">&quot;Hello, world!\n&quot;</span><span class="o">)</span>
-$<span class="w"> </span>Rscript<span class="w"> </span>my_script.R
-Hello,<span class="w"> </span>world!
-</pre></div>
-</div>
-<p>For simple scripts you can use the <code class="docutils literal notranslate"><span class="pre">commandArgs</span></code> function to pass
-arguments to your scripts, allowing you to use them to process arbitrary
-data-sets:</p>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">args</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">commandArgs</span><span class="p">(</span><span class="n">trailingOnly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
-
-<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;Hello, &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="s">&quot;!\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>Rscript<span class="w"> </span>my_script.R<span class="w"> </span>world
-<span class="go">Hello, world!</span>
-</pre></div>
-</div>
-<p>If your script requires a heterogenous set of input files or options to
-run, then it is recommended to use an argument parser such as the
-<a class="reference external" href="https://cran.r-project.org/web/packages/argparser/index.html">argparser</a> R library. To use the argparser library you must first
-install it using the <code class="docutils literal notranslate"><span class="pre">install.packages(&quot;argparser&quot;)</span></code> command.</p>
-<p>The following is a brief example of how you might use the <code class="docutils literal notranslate"><span class="pre">argparser</span></code>
-library and it can also be downloaded <a class="reference download internal" download="" href="../_downloads/4cffb1257281bb7de8b3917b47b00bc1/argparser.R"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a>.</p>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="c1">#!/usr/bin/env Rscript</span>
-<span class="w">   </span><span class="nf">library</span><span class="p">(</span><span class="n">argparser</span><span class="p">)</span>
-
-<span class="w">   </span><span class="n">parser</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">arg_parser</span><span class="p">(</span><span class="s">&quot;This is my script!&quot;</span><span class="p">)</span>
-
-<span class="w">   </span><span class="n">parser</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">add_argument</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;input_file&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">help</span><span class="o">=</span><span class="s">&quot;My data&quot;</span><span class="p">)</span>
-<span class="w">   </span><span class="n">parser</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">add_argument</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--p-value&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">default</span><span class="o">=</span><span class="m">0.05</span><span class="p">,</span><span class="w"> </span><span class="n">help</span><span class="o">=</span><span class="s">&quot;Maximum P-value&quot;</span><span class="p">)</span>
-
-<span class="w">   </span><span class="n">args</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">parse_args</span><span class="p">(</span><span class="n">parser</span><span class="p">)</span>
-<span class="w">   </span><span class="nf">cat</span><span class="p">(</span><span class="s">&quot;I would process the file&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="o">$</span><span class="n">input_file</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;with a max P-value of&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="o">$</span><span class="n">p_value</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;\n&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>This allows you to document your command-line options, specify default
-values, and much more:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>Rscript<span class="w"> </span>my_script.R
-usage:<span class="w"> </span>my_script.R<span class="w"> </span><span class="o">[</span>--<span class="o">]</span><span class="w"> </span><span class="o">[</span>--help<span class="o">]</span><span class="w"> </span><span class="o">[</span>--opts<span class="w"> </span>OPTS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--p-value<span class="w"> </span>P-VALUE<span class="o">]</span>
-<span class="w">    </span>input_file
-
-This<span class="w"> </span>is<span class="w"> </span>my<span class="w"> </span>script!
-
-positional<span class="w"> </span>arguments:
-input_file<span class="w">     </span>My<span class="w"> </span>data
-
-flags:
--h,<span class="w"> </span>--help<span class="w">     </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
-
-optional<span class="w"> </span>arguments:
--x,<span class="w"> </span>--opts<span class="w">     </span>RDS<span class="w"> </span>file<span class="w"> </span>containing<span class="w"> </span>argument<span class="w"> </span>values
--p,<span class="w"> </span>--p-value<span class="w">  </span>Maximum<span class="w"> </span>P-value<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span><span class="m">0</span>.05<span class="o">]</span>
-
-Error<span class="w"> </span><span class="k">in</span><span class="w"> </span>parse_args<span class="o">(</span>parser<span class="o">)</span><span class="w"> </span>:
-Missing<span class="w"> </span>required<span class="w"> </span>arguments:<span class="w"> </span>expecting<span class="w"> </span><span class="m">1</span><span class="w"> </span>values<span class="w"> </span>but<span class="w"> </span>got<span class="w"> </span><span class="m">0</span><span class="w"> </span>values:<span class="w"> </span><span class="o">()</span>.
-Execution<span class="w"> </span>halted
-$<span class="w"> </span>Rscript<span class="w"> </span>my_script.R<span class="w"> </span>my_data.tsv
-I<span class="w"> </span>would<span class="w"> </span>process<span class="w"> </span>the<span class="w"> </span>file<span class="w"> </span>my_data.tsv<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>max<span class="w"> </span>P-value<span class="w"> </span>of<span class="w"> </span><span class="m">0</span>.05
-</pre></div>
-</div>
-<p>Finally, you write can write a small bash script to automatically load
-the required version of R and to call your script when you submit it to
-Slurm (using your preferred version of R):</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cat<span class="w"> </span>run_rscript.sh
-<span class="gp">#</span>!/bin/bash
-
-<span class="go">module load gcc/8.5.0 R/4.1.2</span>
-<span class="go">Rscript &quot;${@}&quot;</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">&quot;${&#64;}&quot;</span></code> safely passes all your command-line arguments to
-<code class="docutils literal notranslate"><span class="pre">Rscript</span></code>, even if they contain spaces. This wrapper script can then
-be used to submit/call any of your R-scripts:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>run_rscript.sh<span class="w"> </span>my_script.R<span class="w"> </span>my_data.tsv<span class="w"> </span>--p-value<span class="w"> </span><span class="m">0</span>.01
-<span class="go">Submitted batch job 18090212</span>
-<span class="gp">$ </span>cat<span class="w"> </span>slurm-18090212.out
-<span class="go">I would process the file my_data.tsv with a max P-value of 0.01</span>
-</pre></div>
-</div>
-</section>
-<section id="installing-r-modules">
-<h3><span class="section-number">5.1.1.3. </span>Installing R modules<a class="headerlink" href="#installing-r-modules" title="Permalink to this heading">#</a></h3>
-<p>Modules may be installed in your home folder using the
-<code class="docutils literal notranslate"><span class="pre">install.packages</span></code> command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.1
-<span class="gp">$ </span>R
-<span class="go">&gt; install.packages(&quot;ggplot2&quot;)</span>
-<span class="go">Warning in install.packages(&quot;ggplot2&quot;) :</span>
-<span class="go">  &#39;lib = &quot;/opt/software/R/4.3.1/lib64/R/library&quot;&#39; is not writable</span>
-<span class="go">Would you like to use a personal library instead? (yes/No/cancel) yes</span>
-<span class="go">Would you like to create a personal library</span>
-<span class="go">‘/home/abc123/R/x86_64-pc-linux-gnu-library/4.3’</span>
-<span class="go">to install packages into? (yes/No/cancel) yes</span>
-</pre></div>
-</div>
-<p>When asked to pick a mirror, either pick <code class="docutils literal notranslate"><span class="pre">0-Cloud</span></code> by entering <code class="docutils literal notranslate"><span class="pre">1</span></code>
-and pressing enter, or enter the number corresponding to a location near
-you and press enter:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">--- Please select a CRAN mirror for use in this session ---</span>
-<span class="go">Secure CRAN mirrors</span>
-
-<span class="go">1: 0-Cloud [https]</span>
-<span class="go">[...]</span>
-
-<span class="go">Selection: 1</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="rstudio">
-<span id="s-rstudio"></span><h2><span class="section-number">5.1.2. </span>RStudio<a class="headerlink" href="#rstudio" title="Permalink to this heading">#</a></h2>
-<p>An <a class="reference external" href="https://posit.co/products/open-source/rstudio/">RStudio</a> server is made available at <a class="reference external" href="http://esrumweb01fl:8787/">http://esrumweb01fl:8787/</a>. To
-use this server, you must</p>
+          <section id="rstudio">
+<span id="p-service-rstudio"></span><h1><span class="section-number">5.2. </span>RStudio<a class="headerlink" href="#rstudio" title="Permalink to this heading">#</a></h1>
+<p>The <a class="reference external" href="https://posit.co/products/open-source/rstudio/">RStudio</a> server can be found at <a class="reference external" href="http://esrumweb01fl:8787/">http://esrumweb01fl:8787/</a>. To
+connect to this server, you must</p>
 <ol class="arabic simple">
 <li><p>Be a member of the <code class="docutils literal notranslate"><span class="pre">SRV-esrumweb-users</span></code> group. Simply follow the
 steps in the <a class="reference internal" href="../usage/access/access.html#s-applying-for-access"><span class="std std-ref">Applying for access to the cluster</span></a> section, and apply for
@@ -413,8 +267,26 @@ Slurm as described in <a class="reference internal" href="../usage/slurm/index.h
 negatively impact everyone using the service and we will therefore
 terminate such tasks without warning if we deem it necessary.</p>
 </div>
+<section id="preserving-loaded-data">
+<h2><span class="section-number">5.2.1. </span>Preserving loaded data<a class="headerlink" href="#preserving-loaded-data" title="Permalink to this heading">#</a></h2>
+<p>Data that you have loaded into R and other variables you have defined
+are visible on the <code class="docutils literal notranslate"><span class="pre">Environment</span></code> tab in RStudio:</p>
+<p>TODO: Image; make sure screenshot is based on defaults</p>
+<p>By default this data will be saved to your RStudio folder on the
+<code class="docutils literal notranslate"><span class="pre">/scratch</span></code> drive when you quit your session or when it automatically
+suspends (currently after 9 hours of inactivity).</p>
+<p>This may, however, result in very large amounts of data being saved to
+disk and, consequently, large of amounts of data having to be read when
+you login again, resulting in login taking a very long time.</p>
+<p>For this reason we recommend disabling the saving and loading of
+<code class="docutils literal notranslate"><span class="pre">.RData</span></code> in the <code class="docutils literal notranslate"><span class="pre">Global</span> <span class="pre">Settings</span></code> accessible via the <code class="docutils literal notranslate"><span class="pre">Tools</span> <span class="pre">Menu</span></code>:</p>
+<p>TODO: Images</p>
+<p>It is recommended to turn on the indicated <code class="docutils literal notranslate"><span class="pre">Always</span> <span class="pre">save</span> <span class="pre">history</span> <span class="pre">(even</span>
+<span class="pre">when</span> <span class="pre">not</span> <span class="pre">saving</span> <span class="pre">.RData)</span></code> option, as the commands you type into the R
+terminal will otherwise <em>not</em> be saved.</p>
+</section>
 <section id="rstudio-server-best-practice">
-<h3><span class="section-number">5.1.2.1. </span>RStudio server best practice<a class="headerlink" href="#rstudio-server-best-practice" title="Permalink to this heading">#</a></h3>
+<h2><span class="section-number">5.2.2. </span>RStudio server best practice<a class="headerlink" href="#rstudio-server-best-practice" title="Permalink to this heading">#</a></h2>
 <p>Since the RStudio server is a shared resource where that many users may
 be using simultaneously, we ask that you show consideration towards
 other users of the server.</p>
@@ -428,204 +300,32 @@ cause significant slow-downs for <em>everyone</em> using the service.</p>
 Rstudio, that you use that subset of data to develop your analyses
 processes, and that you use that to process your complete dataset via
 an R-script submitted to Slurm as described in <a class="reference internal" href="../usage/slurm/index.html#p-usage-slurm"><span class="std std-ref">Running jobs using Slurm</span></a>.</p>
-<p>See also above for a brief example of how to submit R scripts to
-Slurm.</p>
+<p>See the <a class="reference internal" href="r.html#p-service-r"><span class="std std-ref">R</span></a> page for additional guidance on how to use
+R with Slurm.</p>
 </li>
 <li><p>Don't keep data in memory that you do not need. Data that you no
 longer need can be freed with the <code class="docutils literal notranslate"><span class="pre">rm</span></code> function or using the broom
-icon on the <code class="docutils literal notranslate"><span class="pre">Environment</span></code> tab in Rstudio, as described below. This
-also helps prevent RStudio from filling your home folder when your
-session is closed (see Troubleshooting below).</p></li>
+icon on the <code class="docutils literal notranslate"><span class="pre">Environment</span></code> tab in Rstudio. This also helps prevent
+RStudio from filling your home folder when your session is closed
+(see Troubleshooting below).</p></li>
 <li><p>Do not run resource intensive tasks via the embedded terminal. As
 noted above, such tasks will be terminated without warning if deemed
 to have a negative impact on other users. Instead such tasks should
 be run using Slurm as described in <a class="reference internal" href="../usage/slurm/index.html#p-usage-slurm"><span class="std std-ref">Running jobs using Slurm</span></a>.</p></li>
 </ul>
 </section>
-</section>
-<section id="jupyter-notebook">
-<h2><span class="section-number">5.1.3. </span>Jupyter notebook<a class="headerlink" href="#jupyter-notebook" title="Permalink to this heading">#</a></h2>
-<p><a class="reference external" href="https://jupyter.org/">Jupyter Notebooks</a> are available via the module system on Esrum and
-may be started as follows:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>jupyter-notebook
-$<span class="w"> </span>jupyter<span class="w"> </span>notebook<span class="w"> </span>--no-browser<span class="w"> </span>--port<span class="o">=</span>XXXXX
-</pre></div>
-</div>
-<script>
- document.write("The number used in the argument <code class=\"docutils literal notranslate\"><span class=\"pre\">--port=XXXXX</span></code> must be a value in the range 49152 to 65535, and must not be a number used by another user on Esrum. The number shown here was randomly selected for you and you can refresh this page for a different suggestion.")
-</script>
-<noscript>
-The XXXXX in the above command must be replaced with a valid port number. To avoid trouble you should pick a number in the range 49152 to 65535, and you must not pick a number used by another user on Esrum.
-</noscript><p>It is also recommended that you run your notebook in a tmux session or
-similar, to avoid the notebook shutting down if you lose connection to
-the server. See <a class="reference internal" href="../tips/tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> for more information.</p>
-<p>To actually connect to the notebook server, you will need to setup port
-forwarding using the port-number from your command.</p>
-<section id="port-forwarding-in-windows-mobaxterm">
-<h3><span class="section-number">5.1.3.1. </span>Port forwarding in Windows (MobaXterm)<a class="headerlink" href="#port-forwarding-in-windows-mobaxterm" title="Permalink to this heading">#</a></h3>
-<p>The following instructions assume that you are using MobaXterm. If not,
-then please refer to the documentation for your tool of choice.</p>
-<ol class="arabic">
-<li><p>Install and configure MobaXterm as described in
-<a class="reference internal" href="../usage/access/connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a>.</p></li>
-<li><p>Click the middle <code class="docutils literal notranslate"><span class="pre">Tunneling</span></code> button on the toolbar.</p>
-<img alt="../_images/mobaxterm_tunnel_01.png" class="align-center" src="../_images/mobaxterm_tunnel_01.png" />
-</li>
-<li><p>Click the bottom-left <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">SSH</span> <span class="pre">Tunnel</span></code> button.</p>
-<img alt="../_images/mobaxterm_tunnel_02.png" class="align-center" src="../_images/mobaxterm_tunnel_02.png" />
-</li>
-<li><p>Fill out the tunnel dialogue as indicated, replacing <code class="docutils literal notranslate"><span class="pre">12356</span></code> with
-your chosen port number (e.g. XXXXX) and replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code> with
-your KU username. The full name of the SSH server (written in the top
-row on bottom right) is <code class="docutils literal notranslate"><span class="pre">esrumhead01fl.unicph.domain</span></code>. Finally
-click <code class="docutils literal notranslate"><span class="pre">Save</span></code>:</p>
-<img alt="../_images/mobaxterm_tunnel_03.png" class="align-center" src="../_images/mobaxterm_tunnel_03.png" />
-</li>
-<li><p>If the tunnel does not start automatically, press either the &quot;Play&quot;
-button or the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">all</span> <span class="pre">tunnels</span></code> button:</p>
-<img alt="../_images/mobaxterm_tunnel_04.png" class="align-center" src="../_images/mobaxterm_tunnel_04.png" />
-</li>
-<li><p>Enter your password and your SSH tunnel should now be active.</p></li>
-</ol>
-<p>Once you have configured MobaXterm and enabled port forwarding, you can
-open your notebook via the
-<code class="docutils literal notranslate"><span class="pre">http://localhost:XXXXX/?token=${long_text_here}</span></code> URL that Jupyter
-Notebook printed in your terminal.</p>
-</section>
-<section id="port-forwarding-on-linux-osx">
-<h3><span class="section-number">5.1.3.2. </span>Port forwarding on Linux/OSX<a class="headerlink" href="#port-forwarding-on-linux-osx" title="Permalink to this heading">#</a></h3>
-<p>It is recommended to enable port forwarding using your <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code>
-file. This is accomplished by adding a <code class="docutils literal notranslate"><span class="pre">LocalForward</span></code> line to your
-entry for Esrum as shown below (see also the section about
-<a class="reference internal" href="../usage/access/connecting.html#s-connecting-linux"><span class="std std-ref">Connecting on Linux or OSX</span></a>):</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Host esrum esrumhead01fl esrumhead01fl.unicph.domain
-    HostName esrumhead01fl.unicph.domain
-    User abc123
-
-    LocalForward XXXXX localhost:XXXXX
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">LocalForward</span></code> option consists of two parts: The port used by the
-notebook on Esrum (XXXXX), and the address via which the notebook on
-Esrum should be accessible on your PC (localhost:XXXXX).</p>
-<p>Alternatively, you can start start/stop port forwarding on demand by
-using an explicit SSH command. The <code class="docutils literal notranslate"><span class="pre">-N</span></code> option is optional and stops
-ssh from starting a shell once it has connected to Esrum:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ssh<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span>XXXXX:localhost:XXXXX<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
-</pre></div>
-</div>
-<p>Once you have port forwarding is enabled, you can open your notebook via
-the <code class="docutils literal notranslate"><span class="pre">http://localhost:XXXXX/?token=${long_text_here}</span></code> URL that Jupyter
-Notebook printed in your terminal.</p>
-</section>
-</section>
 <section id="troubleshooting">
-<h2><span class="section-number">5.1.4. </span>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
-<section id="r-libtk8-6-so-cannot-open-shared-object-file">
-<h3><span class="section-number">5.1.4.1. </span>R: libtk8.6.so: cannot open shared object file<a class="headerlink" href="#r-libtk8-6-so-cannot-open-shared-object-file" title="Permalink to this heading">#</a></h3>
-<p>Users connecting to Esrum with X11 forwarding enabled, for example using
-mobaXterm with default settings, may observe the following error when
-running the <code class="docutils literal notranslate"><span class="pre">install.packages</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">--- Please select a CRAN mirror for use in this session ---</span>
-<span class="go">Error: .onLoad failed in loadNamespace() for &#39;tcltk&#39;, details:</span>
-<span class="go">  call: dyn.load(file, DLLpath = DLLpath, ...)</span>
-<span class="go">  error: unable to load shared object &#39;/opt/software/R/4.3.1/lib64/R/library/tcltk/libs/tcltk.so&#39;:</span>
-<span class="go">  libtk8.6.so: cannot open shared object file: No such file or directory</span>
-</pre></div>
-</div>
-<p>If so, then you must disable graphical menus before running
-<code class="docutils literal notranslate"><span class="pre">install.packages</span></code> by first entering the following command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; options(menu.graphics=FALSE)</span>
-</pre></div>
-</div>
-<p>Then simply run <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> again.</p>
-<p>You can also set the R option permanently by running the following in
-your (bash) terminal:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;options(menu.graphics=FALSE)&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>~/.Rprofile
-</pre></div>
-</div>
-</section>
-<section id="r-libstdc-so-6-version-glibcxx-3-4-26-not-found">
-<h3><span class="section-number">5.1.4.2. </span>R: libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found<a class="headerlink" href="#r-libstdc-so-6-version-glibcxx-3-4-26-not-found" title="Permalink to this heading">#</a></h3>
-<p>If you build an R library on the head/compute nodes using a version of
-the GCC module other than <code class="docutils literal notranslate"><span class="pre">gcc/8.5.0</span></code>, then this library may fail to
-load on the RStudio node or when <code class="docutils literal notranslate"><span class="pre">gcc/8.5.0</span></code> is loaded on the
-head/compute nodes:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>R
-<span class="go">&gt; library(wk)</span>
-<span class="go">Error: package or namespace load failed for ‘wk’ in dyn.load(file, DLLpath = DLLpath, ...):</span>
-<span class="go">unable to load shared object &#39;/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so&#39;:</span>
-<span class="go">/lib64/libstdc++.so.6: version `GLIBCXX_3.4.26&#39; not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so)</span>
-</pre></div>
-</div>
-<p>To fix his, you will need to reinstall the affected R libraries using
-one of two methods:</p>
-<ol class="arabic">
-<li><p>Connect to the RStudio server as described in the <a class="reference internal" href="#s-rstudio"><span class="std std-ref">RStudio</span></a>
-section, and simply install the affected packages using the
-<code class="docutils literal notranslate"><span class="pre">install.packages</span></code> function:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; install.packages(&quot;wk&quot;)</span>
-</pre></div>
-</div>
-<p>You may need to repeat this step multiple times, for every package
-that fails to load.</p>
-</li>
-<li><p>Connect to the head node or a compute node, and take care to load the
-correct version of GCC before loading R:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
-$<span class="w"> </span>R
-&gt;<span class="w"> </span>install.packages<span class="o">(</span><span class="s2">&quot;wk&quot;</span><span class="o">)</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<p>The name of the affected module can be determined by looking at the
-error message above. In particular, the path
-<code class="docutils literal notranslate"><span class="pre">/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so</span></code>
-contains a pair of folders named <code class="docutils literal notranslate"><span class="pre">R/x86_64-pc-linux-gnu-library</span></code>,
-which specifies the kind of system we are running on. Immediately after
-that we find the package name, namely <code class="docutils literal notranslate"><span class="pre">wk</span></code> in this case.</p>
-<p>You can identify all affected packages in your &quot;global&quot; R library by
-running the following commands:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
-<span class="c1"># cd to your R library</span>
-<span class="nb">cd</span><span class="w"> </span>~/R/x86_64-pc-linux-gnu-library/4.3/
-<span class="c1"># Test every installed library</span>
-<span class="k">for</span><span class="w"> </span>lib<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>ls<span class="k">)</span><span class="p">;</span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Testing </span><span class="si">${</span><span class="nv">lib</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span>Rscript<span class="w"> </span>&lt;<span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;library(</span><span class="si">${</span><span class="nv">lib</span><span class="si">}</span><span class="s2">)&quot;</span><span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="k">done</span>
-</pre></div>
-</div>
-<p>Output will look like the following:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Testing<span class="w"> </span>httpuv
-Testing<span class="w"> </span>igraph
-Error:<span class="w"> </span>package<span class="w"> </span>or<span class="w"> </span>namespace<span class="w"> </span>load<span class="w"> </span>failed<span class="w"> </span><span class="k">for</span><span class="w"> </span>‘igraph’<span class="w"> </span><span class="k">in</span><span class="w"> </span>dyn.load<span class="o">(</span>file,<span class="w"> </span><span class="nv">DLLpath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>DLLpath,<span class="w"> </span>...<span class="o">)</span>:
-unable<span class="w"> </span>to<span class="w"> </span>load<span class="w"> </span>shared<span class="w"> </span>object<span class="w"> </span><span class="s1">&#39;/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/igraph/libs/igraph.so&#39;</span>:
-/opt/software/gcc/8.5.0/lib64/libstdc++.so.6:<span class="w"> </span>version<span class="w"> </span><span class="sb">`</span>GLIBCXX_3.4.29<span class="s1">&#39; not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/igraph/libs/igraph.so)</span>
-<span class="s1">Execution halted</span>
-<span class="s1">Testing isoband</span>
-<span class="s1">Error: package or namespace load failed for ‘isoband’ in dyn.load(file, DLLpath = DLLpath, ...):</span>
-<span class="s1">unable to load shared object &#39;</span>/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so<span class="s1">&#39;:</span>
-<span class="s1">/opt/software/gcc/8.5.0/lib64/libstdc++.so.6: version `GLIBCXX_3.4.29&#39;</span><span class="w"> </span>not<span class="w"> </span>found<span class="w"> </span><span class="o">(</span>required<span class="w"> </span>by<span class="w"> </span>/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so<span class="o">)</span>
-Execution<span class="w"> </span>halted
-Testing<span class="w"> </span>labeling
-Testing<span class="w"> </span>later
-</pre></div>
-</div>
-<p>Locate the error messages like the one shown above in the output and and
-reinstall the affected libraries using the <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>R
-&gt;<span class="w"> </span>install.packages<span class="o">(</span>c<span class="o">(</span><span class="s2">&quot;igraph&quot;</span>,<span class="w"> </span><span class="s2">&quot;isoband&quot;</span><span class="o">))</span>
-</pre></div>
-</div>
-</section>
-<section id="rstudio-incorrect-or-invalid-username-password">
-<h3><span class="section-number">5.1.4.3. </span>RStudio: Incorrect or invalid username/password<a class="headerlink" href="#rstudio-incorrect-or-invalid-username-password" title="Permalink to this heading">#</a></h3>
+<h2><span class="section-number">5.2.3. </span>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
+<p>See also the troubleshooting steps for <a class="reference internal" href="r.html#p-service-r"><span class="std std-ref">R</span></a>.</p>
+<section id="incorrect-or-invalid-username-password">
+<h3><span class="section-number">5.2.3.1. </span>Incorrect or invalid username/password<a class="headerlink" href="#incorrect-or-invalid-username-password" title="Permalink to this heading">#</a></h3>
 <p>Please make sure that you are entering your username in the short form
 and that you have been added as a member of the <code class="docutils literal notranslate"><span class="pre">SRV-esrumweb-users</span></code>
 group (see above). If the problem persists, please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us
 for assistance.</p>
 </section>
-<section id="rstudio-logging-in-takes-a-very-long-time">
-<h3><span class="section-number">5.1.4.4. </span>RStudio: Logging in takes a very long time<a class="headerlink" href="#rstudio-logging-in-takes-a-very-long-time" title="Permalink to this heading">#</a></h3>
+<section id="logging-in-takes-a-very-long-time">
+<h3><span class="section-number">5.2.3.2. </span>Logging in takes a very long time<a class="headerlink" href="#logging-in-takes-a-very-long-time" title="Permalink to this heading">#</a></h3>
 <p>Similar to regular R, RStudio will automatically save the data you have
 loaded into your R session and will restore it when you return later, so
 that you can continue your work. However, this many result in large
@@ -670,55 +370,10 @@ while using RStudio.</p></li>
 </ol>
 <p>Please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us and we can help you remove the correct files.</p>
 </section>
-<section id="jupyter-notebooks-browser-error-when-opening-url">
-<h3><span class="section-number">5.1.4.5. </span>Jupyter Notebooks: Browser error when opening URL<a class="headerlink" href="#jupyter-notebooks-browser-error-when-opening-url" title="Permalink to this heading">#</a></h3>
-<p>Depending on your browser you may receive one of the following errors.
-The typical causes are listed, but the exact error message will depend
-on your browser. It is therefore helpful to review all possible causes
-listed here.</p>
-<p>When using Chrome, the cause is typically listed below the line that
-says &quot;This site can't be reached&quot;.</p>
-<ul>
-<li><p>&quot;The connection was reset&quot;</p>
-<p>This typically indicates that Jupyter Notebook isn't running on the
-server, or that it is running on a different port than the one you've
-forwarded. Check that Jupyter Notebook is running and make sure that
-your forwarded ports match those used by Jupyter Notebook on Esrum.</p>
-</li>
-<li><p>&quot;localhost refused to connect&quot; or &quot;Unable to connect&quot;</p>
-<p>This typically indicates that port forwarding isn't active, or that
-you have entered the wrong port number in your browser. Verify that
-port forwarding is active and that you are using the correct port
-number in the <code class="docutils literal notranslate"><span class="pre">localhost</span></code> URL.</p>
-</li>
-<li><p>&quot;Check if there is a typo in esrumweb01fl&quot; or &quot;We're having trouble
-finding that site&quot;</p>
-<p>You are must likely connecting from a network outside of KU. Make
-sure that you are using a wired connection at CBMR and/or that the
-VPN is activated and try again.</p>
-</li>
-</ul>
-<script defer>
- var random_port = getEphemeralPort();
-
- function updatePort(elem) {
-   if (elem.childNodes.length) {
-     elem.childNodes.forEach(updatePort);
-   } else if (elem.textContent) {
-     elem.textContent = elem.textContent.replaceAll("XXXXX", random_port);
-   }
-
-   if (elem.href && elem.href.includes("XXXXX")) {
-     elem.href = elem.href.replaceAll("XXXXX", random_port);
-     // open in new page
-     elem.target = "_blank";
-   }
- };
-
- document.addEventListener('DOMContentLoaded', function() {
-   updatePort(document.body);
- });
-</script></section>
+<section id="libstdc-so-6-version-glibcxx-3-4-26-not-found">
+<h3><span class="section-number">5.2.3.3. </span>libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found<a class="headerlink" href="#libstdc-so-6-version-glibcxx-3-4-26-not-found" title="Permalink to this heading">#</a></h3>
+<p>See the troubleshooting section on the <a class="reference internal" href="r.html#p-service-r"><span class="std std-ref">R</span></a> page.</p>
+</section>
 </section>
 </section>
 
@@ -727,23 +382,23 @@ VPN is activated and try again.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="containers.html">
+          <a class="next-page" href="jupyter.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title"><span class="section-number">5.2. </span>Running containerized software</div>
+                <div class="title"><span class="section-number">5.3. </span>Jupyter Notebooks</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="index.html">
+          <a class="prev-page" href="r.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title"><span class="section-number">5. </span>Other services</div>
+                <div class="title"><span class="section-number">5.1. </span>R</div>
                 
               </div>
             </a>
@@ -777,28 +432,13 @@ VPN is activated and try again.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">5.1. R, RStudio, and Jupyter Notebooks</a><ul>
-<li><a class="reference internal" href="#r">5.1.1. R</a><ul>
-<li><a class="reference internal" href="#compatibility-with-the-rstudio-server">5.1.1.1. Compatibility with the Rstudio server</a></li>
-<li><a class="reference internal" href="#submitting-r-scripts-using-slurm">5.1.1.2. Submitting R scripts using Slurm</a></li>
-<li><a class="reference internal" href="#installing-r-modules">5.1.1.3. Installing R modules</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#rstudio">5.1.2. RStudio</a><ul>
-<li><a class="reference internal" href="#rstudio-server-best-practice">5.1.2.1. RStudio server best practice</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#jupyter-notebook">5.1.3. Jupyter notebook</a><ul>
-<li><a class="reference internal" href="#port-forwarding-in-windows-mobaxterm">5.1.3.1. Port forwarding in Windows (MobaXterm)</a></li>
-<li><a class="reference internal" href="#port-forwarding-on-linux-osx">5.1.3.2. Port forwarding on Linux/OSX</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#troubleshooting">5.1.4. Troubleshooting</a><ul>
-<li><a class="reference internal" href="#r-libtk8-6-so-cannot-open-shared-object-file">5.1.4.1. R: libtk8.6.so: cannot open shared object file</a></li>
-<li><a class="reference internal" href="#r-libstdc-so-6-version-glibcxx-3-4-26-not-found">5.1.4.2. R: libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found</a></li>
-<li><a class="reference internal" href="#rstudio-incorrect-or-invalid-username-password">5.1.4.3. RStudio: Incorrect or invalid username/password</a></li>
-<li><a class="reference internal" href="#rstudio-logging-in-takes-a-very-long-time">5.1.4.4. RStudio: Logging in takes a very long time</a></li>
-<li><a class="reference internal" href="#jupyter-notebooks-browser-error-when-opening-url">5.1.4.5. Jupyter Notebooks: Browser error when opening URL</a></li>
+<li><a class="reference internal" href="#">5.2. RStudio</a><ul>
+<li><a class="reference internal" href="#preserving-loaded-data">5.2.1. Preserving loaded data</a></li>
+<li><a class="reference internal" href="#rstudio-server-best-practice">5.2.2. RStudio server best practice</a></li>
+<li><a class="reference internal" href="#troubleshooting">5.2.3. Troubleshooting</a><ul>
+<li><a class="reference internal" href="#incorrect-or-invalid-username-password">5.2.3.1. Incorrect or invalid username/password</a></li>
+<li><a class="reference internal" href="#logging-in-takes-a-very-long-time">5.2.3.2. Logging in takes a very long time</a></li>
+<li><a class="reference internal" href="#libstdc-so-6-version-glibcxx-3-4-26-not-found">5.2.3.3. libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found</a></li>
 </ul>
 </li>
 </ul>
@@ -816,7 +456,7 @@ VPN is activated and try again.</p>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
-    <script src="../_static/js/custom.js?v=7a324050"></script>
+    <script src="../_static/js/custom.js?v=3a8ddbd3"></script>
     <script src="../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../_static/js/playback.js?v=c0a59f95"></script>
     </body>

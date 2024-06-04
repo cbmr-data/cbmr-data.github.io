@@ -44,14 +44,28 @@ available modules by default:
    anaconda3/2021.05          libxscrnsaver/1.0.0         trnascan-se/2.0.11
    [...]
 
-The ``avail`` command can also be used to search for specific modules by
-specifying one or more keywords:
+The ``avail`` command can also be used to list module versions by name:
 
 .. code:: shell
 
-   $ module avail sam
+   $ module avail samtools
    -------------------------- /opt/software/modules --------------------------
    samtools/1.12  samtools/1.17
+
+If you are not sure of the exact name of a module, then the ``search``
+command can be used to search module names and descriptions:
+
+.. code:: shell
+
+   $ module search conda
+    -------------------------- /opt/software/modules ---------------------------
+        cellranger/3.1.0: a set of analysis pipelines that process [...]
+        cellranger/6.1.1: a set of analysis pipelines that process [...]
+        cellranger/6.1.2: a set of analysis pipelines that process [...]
+             mamba/1.4.1: a fast, robust, and cross-platform package [...]
+            mamba/23.3.1: a fast, robust, and cross-platform package [...]
+         miniconda/4.9.2: free minimal installer for conda
+        miniconda/4.10.4: free minimal installer for conda
 
 Loading a module
 ================
@@ -108,7 +122,7 @@ Or automatically:
      Loading requirement: perl/5.26.3
 
 Note that it is *not* recommended to use the ``--auto`` option when
-loading R; see the :ref:`p_usage_rstudio` page for more information.
+loading R; see the :ref:`p_service_rstudio` page for more information.
 
 Listing and unloading loaded modules
 ====================================

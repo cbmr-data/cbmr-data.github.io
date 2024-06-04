@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="search" title="Search" href="search.html" /><link rel="next" title="8. Communications" href="communications/index.html" /><link rel="prev" title="6.4. Writing robust bash scripts" href="tips/robust_scripts.html" />
+<link rel="search" title="Search" href="search.html" /><link rel="next" title="8. Outreach" href="communications/index.html" /><link rel="prev" title="6.5. Using Snakemake on Esrum" href="tips/snakemake.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
         <title>7. Troubleshooting - Esrum Cluster documentation</title>
@@ -179,9 +179,11 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="services/index.html">5. Other services</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 5. Other services</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="services/rstudio.html">5.1. R, RStudio, and Jupyter Notebooks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="services/containers.html">5.2. Running containerized software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="services/shiny.html">5.3. Public and private Shiny servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="services/r.html">5.1. R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="services/rstudio.html">5.2. RStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="services/jupyter.html">5.3. Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="services/containers.html">5.4. Running containerized software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="services/shiny.html">5.5. Public and private Shiny servers</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="tips/index.html">6. Tips and tricks</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 6. Tips and tricks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -189,10 +191,11 @@
 <li class="toctree-l2"><a class="reference internal" href="tips/tmux.html">6.2. Persistent sessions with tmux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tips/batching_commands.html">6.3. Batching commands outside Slurm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tips/robust_scripts.html">6.4. Writing robust bash scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tips/snakemake.html">6.5. Using Snakemake on Esrum</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">7. Troubleshooting</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="communications/index.html">8. Communications</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 8. Communications</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="communications/index.html">8. Outreach</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 8. Outreach</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="communications/welcome.html">8.1. Welcome to CBMRs Compute Cluster Esrum!</a></li>
 <li class="toctree-l2"><a class="reference internal" href="communications/workshops.html">8.2. Workshops and other presentations</a></li>
 </ul>
@@ -347,10 +350,10 @@ remember to include the <code class="docutils literal notranslate"><span class="
 <p>See also the <a class="reference internal" href="usage/slurm/gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU/hi-MEM node</span></a> section.</p>
 </section>
 </section>
-<section id="rstudio">
-<h2><span class="section-number">7.3. </span>Rstudio<a class="headerlink" href="#rstudio" title="Permalink to this heading">#</a></h2>
-<section id="r-libtk8-6-so-cannot-open-shared-object-file">
-<h3><span class="section-number">7.3.1. </span>R: libtk8.6.so: cannot open shared object file<a class="headerlink" href="#r-libtk8-6-so-cannot-open-shared-object-file" title="Permalink to this heading">#</a></h3>
+<section id="r">
+<h2><span class="section-number">7.3. </span>R<a class="headerlink" href="#r" title="Permalink to this heading">#</a></h2>
+<section id="libtk8-6-so-cannot-open-shared-object-file">
+<h3><span class="section-number">7.3.1. </span>libtk8.6.so: cannot open shared object file<a class="headerlink" href="#libtk8-6-so-cannot-open-shared-object-file" title="Permalink to this heading">#</a></h3>
 <p>Users connecting to Esrum with X11 forwarding enabled, for example using
 mobaXterm with default settings, may observe the following error when
 running the <code class="docutils literal notranslate"><span class="pre">install.packages</span></code>:</p>
@@ -373,8 +376,8 @@ your (bash) terminal:</p>
 </pre></div>
 </div>
 </section>
-<section id="r-libstdc-so-6-version-glibcxx-3-4-26-not-found">
-<h3><span class="section-number">7.3.2. </span>R: libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found<a class="headerlink" href="#r-libstdc-so-6-version-glibcxx-3-4-26-not-found" title="Permalink to this heading">#</a></h3>
+<section id="libstdc-so-6-version-glibcxx-3-4-26-not-found">
+<h3><span class="section-number">7.3.2. </span>libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found<a class="headerlink" href="#libstdc-so-6-version-glibcxx-3-4-26-not-found" title="Permalink to this heading">#</a></h3>
 <p>If you build an R library on the head/compute nodes using a version of
 the GCC module other than <code class="docutils literal notranslate"><span class="pre">gcc/8.5.0</span></code>, then this library may fail to
 load on the RStudio node or when <code class="docutils literal notranslate"><span class="pre">gcc/8.5.0</span></code> is loaded on the
@@ -388,25 +391,23 @@ head/compute nodes:</p>
 </div>
 <p>To fix his, you will need to reinstall the affected R libraries using
 one of two methods:</p>
-<ol class="arabic">
-<li><p>Connect to the RStudio server as described in the <a class="reference internal" href="services/rstudio.html#s-rstudio"><span class="std std-ref">RStudio</span></a>
-section, and simply install the affected packages using the
+<dl>
+<dt># . Connect to the RStudio server as described in the <a class="reference internal" href="services/rstudio.html#p-service-rstudio"><span class="std std-ref">RStudio</span></a></dt><dd><p>section, and simply install the affected packages using the
 <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> function:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; install.packages(&quot;wk&quot;)</span>
 </pre></div>
 </div>
 <p>You may need to repeat this step multiple times, for every package
 that fails to load.</p>
-</li>
-<li><p>Connect to the head node or a compute node, and take care to load the
-correct version of GCC before loading R:</p>
+</dd>
+<dt># . Connect to the head node or a compute node, and take care to load the</dt><dd><p>correct version of GCC before loading R:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
 $<span class="w"> </span>R
 &gt;<span class="w"> </span>install.packages<span class="o">(</span><span class="s2">&quot;wk&quot;</span><span class="o">)</span>
 </pre></div>
 </div>
-</li>
-</ol>
+</dd>
+</dl>
 <p>The name of the affected module can be determined by looking at the
 error message above. In particular, the path
 <code class="docutils literal notranslate"><span class="pre">/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so</span></code>
@@ -416,12 +417,17 @@ that we find the package name, namely <code class="docutils literal notranslate"
 <p>You can identify all affected packages in your &quot;global&quot; R library by
 running the following commands:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
-<span class="c1"># cd to your R library</span>
-<span class="nb">cd</span><span class="w"> </span>~/R/x86_64-pc-linux-gnu-library/4.3/
-<span class="c1"># Test every installed library</span>
-<span class="k">for</span><span class="w"> </span>lib<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>ls<span class="k">)</span><span class="p">;</span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Testing </span><span class="si">${</span><span class="nv">lib</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span>Rscript<span class="w"> </span>&lt;<span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;library(</span><span class="si">${</span><span class="nv">lib</span><span class="si">}</span><span class="s2">)&quot;</span><span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="k">done</span>
 </pre></div>
 </div>
+<p># cd to your R library</p>
+<blockquote>
+<div><p>cd ~/R/x86_64-pc-linux-gnu-library/4.3/</p>
+</div></blockquote>
+<p># Test every installed library</p>
+<blockquote>
+<div><p>for lib in $(ls);do echo &quot;Testing ${lib}&quot;; Rscript &lt;(echo
+&quot;library(${lib})&quot;) &gt; /dev/null;done</p>
+</div></blockquote>
 <p>Output will look like the following:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Testing<span class="w"> </span>httpuv
 Testing<span class="w"> </span>igraph
@@ -432,7 +438,7 @@ unable<span class="w"> </span>to<span class="w"> </span>load<span class="w"> </s
 <span class="s1">Testing isoband</span>
 <span class="s1">Error: package or namespace load failed for ‘isoband’ in dyn.load(file, DLLpath = DLLpath, ...):</span>
 <span class="s1">unable to load shared object &#39;</span>/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so<span class="s1">&#39;:</span>
-<span class="s1">/opt/software/gcc/8.5.0/lib64/libstdc++.so.6: version `GLIBCXX_3.4.29&#39;</span><span class="w"> </span>not<span class="w"> </span>found<span class="w"> </span><span class="o">(</span>required<span class="w"> </span>by<span class="w"> </span>/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so<span class="o">)</span>
+<span class="s1">/opt/software/gcc/8.5.0/lib64/libstdc++.so.6: version`GLIBCXX_3.4.29&#39;</span><span class="w"> </span>not<span class="w"> </span>found<span class="w"> </span><span class="o">(</span>required<span class="w"> </span>by<span class="w"> </span>/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so<span class="o">)</span>
 Execution<span class="w"> </span>halted
 Testing<span class="w"> </span>labeling
 Testing<span class="w"> </span>later
@@ -445,15 +451,18 @@ reinstall the affected libraries using the <code class="docutils literal notrans
 </pre></div>
 </div>
 </section>
-<section id="rstudio-incorrect-or-invalid-username-password">
-<h3><span class="section-number">7.3.3. </span>RStudio: Incorrect or invalid username/password<a class="headerlink" href="#rstudio-incorrect-or-invalid-username-password" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="rstudio">
+<h2><span class="section-number">7.4. </span>Rstudio<a class="headerlink" href="#rstudio" title="Permalink to this heading">#</a></h2>
+<section id="incorrect-or-invalid-username-password">
+<h3><span class="section-number">7.4.1. </span>Incorrect or invalid username/password<a class="headerlink" href="#incorrect-or-invalid-username-password" title="Permalink to this heading">#</a></h3>
 <p>Please make sure that you are entering your username in the short form
 and that you have been added as a member of the <code class="docutils literal notranslate"><span class="pre">SRV-esrumweb-users</span></code>
 group (see above). If the problem persists, please <a class="reference internal" href="contact.html#p-contact"><span class="std std-ref">Contact</span></a> us
 for assistance.</p>
 </section>
-<section id="rstudio-logging-in-takes-a-very-long-time">
-<h3><span class="section-number">7.3.4. </span>RStudio: Logging in takes a very long time<a class="headerlink" href="#rstudio-logging-in-takes-a-very-long-time" title="Permalink to this heading">#</a></h3>
+<section id="logging-in-takes-a-very-long-time">
+<h3><span class="section-number">7.4.2. </span>Logging in takes a very long time<a class="headerlink" href="#logging-in-takes-a-very-long-time" title="Permalink to this heading">#</a></h3>
 <p>Similar to regular R, RStudio will automatically save the data you have
 loaded into your R session and will restore it when you return later, so
 that you can continue your work. However, this many result in large
@@ -498,8 +507,15 @@ while using RStudio.</p></li>
 </ol>
 <p>Please <a class="reference internal" href="contact.html#p-contact"><span class="std std-ref">Contact</span></a> us and we can help you remove the correct files.</p>
 </section>
+<section id="id1">
+<h3><span class="section-number">7.4.3. </span>libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>See the troubleshooting section on the <a class="reference internal" href="services/r.html#p-service-r"><span class="std std-ref">R</span></a> page.</p>
+</section>
+</section>
+<section id="jupyter-notebooks">
+<h2><span class="section-number">7.5. </span>Jupyter Notebooks<a class="headerlink" href="#jupyter-notebooks" title="Permalink to this heading">#</a></h2>
 <section id="jupyter-notebooks-browser-error-when-opening-url">
-<h3><span class="section-number">7.3.5. </span>Jupyter Notebooks: Browser error when opening URL<a class="headerlink" href="#jupyter-notebooks-browser-error-when-opening-url" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.5.1. </span>Jupyter Notebooks: Browser error when opening URL<a class="headerlink" href="#jupyter-notebooks-browser-error-when-opening-url" title="Permalink to this heading">#</a></h3>
 <p>Depending on your browser you may receive one of the following errors.
 The typical causes are listed, but the exact error message will depend
 on your browser. It is therefore helpful to review all possible causes
@@ -540,18 +556,18 @@ VPN is activated and try again.</p>
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title"><span class="section-number">8. </span>Communications</div>
+                <div class="title"><span class="section-number">8. </span>Outreach</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="tips/robust_scripts.html">
+          <a class="prev-page" href="tips/snakemake.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title"><span class="section-number">6.4. </span>Writing robust bash scripts</div>
+                <div class="title"><span class="section-number">6.5. </span>Using Snakemake on Esrum</div>
                 
               </div>
             </a>
@@ -596,12 +612,19 @@ VPN is activated and try again.</p>
 <li><a class="reference internal" href="#error-requested-node-configuration-is-not-available">7.2.1. Error: Requested node configuration is not available</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#rstudio">7.3. Rstudio</a><ul>
-<li><a class="reference internal" href="#r-libtk8-6-so-cannot-open-shared-object-file">7.3.1. R: libtk8.6.so: cannot open shared object file</a></li>
-<li><a class="reference internal" href="#r-libstdc-so-6-version-glibcxx-3-4-26-not-found">7.3.2. R: libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found</a></li>
-<li><a class="reference internal" href="#rstudio-incorrect-or-invalid-username-password">7.3.3. RStudio: Incorrect or invalid username/password</a></li>
-<li><a class="reference internal" href="#rstudio-logging-in-takes-a-very-long-time">7.3.4. RStudio: Logging in takes a very long time</a></li>
-<li><a class="reference internal" href="#jupyter-notebooks-browser-error-when-opening-url">7.3.5. Jupyter Notebooks: Browser error when opening URL</a></li>
+<li><a class="reference internal" href="#r">7.3. R</a><ul>
+<li><a class="reference internal" href="#libtk8-6-so-cannot-open-shared-object-file">7.3.1. libtk8.6.so: cannot open shared object file</a></li>
+<li><a class="reference internal" href="#libstdc-so-6-version-glibcxx-3-4-26-not-found">7.3.2. libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rstudio">7.4. Rstudio</a><ul>
+<li><a class="reference internal" href="#incorrect-or-invalid-username-password">7.4.1. Incorrect or invalid username/password</a></li>
+<li><a class="reference internal" href="#logging-in-takes-a-very-long-time">7.4.2. Logging in takes a very long time</a></li>
+<li><a class="reference internal" href="#id1">7.4.3. libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#jupyter-notebooks">7.5. Jupyter Notebooks</a><ul>
+<li><a class="reference internal" href="#jupyter-notebooks-browser-error-when-opening-url">7.5.1. Jupyter Notebooks: Browser error when opening URL</a></li>
 </ul>
 </li>
 </ul>
@@ -619,7 +642,7 @@ VPN is activated and try again.</p>
     <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="_static/scripts/furo.js?v=32e29ea5"></script>
-    <script src="_static/js/custom.js?v=7a324050"></script>
+    <script src="_static/js/custom.js?v=3a8ddbd3"></script>
     <script src="_static/js/libgif.js?v=7adcb026"></script>
     <script src="_static/js/playback.js?v=c0a59f95"></script>
     </body>

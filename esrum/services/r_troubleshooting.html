@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="search" title="Search" href="../search.html" /><link rel="next" title="6. Tips and tricks" href="../tips/index.html" /><link rel="prev" title="5.4. Running containerized software" href="containers.html" />
+<link rel="search" title="Search" href="../search.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
-        <title>5.5. Public and private Shiny servers - Esrum Cluster documentation</title>
+        <title>libtk8.6.so: cannot open shared object file - Esrum Cluster documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -136,7 +136,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -157,7 +157,7 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../contact.html">1. Contact</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">2. Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guidelines.html">3. Guidelines</a></li>
@@ -178,12 +178,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../usage/transfers.html">4.5. Transferring data</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">5. Other services</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 5. Other services</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="index.html">5. Other services</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 5. Other services</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="r.html">5.1. R</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rstudio.html">5.2. RStudio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jupyter.html">5.3. Jupyter Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="containers.html">5.4. Running containerized software</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">5.5. Public and private Shiny servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shiny.html">5.5. Public and private Shiny servers</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../tips/index.html">6. Tips and tricks</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 6. Tips and tricks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -220,7 +220,7 @@
         </a>
         <div class="content-icon-container">
           <div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/cbmr-data/cbmr-data.github.io/edit/main/esrum/source/services/shiny.rst" title="Edit this page">
+  <a class="muted-link" href="https://github.com/cbmr-data/cbmr-data.github.io/edit/main/esrum/source/services/r_troubleshooting.rst" title="Edit this page">
     <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
@@ -236,69 +236,110 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="public-and-private-shiny-servers">
-<span id="p-usage-shiny"></span><h1><span class="section-number">5.5. </span>Public and private Shiny servers<a class="headerlink" href="#public-and-private-shiny-servers" title="Permalink to this heading">#</a></h1>
-<p>Users of the Esrum cluster have two options for running <a class="reference external" href="https://shiny.rstudio.com/">Shiny</a> servers:
-Either via a publicly accessible server for non-GDPR
-project/non-confidential data or by running Shiny directly or through
-Rstudio on data in access controlled projects.</p>
-<section id="the-public-shiny-server">
-<h2><span class="section-number">5.5.1. </span>The public Shiny server<a class="headerlink" href="#the-public-shiny-server" title="Permalink to this heading">#</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>DO NOT put any GDPR projected or otherwise confidential data in your
-<code class="docutils literal notranslate"><span class="pre">SUN-CBMR-shinyapp</span></code> sub-folders, as these folders are publicly
-accessible. Files and folders in <code class="docutils literal notranslate"><span class="pre">SUN-CBMR-shinyapp</span></code> are
-additionally writable by all users with the access to the folder.</p>
-</div>
-<p>KU-IT makes a public <a class="reference external" href="https://shiny.rstudio.com/">Shiny</a> server available at
-<a class="reference external" href="https://shinyapp01.ku.dk/cbmr/">https://shinyapp01.ku.dk/cbmr/</a>. This server is accessible to <em>everyone</em>
-inside and outside KU. To make use of this service, you must first apply
-for access to the <code class="docutils literal notranslate"><span class="pre">N-SUN-CBMR-shinyapp-R</span></code> and the
-<code class="docutils literal notranslate"><span class="pre">N-SUN-CBMR-shinyapp-W</span></code> as described on the
-<a class="reference internal" href="../usage/access/access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a> page.</p>
-<p>Once you have been given access to these groups, you can access the
-<code class="docutils literal notranslate"><span class="pre">SUN-CBMR-shinyapp</span></code> at <code class="docutils literal notranslate"><span class="pre">~/ucph/ndir/SUN-CBMR-shinyapp/</span></code>. If you
-cannot access the <code class="docutils literal notranslate"><span class="pre">ndir</span></code> folder, then please see the
-<a class="reference internal" href="../usage/access/connecting.html#s-connecting-troubleshooting"><span class="std std-ref">Troubleshooting</span></a> section on the
-<a class="reference internal" href="../usage/access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page.</p>
-<p>It is strongly recommended that you create a folder with your username:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/ucph/ndir/SUN-CBMR-shinyapp/<span class="nv">$USER</span>
+          <section id="libtk8-6-so-cannot-open-shared-object-file">
+<h1>libtk8.6.so: cannot open shared object file<a class="headerlink" href="#libtk8-6-so-cannot-open-shared-object-file" title="Permalink to this heading">#</a></h1>
+<p>Users connecting to Esrum with X11 forwarding enabled, for example using
+mobaXterm with default settings, may observe the following error when
+running the <code class="docutils literal notranslate"><span class="pre">install.packages</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">--- Please select a CRAN mirror for use in this session ---</span>
+<span class="go">Error: .onLoad failed in loadNamespace() for &#39;tcltk&#39;, details:</span>
+<span class="go">  call: dyn.load(file, DLLpath = DLLpath, ...)</span>
+<span class="go">  error: unable to load shared object &#39;/opt/software/R/4.3.1/lib64/R/library/tcltk/libs/tcltk.so&#39;:</span>
+<span class="go">  libtk8.6.so: cannot open shared object file: No such file or directory</span>
 </pre></div>
 </div>
-<p>This creates a folder with your username and adds a shortcut to your
-home folder named <code class="docutils literal notranslate"><span class="pre">shiny</span></code>. To verify that everything is working
-correctly, create a file name <code class="docutils literal notranslate"><span class="pre">app.R</span></code> in
-<code class="docutils literal notranslate"><span class="pre">~/ucph/ndir/SUN-CBMR-shinyapp/$USER</span></code> with the following content:</p>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">shiny</span><span class="p">)</span>
-
-<span class="c1"># Define UI ----</span>
-<span class="n">ui</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">fluidPage</span><span class="p">(</span>
-<span class="nf">titlePanel</span><span class="p">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="p">),</span>
-<span class="p">)</span>
-
-<span class="c1"># Define server logic ----</span>
-<span class="n">server</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="n">output</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
-<span class="p">}</span>
-
-<span class="c1"># Run the app ----</span>
-<span class="nf">shinyApp</span><span class="p">(</span><span class="n">ui</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ui</span><span class="p">,</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server</span><span class="p">)</span>
+<p>If so, then you must disable graphical menus before running
+<code class="docutils literal notranslate"><span class="pre">install.packages</span></code> by first entering the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; options(menu.graphics=FALSE)</span>
 </pre></div>
 </div>
-<p>Then visit <a class="reference external" href="https://shinyapp01.ku.dk/cbmr/">https://shinyapp01.ku.dk/cbmr/</a> and click on the folder
-corresponding to your username, and you should see the following in your
-browser:</p>
-<blockquote>
-<div><img alt="../_images/shiny_hello_world.png" class="align-center" src="../_images/shiny_hello_world.png" />
-</div></blockquote>
+<p>Then simply run <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> again.</p>
+<p>You can also set the R option permanently by running the following in
+your (bash) terminal:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;options(menu.graphics=FALSE)&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>~/.Rprofile
+</pre></div>
+</div>
 </section>
+<section id="libstdc-so-6-version-glibcxx-3-4-26-not-found">
+<h1>libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found<a class="headerlink" href="#libstdc-so-6-version-glibcxx-3-4-26-not-found" title="Permalink to this heading">#</a></h1>
+<p>If you build an R library on the head/compute nodes using a version of
+the GCC module other than <code class="docutils literal notranslate"><span class="pre">gcc/8.5.0</span></code>, then this library may fail to
+load on the RStudio node or when <code class="docutils literal notranslate"><span class="pre">gcc/8.5.0</span></code> is loaded on the
+head/compute nodes:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>R
+<span class="go">&gt; library(wk)</span>
+<span class="go">Error: package or namespace load failed for ‘wk’ in dyn.load(file, DLLpath = DLLpath, ...):</span>
+<span class="go">unable to load shared object &#39;/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so&#39;:</span>
+<span class="go">/lib64/libstdc++.so.6: version `GLIBCXX_3.4.26&#39; not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so)</span>
+</pre></div>
+</div>
+<p>To fix his, you will need to reinstall the affected R libraries using
+one of two methods:</p>
+<dl>
+<dt># . Connect to the RStudio server as described in the <a class="reference internal" href="rstudio.html#p-service-rstudio"><span class="std std-ref">RStudio</span></a></dt><dd><p>section, and simply install the affected packages using the
+<code class="docutils literal notranslate"><span class="pre">install.packages</span></code> function:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; install.packages(&quot;wk&quot;)</span>
+</pre></div>
+</div>
+<p>You may need to repeat this step multiple times, for every package
+that fails to load.</p>
+</dd>
+<dt># . Connect to the head node or a compute node, and take care to load the</dt><dd><p>correct version of GCC before loading R:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
+$<span class="w"> </span>R
+&gt;<span class="w"> </span>install.packages<span class="o">(</span><span class="s2">&quot;wk&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>The name of the affected module can be determined by looking at the
+error message above. In particular, the path
+<code class="docutils literal notranslate"><span class="pre">/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so</span></code>
+contains a pair of folders named <code class="docutils literal notranslate"><span class="pre">R/x86_64-pc-linux-gnu-library</span></code>,
+which specifies the kind of system we are running on. Immediately after
+that we find the package name, namely <code class="docutils literal notranslate"><span class="pre">wk</span></code> in this case.</p>
+<p>You can identify all affected packages in your &quot;global&quot; R library by
+running the following commands:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
+</pre></div>
+</div>
+<p># cd to your R library</p>
+<blockquote>
+<div><p>cd ~/R/x86_64-pc-linux-gnu-library/4.3/</p>
+</div></blockquote>
+<p># Test every installed library</p>
+<blockquote>
+<div><p>for lib in $(ls);do echo &quot;Testing ${lib}&quot;; Rscript &lt;(echo
+&quot;library(${lib})&quot;) &gt; /dev/null;done</p>
+</div></blockquote>
+<p>Output will look like the following:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Testing<span class="w"> </span>httpuv
+Testing<span class="w"> </span>igraph
+Error:<span class="w"> </span>package<span class="w"> </span>or<span class="w"> </span>namespace<span class="w"> </span>load<span class="w"> </span>failed<span class="w"> </span><span class="k">for</span><span class="w"> </span>‘igraph’<span class="w"> </span><span class="k">in</span><span class="w"> </span>dyn.load<span class="o">(</span>file,<span class="w"> </span><span class="nv">DLLpath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>DLLpath,<span class="w"> </span>...<span class="o">)</span>:
+unable<span class="w"> </span>to<span class="w"> </span>load<span class="w"> </span>shared<span class="w"> </span>object<span class="w"> </span><span class="s1">&#39;/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/igraph/libs/igraph.so&#39;</span>:
+/opt/software/gcc/8.5.0/lib64/libstdc++.so.6:<span class="w"> </span>version<span class="w"> </span><span class="sb">`</span>GLIBCXX_3.4.29<span class="s1">&#39; not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/igraph/libs/igraph.so)</span>
+<span class="s1">Execution halted</span>
+<span class="s1">Testing isoband</span>
+<span class="s1">Error: package or namespace load failed for ‘isoband’ in dyn.load(file, DLLpath = DLLpath, ...):</span>
+<span class="s1">unable to load shared object &#39;</span>/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so<span class="s1">&#39;:</span>
+<span class="s1">/opt/software/gcc/8.5.0/lib64/libstdc++.so.6: version`GLIBCXX_3.4.29&#39;</span><span class="w"> </span>not<span class="w"> </span>found<span class="w"> </span><span class="o">(</span>required<span class="w"> </span>by<span class="w"> </span>/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so<span class="o">)</span>
+Execution<span class="w"> </span>halted
+Testing<span class="w"> </span>labeling
+Testing<span class="w"> </span>later
+</pre></div>
+</div>
+<p>Locate the error messages like the one shown above in the output and and
+reinstall the affected libraries using the <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>R
+&gt;<span class="w"> </span>install.packages<span class="o">(</span>c<span class="o">(</span><span class="s2">&quot;igraph&quot;</span>,<span class="w"> </span><span class="s2">&quot;isoband&quot;</span><span class="o">))</span>
+</pre></div>
+</div>
 </section>
 
         </article>
@@ -306,26 +347,8 @@ browser:</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../tips/index.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title"><span class="section-number">6. </span>Tips and tricks</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="containers.html">
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-              <div class="page-info">
-                <div class="context">
-                  <span>Previous</span>
-                </div>
-                
-                <div class="title"><span class="section-number">5.4. </span>Running containerized software</div>
-                
-              </div>
-            </a>
+          
+          
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -344,27 +367,8 @@ browser:</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">5.5. Public and private Shiny servers</a><ul>
-<li><a class="reference internal" href="#the-public-shiny-server">5.5.1. The public Shiny server</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>

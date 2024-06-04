@@ -1,0 +1,588 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="search" title="Search" href="../search.html" /><link rel="next" title="5.2. RStudio" href="rstudio.html" /><link rel="prev" title="5. Other services" href="index.html" />
+
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+        <title>5.1. R - Esrum Cluster documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/playback.css?v=2c0b8537" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e2322aab" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Esrum Cluster  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">Esrum Cluster  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">1. Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">2. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guidelines.html">3. Guidelines</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/index.html">4. Using the cluster</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 4. Using the cluster</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../usage/access/index.html">4.1. Accessing the cluster</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 4.1. Accessing the cluster</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../usage/access/access.html">4.1.1. Applying for access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage/access/connecting.html">4.1.2. Connecting to the cluster</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/filesystem.html">4.2. Projects, data, and home folders</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../usage/slurm/index.html">4.3. Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of 4.3. Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../usage/slurm/basics.html">4.3.1. Basic Slurm jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage/slurm/advanced.html">4.3.2. Advanced Slurm jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usage/slurm/gpu.html">4.3.3. Using the GPU/hi-MEM node</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/modules.html">4.4. Environment modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/transfers.html">4.5. Transferring data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">5. Other services</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 5. Other services</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">5.1. R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rstudio.html">5.2. RStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">5.3. Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="containers.html">5.4. Running containerized software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shiny.html">5.5. Public and private Shiny servers</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../tips/index.html">6. Tips and tricks</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 6. Tips and tricks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tips/modules.html">6.1. Creating environment modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tips/tmux.html">6.2. Persistent sessions with tmux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tips/batching_commands.html">6.3. Batching commands outside Slurm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tips/robust_scripts.html">6.4. Writing robust bash scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tips/snakemake.html">6.5. Using Snakemake on Esrum</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">7. Troubleshooting</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../communications/index.html">8. Outreach</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 8. Outreach</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../communications/welcome.html">8.1. Welcome to CBMRs Compute Cluster Esrum!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../communications/workshops.html">8.2. Workshops and other presentations</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/cbmr-data/cbmr-data.github.io/edit/main/esrum/source/services/r.rst" title="Edit this page">
+    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
+      <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" />
+    </svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="r">
+<span id="p-service-r"></span><h1><span class="section-number">5.1. </span>R<a class="headerlink" href="#r" title="Permalink to this heading">#</a></h1>
+<p>Users of the Esrum cluster have the option running R directly or via
+<a class="reference internal" href="rstudio.html#p-service-rstudio"><span class="std std-ref">RStudio</span></a>. This section describes steps required to use R
+and lays out various tips for making your work easier.</p>
+<p>While it is also possible to use R on a compute node interactively, this
+page section focuses in particular on how to run R scripts
+non-interactively via Slurm in order to take full advantage of the
+available compute resources.</p>
+<section id="selecting-an-r-version">
+<h2><span class="section-number">5.1.1. </span>Selecting an R version<a class="headerlink" href="#selecting-an-r-version" title="Permalink to this heading">#</a></h2>
+<p>Several versions of R are available via the module system. To load
+these, you need to load the version of R you want <em>and</em> a version of
+<a class="reference external" href="https://gcc.gnu.org/">GCC</a>, which is required to install/load R libraries.</p>
+<p>If you intend to also make use of the RStudio servers, then we recommend
+that you <code class="docutils literal notranslate"><span class="pre">R/4.3.3</span></code> (or another version of <code class="docutils literal notranslate"><span class="pre">R/4.3.x</span></code>) with
+<code class="docutils literal notranslate"><span class="pre">gcc/8.5.0</span></code>. This ensures that the R libraries you install are
+compatible between the compute nodes and the RStudio servers.</p>
+<p>By default the 4.3.x versions of R loads <code class="docutils literal notranslate"><span class="pre">gcc/8.5.0</span></code>, so you can
+simply use the <code class="docutils literal notranslate"><span class="pre">--auto</span></code> option when loading <code class="docutils literal notranslate"><span class="pre">R/4.3.x</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>--auto<span class="w"> </span>R/4.3.3
+Loading<span class="w"> </span>R/4.3.3
+<span class="w">  </span>Loading<span class="w"> </span>requirement:<span class="w"> </span>gcc/8.5.0
+</pre></div>
+</div>
+<p>R modules installed using versions of R other than <code class="docutils literal notranslate"><span class="pre">4.3.x</span></code> will not be
+available on the RStudio server and you will need to install them again.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Using a GCC version greater than 8.x with <code class="docutils literal notranslate"><span class="pre">R/4.3.x</span></code> may cause
+modules you install to fail to load on the Rstudio server with the
+errors similar to the following:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Error: package or namespace load failed for ‘wk’ in dyn.load(file, DLLpath = DLLpath, ...):</span>
+<span class="go">unable to load shared object &#39;/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so&#39;:</span>
+<span class="go">/lib64/libstdc++.so.6: version `GLIBCXX_3.4.26&#39; not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so)</span>
+</pre></div>
+</div>
+<p>See the Troubleshooting section below for more information.</p>
+</div>
+</section>
+<section id="submitting-r-scripts-using-slurm">
+<h2><span class="section-number">5.1.2. </span>Submitting R scripts using Slurm<a class="headerlink" href="#submitting-r-scripts-using-slurm" title="Permalink to this heading">#</a></h2>
+<p>The recommended way to run R on Esrum is as non-interactive scripts
+submitted to slurm. This not only ensures that your analyses do not
+impact other users, but also makes make your analyses reproducible.</p>
+<p>To run an R script on the command-line, simply use the <code class="docutils literal notranslate"><span class="pre">Rscript</span></code>
+command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>my_script.R
+cat<span class="o">(</span><span class="s2">&quot;Hello, world!\n&quot;</span><span class="o">)</span>
+$<span class="w"> </span>Rscript<span class="w"> </span>my_script.R
+Hello,<span class="w"> </span>world!
+</pre></div>
+</div>
+<p>For simple scripts you can use the <code class="docutils literal notranslate"><span class="pre">commandArgs</span></code> function to pass
+arguments to your scripts, allowing you to use them to process arbitrary
+data-sets:</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">args</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">commandArgs</span><span class="p">(</span><span class="n">trailingOnly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;Hello, &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="s">&quot;!\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>Rscript<span class="w"> </span>my_script.R<span class="w"> </span>world
+<span class="go">Hello, world!</span>
+</pre></div>
+</div>
+<p>If your script requires a heterogenous set of input files or options to
+run, then it is recommended to use an argument parser such as the
+<a class="reference external" href="https://cran.r-project.org/web/packages/argparser/index.html">argparser</a> R library. To use the argparser library you must first
+install it using the <code class="docutils literal notranslate"><span class="pre">install.packages(&quot;argparser&quot;)</span></code> command.</p>
+<p>The following is a brief example of how you might use the <code class="docutils literal notranslate"><span class="pre">argparser</span></code>
+library and it can also be downloaded <a class="reference download internal" download="" href="../_downloads/4cffb1257281bb7de8b3917b47b00bc1/argparser.R"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a>.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="c1">#!/usr/bin/env Rscript</span>
+<span class="w">   </span><span class="nf">library</span><span class="p">(</span><span class="n">argparser</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">parser</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">arg_parser</span><span class="p">(</span><span class="s">&quot;This is my script!&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">parser</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">add_argument</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;input_file&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">help</span><span class="o">=</span><span class="s">&quot;My data&quot;</span><span class="p">)</span>
+<span class="w">   </span><span class="n">parser</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">add_argument</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;--p-value&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">default</span><span class="o">=</span><span class="m">0.05</span><span class="p">,</span><span class="w"> </span><span class="n">help</span><span class="o">=</span><span class="s">&quot;Maximum P-value&quot;</span><span class="p">)</span>
+
+<span class="w">   </span><span class="n">args</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">parse_args</span><span class="p">(</span><span class="n">parser</span><span class="p">)</span>
+<span class="w">   </span><span class="nf">cat</span><span class="p">(</span><span class="s">&quot;I would process the file&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="o">$</span><span class="n">input_file</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;with a max P-value of&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="o">$</span><span class="n">p_value</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;\n&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This allows you to document your command-line options, specify default
+values, and much more:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>Rscript<span class="w"> </span>my_script.R
+usage:<span class="w"> </span>my_script.R<span class="w"> </span><span class="o">[</span>--<span class="o">]</span><span class="w"> </span><span class="o">[</span>--help<span class="o">]</span><span class="w"> </span><span class="o">[</span>--opts<span class="w"> </span>OPTS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--p-value<span class="w"> </span>P-VALUE<span class="o">]</span>
+<span class="w">    </span>input_file
+
+This<span class="w"> </span>is<span class="w"> </span>my<span class="w"> </span>script!
+
+positional<span class="w"> </span>arguments:
+input_file<span class="w">     </span>My<span class="w"> </span>data
+
+flags:
+-h,<span class="w"> </span>--help<span class="w">     </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+
+optional<span class="w"> </span>arguments:
+-x,<span class="w"> </span>--opts<span class="w">     </span>RDS<span class="w"> </span>file<span class="w"> </span>containing<span class="w"> </span>argument<span class="w"> </span>values
+-p,<span class="w"> </span>--p-value<span class="w">  </span>Maximum<span class="w"> </span>P-value<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span><span class="m">0</span>.05<span class="o">]</span>
+
+Error<span class="w"> </span><span class="k">in</span><span class="w"> </span>parse_args<span class="o">(</span>parser<span class="o">)</span><span class="w"> </span>:
+Missing<span class="w"> </span>required<span class="w"> </span>arguments:<span class="w"> </span>expecting<span class="w"> </span><span class="m">1</span><span class="w"> </span>values<span class="w"> </span>but<span class="w"> </span>got<span class="w"> </span><span class="m">0</span><span class="w"> </span>values:<span class="w"> </span><span class="o">()</span>.
+Execution<span class="w"> </span>halted
+$<span class="w"> </span>Rscript<span class="w"> </span>my_script.R<span class="w"> </span>my_data.tsv
+I<span class="w"> </span>would<span class="w"> </span>process<span class="w"> </span>the<span class="w"> </span>file<span class="w"> </span>my_data.tsv<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>max<span class="w"> </span>P-value<span class="w"> </span>of<span class="w"> </span><span class="m">0</span>.05
+</pre></div>
+</div>
+<p>Finally, you write can write a small bash script to automatically load
+the required version of R and to call your script when you submit it to
+Slurm (using your preferred version of R):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cat<span class="w"> </span>run_rscript.sh
+<span class="gp">#</span>!/bin/bash
+
+<span class="go">module load gcc/8.5.0 R/4.1.2</span>
+<span class="go">Rscript &quot;${@}&quot;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">&quot;${&#64;}&quot;</span></code> safely passes all your command-line arguments to
+<code class="docutils literal notranslate"><span class="pre">Rscript</span></code>, even if they contain spaces. This wrapper script can then
+be used to submit/call any of your R-scripts:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>run_rscript.sh<span class="w"> </span>my_script.R<span class="w"> </span>my_data.tsv<span class="w"> </span>--p-value<span class="w"> </span><span class="m">0</span>.01
+<span class="go">Submitted batch job 18090212</span>
+<span class="gp">$ </span>cat<span class="w"> </span>slurm-18090212.out
+<span class="go">I would process the file my_data.tsv with a max P-value of 0.01</span>
+</pre></div>
+</div>
+</section>
+<section id="installing-r-modules">
+<h2><span class="section-number">5.1.3. </span>Installing R modules<a class="headerlink" href="#installing-r-modules" title="Permalink to this heading">#</a></h2>
+<p>Modules may be installed in your home folder using the
+<code class="docutils literal notranslate"><span class="pre">install.packages</span></code> command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.1
+<span class="gp">$ </span>R
+<span class="go">&gt; install.packages(&quot;ggplot2&quot;)</span>
+<span class="go">Warning in install.packages(&quot;ggplot2&quot;) :</span>
+<span class="go">  &#39;lib = &quot;/opt/software/R/4.3.1/lib64/R/library&quot;&#39; is not writable</span>
+<span class="go">Would you like to use a personal library instead? (yes/No/cancel) yes</span>
+<span class="go">Would you like to create a personal library</span>
+<span class="go">‘/home/abc123/R/x86_64-pc-linux-gnu-library/4.3’</span>
+<span class="go">to install packages into? (yes/No/cancel) yes</span>
+</pre></div>
+</div>
+<p>When asked to pick a mirror, either pick <code class="docutils literal notranslate"><span class="pre">0-Cloud</span></code> by entering <code class="docutils literal notranslate"><span class="pre">1</span></code>
+and pressing enter, or enter the number corresponding to a location near
+you and press enter:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">--- Please select a CRAN mirror for use in this session ---</span>
+<span class="go">Secure CRAN mirrors</span>
+
+<span class="go">1: 0-Cloud [https]</span>
+<span class="go">[...]</span>
+
+<span class="go">Selection: 1</span>
+</pre></div>
+</div>
+</section>
+<section id="troubleshooting">
+<h2><span class="section-number">5.1.4. </span>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
+<section id="libtk8-6-so-cannot-open-shared-object-file">
+<h3><span class="section-number">5.1.4.1. </span>libtk8.6.so: cannot open shared object file<a class="headerlink" href="#libtk8-6-so-cannot-open-shared-object-file" title="Permalink to this heading">#</a></h3>
+<p>Users connecting to Esrum with X11 forwarding enabled, for example using
+mobaXterm with default settings, may observe the following error when
+running the <code class="docutils literal notranslate"><span class="pre">install.packages</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">--- Please select a CRAN mirror for use in this session ---</span>
+<span class="go">Error: .onLoad failed in loadNamespace() for &#39;tcltk&#39;, details:</span>
+<span class="go">  call: dyn.load(file, DLLpath = DLLpath, ...)</span>
+<span class="go">  error: unable to load shared object &#39;/opt/software/R/4.3.1/lib64/R/library/tcltk/libs/tcltk.so&#39;:</span>
+<span class="go">  libtk8.6.so: cannot open shared object file: No such file or directory</span>
+</pre></div>
+</div>
+<p>If so, then you must disable graphical menus before running
+<code class="docutils literal notranslate"><span class="pre">install.packages</span></code> by first entering the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; options(menu.graphics=FALSE)</span>
+</pre></div>
+</div>
+<p>Then simply run <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> again.</p>
+<p>You can also set the R option permanently by running the following in
+your (bash) terminal:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;options(menu.graphics=FALSE)&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>~/.Rprofile
+</pre></div>
+</div>
+</section>
+<section id="libstdc-so-6-version-glibcxx-3-4-26-not-found">
+<h3><span class="section-number">5.1.4.2. </span>libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found<a class="headerlink" href="#libstdc-so-6-version-glibcxx-3-4-26-not-found" title="Permalink to this heading">#</a></h3>
+<p>If you build an R library on the head/compute nodes using a version of
+the GCC module other than <code class="docutils literal notranslate"><span class="pre">gcc/8.5.0</span></code>, then this library may fail to
+load on the RStudio node or when <code class="docutils literal notranslate"><span class="pre">gcc/8.5.0</span></code> is loaded on the
+head/compute nodes:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>R
+<span class="go">&gt; library(wk)</span>
+<span class="go">Error: package or namespace load failed for ‘wk’ in dyn.load(file, DLLpath = DLLpath, ...):</span>
+<span class="go">unable to load shared object &#39;/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so&#39;:</span>
+<span class="go">/lib64/libstdc++.so.6: version `GLIBCXX_3.4.26&#39; not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so)</span>
+</pre></div>
+</div>
+<p>To fix his, you will need to reinstall the affected R libraries using
+one of two methods:</p>
+<dl>
+<dt># . Connect to the RStudio server as described in the <a class="reference internal" href="rstudio.html#p-service-rstudio"><span class="std std-ref">RStudio</span></a></dt><dd><p>section, and simply install the affected packages using the
+<code class="docutils literal notranslate"><span class="pre">install.packages</span></code> function:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; install.packages(&quot;wk&quot;)</span>
+</pre></div>
+</div>
+<p>You may need to repeat this step multiple times, for every package
+that fails to load.</p>
+</dd>
+<dt># . Connect to the head node or a compute node, and take care to load the</dt><dd><p>correct version of GCC before loading R:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
+$<span class="w"> </span>R
+&gt;<span class="w"> </span>install.packages<span class="o">(</span><span class="s2">&quot;wk&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>The name of the affected module can be determined by looking at the
+error message above. In particular, the path
+<code class="docutils literal notranslate"><span class="pre">/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so</span></code>
+contains a pair of folders named <code class="docutils literal notranslate"><span class="pre">R/x86_64-pc-linux-gnu-library</span></code>,
+which specifies the kind of system we are running on. Immediately after
+that we find the package name, namely <code class="docutils literal notranslate"><span class="pre">wk</span></code> in this case.</p>
+<p>You can identify all affected packages in your &quot;global&quot; R library by
+running the following commands:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
+</pre></div>
+</div>
+<p># cd to your R library</p>
+<blockquote>
+<div><p>cd ~/R/x86_64-pc-linux-gnu-library/4.3/</p>
+</div></blockquote>
+<p># Test every installed library</p>
+<blockquote>
+<div><p>for lib in $(ls);do echo &quot;Testing ${lib}&quot;; Rscript &lt;(echo
+&quot;library(${lib})&quot;) &gt; /dev/null;done</p>
+</div></blockquote>
+<p>Output will look like the following:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Testing<span class="w"> </span>httpuv
+Testing<span class="w"> </span>igraph
+Error:<span class="w"> </span>package<span class="w"> </span>or<span class="w"> </span>namespace<span class="w"> </span>load<span class="w"> </span>failed<span class="w"> </span><span class="k">for</span><span class="w"> </span>‘igraph’<span class="w"> </span><span class="k">in</span><span class="w"> </span>dyn.load<span class="o">(</span>file,<span class="w"> </span><span class="nv">DLLpath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>DLLpath,<span class="w"> </span>...<span class="o">)</span>:
+unable<span class="w"> </span>to<span class="w"> </span>load<span class="w"> </span>shared<span class="w"> </span>object<span class="w"> </span><span class="s1">&#39;/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/igraph/libs/igraph.so&#39;</span>:
+/opt/software/gcc/8.5.0/lib64/libstdc++.so.6:<span class="w"> </span>version<span class="w"> </span><span class="sb">`</span>GLIBCXX_3.4.29<span class="s1">&#39; not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/igraph/libs/igraph.so)</span>
+<span class="s1">Execution halted</span>
+<span class="s1">Testing isoband</span>
+<span class="s1">Error: package or namespace load failed for ‘isoband’ in dyn.load(file, DLLpath = DLLpath, ...):</span>
+<span class="s1">unable to load shared object &#39;</span>/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so<span class="s1">&#39;:</span>
+<span class="s1">/opt/software/gcc/8.5.0/lib64/libstdc++.so.6: version`GLIBCXX_3.4.29&#39;</span><span class="w"> </span>not<span class="w"> </span>found<span class="w"> </span><span class="o">(</span>required<span class="w"> </span>by<span class="w"> </span>/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so<span class="o">)</span>
+Execution<span class="w"> </span>halted
+Testing<span class="w"> </span>labeling
+Testing<span class="w"> </span>later
+</pre></div>
+</div>
+<p>Locate the error messages like the one shown above in the output and and
+reinstall the affected libraries using the <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>R
+&gt;<span class="w"> </span>install.packages<span class="o">(</span>c<span class="o">(</span><span class="s2">&quot;igraph&quot;</span>,<span class="w"> </span><span class="s2">&quot;isoband&quot;</span><span class="o">))</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="rstudio.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title"><span class="section-number">5.2. </span>RStudio</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title"><span class="section-number">5. </span>Other services</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023-2024, CBMR Data Analytics; licensed under CC-BY 4.0
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">5.1. R</a><ul>
+<li><a class="reference internal" href="#selecting-an-r-version">5.1.1. Selecting an R version</a></li>
+<li><a class="reference internal" href="#submitting-r-scripts-using-slurm">5.1.2. Submitting R scripts using Slurm</a></li>
+<li><a class="reference internal" href="#installing-r-modules">5.1.3. Installing R modules</a></li>
+<li><a class="reference internal" href="#troubleshooting">5.1.4. Troubleshooting</a><ul>
+<li><a class="reference internal" href="#libtk8-6-so-cannot-open-shared-object-file">5.1.4.1. libtk8.6.so: cannot open shared object file</a></li>
+<li><a class="reference internal" href="#libstdc-so-6-version-glibcxx-3-4-26-not-found">5.1.4.2. libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../_static/js/custom.js?v=3a8ddbd3"></script>
+    <script src="../_static/js/libgif.js?v=7adcb026"></script>
+    <script src="../_static/js/playback.js?v=c0a59f95"></script>
+    </body>
+</html>

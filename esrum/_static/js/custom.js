@@ -11,3 +11,13 @@ function getEphemeralPort() {
     // https://en.wikipedia.org/wiki/Ephemeral_port
     return getRandomInt(49152, 65535);
 }
+
+function replaceTextContent(elem, pattern, replacement) {
+    if (elem.childNodes.length) {
+        elem.childNodes.forEach(function (child) {
+            replaceTextContent(child, pattern, replacement);
+        });
+    } else if (elem.textContent) {
+        elem.textContent = elem.textContent.replaceAll(pattern, replacement);
+    }
+};

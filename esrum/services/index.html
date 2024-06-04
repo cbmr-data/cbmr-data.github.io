@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="search" title="Search" href="../search.html" /><link rel="next" title="5.1. R, RStudio, and Jupyter Notebooks" href="rstudio.html" /><link rel="prev" title="4.5. Transferring data" href="../usage/transfers.html" />
+<link rel="search" title="Search" href="../search.html" /><link rel="next" title="5.1. R" href="r.html" /><link rel="prev" title="4.5. Transferring data" href="../usage/transfers.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
         <title>5. Other services - Esrum Cluster documentation</title>
@@ -179,9 +179,11 @@
 </ul>
 </li>
 <li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">5. Other services</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 5. Other services</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="rstudio.html">5.1. R, RStudio, and Jupyter Notebooks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="containers.html">5.2. Running containerized software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="shiny.html">5.3. Public and private Shiny servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r.html">5.1. R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rstudio.html">5.2. RStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">5.3. Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="containers.html">5.4. Running containerized software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shiny.html">5.5. Public and private Shiny servers</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../tips/index.html">6. Tips and tricks</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 6. Tips and tricks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -189,10 +191,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../tips/tmux.html">6.2. Persistent sessions with tmux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tips/batching_commands.html">6.3. Batching commands outside Slurm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tips/robust_scripts.html">6.4. Writing robust bash scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tips/snakemake.html">6.5. Using Snakemake on Esrum</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">7. Troubleshooting</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../communications/index.html">8. Communications</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 8. Communications</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../communications/index.html">8. Outreach</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 8. Outreach</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../communications/welcome.html">8.1. Welcome to CBMRs Compute Cluster Esrum!</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../communications/workshops.html">8.2. Workshops and other presentations</a></li>
 </ul>
@@ -243,20 +246,32 @@
 <span id="p-services"></span><h1><span class="section-number">5. </span>Other services<a class="headerlink" href="#other-services" title="Permalink to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="rstudio.html">5.1. R, RStudio, and Jupyter Notebooks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rstudio.html#r">5.1.1. R</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rstudio.html#rstudio">5.1.2. RStudio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rstudio.html#jupyter-notebook">5.1.3. Jupyter notebook</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rstudio.html#troubleshooting">5.1.4. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r.html">5.1. R</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="r.html#selecting-an-r-version">5.1.1. Selecting an R version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r.html#submitting-r-scripts-using-slurm">5.1.2. Submitting R scripts using Slurm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r.html#installing-r-modules">5.1.3. Installing R modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="r.html#troubleshooting">5.1.4. Troubleshooting</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="containers.html">5.2. Running containerized software</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="containers.html#singularity-containers">5.2.1. Singularity containers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="containers.html#podman-containers">5.2.2. Podman containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rstudio.html">5.2. RStudio</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rstudio.html#preserving-loaded-data">5.2.1. Preserving loaded data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rstudio.html#rstudio-server-best-practice">5.2.2. RStudio server best practice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rstudio.html#troubleshooting">5.2.3. Troubleshooting</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="shiny.html">5.3. Public and private Shiny servers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="shiny.html#the-public-shiny-server">5.3.1. The public Shiny server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jupyter.html">5.3. Jupyter Notebooks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html#port-forwarding-in-windows-mobaxterm">5.3.1. Port forwarding in Windows (MobaXterm)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html#port-forwarding-on-linux-osx">5.3.2. Port forwarding on Linux/OSX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html#troubleshooting">5.3.3. Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="containers.html">5.4. Running containerized software</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="containers.html#singularity-containers">5.4.1. Singularity containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="containers.html#podman-containers">5.4.2. Podman containers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="shiny.html">5.5. Public and private Shiny servers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="shiny.html#the-public-shiny-server">5.5.1. The public Shiny server</a></li>
 </ul>
 </li>
 </ul>
@@ -268,12 +283,12 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="rstudio.html">
+          <a class="next-page" href="r.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title"><span class="section-number">5.1. </span>R, RStudio, and Jupyter Notebooks</div>
+                <div class="title"><span class="section-number">5.1. </span>R</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -316,7 +331,7 @@
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
-    <script src="../_static/js/custom.js?v=7a324050"></script>
+    <script src="../_static/js/custom.js?v=3a8ddbd3"></script>
     <script src="../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../_static/js/playback.js?v=c0a59f95"></script>
     </body>

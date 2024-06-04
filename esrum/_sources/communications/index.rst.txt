@@ -1,8 +1,8 @@
 .. _p_communications:
 
-################
- Communications
-################
+##########
+ Outreach
+##########
 
 .. toctree::
    :maxdepth: 2

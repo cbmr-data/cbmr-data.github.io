@@ -34,7 +34,7 @@ node, 1 Rstudio server, and 1 server for running containers:
 
 Users connect to the "head" node, from which jobs can be submitted to
 the individual compute nodes using the Slurm_ Workload Manager for
-running tasks. An :ref:`p_usage_rstudio` web server and a
+running tasks. An :ref:`p_service_rstudio` web server and a
 :ref:`p_usage_shiny` server, both managed by KU-IT, are also available.
 
 **********
