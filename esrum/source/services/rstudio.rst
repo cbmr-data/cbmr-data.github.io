@@ -4,8 +4,8 @@
  RStudio
 #########
 
-An RStudio_ server is made available at http://esrumweb01fl:8787/. To
-use this server, you must
+The RStudio_ server can be found at http://esrumweb01fl:8787/. To
+connect to this server, you must
 
 #. Be a member of the ``SRV-esrumweb-users`` group. Simply follow the
    steps in the :ref:`s_applying_for_access` section, and apply for
@@ -33,6 +33,32 @@ For your username you should use the short form:
    negatively impact everyone using the service and we will therefore
    terminate such tasks without warning if we deem it necessary.
 
+************************
+ Preserving loaded data
+************************
+
+Data that you have loaded into R and other variables you have defined
+are visible on the ``Environment`` tab in RStudio:
+
+TODO: Image; make sure screenshot is based on defaults
+
+By default this data will be saved to your RStudio folder on the
+``/scratch`` drive when you quit your session or when it automatically
+suspends (currently after 9 hours of inactivity).
+
+This may, however, result in very large amounts of data being saved to
+disk and, consequently, large of amounts of data having to be read when
+you login again, resulting in login taking a very long time.
+
+For this reason we recommend disabling the saving and loading of
+``.RData`` in the ``Global Settings`` accessible via the ``Tools Menu``:
+
+TODO: Images
+
+It is recommended to turn on the indicated ``Always save history (even
+when not saving .RData)`` option, as the commands you type into the R
+terminal will otherwise *not* be saved.
+
 ******************************
  RStudio server best practice
 ******************************
@@ -53,14 +79,14 @@ In particular,
    processes, and that you use that to process your complete dataset via
    an R-script submitted to Slurm as described in :ref:`p_usage_slurm`.
 
-   See also above for a brief example of how to submit R scripts to
-   Slurm.
+   See the :ref:`p_service_r` page for additional guidance on how to use
+   R with Slurm.
 
 -  Don't keep data in memory that you do not need. Data that you no
    longer need can be freed with the ``rm`` function or using the broom
-   icon on the ``Environment`` tab in Rstudio, as described below. This
-   also helps prevent RStudio from filling your home folder when your
-   session is closed (see Troubleshooting below).
+   icon on the ``Environment`` tab in Rstudio. This also helps prevent
+   RStudio from filling your home folder when your session is closed
+   (see Troubleshooting below).
 
 -  Do not run resource intensive tasks via the embedded terminal. As
    noted above, such tasks will be terminated without warning if deemed

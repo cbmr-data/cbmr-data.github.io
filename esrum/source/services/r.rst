@@ -8,35 +8,47 @@ Users of the Esrum cluster have the option running R directly or via
 :ref:`p_service_rstudio`. This section describes steps required to use R
 and lays out various tips for making your work easier.
 
+While it is also possible to use R on a compute node interactively, this
+page section focuses in particular on how to run R scripts
+non-interactively via Slurm in order to take full advantage of the
+available compute resources.
+
 ************************
  Selecting an R version
 ************************
 
 Several versions of R are available via the module system. To load
 these, you need to load the version of R you want *and* a version of
-gcc, which is required to install/load modules.
+GCC_, which is required to install/load R libraries.
 
-We *highly* recommend that you always use ``gcc/8.5.0`` and ``R/4.3.2``
-(or another version of ``R/4.3.x``) when loading R on the head or
-compute nodes, since this ensures compatibility between all servers on
-Esrum:
+If you intend to also make use of the RStudio servers, then we recommend
+that you ``R/4.3.3`` (or another version of ``R/4.3.x``) with
+``gcc/8.5.0``. This ensures that the R libraries you install are
+compatible between the compute nodes and the RStudio servers.
+
+By default the 4.3.x versions of R loads ``gcc/8.5.0``, so you can
+simply use the ``--auto`` option when loading ``R/4.3.x``:
 
 .. code:: shell
 
-   $ module load gcc/8.5.0 R/4.3.2
+   $ module load --auto R/4.3.3
+   Loading R/4.3.3
+     Loading requirement: gcc/8.5.0
 
-Using the ``--auto`` option will instead load the latest version of gcc,
-currently version ``11.2.0``.
-
-R modules installed using versions of R other than ``4.3.x`` will simply
-not be available on the RStudio server and you will need to install them
-again.
+R modules installed using versions of R other than ``4.3.x`` will not be
+available on the RStudio server and you will need to install them again.
 
 .. warning::
 
    Using a GCC version greater than 8.x with ``R/4.3.x`` may cause
    modules you install to fail to load on the Rstudio server with the
-   following error:
+   errors similar to the following:
+
+   .. code::
+
+      Error: package or namespace load failed for ‘wk’ in dyn.load(file, DLLpath = DLLpath, ...):
+      unable to load shared object '/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so':
+      /lib64/libstdc++.so.6: version `GLIBCXX_3.4.26' not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so)
 
    See the Troubleshooting section below for more information.
 
@@ -175,3 +187,5 @@ you and press enter:
 .. include:: r_troubleshooting.rst
 
 .. _argparser: https://cran.r-project.org/web/packages/argparser/index.html
+
+.. _gcc: https://gcc.gnu.org/

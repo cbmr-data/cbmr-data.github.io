@@ -1,6 +1,6 @@
 
-R: libtk8.6.so: cannot open shared object file
-==============================================
+libtk8.6.so: cannot open shared object file
+===========================================
 
 Users connecting to Esrum with X11 forwarding enabled, for example using
 mobaXterm with default settings, may observe the following error when
@@ -30,8 +30,8 @@ your (bash) terminal:
 
    $ echo 'options(menu.graphics=FALSE)' | tee -a ~/.Rprofile
 
-R: libstdc++.so.6: version ``'GLIBCXX_3.4.26'`` not found
-=========================================================
+libstdc++.so.6: version ``'GLIBCXX_3.4.26'`` not found
+======================================================
 
 If you build an R library on the head/compute nodes using a version of
 the GCC module other than ``gcc/8.5.0``, then this library may fail to

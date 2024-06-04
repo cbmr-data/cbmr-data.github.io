@@ -28,3 +28,9 @@ documentation for easy access.
 *********
 
 .. include:: services/rstudio_troubleshooting.rst
+
+*******************
+ Jupyter Notebooks
+*******************
+
+.. include:: services/jupyter_troubleshooting.rst
