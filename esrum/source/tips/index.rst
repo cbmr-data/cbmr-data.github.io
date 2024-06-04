@@ -11,3 +11,4 @@
    tmux
    batching_commands
    robust_scripts
+   snakemake
