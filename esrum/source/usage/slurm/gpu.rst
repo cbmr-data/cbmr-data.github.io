@@ -68,7 +68,7 @@ To start an interactive session using a GPU you simply apply the same
 
 .. code-block::
 
-   $ srun --pty --partition=gpuqueue --gres=gpu:a100:1 -- /bin/bash
+   $ srun --pty --partition=gpuqueue --gres=gpu:1 -- /bin/bash
 
 Interactive sessions should only be used for tasks that *cannot* be run
 via ``sbatch`` and the sessions should be closed as soon as you are done
