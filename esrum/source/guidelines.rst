@@ -1,8 +1,8 @@
 .. _p_guidelines:
 
-############
- Guidelines
-############
+#########################
+ Guidelines and policies
+#########################
 
 The following describes the general guidelines for using the Esrum
 cluster. Failure to follow these guidelines may result in your tasks
@@ -69,4 +69,32 @@ See :ref:`p_usage_filesystem` for more information.
 See the :ref:`p_usage_slurm` page for more information about how to run
 your tasks on the cluster.
 
+***********************************
+ Access to protected data by staff
+***********************************
+
+Access to protected data may be required for maintenance, data
+processing, formatting, storage, indexing, curation, or to provide other
+services requested from the Data Analytics Platform (DAP).
+
+When this need arises, DAP will either
+
+-  grant access to the relevant staff member(s), for an appropriate time
+   period, after notifying the data owner. This applies to datasets and
+   projects directly administrated by DAP.
+
+-  request access to the datasets and/or projects, using the `Identity
+   Management system`_. This applies to datasets and projects *not*
+   administrated by DAP.
+
+A formal data access request will also be made in cases where DAP staff
+member participate in the scientific exploitation of protected data,
+beyond that required to fulfill technical or service functions.
+
+Immediate intervention under the supervision of a user with appropriate
+access to protected data, for example while providing direct support, is
+not considered to establish privileged access.
+
 .. _gdpr sensitive data: https://kunet.ku.dk/work-areas/research/data/personal-data/Pages/default.aspx
+
+.. _identity management system: https://identity.ku.dk
