@@ -160,7 +160,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../contact.html">1. Contact</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">2. Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../guidelines.html">3. Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guidelines.html">3. Guidelines and policies</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">4. Using the cluster</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 4. Using the cluster</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 has-children"><a class="reference internal" href="../access/index.html">4.1. Accessing the cluster</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 4.1. Accessing the cluster</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../access/access.html">4.1.1. Applying for access</a></li>
@@ -292,7 +292,7 @@ section for information about interactive sessions, including
 information about running programs with graphical interfaces.</p>
 <p>To start an interactive session using a GPU you simply apply the same
 <code class="docutils literal notranslate"><span class="pre">--partition</span></code> and <code class="docutils literal notranslate"><span class="pre">--gres</span></code> options as above:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--gres<span class="o">=</span>gpu:a100:1<span class="w"> </span>--<span class="w"> </span>/bin/bash
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--gres<span class="o">=</span>gpu:1<span class="w"> </span>--<span class="w"> </span>/bin/bash
 </pre></div>
 </div>
 <p>Interactive sessions should only be used for tasks that <em>cannot</em> be run

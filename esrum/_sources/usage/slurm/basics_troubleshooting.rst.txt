@@ -29,11 +29,11 @@ specifying the correct queue or if you request too many GPUs:
 .. code-block:: shell
 
    # --partition=gpuqueue not specified
-   $ srun --gres=gpu:a100:2 -- echo "Hello world!"
+   $ srun --gres=gpu:2 -- echo "Hello world!"
    srun: error: Unable to allocate resources: Requested node configuration is not available
 
    # More than 2 GPUs requested
-   $ srun --partition=gpuqueue --gres=gpu:a100:3 -- echo "Hello world!"
+   $ srun --partition=gpuqueue --gres=gpu:3 -- echo "Hello world!"
    srun: error: Unable to allocate resources: Requested node configuration is not available
 
 To solve this error, simply avoid requesting more than 2 GPUs, and

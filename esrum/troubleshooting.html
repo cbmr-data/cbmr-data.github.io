@@ -160,7 +160,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="contact.html">1. Contact</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">2. Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="guidelines.html">3. Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guidelines.html">3. Guidelines and policies</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="usage/index.html">4. Using the cluster</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 4. Using the cluster</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="usage/access/index.html">4.1. Accessing the cluster</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 4.1. Accessing the cluster</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="usage/access/access.html">4.1.1. Applying for access</a></li>
@@ -337,11 +337,11 @@ GPU/High-MEM node.</p>
 <p>Additionally, you may receive this message if you request GPUs without
 specifying the correct queue or if you request too many GPUs:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># --partition=gpuqueue not specified</span>
-$<span class="w"> </span>srun<span class="w"> </span>--gres<span class="o">=</span>gpu:a100:2<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
+$<span class="w"> </span>srun<span class="w"> </span>--gres<span class="o">=</span>gpu:2<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
 srun:<span class="w"> </span>error:<span class="w"> </span>Unable<span class="w"> </span>to<span class="w"> </span>allocate<span class="w"> </span>resources:<span class="w"> </span>Requested<span class="w"> </span>node<span class="w"> </span>configuration<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>available
 
 <span class="c1"># More than 2 GPUs requested</span>
-$<span class="w"> </span>srun<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--gres<span class="o">=</span>gpu:a100:3<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
+$<span class="w"> </span>srun<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--gres<span class="o">=</span>gpu:3<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
 srun:<span class="w"> </span>error:<span class="w"> </span>Unable<span class="w"> </span>to<span class="w"> </span>allocate<span class="w"> </span>resources:<span class="w"> </span>Requested<span class="w"> </span>node<span class="w"> </span>configuration<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>available
 </pre></div>
 </div>

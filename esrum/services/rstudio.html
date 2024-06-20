@@ -160,7 +160,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../contact.html">1. Contact</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">2. Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guidelines.html">3. Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guidelines.html">3. Guidelines and policies</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../usage/index.html">4. Using the cluster</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 4. Using the cluster</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../usage/access/index.html">4.1. Accessing the cluster</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 4.1. Accessing the cluster</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../usage/access/access.html">4.1.1. Applying for access</a></li>
@@ -270,19 +270,23 @@ terminate such tasks without warning if we deem it necessary.</p>
 <section id="preserving-loaded-data">
 <h2><span class="section-number">5.2.1. </span>Preserving loaded data<a class="headerlink" href="#preserving-loaded-data" title="Permalink to this heading">#</a></h2>
 <p>Data that you have loaded into R and other variables you have defined
-are visible on the <code class="docutils literal notranslate"><span class="pre">Environment</span></code> tab in RStudio:</p>
-<p>TODO: Image; make sure screenshot is based on defaults</p>
+are visible on the <code class="docutils literal notranslate"><span class="pre">Environment</span></code> tab in RStudio along with the amount
+of memory used (here 143 MiB):</p>
+<img alt="../_images/rstudio_environment.png" class="align-center" src="../_images/rstudio_environment.png" />
 <p>By default this data will be saved to your RStudio folder on the
 <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> drive when you quit your session or when it automatically
-suspends (currently after 9 hours of inactivity).</p>
-<p>This may, however, result in very large amounts of data being saved to
-disk and, consequently, large of amounts of data having to be read when
-you login again, resulting in login taking a very long time.</p>
+suspends after 9 hours of inactivity. This may, however, result in very
+large amounts of data being saved to disk and, consequently, large of
+amounts of data having to be read when you login again, resulting in
+login taking a very long time.</p>
 <p>For this reason we recommend disabling the saving and loading of
-<code class="docutils literal notranslate"><span class="pre">.RData</span></code> in the <code class="docutils literal notranslate"><span class="pre">Global</span> <span class="pre">Settings</span></code> accessible via the <code class="docutils literal notranslate"><span class="pre">Tools</span> <span class="pre">Menu</span></code>:</p>
-<p>TODO: Images</p>
-<p>It is recommended to turn on the indicated <code class="docutils literal notranslate"><span class="pre">Always</span> <span class="pre">save</span> <span class="pre">history</span> <span class="pre">(even</span>
-<span class="pre">when</span> <span class="pre">not</span> <span class="pre">saving</span> <span class="pre">.RData)</span></code> option, as the commands you type into the R
+<code class="docutils literal notranslate"><span class="pre">.RData</span></code> in the <code class="docutils literal notranslate"><span class="pre">Global</span> <span class="pre">Settings</span></code> accessible via the <code class="docutils literal notranslate"><span class="pre">Tools</span> <span class="pre">Menu</span></code>
+as shown:</p>
+<img alt="../_images/rstudio_workspace_data.png" class="align-center" src="../_images/rstudio_workspace_data.png" />
+<p>This ensures that you always start with a fresh session and that you
+therefore are able to login quickly to the RStudio server.</p>
+<p>It is also recommended to keep the <code class="docutils literal notranslate"><span class="pre">Always</span> <span class="pre">save</span> <span class="pre">history</span> <span class="pre">(even</span> <span class="pre">when</span> <span class="pre">not</span>
+<span class="pre">saving</span> <span class="pre">.RData)</span></code> option enabled, as the commands you type into the R
 terminal will otherwise <em>not</em> be saved.</p>
 </section>
 <section id="rstudio-server-best-practice">

@@ -160,7 +160,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../contact.html">1. Contact</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">2. Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guidelines.html">3. Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guidelines.html">3. Guidelines and policies</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../usage/index.html">4. Using the cluster</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 4. Using the cluster</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../usage/access/index.html">4.1. Accessing the cluster</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 4.1. Accessing the cluster</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../usage/access/access.html">4.1.1. Applying for access</a></li>
@@ -310,12 +310,19 @@ Esrum should be accessible on your PC (localhost:XXXXX).</p>
 <p>Alternatively, you can start start/stop port forwarding on demand by
 using an explicit SSH command. The <code class="docutils literal notranslate"><span class="pre">-N</span></code> option is optional and stops
 ssh from starting a shell once it has connected to Esrum:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ssh<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span>XXXXX:localhost:XXXXX<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ssh<span class="w"> </span>-S<span class="w"> </span>none<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span>XXXXX:localhost:XXXXX<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
 </pre></div>
 </div>
 <p>Once you have port forwarding is enabled, you can open your notebook via
 the <code class="docutils literal notranslate"><span class="pre">http://localhost:XXXXX/?token=${long_text_here}</span></code> URL that Jupyter
 Notebook printed in your terminal.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <cite>-S none</cite> option is recommended in case shared connections are
+enabled (see the <cite>ControlMaster</cite> section in <cite>man ssh</cite>), in which case
+the <cite>ssh</cite> command may otherwise not open the specified ports if a
+connection already exists.</p>
+</div>
 <script defer>
  document.addEventListener('DOMContentLoaded', function() {
    replaceTextContent(document.body, "XXXXX", getEphemeralPort());

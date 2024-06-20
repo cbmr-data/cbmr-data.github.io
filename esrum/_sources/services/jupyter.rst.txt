@@ -97,11 +97,18 @@ ssh from starting a shell once it has connected to Esrum:
 
 .. code:: shell
 
-   $ ssh -N -L XXXXX:localhost:XXXXX abc123@esrumhead01fl.unicph.domain
+   $ ssh -S none -N -L XXXXX:localhost:XXXXX abc123@esrumhead01fl.unicph.domain
 
 Once you have port forwarding is enabled, you can open your notebook via
 the ``http://localhost:XXXXX/?token=${long_text_here}`` URL that Jupyter
 Notebook printed in your terminal.
+
+.. note::
+
+   The `-S none` option is recommended in case shared connections are
+   enabled (see the `ControlMaster` section in `man ssh`), in which case
+   the `ssh` command may otherwise not open the specified ports if a
+   connection already exists.
 
 .. raw:: html
 

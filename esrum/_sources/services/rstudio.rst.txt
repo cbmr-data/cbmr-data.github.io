@@ -38,25 +38,31 @@ For your username you should use the short form:
 ************************
 
 Data that you have loaded into R and other variables you have defined
-are visible on the ``Environment`` tab in RStudio:
+are visible on the ``Environment`` tab in RStudio along with the amount
+of memory used (here 143 MiB):
 
-TODO: Image; make sure screenshot is based on defaults
+.. image:: images/rstudio_environment.png
+   :align: center
 
 By default this data will be saved to your RStudio folder on the
 ``/scratch`` drive when you quit your session or when it automatically
-suspends (currently after 9 hours of inactivity).
-
-This may, however, result in very large amounts of data being saved to
-disk and, consequently, large of amounts of data having to be read when
-you login again, resulting in login taking a very long time.
+suspends after 9 hours of inactivity. This may, however, result in very
+large amounts of data being saved to disk and, consequently, large of
+amounts of data having to be read when you login again, resulting in
+login taking a very long time.
 
 For this reason we recommend disabling the saving and loading of
-``.RData`` in the ``Global Settings`` accessible via the ``Tools Menu``:
+``.RData`` in the ``Global Settings`` accessible via the ``Tools Menu``
+as shown:
 
-TODO: Images
+.. image:: images/rstudio_workspace_data.png
+   :align: center
 
-It is recommended to turn on the indicated ``Always save history (even
-when not saving .RData)`` option, as the commands you type into the R
+This ensures that you always start with a fresh session and that you
+therefore are able to login quickly to the RStudio server.
+
+It is also recommended to keep the ``Always save history (even when not
+saving .RData)`` option enabled, as the commands you type into the R
 terminal will otherwise *not* be saved.
 
 ******************************
