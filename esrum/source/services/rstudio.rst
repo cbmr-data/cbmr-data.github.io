@@ -33,6 +33,12 @@ For your username you should use the short form:
    negatively impact everyone using the service and we will therefore
    terminate such tasks without warning if we deem it necessary.
 
+.. note::
+
+   Users new to using R/RStudio may benefit from taking the `From Excel
+   to R`_ course offered by the Center for Health Data Science (HeaDS_)
+   at SUND.
+
 ************************
  Preserving loaded data
 ************************
@@ -108,5 +114,9 @@ See also the troubleshooting steps for :ref:`p_service_r`.
 .. include:: rstudio_troubleshooting.rst
 
 .. _argparser: https://cran.r-project.org/web/packages/argparser/index.html
+
+.. _from excel to r: https://heads.ku.dk/course/from-excel-to-r/
+
+.. _heads: https://heads.ku.dk/
 
 .. _rstudio: https://posit.co/products/open-source/rstudio/

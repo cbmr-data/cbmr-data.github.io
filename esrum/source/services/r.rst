@@ -13,6 +13,12 @@ page section focuses in particular on how to run R scripts
 non-interactively via Slurm in order to take full advantage of the
 available compute resources.
 
+.. note::
+
+   Users new to using R may benefit from taking the `From Excel to R`_
+   course offered by the Center for Health Data Science (HeaDS_) at
+   SUND.
+
 ************************
  Selecting an R version
 ************************
@@ -188,4 +194,8 @@ you and press enter:
 
 .. _argparser: https://cran.r-project.org/web/packages/argparser/index.html
 
+.. _from excel to r: https://heads.ku.dk/course/from-excel-to-r/
+
 .. _gcc: https://gcc.gnu.org/
+
+.. _heads: https://heads.ku.dk/
