@@ -8,11 +8,11 @@ This section describes how to perform bulk data transfers between Esrum,
 your PC/Laptop, and services such as SIF/Erda or Computerome. Several of
 these sections may be useful on other systems than Esrum.
 
-File transfers (including project-to-project transfers) should generally
-be run on a compute node, as high amounts of network traffic may degrade
-performance on the head node for all users of the cluster. See the
-:ref:`s_interactive_session` section for how to open a shell on a
-compute node.
+File transfers (including project-to-project transfers) should if at all
+possible be run on a compute node, as high amounts of network traffic
+may degrade performance on the head node for all users of the cluster.
+See the :ref:`s_interactive_session` section for how to open a shell on
+a compute node.
 
 If you have an existing compute project or dataset on a KU-IT managed
 cluster, then you may be able to connect it directly to the Esrum
@@ -60,6 +60,41 @@ you may either need to approve the connection attempt or (as shown
 above) enter a one-time password
 
 .. _p_tranfers_sifanderda:
+
+************************************************
+ Transferring data to/from the N: and H: drives
+************************************************
+
+As noted in the :ref:`s_ucph_network_drives` section, the `N:` and `H:`
+drives are accessible via the `~/ucph` folder, but *only* from the head
+node.
+
+To avoid impacting other users, we therefore request that transfers to
+or from these drives be carried out using `rsync` with rate-limiting in
+place. This is accomplished using the `--bwlimit=50M` option, which
+limits the transfer-rate to 50 MB/s on average (or ~20 seconds per GB).
+
+The following command, for example, recursively copies the files in
+`/from/path/` to the folder `/to/path/`, with a max transfer-rate of 50
+MB/s:
+
+.. code:: console
+
+   $ rsync -av --progress=summary --bwlimit=50M /from/path/ /to/path/
+
+It is furthermore recommended to run your transfer in a `tmux` (or
+`screen`) instance. See the :ref:`p_tips_tmux` page for more
+information.
+
+If you have need to transfer amounts of data that are not feasible with
+this rate limit in place, then please :ref:`p_contact` us for
+assistance.
+
+.. warning::
+
+   Transfers running on the head node, that are not rate-limited, will
+   be terminated without warning due to the impact on other users of the
+   cluster.
 
 ****************************************
  Transferring data to/from SIF and ERDA

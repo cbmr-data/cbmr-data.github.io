@@ -41,6 +41,8 @@ that your colleagues may depend on should be stored there.
    You can check the remaining capacity in your home folder using the
    ``df -h ~`` command.
 
+.. _s_ucph_network_drives:
+
 KU network drives
 =================
 
