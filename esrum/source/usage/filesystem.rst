@@ -43,12 +43,12 @@ that your colleagues may depend on should be stored there.
 
 .. _s_ucph_network_drives:
 
-KU network drives
-=================
+UCPH network drives
+===================
 
 When you login to Esrum for the first time, your home folder should
 contain a single folder named ``ucph``. This folder in turn contains
-your KU network drives (formerly ``H:`` and ``N:``).
+your UCPH network drives (formerly ``H:`` and ``N:``).
 
 .. warning::
 
@@ -141,7 +141,7 @@ writes a lot of small temporary files.
    written to ``/scratch`` on one node are therefore *not* accessible on
    other nodes.
 
-It is recommended that you create a sub-folder containing your KU-IT
+It is recommended that you create a sub-folder containing your UCPH-IT
 username when using the scratch-drive as part of your scripts:
 
 .. code:: console
@@ -182,12 +182,12 @@ Each timestamped folder contains a full snapshot of the parent folder
 should you need to restore deleted or modified files.
 
 Snapshots of audited projects are only accessible for a limited time and
-you may therefore need to contact KU-IT to restore deleted data for such
-projects.
+you may therefore need to contact UCPH-IT to restore deleted data for
+such projects.
 
 .. warning::
 
-   Please contact KU-IT should you need to restore a large amount of
+   Please contact UCPH-IT should you need to restore a large amount of
    deleted data.
 
 .. _red hat enterprise linux: https://en.wikipedia.org/wiki/Red_Hat_Enterprise_Linux

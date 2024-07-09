@@ -11,12 +11,12 @@ connect to this server, you must
    steps in the :ref:`s_applying_for_access` section, and apply for
    access to this group.
 
-#. Be connected via the KU VPN (a wired connection at CBMR is *not*
+#. Be connected via the UCPH VPN (a wired connection at CBMR is *not*
    sufficient). See :ref:`p_usage_connecting` for more information.
 
 Once you have been been made a member of the ``SRV-esrumweb-users`` and
 connected using the VPN or a wired connection at CBMR, simply visit
-http://esrumweb01fl:8787/ and login using your KU credentials.
+http://esrumweb01fl:8787/ and login using your UCPH credentials.
 
 For your username you should use the short form:
 

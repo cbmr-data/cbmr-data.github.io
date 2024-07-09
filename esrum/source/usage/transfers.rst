@@ -14,7 +14,7 @@ may degrade performance on the head node for all users of the cluster.
 See the :ref:`s_interactive_session` section for how to open a shell on
 a compute node.
 
-If you have an existing compute project or dataset on a KU-IT managed
+If you have an existing compute project or dataset on a UCPH-IT managed
 cluster, then you may be able to connect it directly to the Esrum
 cluster and thereby remove the need for transferring data entirely.
 Please :ref:`p_contact` us for more information.
@@ -55,7 +55,7 @@ This services gives you access to all your projects and datasets:
    sftp> ls
    datasets  hdir      ndir      projects
 
-Depending on how you have configured `KU two-factor authentication`_,
+Depending on how you have configured `UCPH two-factor authentication`_,
 you may either need to approve the connection attempt or (as shown
 above) enter a one-time password
 
@@ -129,7 +129,7 @@ available on the cluster (Lynx_):
 
       .. image:: images/sif_login_03.png
 
-#. Enter your KU username and password. Use the ``tab`` button to jump
+#. Enter your UCPH username and password. Use the ``tab`` button to jump
    to the next field and ``Shift+Tab`` to jump to the previous field.
    Finally use ``tab`` to select the "Yes" button (appears as ``(BUTTON)
    Yes``) and press ``enter``.
@@ -180,8 +180,6 @@ See the `official Computerome documentation`_ for more information.
 
 .. _filezilla: https://filezilla-project.org/
 
-.. _ku two-factor authentication: https://mfa.ku.dk/
-
 .. _lynx: https://en.wikipedia.org/wiki/Lynx_(web_browser)
 
 .. _official computerome documentation: https://www.computerome.dk/wiki/high-performance-computing-hpc/file-transfer
@@ -189,3 +187,5 @@ See the `official Computerome documentation`_ for more information.
 .. _sif: https://sif.ku.dk/
 
 .. _ucph computing/hpc systems: https://kunet.ku.dk/work-areas/research/Research%20Infrastructure/research-it/ucph-computing-hpc-systems/Pages/default.aspx
+
+.. _ucph two-factor authentication: https://mfa.ku.dk/

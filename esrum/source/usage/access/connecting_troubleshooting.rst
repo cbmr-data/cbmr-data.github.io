@@ -11,25 +11,25 @@ server:
    :class: gif
 
 #. Firstly verify that you are (still) a member of the appropriate group
-   as described in :ref:`s_applying_for_access`, as KU-IT may
+   as described in :ref:`s_applying_for_access`, as UCPH-IT may
    automatically revoke your memberships under certain conditions. No
    notifications are sent when that happens!
 
-#. Secondly verify that you are correctly connected to the KU network:
+#. Secondly verify that you are correctly connected to the UCPH network:
 
    #. You must either use a wired connection while physically at CBMR.
-   #. Or you must connect via the KU VPN.
+   #. Or you must connect via the UCPH VPN.
 
    It is not possible to connect to using WIFI at CBMR nor is it
    possible to from outside of CBMR without the use of the VPN. See the
    official VPN documentation in Danish_ or English_ for more
    information.
 
-#. If neither using a wired connection nor connecting the the KU VPN
-   fixes the problem, you may need to create a support ticket to have KU
-   IT permit you to connect to the server.
+#. If neither using a wired connection nor connecting the the UCPH VPN
+   fixes the problem, you may need to create a support ticket to have
+   UCPH IT permit you to connect to the server.
 
-   #. Login to the KU `IT Serviceportal`_.
+   #. Login to the UCPH `IT Serviceportal`_.
 
    #. Click the ``Create Ticket`` / ``Opret Sag`` button.
 
@@ -68,7 +68,7 @@ Please make sure that your session is configured to use the ``SCP
 :ref:`s_configure_mobaxterm` section.
 
 
-KU network-folders in ``~/ucph`` are not available when using MobaXterm
+UCPH network-folders in ``~/ucph`` are not available when using MobaXterm
 =========================================================================
 
 Please make sure that you have disabled use of ``GSSAPI Kerberos`` as

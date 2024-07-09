@@ -14,7 +14,7 @@ cluster and which gives you access to the job management system used for
 running software (see :ref:`p_usage_slurm`)
 
 To connect to the cluster you will typically need to be connected to the
-KU VPN. For information about connecting to the VPN, see the support
+UCPH VPN. For information about connecting to the VPN, see the support
 pages on KUNet in Danish_ and English_.
 
 ***********************
@@ -48,8 +48,8 @@ Configuring MobaXterm
 #. Under ``Basic SSH settings``
 
    #. Write ``esrumhead01fl.unicph.domain`` under ``Remote Host``
-   #. Click the checkbox next to ``Specify username`` and enter your KU
-      username (in the form ``abc123``)
+   #. Click the checkbox next to ``Specify username`` and enter your
+      UCPH username (in the form ``abc123``)
    #. Select ``SCP (enhanced speed)`` on the ``SSH-browser`` type
       drop-down menu. This is required for file-uploads to work.
 
@@ -77,8 +77,9 @@ Configuring MobaXterm
    .. warning::
 
       If you receive this question again later, then stop and
-      double-check that you are connected via the KU VPN, as the message
-      could indicate that you are not actually connecting to Esrum!
+      double-check that you are connected via the UCPH VPN, as the
+      message could indicate that you are not actually connecting to
+      Esrum!
 
 #. You should now be able to login to the server:
 
@@ -100,7 +101,7 @@ when clicking on the middle ``Sessions`` button on the main menu.
    :align: center
 
 Note that you must disable login using Kerberos (GSSAPI) if you wish to
-access the KU network drives (``H:`` and ``N:``) via Esrum. To do so,
+access the UCPH network drives (``H:`` and ``N:``) via Esrum. To do so,
 open the ``Configuration`` dialog as shown:
 
 .. image:: images/mobaxterm_08.png
@@ -119,7 +120,7 @@ Then untick the ``GSSAPI Kerberos`` checkbox as shown and click the
 ****************************
 
 Linux and OSX users can connect to the cluster using the following
-terminal command, replacing ``abc123`` with your KU username:
+terminal command, replacing ``abc123`` with your UCPH username:
 
 .. code::
 
@@ -129,7 +130,7 @@ terminal command, replacing ``abc123`` with your KU username:
    :class: gif
 
 It is recommended to add an entry for the cluster to your
-``.ssh/config`` file, replacing ``abc123`` with your KU username:
+``.ssh/config`` file, replacing ``abc123`` with your UCPH username:
 
 .. code::
 

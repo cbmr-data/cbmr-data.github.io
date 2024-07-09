@@ -79,8 +79,8 @@ file ``chr1.fasta``. This script is saved as ``my_script.sh``:
    module load igzip/2.30.0
    igzip --keep "chr1.fasta"
 
-The ``module`` command is used load the required software from the KU-IT
-provided library of scientific and other software. The
+The ``module`` command is used load the required software from the
+UCPH-IT provided library of scientific and other software. The
 :ref:`p_usage_modules` page gives an introduction to using modules on
 Esrum, but for now all you need to know is that the above command makes
 the ``igzip`` tool available to us. We could also have loaded the module

@@ -10,9 +10,9 @@ add some complexity, they allow both different versions of software as
 well as mutually exclusive pieces of software to coexist, and simplify
 making your analyses reproducible.
 
-Modules on Esrum are primarily provided by KU-IT (see below), but users
-may also set up their own private or shared environment modules. See the
-:ref:`p_tips_modules` section for more information.
+Modules on Esrum are primarily provided by UCPH-IT (see below), but
+users may also set up their own private or shared environment modules.
+See the :ref:`p_tips_modules` section for more information.
 
 A collection of software managed by the Data Analytics team is also
 available. See the :ref:`s_shared_modules` section below.
@@ -271,13 +271,13 @@ Esrum.
 
 If the software you need is not available as a module, or if the
 specific version you need is not available as a module, then you you can
-request it through KU-IT as described below. You are also welcome to
+request it through UCPH-IT as described below. You are also welcome to
 :ref:`p_contact` us if you need help determining the exact software
 and/or versions you need to request, or if you have other questions.
 
 To request software,
 
-#. Login to the KU `IT Serviceportal`_.
+#. Login to the UCPH `IT Serviceportal`_.
 #. Click the ``Create Ticket`` / ``Opret Sag`` button.
 #. Tick/select the ``Research IT`` / ``Forsknings IT`` category in the
    category/filters list on the left side of the screen.
@@ -311,7 +311,7 @@ A request may look like the following:
    If you are not an employee at CBMR you may not have permission to
    open a ticket as described above. In that case simply
    :ref:`p_contact` us with your request and we will forward it to
-   KU-IT.
+   UCPH-IT.
 
 .. _environment modules: https://modules.sourceforge.net/
 
