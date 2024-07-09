@@ -6,9 +6,9 @@
 
 The Esrum cluster is a cluster managed by the `Data Analytics Platform`_
 (formerly the Phenomics Platform) at CBMR_. Hosting and technical
-support is handled by KU-IT_.
+support is handled by UCPH-IT_.
 
-In addition to the documentation provided here, KU-IT also provides
+In addition to the documentation provided here, UCPH-IT also provides
 documentation for the `UCPH computing/HPC Systems`_ on KUNet.
 
 **************
@@ -35,7 +35,8 @@ node, 1 Rstudio server, and 1 server for running containers:
 Users connect to the "head" node, from which jobs can be submitted to
 the individual compute nodes using the Slurm_ Workload Manager for
 running tasks. An :ref:`p_service_rstudio` web server and a
-:ref:`p_usage_shiny` server, both managed by KU-IT, are also available.
+:ref:`p_usage_shiny` server, both managed by UCPH-IT, are also
+available.
 
 **********
  Software
@@ -43,7 +44,7 @@ running tasks. An :ref:`p_service_rstudio` web server and a
 
 The nodes all run Red Hat Enterprise Linux 8 and a range of scientific
 and other software is made available using :ref:`environment modules
-<p_usage_modules>`. Missing software can be requested via KU-IT.
+<p_usage_modules>`. Missing software can be requested via UCPH-IT.
 
 **************************
  Projects and data-shares
@@ -90,8 +91,8 @@ See :ref:`p_usage_filesystem` for more information.
 
 .. _environment modules: https://modules.readthedocs.io/en/latest/
 
-.. _ku-it: https://it.ku.dk
-
 .. _slurm: https://slurm.schedmd.com/
 
 .. _ucph computing/hpc systems: https://kunet.ku.dk/work-areas/research/Research%20Infrastructure/research-it/ucph-computing-hpc-systems/Pages/default.aspx
+
+.. _ucph-it: https://it.ku.dk

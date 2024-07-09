@@ -252,6 +252,14 @@ for jobs that need more CPUs or more RAM.</p>
 <p>Users of the PBS (<code class="docutils literal notranslate"><span class="pre">qsub</span></code>) queuing system on e.g. <code class="docutils literal notranslate"><span class="pre">porus</span></code> or
 <code class="docutils literal notranslate"><span class="pre">computerome</span></code> can use this <a class="reference external" href="https://www.nrel.gov/hpc/assets/pdfs/pbs-to-slurm-translation-sheet.pdf">PBS to Slurm translation-sheet</a> to
 migrate <code class="docutils literal notranslate"><span class="pre">qsub</span></code> scripts/commands to <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This documentation assumes some familiarity with using Linux and bash
+(the default command-line). Users who lack this familiarity may
+benefit from taking the <a class="reference external" href="https://heads.ku.dk/course/unix_bash_terminal/">Mastering the terminal with Bash and Unix</a>
+course offered by the Center for Health Data Science (<a class="reference external" href="https://heads.ku.dk/">HeaDS</a>) at
+SUND.</p>
+</div>
 <section id="a-basic-job-script">
 <h2><span class="section-number">4.3.1.1. </span>A basic job script<a class="headerlink" href="#a-basic-job-script" title="Permalink to this heading">#</a></h2>
 <p>In order to run a job using the Slurm workload manager, you must first
@@ -296,8 +304,8 @@ module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
 igzip<span class="w"> </span>--keep<span class="w"> </span><span class="s2">&quot;chr1.fasta&quot;</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">module</span></code> command is used load the required software from the KU-IT
-provided library of scientific and other software. The
+<p>The <code class="docutils literal notranslate"><span class="pre">module</span></code> command is used load the required software from the
+UCPH-IT provided library of scientific and other software. The
 <a class="reference internal" href="../modules.html#p-usage-modules"><span class="std std-ref">Environment modules</span></a> page gives an introduction to using modules on
 Esrum, but for now all you need to know is that the above command makes
 the <code class="docutils literal notranslate"><span class="pre">igzip</span></code> tool available to us. We could also have loaded the module

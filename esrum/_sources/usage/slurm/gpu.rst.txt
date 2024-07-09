@@ -153,9 +153,10 @@ Use the following command to watch the content of this log-file:
 
    $ srun --pty --partition=gpuqueue -- watch -n 15 -d cat /scratch/gpus/nvidia-smi.txt
 
-This prints the contents of the log-file every 15 seconds and optionally
-highlights the changes since the last ``nvidia-smi`` run (remove the
-``-d`` option to disable).
+This prints the contents of the log-file every 15 seconds (which is how
+often it is updated) and optionally highlights the changes since the
+last ``nvidia-smi`` run. To disable the highlighting, simply remove the
+``-d`` option.
 
 This command does *not* reserve a GPU and while we ask that you remember
 to terminate this command when you no longer need to monitor the GPUs,

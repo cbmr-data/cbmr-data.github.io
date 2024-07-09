@@ -48,7 +48,7 @@ An official guide to the identity system used is available here_.
    Users with project/group ownership will see a ``Manage User Access``
    button instead of the ``Manage User Access`` mentioned above.
 
-   In that case, start by searching for your own KU username (e.g.
+   In that case, start by searching for your own UCPH username (e.g.
    ``abc123``) and then click on the check mark to the left your name
    *once*. Wait for the check mark to turn green, click the ``Next``
    button, and then proceed with the steps described above.

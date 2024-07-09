@@ -247,12 +247,12 @@
 <p>This section describes how to perform bulk data transfers between Esrum,
 your PC/Laptop, and services such as SIF/Erda or Computerome. Several of
 these sections may be useful on other systems than Esrum.</p>
-<p>File transfers (including project-to-project transfers) should generally
-be run on a compute node, as high amounts of network traffic may degrade
-performance on the head node for all users of the cluster. See the
-<a class="reference internal" href="slurm/basics.html#s-interactive-session"><span class="std std-ref">Interactive sessions</span></a> section for how to open a shell on a
-compute node.</p>
-<p>If you have an existing compute project or dataset on a KU-IT managed
+<p>File transfers (including project-to-project transfers) should if at all
+possible be run on a compute node, as high amounts of network traffic
+may degrade performance on the head node for all users of the cluster.
+See the <a class="reference internal" href="slurm/basics.html#s-interactive-session"><span class="std std-ref">Interactive sessions</span></a> section for how to open a shell on
+a compute node.</p>
+<p>If you have an existing compute project or dataset on a UCPH-IT managed
 cluster, then you may be able to connect it directly to the Esrum
 cluster and thereby remove the need for transferring data entirely.
 Please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us for more information.</p>
@@ -286,12 +286,40 @@ sftp&gt;<span class="w"> </span>ls
 datasets<span class="w">  </span>hdir<span class="w">      </span>ndir<span class="w">      </span>projects
 </pre></div>
 </div>
-<p>Depending on how you have configured <a class="reference external" href="https://mfa.ku.dk/">KU two-factor authentication</a>,
+<p>Depending on how you have configured <a class="reference external" href="https://mfa.ku.dk/">UCPH two-factor authentication</a>,
 you may either need to approve the connection attempt or (as shown
 above) enter a one-time password</p>
 </section>
+<section id="transferring-data-to-from-the-n-and-h-drives">
+<span id="p-tranfers-sifanderda"></span><h2><span class="section-number">4.5.2. </span>Transferring data to/from the N: and H: drives<a class="headerlink" href="#transferring-data-to-from-the-n-and-h-drives" title="Permalink to this heading">#</a></h2>
+<p>As noted in the <a class="reference internal" href="filesystem.html#s-ucph-network-drives"><span class="std std-ref">UCPH network drives</span></a> section, the <cite>N:</cite> and <cite>H:</cite>
+drives are accessible via the <cite>~/ucph</cite> folder, but <em>only</em> from the head
+node.</p>
+<p>To avoid impacting other users, we therefore request that transfers to
+or from these drives be carried out using <cite>rsync</cite> with rate-limiting in
+place. This is accomplished using the <cite>--bwlimit=50M</cite> option, which
+limits the transfer-rate to 50 MB/s on average (or ~20 seconds per GB).</p>
+<p>The following command, for example, recursively copies the files in
+<cite>/from/path/</cite> to the folder <cite>/to/path/</cite>, with a max transfer-rate of 50
+MB/s:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rsync<span class="w"> </span>-av<span class="w"> </span>--progress<span class="o">=</span>summary<span class="w"> </span>--bwlimit<span class="o">=</span>50M<span class="w"> </span>/from/path/<span class="w"> </span>/to/path/
+</pre></div>
+</div>
+<p>It is furthermore recommended to run your transfer in a <cite>tmux</cite> (or
+<cite>screen</cite>) instance. See the <a class="reference internal" href="../tips/tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> page for more
+information.</p>
+<p>If you have need to transfer amounts of data that are not feasible with
+this rate limit in place, then please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us for
+assistance.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Transfers running on the head node, that are not rate-limited, will
+be terminated without warning due to the impact on other users of the
+cluster.</p>
+</div>
+</section>
 <section id="transferring-data-to-from-sif-and-erda">
-<span id="p-tranfers-sifanderda"></span><h2><span class="section-number">4.5.2. </span>Transferring data to/from SIF and ERDA<a class="headerlink" href="#transferring-data-to-from-sif-and-erda" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.5.3. </span>Transferring data to/from SIF and ERDA<a class="headerlink" href="#transferring-data-to-from-sif-and-erda" title="Permalink to this heading">#</a></h2>
 <p>Connecting to the <a class="reference external" href="https://sif.ku.dk/">SIF</a> or <a class="reference external" href="https://erda.ku.dk/">ERDA</a> servers requires that the user has
 successfully authenticated using Two Factor Authentication. Futhermore,
 this must be done using the same IP from which the user intends to
@@ -324,7 +352,7 @@ highlighted and press enter to confirm that you wish to try login.</p>
 <div><img alt="../_images/sif_login_03.png" src="../_images/sif_login_03.png" />
 </div></blockquote>
 </li>
-<li><p>Enter your KU username and password. Use the <code class="docutils literal notranslate"><span class="pre">tab</span></code> button to jump
+<li><p>Enter your UCPH username and password. Use the <code class="docutils literal notranslate"><span class="pre">tab</span></code> button to jump
 to the next field and <code class="docutils literal notranslate"><span class="pre">Shift+Tab</span></code> to jump to the previous field.
 Finally use <code class="docutils literal notranslate"><span class="pre">tab</span></code> to select the &quot;Yes&quot; button (appears as <code class="docutils literal notranslate"><span class="pre">(BUTTON)</span>
 <span class="pre">Yes</span></code>) and press <code class="docutils literal notranslate"><span class="pre">enter</span></code>.</p>
@@ -350,7 +378,7 @@ indicating that you have logged in:</p>
 servers as normal using the tools available on Esrum.</p>
 </section>
 <section id="transferring-data-to-from-computerome">
-<span id="p-transfers-computerome"></span><h2><span class="section-number">4.5.3. </span>Transferring data to/from Computerome<a class="headerlink" href="#transferring-data-to-from-computerome" title="Permalink to this heading">#</a></h2>
+<span id="p-transfers-computerome"></span><h2><span class="section-number">4.5.4. </span>Transferring data to/from Computerome<a class="headerlink" href="#transferring-data-to-from-computerome" title="Permalink to this heading">#</a></h2>
 <p>When transferring data/to from computerome you should <em>always</em> run the
 transfer software on Esrum (or on your PC/laptop) and you should
 <em>always</em> connect to Computerome via <code class="docutils literal notranslate"><span class="pre">transfer.computerome.dk</span></code> instead
@@ -427,8 +455,9 @@ node on computerome for the duration of the transfer.</p></li>
             <ul>
 <li><a class="reference internal" href="#">4.5. Transferring data</a><ul>
 <li><a class="reference internal" href="#transferring-data-to-from-esrum">4.5.1. Transferring data to/from Esrum</a></li>
-<li><a class="reference internal" href="#transferring-data-to-from-sif-and-erda">4.5.2. Transferring data to/from SIF and ERDA</a></li>
-<li><a class="reference internal" href="#transferring-data-to-from-computerome">4.5.3. Transferring data to/from Computerome</a></li>
+<li><a class="reference internal" href="#transferring-data-to-from-the-n-and-h-drives">4.5.2. Transferring data to/from the N: and H: drives</a></li>
+<li><a class="reference internal" href="#transferring-data-to-from-sif-and-erda">4.5.3. Transferring data to/from SIF and ERDA</a></li>
+<li><a class="reference internal" href="#transferring-data-to-from-computerome">4.5.4. Transferring data to/from Computerome</a></li>
 </ul>
 </li>
 </ul>

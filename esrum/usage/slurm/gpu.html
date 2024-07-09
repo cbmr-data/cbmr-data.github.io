@@ -366,9 +366,10 @@ command as shown above.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--<span class="w"> </span>watch<span class="w"> </span>-n<span class="w"> </span><span class="m">15</span><span class="w"> </span>-d<span class="w"> </span>cat<span class="w"> </span>/scratch/gpus/nvidia-smi.txt
 </pre></div>
 </div>
-<p>This prints the contents of the log-file every 15 seconds and optionally
-highlights the changes since the last <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> run (remove the
-<code class="docutils literal notranslate"><span class="pre">-d</span></code> option to disable).</p>
+<p>This prints the contents of the log-file every 15 seconds (which is how
+often it is updated) and optionally highlights the changes since the
+last <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> run. To disable the highlighting, simply remove the
+<code class="docutils literal notranslate"><span class="pre">-d</span></code> option.</p>
 <p>This command does <em>not</em> reserve a GPU and while we ask that you remember
 to terminate this command when you no longer need to monitor the GPUs,
 it is not as urgent as for interactive sessions where you <em>have</em>

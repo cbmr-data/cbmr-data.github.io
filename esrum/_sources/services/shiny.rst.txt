@@ -20,10 +20,10 @@ Rstudio on data in access controlled projects.
    accessible. Files and folders in ``SUN-CBMR-shinyapp`` are
    additionally writable by all users with the access to the folder.
 
-KU-IT makes a public Shiny_ server available at
+UCPH-IT makes a public Shiny_ server available at
 https://shinyapp01.ku.dk/cbmr/. This server is accessible to *everyone*
-inside and outside KU. To make use of this service, you must first apply
-for access to the ``N-SUN-CBMR-shinyapp-R`` and the
+inside and outside UCPH. To make use of this service, you must first
+apply for access to the ``N-SUN-CBMR-shinyapp-R`` and the
 ``N-SUN-CBMR-shinyapp-W`` as described on the
 :ref:`p_usage_access_applying` page.
 

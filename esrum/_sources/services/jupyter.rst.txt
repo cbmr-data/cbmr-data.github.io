@@ -50,8 +50,8 @@ then please refer to the documentation for your tool of choice.
 
 #. Fill out the tunnel dialogue as indicated, replacing ``12356`` with
    your chosen port number (e.g. XXXXX) and replacing ``abc123`` with
-   your KU username. The full name of the SSH server (written in the top
-   row on bottom right) is ``esrumhead01fl.unicph.domain``. Finally
+   your UCPH username. The full name of the SSH server (written in the
+   top row on bottom right) is ``esrumhead01fl.unicph.domain``. Finally
    click ``Save``:
 
    .. image:: images/mobaxterm_tunnel_03.png

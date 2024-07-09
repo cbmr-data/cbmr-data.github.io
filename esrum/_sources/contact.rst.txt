@@ -11,7 +11,7 @@ about the cluster. Our office is located directly across from the 8th
 floor kitchen.
 
 In addition, you may contact us via email at `SUND-CBMR-Esrum
-<mailto:cbmr-esrum@sund.ku.dk>`_. Note that that you *must* use a KU
+<mailto:cbmr-esrum@sund.ku.dk>`_. Note that that you *must* use a UCPH
 e-mail account when writing to us on this address. Mail from external
 addresses is currently blocked.
 

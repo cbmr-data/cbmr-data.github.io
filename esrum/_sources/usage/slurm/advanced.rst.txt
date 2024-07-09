@@ -89,7 +89,7 @@ Slurm offers a number of ways in which you may monitor your jobs:
       Submitted batch job 8503
 
    When run like this, you will receive notifications at
-   ``abc123@ku.dk`` (remember to use your account KU email address!)
+   ``abc123@ku.dk`` (remember to use your account UCPH email address!)
    when the job is completed or fails. The possible options are ``NONE``
    (the default), ``BEGIN``, ``END``, ``FAIL``, ``REQUEUE``, ``ALL``, or
    some combination as shown above.

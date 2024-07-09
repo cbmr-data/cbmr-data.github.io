@@ -9,7 +9,7 @@ cluster. Failure to follow these guidelines may result in your tasks
 being terminated and may even result in your access to the cluster being
 revoked.
 
-Please also see the general KU resources for handling `GDPR sensitive
+Please also see the general UCPH resources for handling `GDPR sensitive
 data`_.
 
 ****************
@@ -44,7 +44,7 @@ data`_.
 
 -  Do not store data or other files related to projects in your home
    folder. Your home folder is accessible only to you, unless you have
-   provided written consent to KU-IT.
+   provided written consent to UCPH-IT.
 
 See :ref:`p_usage_filesystem` for more information.
 
