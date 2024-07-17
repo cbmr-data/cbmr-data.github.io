@@ -24,8 +24,8 @@ pages on KUNet in Danish_ and English_.
 Windows users will need to install a SSH client in order to be able to
 connect to the server. Options include MobaXterm_, Putty_, and Windows
 Subsystem for Linux (WSL_), and much more. The following demonstrates
-how to setup MobaXterm. Please refer to the `Connecting On Linux or
-OSX`_ section if using WSL_.
+how to setup MobaXterm. Please refer to the `Connecting On Linux`_
+section if using WSL_.
 
 .. _s_configure_mobaxterm:
 
@@ -113,14 +113,28 @@ Then untick the ``GSSAPI Kerberos`` checkbox as shown and click the
 .. image:: images/mobaxterm_09.png
    :align: center
 
+.. _s_connecting_osx:
+
+*******************
+ Connecting on OSX
+*******************
+
+While Mac/OSX users can connect as described in the
+:ref:`s_connecting_linux` section, there are also graphical interfaces
+available, including for example Tabby_.
+
+..
+   TODO: Describe how to setup tabby.
+
 .. _s_connecting_linux:
 
-****************************
- Connecting on Linux or OSX
-****************************
+*********************
+ Connecting on Linux
+*********************
 
-Linux and OSX users can connect to the cluster using the following
-terminal command, replacing ``abc123`` with your UCPH username:
+Linux and OSX users can additionally connect to the cluster using the
+following terminal command, replacing ``abc123`` with your UCPH
+username:
 
 .. code::
 
@@ -179,5 +193,7 @@ having to specify your username:
 .. _mobaxterm: https://mobaxterm.mobatek.net/
 
 .. _putty: https://www.putty.org/
+
+.. _tabby: https://github.com/Eugeny/tabby
 
 .. _wsl: https://learn.microsoft.com/en-us/windows/wsl/about
