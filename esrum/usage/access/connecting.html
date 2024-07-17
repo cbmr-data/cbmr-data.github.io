@@ -259,8 +259,8 @@ pages on KUNet in <a class="reference external" href="https://kunet.ku.dk/medarb
 <p>Windows users will need to install a SSH client in order to be able to
 connect to the server. Options include <a class="reference external" href="https://mobaxterm.mobatek.net/">MobaXterm</a>, <a class="reference external" href="https://www.putty.org/">Putty</a>, and Windows
 Subsystem for Linux (<a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/about">WSL</a>), and much more. The following demonstrates
-how to setup MobaXterm. Please refer to the <a class="reference internal" href="#connecting-on-linux-or-osx">Connecting On Linux or
-OSX</a> section if using <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/about">WSL</a>.</p>
+how to setup MobaXterm. Please refer to the <a class="reference internal" href="#connecting-on-linux">Connecting On Linux</a>
+section if using <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/about">WSL</a>.</p>
 <section id="configuring-mobaxterm">
 <span id="s-configure-mobaxterm"></span><h3><span class="section-number">4.1.2.1.1. </span>Configuring MobaXterm<a class="headerlink" href="#configuring-mobaxterm" title="Permalink to this heading">#</a></h3>
 <ol class="arabic">
@@ -326,10 +326,17 @@ open the <code class="docutils literal notranslate"><span class="pre">Configurat
 <img alt="../../_images/mobaxterm_09.png" class="align-center" src="../../_images/mobaxterm_09.png" />
 </section>
 </section>
-<section id="connecting-on-linux-or-osx">
-<span id="s-connecting-linux"></span><h2><span class="section-number">4.1.2.2. </span>Connecting on Linux or OSX<a class="headerlink" href="#connecting-on-linux-or-osx" title="Permalink to this heading">#</a></h2>
-<p>Linux and OSX users can connect to the cluster using the following
-terminal command, replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code> with your UCPH username:</p>
+<section id="connecting-on-osx">
+<span id="s-connecting-osx"></span><h2><span class="section-number">4.1.2.2. </span>Connecting on OSX<a class="headerlink" href="#connecting-on-osx" title="Permalink to this heading">#</a></h2>
+<p>While Mac/OSX users can connect as described in the
+<a class="reference internal" href="#s-connecting-linux"><span class="std std-ref">Connecting on Linux</span></a> section, there are also graphical interfaces
+available, including for example <a class="reference external" href="https://github.com/Eugeny/tabby">Tabby</a>.</p>
+</section>
+<section id="connecting-on-linux">
+<span id="s-connecting-linux"></span><h2><span class="section-number">4.1.2.3. </span>Connecting on Linux<a class="headerlink" href="#connecting-on-linux" title="Permalink to this heading">#</a></h2>
+<p>Linux and OSX users can additionally connect to the cluster using the
+following terminal command, replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code> with your UCPH
+username:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
 </pre></div>
 </div>
@@ -367,11 +374,11 @@ when connecting to the server.</p>
 </div>
 </section>
 <section id="troubleshooting">
-<span id="s-connecting-troubleshooting"></span><h2><span class="section-number">4.1.2.3. </span>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
+<span id="s-connecting-troubleshooting"></span><h2><span class="section-number">4.1.2.4. </span>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
 <p>If have not already been granted access to the server, then please see
 the <a class="reference internal" href="index.html#p-usage-access"><span class="std std-ref">Accessing the cluster</span></a> page before continuing!</p>
 <section id="timeout-while-connecting-to-the-cluster">
-<h3><span class="section-number">4.1.2.3.1. </span>Timeout while connecting to the cluster<a class="headerlink" href="#timeout-while-connecting-to-the-cluster" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.1.2.4.1. </span>Timeout while connecting to the cluster<a class="headerlink" href="#timeout-while-connecting-to-the-cluster" title="Permalink to this heading">#</a></h3>
 <p>You may experience timeout errors when you attempt to connect to the
 server:</p>
 <img alt="../../_images/connecting_ssh_timeout.gif" class="gif" src="../../_images/connecting_ssh_timeout.gif" />
@@ -420,13 +427,13 @@ open a ticket as described above. In that case simply
 </div>
 </section>
 <section id="file-uploads-using-mobaxterm-never-start">
-<h3><span class="section-number">4.1.2.3.2. </span>File uploads using MobaXterm never start<a class="headerlink" href="#file-uploads-using-mobaxterm-never-start" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.1.2.4.2. </span>File uploads using MobaXterm never start<a class="headerlink" href="#file-uploads-using-mobaxterm-never-start" title="Permalink to this heading">#</a></h3>
 <p>Please make sure that your session is configured to use the <code class="docutils literal notranslate"><span class="pre">SCP</span>
 <span class="pre">(enhanced</span> <span class="pre">speed)</span></code> browser type. See step 4 in in the
 <a class="reference internal" href="#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section.</p>
 </section>
 <section id="ucph-network-folders-in-ucph-are-not-available-when-using-mobaxterm">
-<h3><span class="section-number">4.1.2.3.3. </span>UCPH network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available when using MobaXterm<a class="headerlink" href="#ucph-network-folders-in-ucph-are-not-available-when-using-mobaxterm" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.1.2.4.3. </span>UCPH network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available when using MobaXterm<a class="headerlink" href="#ucph-network-folders-in-ucph-are-not-available-when-using-mobaxterm" title="Permalink to this heading">#</a></h3>
 <p>Please make sure that you have disabled use of <code class="docutils literal notranslate"><span class="pre">GSSAPI</span> <span class="pre">Kerberos</span></code> as
 described in the <a class="reference internal" href="#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section.</p>
 </section>
@@ -494,11 +501,12 @@ described in the <a class="reference internal" href="#s-configure-mobaxterm"><sp
 <li><a class="reference internal" href="#reconnecting-with-mobaxterm">4.1.2.1.2. Reconnecting with MobaXterm</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#connecting-on-linux-or-osx">4.1.2.2. Connecting on Linux or OSX</a></li>
-<li><a class="reference internal" href="#troubleshooting">4.1.2.3. Troubleshooting</a><ul>
-<li><a class="reference internal" href="#timeout-while-connecting-to-the-cluster">4.1.2.3.1. Timeout while connecting to the cluster</a></li>
-<li><a class="reference internal" href="#file-uploads-using-mobaxterm-never-start">4.1.2.3.2. File uploads using MobaXterm never start</a></li>
-<li><a class="reference internal" href="#ucph-network-folders-in-ucph-are-not-available-when-using-mobaxterm">4.1.2.3.3. UCPH network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available when using MobaXterm</a></li>
+<li><a class="reference internal" href="#connecting-on-osx">4.1.2.2. Connecting on OSX</a></li>
+<li><a class="reference internal" href="#connecting-on-linux">4.1.2.3. Connecting on Linux</a></li>
+<li><a class="reference internal" href="#troubleshooting">4.1.2.4. Troubleshooting</a><ul>
+<li><a class="reference internal" href="#timeout-while-connecting-to-the-cluster">4.1.2.4.1. Timeout while connecting to the cluster</a></li>
+<li><a class="reference internal" href="#file-uploads-using-mobaxterm-never-start">4.1.2.4.2. File uploads using MobaXterm never start</a></li>
+<li><a class="reference internal" href="#ucph-network-folders-in-ucph-are-not-available-when-using-mobaxterm">4.1.2.4.3. UCPH network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available when using MobaXterm</a></li>
 </ul>
 </li>
 </ul>

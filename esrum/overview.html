@@ -252,7 +252,7 @@ documentation for the <a class="reference external" href="https://kunet.ku.dk/wo
 <section id="architecture">
 <h2><span class="section-number">2.1. </span>Architecture<a class="headerlink" href="#architecture" title="Permalink to this heading">#</a></h2>
 <p>The cluster consists of a head node, 12 compute nodes, 1 GPU/Hi-mem
-node, 1 Rstudio server, and 1 server for running containers:</p>
+node, 2 Rstudio servers, and 1 server for running containers:</p>
 <div class="table-wrapper docutils container">
 <table class="docutils align-default">
 <thead>
@@ -286,12 +286,12 @@ node, 1 Rstudio server, and 1 server for running containers:</p>
 <td><p>2x NVIDIA A100 80GB</p></td>
 <td><p><em>esrumgpun01fl</em></p></td>
 </tr>
-<tr class="row-odd"><td><p>1</p></td>
+<tr class="row-odd"><td><p>2</p></td>
 <td><p>Rstudio</p></td>
 <td><p>2 TB</p></td>
 <td><p>2x32 core AMD EPYC 7543</p></td>
 <td></td>
-<td><p><em>esrumweb01fl</em></p></td>
+<td><p><em>esrumweb*fl</em></p></td>
 </tr>
 <tr class="row-even"><td><p>1</p></td>
 <td><p>Container</p></td>
