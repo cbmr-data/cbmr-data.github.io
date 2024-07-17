@@ -16,7 +16,7 @@ documentation for the `UCPH computing/HPC Systems`_ on KUNet.
 **************
 
 The cluster consists of a head node, 12 compute nodes, 1 GPU/Hi-mem
-node, 1 Rstudio server, and 1 server for running containers:
+node, 2 Rstudio servers, and 1 server for running containers:
 
 +----+--------------+------+-------------------------+---------------------+-----------------+
 |    | Node         | RAM  | CPUs                    | GPUs                | Name            |
@@ -27,7 +27,7 @@ node, 1 Rstudio server, and 1 server for running containers:
 +----+--------------+------+-------------------------+---------------------+-----------------+
 | 1  | GPU / Hi-mem | 4 TB | 2x32 core AMD EPYC 75F3 | 2x NVIDIA A100 80GB | *esrumgpun01fl* |
 +----+--------------+------+-------------------------+---------------------+-----------------+
-| 1  | Rstudio      | 2 TB | 2x32 core AMD EPYC 7543 |                     | *esrumweb01fl*  |
+| 2  | Rstudio      | 2 TB | 2x32 core AMD EPYC 7543 |                     | *esrumweb\*fl*  |
 +----+--------------+------+-------------------------+---------------------+-----------------+
 | 1  | Container    | 2 TB | 2x32 core AMD EPYC 7543 |                     | *esrumcont01fl* |
 +----+--------------+------+-------------------------+---------------------+-----------------+
