@@ -4,15 +4,17 @@
  Environment modules
 #####################
 
-A wide range of scientific (and other) software is made available on
-Esrum via so-called `Environment modules`_. While environment modules
-add some complexity, they allow both different versions of software as
-well as mutually exclusive pieces of software to coexist, and simplify
-making your analyses reproducible.
+A wide range of software (scientific and otherwise) is made available on
+Esrum via so-called `Environment modules`_. Environment modules allow
+you "load" specific software, and specific *versions* of software, as
+needed. If used correctly this can help to both document your analyses
+and to make them more reproducible.
 
-Modules on Esrum are primarily provided by UCPH-IT (see below), but
-users may also set up their own private or shared environment modules.
-See the :ref:`p_tips_modules` section for more information.
+Modules on Esrum are primarily provided by UCPH-IT (see this `list of
+modules`_) and new modules can be requested via the UCPH-IT service
+portal (see :ref:`s_requesting_missing_modules`). Users can also set up
+their own private or shared environment modules as described in the
+:ref:`p_tips_modules` section.
 
 A collection of software managed by the Data Analytics team is also
 available. See the :ref:`s_shared_modules` section below.
@@ -316,5 +318,7 @@ A request may look like the following:
 .. _environment modules: https://modules.sourceforge.net/
 
 .. _it serviceportal: https://serviceportal.ku.dk/
+
+.. _list of modules: https://fssw.ku.dk/envmod.html
 
 .. _official documentation: https://modules.readthedocs.io/en/v4.5.2/
