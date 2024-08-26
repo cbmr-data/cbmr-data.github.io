@@ -1,11 +1,12 @@
 // Based on code by Hoàng Hà: https://codepen.io/hoanghals
 (function () {
-    let elements = document.getElementsByClassName("gif");
+    // Convert to array since changing classes mutates a HTMLCollection
+    let elements = Array.from(document.getElementsByClassName("gif"));
     for (var i = 0; i < elements.length; ++i) {
         let elem = elements[i];
 
         if (elem.tagName === "IMG") {
-            elem.onload = function () {
+            setup = function () {
                 var controlElement = document.createElement("div");
                 controlElement.className = "gifcontrol loading g" + i;
                 var playing = false;
@@ -44,6 +45,13 @@
 
                 let containerElement = canvas.parentNode;
                 containerElement.appendChild(controlElement);
+            }
+
+            // check naturalHeight since complete is set on broken links
+            if (elem.complete && elem.naturalHeight) {
+                setup();
+            } else {
+                elem.onload = setup;
             }
         }
     }
