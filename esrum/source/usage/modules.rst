@@ -1,8 +1,8 @@
 .. _p_usage_modules:
 
-#####################
- Environment modules
-#####################
+###################
+ Software on Esrum
+###################
 
 A wide range of software (scientific and otherwise) is made available on
 Esrum via so-called `Environment modules`_. Environment modules allow
@@ -124,7 +124,7 @@ Or automatically:
      Loading requirement: perl/5.26.3
 
 Note that it is *not* recommended to use the ``--auto`` option when
-loading R; see the :ref:`p_service_rstudio` page for more information.
+loading R; see the :ref:`p_service_r` page for more information.
 
 Listing and unloading loaded modules
 ====================================

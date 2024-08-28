@@ -14,14 +14,6 @@ Users of the PBS (``qsub``) queuing system on e.g. ``porus`` or
 ``computerome`` can use this `PBS to Slurm translation-sheet`_ to
 migrate ``qsub`` scripts/commands to ``sbatch``.
 
-.. note::
-
-   This documentation assumes some familiarity with using Linux and bash
-   (the default command-line). Users who lack this familiarity may
-   benefit from taking the `Mastering the terminal with Bash and Unix`_
-   course offered by the Center for Health Data Science (HeaDS_) at
-   SUND.
-
 ********************
  A basic job script
 ********************
@@ -601,10 +593,6 @@ system on Esrum to load the software you need for your work.
 -  Slurm `summary <https://slurm.schedmd.com/pdfs/summary.pdf>`_ (PDF)
 -  The `sbatch manual page <https://slurm.schedmd.com/sbatch.html>`_
 -  The `srun manual page <https://slurm.schedmd.com/srun.html>`_
-
-.. _heads: https://heads.ku.dk/
-
-.. _mastering the terminal with bash and unix: https://heads.ku.dk/course/unix_bash_terminal/
 
 .. _pbs to slurm translation-sheet: https://www.nrel.gov/hpc/assets/pdfs/pbs-to-slurm-translation-sheet.pdf
 

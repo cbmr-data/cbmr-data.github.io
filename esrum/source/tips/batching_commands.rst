@@ -1,8 +1,8 @@
 .. _p_tips_batching:
 
-#################################
- Batching commands outside Slurm
-#################################
+###########################
+ Batching commands in bash
+###########################
 
 This section describes way to batch commands without using Slurm. This
 is intended to be used both with singular jobs and in conjunction with

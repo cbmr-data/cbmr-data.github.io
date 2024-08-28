@@ -1,8 +1,8 @@
 .. _p_overview:
 
-##########
- Overview
-##########
+#####################
+ Overview of cluster
+#####################
 
 The Esrum cluster is a cluster managed by the `Data Analytics Platform`_
 (formerly the Phenomics Platform) at CBMR_. Hosting and technical
@@ -34,7 +34,7 @@ node, 2 Rstudio servers, and 1 server for running containers:
 
 Users connect to the "head" node, from which jobs can be submitted to
 the individual compute nodes using the Slurm_ Workload Manager for
-running tasks. An :ref:`p_service_rstudio` web server and a
+running tasks. An :ref:`s_service_rstudio` web server and a
 :ref:`p_usage_shiny` server, both managed by UCPH-IT, are also
 available.
 
@@ -59,9 +59,9 @@ Datasets used by several projects may made available via read-only
 network shares. As with projects, access is administered by the data
 owner.
 
-See the respective pages for :ref:`accessing <p_usage_access>` existing
-projects/data-shared and for :ref:`creating <p_usage_projects>` new
-projects/data-shared.
+See the respective pages for :ref:`accessing <p_usage_access_applying>`
+existing projects/data-shared and for :ref:`creating <p_usage_projects>`
+new projects/data-shared.
 
 ****************************
  Backup policies and quotas

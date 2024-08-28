@@ -1,8 +1,8 @@
-.. _p_communications_workshop:
+.. _p_outreach_presentations:
 
-###################################
- Workshops and other presentations
-###################################
+###############
+ Presentations
+###############
 
 *****************************
  Esrum Workshop [2024-06-03]
