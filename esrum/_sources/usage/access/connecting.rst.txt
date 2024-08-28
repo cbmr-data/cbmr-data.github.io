@@ -5,7 +5,7 @@
 ###########################
 
 If you have not already applied for and been granted access to the
-cluster, then please see the :ref:`p_usage_access` page before
+cluster, then please see the :ref:`p_usage_access_applying` page before
 continuing.
 
 The cluster's is accessible via SSH at ``esrumhead01fl.unicph.domain``.

@@ -1,5 +1,5 @@
 If have not already been granted access to the server, then please see
-the :ref:`p_usage_access` page before continuing!
+the :ref:`p_usage_access_applying` page before continuing!
 
 Timeout while connecting to the cluster
 ========================================

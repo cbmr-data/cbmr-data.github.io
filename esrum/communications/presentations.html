@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="search" title="Search" href="../search.html" /><link rel="next" title="6.1. Creating environment modules" href="modules.html" /><link rel="prev" title="5.5. Public and private Shiny servers" href="../services/shiny.html" />
+<link rel="search" title="Search" href="../search.html" /><link rel="prev" title="Messages from Data Analytics" href="messages.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
-        <title>6. Tips and tricks - Esrum Cluster documentation</title>
+        <title>Presentations - Esrum Cluster documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -136,7 +136,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -156,50 +156,45 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview of cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guidelines.html">Guidelines and policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the cluster</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/access/access.html">Applying for access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/access/connecting.html">Connecting to the cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/filesystem.html">Projects, data, and home folders</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/basics.html">Basic Slurm jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/advanced.html">Advanced Slurm jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/gpu.html">Using the GPU/hi-MEM node</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/modules.html">Software on Esrum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/transfers.html">Transferring data</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../services/r.html">R and RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/jupyter.html">Jupyter Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/containers.html">Containerized software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/shiny.html">Shiny servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tips and tricks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tips/modules.html">Creating environment modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tips/tmux.html">Persistent sessions with tmux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tips/batching_commands.html">Batching commands in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tips/robust_scripts.html">Writing robust bash scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tips/snakemake.html">Using Snakemake on Esrum</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Outreach</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../contact.html">1. Contact</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview.html">2. Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guidelines.html">3. Guidelines and policies</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/index.html">4. Using the cluster</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 4. Using the cluster</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../usage/access/index.html">4.1. Accessing the cluster</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 4.1. Accessing the cluster</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../usage/access/access.html">4.1.1. Applying for access</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../usage/access/connecting.html">4.1.2. Connecting to the cluster</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../usage/filesystem.html">4.2. Projects, data, and home folders</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../usage/slurm/index.html">4.3. Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of 4.3. Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../usage/slurm/basics.html">4.3.1. Basic Slurm jobs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../usage/slurm/advanced.html">4.3.2. Advanced Slurm jobs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../usage/slurm/gpu.html">4.3.3. Using the GPU/hi-MEM node</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../usage/modules.html">4.4. Environment modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../usage/transfers.html">4.5. Transferring data</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../services/index.html">5. Other services</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 5. Other services</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../services/r.html">5.1. R</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../services/rstudio.html">5.2. RStudio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../services/jupyter.html">5.3. Jupyter Notebooks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../services/containers.html">5.4. Running containerized software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../services/shiny.html">5.5. Public and private Shiny servers</a></li>
-</ul>
-</li>
-<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">6. Tips and tricks</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 6. Tips and tricks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="modules.html">6.1. Creating environment modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tmux.html">6.2. Persistent sessions with tmux</a></li>
-<li class="toctree-l2"><a class="reference internal" href="batching_commands.html">6.3. Batching commands outside Slurm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="robust_scripts.html">6.4. Writing robust bash scripts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="snakemake.html">6.5. Using Snakemake on Esrum</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">7. Troubleshooting</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../communications/index.html">8. Outreach</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 8. Outreach</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../communications/welcome.html">8.1. Welcome to CBMRs Compute Cluster Esrum!</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../communications/workshops.html">8.2. Workshops and other presentations</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="messages.html">Messages from Data Analytics</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Presentations</a></li>
 </ul>
 
 </div>
@@ -220,7 +215,7 @@
         </a>
         <div class="content-icon-container">
           <div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/cbmr-data/cbmr-data.github.io/edit/main/esrum/source/tips/index.rst" title="Edit this page">
+  <a class="muted-link" href="https://github.com/cbmr-data/cbmr-data.github.io/edit/main/esrum/source/communications/presentations.rst" title="Edit this page">
     <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
@@ -236,48 +231,44 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="tips-and-tricks">
-<span id="p-tips"></span><h1><span class="section-number">6. </span>Tips and tricks<a class="headerlink" href="#tips-and-tricks" title="Permalink to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">6.1. Creating environment modules</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#creating-a-repository-for-modules">6.1.1. Creating a repository for modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#dependencies-and-conflicts">6.1.2. Dependencies and conflicts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#building-more-complicated-software">6.1.3. Building more complicated software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html#installing-python-software">6.1.4. Installing Python software</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="tmux.html">6.2. Persistent sessions with tmux</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tmux.html#getting-started">6.2.1. Getting started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tmux.html#basic-shortcuts">6.2.2. Basic shortcuts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tmux.html#additional-resources">6.2.3. Additional resources</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="batching_commands.html">6.3. Batching commands outside Slurm</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="batching_commands.html#running-commands-sequentially-in-bash">6.3.1. Running commands sequentially in bash</a></li>
-<li class="toctree-l2"><a class="reference internal" href="batching_commands.html#running-commands-in-parallel-in-bash">6.3.2. Running commands in parallel in bash</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="robust_scripts.html">6.4. Writing robust bash scripts</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="robust_scripts.html#improving-default-bash-behavior">6.4.1. Improving default bash behavior</a></li>
-<li class="toctree-l2"><a class="reference internal" href="robust_scripts.html#checking-your-scripts-for-common-mistakes">6.4.2. Checking your scripts for common mistakes</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="snakemake.html">6.5. Using Snakemake on Esrum</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="snakemake.html#running-snakemake-jobs-via-slurm">6.5.1. Running snakemake jobs via Slurm</a></li>
-<li class="toctree-l2"><a class="reference internal" href="snakemake.html#using-environment-modules">6.5.2. Using environment modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="snakemake.html#other-recommended-options">6.5.3. Other recommended options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="snakemake.html#snakemake-profile">6.5.4. Snakemake profile</a></li>
-</ul>
-</li>
-</ul>
-</div>
+          <section id="presentations">
+<span id="p-outreach-presentations"></span><h1>Presentations<a class="headerlink" href="#presentations" title="Permalink to this heading">#</a></h1>
+<section id="esrum-workshop-2024-06-03">
+<h2>Esrum Workshop [2024-06-03]<a class="headerlink" href="#esrum-workshop-2024-06-03" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Introduction to Esrum</p></li>
+<li><p>Working on Esrum</p></li>
+</ol>
+<p><a class="reference external" href="https://github.com/cbmr-data/cbmr-data.github.io/releases/download/20240603_workshop_2/2024-06-03.Esrum.Workshop.pdf">Download slides</a></p>
+</section>
+<section id="esrum-group-presentation-2024-03-20">
+<h2>Esrum group presentation [2024-03-20]<a class="headerlink" href="#esrum-group-presentation-2024-03-20" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/cbmr-data/cbmr-data.github.io/releases/download/group_presentation_1/2024-03-20.Esrum.short.intro.pdf">Download slides</a></p>
+</section>
+<section id="esrum-workshop-2023-09-21">
+<h2>Esrum Workshop [2023-09-21]<a class="headerlink" href="#esrum-workshop-2023-09-21" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Introduction to Esrum Workshop</p></li>
+<li><p>Data Governance</p></li>
+<li><p>Esrum Usage</p></li>
+</ol>
+<p><a class="reference external" href="https://github.com/cbmr-data/cbmr-data.github.io/releases/download/20230921_workshop_1/2023-09-21.Esrum.Workshop.pdf">Download slides</a></p>
+</section>
+<section id="esrum-workshop-2023-09-28">
+<h2>Esrum Workshop [2023-09-28]<a class="headerlink" href="#esrum-workshop-2023-09-28" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Introduction to Esrum Workshop</p></li>
+<li><p>Data Governance</p></li>
+<li><p>Esrum Usage</p></li>
+</ol>
+<p><a class="reference external" href="https://github.com/cbmr-data/cbmr-data.github.io/releases/download/20230921_workshop_1/2023-09-28.Esrum.Workshop.pdf">Download slides</a></p>
+</section>
 </section>
 
         </article>
@@ -285,23 +276,15 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="modules.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title"><span class="section-number">6.1. </span>Creating environment modules</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="../services/shiny.html">
+          
+          <a class="prev-page" href="messages.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title"><span class="section-number">5.5. </span>Public and private Shiny servers</div>
+                <div class="title">Messages from Data Analytics</div>
                 
               </div>
             </a>
@@ -323,8 +306,30 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Presentations</a><ul>
+<li><a class="reference internal" href="#esrum-workshop-2024-06-03">Esrum Workshop [2024-06-03]</a></li>
+<li><a class="reference internal" href="#esrum-group-presentation-2024-03-20">Esrum group presentation [2024-03-20]</a></li>
+<li><a class="reference internal" href="#esrum-workshop-2023-09-21">Esrum Workshop [2023-09-21]</a></li>
+<li><a class="reference internal" href="#esrum-workshop-2023-09-28">Esrum Workshop [2023-09-28]</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

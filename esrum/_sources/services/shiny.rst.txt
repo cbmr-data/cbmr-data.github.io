@@ -1,8 +1,8 @@
 .. _p_usage_shiny:
 
-##################################
- Public and private Shiny servers
-##################################
+###############
+ Shiny servers
+###############
 
 Users of the Esrum cluster have two options for running Shiny_ servers:
 Either via a publicly accessible server for non-GDPR
@@ -35,7 +35,7 @@ cannot access the ``ndir`` folder, then please see the
 
 It is strongly recommended that you create a folder with your username:
 
-.. code-block:: console
+.. code:: console
 
    $ mkdir -p ~/ucph/ndir/SUN-CBMR-shinyapp/$USER
 
@@ -44,7 +44,7 @@ home folder named ``shiny``. To verify that everything is working
 correctly, create a file name ``app.R`` in
 ``~/ucph/ndir/SUN-CBMR-shinyapp/$USER`` with the following content:
 
-.. code-block:: R
+.. code:: R
 
    library(shiny)
 

@@ -49,7 +49,7 @@ head/compute nodes:
 To fix his, you will need to reinstall the affected R libraries using
 one of two methods:
 
-# . Connect to the RStudio server as described in the :ref:`p_service_rstudio`
+# . Connect to the RStudio server as described in the :ref:`s_service_rstudio`
    section, and simply install the affected packages using the
    ``install.packages`` function:
 

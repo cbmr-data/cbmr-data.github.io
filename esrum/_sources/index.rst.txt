@@ -1,50 +1,115 @@
-###########################
- The Esrum cluster at CBMR
-###########################
-
-Welcome to the Esrum HPC cluster at The Novo Nordisk Foundation Center
-for Basic Metabolic Research (CBMR_). The Esrum cluster is managed by
-the `Data Analytics Platform`_ (formerly the Phenomics Platform) and is
-available to employees at CBMR as well as collaborators visiting CBMR.
-
--  For an overview of the cluster architecture and features, see the
-   :ref:`p_overview` page.
--  To get access to the cluster and to run simple jobs, see the
-   :ref:`p_usage` pages.
--  For services such as Rstudio, Shiny, and persistent containers, see
-   the :ref:`p_services` pages.
--  For ways to make working on the cluster easier, see the :ref:`p_tips`
-   page.
--  For presentations about esrum, emails, and other communications, see
-   the :ref:`p_communications` pages.
-
-You are always welcome to contact us if you have questions or problems
-relating to the cluster. See the :ref:`p_contact` page for information
-about how and where to contact us.
-
-This documentation is licensed under the `Creative Commons CC-BY 4.0
-license`_; you are free to use it as you see fit provided that you give
-appropriate credit.
+###############################
+ The Esrum HPC cluster at CBMR
+###############################
 
 .. toctree::
-   :numbered:
-   :maxdepth: 2
-   :titlesonly:
-   :caption: Contents:
+   :hidden:
 
    contact
    overview
    guidelines
-   usage/index
-   services/index
-   tips/index
    troubleshooting
-   communications/index
+
+.. toctree::
+   :hidden:
+   :caption: Using the cluster
+
+   usage/access/access
+   usage/access/connecting
+   usage/filesystem
+   usage/slurm/index
+   usage/modules
+   usage/transfers
+
+.. toctree::
+   :hidden:
+   :caption: Other services
+
+   services/r
+   services/jupyter
+   services/containers
+   services/shiny
+
+.. toctree::
+   :hidden:
+   :caption: Tips and tricks
+
+   tips/modules
+   tips/tmux
+   tips/batching_commands
+   tips/robust_scripts
+   tips/snakemake
+
+.. toctree::
+   :hidden:
+   :caption: Outreach
+
+   communications/messages
+   communications/presentations
+
+Welcome to the Esrum high-performance computing (HPC) cluster at The
+Novo Nordisk Foundation Center for Basic Metabolic Research (CBMR_). The
+Esrum cluster is managed by the `Data Analytics Platform`_ (formerly the
+Phenomics Platform) and is available to employees at CBMR as well as
+collaborators visiting CBMR.
+
+You are always welcome to :ref:`contact us <p_contact>` if you have
+questions or problems relating to the cluster.
+
+.. note::
+
+   This documentation assumes some familiarity with using Linux and bash
+   (the default command-line). Users who lack this familiarity may
+   benefit from taking the `Mastering the terminal with Bash and Unix`_
+   course offered by the Center for Health Data Science (HeaDS_) at
+   SUND. If you intend to make use of R or the RStudio servers, then you
+   may also benefit from the `From Excel to R`_ offered by HeaDS.
+
+*****************
+ Getting started
+*****************
+
+Before you continue, please read our :ref:`p_guidelines`.
+
+-  To get access to Esrum, you must first apply for access as described
+   in :ref:`p_usage_access_applying`. Once you have access, you can
+   connect to the cluster as described in :ref:`p_usage_connecting`.
+
+-  Connecting to Esrum gives you access to your personal home folder and
+   to project and data set folders as described in
+   :ref:`p_usage_filesystem`.
+
+-  Users of Esrum have access to a large library of scientific and other
+   software. This software is available via environment modules as
+   described in :ref:`p_usage_modules`.
+
+-  To run this or other software on Esrum, you must make use of the
+   Slurm_ queuing system as described in :ref:`p_usage_slurm`.
+
+-  Finally, :ref:`p_transfers` describes how to transfer your data to
+   and from Esrum, to and from services like SIF and Computerome.
+
+In addition, this documentation contains an overview of the
+:ref:`cluster architecture and features <p_overview>`, describes the
+various other services accessible as part of the HPC cluster, such as
+:ref:`Rstudio servers <p_service_r>`, :ref:`Shiny servers
+<p_usage_shiny>`, and :ref:`persistent podman containers
+<p_containers>`. :ref:`Messages sent to users of Esrum
+<p_outreach_messages>` and past :ref:`presentations
+<p_outreach_presentations>` about Esrum are also available.
 
 .. _cbmr: https://cbmr.ku.dk/
 
 .. _creative commons cc-by 4.0 license: https://creativecommons.org/licenses/by/4.0/
 
 .. _data analytics platform: https://cbmr.ku.dk/research-facilities/data-analytics/
+
+.. _from excel to r: https://heads.ku.dk/course/from-excel-to-r/
+
+.. _heads: https://heads.ku.dk/
+
+.. _mastering the terminal with bash and unix: https://heads.ku.dk/course/unix_bash_terminal/
+
+.. _slurm: https://slurm.schedmd.com/overview.html
 
 .. _ucph computing/hpc systems: https://kunet.ku.dk/work-areas/research/Research%20Infrastructure/research-it/ucph-computing-hpc-systems/Pages/default.aspx
