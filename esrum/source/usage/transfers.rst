@@ -84,7 +84,8 @@ MB/s:
 
 It is furthermore recommended to run your transfer in a `tmux` (or
 `screen`) instance. See the :ref:`p_tips_tmux` page for more
-information.
+information. This allows your transfer to keep running after you log
+off.
 
 If you have need to transfer amounts of data that are not feasible with
 this rate limit in place, then please :ref:`p_contact` us for
