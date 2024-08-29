@@ -432,6 +432,15 @@ to get the default 16GB of RAM had ``ExtraMemWasted`` been zero. Aim for
 your jobs to resemble the third job, not the second job and especially
 not the first job in the example!
 
+.. warning::
+
+   The ``Wasted`` statistics are based on snapshots of resource usage
+   produced by Slurm and are therefore not 100% accurate. Notably, the
+   memory usage statistics are based on maximum memory usage of
+   individual processes, rather than the maximum cumulative memory
+   usage, and may therefore greatly overestimate wasted memory if you
+   are running multiple simultaneous processes in a pipeline.
+
 When reserving jobs with additional resources it can also be useful to
 monitor CPU/memory usage in real time. This can help diagnose poor
 resource usage much faster than waiting for the program to finish

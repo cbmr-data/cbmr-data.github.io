@@ -261,9 +261,9 @@ folders without permission from the relevant data controller! See the
 <h2>Transferring data to/from Esrum<a class="headerlink" href="#transferring-data-to-from-esrum" title="Permalink to this heading">#</a></h2>
 <p>Users on a wired connection or using the VPN within CBMR can transfer
 files to/from their PCs using any of the standard tools that connect via
-SSH, including but not limited to <code class="docutils literal notranslate"><span class="pre">scp</span></code>, <code class="docutils literal notranslate"><span class="pre">sftp</span></code>, and <code class="docutils literal notranslate"><span class="pre">rsync</span></code>.
-Windows users may also consider graphical tools such as <a class="reference external" href="https://filezilla-project.org/">FileZilla</a> or
-MobaXterm (see the <a class="reference internal" href="access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page).</p>
+SSH, including but not limited to <code class="docutils literal notranslate"><span class="pre">scp</span></code>, <code class="docutils literal notranslate"><span class="pre">sftp</span></code>, <code class="docutils literal notranslate"><span class="pre">lftp</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">rsync</span></code>. Windows users may also consider graphical tools such as
+<a class="reference external" href="https://filezilla-project.org/">FileZilla</a> or MobaXterm (see the <a class="reference internal" href="access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page).</p>
 <p>When outside CBMR or when using the VPN is not feasible, one may instead
 use the SSH/SFTP server at <code class="docutils literal notranslate"><span class="pre">sftp.ku.dk</span></code>. Official documentation is
 provided on the <a class="reference external" href="https://kunet.ku.dk/work-areas/research/Research%20Infrastructure/research-it/ucph-computing-hpc-systems/Pages/default.aspx">UCPH computing/HPC Systems</a> pages on KUNet.</p>
@@ -302,7 +302,8 @@ MB/s:</p>
 </div>
 <p>It is furthermore recommended to run your transfer in a <cite>tmux</cite> (or
 <cite>screen</cite>) instance. See the <a class="reference internal" href="../tips/tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> page for more
-information.</p>
+information. This allows your transfer to keep running after you log
+off.</p>
 <p>If you have need to transfer amounts of data that are not feasible with
 this rate limit in place, then please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us for
 assistance.</p>
@@ -371,6 +372,36 @@ indicating that you have logged in:</p>
 </ol>
 <p>Once you have successfully authenticated you may connect to the SIF/ERDA
 servers as normal using the tools available on Esrum.</p>
+<p>The recommended way to transfer data to/from SIF/ERDA is using the
+<code class="docutils literal notranslate"><span class="pre">lftp</span></code> command. This allows you use the built-in <code class="docutils literal notranslate"><span class="pre">mirror</span></code> command to
+recursively upload or download entire folders. For example, to download
+the contents of the folder <code class="docutils literal notranslate"><span class="pre">my_data</span></code> into a project, you might run the
+following:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mkdir<span class="w"> </span>/projects/my_project-AUDIT/data/my_data
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/projects/my_project-AUDIT/data/my_data
+$<span class="w"> </span>lftp<span class="w"> </span>sftp://sif-io.erda.dk
+&gt;<span class="w"> </span>user<span class="w"> </span><span class="si">${</span><span class="nv">YOUR_PROJECT_USERNAME</span><span class="si">}</span>
+Password:<span class="w"> </span>***********
+&gt;<span class="w"> </span><span class="nb">set</span><span class="w"> </span>net:connection-limit<span class="w"> </span><span class="m">1</span>
+&gt;<span class="w"> </span><span class="nb">set</span><span class="w"> </span>net:max-retries<span class="w"> </span><span class="m">1</span><span class="p">;</span>
+&gt;<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>my_data
+&gt;<span class="w"> </span>mirror
+</pre></div>
+</div>
+<p>Your project username (<code class="docutils literal notranslate"><span class="pre">${YOUR_PROJECT_USERNAME}</span></code>) is available via
+the <code class="docutils literal notranslate"><span class="pre">Setup</span></code> page for each project once you log into SIF and typically
+looks something like <code class="docutils literal notranslate"><span class="pre">Johann.Gambolputty&#64;sund.ku.dk&#64;MyProject</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Remember to set a password for the project on SIF before attempting
+to login! This is done on the <code class="docutils literal notranslate"><span class="pre">Setup</span></code> page described above.</p>
+</div>
+<p>The two <code class="docutils literal notranslate"><span class="pre">set</span></code> commands are required to prevent lftp from performing
+simultaneous downloads (not supported by SIF) and to prevent lftp from
+re-trying repeatedly on failure. As SIF sends an email every time you
+fail to login, allowing retries typically means receiving a large number
+of emails if a transfer fails.</p>
+<p>To upload a folder, simply use <code class="docutils literal notranslate"><span class="pre">mirror</span> <span class="pre">-R</span></code> instead of just <code class="docutils literal notranslate"><span class="pre">mirror</span></code>.</p>
 </section>
 <section id="transferring-data-to-from-computerome">
 <span id="p-transfers-computerome"></span><h2>Transferring data to/from Computerome<a class="headerlink" href="#transferring-data-to-from-computerome" title="Permalink to this heading">#</a></h2>
