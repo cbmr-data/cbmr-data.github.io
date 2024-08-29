@@ -3,7 +3,9 @@
 #################
 
 This page gathers all troubleshooting steps from the other parts of this
-documentation for easy access.
+documentation for easy access. Remember that you are always welcome to
+:ref:`contact us <p_contact>` if you have questions or problems relating
+to the cluster.
 
 *********************
  Connecting to Esrum
