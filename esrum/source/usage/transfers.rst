@@ -31,9 +31,9 @@ Please :ref:`p_contact` us for more information.
 
 Users on a wired connection or using the VPN within CBMR can transfer
 files to/from their PCs using any of the standard tools that connect via
-SSH, including but not limited to ``scp``, ``sftp``, and ``rsync``.
-Windows users may also consider graphical tools such as FileZilla_ or
-MobaXterm (see the :ref:`p_usage_connecting` page).
+SSH, including but not limited to ``scp``, ``sftp``, ``lftp``, and
+``rsync``. Windows users may also consider graphical tools such as
+FileZilla_ or MobaXterm (see the :ref:`p_usage_connecting` page).
 
 When outside CBMR or when using the VPN is not feasible, one may instead
 use the SSH/SFTP server at ``sftp.ku.dk``. Official documentation is
@@ -150,6 +150,41 @@ available on the cluster (Lynx_):
 
 Once you have successfully authenticated you may connect to the SIF/ERDA
 servers as normal using the tools available on Esrum.
+
+The recommended way to transfer data to/from SIF/ERDA is using the
+``lftp`` command. This allows you use the built-in ``mirror`` command to
+recursively upload or download entire folders. For example, to download
+the contents of the folder ``my_data`` into a project, you might run the
+following:
+
+.. code:: shell
+
+   $ mkdir /projects/my_project-AUDIT/data/my_data
+   $ cd /projects/my_project-AUDIT/data/my_data
+   $ lftp sftp://sif-io.erda.dk
+   > user ${YOUR_PROJECT_USERNAME}
+   Password: ***********
+   > set net:connection-limit 1
+   > set net:max-retries 1;
+   > cd my_data
+   > mirror
+
+Your project username (``${YOUR_PROJECT_USERNAME}``) is available via
+the ``Setup`` page for each project once you log into SIF and typically
+looks something like ``Johann.Gambolputty@sund.ku.dk@MyProject``.
+
+.. warning::
+
+   Remember to set a password for the project on SIF before attempting
+   to login! This is done on the ``Setup`` page described above.
+
+The two ``set`` commands are required to prevent lftp from performing
+simultaneous downloads (not supported by SIF) and to prevent lftp from
+re-trying repeatedly on failure. As SIF sends an email every time you
+fail to login, allowing retries typically means receiving a large number
+of emails if a transfer fails.
+
+To upload a folder, simply use ``mirror -R`` instead of just ``mirror``.
 
 .. _p_transfers_computerome:
 
