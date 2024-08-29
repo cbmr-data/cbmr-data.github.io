@@ -69,11 +69,22 @@ questions or problems relating to the cluster.
  Getting started
 *****************
 
-Before you continue, please read our :ref:`p_guidelines`.
+We hold an intro-workshop for the Esrum cluster a few times a year,
+depending on interest. Future workshops will be announced to all
+employees at CBMR, while slides from past workshops are made available
+on the :ref:`presentations <p_outreach_presentations>` page.
+
+However, this documentation is explicitly written to help you get
+started with using Esrum, so you do not need to wait for the intro
+workshop to be announced:
+
+-  Before you continue, please read our :ref:`p_guidelines`. You are
+   expected our guidelines while using the Esrum cluster.
 
 -  To get access to Esrum, you must first apply for access as described
    in :ref:`p_usage_access_applying`. Once you have access, you can
-   connect to the cluster as described in :ref:`p_usage_connecting`.
+   connect to the cluster as described in :ref:`connecting to the
+   cluster <p_usage_connecting>` page.
 
 -  Connecting to Esrum gives you access to your personal home folder and
    to project and data set folders as described in
@@ -94,9 +105,7 @@ In addition, this documentation contains an overview of the
 various other services accessible as part of the HPC cluster, such as
 :ref:`Rstudio servers <p_service_r>`, :ref:`Shiny servers
 <p_usage_shiny>`, and :ref:`persistent podman containers
-<p_containers>`. :ref:`Messages sent to users of Esrum
-<p_outreach_messages>` and past :ref:`presentations
-<p_outreach_presentations>` about Esrum are also available.
+<p_containers>`.
 
 .. _cbmr: https://cbmr.ku.dk/
 
