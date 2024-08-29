@@ -83,8 +83,97 @@ where!), but it also stops bash from doing any more damage.
 Stop running on program failures
 ================================
 
-..
-   TODO
+By default bash (and hence Slurm) will continue to execute a script even
+if a command fails. If this is not detected, then it can lead to
+partially or wholly corrupt data:
+
+.. code:: bash
+
+   #!/bin/bash
+   # 1. Create some data
+   echo "I wish to complain about this dog what I purchased not half an hour ago from this very boutique." > sketch.txt
+   # 2. Process the data (badly)
+   sed -i -e's# dog # parrot ' sketch.txt
+   # 3. Etc.
+   gzip sketch.txt
+
+This produces the following output:
+
+.. code:: shell
+
+   $ ls
+   my-sketch.sh
+   $ bash my-sketch.sh
+   sed: -e expression #1, char 16: unterminated `s' command
+   $ ls
+   my-sketch.sh sketch.txt.gz
+   $ zcat sketch.txt.gz
+   I wish to complain about this dog what I purchased not half an hour ago from this very boutique.
+
+In more complicated scripts and/or if slurm logs are not carefully
+vetted, this can lead to completely unexpected results.
+
+There are several ways to handle these kinds of errors. We call ``exit``
+with the argument (exit code) 1 to indicate to Slurm that the command
+failed.
+
+.. code:: bash
+
+   # 1. Exit if command fails, but nothing else
+   sed -i -e's# dog # parrot ' sketch.txt || exit 1
+   # 2. Manually handle the failure
+   if ! sed -i -e's# dog # parrot ' sketch.txt; then
+       echo "We're closin' for lunch."
+       exit 1
+   fi
+   # 3. Ignore failures, if the command is expected to fail sometimes.
+   #    This should be used with care!
+   sed -i -e's# dog # parrot ' sketch.txt || true
+
+This, however, does not work well if you wish to pipe commands:
+
+.. code:: bash
+
+   if ! sed -i -e's# dog # parrot ' sketch.txt | gzip > sketch.txt.gz; then
+       echo "We're closin' for lunch."
+       exit 1
+   fi
+
+Running this code does not print ``We're closin' for lunch.``, because
+the ``gzip`` command succeeds even if ``sed`` fails.
+
+To mitigate these problems, we can make use of the following options:
+
+.. code-block:: bash
+   :emphasize-lines: 3-8
+
+   #!/bin/bash
+
+   # Abort on unhandled failure in pipes
+   set -o pipefail
+   # Ensure that custom functions inherit these options
+   set -o errtrace
+   # Print debug message and terminate script on failures
+   trap 's=$?; echo >&2 "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
+
+   # 1. Create some data
+   echo "I wish to complain about this dog what I purchased not half an hour ago from this very boutique." > sketch.txt
+   # 2. Process the data (badly)
+   sed -i -e's# dog # parrot ' sketch.txt
+   # 3. Etc.
+   gzip sketch.txt
+
+Running this script produces the following, helpful output:
+
+.. code:: shell
+
+   $ ls
+   my-sketch.sh
+   $ bash my-sketch.sh
+   sed: -e expression #1, char 16: unterminated `s' command
+   sketch.sh: Error on line 13: sed -i -e's# dog # parrot ' sketch.txt
+   $ ls
+   my-sketch.sh sketch.txt
 
 Prevent bash from updating running scripts
 ==========================================
@@ -102,7 +191,6 @@ thereby helps avoid *some* of the pitfalls of using bash
 
    #!/bin/bash
    # FIXME: SBATCH commands go here!
-
    {
    set -o nounset  # Exit on unset variables
    set -o pipefail # Exit on unhandled failure in pipes
@@ -116,7 +204,10 @@ thereby helps avoid *some* of the pitfalls of using bash
    exit $?
    }
 
-Note however that is not guaranteed to catch all
+Note however that is not guaranteed to catch all errors (see the `bash
+pitfalls`_ page for more information) and it is therefore recommended to
+use a more robust programming language or proper pipeline for more
+complicated tasks.
 
 *******************************************
  Checking your scripts for common mistakes
@@ -141,6 +232,41 @@ this page:
    In myscript.sh line 3:
    echo "I will not buy this ${MY_VARIABL}, it is scratched."
                            ^-----------^ SC2153 (info): Possible misspelling: MY_VARIABL may not be assigned. Did you mean MY_VARIABLE?
+
+*******************************
+ Running commands in Snakemake
+*******************************
+
+If you are using Snakemake to run your bash commands, then you are
+already running commands in a `"strict" bash mode`_, namely with ``set
+-euo pipefail``. This sets the ``nounset`` and ``pipefail`` options
+mentioned above, as well as the ``errexit`` option that is equivalent to
+the ``trap`` command above but which prints less information about the
+failure:
+
+.. code:: shell
+
+   $ snakemake
+   sed: -e expression #1, char 16: unterminated `s' command
+   [Thu Aug 29 11:26:32 2024]
+   Error in rule 1:
+       jobid: 0
+       input: my-input.txt
+       output: my-output.txt
+       shell:
+           sed -i -e's# dog # parrot ' my-input.txt > my-output.txt
+           (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Note, however, that this does not apply to bash scripts that you execute
+in your snakemake pipeline!
+
+Snakemake also includes support for automatically quoting filenames by
+using the ``:q`` modifier to variables: Instead of ``cat {input} | gzip
+> {output}`` simply write ``cat {input:q} | gzip > {output:q}``. This is
+the equivalent of ``cat "{input}" | gzip > "{output}"`` but also handles
+cases like multiple filenames.
+
+.. _"strict" bash mode: https://snakemake.readthedocs.io/en/stable/project_info/faq.html#my-shell-command-fails-with-exit-code-0-from-within-a-pipe-what-s-wrong
 
 .. _bash pitfalls: https://mywiki.wooledge.org/BashPitfalls
 
