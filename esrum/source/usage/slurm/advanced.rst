@@ -150,6 +150,45 @@ command (from the ``JOBID`` column).
    :ref:`s_monitoring_gpu_utilization` section for instructions on how
    to monitor GPU utilization.
 
+.. _s_monitoring_slurm:
+
+************************
+ Monitoring the cluster
+************************
+
+The slurmboard_ utility is made available to make it easy to monitor
+activity on the cluster, for example to decide how many resources you
+can reasonably use for a job (see :ref:`s_best_practice_resources`):
+
+.. image:: /usage/slurm/images/slurmboard.png
+   :align: center
+
+Briefly, this utility displays every node in the cluster, their status,
+and available resources for each of these. The resources (CPUs, Memory,
+and GPUs) columns are colored as follows: Yellow indicates resources
+that have been reserved; green indicates resources that are actively
+being used; purple indicates resources that may be inaccessible due to
+other resources being reserved (e.g. RAM being inaccessible due to all
+CPUs being reserved vice versa); and black indicates resources that are
+unavailable due to nodes being offline or under maintenance.
+
+.. note::
+
+   The Data Analytics Platform uses this utility to monitor how busy the
+   cluster is and how job are performing. In particular, we may reach
+   out to you if we notice that your jobs consistently use significantly
+   fewer resources than the amount reserved, in order to optimize
+   resource utilization on the cluster.
+
+The ``slurmboard`` utility is available in the ``cbmr_shared`` project,
+and can be loaded as follows:
+
+.. code-block:: shell
+
+   $ . /projects/cbmr_shared/apps/modules/activate.sh
+   $ module load slurmboard
+   $ slurmboard
+
 *************************************
  Running multiple tasks using arrays
 *************************************
@@ -397,3 +436,5 @@ filenames in a bash script.
 -  Slurm `summary <https://slurm.schedmd.com/pdfs/summary.pdf>`_ (PDF)
 -  The `sbatch manual page <https://slurm.schedmd.com/sbatch.html>`_
 -  The `squeue manual page <https://slurm.schedmd.com/squeue.html>`_
+
+.. _slurmboard: https://github.com/cbmr-data/slurmboard
