@@ -512,7 +512,7 @@ and will produce results that are very likely corrupt.</p>
 see the <a class="reference internal" href="advanced.html#s-job-arrays"><span class="std std-ref">Monitoring your jobs</span></a> section.</p>
 </div>
 <section id="best-practice-for-reserving-resources">
-<h3>Best practice for reserving resources<a class="headerlink" href="#best-practice-for-reserving-resources" title="Permalink to this heading">#</a></h3>
+<span id="s-best-practice-resources"></span><h3>Best practice for reserving resources<a class="headerlink" href="#best-practice-for-reserving-resources" title="Permalink to this heading">#</a></h3>
 <p>Determining how many CPUs and how much memory you need to reserve for
 your jobs can be difficult:</p>
 <p>Few programs benefit from using a lot of threads (CPUs) due to overhead
@@ -531,6 +531,15 @@ doing so. You can for example start with 2, 4, or 8 CPUs per task,
 and only increasing the number after it has been determined that the
 software benefits from the additional CPUs.</p></li>
 </ul>
+<p>In addition, we ask that you consider the impact of your job on other
+users: While it isn't a problem if you reserve a lot of resources for a
+short amount of time, it will cause problems for other users if you were
+to, for example, reserve all available resources for several days.</p>
+<p>When starting large jobs, it is also worth considering how busy the
+cluster is; while the queuing system should down-prioritize people who
+have been running a lot of jobs recently, nobody enjoys waiting days or
+hours for a short job to be stated. The <a class="reference internal" href="advanced.html#s-monitoring-slurm"><span class="std std-ref">Monitoring the cluster</span></a>
+describes a simple way in which you can monitor overall slurm activity.</p>
 </section>
 <section id="monitoring-resources-used-by-jobs">
 <h3>Monitoring resources used by jobs<a class="headerlink" href="#monitoring-resources-used-by-jobs" title="Permalink to this heading">#</a></h3>

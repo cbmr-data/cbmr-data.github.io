@@ -352,6 +352,8 @@ without reserving a GPU.
    If you need to run the same command on a set of files/samples, then
    see the :ref:`s_job_arrays` section.
 
+.. _s_best_practice_resources:
+
 Best practice for reserving resources
 =====================================
 
@@ -376,6 +378,17 @@ We therefore recommended that you
    doing so. You can for example start with 2, 4, or 8 CPUs per task,
    and only increasing the number after it has been determined that the
    software benefits from the additional CPUs.
+
+In addition, we ask that you consider the impact of your job on other
+users: While it isn't a problem if you reserve a lot of resources for a
+short amount of time, it will cause problems for other users if you were
+to, for example, reserve all available resources for several days.
+
+When starting large jobs, it is also worth considering how busy the
+cluster is; while the queuing system should down-prioritize people who
+have been running a lot of jobs recently, nobody enjoys waiting days or
+hours for a short job to be stated. The :ref:`s_monitoring_slurm`
+describes a simple way in which you can monitor overall slurm activity.
 
 Monitoring resources used by jobs
 =================================

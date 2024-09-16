@@ -354,6 +354,36 @@ to monitor GPU utilization.</p>
 </div>
 </section>
 </section>
+<section id="monitoring-the-cluster">
+<span id="s-monitoring-slurm"></span><h2>Monitoring the cluster<a class="headerlink" href="#monitoring-the-cluster" title="Permalink to this heading">#</a></h2>
+<p>The <a class="reference external" href="https://github.com/cbmr-data/slurmboard">slurmboard</a> utility is made available to make it easy to monitor
+activity on the cluster, for example to decide how many resources you
+can reasonably use for a job (see <a class="reference internal" href="basics.html#s-best-practice-resources"><span class="std std-ref">Best practice for reserving resources</span></a>):</p>
+<img alt="../../_images/slurmboard.png" class="align-center" src="../../_images/slurmboard.png" />
+<p>Briefly, this utility displays every node in the cluster, their status,
+and available resources for each of these. The resources (CPUs, Memory,
+and GPUs) columns are colored as follows: Yellow indicates resources
+that have been reserved; green indicates resources that are actively
+being used; purple indicates resources that may be inaccessible due to
+other resources being reserved (e.g. RAM being inaccessible due to all
+CPUs being reserved vice versa); and black indicates resources that are
+unavailable due to nodes being offline or under maintenance.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Data Analytics Platform uses this utility to monitor how busy the
+cluster is and how job are performing. In particular, we may reach
+out to you if we notice that your jobs consistently use significantly
+fewer resources than the amount reserved, in order to optimize
+resource utilization on the cluster.</p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">slurmboard</span></code> utility is available in the <code class="docutils literal notranslate"><span class="pre">cbmr_shared</span></code> project,
+and can be loaded as follows:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>.<span class="w"> </span>/projects/cbmr_shared/apps/modules/activate.sh
+$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>slurmboard
+$<span class="w"> </span>slurmboard
+</pre></div>
+</div>
+</section>
 <section id="running-multiple-tasks-using-arrays">
 <h2>Running multiple tasks using arrays<a class="headerlink" href="#running-multiple-tasks-using-arrays" title="Permalink to this heading">#</a></h2>
 <p>As suggested by the name, the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command is able to run jobs in
@@ -642,6 +672,7 @@ bgzip<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</
 <li><a class="reference internal" href="#monitoring-processes-in-jobs">Monitoring processes in jobs</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#monitoring-the-cluster">Monitoring the cluster</a></li>
 <li><a class="reference internal" href="#running-multiple-tasks-using-arrays">Running multiple tasks using arrays</a><ul>
 <li><a class="reference internal" href="#limiting-simultaneous-jobs">Limiting simultaneous jobs</a></li>
 <li><a class="reference internal" href="#managing-job-arrays">Managing job arrays</a></li>
