@@ -4,23 +4,73 @@
  Using the GPU/hi-MEM node
 ###########################
 
-This section describes how to schedule a task on the GPU/hi-MEM node.
+This page describes how to schedule a task on the GPU/hi-MEM node.
+
 The GPU node is intended for tasks that need to use GPUs and for tasks
-that have very high memory requirements (more than 2 TB).
+that have very high memory requirements (more than the 2 TB of RAM
+available on regular nodes).
 
-**********************************
- Running software on the GPU node
-**********************************
+*************************************
+ Running jobs on the GPU/hi-MEM node
+*************************************
 
-It is possible to use the GPU node in an interactive session (see
-below), but since we have few GPUs available we ask that you limit the
-usage of interactive sessions *as much as possible*. This ensures that
-the GPUs are available for use when you (or other users) are not
-actively using them.
+By default jobs submitted via Slurm will only run on regular nodes, even
+if you ask for more than 2TB of RAM or ask for a GPU. Attempting to run
+such a task will instead result in a ``Requested node configuration is
+not available`` error message.
 
-The recommended way to use the GPUs is therefore to submit a job to
-Slurm using the ``sbatch`` command. To do so you need to specify two
-options as part of your ``sbatch`` script:
+This is because the GPU/hi-MEM node is located on its own queue, to in
+order prevent normal use of the cluster from blocking access to these
+resource. To run jobs on the GPU/hi-MEM node, you must therefore select
+use the option ``--partition=gpuqueue`` to select the correct queue.
+This might look as follows in an sbatch script:
+
+.. code-block:: bash
+   :emphasize-lines: 2
+
+   #!/bin/bash
+   #SBATCH --partition=gpuqueue
+
+   my-memory-hungry-command
+
+While running on the GPU/hi-MEM queue, you can reserve up to 3920 GB of
+RAM and up to two GPUs (see below). The GPU/hi-MEM node otherwise use
+the same defaults as the other nodes (~16 GB of RAM per CPU reserved).
+
+For example, to run a job using 2.5 TB of RAM on the GPU/hi-MEM node:
+
+.. code-block:: bash
+   :emphasize-lines: 2
+
+   #!/bin/bash
+   #SBATCH --partition=gpuqueue
+   #SBATCH --mem 2560G
+
+   my-memory-hungry-command
+
+This script can then be submitted as usual:
+
+.. code-block:: shell
+
+   $ sbatch my_hi_mem_job.sh
+   Submitted batch job 217217
+
+See the :ref:`p_usage_slurm_basics` and :ref:`p_usage_slurm_advanced`
+pages for information about reserving additional CPUs, more RAM, and for
+setting other Slurm settings for your jobs.
+
+We ask that you do not reserve all available RAM on the node, unless it
+is actually required for your analyses, since leaving some RAM unused
+permits other users to utilize the GPUs while your tasks are running.
+
+****************
+ Reserving GPUs
+****************
+
+Requesting GPUs is done with the ``--gres`` option and also requires
+that using the ``--partition=gpuqueue`` option to select the correct
+queue, as described above. This might look as follows in an sbatch
+script:
 
 .. code-block:: bash
    :emphasize-lines: 2
@@ -30,16 +80,10 @@ options as part of your ``sbatch`` script:
 
    nvidia-smi -L
 
-There are two required options:
-
-#. The ``--partition=gpuqueue`` option ensures that we are running on
-   the GPU Slurm job queue, which is distinct from the standard Slurm
-   job queue that only has access to normal compute nodes.
-
-#. The ``--gres=gpu:1`` asks Slurm to make 1 GPU available to our job.
-   This can be increased to ``2`` to reserve both GPUs, but because of
-   the limited number of GPUs we ask that you only reserve 1 GPU per
-   job, which is normally also more efficient.
+The ``--gres=gpu:1`` in the above asks Slurm to make 1 GPU available to
+our job. This can be increased to ``2`` to reserve both GPUs on the
+node, but because of the limited number of GPUs we ask that you only
+reserve 1 GPU per job, which is normally also more efficient.
 
 This script can then be submitted as usual:
 
@@ -50,30 +94,27 @@ This script can then be submitted as usual:
    $ cat slurm-217218.out
    GPU 0: NVIDIA A100 80GB PCIe (UUID: GPU-4f2ff8df-0d18-a99b-9fb8-67aa0867f7a3)
 
-See the :ref:`p_usage_slurm_basics` and :ref:`p_usage_slurm_advanced`
-pages for information about reserving additional CPUs, more RAM, and for
-setting other Slurm settings for your jobs.
-
 Running an interactive session
 ==============================
 
-It is also possible to reserve GPUs for interactive sessions should you
-need to experiment with running a piece of software or should the
-software itself be interactive. See the :ref:`s_interactive_session`
-section for information about interactive sessions, including
-information about running programs with graphical interfaces.
+While it is possible to run an interactive session on the GPU/hi-MEM
+node, we ask that you limit the usage of such sessions as much as
+possible. If at all possible, prefer using ``sbatch`` or non-interactive
+``srun`` instead. This ensures that the resources are available for use
+when you (or other users) are not actively using them.
 
 To start an interactive session using a GPU you simply apply the same
-``--partition`` and ``--gres`` options as above:
+``--partition`` and (optionally) the same ``--gres`` options as above if
+you need a GPU, as well as other resource options described in the
+:ref:`reserving_resources` section:
 
 .. code-block::
 
-   $ srun --pty --partition=gpuqueue --gres=gpu:1 -- /bin/bash
+   $ srun --pty --partition=gpuqueue -- /bin/bash
 
-Interactive sessions should only be used for tasks that *cannot* be run
-via ``sbatch`` and the sessions should be closed as soon as you are done
-running your software. This ensures that the GPUs are available to other
-users.
+See the :ref:`s_interactive_session` section for information about
+interactive sessions, including information about running programs with
+graphical interfaces.
 
 .. warning::
 
@@ -133,17 +174,17 @@ the reserved GPU(s) directly using the ``nvidia-smi`` command:
 
 This will print resource usage for the GPUs you have reserved for your
 interactive session (and only for those GPUs), and continue to print it
-every 5 seconds afterwards via ``-l 5``. Other monitoring tools are
-available (for example ``gpustat``), but are outside the scope of this
-documentation.
+every 5 seconds afterwards via the ``-l 5`` option. Other monitoring
+tools are available (for example ``gpustat``), but are outside the scope
+of this documentation.
 
 Monitoring a Slurm job
 ======================
 
 If you have started a standard (non-interactive) job via Slurm, then you
 will not be able to directly run ``nvidia-smi`` nor will you be able to
-join the running job using ``srun -j`` (due to the way Slurm handles
-special resources). We have therefore setup a log-file on the
+join the running job using ``srun -j`` due to the way Slurm handles
+special resources. We have therefore setup a log-file on the
 ``esrumgpun01fl`` node that contains the output from the ``nvidia-smi``
 command as shown above.
 

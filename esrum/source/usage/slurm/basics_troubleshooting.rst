@@ -19,9 +19,8 @@ Slurm will report that the request cannot be satisfied:
 
 To solve this, simply reduce the number of CPUs and/or the amount of RAM
 requested to fit within the limits described above. If your task does
-require more than 1993 GB of RAM, then you also need to add the
-``--partition=gpuqueue``, so that your task gets scheduled on the
-GPU/High-MEM node.
+require more than 1993 GB of RAM, then you need to run your task on the
+GPU queue as described on the :ref:`p_usage_slurm_gpu` page.
 
 Additionally, you may receive this message if you request GPUs without
 specifying the correct queue or if you request too many GPUs:
@@ -37,6 +36,5 @@ specifying the correct queue or if you request too many GPUs:
    srun: error: Unable to allocate resources: Requested node configuration is not available
 
 To solve this error, simply avoid requesting more than 2 GPUs, and
-remember to include the ``--partition=gpuqueue`` option.
-
-See also the :ref:`p_usage_slurm_gpu` section.
+remember to include the ``--partition`` option. See also the
+:ref:`p_usage_slurm_gpu` section.
