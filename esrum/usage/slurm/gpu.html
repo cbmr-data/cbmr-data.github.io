@@ -239,35 +239,66 @@
         <article role="main">
           <section id="using-the-gpu-hi-mem-node">
 <span id="p-usage-slurm-gpu"></span><h1>Using the GPU/hi-MEM node<a class="headerlink" href="#using-the-gpu-hi-mem-node" title="Permalink to this heading">#</a></h1>
-<p>This section describes how to schedule a task on the GPU/hi-MEM node.
-The GPU node is intended for tasks that need to use GPUs and for tasks
-that have very high memory requirements (more than 2 TB).</p>
-<section id="running-software-on-the-gpu-node">
-<h2>Running software on the GPU node<a class="headerlink" href="#running-software-on-the-gpu-node" title="Permalink to this heading">#</a></h2>
-<p>It is possible to use the GPU node in an interactive session (see
-below), but since we have few GPUs available we ask that you limit the
-usage of interactive sessions <em>as much as possible</em>. This ensures that
-the GPUs are available for use when you (or other users) are not
-actively using them.</p>
-<p>The recommended way to use the GPUs is therefore to submit a job to
-Slurm using the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command. To do so you need to specify two
-options as part of your <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> script:</p>
+<p>This page describes how to schedule a task on the GPU/hi-MEM node.</p>
+<p>The GPU node is intended for tasks that need to use GPUs and for tasks
+that have very high memory requirements (more than the 2 TB of RAM
+available on regular nodes).</p>
+<section id="running-jobs-on-the-gpu-hi-mem-node">
+<h2>Running jobs on the GPU/hi-MEM node<a class="headerlink" href="#running-jobs-on-the-gpu-hi-mem-node" title="Permalink to this heading">#</a></h2>
+<p>By default jobs submitted via Slurm will only run on regular nodes, even
+if you ask for more than 2TB of RAM or ask for a GPU. Attempting to run
+such a task will instead result in a <code class="docutils literal notranslate"><span class="pre">Requested</span> <span class="pre">node</span> <span class="pre">configuration</span> <span class="pre">is</span>
+<span class="pre">not</span> <span class="pre">available</span></code> error message.</p>
+<p>This is because the GPU/hi-MEM node is located on its own queue, to in
+order prevent normal use of the cluster from blocking access to these
+resource. To run jobs on the GPU/hi-MEM node, you must therefore select
+use the option <code class="docutils literal notranslate"><span class="pre">--partition=gpuqueue</span></code> to select the correct queue.
+This might look as follows in an sbatch script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="hll"><span class="c1">#SBATCH --partition=gpuqueue</span>
+</span>
+my-memory-hungry-command
+</pre></div>
+</div>
+<p>While running on the GPU/hi-MEM queue, you can reserve up to 3920 GB of
+RAM and up to two GPUs (see below). The GPU/hi-MEM node otherwise use
+the same defaults as the other nodes (~16 GB of RAM per CPU reserved).</p>
+<p>For example, to run a job using 2.5 TB of RAM on the GPU/hi-MEM node:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="hll"><span class="c1">#SBATCH --partition=gpuqueue</span>
+</span><span class="c1">#SBATCH --mem 2560G</span>
+
+my-memory-hungry-command
+</pre></div>
+</div>
+<p>This script can then be submitted as usual:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbatch<span class="w"> </span>my_hi_mem_job.sh
+Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">217217</span>
+</pre></div>
+</div>
+<p>See the <a class="reference internal" href="basics.html#p-usage-slurm-basics"><span class="std std-ref">Basic Slurm jobs</span></a> and <a class="reference internal" href="advanced.html#p-usage-slurm-advanced"><span class="std std-ref">Advanced Slurm jobs</span></a>
+pages for information about reserving additional CPUs, more RAM, and for
+setting other Slurm settings for your jobs.</p>
+<p>We ask that you do not reserve all available RAM on the node, unless it
+is actually required for your analyses, since leaving some RAM unused
+permits other users to utilize the GPUs while your tasks are running.</p>
+</section>
+<section id="reserving-gpus">
+<h2>Reserving GPUs<a class="headerlink" href="#reserving-gpus" title="Permalink to this heading">#</a></h2>
+<p>Requesting GPUs is done with the <code class="docutils literal notranslate"><span class="pre">--gres</span></code> option and also requires
+that using the <code class="docutils literal notranslate"><span class="pre">--partition=gpuqueue</span></code> option to select the correct
+queue, as described above. This might look as follows in an sbatch
+script:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="hll"><span class="c1">#SBATCH --partition=gpuqueue --gres=gpu:1</span>
 </span>
 nvidia-smi<span class="w"> </span>-L
 </pre></div>
 </div>
-<p>There are two required options:</p>
-<ol class="arabic simple">
-<li><p>The <code class="docutils literal notranslate"><span class="pre">--partition=gpuqueue</span></code> option ensures that we are running on
-the GPU Slurm job queue, which is distinct from the standard Slurm
-job queue that only has access to normal compute nodes.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">--gres=gpu:1</span></code> asks Slurm to make 1 GPU available to our job.
-This can be increased to <code class="docutils literal notranslate"><span class="pre">2</span></code> to reserve both GPUs, but because of
-the limited number of GPUs we ask that you only reserve 1 GPU per
-job, which is normally also more efficient.</p></li>
-</ol>
+<p>The <code class="docutils literal notranslate"><span class="pre">--gres=gpu:1</span></code> in the above asks Slurm to make 1 GPU available to
+our job. This can be increased to <code class="docutils literal notranslate"><span class="pre">2</span></code> to reserve both GPUs on the
+node, but because of the limited number of GPUs we ask that you only
+reserve 1 GPU per job, which is normally also more efficient.</p>
 <p>This script can then be submitted as usual:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbatch<span class="w"> </span>my_gpu_job.sh
 Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">217218</span>
@@ -275,25 +306,23 @@ $<span class="w"> </span>cat<span class="w"> </span>slurm-217218.out
 GPU<span class="w"> </span><span class="m">0</span>:<span class="w"> </span>NVIDIA<span class="w"> </span>A100<span class="w"> </span>80GB<span class="w"> </span>PCIe<span class="w"> </span><span class="o">(</span>UUID:<span class="w"> </span>GPU-4f2ff8df-0d18-a99b-9fb8-67aa0867f7a3<span class="o">)</span>
 </pre></div>
 </div>
-<p>See the <a class="reference internal" href="basics.html#p-usage-slurm-basics"><span class="std std-ref">Basic Slurm jobs</span></a> and <a class="reference internal" href="advanced.html#p-usage-slurm-advanced"><span class="std std-ref">Advanced Slurm jobs</span></a>
-pages for information about reserving additional CPUs, more RAM, and for
-setting other Slurm settings for your jobs.</p>
 <section id="running-an-interactive-session">
 <h3>Running an interactive session<a class="headerlink" href="#running-an-interactive-session" title="Permalink to this heading">#</a></h3>
-<p>It is also possible to reserve GPUs for interactive sessions should you
-need to experiment with running a piece of software or should the
-software itself be interactive. See the <a class="reference internal" href="basics.html#s-interactive-session"><span class="std std-ref">Interactive sessions</span></a>
-section for information about interactive sessions, including
-information about running programs with graphical interfaces.</p>
+<p>While it is possible to run an interactive session on the GPU/hi-MEM
+node, we ask that you limit the usage of such sessions as much as
+possible. If at all possible, prefer using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> or non-interactive
+<code class="docutils literal notranslate"><span class="pre">srun</span></code> instead. This ensures that the resources are available for use
+when you (or other users) are not actively using them.</p>
 <p>To start an interactive session using a GPU you simply apply the same
-<code class="docutils literal notranslate"><span class="pre">--partition</span></code> and <code class="docutils literal notranslate"><span class="pre">--gres</span></code> options as above:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--gres<span class="o">=</span>gpu:1<span class="w"> </span>--<span class="w"> </span>/bin/bash
+<code class="docutils literal notranslate"><span class="pre">--partition</span></code> and (optionally) the same <code class="docutils literal notranslate"><span class="pre">--gres</span></code> options as above if
+you need a GPU, as well as other resource options described in the
+<a class="reference internal" href="basics.html#reserving-resources"><span class="std std-ref">Reserving resources</span></a> section:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--<span class="w"> </span>/bin/bash
 </pre></div>
 </div>
-<p>Interactive sessions should only be used for tasks that <em>cannot</em> be run
-via <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> and the sessions should be closed as soon as you are done
-running your software. This ensures that the GPUs are available to other
-users.</p>
+<p>See the <a class="reference internal" href="basics.html#s-interactive-session"><span class="std std-ref">Interactive sessions</span></a> section for information about
+interactive sessions, including information about running programs with
+graphical interfaces.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Interactive sessions left running on the GPU node may be terminated
@@ -345,16 +374,16 @@ the reserved GPU(s) directly using the <code class="docutils literal notranslate
 </div>
 <p>This will print resource usage for the GPUs you have reserved for your
 interactive session (and only for those GPUs), and continue to print it
-every 5 seconds afterwards via <code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">5</span></code>. Other monitoring tools are
-available (for example <code class="docutils literal notranslate"><span class="pre">gpustat</span></code>), but are outside the scope of this
-documentation.</p>
+every 5 seconds afterwards via the <code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">5</span></code> option. Other monitoring
+tools are available (for example <code class="docutils literal notranslate"><span class="pre">gpustat</span></code>), but are outside the scope
+of this documentation.</p>
 </section>
 <section id="monitoring-a-slurm-job">
 <h3>Monitoring a Slurm job<a class="headerlink" href="#monitoring-a-slurm-job" title="Permalink to this heading">#</a></h3>
 <p>If you have started a standard (non-interactive) job via Slurm, then you
 will not be able to directly run <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> nor will you be able to
-join the running job using <code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">-j</span></code> (due to the way Slurm handles
-special resources). We have therefore setup a log-file on the
+join the running job using <code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">-j</span></code> due to the way Slurm handles
+special resources. We have therefore setup a log-file on the
 <code class="docutils literal notranslate"><span class="pre">esrumgpun01fl</span></code> node that contains the output from the <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code>
 command as shown above.</p>
 <p>Use the following command to watch the content of this log-file:</p>
@@ -436,7 +465,8 @@ reserved a GPU.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Using the GPU/hi-MEM node</a><ul>
-<li><a class="reference internal" href="#running-software-on-the-gpu-node">Running software on the GPU node</a><ul>
+<li><a class="reference internal" href="#running-jobs-on-the-gpu-hi-mem-node">Running jobs on the GPU/hi-MEM node</a></li>
+<li><a class="reference internal" href="#reserving-gpus">Reserving GPUs</a><ul>
 <li><a class="reference internal" href="#running-an-interactive-session">Running an interactive session</a></li>
 </ul>
 </li>

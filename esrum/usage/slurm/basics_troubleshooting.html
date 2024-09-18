@@ -255,9 +255,8 @@ sbatch:<span class="w"> </span>error:<span class="w"> </span>Batch<span class="w
 </div>
 <p>To solve this, simply reduce the number of CPUs and/or the amount of RAM
 requested to fit within the limits described above. If your task does
-require more than 1993 GB of RAM, then you also need to add the
-<code class="docutils literal notranslate"><span class="pre">--partition=gpuqueue</span></code>, so that your task gets scheduled on the
-GPU/High-MEM node.</p>
+require more than 1993 GB of RAM, then you need to run your task on the
+GPU queue as described on the <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU/hi-MEM node</span></a> page.</p>
 <p>Additionally, you may receive this message if you request GPUs without
 specifying the correct queue or if you request too many GPUs:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># --partition=gpuqueue not specified</span>
@@ -270,8 +269,8 @@ srun:<span class="w"> </span>error:<span class="w"> </span>Unable<span class="w"
 </pre></div>
 </div>
 <p>To solve this error, simply avoid requesting more than 2 GPUs, and
-remember to include the <code class="docutils literal notranslate"><span class="pre">--partition=gpuqueue</span></code> option.</p>
-<p>See also the <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU/hi-MEM node</span></a> section.</p>
+remember to include the <code class="docutils literal notranslate"><span class="pre">--partition</span></code> option. See also the
+<a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU/hi-MEM node</span></a> section.</p>
 </section>
 
         </article>
