@@ -59,9 +59,10 @@ See the :ref:`p_usage_slurm_basics` and :ref:`p_usage_slurm_advanced`
 pages for information about reserving additional CPUs, more RAM, and for
 setting other Slurm settings for your jobs.
 
-We ask that you do not reserve all available RAM on the node, unless it
-is actually required for your analyses, since leaving some RAM unused
-permits other users to utilize the GPUs while your tasks are running.
+We ask that you do not reserve all available CPUs or all RAM on the
+node, unless it is actually required for your analyses, since leaving
+some unused resources permits other users to utilize the GPUs while your
+tasks are running.
 
 ****************
  Reserving GPUs
