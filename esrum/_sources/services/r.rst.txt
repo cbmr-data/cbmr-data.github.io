@@ -200,19 +200,11 @@ you and press enter:
 *****************
 
 The RStudio_ servers can be found at https://esrumweb01fl/rstudio/ and
-https://esrumweb02fl/rstudio/. To connect to this server, you must
-
-#. Be a member of the ``SRV-esrumweb-users`` group. Simply follow the
-   steps in the :ref:`s_applying_for_access` section, and apply for
-   access to this group.
-
-#. Be connected via the UCPH VPN (a wired connection at CBMR is *not*
-   sufficient). See :ref:`p_usage_connecting` for more information.
-
-Once you have been been made a member of the ``SRV-esrumweb-users`` and
-connected using the VPN or a wired connection at CBMR, simply visit
-https://esrumweb01fl/rstudio/ or https://esrumweb02fl/rstudio/ and login using
-your UCPH credentials.
+https://esrumweb02fl/rstudio/ where you log in with your UCPH credentials. 
+Like for the HPC machines you must have followed the steps in the 
+:ref:`s_applying_for_access` section be connected via the UCPH VPN 
+(a wired connection at CBMR is *not* sufficient). 
+See :ref:`p_usage_connecting` for more information.
 
 For your username you should use the short form:
 
