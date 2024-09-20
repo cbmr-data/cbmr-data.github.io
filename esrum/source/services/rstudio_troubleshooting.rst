@@ -2,9 +2,9 @@ Incorrect or invalid username/password
 ======================================
 
 Please make sure that you are entering your username in the short form
-and that you have been added as a member of correct identity group
-(see :ref:`s_applying_for_access`). 
-If the problem persists, please :ref:`p_contact` us for assistance.
+(i.e. ``abc123``) and that you have have applied for and been given
+access to the Esrum HPC (see :ref:`s_applying_for_access`). If the
+problem persists, please :ref:`p_contact` us for assistance.
 
 Logging in takes a very long time
 =================================

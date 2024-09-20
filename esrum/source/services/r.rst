@@ -200,13 +200,15 @@ you and press enter:
 *****************
 
 The RStudio_ servers can be found at https://esrumweb01fl/rstudio/ and
-https://esrumweb02fl/rstudio/ where you log in with your UCPH credentials. 
-Like for the HPC machines you must have followed the steps in the 
-:ref:`s_applying_for_access` section be connected via the UCPH VPN 
-(a wired connection at CBMR is *not* sufficient). 
-See :ref:`p_usage_connecting` for more information.
+https://esrumweb02fl/rstudio/. You *must* have followed the steps in the
+:ref:`s_applying_for_access` section and you *must* be connected via the
+UCPH VPN in order to even open these URLs.
 
-For your username you should use the short form:
+If you have not been granted access, or if you are not connected via the
+VPN, then you will likely see a browser error message like ``This site
+can't be reached``. See :ref:`p_usage_connecting` for more information.
+
+To login, use the short form of your UPCH username (i.e. ``abc123``):
 
 .. image:: images/rstudio_login.png
    :align: center
