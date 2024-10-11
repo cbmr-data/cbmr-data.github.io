@@ -70,7 +70,8 @@ questions or problems relating to the cluster.
 *****************
 
 We hold an intro-workshop for the Esrum cluster a few times a year,
-depending on interest. Future workshops will be announced to all
+based on interest, so please :ref:`let us know <p_contact>` if you'd
+like to attend a workshop. Future workshops will be announced to all
 employees at CBMR, while slides from past workshops are made available
 on the :ref:`presentations <p_outreach_presentations>` page.
 
