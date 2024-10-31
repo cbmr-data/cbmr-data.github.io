@@ -10,10 +10,11 @@ you "load" specific software, and specific *versions* of software, as
 needed. If used correctly this can help to both document your analyses
 and to make them more reproducible.
 
-Modules on Esrum are primarily provided by UCPH-IT (see this `list of
-modules`_) and new modules can be requested via the UCPH-IT service
-portal (see :ref:`s_requesting_missing_modules`). Users can also set up
-their own private or shared environment modules as described in the
+Modules on Esrum are primarily provided by UCPH-IT, who add new tools
+and new versions of tools when requested (see
+:ref:`s_requesting_missing_modules`). A browser-based `list of modules`_
+provided by UCPH-IT is available. Users can also set up their own
+private or shared environment modules as described in the
 :ref:`p_tips_modules` section.
 
 A collection of software managed by the Data Analytics team is also
@@ -54,6 +55,10 @@ The ``avail`` command can also be used to list module versions by name:
    -------------------------- /opt/software/modules --------------------------
    samtools/1.12  samtools/1.17
 
+Additionally, auto-completion is available in the bash shell if you
+press tab after a module (partial) name when running `module load` (see
+below).
+
 If you are not sure of the exact name of a module, then the ``search``
 command can be used to search module names and descriptions:
 
@@ -68,6 +73,17 @@ command can be used to search module names and descriptions:
             mamba/23.3.1: a fast, robust, and cross-platform package [...]
          miniconda/4.9.2: free minimal installer for conda
         miniconda/4.10.4: free minimal installer for conda
+
+.. warning::
+
+   Software modules are added/updated on request and not necessarily
+   when a new version of a tool is released. It is therefore highly
+   recommended to always check that the available versions of tools fit
+   your needs before starting a project.
+
+If the software you need or the *version* of the software you need is
+missing, then you can request that a module be added for that software
+as described in the :ref:`s_requesting_missing_modules` section below.
 
 Loading a module
 ================
@@ -86,9 +102,8 @@ to run the software.
    Version: 1.17 (using htslib 1.17)
    [...]
 
-Multiple modules may be specified per ``module load`` command and it is
-also possible to specify the exact version that you need, provided that
-a module is available for that version:
+It is highly recommended to specify the exact version of a module that
+you want to load. This ensure that your results are reproducible:
 
 .. code:: shell
 
@@ -98,11 +113,21 @@ a module is available for that version:
    Version: 1.12 (using htslib 1.12)
    [...]
 
+.. warning::
+
+   New versions of software are added whenever people request them. This
+   means that, if you do *not* specify a version when loading software,
+   the results of your analyses may change in subtle or not so subtle
+   ways while you are still working on a project.
+
+   You should therefore *always* specify exact versions for the tools
+   you use when loading modules.
+
 In some cases one module will require another module:
 
 .. code:: shell
 
-   $ module load bcftools
+   $ module load bcftools/1.16
    Loading bcftools/1.16
    ERROR: bcftools/1.16 cannot be loaded due to missing prereq.
       HINT: the following module must be loaded first: perl
@@ -113,7 +138,7 @@ be done in done manually:
 .. code:: shell
 
    $ module load perl
-   $ module load bcftools
+   $ module load bcftools/1.16
 
 Or automatically:
 
