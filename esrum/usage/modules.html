@@ -244,10 +244,11 @@ Esrum via so-called <a class="reference external" href="https://modules.sourcefo
 you &quot;load&quot; specific software, and specific <em>versions</em> of software, as
 needed. If used correctly this can help to both document your analyses
 and to make them more reproducible.</p>
-<p>Modules on Esrum are primarily provided by UCPH-IT (see this <a class="reference external" href="https://fssw.ku.dk/envmod.html">list of
-modules</a>) and new modules can be requested via the UCPH-IT service
-portal (see <a class="reference internal" href="#s-requesting-missing-modules"><span class="std std-ref">Requesting software modules</span></a>). Users can also set up
-their own private or shared environment modules as described in the
+<p>Modules on Esrum are primarily provided by UCPH-IT, who add new tools
+and new versions of tools when requested (see
+<a class="reference internal" href="#s-requesting-missing-modules"><span class="std std-ref">Requesting software modules</span></a>). A browser-based <a class="reference external" href="https://fssw.ku.dk/envmod.html">list of modules</a>
+provided by UCPH-IT is available. Users can also set up their own
+private or shared environment modules as described in the
 <a class="reference internal" href="../tips/modules.html#p-tips-modules"><span class="std std-ref">Creating environment modules</span></a> section.</p>
 <p>A collection of software managed by the Data Analytics team is also
 available. See the <a class="reference internal" href="#s-shared-modules"><span class="std std-ref">Shared CBMR modules</span></a> section below.</p>
@@ -278,6 +279,9 @@ anaconda3/2021.05<span class="w">          </span>libxscrnsaver/1.0.0<span class
 samtools/1.12<span class="w">  </span>samtools/1.17
 </pre></div>
 </div>
+<p>Additionally, auto-completion is available in the bash shell if you
+press tab after a module (partial) name when running <cite>module load</cite> (see
+below).</p>
 <p>If you are not sure of the exact name of a module, then the <code class="docutils literal notranslate"><span class="pre">search</span></code>
 command can be used to search module names and descriptions:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>search<span class="w"> </span>conda
@@ -291,6 +295,16 @@ command can be used to search module names and descriptions:</p>
 <span class="w">     </span>miniconda/4.10.4:<span class="w"> </span>free<span class="w"> </span>minimal<span class="w"> </span>installer<span class="w"> </span><span class="k">for</span><span class="w"> </span>conda
 </pre></div>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Software modules are added/updated on request and not necessarily
+when a new version of a tool is released. It is therefore highly
+recommended to always check that the available versions of tools fit
+your needs before starting a project.</p>
+</div>
+<p>If the software you need or the <em>version</em> of the software you need is
+missing, then you can request that a module be added for that software
+as described in the <a class="reference internal" href="#s-requesting-missing-modules"><span class="std std-ref">Requesting software modules</span></a> section below.</p>
 </section>
 <section id="loading-a-module">
 <h3>Loading a module<a class="headerlink" href="#loading-a-module" title="Permalink to this heading">#</a></h3>
@@ -306,9 +320,8 @@ Version:<span class="w"> </span><span class="m">1</span>.17<span class="w"> </sp
 <span class="o">[</span>...<span class="o">]</span>
 </pre></div>
 </div>
-<p>Multiple modules may be specified per <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code> command and it is
-also possible to specify the exact version that you need, provided that
-a module is available for that version:</p>
+<p>It is highly recommended to specify the exact version of a module that
+you want to load. This ensure that your results are reproducible:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>samtools/1.12
 $<span class="w"> </span>samtools
 Program:<span class="w"> </span>samtools<span class="w"> </span><span class="o">(</span>Tools<span class="w"> </span><span class="k">for</span><span class="w"> </span>alignments<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>SAM<span class="w"> </span>format<span class="o">)</span>
@@ -316,8 +329,17 @@ Version:<span class="w"> </span><span class="m">1</span>.12<span class="w"> </sp
 <span class="o">[</span>...<span class="o">]</span>
 </pre></div>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>New versions of software are added whenever people request them. This
+means that, if you do <em>not</em> specify a version when loading software,
+the results of your analyses may change in subtle or not so subtle
+ways while you are still working on a project.</p>
+<p>You should therefore <em>always</em> specify exact versions for the tools
+you use when loading modules.</p>
+</div>
 <p>In some cases one module will require another module:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>bcftools
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>bcftools/1.16
 Loading<span class="w"> </span>bcftools/1.16
 ERROR:<span class="w"> </span>bcftools/1.16<span class="w"> </span>cannot<span class="w"> </span>be<span class="w"> </span>loaded<span class="w"> </span>due<span class="w"> </span>to<span class="w"> </span>missing<span class="w"> </span>prereq.
 <span class="w">   </span>HINT:<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>module<span class="w"> </span>must<span class="w"> </span>be<span class="w"> </span>loaded<span class="w"> </span>first:<span class="w"> </span>perl
@@ -326,7 +348,7 @@ ERROR:<span class="w"> </span>bcftools/1.16<span class="w"> </span>cannot<span c
 <p>In that case you simply need to load the required module first. This can
 be done in done manually:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>perl
-$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>bcftools
+$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>bcftools/1.16
 </pre></div>
 </div>
 <p>Or automatically:</p>

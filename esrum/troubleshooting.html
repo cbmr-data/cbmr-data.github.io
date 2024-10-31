@@ -387,23 +387,25 @@ head/compute nodes:</p>
 </div>
 <p>To fix his, you will need to reinstall the affected R libraries using
 one of two methods:</p>
-<dl>
-<dt># . Connect to the RStudio server as described in the <a class="reference internal" href="services/r.html#s-service-rstudio"><span class="std std-ref">RStudio servers</span></a></dt><dd><p>section, and simply install the affected packages using the
-<code class="docutils literal notranslate"><span class="pre">install.packages</span></code> function:</p>
+<ol class="arabic">
+<li><p>Connect to the RStudio server as described in the
+<a class="reference internal" href="services/r.html#s-service-rstudio"><span class="std std-ref">RStudio servers</span></a> section, and simply install the affected
+packages using the <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> function:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; install.packages(&quot;wk&quot;)</span>
 </pre></div>
 </div>
 <p>You may need to repeat this step multiple times, for every package
 that fails to load.</p>
-</dd>
-<dt># . Connect to the head node or a compute node, and take care to load the</dt><dd><p>correct version of GCC before loading R:</p>
+</li>
+<li><p>Connect to the head node or a compute node, and take care to load the
+correct version of GCC before loading R:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
 $<span class="w"> </span>R
 &gt;<span class="w"> </span>install.packages<span class="o">(</span><span class="s2">&quot;wk&quot;</span><span class="o">)</span>
 </pre></div>
 </div>
-</dd>
-</dl>
+</li>
+</ol>
 <p>The name of the affected module can be determined by looking at the
 error message above. In particular, the path
 <code class="docutils literal notranslate"><span class="pre">/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so</span></code>
@@ -415,15 +417,18 @@ running the following commands:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
 </pre></div>
 </div>
-<p># cd to your R library</p>
-<blockquote>
-<div><p>cd ~/R/x86_64-pc-linux-gnu-library/4.3/</p>
-</div></blockquote>
-<p># Test every installed library</p>
-<blockquote>
-<div><p>for lib in $(ls);do echo &quot;Testing ${lib}&quot;; Rscript &lt;(echo
-&quot;library(${lib})&quot;) &gt; /dev/null;done</p>
-</div></blockquote>
+<ol class="arabic">
+<li><p>cd to your R library</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/R/x86_64-pc-linux-gnu-library/4.3/
+</pre></div>
+</div>
+</li>
+<li><p>Test every installed library</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span>lib<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>ls<span class="k">)</span><span class="p">;</span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Testing </span><span class="si">${</span><span class="nv">lib</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span>Rscript<span class="w"> </span>&lt;<span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;library(</span><span class="si">${</span><span class="nv">lib</span><span class="si">}</span><span class="s2">)&quot;</span><span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="k">done</span>
+</pre></div>
+</div>
+</li>
+</ol>
 <p>Output will look like the following:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Testing<span class="w"> </span>httpuv
 Testing<span class="w"> </span>igraph

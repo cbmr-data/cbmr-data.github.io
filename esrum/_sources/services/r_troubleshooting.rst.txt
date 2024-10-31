@@ -49,9 +49,9 @@ head/compute nodes:
 To fix his, you will need to reinstall the affected R libraries using
 one of two methods:
 
-# . Connect to the RStudio server as described in the :ref:`s_service_rstudio`
-   section, and simply install the affected packages using the
-   ``install.packages`` function:
+#. Connect to the RStudio server as described in the
+   :ref:`s_service_rstudio` section, and simply install the affected
+   packages using the ``install.packages`` function:
 
    .. code::
 
@@ -60,7 +60,7 @@ one of two methods:
    You may need to repeat this step multiple times, for every package
    that fails to load.
 
-# . Connect to the head node or a compute node, and take care to load the
+#. Connect to the head node or a compute node, and take care to load the
    correct version of GCC before loading R:
 
    .. code:: shell
@@ -83,14 +83,17 @@ running the following commands:
 
    module load gcc/8.5.0 R/4.3.2
 
-# cd to your R library
+#. cd to your R library
 
-   cd ~/R/x86_64-pc-linux-gnu-library/4.3/
+   .. code:: shell
 
-# Test every installed library
+      cd ~/R/x86_64-pc-linux-gnu-library/4.3/
 
-   for lib in $(ls);do echo "Testing ${lib}"; Rscript <(echo
-   "library(${lib})") > /dev/null;done
+#. Test every installed library
+
+   .. code:: shell
+
+    for lib in $(ls);do echo "Testing ${lib}"; Rscript <(echo "library(${lib})") > /dev/null;done
 
 Output will look like the following:
 
