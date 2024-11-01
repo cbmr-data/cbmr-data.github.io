@@ -312,8 +312,7 @@ but <em>not</em> in <code class="docutils literal notranslate"><span class="pre"
 <code class="docutils literal notranslate"><span class="pre">/projects/my-project/apps/modules/modulefiles/seqtk/1.23</span></code> and
 update the root path, the description, and the PATH as shown below.
 Note that this file does <em>not</em> have an extension.</p>
-<blockquote>
-<div><div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c">#%Module</span>
+<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c">#%Module</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="c"># Automatically determined name and version</span>
 <span class="linenos"> 4</span><span class="k">set</span><span class="w"> </span>name<span class="w"> </span><span class="k">[</span><span class="nb">file</span><span class="w"> </span>dirname<span class="w"> </span><span class="k">[</span><span class="nv">module-info</span><span class="w"> </span>name<span class="k">]]</span>
@@ -341,13 +340,11 @@ Note that this file does <em>not</em> have an extension.</p>
 <span class="linenos">26</span><span class="k">}</span>
 </pre></div>
 </div>
-</div></blockquote>
 <p>As this is a very simple module we only need to set the <code class="docutils literal notranslate"><span class="pre">PATH</span></code>
 environment variable.</p>
 </li>
 <li><p>Next download and compile <code class="docutils literal notranslate"><span class="pre">seqtk</span> <span class="pre">1.4</span></code>:</p>
-<blockquote>
-<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/projects/my-project/apps/modules/software/seqtk/1.4
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/projects/my-project/apps/modules/software/seqtk/1.4
 $<span class="w"> </span>wget<span class="w"> </span><span class="s2">&quot;https://github.com/lh3/seqtk/archive/refs/tags/v1.4.tar.gz&quot;</span>
 $<span class="w"> </span>tar<span class="w"> </span>xvzf<span class="w"> </span>v1.4.tar.gz
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>seqtk-1.4
@@ -355,31 +352,25 @@ $<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </sp
 $<span class="w"> </span>make
 </pre></div>
 </div>
-</div></blockquote>
 </li>
 <li><p>Place a symlink to the executable in a separate <code class="docutils literal notranslate"><span class="pre">bin</span></code> folder:</p>
-<blockquote>
-<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/projects/my-project/apps/modules/software/seqtk/1.4
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/projects/my-project/apps/modules/software/seqtk/1.4
 $<span class="w"> </span>mkdir<span class="w"> </span>bin
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>bin
 $<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>../seqtk-1.4/seqtk
 </pre></div>
 </div>
-<p>You can also make a copy of the executable in the <code class="docutils literal notranslate"><span class="pre">bin</span></code> folder,
-but using a symlink makes it simpler to recompile the software if
-needed.</p>
+<p>You can also make a copy of the executable in the <code class="docutils literal notranslate"><span class="pre">bin</span></code> folder, but
+using a symlink makes it simpler to recompile the software if needed.</p>
 <p>The location of this <code class="docutils literal notranslate"><span class="pre">bin</span></code> folder is already specified in the
 template above. While it <em>is</em> possible to specify the software
-directory directly (e.g. <code class="docutils literal notranslate"><span class="pre">software/seqtk/1.4/seqtk-1.4/</span></code>), this
-is <em>not</em> recommended as it often includes files that do not belong
-in your PATH.</p>
-</div></blockquote>
+directory directly (e.g. <code class="docutils literal notranslate"><span class="pre">software/seqtk/1.4/seqtk-1.4/</span></code>), this is
+<em>not</em> recommended as it often includes files that do not belong in
+your PATH.</p>
 </li>
 <li><p>Finally, run <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">use</span></code> to registers your module repository so
 that you can load your modules:</p>
-<blockquote>
-<div><blockquote>
-<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>use<span class="w"> </span>--prepend<span class="w"> </span>/projects/my-project/apps/modules/modulefiles/
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>use<span class="w"> </span>--prepend<span class="w"> </span>/projects/my-project/apps/modules/modulefiles/
 $<span class="w"> </span>module<span class="w"> </span>avail
 ------------------------<span class="w"> </span>/home/zlc187/modules<span class="w"> </span>------------------------
 seqtk/1.4
@@ -390,11 +381,9 @@ Usage:<span class="w">   </span>seqtk<span class="w"> </span>&lt;command&gt;<spa
 Version:<span class="w"> </span><span class="m">1</span>.4-r122
 </pre></div>
 </div>
-</div></blockquote>
 <p>The <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">use</span></code> command can optionally be added to your
 <code class="docutils literal notranslate"><span class="pre">.profile</span></code>, <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>, or similar to automatically enable this
 module repository when you login.</p>
-</div></blockquote>
 </li>
 </ol>
 </section>
