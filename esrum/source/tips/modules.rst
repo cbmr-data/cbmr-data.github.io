@@ -59,62 +59,61 @@ the module files. This organization is designed to simplify maintenance.
    update the root path, the description, and the PATH as shown below.
    Note that this file does *not* have an extension.
 
-      .. literalinclude:: scripts/moduletemplate.seqtk.tcl
-         :language: tcl
-         :linenos:
-         :emphasize-lines: 7-8,10
+   .. literalinclude:: scripts/moduletemplate.seqtk.tcl
+      :language: tcl
+      :linenos:
+      :emphasize-lines: 7-8,10
 
    As this is a very simple module we only need to set the ``PATH``
    environment variable.
 
 #. Next download and compile ``seqtk 1.4``:
 
-      .. code:: shell
+   .. code:: shell
 
-         $ cd /projects/my-project/apps/modules/software/seqtk/1.4
-         $ wget "https://github.com/lh3/seqtk/archive/refs/tags/v1.4.tar.gz"
-         $ tar xvzf v1.4.tar.gz
-         $ cd seqtk-1.4
-         $ module load gcc
-         $ make
+      $ cd /projects/my-project/apps/modules/software/seqtk/1.4
+      $ wget "https://github.com/lh3/seqtk/archive/refs/tags/v1.4.tar.gz"
+      $ tar xvzf v1.4.tar.gz
+      $ cd seqtk-1.4
+      $ module load gcc
+      $ make
 
 #. Place a symlink to the executable in a separate ``bin`` folder:
 
-      .. code:: shell
+   .. code:: shell
 
-         $ cd /projects/my-project/apps/modules/software/seqtk/1.4
-         $ mkdir bin
-         $ cd bin
-         $ ln -s ../seqtk-1.4/seqtk
+      $ cd /projects/my-project/apps/modules/software/seqtk/1.4
+      $ mkdir bin
+      $ cd bin
+      $ ln -s ../seqtk-1.4/seqtk
 
-      You can also make a copy of the executable in the ``bin`` folder,
-      but using a symlink makes it simpler to recompile the software if
-      needed.
+   You can also make a copy of the executable in the ``bin`` folder, but
+   using a symlink makes it simpler to recompile the software if needed.
 
-      The location of this ``bin`` folder is already specified in the
-      template above. While it *is* possible to specify the software
-      directory directly (e.g. ``software/seqtk/1.4/seqtk-1.4/``), this
-      is *not* recommended as it often includes files that do not belong
-      in your PATH.
+   The location of this ``bin`` folder is already specified in the
+   template above. While it *is* possible to specify the software
+   directory directly (e.g. ``software/seqtk/1.4/seqtk-1.4/``), this is
+   *not* recommended as it often includes files that do not belong in
+   your PATH.
 
 #. Finally, run ``module use`` to registers your module repository so
    that you can load your modules:
 
-         .. code:: shell
+   .. code:: shell
 
-            $ module use --prepend /projects/my-project/apps/modules/modulefiles/
-            $ module avail
-            ------------------------ /home/zlc187/modules ------------------------
-            seqtk/1.4
-            $ module load seqtk/1.4
-            ./seqtk
+      $ module use --prepend /projects/my-project/apps/modules/modulefiles/
+      $ module avail
+      ------------------------ /home/zlc187/modules ------------------------
+      seqtk/1.4
+      $ module load seqtk/1.4
+      ./seqtk
 
-            Usage:   seqtk <command> <arguments>
-            Version: 1.4-r122
+      Usage:   seqtk <command> <arguments>
+      Version: 1.4-r122
 
-      The ``module use`` command can optionally be added to your
-      ``.profile``, ``.bashrc``, or similar to automatically enable this
-      module repository when you login.
+   The ``module use`` command can optionally be added to your
+   ``.profile``, ``.bashrc``, or similar to automatically enable this
+   module repository when you login.
 
 ****************************
  Dependencies and conflicts
