@@ -14,8 +14,9 @@ collaborators at CBMR to :ref:`contact us <p_contact>` and request for
 access.
 
 Please note that access to (GDPR) protected data managed by DAP requires
-additional approval from the data owners. We will guide you through this
-process if you request access to a protected dataset.
+additional approval from the data owners. For more information, please
+see the :ref:`p_human_cohorts` for an overview of available datasets and
+for instructions on how to apply for access.
 
 Once you have been granted access to Esrum or a related resource you
 will receive an automated email that ``Changes to your Identity were

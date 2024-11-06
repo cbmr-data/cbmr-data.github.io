@@ -23,6 +23,13 @@
 
 .. toctree::
    :hidden:
+   :caption: Resources
+
+   resources/human
+   resources/common
+
+.. toctree::
+   :hidden:
    :caption: Other services
 
    services/r
