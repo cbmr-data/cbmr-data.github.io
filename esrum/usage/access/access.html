@@ -239,34 +239,69 @@
         <article role="main">
           <section id="applying-for-access">
 <span id="p-usage-access-applying"></span><h1>Applying for access<a class="headerlink" href="#applying-for-access" title="Permalink to this heading">#</a></h1>
-<p>The following describes how to apply for access to the Esrum cluster and
-related services, projects, and datasets. You are always welcome to
-<a class="reference internal" href="../../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us if you have any questions or run into any problems
-applying for access to the cluster.</p>
-<p>An official guide to the identity system used is available <a class="reference external" href="https://kunet.ku.dk/medarbejderguide/ITvejl/KU%20IdM%20-%20S%C3%A5dan%20anmodes%20om%20funktionsrolle.pdf">here</a>.</p>
-<section id="applying-for-access-to-the-cluster">
-<span id="s-applying-for-access"></span><h2>Applying for access to the cluster<a class="headerlink" href="#applying-for-access-to-the-cluster" title="Permalink to this heading">#</a></h2>
+<p>Access to the Esrum HPC cluster and a number related services, projects,
+and datasets are managed by the Data Analytics Platform. Access to the
+cluster and non-protected (non-GDPR) data can be obtained simply by
+<a class="reference internal" href="../../contact.html#p-contact"><span class="std std-ref">contacting us</span></a> and asking for access. If you are an
+external researcher, student, guest, and otherwise collaborating with
+researchers at CBMR, then you should ask for one of your collaborators
+at CBMR to <a class="reference internal" href="../../contact.html#p-contact"><span class="std std-ref">contact us</span></a> and request for access.</p>
+<p>Please note that access to (GDPR) protected data managed by DAP requires
+additional approval from the data owners. We will guide you through this
+process if you request access to a protected dataset.</p>
+<p>Once you have been granted access to Esrum or a related resource you
+will receive an automated email that <code class="docutils literal notranslate"><span class="pre">Changes</span> <span class="pre">to</span> <span class="pre">your</span> <span class="pre">Identity</span> <span class="pre">were</span>
+<span class="pre">processed</span></code>. Please refer to the <a class="reference internal" href="connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page for
+further instructions on how to connect to the cluster.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Note that your account may not be ready by the time you receive the
+email described above. In that case, logging in will result in a
+warning that your home folder does not exist. If so, then simply wait
+a few hours before trying again. This process may take up to a day.</p>
+</div>
+<section id="using-the-identity-management-system">
+<span id="s-identity-management-system"></span><h2>Using the identity management system<a class="headerlink" href="#using-the-identity-management-system" title="Permalink to this heading">#</a></h2>
+<p>Should you need to apply for access to projects or datasets that are
+<em>not</em> managed by the Data Analytics Platform, then this may require
+using the <a class="reference external" href="https://identity.ku.dk/">Identity Management System</a> (IDM). If possible, we recommend
+simply asking the project/dataset owner to add you to the project or
+dataset in question, but the following provides a brief summary of how
+to apply through the IDM:</p>
 <ol class="arabic">
 <li><p>Login at <a class="reference external" href="https://identity.ku.dk/">identity.ku.dk</a>.</p></li>
 <li><p>Click on the <code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">My</span> <span class="pre">Access</span></code> button. See below if you instead
 have a <code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">User</span> <span class="pre">Access</span></code> button.</p></li>
-<li><p>Search for <code class="docutils literal notranslate"><span class="pre">SRV-esrumhead-users</span></code>.</p></li>
-<li><p>Click <em>once</em> on the check mark to the left of <code class="docutils literal notranslate"><span class="pre">SRV-esrumhead-users</span></code>
-in the resulting list. Wait for the check mark to turn green and then
-click the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you get a yellow popup with the message &quot;Cannot Add Access
-Item. The item you are trying to select is already assigned&quot;, then
-you have already been granted access and you can simply proceed to
-the <a class="reference internal" href="#s-applying-for-projects"><span class="std std-ref">Applying for access to projects</span></a> section or the
-<a class="reference internal" href="connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page.</p>
+<li><p>Search for and locate the group corresponding to the resource you
+wish to access. Depending on the kind of resource you wish to apply
+for access to, the names will differ somewhat:</p>
+<ol class="arabic simple">
+<li><p>A server group will typically start with the prefix <code class="docutils literal notranslate"><span class="pre">SRV-</span></code> and
+end with <code class="docutils literal notranslate"><span class="pre">-users</span></code>, for example <code class="docutils literal notranslate"><span class="pre">SRV-esrumhead-users</span></code> for the
+Esrum head node.</p></li>
+<li><p>A project group will typically start with <code class="docutils literal notranslate"><span class="pre">COMP-PRJ-</span></code>, for
+example <code class="docutils literal notranslate"><span class="pre">COMP-PRJ-cbmr_shared</span></code> for the <code class="docutils literal notranslate"><span class="pre">/projects/cbmr_shared</span></code>
+project.</p></li>
+<li><p>A dataset group will typically start with <code class="docutils literal notranslate"><span class="pre">COMP-DATASET-</span></code> and
+end with <code class="docutils literal notranslate"><span class="pre">-ro</span></code>, for example <code class="docutils literal notranslate"><span class="pre">COMP-DATASET-cbmr_shared-ro</span></code> for
+the <code class="docutils literal notranslate"><span class="pre">/datasets/cbmr_shared</span></code> dataset containing shared resources.</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In general you should <em>not</em> be applying for access to projects
+with suffixes like <code class="docutils literal notranslate"><span class="pre">-Owners</span></code>, <code class="docutils literal notranslate"><span class="pre">-admin</span></code>, or <code class="docutils literal notranslate"><span class="pre">-rw</span></code> unless
+explicitly told to do so by the owner(s) of those resources. These
+suffixes indicate administrative groups and your requests will
+therefore be denied if you apply without reason.</p>
 </div>
 </li>
-<li><p>Verify that you are applying for access to <code class="docutils literal notranslate"><span class="pre">SRV-esrumhead-users</span></code>.
-Do <em>not</em> apply for access to the <code class="docutils literal notranslate"><span class="pre">SRV-esrumhead-admin</span></code> group. Once
-you have verified that you are applying for access the correct group,
-click the <code class="docutils literal notranslate"><span class="pre">Submit</span></code> button.</p></li>
+<li><p>Click <em>once</em> on the check-mark to the left of the name of the group
+in the resulting list. Wait for the check mark to turn green and then
+click the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button. If you get a yellow popup with the message
+<code class="docutils literal notranslate"><span class="pre">Cannot</span> <span class="pre">Add</span> <span class="pre">Access</span> <span class="pre">Item.</span> <span class="pre">The</span> <span class="pre">item</span> <span class="pre">you</span> <span class="pre">are</span> <span class="pre">trying</span> <span class="pre">to</span> <span class="pre">select</span> <span class="pre">is</span>
+<span class="pre">already</span> <span class="pre">assigned</span></code>, then you have already been granted access to this
+resource.</p></li>
+<li><p>Finally, click the <code class="docutils literal notranslate"><span class="pre">Submit</span></code> button to submit your request.</p></li>
 <li><p>Wait for your request to be processed.</p></li>
 </ol>
 <div class="admonition note">
@@ -278,57 +313,7 @@ button instead of the <code class="docutils literal notranslate"><span class="pr
 <em>once</em>. Wait for the check mark to turn green, click the <code class="docutils literal notranslate"><span class="pre">Next</span></code>
 button, and then proceed with the steps described above.</p>
 </div>
-<p>Once you have been granted access you will receive an email that
-<code class="docutils literal notranslate"><span class="pre">Changes</span> <span class="pre">to</span> <span class="pre">your</span> <span class="pre">Identity</span> <span class="pre">were</span> <span class="pre">processed</span></code>. This process may take up to
-a day.</p>
-<p>Once you have been granted access and your account is ready (see below),
-you may refer to the <a class="reference internal" href="connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page for instructions on
-how to connect to the cluster.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Please note that your account may not be ready by the time you
-receive the email described above. In that case, logging in will
-result in a warning that your home folder does not exist. If so, then
-simply wait a few hours before trying again.</p>
-</div>
-</section>
-<section id="applying-for-access-to-projects">
-<span id="s-applying-for-projects"></span><h2>Applying for access to projects<a class="headerlink" href="#applying-for-access-to-projects" title="Permalink to this heading">#</a></h2>
-<p>You can apply for access to projects using the same method as described
-in <a class="reference internal" href="#applying-for-access-to-the-cluster">Applying for access to the cluster</a>. Alternatively, the project
-owner(s) can add you to their projects directly. However, the Data
-Analytics Platform cannot add you to projects owned by a third party.</p>
-<p>See <a class="reference internal" href="../filesystem.html#s-project-folders"><span class="std std-ref">Your project folders</span></a> for a description of the location and
-file-structure of projects on Esrum.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Similar to the <code class="docutils literal notranslate"><span class="pre">-admin</span></code> group mentioned above for the cluster, each
-project and dataset has a corresponding <code class="docutils literal notranslate"><span class="pre">-Owners</span></code> group. Do <em>not</em>
-apply for access to these unless explicitly instructed to do so! Your
-requests <em>will</em> be denied and that will delay your getting access to
-the actual projects/datasets.</p>
-</div>
-</section>
-<section id="applying-for-access-to-datasets-cohorts">
-<h2>Applying for access to datasets/cohorts<a class="headerlink" href="#applying-for-access-to-datasets-cohorts" title="Permalink to this heading">#</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Transfer of data to the new servers has not yet been completed. You
-can still apply for access to cohorts, but you may not be granted
-access until everything is ready.</p>
-</div>
-<p>In order to apply for access to a dataset, simply follow the steps
-described in the <a class="reference internal" href="#applying-for-access-to-the-cluster">Applying for access to the cluster</a> section and
-substitute <code class="docutils literal notranslate"><span class="pre">SRV-esrumhead-users</span></code> with the name of your project.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Access to datasets managed by the Data Analytics Platform requires
-permission from the data-manager responsible for that data. The Data
-Analytics Platform will verify that you are permitted to access the
-data before granting access. You may speed up this process by having
-the data manager <a class="reference internal" href="../../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us in advance with a written
-approval.</p>
-</div>
+<p>An official guide to the identity system used is available <a class="reference external" href="https://kunet.ku.dk/medarbejderguide/ITvejl/KU%20IdM%20-%20S%C3%A5dan%20anmodes%20om%20funktionsrolle.pdf">here</a>.</p>
 </section>
 </section>
 
@@ -388,9 +373,7 @@ approval.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Applying for access</a><ul>
-<li><a class="reference internal" href="#applying-for-access-to-the-cluster">Applying for access to the cluster</a></li>
-<li><a class="reference internal" href="#applying-for-access-to-projects">Applying for access to projects</a></li>
-<li><a class="reference internal" href="#applying-for-access-to-datasets-cohorts">Applying for access to datasets/cohorts</a></li>
+<li><a class="reference internal" href="#using-the-identity-management-system">Using the identity management system</a></li>
 </ul>
 </li>
 </ul>

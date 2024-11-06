@@ -240,8 +240,8 @@
           <section id="transferring-data">
 <span id="p-transfers"></span><h1>Transferring data<a class="headerlink" href="#transferring-data" title="Permalink to this heading">#</a></h1>
 <p>This section describes how to perform bulk data transfers between Esrum,
-your PC/Laptop, and services such as SIF/Erda or Computerome. Several of
-these sections may be useful on other systems than Esrum.</p>
+your PC/Laptop, repositories such as SIF/Erda, and servers like
+Computerome.</p>
 <p>File transfers (including project-to-project transfers) should if at all
 possible be run on a compute node, as high amounts of network traffic
 may degrade performance on the head node for all users of the cluster.
@@ -250,25 +250,39 @@ a compute node.</p>
 <p>If you have an existing compute project or dataset on a UCPH-IT managed
 cluster, then you may be able to connect it directly to the Esrum
 cluster and thereby remove the need for transferring data entirely.
-Please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us for more information.</p>
+Please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">contact us</span></a> for more information.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Data must not be copied out of audited <code class="docutils literal notranslate"><span class="pre">/datasets</span></code> or <code class="docutils literal notranslate"><span class="pre">/projects</span></code>
 folders without permission from the relevant data controller! See the
 <a class="reference internal" href="../guidelines.html#p-guidelines"><span class="std std-ref">Guidelines and policies</span></a> for more information.</p>
 </div>
+<section id="best-practice">
+<h2>Best practice<a class="headerlink" href="#best-practice" title="Permalink to this heading">#</a></h2>
+<p>Data transfers running on Esrum should, when at all possible, be run on
+a worker node using either <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> or <code class="docutils literal notranslate"><span class="pre">srun</span></code>. This ensures that
+other users are not impacted if one or more users are transferring a lot
+of data.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Transfers running on the head node may be terminated without warning
+if they are found to impact the usability of the system.</p>
+</div>
+</section>
 <section id="transferring-data-to-from-esrum">
 <h2>Transferring data to/from Esrum<a class="headerlink" href="#transferring-data-to-from-esrum" title="Permalink to this heading">#</a></h2>
-<p>Users on a wired connection or using the VPN within CBMR can transfer
-files to/from their PCs using any of the standard tools that connect via
-SSH, including but not limited to <code class="docutils literal notranslate"><span class="pre">scp</span></code>, <code class="docutils literal notranslate"><span class="pre">sftp</span></code>, <code class="docutils literal notranslate"><span class="pre">lftp</span></code>, and
-<code class="docutils literal notranslate"><span class="pre">rsync</span></code>. Windows users may also consider graphical tools such as
-<a class="reference external" href="https://filezilla-project.org/">FileZilla</a> or MobaXterm (see the <a class="reference internal" href="access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page).</p>
-<p>When outside CBMR or when using the VPN is not feasible, one may instead
-use the SSH/SFTP server at <code class="docutils literal notranslate"><span class="pre">sftp.ku.dk</span></code>. Official documentation is
-provided on the <a class="reference external" href="https://kunet.ku.dk/work-areas/research/Research%20Infrastructure/research-it/ucph-computing-hpc-systems/Pages/default.aspx">UCPH computing/HPC Systems</a> pages on KUNet.</p>
-<p>This services gives you access to all your projects and datasets:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sftp<span class="w"> </span>sftp://abc123@sftp.ku.dk
+<p>An official SFTP server is made available at <code class="docutils literal notranslate"><span class="pre">sftp.ku.dk</span></code>. This server
+allows you to access your home folder, your projects, and your datasets
+from another computer, whether a personal computer or another
+server/cluster, and either upload data from that computer to Esrum or
+download data from Esrum to that computer.</p>
+<p>Unlike the <code class="docutils literal notranslate"><span class="pre">esrumhead01fl</span></code> node, you do not need to be connected to
+the UCPH-IT VPN to connect to <code class="docutils literal notranslate"><span class="pre">sftp.ku.dk</span></code>. You only need access to
+standard tool such as <code class="docutils literal notranslate"><span class="pre">scp</span></code>, <code class="docutils literal notranslate"><span class="pre">sftp</span></code>, <code class="docutils literal notranslate"><span class="pre">lftp</span></code>, and <code class="docutils literal notranslate"><span class="pre">rsync</span></code>, or
+graphical tools such as <a class="reference external" href="https://filezilla-project.org/">FileZilla</a> and <a class="reference external" href="https://mobaxterm.mobatek.net/">MobaXterm</a> (see the
+<a class="reference internal" href="access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page), on the other computer:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>srun<span class="w"> </span>--pty<span class="w"> </span>--<span class="w"> </span>bash
+$<span class="w"> </span>sftp<span class="w"> </span>sftp://abc123@sftp.ku.dk
 <span class="o">(</span>abc123@sftp.ku.dk<span class="o">)</span><span class="w"> </span>Enter<span class="w"> </span>password
 Password:<span class="w"> </span>******
 <span class="o">(</span>abc123@sftp.ku.dk<span class="o">)</span><span class="w"> </span>Enter<span class="w"> </span>one-time<span class="w"> </span>password
@@ -283,25 +297,27 @@ datasets<span class="w">  </span>hdir<span class="w">      </span>ndir<span clas
 </div>
 <p>Depending on how you have configured <a class="reference external" href="https://mfa.ku.dk/">UCPH two-factor authentication</a>,
 you may either need to approve the connection attempt or (as shown
-above) enter a one-time password</p>
+above) enter a one-time password.</p>
+<p>Official documentation is provided on the <a class="reference external" href="https://kunet.ku.dk/work-areas/research/Research%20Infrastructure/research-it/ucph-computing-hpc-systems/Pages/default.aspx">UCPH computing/HPC Systems</a>
+pages on KUNet.</p>
 </section>
 <section id="transferring-data-to-from-the-n-and-h-drives">
 <span id="p-tranfers-sifanderda"></span><h2>Transferring data to/from the N: and H: drives<a class="headerlink" href="#transferring-data-to-from-the-n-and-h-drives" title="Permalink to this heading">#</a></h2>
-<p>As noted in the <a class="reference internal" href="filesystem.html#s-ucph-network-drives"><span class="std std-ref">UCPH network drives</span></a> section, the <cite>N:</cite> and <cite>H:</cite>
-drives are accessible via the <cite>~/ucph</cite> folder, but <em>only</em> from the head
-node.</p>
+<p>As noted in the <a class="reference internal" href="filesystem.html#s-ucph-network-drives"><span class="std std-ref">UCPH network drives</span></a> section, the <code class="docutils literal notranslate"><span class="pre">N:</span></code> and
+<code class="docutils literal notranslate"><span class="pre">H:</span></code> drives are accessible via the <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> folder, but <em>only</em> from
+the head node.</p>
 <p>To avoid impacting other users, we therefore request that transfers to
-or from these drives be carried out using <cite>rsync</cite> with rate-limiting in
-place. This is accomplished using the <cite>--bwlimit=50M</cite> option, which
+or from these drives be carried out using <code class="docutils literal notranslate"><span class="pre">rsync</span></code> with rate-limiting
+in place. This is accomplished using the <code class="docutils literal notranslate"><span class="pre">--bwlimit=50M</span></code> option, which
 limits the transfer-rate to 50 MB/s on average (or ~20 seconds per GB).</p>
 <p>The following command, for example, recursively copies the files in
-<cite>/from/path/</cite> to the folder <cite>/to/path/</cite>, with a max transfer-rate of 50
-MB/s:</p>
+<code class="docutils literal notranslate"><span class="pre">/from/path/</span></code> to the folder <code class="docutils literal notranslate"><span class="pre">/to/path/</span></code>, with a max transfer-rate of
+50 MB/s:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rsync<span class="w"> </span>-av<span class="w"> </span>--progress<span class="o">=</span>summary<span class="w"> </span>--bwlimit<span class="o">=</span>50M<span class="w"> </span>/from/path/<span class="w"> </span>/to/path/
 </pre></div>
 </div>
-<p>It is furthermore recommended to run your transfer in a <cite>tmux</cite> (or
-<cite>screen</cite>) instance. See the <a class="reference internal" href="../tips/tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> page for more
+<p>It is furthermore recommended to run your transfer in a <code class="docutils literal notranslate"><span class="pre">tmux</span></code> (or
+<code class="docutils literal notranslate"><span class="pre">screen</span></code>) instance. See the <a class="reference internal" href="../tips/tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> page for more
 information. This allows your transfer to keep running after you log
 off.</p>
 <p>If you have need to transfer amounts of data that are not feasible with
@@ -360,9 +376,11 @@ indicating that you have logged in:</p>
 servers as normal using the tools available on Esrum.</p>
 <p>The recommended way to transfer data to/from SIF/ERDA is using the
 <code class="docutils literal notranslate"><span class="pre">lftp</span></code> command. This allows you use the built-in <code class="docutils literal notranslate"><span class="pre">mirror</span></code> command to
-recursively upload or download entire folders. For example, to download
-the contents of the folder <code class="docutils literal notranslate"><span class="pre">my_data</span></code> into a project, you might run the
-following:</p>
+recursively download entire folders. If you instead wish to upload a
+folder recursively, simply use the <code class="docutils literal notranslate"><span class="pre">mirror</span> <span class="pre">-R</span></code> command instead of just
+<code class="docutils literal notranslate"><span class="pre">mirror</span></code>.</p>
+<p>For example, to download the contents of the folder <code class="docutils literal notranslate"><span class="pre">my_data</span></code> into a
+project, you might run the following:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mkdir<span class="w"> </span>/projects/my_project-AUDIT/data/my_data
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/projects/my_project-AUDIT/data/my_data
 $<span class="w"> </span>lftp<span class="w"> </span>sftp://sif-io.erda.dk
@@ -387,7 +405,6 @@ simultaneous downloads (not supported by SIF) and to prevent lftp from
 re-trying repeatedly on failure. As SIF sends an email every time you
 fail to login, allowing retries typically means receiving a large number
 of emails if a transfer fails.</p>
-<p>To upload a folder, simply use <code class="docutils literal notranslate"><span class="pre">mirror</span> <span class="pre">-R</span></code> instead of just <code class="docutils literal notranslate"><span class="pre">mirror</span></code>.</p>
 </section>
 <section id="transferring-data-to-from-computerome">
 <span id="p-transfers-computerome"></span><h2>Transferring data to/from Computerome<a class="headerlink" href="#transferring-data-to-from-computerome" title="Permalink to this heading">#</a></h2>
@@ -395,6 +412,13 @@ of emails if a transfer fails.</p>
 transfer software on Esrum (or on your PC/laptop) and you should
 <em>always</em> connect to Computerome via <code class="docutils literal notranslate"><span class="pre">transfer.computerome.dk</span></code> instead
 of <code class="docutils literal notranslate"><span class="pre">ssh.computerome.dk</span></code>.</p>
+<p>For example, to transfer data to computerome, you might run</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>rsync<span class="w"> </span>-av<span class="w"> </span>./<span class="w"> </span><span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>@transfer.computerome.dk:/home/projects/ab_12345/people/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/
+</pre></div>
+</div>
+<p>This recursively transfers the current folder to a project folder on
+Computerome, using <code class="docutils literal notranslate"><span class="pre">srun</span></code> to run the actual transfer on a worker node
+on Esrum. <code class="docutils literal notranslate"><span class="pre">${USERNAME}</span></code> in the above is your username on Computerome.</p>
 <p>This avoids two big issues:</p>
 <ol class="arabic simple">
 <li><p>The Computerome administrators will terminate any attempts at
@@ -406,7 +430,6 @@ data to or download data from this server.</p></li>
 Esrum by running your software on a node, this involves paying for an
 node on computerome for the duration of the transfer.</p></li>
 </ol>
-<p>See the <a class="reference external" href="https://www.computerome.dk/wiki/high-performance-computing-hpc/file-transfer">official Computerome documentation</a> for more information.</p>
 </section>
 </section>
 
@@ -466,6 +489,7 @@ node on computerome for the duration of the transfer.</p></li>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Transferring data</a><ul>
+<li><a class="reference internal" href="#best-practice">Best practice</a></li>
 <li><a class="reference internal" href="#transferring-data-to-from-esrum">Transferring data to/from Esrum</a></li>
 <li><a class="reference internal" href="#transferring-data-to-from-the-n-and-h-drives">Transferring data to/from the N: and H: drives</a></li>
 <li><a class="reference internal" href="#transferring-data-to-from-sif-and-erda">Transferring data to/from SIF and ERDA</a></li>

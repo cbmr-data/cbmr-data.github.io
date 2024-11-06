@@ -5,8 +5,8 @@
 ###################
 
 This section describes how to perform bulk data transfers between Esrum,
-your PC/Laptop, and services such as SIF/Erda or Computerome. Several of
-these sections may be useful on other systems than Esrum.
+your PC/Laptop, repositories such as SIF/Erda, and servers like
+Computerome.
 
 File transfers (including project-to-project transfers) should if at all
 possible be run on a compute node, as high amounts of network traffic
@@ -17,7 +17,7 @@ a compute node.
 If you have an existing compute project or dataset on a UCPH-IT managed
 cluster, then you may be able to connect it directly to the Esrum
 cluster and thereby remove the need for transferring data entirely.
-Please :ref:`p_contact` us for more information.
+Please :ref:`contact us <p_contact>` for more information.
 
 .. warning::
 
@@ -25,24 +25,39 @@ Please :ref:`p_contact` us for more information.
    folders without permission from the relevant data controller! See the
    :ref:`p_guidelines` for more information.
 
+***************
+ Best practice
+***************
+
+Data transfers running on Esrum should, when at all possible, be run on
+a worker node using either ``sbatch`` or ``srun``. This ensures that
+other users are not impacted if one or more users are transferring a lot
+of data.
+
+.. warning::
+
+   Transfers running on the head node may be terminated without warning
+   if they are found to impact the usability of the system.
+
 *********************************
  Transferring data to/from Esrum
 *********************************
 
-Users on a wired connection or using the VPN within CBMR can transfer
-files to/from their PCs using any of the standard tools that connect via
-SSH, including but not limited to ``scp``, ``sftp``, ``lftp``, and
-``rsync``. Windows users may also consider graphical tools such as
-FileZilla_ or MobaXterm (see the :ref:`p_usage_connecting` page).
+An official SFTP server is made available at ``sftp.ku.dk``. This server
+allows you to access your home folder, your projects, and your datasets
+from another computer, whether a personal computer or another
+server/cluster, and either upload data from that computer to Esrum or
+download data from Esrum to that computer.
 
-When outside CBMR or when using the VPN is not feasible, one may instead
-use the SSH/SFTP server at ``sftp.ku.dk``. Official documentation is
-provided on the `UCPH computing/HPC Systems`_ pages on KUNet.
+Unlike the ``esrumhead01fl`` node, you do not need to be connected to
+the UCPH-IT VPN to connect to ``sftp.ku.dk``. You only need access to
+standard tool such as ``scp``, ``sftp``, ``lftp``, and ``rsync``, or
+graphical tools such as FileZilla_ and MobaXterm_ (see the
+:ref:`p_usage_connecting` page), on the other computer:
 
-This services gives you access to all your projects and datasets:
+.. code:: shell
 
-.. code-block:: shell
-
+   $ srun --pty -- bash
    $ sftp sftp://abc123@sftp.ku.dk
    (abc123@sftp.ku.dk) Enter password
    Password: ******
@@ -57,7 +72,10 @@ This services gives you access to all your projects and datasets:
 
 Depending on how you have configured `UCPH two-factor authentication`_,
 you may either need to approve the connection attempt or (as shown
-above) enter a one-time password
+above) enter a one-time password.
+
+Official documentation is provided on the `UCPH computing/HPC Systems`_
+pages on KUNet.
 
 .. _p_tranfers_sifanderda:
 
@@ -65,25 +83,25 @@ above) enter a one-time password
  Transferring data to/from the N: and H: drives
 ************************************************
 
-As noted in the :ref:`s_ucph_network_drives` section, the `N:` and `H:`
-drives are accessible via the `~/ucph` folder, but *only* from the head
-node.
+As noted in the :ref:`s_ucph_network_drives` section, the ``N:`` and
+``H:`` drives are accessible via the ``~/ucph`` folder, but *only* from
+the head node.
 
 To avoid impacting other users, we therefore request that transfers to
-or from these drives be carried out using `rsync` with rate-limiting in
-place. This is accomplished using the `--bwlimit=50M` option, which
+or from these drives be carried out using ``rsync`` with rate-limiting
+in place. This is accomplished using the ``--bwlimit=50M`` option, which
 limits the transfer-rate to 50 MB/s on average (or ~20 seconds per GB).
 
 The following command, for example, recursively copies the files in
-`/from/path/` to the folder `/to/path/`, with a max transfer-rate of 50
-MB/s:
+``/from/path/`` to the folder ``/to/path/``, with a max transfer-rate of
+50 MB/s:
 
 .. code:: console
 
    $ rsync -av --progress=summary --bwlimit=50M /from/path/ /to/path/
 
-It is furthermore recommended to run your transfer in a `tmux` (or
-`screen`) instance. See the :ref:`p_tips_tmux` page for more
+It is furthermore recommended to run your transfer in a ``tmux`` (or
+``screen``) instance. See the :ref:`p_tips_tmux` page for more
 information. This allows your transfer to keep running after you log
 off.
 
@@ -154,9 +172,12 @@ servers as normal using the tools available on Esrum.
 
 The recommended way to transfer data to/from SIF/ERDA is using the
 ``lftp`` command. This allows you use the built-in ``mirror`` command to
-recursively upload or download entire folders. For example, to download
-the contents of the folder ``my_data`` into a project, you might run the
-following:
+recursively download entire folders. If you instead wish to upload a
+folder recursively, simply use the ``mirror -R`` command instead of just
+``mirror``.
+
+For example, to download the contents of the folder ``my_data`` into a
+project, you might run the following:
 
 .. code:: shell
 
@@ -185,8 +206,6 @@ re-trying repeatedly on failure. As SIF sends an email every time you
 fail to login, allowing retries typically means receiving a large number
 of emails if a transfer fails.
 
-To upload a folder, simply use ``mirror -R`` instead of just ``mirror``.
-
 .. _p_transfers_computerome:
 
 ***************************************
@@ -197,6 +216,16 @@ When transferring data/to from computerome you should *always* run the
 transfer software on Esrum (or on your PC/laptop) and you should
 *always* connect to Computerome via ``transfer.computerome.dk`` instead
 of ``ssh.computerome.dk``.
+
+For example, to transfer data to computerome, you might run
+
+.. code:: shell
+
+   srun rsync -av ./ ${USERNAME}@transfer.computerome.dk:/home/projects/ab_12345/people/${USERNAME}/
+
+This recursively transfers the current folder to a project folder on
+Computerome, using ``srun`` to run the actual transfer on a worker node
+on Esrum. ``${USERNAME}`` in the above is your username on Computerome.
 
 This avoids two big issues:
 
@@ -210,13 +239,13 @@ This avoids two big issues:
    Esrum by running your software on a node, this involves paying for an
    node on computerome for the duration of the transfer.
 
-See the `official Computerome documentation`_ for more information.
-
 .. _erda: https://erda.ku.dk/
 
 .. _filezilla: https://filezilla-project.org/
 
 .. _lynx: https://en.wikipedia.org/wiki/Lynx_(web_browser)
+
+.. _mobaxterm: https://mobaxterm.mobatek.net/
 
 .. _official computerome documentation: https://www.computerome.dk/wiki/high-performance-computing-hpc/file-transfer
 
