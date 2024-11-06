@@ -18,16 +18,18 @@ necessary to prevent them from impacting users of the cluster.
 The documentation for running jobs is split into three sections:
 
 #. The :ref:`p_usage_slurm_basics` section describes the basic procedure
-   of queuing jobs using the ``sbatch`` command, requesting resources,
-   monitoring your jobs, and running an interactive session.
+   of queuing jobs using the ``sbatch`` command, how to request
+   resources for your jobs, how to monitoring your jobs, and how to run
+   a shell on a compute node when you need to work interactively.
 
 #. The :ref:`p_usage_slurm_advanced` section describes additional ways
-   to monitor your jobs, how to batch multiple, similar jobs using
-   ``sbatch``, how to use ``srun`` for executing singular commands, and
-   more.
+   to monitor your jobs and the cluster as a whole, how to batch
+   multiple, similar jobs using ``sbatch``, how to use ``srun`` for
+   executing singular commands, and more.
 
 #. The :ref:`p_usage_slurm_gpu` section describes how to run jobs on the
-   GPU/High-MEM node.
+   GPU/High-MEM node, including best practices for using this limited
+   resource.
 
 .. toctree::
    :maxdepth: 2
