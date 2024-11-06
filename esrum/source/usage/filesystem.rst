@@ -70,7 +70,8 @@ your UCPH network drives (formerly ``H:`` and ``N:``).
 The majority of your work on Esrum should take place in project folder
 corresponding either to your research group or to actual projects. This
 ensures that your collaborators can access your results and that nobody
-else can!
+else can! See the :ref:`p_usage_access_applying` page for instructions
+on how to apply for access to projects.
 
 Project folders are located in the ``/projects`` folder:
 
@@ -85,11 +86,6 @@ The ``-AUDIT`` suffix indicates that the phenomics project has been
 configured for work on GDPR data. All work on GDPR data should take
 place in project or data-shares (see below) marked with ``-AUDIT`` and
 *nowhere else*!
-
-To apply for access to a specific project follow the instructions in the
-:ref:`s_applying_for_access` section, using the name of the project in
-the form ``COMP-PRJ-genotyping``, replacing ``genotyping`` with the name
-of your project.
 
 Projects folder always contain the following four sub-folders:
 

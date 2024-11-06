@@ -200,9 +200,9 @@ you and press enter:
 *****************
 
 The RStudio_ servers can be found at https://esrumweb01fl/rstudio/ and
-https://esrumweb02fl/rstudio/. You *must* have followed the steps in the
-:ref:`s_applying_for_access` section and you *must* be connected via the
-UCPH VPN in order to even open these URLs.
+https://esrumweb02fl/rstudio/. You *must* have applied for access as
+described on the :ref:`p_usage_access_applying` page and you *must* be
+connected via the UCPH VPN in order to connect to these servers.
 
 If you have not been granted access, or if you are not connected via the
 VPN, then you will likely see a browser error message like ``This site

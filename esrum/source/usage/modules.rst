@@ -268,9 +268,8 @@ Simply running the script with ``bash modules.sh`` will not work.
 
 The Data Analytics team manages a small collection of modules for custom
 tools in the `cbmr_shared` project folder. If you have not already been
-given access to this project, then please follow the steps outlined in
-:ref:`s_applying_for_access` and apply for access to the
-``COMP-PRJ-cbmr_shared`` project.
+given access to this project, then please :ref:`contact us <p_contact>`
+and we will grant you access to the project.
 
 To make use of these modules, run the following command in your
 terminal:
