@@ -5,6 +5,16 @@
 ###############
 
 *****************************
+ Esrum Workshop [2024-11-14]
+*****************************
+
+#. Introduction to Esrum
+#. Working on Esrum
+
+`Download slides
+<https://github.com/cbmr-data/cbmr-data.github.io/releases/download/20241114_workshop_2/2024-11-14.Esrum.Workshop.pdf>`__
+
+*****************************
  Esrum Workshop [2024-06-03]
 *****************************
 
