@@ -26,6 +26,8 @@
    :caption: Resources
 
    resources/human
+
+..
    resources/common
 
 .. toctree::
