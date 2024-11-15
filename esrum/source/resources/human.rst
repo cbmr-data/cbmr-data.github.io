@@ -4,22 +4,23 @@
  Human Cohorts
 ###############
 
-The Data Analytics Platform provides an overview of human cohort data
-used at CBMR and, in many cases, facilitates access to this data. A
-short description of the datasets governed by the platform together with
-the relevant names of Esrum folders is located at TODO.
+The Data Analytics Platform maintains a `list of cohorts`_ and an
+associated `catalog of cohort variables`_, in order to help you identify
+relevant cohorts for your research. In many, but not all cases, DAP also
+facilitates access to this data on Esrum.
 
-A catalogue of `cohorts and their associated variables`_ is furthermore
-provided in order to help you identify relevant cohorts for your
-research. Not all cohorts and available variables are currently covered,
-but content is continually being expanded.
+The `list of cohorts`_ and the `catalog of cohort variables`_ provide
+brief descriptions of the cohorts and of the variables associated with
+these, respectively, but you are welcome to :ref:`contact us
+<p_contact>` if you have any questions regarding these.
 
-..
-   Why doesn't the catalogue contain the description of the cohorts?
+Not all cohorts and variables are currently covered, but content is
+continually being expanded.
 
 .. warning::
 
-   You must be connected to the UCPH VPN to use the cohort catalogue!
+   You must be connected to the UCPH VPN to access either of these
+   pages!
 
 *********************
  Applying for access
@@ -31,10 +32,11 @@ have different methods of governing access, but often involves a simple
 email exchange. Other requests may require review by a committee or
 another type of review.
 
-To initiate this process, fill out the form under TODO and send it to
-`SUND-CBMR-Esrum <mailto:cbmr-esrum@sund.ku.dk>`_. Note that that you
-*must* use a UCPH e-mail account when writing to us on this address.
-Mail from external addresses is currently blocked.
+To initiate this process, fill out the :download:`data access form
+<files/esrum_data_access_form.docx>` and send it to `SUND-CBMR-Esrum
+<mailto:cbmr-esrum@sund.ku.dk>`_. Note that you *must* use a UCPH e-mail
+account when writing to us on this address: Mail from external addresses
+is currently blocked.
 
 Access will be granted once permission to access the cohort has been
 formally granted and DAP has been informed. You will receive an
@@ -42,10 +44,6 @@ automated email that ``Changes to your Identity were processed``, after
 which it may take up to 24 hours before you can access the project
 folder(s) on Esrum.
 
-.. warning::
+.. _catalog of cohort variables: https://cbmrcat.unicph.domain.com
 
-   Transfer of data to the new servers has not yet been completed. You
-   can still apply for access to cohorts, but you may not be granted
-   access until everything is ready.
-
-.. _cohorts and their associated variables: https://cbmrcat.unicph.domain.com
+.. _list of cohorts: https://cbmrcat.unicph.domain.com/cohorts.html
