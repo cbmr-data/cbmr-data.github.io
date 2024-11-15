@@ -15,7 +15,7 @@ running software (see :ref:`p_usage_slurm`)
 
 To connect to the cluster you will typically need to be connected to the
 UCPH VPN. For information about connecting to the VPN, see the support
-pages on KUNet in Danish_ and English_.
+pages on KUnet in Danish_ and English_.
 
 ***********************
  Connecting on Windows
@@ -24,7 +24,7 @@ pages on KUNet in Danish_ and English_.
 Windows users will need to install a SSH client in order to be able to
 connect to the server. Options include MobaXterm_, Putty_, and Windows
 Subsystem for Linux (WSL_), and much more. The following demonstrates
-how to setup MobaXterm. Please refer to the `Connecting On Linux`_
+how to set up MobaXterm. Please refer to the `Connecting On Linux`_
 section if using WSL_.
 
 .. _s_configure_mobaxterm:
@@ -81,21 +81,21 @@ Configuring MobaXterm
       message could indicate that you are not actually connecting to
       Esrum!
 
-#. You should now be able to login to the server:
+#. You should now be able to log in to the server:
 
    .. image:: images/mobaxterm_06.png
       :align: center
 
-#. For security reasons we recommend that you decline if asked if you
+#. For security reasons we recommend that you decline when asked if you
    want to save your password.
 
 Reconnecting with MobaXterm
 ===========================
 
 To connect again another time, either use the desktop shortcut (if you
-created it), double click on ``Esrum`` in the list of sessions on the
+created it), double-click on ``Esrum`` in the list of sessions on the
 left side of MobaXterm, or select ``Esrum`` from the list that appears
-when clicking on the middle ``Sessions`` button on the main menu.
+when clicking on the ``Sessions`` button on the main menu.
 
 .. image:: images/mobaxterm_07.png
    :align: center
@@ -153,7 +153,7 @@ It is recommended to add an entry for the cluster to your
        HostName esrumhead01fl.unicph.domain
        User abc123
 
-This allows you connect to the server using the names ``esrum``,
+This allows you to connect to the server using the names ``esrum``,
 ``esrumhead01fl``, or ``esrumhead01fl.unicph.domain``, and without
 having to specify your username:
 

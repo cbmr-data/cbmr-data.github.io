@@ -4,13 +4,14 @@
  Applying for access
 #####################
 
-Access to the Esrum HPC cluster and a number related services, projects,
-and datasets are managed by the Data Analytics Platform. Access to the
-cluster and non-protected (non-GDPR) data can be obtained simply by
-:ref:`contacting us <p_contact>` and asking for access. If you are an
-external researcher, student, guest, and otherwise collaborating with
-researchers at CBMR, then you should ask for one of your collaborators
-at CBMR to :ref:`contact us <p_contact>` and request for access.
+Access to the Esrum HPC cluster and a number of related services,
+projects, and datasets are managed by the Data Analytics Platform.
+Access to the cluster and non-protected (non-GDPR) data can be obtained
+simply by :ref:`contacting us <p_contact>` and asking for access. If you
+are an external researcher, student, guest, and otherwise collaborating
+with researchers at CBMR, then you should ask for one of your
+collaborators at CBMR to :ref:`contact us <p_contact>` and request for
+access.
 
 Please note that access to (GDPR) protected data managed by DAP requires
 additional approval from the data owners. We will guide you through this
@@ -64,7 +65,7 @@ to apply through the IDM:
 
    .. warning::
 
-      In general you should *not* be applying for access to projects
+      In general, you should *not* be applying for access to projects
       with suffixes like ``-Owners``, ``-admin``, or ``-rw`` unless
       explicitly told to do so by the owner(s) of those resources. These
       suffixes indicate administrative groups and your requests will

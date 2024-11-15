@@ -10,12 +10,11 @@ working with, and to leave your terminals running in the background when
 you disconnect from the server (whether intentionally or
 unintentionally).
 
-Using tmux_ is therefore highly recommended when you are working on the
-cluster, since it lets you work uninterrupted over multiple days,
-without having to leave your computer running at all time and without
-having to worry about your internet connection staying up. Anyone
-already using GNU screen_ or one of the other alternatives can of course
-keep using those.
+Using tmux_, or an equivalent tool such as `screen`, is therefore highly
+recommended when you are working on the cluster, since it lets you work
+uninterrupted over multiple days, without having to leave your computer
+running at all time and without having to worry about your internet
+connection staying up.
 
 The following gives brief introduction to using tmux_. A more detailed
 `getting started`_ guide can be found in the official tmux_
@@ -87,15 +86,15 @@ server until you re-attach to the session. You will typically detach
 once your jobs are running or simply if you need to leave for the day.
 
 To disconnect from the current session, use the keyboard shortcut
-``CTRL+b d``. This returns you to your regular terminal and you can
+``CTRL+b d``. This returns you to your regular terminal, and you can
 safely disconnect from the server:
 
 ..
    TODO: Screenshot
 
 Once you wish to resume your work, you can use the ``tmux attach``
-(command to re-open your running sessions, optionally specifying the
-name of the session you wish to open (see also below):
+command to re-open your running sessions, optionally specifying the name
+of the session you wish to open (see also below):
 
 .. code::
 
@@ -115,7 +114,7 @@ Naming your sessions and windows
 
 tmux allows you to give custom names to each session (group of
 terminals) and each window (terminal), in order to help you
-differentiate between them. This is not required, but is is recommended
+differentiate between them. This is not required, but it is recommended
 to do so if you work on multiple things at once.
 
 When starting a new session with the command ``tmux new``, you can also
@@ -167,7 +166,7 @@ releasing those keys, and *then* pressing the specified button and
 
 **Scrolling in a tmux window**
 
--  ``CTRL+b PageUp`` Enables scrolling with PageUp/PageDown and arrow
+-  ``CTRL+b PageUp`` Enables scrolling with Page Up/Page Down and arrow
    keys. Press ESC to exit scrolling mode. Current line-number is
    indicated in yellow in the top right corner.
 

@@ -13,7 +13,7 @@ configured to run the individual rules in the ``Snakefile`` via Slurm as
 described below.
 
 **********************************
- Running snakemake jobs via Slurm
+ Running Snakemake jobs via Slurm
 **********************************
 
 The recommended way to use Snakemake with Slurm is to use the
@@ -38,7 +38,7 @@ Slurm will take care that.
 
 Running Snakemake with ``--slurm`` has a number of advantages over
 running Snakemake in a Slurm job (via ``sbatch`` or ``srun``) or in an
-interactive session on a compute node:
+interactive session on a compute-node:
 
 -  Resources are only reserved for the duration of individual rules,
    meaning other jobs (yours and those of other users) can make use of
@@ -58,7 +58,7 @@ However, there are also some disadvantages:
 -  Rules queued via Slurm are not necessarily terminate if you stop
    snakemake, meaning that you may have to terminate these yourself. See
    the :ref:`p_usage_slurm_basics` page for information about how to
-   query and scancel running/queued jobs on Slurm.
+   query and cancel running/queued jobs on Slurm.
 
 Requesting CPUs
 ===============
@@ -109,13 +109,14 @@ your rule:
 The ``mem_mb`` specifies a *total* amount of memory to reserve in MB and
 the above example therefore requests 64 GB for this specific rule.
 
-Using the GPU/high-MEM queue
-============================
+Using the GPU / high-memory nodes
+=================================
 
-Running a job on the GPU/high-MEM is accomplished by specifying that you
-want to use the ``gpuqueue`` by adding ``slurm_partition="gpuqueue"`` to
-the ``resources`` section of your rule. Once you have done so, you can
-reserve GPUs as shown below:
+Running a job on the GPU / high-memory nodes is accomplished by
+specifying that you want to use the ``gpuqueue`` by adding
+``slurm_partition="gpuqueue"`` to the ``resources`` section of your
+rule. Once you have done so, you can reserve GPUs using the
+``slurm_extra`` resource:
 
 .. code:: python
 
@@ -175,7 +176,7 @@ rule:
 
    Remember to specify version numbers for the module you are using;
    this helps ensures that your analyses are reproducible and that they
-   wont suddenly break when new versions of modules are added.
+   won't suddenly break when new versions of modules are added.
 
 ***************************
  Other recommended options

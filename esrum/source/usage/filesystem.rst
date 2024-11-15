@@ -21,7 +21,7 @@ as the location and layout of projects and data-shares.
  Your home folder
 ******************
 
-Your home folder can hold 100GB of data and is meant to store your
+Your home folder can hold 100 GB of data and is meant to store your
 personal programs and related caches, configuration files, and similar
 files that are not related to your projects.
 
@@ -46,18 +46,18 @@ that your colleagues may depend on should be stored there.
 UCPH network drives
 ===================
 
-When you login to Esrum for the first time, your home folder should
+When you log in to Esrum for the first time, your home folder should
 contain a single folder named ``ucph``. This folder in turn contains
-your UCPH network drives (formerly ``H:`` and ``N:``).
+your UCPH network drives, formerly ``H:`` and ``N:``.
 
 .. warning::
 
    Note that these drives are only accessible from the head node. If you
    need to analyze data located on either of these shared drives, then
-   you will need to copy it an appropriate projects folder.
+   you will need to copy it an appropriate project folder.
 
    Note furthermore that access to these folders will not be available
-   if you login using Kerberos (GSSAPI). See the
+   if you log in using Kerberos (GSSAPI). See the
    :ref:`p_usage_connecting` page for instructions for how to disable
    this feature if you are using MobaXterm.
 
@@ -99,7 +99,7 @@ Projects folder always contain the following four sub-folders:
 -  ``/projects/<project-name>/apps``
 
    The apps folder is intended for storing software shared between
-   project members. See :ref:`p_tips_modules` for how to setup a shared
+   project members. See :ref:`p_tips_modules` for how to set up a shared
    repository of software that can be used with the module system. The
    ``apps`` folder is automatically backed up every day.
 
@@ -124,7 +124,7 @@ in these folders.
  Scratch folders
 *****************
 
-Every node on esrum (including the head node) has a 1.5-3 TB scratch
+Every node on Esrum (including the head node) has a 1.5-3 TB scratch
 drive available at ``/scratch``. This is intended for short-lived
 temporary files generated as part of jobs running on the cluster, and
 can provide a significant performance benefit if a job for example
@@ -152,7 +152,7 @@ username when using the scratch-drive as part of your scripts:
 .. warning::
 
    The scratch-drives have limited capacity and are *only* intended for
-   short-lived, temporary files. Do not use it to store results and
+   short-lived, temporary files. Do not use it to store results, and
    please remember to clean up after your jobs. Files left on the
    scratch-drive *will* be deleted.
 
@@ -177,9 +177,9 @@ Each timestamped folder contains a full snapshot of the parent folder
 (``/home``, ``/apps``, etc.) and you can copy data from these snapshots
 should you need to restore deleted or modified files.
 
-Snapshots of audited projects are only accessible for a limited time and
-you may therefore need to contact UCPH-IT to restore deleted data for
-such projects.
+Snapshots of audited projects are only accessible for a limited time,
+and you may therefore need to contact UCPH-IT to restore deleted data
+for such projects.
 
 .. warning::
 

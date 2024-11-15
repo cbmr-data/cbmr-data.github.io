@@ -16,7 +16,7 @@ says "This site can't be reached".
    forwarded. Check that Jupyter Notebook is running and make sure that
    your forwarded ports match those used by Jupyter Notebook on Esrum.
 
--  "localhost refused to connect" or "Unable to connect"
+-  "Localhost refused to connect" or "Unable to connect"
 
    This typically indicates that port forwarding isn't active, or that
    you have entered the wrong port number in your browser. Verify that
@@ -26,6 +26,6 @@ says "This site can't be reached".
 -  "Check if there is a typo in esrumweb01fl" or "We're having trouble
    finding that site"
 
-   You are must likely connecting from a network outside of UCPH. Make
-   sure that you are using a wired connection at CBMR and/or that the
-   VPN is activated and try again.
+   You are most likely connecting from a network outside UCPH. Make sure
+   that you are using a wired connection at CBMR and/or that the VPN is
+   activated and try again.

@@ -10,19 +10,18 @@ server:
 .. image:: /usage/images/connecting_ssh_timeout.gif
    :class: gif
 
-#. Firstly verify that you are correctly connected to the UCPH network:
+#. Firstly verify that you are correctly connected to the UCPH network.
+   In order to connect to Esrum you must either
 
-   #. You must either use a wired connection while physically at CBMR.
-   #. Or you must connect via the UCPH VPN.
+   #. Use a wired connection in a CBMR office
+   #. Be connected through the UCPH VPN
 
-   It is not possible to connect to using WIFI at CBMR nor is it
-   possible to from outside of CBMR without the use of the VPN. See the
-   official VPN documentation in Danish_ or English_ for more
+   See the official VPN documentation in Danish_ or English_ for more
    information.
 
-#. If neither using a wired connection nor connecting the the UCPH VPN
-   fixes the problem, you may need to create a support ticket to have
-   UCPH IT permit you to connect to the server.
+#. If neither using a wired connection nor connecting the UCPH VPN fixes
+   the problem, you may need to create a support ticket to have UCPH IT
+   permit you to connect to the server.
 
    #. Login to the UCPH `IT Serviceportal`_.
 
@@ -52,14 +51,14 @@ server:
 
    If you are not an employee at CBMR you may not have permission to
    open a ticket as described above. In that case simply
-   :ref:`p_contact` us and we will forward your issue to KU-IT.
+   :ref:`p_contact` us, and we will forward your issue to UCPH-IT.
 
 
 File uploads using MobaXterm never start
 ========================================
 
 Please make sure that your session is configured to use the ``SCP
-(enhanced speed)`` browser type. See step 4 in in the
+(enhanced speed)`` browser type. See step 4 in the
 :ref:`s_configure_mobaxterm` section.
 
 

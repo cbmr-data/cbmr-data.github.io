@@ -108,7 +108,7 @@ This is because tasks are likely to take different amount of times to
 run, sometimes significantly so, resulting in a (potentially large)
 number of CPUs being idle until the last task has finished.
 
-For this reason we advice that you do not reserve more CPUs than what is
+For this reason we advise that you do not reserve more CPUs than what is
 needed to run 1/3 to 1/2 of your jobs at once. This also allows you to
 queue that many more simultaneous jobs on Slurm, and will typically
 result in a overall greater throughput than simply using the maximum

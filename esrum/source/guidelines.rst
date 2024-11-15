@@ -36,7 +36,7 @@ data`_.
 
 -  Data *must not* be copied out of audited ``/datasets`` or
    ``/projects`` folders without permission from the relevant data
-   controller. Instead use symbolic links if you need the data to be
+   controller. Instead, use symbolic links if you need the data to be
    located in a more convenient location.
 
 -  Data must not leave the cluster without permission from the relevant
@@ -93,7 +93,7 @@ beyond that required to fulfill technical or service functions.
 
 Immediate intervention under the supervision of a user with appropriate
 access to protected data, for example while providing direct support, is
-not considered to establish privileged access.
+not considered establishing privileged access.
 
 .. _gdpr sensitive data: https://kunet.ku.dk/work-areas/research/data/personal-data/Pages/default.aspx
 

@@ -1,29 +1,30 @@
 .. _p_usage_slurm_gpu:
 
-###########################
- Using the GPU/hi-MEM node
-###########################
+##################################
+ Using the GPU / high-memory node
+##################################
 
-This page describes how to schedule a task on the GPU/hi-MEM node.
+This page describes how to schedule a task on the GPU / high-memory
+node.
 
 The GPU node is intended for tasks that need to use GPUs and for tasks
 that have very high memory requirements (more than the 2 TB of RAM
 available on regular nodes).
 
-*************************************
- Running jobs on the GPU/hi-MEM node
-*************************************
+********************************************
+ Running jobs on the GPU / high-memory node
+********************************************
 
-By default jobs submitted via Slurm will only run on regular nodes, even
-if you ask for more than 2TB of RAM or ask for a GPU. Attempting to run
-such a task will instead result in a ``Requested node configuration is
-not available`` error message.
+By default, jobs submitted via Slurm will only run on regular nodes,
+even if you ask for more than 2 TB of RAM or ask for a GPU. Attempting
+to run such a task will instead result in a ``Requested node
+configuration is not available`` error message.
 
-This is because the GPU/hi-MEM node is located on its own queue, to in
-order prevent normal use of the cluster from blocking access to these
-resource. To run jobs on the GPU/hi-MEM node, you must therefore select
-use the option ``--partition=gpuqueue`` to select the correct queue.
-This might look as follows in an sbatch script:
+This is because the GPU / high-memory node is located on its own queue,
+to in order prevent normal use of the cluster from blocking access to
+these resources. To run jobs on the GPU / high-memory node, you must
+therefore select use the option ``--partition=gpuqueue`` to select the
+correct queue. This might look as follows in a sbatch script:
 
 .. code-block:: bash
    :emphasize-lines: 2
@@ -33,11 +34,13 @@ This might look as follows in an sbatch script:
 
    my-memory-hungry-command
 
-While running on the GPU/hi-MEM queue, you can reserve up to 3920 GB of
-RAM and up to two GPUs (see below). The GPU/hi-MEM node otherwise use
-the same defaults as the other nodes (~16 GB of RAM per CPU reserved).
+While running on the GPU / high-memory queue, you can reserve up to 3920
+GB of RAM and up to two GPUs (see below). The GPU / high-memory node
+otherwise use the same defaults as the other nodes (~16 GB of RAM per
+CPU reserved).
 
-For example, to run a job using 2.5 TB of RAM on the GPU/hi-MEM node:
+For example, to run a job using 2.5 TB of RAM on the GPU / high-memory
+node:
 
 .. code-block:: bash
    :emphasize-lines: 2
@@ -98,11 +101,11 @@ This script can then be submitted as usual:
 Running an interactive session
 ==============================
 
-While it is possible to run an interactive session on the GPU/hi-MEM
-node, we ask that you limit the usage of such sessions as much as
-possible. If at all possible, prefer using ``sbatch`` or non-interactive
-``srun`` instead. This ensures that the resources are available for use
-when you (or other users) are not actively using them.
+While it is possible to run an interactive session on the GPU /
+high-memory node, we ask that you limit the usage of such sessions as
+much as possible. If at all possible, prefer using ``sbatch`` or
+non-interactive ``srun`` instead. This ensures that the resources are
+available for use when you (or other users) are not actively using them.
 
 To start an interactive session using a GPU you simply apply the same
 ``--partition`` and (optionally) the same ``--gres`` options as above if
@@ -136,8 +139,8 @@ this depends on the software you are running, but can often be
 accomplished by increasing the size of the batches you are processing.
 
 The way in which you are using the GPUs will affect how you can monitor
-them, depending on whether or not you have reserved a GPU for an
-interactive session:
+them, depending on whether you have reserved a GPU for an interactive
+session:
 
 Monitoring an interactive session
 =================================
@@ -185,7 +188,7 @@ Monitoring a Slurm job
 If you have started a standard (non-interactive) job via Slurm, then you
 will not be able to directly run ``nvidia-smi`` nor will you be able to
 join the running job using ``srun -j`` due to the way Slurm handles
-special resources. We have therefore setup a log-file on the
+special resources. We have therefore set up a log-file on the
 ``esrumgpun01fl`` node that contains the output from the ``nvidia-smi``
 command as shown above.
 

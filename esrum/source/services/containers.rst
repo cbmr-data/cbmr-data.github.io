@@ -32,13 +32,13 @@ should prefer to run your containerized tools in this manner.
 The following only covers the absolute basics. For more information
 please refer to the official `Singularity documentation`_.
 
-Running Dockerhub images
-========================
+Running Docker Hub images
+=========================
 
-Container images available on dockerhub_ can be converted to singularity
-images in one step using the ``singularity build`` command. For the
-following example, we will download and run version ``0.7.17`` of the
-`pegi3s/bwa`_ image on dockerhub:
+Container images available on `Docker Hub`_ can be converted to
+singularity images in one step using the ``singularity build`` command.
+For the following example, we will download and run version ``0.7.17``
+of the `pegi3s/bwa`_ image on `Docker Hub`_:
 
 .. code-block:: console
 
@@ -54,27 +54,27 @@ The ``--disable-cache`` option is optional but recommended, since
 Singularity will otherwise cache the individual parts of the image it
 downloaded in ``~/.singularity``. As described in
 :ref:`p_usage_filesystem` your home is limited to 100 GB and larger
-docker images can easily take up GBs of space.
+docker images can easily take up gigabytes of space.
 
 Once you have run the ``build`` command, the image can be run using the
 ``singularity run`` command:
 
 .. code-block:: console
 
-   $  singularity run pegi3s_bwa_0.7.17.sif bwa
+   $ singularity run pegi3s_bwa_0.7.17.sif bwa
 
    Program: bwa (alignment via Burrows-Wheeler transformation)
    Version: 0.7.17-r1188
    Contact: Heng Li <lh3@sanger.ac.uk>
 
-It is also possible to run dockerhub images "directly" by using a
+It is also possible to run `Docker Hub`_ images "directly" by using a
 ``docker://`` URL instead of the path to a singularity image:
 
 .. code-block:: console
 
-   $  singularity run docker://pegi3s/bwa:0.7.17 bwa
+   $ singularity run docker://pegi3s/bwa:0.7.17 bwa
 
-However, this caches the image in your home folder and it is therefore
+However, this caches the image in your home folder, and it is therefore
 not recommended for the reasons described above.
 
 Running custom Docker/Podman images
@@ -96,7 +96,7 @@ Once the image has been exported, you can transfer it to Esrum using
 
    $ scp ~/my_image_v1.2.3.tar abc1232@esrumhead01fl.unicph.domain:/projects/my_project/scratch/
 
-Finally, you can convert the image on esrum to the format used by
+Finally, you can convert the image on Esrum to the format used by
 singularity:
 
 .. code-block:: console
@@ -126,7 +126,7 @@ container node.
 
 .. _docker: https://www.docker.com/
 
-.. _dockerhub: https://hub.docker.com/
+.. _docker hub: https://hub.docker.com/
 
 .. _pegi3s/bwa: https://hub.docker.com/r/pegi3s/bwa
 

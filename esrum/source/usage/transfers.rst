@@ -75,7 +75,7 @@ you may either need to approve the connection attempt or (as shown
 above) enter a one-time password.
 
 Official documentation is provided on the `UCPH computing/HPC Systems`_
-pages on KUNet.
+pages on KUnet.
 
 .. _p_tranfers_sifanderda:
 
@@ -120,7 +120,7 @@ assistance.
 ****************************************
 
 Connecting to the SIF_ or ERDA_ servers requires that the user has
-successfully authenticated using Two Factor Authentication. Futhermore,
+successfully authenticated using Two-factor authentication. Furthermore,
 this must be done using the same IP from which the user intends to
 connect, in this case from the Esrum IP.
 
@@ -200,11 +200,11 @@ looks something like ``Johann.Gambolputty@sund.ku.dk@MyProject``.
    Remember to set a password for the project on SIF before attempting
    to login! This is done on the ``Setup`` page described above.
 
-The two ``set`` commands are required to prevent lftp from performing
-simultaneous downloads (not supported by SIF) and to prevent lftp from
-re-trying repeatedly on failure. As SIF sends an email every time you
-fail to login, allowing retries typically means receiving a large number
-of emails if a transfer fails.
+The two ``set`` commands are required to prevent ``lftp`` from
+performing simultaneous downloads (not supported by SIF) and to prevent
+``lftp`` from re-trying repeatedly on failure. As SIF sends an email
+every time you fail to log in, allowing retries typically means
+receiving numerous emails if a transfer fails.
 
 .. _p_transfers_computerome:
 
@@ -212,12 +212,12 @@ of emails if a transfer fails.
  Transferring data to/from Computerome
 ***************************************
 
-When transferring data/to from computerome you should *always* run the
+When transferring data/to from Computerome you should *always* run the
 transfer software on Esrum (or on your PC/laptop) and you should
 *always* connect to Computerome via ``transfer.computerome.dk`` instead
 of ``ssh.computerome.dk``.
 
-For example, to transfer data to computerome, you might run
+For example, to transfer data to Computerome, you might run
 
 .. code:: shell
 
@@ -237,7 +237,7 @@ This avoids two big issues:
 
 #. While it is possible to transfer data to/from Computerome from/to
    Esrum by running your software on a node, this involves paying for an
-   node on computerome for the duration of the transfer.
+   node on Computerome for the duration of the transfer.
 
 .. _erda: https://erda.ku.dk/
 

@@ -5,15 +5,14 @@
 #############################
 
 Bash scripts are useful for automating tasks and for running batch jobs.
-However the default behavior of bash is to keep running when errors
+However, the default behavior of bash is to keep running when errors
 happen, and that can result in undesirable behavior such as running
 programs with the wrong settings, analyzing bad data, and worse. This
 page is written on the premise that it is better to fail loudly than to
 generate bad results or do bad things quietly.
 
-However, because of the many, many `bash pitfalls`_, it is also
-recommended to use a more robust programming language when performing
-more complex tasks.
+However, because of the many, many `bash pitfalls`_, using a more robust
+programming language when performing more complex tasks is recommended.
 
 *********************************
  Improving default bash behavior
@@ -83,8 +82,8 @@ where!), but it also stops bash from doing any more damage.
 Stop running on program failures
 ================================
 
-By default bash (and hence Slurm) will continue to execute a script even
-if a command fails. If this is not detected, then it can lead to
+By default, bash (and hence Slurm) will continue to execute a script
+even if a command fails. If this is not detected, then it can lead to
 partially or wholly corrupt data:
 
 .. code:: bash
@@ -214,7 +213,7 @@ complicated tasks.
 *******************************************
 
 In addition to implementing the suggestions listed on this page, it is
-recommended that you use the shellcheck_ to check your bash scripts for
+recommended that you use the ShellCheck_ to check your bash scripts for
 common mistakes.
 
 For example, if we run shell check on the very first script shown on
