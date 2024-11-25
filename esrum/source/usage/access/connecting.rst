@@ -15,7 +15,9 @@ running software (see :ref:`p_usage_slurm`)
 
 To connect to the cluster you will typically need to be connected to the
 UCPH VPN. For information about connecting to the VPN, see the support
-pages on KUnet in Danish_ and English_.
+pages on KUnet in Danish_ and English_. See also the
+:ref:`s_connecting_linux` section for an alternative means of connecting
+to the VPN.
 
 ***********************
  Connecting on Windows
@@ -24,7 +26,7 @@ pages on KUnet in Danish_ and English_.
 Windows users will need to install a SSH client in order to be able to
 connect to the server. Options include MobaXterm_, Putty_, and Windows
 Subsystem for Linux (WSL_), and much more. The following demonstrates
-how to set up MobaXterm. Please refer to the `Connecting On Linux`_
+how to set up MobaXterm. Please refer to the :ref:`s_connecting_linux`
 section if using WSL_.
 
 .. _s_configure_mobaxterm:
@@ -120,8 +122,8 @@ Then untick the ``GSSAPI Kerberos`` checkbox as shown and click the
 *******************
 
 While Mac/OSX users can connect as described in the
-:ref:`s_connecting_linux` section, there are also graphical interfaces
-available, including for example Tabby_.
+:ref:`s_connecting_linux` section below, there are also graphical
+interfaces available, including for example Tabby_.
 
 ..
    TODO: Describe how to setup tabby.
@@ -132,9 +134,23 @@ available, including for example Tabby_.
  Connecting on Linux
 *********************
 
-Linux and OSX users can additionally connect to the cluster using the
-following terminal command, replacing ``abc123`` with your UCPH
-username:
+The official instructions for connecting to the VPN under Linux (in
+Danish_ and English_) are written under the assumption that you are
+using KDE5. If that is not the case, or if you prefer a command-line
+solution, then you can also connect using ``openconnect``, replacing
+``abc123`` with your UCPH username:
+
+.. code:: shell
+
+   $ sudo openconnect -u abc123 vpn.ku.dk
+
+You will likely have to install ``openconnect`` first, in which case
+please refer to the documentation for the Linux distro you are using.
+OSX users can install ``openconnect`` using Homebrew_.
+
+Once connected to the VPN, you can connect to the cluster using ``ssh``
+and the following terminal command, again replacing ``abc123`` with your
+UCPH username:
 
 .. code::
 
@@ -189,6 +205,8 @@ having to specify your username:
 .. _danish: https://kunet.ku.dk/medarbejderguide/Sider/It/Fjernadgang-vpn.aspx
 
 .. _english: https://kunet.ku.dk/employee-guide/Pages/IT/Remote-access.aspx
+
+.. _homebrew: https://brew.sh/
 
 .. _mobaxterm: https://mobaxterm.mobatek.net/
 
