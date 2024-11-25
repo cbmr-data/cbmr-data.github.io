@@ -6,7 +6,7 @@
 
 This section describes how to perform bulk data transfers between Esrum,
 your PC/Laptop, repositories such as SIF/Erda, and servers like
-Computerome.
+Computerome. :ref:`bluewhale` is also briefly described.
 
 File transfers (including project-to-project transfers) should if at all
 possible be run on a compute node, as high amounts of network traffic
@@ -238,6 +238,25 @@ This avoids two big issues:
 #. While it is possible to transfer data to/from Computerome from/to
    Esrum by running your software on a node, this involves paying for an
    node on Computerome for the duration of the transfer.
+
+.. _bluewhale:
+
+*******************************
+ Secure emails using Bluewhale
+*******************************
+
+UCPH offers the ability to securely email large files, up to 20 GB in
+size, using `Bluewhale <https://bluewhale.dk/>`__. Files sent this way
+are encrypted using a password or using an SMS pin-code that is
+automatically sent to the recipient.
+
+This service is available as plugins for Outlook (for Windows only) and
+via the web-portal https://bluewhale.ku.dk/. For more information,
+please refer to the official UCPH documentation on Email security in
+`Danish
+<https://kunet.ku.dk/medarbejderguide/Sider/It/E-mail-sikkerhed.aspx>`__
+or `English
+<https://kunet.ku.dk/employee-guide/Pages/IT/Email-security.aspx>`__.
 
 .. _erda: https://erda.ku.dk/
 
