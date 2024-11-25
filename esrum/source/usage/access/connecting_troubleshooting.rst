@@ -1,5 +1,5 @@
-If have not already been granted access to the server, then please see
-the :ref:`p_usage_access_applying` page before continuing!
+If you have not already been granted access to the server, then please
+see the :ref:`p_usage_access_applying` page before continuing!
 
 Timeout while connecting to the cluster
 ========================================
@@ -10,48 +10,28 @@ server:
 .. image:: /usage/images/connecting_ssh_timeout.gif
    :class: gif
 
-#. Firstly verify that you are correctly connected to the UCPH network.
-   In order to connect to Esrum you must either
+Firstly verify that you are correctly connected to the UCPH network. In
+order to connect to Esrum you must either use a wired connection in a
+CBMR office, or you must be connected through the UCPH VPN. See the
+official VPN documentation in Danish_ or English_ for more information.
 
-   #. Use a wired connection in a CBMR office
-   #. Be connected through the UCPH VPN
+If you are still unable to connect to Esrum after verifying that you are
+correctly connected to the UCPH network, then please try to visit either
+our `Project Manager <https://cbmrcat.unicph.domain/projects/>`_ or our
+`Cohort Catalog <https://cbmrcat.unicph.domain/>`_.
 
-   See the official VPN documentation in Danish_ or English_ for more
-   information.
+If you are able to visit either of the Project Manager or Cohort Catalog
+pages, then you most likely do not have proper permissions to connect to
+Esrum. Please :ref:`contact us <p_contact>` and we will provide further
+guidance.
 
-#. If neither using a wired connection nor connecting the UCPH VPN fixes
-   the problem, you may need to create a support ticket to have UCPH IT
-   permit you to connect to the server.
-
-   #. Login to the UCPH `IT Serviceportal`_.
-
-   #. Click the ``Create Ticket`` / ``Opret Sag`` button.
-
-   #. Tick/select the ``Research IT`` / ``Forsknings IT`` category in
-      the category/filters list on the left side of the screen.
-
-   #. Click the ``Research Applications Counseling and Support`` /
-      ``Forskningsapplikationer Rådgivning og support`` button.
-
-   #. Click the ``REQUEST`` / ``Bestil`` button.
-
-   #. Write something like "SSH connection times out when attempting to
-      connect to esrumhead01fl.unicph.domain" in the "Please describe"
-      text-box and describe the steps you have taken to try to fix this
-      problem: Tried wired connection at CBMR, tried VPN, etc.
-
-   #. Write "esrumhead01fl.unicph.domain" in the System name text-box.
-
-   #. Click the ``Review & submit`` / ``Gennemse & bestil`` button.
-
-   #. Review your ticket and then click the ``Submit`` / ``Bestil``
-      button.
-
-.. warning::
-
-   If you are not an employee at CBMR you may not have permission to
-   open a ticket as described above. In that case simply
-   :ref:`p_contact` us, and we will forward your issue to UCPH-IT.
+If you are unable to connect to the VPN or to either of the above pages
+while connected to the VPN, then there may be other problems with your
+account. We recommend that you either :ref:`contact us <p_contact>` for
+assistance or, if you prefer, that you submit a ticket to the UCPH-IT
+Serviceportal_, using the ``Research Applications Counseling and
+Support`` / ``Forskningsapplikationer Rådgivning og support`` ticket
+category.
 
 
 File uploads using MobaXterm never start
@@ -72,4 +52,4 @@ described in the :ref:`s_configure_mobaxterm` section.
 
 .. _english: https://kunet.ku.dk/employee-guide/Pages/IT/Remote-access.aspx
 
-.. _it serviceportal: https://serviceportal.ku.dk/
+.. _serviceportal: https://serviceportal.ku.dk/
