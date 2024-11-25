@@ -1,11 +1,18 @@
 .. _p_usage_filesystem:
 
-##################################
- Projects, data, and home folders
-##################################
+#######################
+ Data storage on Esrum
+#######################
 
 This section describes the layout of your home folder on Esrum, as well
-as the location and layout of projects and data-shares.
+as the location and layout of projects, shared datasets, and per-node
+"scratch" folders.
+
+When you are first given access to Esrum, you will by default have
+access to your home folder, the scratch folders on each node, and the
+CBMR wide project folder (``/projects/cbmr_shared``). Please see the
+:ref:`p_usage_access_applying` page for information about applying for
+access to additional projects and datasets.
 
 .. warning::
 
@@ -63,9 +70,9 @@ your UCPH network drives, formerly ``H:`` and ``N:``.
 
 .. _s_project_folders:
 
-**********************
- Your project folders
-**********************
+*****************
+ Project folders
+*****************
 
 The majority of your work on Esrum should take place in project folder
 corresponding either to your research group or to actual projects. This
@@ -73,7 +80,7 @@ ensures that your collaborators can access your results and that nobody
 else can! See the :ref:`p_usage_access_applying` page for instructions
 on how to apply for access to projects.
 
-Project folders are located in the ``/projects`` folder:
+Projects on Esrum are located in the ``/projects`` folder:
 
 .. code::
 
@@ -117,6 +124,31 @@ Projects folder always contain the following four sub-folders:
    to be backed up, including for example publicly available datasets,
    large index files, and such.
 
+There is currently no limits on how much you store in these folders.
+However, as UCPH has indicated that they will charge for storage in the
+future, we recommend regularly cleaning up your project folders.
+
+**********
+ Datasets
+**********
+
+Unlike projects, datasets are meant for static data that may be accessed
+by multiple parties. Access to datasets is therefore segregated into
+users who only have read access and users with read and write access
+(the owners). Examples of datasets include shared resources, cohorts, as
+well as automatically deposited instrument data.
+
+Datasets on Esrum are located in the ``/datasets`` folder. Unlike
+projects, where you will find four standard folders, the directory
+structure of ``/datasets`` folders are entirely up to the owner.
+
+Similarly to projects, dataset folders (meant for) containing GDPR data
+are marked by the ``-AUDIT`` suffix. GDPR datasets must be stored in
+such folders and *nowhere else*!
+
+There is currently no limits on how much you store in these folders.
+However, as UCPH has indicated that they will charge for storage in the
+future, we recommend only storing data that you actually need.
 Unlike your ``/home`` folder, there are no limits on how much you store
 in these folders.
 
@@ -127,7 +159,7 @@ in these folders.
 Every node on Esrum (including the head node) has a 1.5-3 TB scratch
 drive available at ``/scratch``. This is intended for short-lived
 temporary files generated as part of jobs running on the cluster, and
-can provide a significant performance benefit if a job for example
+can provide a significant performance benefit if a job, for example,
 writes a lot of small temporary files.
 
 .. note::
