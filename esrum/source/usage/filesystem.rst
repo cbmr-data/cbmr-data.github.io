@@ -4,6 +4,11 @@
  Data storage on Esrum
 #######################
 
+.. toctree::
+   :hidden:
+
+   projects
+
 This section describes the layout of your home folder on Esrum, as well
 as the location and layout of projects, shared datasets, and per-node
 "scratch" folders.
@@ -128,6 +133,9 @@ There is currently no limits on how much you store in these folders.
 However, as UCPH has indicated that they will charge for storage in the
 future, we recommend regularly cleaning up your project folders.
 
+See the :ref:`p_usage_projects` page for how to request a new project
+folder.
+
 **********
  Datasets
 **********
@@ -149,8 +157,9 @@ such folders and *nowhere else*!
 There is currently no limits on how much you store in these folders.
 However, as UCPH has indicated that they will charge for storage in the
 future, we recommend only storing data that you actually need.
-Unlike your ``/home`` folder, there are no limits on how much you store
-in these folders.
+
+See the :ref:`p_usage_projects` page for how to request a new dataset
+folder.
 
 *****************
  Scratch folders
