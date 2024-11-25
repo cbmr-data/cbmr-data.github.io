@@ -208,7 +208,7 @@ If you have not been granted access, or if you are not connected via the
 VPN, then you will likely see a browser error message like ``This site
 can't be reached``. See :ref:`p_usage_connecting` for more information.
 
-To login, use the short form of your UPCH username (i.e. ``abc123``):
+To login, use the short form of your UCPH username (i.e. ``abc123``):
 
 .. image:: images/rstudio_login.png
    :align: center
