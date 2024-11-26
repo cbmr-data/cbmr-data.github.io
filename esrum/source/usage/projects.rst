@@ -75,7 +75,7 @@ contract leaves the center.
 
 Finally, the ``IDM Role scope`` defines who can be granted access to the
 project. The ``Employed + Associated`` option is recommended in most
-cases.
+cases (as shown above).
 
 Compute Project / Compute Dataset
 =================================
@@ -95,7 +95,7 @@ that this name is public. Only letters (``a`` to ``z``), digits (``0``
 to ``9``), and underscores (``_``) are allowed.
 
 Finally, pick ``FS-esrum`` for the option ``FS system where you request
-UCPH-IT to mount the Compute Project``.
+UCPH-IT to mount the Compute Project`` as shown above.
 
 Backup Policy
 =============
@@ -142,9 +142,11 @@ folders or for the entire dataset folder.
 
 -  For projects, we recommend that you select ``Basic Performance
    storage`` for ``Apps``, ``People``, ``Data``, and for datasets, and
-   that you select ``High Performance storage`` for ``Scratch``.
+   that you select ``High Performance storage`` for ``Scratch`` as shown
+   above.
 
--  For datasets, we recommend selecting ``Basic Performance storage``.
+-  For datasets, we recommend selecting ``Basic Performance storage`` as
+   shown above.
 
 Audit
 =====
