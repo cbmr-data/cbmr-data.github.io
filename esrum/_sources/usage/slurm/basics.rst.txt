@@ -6,7 +6,7 @@
 
 This section describes the basics of queuing jobs using on the Esrum
 cluster using the Slurm Workload Manager. This includes queuing tasks
-with the ``sbatch`` command , monitoring jobs with ``squeue`` and
+with the ``sbatch`` command, monitoring jobs with ``squeue`` and
 ``saccact``, cancelling jobs with ``scancel``, and reserving resources
 for jobs that need more CPUs or more RAM.
 
@@ -47,7 +47,7 @@ scripting languages by using the appropriate shebang (highlighted):
 
 Slurm scripts function like regular scripts for most part, meaning that
 the current directory corresponds to the directory in which you executed
-the script, that you can access environment variables set outside of the
+the script, that you can access environment variables set outside the
 script, and that it is possible to pass command-line arguments to your
 scripts (see below).
 
@@ -210,7 +210,7 @@ below) or individual sub-tasks. See the :ref:`s_job_arrays` section.
 *****************
 
 The ``sbatch`` command offers two methods for setting options, such as
-resource requirements, notifications, etc (see e.g.
+resource requirements, notifications, etc. (see e.g.
 :ref:`s_common_options`). The first option is simply to specify the
 options on the command line (e.g. ``sbatch --my-option my_script.sh``).
 
@@ -271,7 +271,7 @@ options specified using ``#SBATCH`` comments.
  Reserving resources
 *********************
 
-By default a ``sbatch`` will request 1 CPU and just under 15 GB of ram
+By default, a ``sbatch`` will request 1 CPU and just under 15 GB of ram
 per reserved CPU. Jobs will not be executed before the requested
 resources are available on a node and your jobs cannot exceed the amount
 of resources you've requested.
@@ -291,13 +291,13 @@ gigabytes of RAM:
    igzip --keep --threads 8 "chr1.fasta"
 
 Notice that we need to not only reserve the CPUs, but we in almost all
-cases also need tell to our programs to actually use those CPUs. With
+cases also need to tell to our programs to actually use those CPUs. With
 ``igzip`` this is accomplished by using the ``--threads`` option as
 shown above. If this is not done then the reserved CPUs will have no
 effect on how long it takes for your program to run!
 
 To avoid having to write the same number of threads multiple times, we
-can instead use hte ``${SLURM_CPUS_PER_TASK}`` variable, which is
+can instead use the ``${SLURM_CPUS_PER_TASK}`` variable, which is
 automatically set to the number of CPUs we've requested:
 
 .. code-block:: bash
@@ -346,7 +346,7 @@ without reserving a GPU.
    The ``--nodes`` option and the ``--ntasks`` option will start
    *identical* tasks on one or more nodes, so you should *not* be using
    these options unless your tools are specifically designed for this!
-   Otherwise each instance will try to write to the same output file(s)
+   Otherwise, each instance will try to write to the same output file(s)
    and will produce results that are very likely corrupt.
 
    If you need to run the same command on a set of files/samples, then
@@ -434,16 +434,16 @@ The important information is found in the ``CPUsWasted`` column and the
 ``ExtraMemWasted`` column, which show the number CPUs that went unused
 on average the memory that was requested that went unused. Note that
 ``ExtraMem`` only counts memory requested *in addition* to the default
-allocation of ~16GB of RAM per CPU. That is because any additional
+allocation of ~16 GB of RAM per CPU. That is because any additional
 reserved memory results in CPUs going unused *unless* a user explicitly
-asks for less RAM than the default ~16GB per CPU.
+asks for less RAM than the default ~16 GB per CPU.
 
 The final column indicates that number of CPU hours your job wasted,
 calculated as the length of time your job ran multiplied by the number
 of reserved CPUs wasted and the number of CPUs that would have been able
-to get the default 16GB of RAM had ``ExtraMemWasted`` been zero. Aim for
-your jobs to resemble the third job, not the second job and especially
-not the first job in the example!
+to get the default 16 GB of RAM had ``ExtraMemWasted`` been zero. Aim
+for your jobs to resemble the third job, not the second job and
+especially not the first job in the example!
 
 .. warning::
 
@@ -520,7 +520,7 @@ not mentioned above. All of these options may be specified using
 
 If you need to run an interactive process, for example if you need to
 use an interactive R shell to process a large dataset, or if you just
-need to experiment with running an computationally heavy process, then
+need to experiment with running a computationally heavy process, then
 you can start a shell on one of the compute nodes as follows:
 
 .. code-block::
@@ -545,10 +545,10 @@ default 1 CPU and 15 GB of RAM:
 
    $ srun --cpus-per-task 4 --mem 128G --pty -- /bin/bash
 
-It is also possible to start an interactive session on the GPU/High-MEM
-nodes. See the :ref:`p_usage_slurm_gpu` page for more information. See
-the :ref:`p_usage_slurm_advanced` page for more information about the
-``srun`` command.
+It is also possible to start an interactive session on the GPU /
+high-memory nodes. See the :ref:`p_usage_slurm_gpu` page for more
+information. See the :ref:`p_usage_slurm_advanced` page for more
+information about the ``srun`` command.
 
 Once you are done, be sure to exit the interactive shell by using the
 ``exit`` command or pressing ``Ctrl+D``, so that the resources reserved
@@ -596,8 +596,8 @@ available for download :download:`here <scripts/robust_sbatch.sh>`.
 *************
 
 The next section of the documentation covers advanced usage of Slurm,
-including how to run jobs on the High-MEM/GPU node. However, if you have
-not already done so then it is recommended that you read the
+including how to run jobs on the GPU / high-memory node. However, if you
+have not already done so, then it is recommended that you read the
 :ref:`p_usage_modules` page for an introduction on how to use the module
 system on Esrum to load the software you need for your work.
 

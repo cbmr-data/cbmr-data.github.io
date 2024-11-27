@@ -6,7 +6,7 @@
 <link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Software on Esrum" href="../modules.html" /><link rel="prev" title="Advanced Slurm jobs" href="advanced.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
-        <title>Using the GPU/hi-MEM node - Esrum Cluster documentation</title>
+        <title>Using the GPU / high-memory node - Esrum Cluster documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -166,11 +166,14 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../access/access.html">Applying for access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../access/connecting.html">Connecting to the cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../filesystem.html">Projects, data, and home folders</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Running jobs using Slurm</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../filesystem.html">Data storage on Esrum</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Data storage on Esrum</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../projects.html">Creating projects and datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Running jobs using Slurm</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="basics.html">Basic Slurm jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Using the GPU/hi-MEM node</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Using the GPU / high-memory node</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html">Software on Esrum</a></li>
@@ -193,7 +196,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Outreach</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../communications/messages.html">Messages from Data Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../communications/messages.html">Welcome email</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../communications/presentations.html">Presentations</a></li>
 </ul>
 
@@ -237,33 +240,36 @@
           </label>
         </div>
         <article role="main">
-          <section id="using-the-gpu-hi-mem-node">
-<span id="p-usage-slurm-gpu"></span><h1>Using the GPU/hi-MEM node<a class="headerlink" href="#using-the-gpu-hi-mem-node" title="Permalink to this heading">#</a></h1>
-<p>This page describes how to schedule a task on the GPU/hi-MEM node.</p>
+          <section id="using-the-gpu-high-memory-node">
+<span id="p-usage-slurm-gpu"></span><h1>Using the GPU / high-memory node<a class="headerlink" href="#using-the-gpu-high-memory-node" title="Permalink to this heading">#</a></h1>
+<p>This page describes how to schedule a task on the GPU / high-memory
+node.</p>
 <p>The GPU node is intended for tasks that need to use GPUs and for tasks
 that have very high memory requirements (more than the 2 TB of RAM
 available on regular nodes).</p>
-<section id="running-jobs-on-the-gpu-hi-mem-node">
-<h2>Running jobs on the GPU/hi-MEM node<a class="headerlink" href="#running-jobs-on-the-gpu-hi-mem-node" title="Permalink to this heading">#</a></h2>
-<p>By default jobs submitted via Slurm will only run on regular nodes, even
-if you ask for more than 2TB of RAM or ask for a GPU. Attempting to run
-such a task will instead result in a <code class="docutils literal notranslate"><span class="pre">Requested</span> <span class="pre">node</span> <span class="pre">configuration</span> <span class="pre">is</span>
-<span class="pre">not</span> <span class="pre">available</span></code> error message.</p>
-<p>This is because the GPU/hi-MEM node is located on its own queue, to in
-order prevent normal use of the cluster from blocking access to these
-resource. To run jobs on the GPU/hi-MEM node, you must therefore select
-use the option <code class="docutils literal notranslate"><span class="pre">--partition=gpuqueue</span></code> to select the correct queue.
-This might look as follows in an sbatch script:</p>
+<section id="running-jobs-on-the-gpu-high-memory-node">
+<h2>Running jobs on the GPU / high-memory node<a class="headerlink" href="#running-jobs-on-the-gpu-high-memory-node" title="Permalink to this heading">#</a></h2>
+<p>By default, jobs submitted via Slurm will only run on regular nodes,
+even if you ask for more than 2 TB of RAM or ask for a GPU. Attempting
+to run such a task will instead result in a <code class="docutils literal notranslate"><span class="pre">Requested</span> <span class="pre">node</span>
+<span class="pre">configuration</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">available</span></code> error message.</p>
+<p>This is because the GPU / high-memory node is located on its own queue,
+to in order prevent normal use of the cluster from blocking access to
+these resources. To run jobs on the GPU / high-memory node, you must
+therefore select use the option <code class="docutils literal notranslate"><span class="pre">--partition=gpuqueue</span></code> to select the
+correct queue. This might look as follows in a sbatch script:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="hll"><span class="c1">#SBATCH --partition=gpuqueue</span>
 </span>
 my-memory-hungry-command
 </pre></div>
 </div>
-<p>While running on the GPU/hi-MEM queue, you can reserve up to 3920 GB of
-RAM and up to two GPUs (see below). The GPU/hi-MEM node otherwise use
-the same defaults as the other nodes (~16 GB of RAM per CPU reserved).</p>
-<p>For example, to run a job using 2.5 TB of RAM on the GPU/hi-MEM node:</p>
+<p>While running on the GPU / high-memory queue, you can reserve up to 3920
+GB of RAM and up to two GPUs (see below). The GPU / high-memory node
+otherwise use the same defaults as the other nodes (~16 GB of RAM per
+CPU reserved).</p>
+<p>For example, to run a job using 2.5 TB of RAM on the GPU / high-memory
+node:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="hll"><span class="c1">#SBATCH --partition=gpuqueue</span>
 </span><span class="c1">#SBATCH --mem 2560G</span>
@@ -309,11 +315,11 @@ GPU<span class="w"> </span><span class="m">0</span>:<span class="w"> </span>NVID
 </div>
 <section id="running-an-interactive-session">
 <h3>Running an interactive session<a class="headerlink" href="#running-an-interactive-session" title="Permalink to this heading">#</a></h3>
-<p>While it is possible to run an interactive session on the GPU/hi-MEM
-node, we ask that you limit the usage of such sessions as much as
-possible. If at all possible, prefer using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> or non-interactive
-<code class="docutils literal notranslate"><span class="pre">srun</span></code> instead. This ensures that the resources are available for use
-when you (or other users) are not actively using them.</p>
+<p>While it is possible to run an interactive session on the GPU /
+high-memory node, we ask that you limit the usage of such sessions as
+much as possible. If at all possible, prefer using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> or
+non-interactive <code class="docutils literal notranslate"><span class="pre">srun</span></code> instead. This ensures that the resources are
+available for use when you (or other users) are not actively using them.</p>
 <p>To start an interactive session using a GPU you simply apply the same
 <code class="docutils literal notranslate"><span class="pre">--partition</span></code> and (optionally) the same <code class="docutils literal notranslate"><span class="pre">--gres</span></code> options as above if
 you need a GPU, as well as other resource options described in the
@@ -340,8 +346,8 @@ into GPU memory as possible. The exact way in which you can accomplish
 this depends on the software you are running, but can often be
 accomplished by increasing the size of the batches you are processing.</p>
 <p>The way in which you are using the GPUs will affect how you can monitor
-them, depending on whether or not you have reserved a GPU for an
-interactive session:</p>
+them, depending on whether you have reserved a GPU for an interactive
+session:</p>
 <section id="monitoring-an-interactive-session">
 <h3>Monitoring an interactive session<a class="headerlink" href="#monitoring-an-interactive-session" title="Permalink to this heading">#</a></h3>
 <p>If you are running a job in an interactive session, then you can monitor
@@ -384,7 +390,7 @@ of this documentation.</p>
 <p>If you have started a standard (non-interactive) job via Slurm, then you
 will not be able to directly run <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> nor will you be able to
 join the running job using <code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">-j</span></code> due to the way Slurm handles
-special resources. We have therefore setup a log-file on the
+special resources. We have therefore set up a log-file on the
 <code class="docutils literal notranslate"><span class="pre">esrumgpun01fl</span></code> node that contains the output from the <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code>
 command as shown above.</p>
 <p>Use the following command to watch the content of this log-file:</p>
@@ -465,8 +471,8 @@ reserved a GPU.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Using the GPU/hi-MEM node</a><ul>
-<li><a class="reference internal" href="#running-jobs-on-the-gpu-hi-mem-node">Running jobs on the GPU/hi-MEM node</a></li>
+<li><a class="reference internal" href="#">Using the GPU / high-memory node</a><ul>
+<li><a class="reference internal" href="#running-jobs-on-the-gpu-high-memory-node">Running jobs on the GPU / high-memory node</a></li>
 <li><a class="reference internal" href="#reserving-gpus">Reserving GPUs</a><ul>
 <li><a class="reference internal" href="#running-an-interactive-session">Running an interactive session</a></li>
 </ul>

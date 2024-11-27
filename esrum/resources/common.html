@@ -6,7 +6,7 @@
 <link rel="search" title="Search" href="../search.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
-        <title>Running containers with Singularity - Esrum Cluster documentation</title>
+        <title>Common datasets - Esrum Cluster documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -136,7 +136,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -166,11 +166,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../usage/access/access.html">Applying for access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/access/connecting.html">Connecting to the cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage/filesystem.html">Projects, data, and home folders</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/filesystem.html">Data storage on Esrum</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Data storage on Esrum</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../usage/projects.html">Creating projects and datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../usage/slurm/basics.html">Basic Slurm jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../usage/slurm/advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/gpu.html">Using the GPU/hi-MEM node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/gpu.html">Using the GPU / high-memory node</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/modules.html">Software on Esrum</a></li>
@@ -185,15 +188,15 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tips and tricks</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">Creating environment modules</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tmux.html">Persistent sessions with tmux</a></li>
-<li class="toctree-l1"><a class="reference internal" href="batching_commands.html">Batching commands in bash</a></li>
-<li class="toctree-l1"><a class="reference internal" href="robust_scripts.html">Writing robust bash scripts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="snakemake.html">Using Snakemake on Esrum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tips/modules.html">Creating environment modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tips/tmux.html">Persistent sessions with tmux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tips/batching_commands.html">Batching commands in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tips/robust_scripts.html">Writing robust bash scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tips/snakemake.html">Using Snakemake on Esrum</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Outreach</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../communications/messages.html">Messages from Data Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../communications/messages.html">Welcome email</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../communications/presentations.html">Presentations</a></li>
 </ul>
 
@@ -215,7 +218,7 @@
         </a>
         <div class="content-icon-container">
           <div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/cbmr-data/cbmr-data.github.io/edit/main/esrum/source/tips/containers.rst" title="Edit this page">
+  <a class="muted-link" href="https://github.com/cbmr-data/cbmr-data.github.io/edit/main/esrum/source/resources/common.rst" title="Edit this page">
     <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
@@ -231,14 +234,44 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="running-containers-with-singularity">
-<h1>Running containers with Singularity<a class="headerlink" href="#running-containers-with-singularity" title="Permalink to this heading">#</a></h1>
+          <section id="common-datasets">
+<h1>Common datasets<a class="headerlink" href="#common-datasets" title="Permalink to this heading">#</a></h1>
+<p>The Data Analytics platform maintains a set of commonly used resources
+in <code class="docutils literal notranslate"><span class="pre">/datasets/cbmr_shared</span></code>.</p>
+<p>This folder contains a range of public datasets, including</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">genomes/</span></code> for commonly used reference genomes, such as various
+human reference genomes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">databases/</span></code> for databases such as <a class="reference external" href="https://www.ncbi.nlm.nih.gov/snp/">dbSNP</a>, <a class="reference external" href="https://www.ncbi.nlm.nih.gov/clinvar/">ClinVar</a>, and more.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">resources/</span></code> for heterogeneous resources and resources used by
+specific tools, such as the <cite>GATK resource bundle</cite>, <a class="reference external" href="https://www.ensembl.org/info/docs/tools/vep/index.html">VEP</a> annotation
+caches, and more.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">indices</span></code> for index files generated from genomes or other files,
+such as the index files generated by <a class="reference external" href="https://github.com/lh3/bwa">BWA</a> or <a class="reference external" href="https://bowtie-bio.sourceforge.net/bowtie2/index.shtml">Bowtie2</a>.</p></li>
+</ul>
+<p>README files are included in each (sub)folder with additional
+information about the sources, versions, and command-line options used
+to generate the dataset, as appropriate.</p>
+<section id="requesting-additional-datasets">
+<h2>Requesting additional datasets<a class="headerlink" href="#requesting-additional-datasets" title="Permalink to this heading">#</a></h2>
+<p>New datasets and new releases of datasets are added by request. To
+request that a dataset, including new releases of an existing dataset,
+be added simply <a class="reference external" href="p_contact">contact us</a> with the location (URL) of the
+dataset and the specific release you are interested in. For datasets
+with multiple versions, e.g. for different genomic builds, please
+specify the version you are interested in.</p>
+<p>Note that the data must have been released under a license that allows
+it to be accessed by all employees of CBMR, their collaborators,
+students, and anyone else who might get access to Esrum. Data under
+restrictive licenses should instead be added to a private project or
+dataset folder, such that only those with a valid license</p>
+</section>
 </section>
 
         </article>
@@ -266,8 +299,27 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Common datasets</a><ul>
+<li><a class="reference internal" href="#requesting-additional-datasets">Requesting additional datasets</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

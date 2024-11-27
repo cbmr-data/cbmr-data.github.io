@@ -21,6 +21,14 @@
    usage/modules
    usage/transfers
 
+..
+   .. toctree::
+   :hidden:
+   :caption: Resources
+
+   resources/cohorts
+   resources/common
+
 .. toctree::
    :hidden:
    :caption: Other services

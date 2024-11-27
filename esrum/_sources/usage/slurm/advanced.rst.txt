@@ -13,10 +13,9 @@ simple commands on the cluster, how to queue batches of jobs using
 *****************************
 
 The ``srun`` command can be used to queue and execute simple commands on
-the compute nodes, and for most part it should feel no different than
-running a command without Slurm. Simply prefix your command with
-``srun`` and the queuing system takes care of running it on the first
-available compute node:
+the nodes, and for most part it should feel no different from running a
+command without Slurm. Simply prefix your command with ``srun`` and the
+queuing system takes care of running it on the first available node:
 
 .. code-block::
 
@@ -88,11 +87,14 @@ Slurm offers a number of ways in which you may monitor your jobs:
       $ sbatch my_script.sh --mail-user=abc123@ku.dk --mail-type=END,FAIL
       Submitted batch job 8503
 
-   When run like this, you will receive notifications at
-   ``abc123@ku.dk`` (remember to use your account UCPH email address!)
-   when the job is completed or fails. The possible options are ``NONE``
-   (the default), ``BEGIN``, ``END``, ``FAIL``, ``REQUEUE``, ``ALL``, or
-   some combination as shown above.
+   When run like this, Slurm will send a notification to
+   ``abc123@ku.dk`` when the job is completed or fails. The possible
+   options are ``NONE`` (the default), ``BEGIN``, ``END``, ``FAIL``,
+   ``REQUEUE``, ``ALL``, or some combination as shown above.
+
+.. warning::
+
+   Remember to use your account UCPH email address as the recipient!
 
 .. _s_monitoring_processes_in_jobs:
 
@@ -121,7 +123,7 @@ you wish your job to monitor:
    $ srun --pty --nodelist esrumcmpn03fl htop
 
 This requests an interactive shell on the node on which our job is
-running ( ``esrumcmpn03fl``) and starts the ``htop`` tool. This method
+running (``esrumcmpn03fl``) and starts the ``htop`` tool. This method
 requires that there are free resources on the node, but has the
 advantage that it does not impact your job.
 
@@ -296,8 +298,8 @@ maximum number of resources possible. Combined with a reasonable ``%``
 limit this allows you to run more jobs simultaneously, than if you just
 used a ``%`` limit, without negatively impacting other users.
 
-Please reach out if you are running a large number of (job array) jobs
-and are in doubt about how many to run at the same time.
+Please reach out if you are in doubt about how many jobs you can run at
+the same time.
 
 Managing job arrays
 ===================
@@ -322,8 +324,8 @@ the two IDs instead of an underscore (``_``):
 
    While it is possible to use ``sbatch`` with jobs of any size, it
    should be remembered that Slurm imposes some overhead on jobs. It is
-   therefore preferable to run jobs consisting of a large number of
-   tasks in batches, instead of running each task individually.
+   therefore preferable to run jobs in batches, instead of running each
+   task individually.
 
 Mapping task IDs to data
 ========================
@@ -338,7 +340,7 @@ filenames in a bash script.
 #. Using numbered filenames:
 
    The example showed how to handle filenames where the numbers were
-   simply written as 1, 2, etc:
+   simply written as 1, 2, etc.:
 
    .. code-block:: bash
 

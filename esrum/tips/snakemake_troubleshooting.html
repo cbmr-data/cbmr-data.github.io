@@ -6,7 +6,7 @@
 <link rel="search" title="Search" href="../search.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
-        <title>Using and managing software - Esrum Cluster documentation</title>
+        <title>sacct: error: Problem talking to the database: Connection refused - Esrum Cluster documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -166,11 +166,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../usage/access/access.html">Applying for access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/access/connecting.html">Connecting to the cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage/filesystem.html">Projects, data, and home folders</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/filesystem.html">Data storage on Esrum</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Data storage on Esrum</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../usage/projects.html">Creating projects and datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../usage/slurm/basics.html">Basic Slurm jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../usage/slurm/advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/gpu.html">Using the GPU/hi-MEM node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/gpu.html">Using the GPU / high-memory node</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/modules.html">Software on Esrum</a></li>
@@ -193,7 +196,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Outreach</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../communications/messages.html">Messages from Data Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../communications/messages.html">Welcome email</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../communications/presentations.html">Presentations</a></li>
 </ul>
 
@@ -215,7 +218,7 @@
         </a>
         <div class="content-icon-container">
           <div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/cbmr-data/cbmr-data.github.io/edit/main/esrum/source/tips/software.rst" title="Edit this page">
+  <a class="muted-link" href="https://github.com/cbmr-data/cbmr-data.github.io/edit/main/esrum/source/tips/snakemake_troubleshooting.rst" title="Edit this page">
     <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
@@ -237,8 +240,20 @@
           </label>
         </div>
         <article role="main">
-          <section id="using-and-managing-software">
-<h1>Using and managing software<a class="headerlink" href="#using-and-managing-software" title="Permalink to this heading">#</a></h1>
+          <section id="sacct-error-problem-talking-to-the-database-connection-refused">
+<h1>sacct: error: Problem talking to the database: Connection refused<a class="headerlink" href="#sacct-error-problem-talking-to-the-database-connection-refused" title="Permalink to this heading">#</a></h1>
+<p>If you are running Snakemake with the <code class="docutils literal notranslate"><span class="pre">--slurm</span></code> option on a compete
+node, i.e. not the head node, then you will receive errors such as the
+following:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Job 0 has been submitted with SLURM jobid 512921 (log: .snakemake/slurm_logs/rule_foo/512921.log).</span>
+<span class="go">The job status query failed with command: sacct -X --parsable2 --noheader --format=JobIdRaw,State --name 2d898259-73e4-435d-aa77-44dc44d84c1b</span>
+<span class="go">Error message: sacct: error: slurm_persist_conn_open_without_init: failed to open persistent connection to host:localhost:6819: Connection refused</span>
+<span class="go">sacct: error: Sending PersistInit msg: Connection refused</span>
+<span class="go">sacct: error: Problem talking to the database: Connection refused</span>
+</pre></div>
+</div>
+<p>To solve this, simply start your Snakemake pipeline on the head node
+when using the <code class="docutils literal notranslate"><span class="pre">--slurm</span></code> option.</p>
 </section>
 
         </article>

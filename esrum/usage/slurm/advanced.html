@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Using the GPU/hi-MEM node" href="gpu.html" /><link rel="prev" title="Basic Slurm jobs" href="basics.html" />
+<link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Using the GPU / high-memory node" href="gpu.html" /><link rel="prev" title="Basic Slurm jobs" href="basics.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
         <title>Advanced Slurm jobs - Esrum Cluster documentation</title>
@@ -166,11 +166,14 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../access/access.html">Applying for access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../access/connecting.html">Connecting to the cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../filesystem.html">Projects, data, and home folders</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Running jobs using Slurm</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../filesystem.html">Data storage on Esrum</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Data storage on Esrum</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../projects.html">Creating projects and datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Running jobs using Slurm</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="basics.html">Basic Slurm jobs</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gpu.html">Using the GPU/hi-MEM node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html">Using the GPU / high-memory node</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html">Software on Esrum</a></li>
@@ -193,7 +196,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Outreach</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../communications/messages.html">Messages from Data Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../communications/messages.html">Welcome email</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../communications/presentations.html">Presentations</a></li>
 </ul>
 
@@ -245,10 +248,9 @@ simple commands on the cluster, how to queue batches of jobs using
 <section id="running-commands-using-srun">
 <h2>Running commands using srun<a class="headerlink" href="#running-commands-using-srun" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">srun</span></code> command can be used to queue and execute simple commands on
-the compute nodes, and for most part it should feel no different than
-running a command without Slurm. Simply prefix your command with
-<code class="docutils literal notranslate"><span class="pre">srun</span></code> and the queuing system takes care of running it on the first
-available compute node:</p>
+the nodes, and for most part it should feel no different from running a
+command without Slurm. Simply prefix your command with <code class="docutils literal notranslate"><span class="pre">srun</span></code> and the
+queuing system takes care of running it on the first available node:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>gzip<span class="w"> </span>chr20.fasta
 </pre></div>
 </div>
@@ -300,13 +302,16 @@ are requeued, or some combination. This is accomplished by using the
 Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">8503</span>
 </pre></div>
 </div>
-<p>When run like this, you will receive notifications at
-<code class="docutils literal notranslate"><span class="pre">abc123&#64;ku.dk</span></code> (remember to use your account UCPH email address!)
-when the job is completed or fails. The possible options are <code class="docutils literal notranslate"><span class="pre">NONE</span></code>
-(the default), <code class="docutils literal notranslate"><span class="pre">BEGIN</span></code>, <code class="docutils literal notranslate"><span class="pre">END</span></code>, <code class="docutils literal notranslate"><span class="pre">FAIL</span></code>, <code class="docutils literal notranslate"><span class="pre">REQUEUE</span></code>, <code class="docutils literal notranslate"><span class="pre">ALL</span></code>, or
-some combination as shown above.</p>
+<p>When run like this, Slurm will send a notification to
+<code class="docutils literal notranslate"><span class="pre">abc123&#64;ku.dk</span></code> when the job is completed or fails. The possible
+options are <code class="docutils literal notranslate"><span class="pre">NONE</span></code> (the default), <code class="docutils literal notranslate"><span class="pre">BEGIN</span></code>, <code class="docutils literal notranslate"><span class="pre">END</span></code>, <code class="docutils literal notranslate"><span class="pre">FAIL</span></code>,
+<code class="docutils literal notranslate"><span class="pre">REQUEUE</span></code>, <code class="docutils literal notranslate"><span class="pre">ALL</span></code>, or some combination as shown above.</p>
 </li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Remember to use your account UCPH email address as the recipient!</p>
+</div>
 <section id="monitoring-processes-in-jobs">
 <span id="s-monitoring-processes-in-jobs"></span><h3>Monitoring processes in jobs<a class="headerlink" href="#monitoring-processes-in-jobs" title="Permalink to this heading">#</a></h3>
 <p>In addition to monitoring jobs at a high level, it is possible to
@@ -327,7 +332,7 @@ $<span class="w"> </span>srun<span class="w"> </span>--pty<span class="w"> </spa
 </pre></div>
 </div>
 <p>This requests an interactive shell on the node on which our job is
-running ( <code class="docutils literal notranslate"><span class="pre">esrumcmpn03fl</span></code>) and starts the <code class="docutils literal notranslate"><span class="pre">htop</span></code> tool. This method
+running (<code class="docutils literal notranslate"><span class="pre">esrumcmpn03fl</span></code>) and starts the <code class="docutils literal notranslate"><span class="pre">htop</span></code> tool. This method
 requires that there are free resources on the node, but has the
 advantage that it does not impact your job.</p>
 <p>Alternatively, you can make use of (overlap) the resources used by the
@@ -472,8 +477,8 @@ your array and thereby prevent your job array from always using the
 maximum number of resources possible. Combined with a reasonable <code class="docutils literal notranslate"><span class="pre">%</span></code>
 limit this allows you to run more jobs simultaneously, than if you just
 used a <code class="docutils literal notranslate"><span class="pre">%</span></code> limit, without negatively impacting other users.</p>
-<p>Please reach out if you are running a large number of (job array) jobs
-and are in doubt about how many to run at the same time.</p>
+<p>Please reach out if you are in doubt about how many jobs you can run at
+the same time.</p>
 </section>
 <section id="managing-job-arrays">
 <h3>Managing job arrays<a class="headerlink" href="#managing-job-arrays" title="Permalink to this heading">#</a></h3>
@@ -493,8 +498,8 @@ the two IDs instead of an underscore (<code class="docutils literal notranslate"
 <p class="admonition-title">Warning</p>
 <p>While it is possible to use <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> with jobs of any size, it
 should be remembered that Slurm imposes some overhead on jobs. It is
-therefore preferable to run jobs consisting of a large number of
-tasks in batches, instead of running each task individually.</p>
+therefore preferable to run jobs in batches, instead of running each
+task individually.</p>
 </div>
 </section>
 <section id="mapping-task-ids-to-data">
@@ -507,7 +512,7 @@ filenames in a bash script.</p>
 <ol class="arabic">
 <li><p>Using numbered filenames:</p>
 <p>The example showed how to handle filenames where the numbers were
-simply written as 1, 2, etc:</p>
+simply written as 1, 2, etc.:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simple numbering: sample1.vcf, sample2.vcf, etc.</span>
 <span class="nv">FILENAME</span><span class="o">=</span><span class="s2">&quot;sample</span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span><span class="s2">.vcf&quot;</span>
 </pre></div>
@@ -618,7 +623,7 @@ bgzip<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Using the GPU/hi-MEM node</div>
+                <div class="title">Using the GPU / high-memory node</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>

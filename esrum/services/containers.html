@@ -166,11 +166,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../usage/access/access.html">Applying for access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/access/connecting.html">Connecting to the cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage/filesystem.html">Projects, data, and home folders</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/filesystem.html">Data storage on Esrum</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Data storage on Esrum</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../usage/projects.html">Creating projects and datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../usage/slurm/basics.html">Basic Slurm jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../usage/slurm/advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/gpu.html">Using the GPU/hi-MEM node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/gpu.html">Using the GPU / high-memory node</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/modules.html">Software on Esrum</a></li>
@@ -193,7 +196,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Outreach</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../communications/messages.html">Messages from Data Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../communications/messages.html">Welcome email</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../communications/presentations.html">Presentations</a></li>
 </ul>
 
@@ -261,12 +264,12 @@ run containerized software as part of Slurm jobs. If possible, you
 should prefer to run your containerized tools in this manner.</p>
 <p>The following only covers the absolute basics. For more information
 please refer to the official <a class="reference external" href="https://docs.sylabs.io/guides/latest/user-guide/">Singularity documentation</a>.</p>
-<section id="running-dockerhub-images">
-<h3>Running Dockerhub images<a class="headerlink" href="#running-dockerhub-images" title="Permalink to this heading">#</a></h3>
-<p>Container images available on <a class="reference external" href="https://hub.docker.com/">dockerhub</a> can be converted to singularity
-images in one step using the <code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">build</span></code> command. For the
-following example, we will download and run version <code class="docutils literal notranslate"><span class="pre">0.7.17</span></code> of the
-<a class="reference external" href="https://hub.docker.com/r/pegi3s/bwa">pegi3s/bwa</a> image on dockerhub:</p>
+<section id="running-docker-hub-images">
+<h3>Running Docker Hub images<a class="headerlink" href="#running-docker-hub-images" title="Permalink to this heading">#</a></h3>
+<p>Container images available on <a class="reference external" href="https://hub.docker.com/">Docker Hub</a> can be converted to
+singularity images in one step using the <code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">build</span></code> command.
+For the following example, we will download and run version <code class="docutils literal notranslate"><span class="pre">0.7.17</span></code>
+of the <a class="reference external" href="https://hub.docker.com/r/pegi3s/bwa">pegi3s/bwa</a> image on <a class="reference external" href="https://hub.docker.com/">Docker Hub</a>:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>--auto<span class="w"> </span>singularity
 <span class="gp">$ </span>singularity<span class="w"> </span>build<span class="w"> </span>--disable-cache<span class="w"> </span>pegi3s_bwa_0.7.17.sif<span class="w"> </span>docker://pegi3s/bwa:0.7.17
 </pre></div>
@@ -278,23 +281,23 @@ working on so that your collaborators can also access it.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">--disable-cache</span></code> option is optional but recommended, since
 Singularity will otherwise cache the individual parts of the image it
 downloaded in <code class="docutils literal notranslate"><span class="pre">~/.singularity</span></code>. As described in
-<a class="reference internal" href="../usage/filesystem.html#p-usage-filesystem"><span class="std std-ref">Projects, data, and home folders</span></a> your home is limited to 100 GB and larger
-docker images can easily take up GBs of space.</p>
+<a class="reference internal" href="../usage/filesystem.html#p-usage-filesystem"><span class="std std-ref">Data storage on Esrum</span></a> your home is limited to 100 GB and larger
+docker images can easily take up gigabytes of space.</p>
 <p>Once you have run the <code class="docutils literal notranslate"><span class="pre">build</span></code> command, the image can be run using the
 <code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">run</span></code> command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$  </span>singularity<span class="w"> </span>run<span class="w"> </span>pegi3s_bwa_0.7.17.sif<span class="w"> </span>bwa
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>singularity<span class="w"> </span>run<span class="w"> </span>pegi3s_bwa_0.7.17.sif<span class="w"> </span>bwa
 
 <span class="go">Program: bwa (alignment via Burrows-Wheeler transformation)</span>
 <span class="go">Version: 0.7.17-r1188</span>
 <span class="go">Contact: Heng Li &lt;lh3@sanger.ac.uk&gt;</span>
 </pre></div>
 </div>
-<p>It is also possible to run dockerhub images &quot;directly&quot; by using a
+<p>It is also possible to run <a class="reference external" href="https://hub.docker.com/">Docker Hub</a> images &quot;directly&quot; by using a
 <code class="docutils literal notranslate"><span class="pre">docker://</span></code> URL instead of the path to a singularity image:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$  </span>singularity<span class="w"> </span>run<span class="w"> </span>docker://pegi3s/bwa:0.7.17<span class="w"> </span>bwa
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>singularity<span class="w"> </span>run<span class="w"> </span>docker://pegi3s/bwa:0.7.17<span class="w"> </span>bwa
 </pre></div>
 </div>
-<p>However, this caches the image in your home folder and it is therefore
+<p>However, this caches the image in your home folder, and it is therefore
 not recommended for the reasons described above.</p>
 </section>
 <section id="running-custom-docker-podman-images">
@@ -311,7 +314,7 @@ a single file:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>scp<span class="w"> </span>~/my_image_v1.2.3.tar<span class="w"> </span>abc1232@esrumhead01fl.unicph.domain:/projects/my_project/scratch/
 </pre></div>
 </div>
-<p>Finally, you can convert the image on esrum to the format used by
+<p>Finally, you can convert the image on Esrum to the format used by
 singularity:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
 <span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>--auto<span class="w"> </span>singularity
@@ -392,7 +395,7 @@ container node.</p>
             <ul>
 <li><a class="reference internal" href="#">Containerized software</a><ul>
 <li><a class="reference internal" href="#singularity-containers">Singularity containers</a><ul>
-<li><a class="reference internal" href="#running-dockerhub-images">Running Dockerhub images</a></li>
+<li><a class="reference internal" href="#running-docker-hub-images">Running Docker Hub images</a></li>
 <li><a class="reference internal" href="#running-custom-docker-podman-images">Running custom Docker/Podman images</a></li>
 </ul>
 </li>

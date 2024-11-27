@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Basic Slurm jobs" href="basics.html" /><link rel="prev" title="Projects, data, and home folders" href="../filesystem.html" />
+<link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Basic Slurm jobs" href="basics.html" /><link rel="prev" title="Creating projects and datasets" href="../projects.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
         <title>Running jobs using Slurm - Esrum Cluster documentation</title>
@@ -166,11 +166,14 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../access/access.html">Applying for access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../access/connecting.html">Connecting to the cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../filesystem.html">Projects, data, and home folders</a></li>
-<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Running jobs using Slurm</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../filesystem.html">Data storage on Esrum</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Data storage on Esrum</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../projects.html">Creating projects and datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Running jobs using Slurm</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="basics.html">Basic Slurm jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gpu.html">Using the GPU/hi-MEM node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html">Using the GPU / high-memory node</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html">Software on Esrum</a></li>
@@ -193,7 +196,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Outreach</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../communications/messages.html">Messages from Data Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../communications/messages.html">Welcome email</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../communications/presentations.html">Presentations</a></li>
 </ul>
 
@@ -242,8 +245,8 @@
 <p>In order to run jobs on the Esrum cluster, you must connect to the head
 node (see <a class="reference internal" href="../access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a>) and queue them using the <a class="reference external" href="https://slurm.schedmd.com/overview.html">Slurm</a> job
 management system. <a class="reference external" href="https://slurm.schedmd.com/overview.html">Slurm</a> takes care of automatically queuing and
-distribute jobs on the compute and GPU nodes when the required resources
-are available.</p>
+distribute jobs on compute and GPU nodes when the required resources are
+available.</p>
 <p>While it is permitted to run small jobs directly on the head node, more
 resource intensive jobs <em>must</em> be queued using Slurm. We <em>will</em>
 terminate jobs running on the head node without prior warning, if it is
@@ -252,21 +255,21 @@ necessary to prevent them from impacting users of the cluster.</p>
 <ol class="arabic simple">
 <li><p>The <a class="reference internal" href="basics.html#p-usage-slurm-basics"><span class="std std-ref">Basic Slurm jobs</span></a> section describes the basic procedure
 of queuing jobs using the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command, how to request
-resources for your jobs, how to monitoring your jobs, and how to run
-a shell on a compute node when you need to work interactively.</p></li>
+resources for your jobs, how to monitor your jobs, and how to run a
+shell on a compute node when you need to work interactively.</p></li>
 <li><p>The <a class="reference internal" href="advanced.html#p-usage-slurm-advanced"><span class="std std-ref">Advanced Slurm jobs</span></a> section describes additional ways
 to monitor your jobs and the cluster as a whole, how to batch
 multiple, similar jobs using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>, how to use <code class="docutils literal notranslate"><span class="pre">srun</span></code> for
 executing singular commands, and more.</p></li>
-<li><p>The <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU/hi-MEM node</span></a> section describes how to run jobs on the
-GPU/High-MEM node, including best practices for using this limited
-resource.</p></li>
+<li><p>The <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory node</span></a> section describes how to run jobs on the
+GPU / high-memory node, including best practices for using this
+limited resource.</p></li>
 </ol>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="basics.html">Basic Slurm jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gpu.html">Using the GPU/hi-MEM node</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">Using the GPU / high-memory node</a></li>
 </ul>
 </div>
 </section>
@@ -285,14 +288,14 @@ resource.</p></li>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../filesystem.html">
+          <a class="prev-page" href="../projects.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Projects, data, and home folders</div>
+                <div class="title">Creating projects and datasets</div>
                 
               </div>
             </a>

@@ -166,11 +166,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../usage/access/access.html">Applying for access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/access/connecting.html">Connecting to the cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage/filesystem.html">Projects, data, and home folders</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/filesystem.html">Data storage on Esrum</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Data storage on Esrum</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../usage/projects.html">Creating projects and datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../usage/slurm/basics.html">Basic Slurm jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../usage/slurm/advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/gpu.html">Using the GPU/hi-MEM node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/gpu.html">Using the GPU / high-memory node</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/modules.html">Software on Esrum</a></li>
@@ -193,7 +196,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Outreach</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../communications/messages.html">Messages from Data Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../communications/messages.html">Welcome email</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../communications/presentations.html">Presentations</a></li>
 </ul>
 
@@ -253,7 +256,7 @@ The XXXXX in the above command must be replaced with a valid port number. To avo
 </noscript><p>It is also recommended that you run your notebook in a tmux session or
 similar, to avoid the notebook shutting down if you lose connection to
 the server. See <a class="reference internal" href="../tips/tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> for more information.</p>
-<p>To actually connect to the notebook server, you will need to setup port
+<p>To actually connect to the notebook server, you will need to set up port
 forwarding using the port-number from your command.</p>
 <section id="port-forwarding-in-windows-mobaxterm">
 <h2>Port forwarding in Windows (MobaXterm)<a class="headerlink" href="#port-forwarding-in-windows-mobaxterm" title="Permalink to this heading">#</a></h2>
@@ -302,9 +305,9 @@ entry for Esrum as shown below (see also the section about
 <p>The <code class="docutils literal notranslate"><span class="pre">LocalForward</span></code> option consists of two parts: The port used by the
 notebook on Esrum (XXXXX), and the address via which the notebook on
 Esrum should be accessible on your PC (localhost:XXXXX).</p>
-<p>Alternatively, you can start start/stop port forwarding on demand by
-using an explicit SSH command. The <code class="docutils literal notranslate"><span class="pre">-N</span></code> option is optional and stops
-ssh from starting a shell once it has connected to Esrum:</p>
+<p>Alternatively, you can start/stop port forwarding on demand by using an
+explicit SSH command. The <code class="docutils literal notranslate"><span class="pre">-N</span></code> option is optional and stops ssh from
+starting a shell once it has connected to Esrum:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ssh<span class="w"> </span>-S<span class="w"> </span>none<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span>XXXXX:localhost:XXXXX<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
 </pre></div>
 </div>
@@ -340,7 +343,7 @@ server, or that it is running on a different port than the one you've
 forwarded. Check that Jupyter Notebook is running and make sure that
 your forwarded ports match those used by Jupyter Notebook on Esrum.</p>
 </li>
-<li><p>&quot;localhost refused to connect&quot; or &quot;Unable to connect&quot;</p>
+<li><p>&quot;Localhost refused to connect&quot; or &quot;Unable to connect&quot;</p>
 <p>This typically indicates that port forwarding isn't active, or that
 you have entered the wrong port number in your browser. Verify that
 port forwarding is active and that you are using the correct port
@@ -348,9 +351,9 @@ number in the <code class="docutils literal notranslate"><span class="pre">local
 </li>
 <li><p>&quot;Check if there is a typo in esrumweb01fl&quot; or &quot;We're having trouble
 finding that site&quot;</p>
-<p>You are must likely connecting from a network outside of UCPH. Make
-sure that you are using a wired connection at CBMR and/or that the
-VPN is activated and try again.</p>
+<p>You are most likely connecting from a network outside UCPH. Make sure
+that you are using a wired connection at CBMR and/or that the VPN is
+activated and try again.</p>
 </li>
 </ul>
 </section>

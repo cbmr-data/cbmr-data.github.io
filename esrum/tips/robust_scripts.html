@@ -166,11 +166,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../usage/access/access.html">Applying for access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/access/connecting.html">Connecting to the cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage/filesystem.html">Projects, data, and home folders</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/filesystem.html">Data storage on Esrum</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Data storage on Esrum</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../usage/projects.html">Creating projects and datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../usage/slurm/basics.html">Basic Slurm jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../usage/slurm/advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/gpu.html">Using the GPU/hi-MEM node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/gpu.html">Using the GPU / high-memory node</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/modules.html">Software on Esrum</a></li>
@@ -193,7 +196,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Outreach</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../communications/messages.html">Messages from Data Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../communications/messages.html">Welcome email</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../communications/presentations.html">Presentations</a></li>
 </ul>
 
@@ -240,14 +243,13 @@
           <section id="writing-robust-bash-scripts">
 <span id="p-tips-robustscripts"></span><h1>Writing robust bash scripts<a class="headerlink" href="#writing-robust-bash-scripts" title="Permalink to this heading">#</a></h1>
 <p>Bash scripts are useful for automating tasks and for running batch jobs.
-However the default behavior of bash is to keep running when errors
+However, the default behavior of bash is to keep running when errors
 happen, and that can result in undesirable behavior such as running
 programs with the wrong settings, analyzing bad data, and worse. This
 page is written on the premise that it is better to fail loudly than to
 generate bad results or do bad things quietly.</p>
-<p>However, because of the many, many <a class="reference external" href="https://mywiki.wooledge.org/BashPitfalls">bash pitfalls</a>, it is also
-recommended to use a more robust programming language when performing
-more complex tasks.</p>
+<p>However, because of the many, many <a class="reference external" href="https://mywiki.wooledge.org/BashPitfalls">bash pitfalls</a>, using a more robust
+programming language when performing more complex tasks is recommended.</p>
 <section id="improving-default-bash-behavior">
 <h2>Improving default bash behavior<a class="headerlink" href="#improving-default-bash-behavior" title="Permalink to this heading">#</a></h2>
 <p>This section describes several options that can make bash scripts behave
@@ -306,8 +308,8 @@ bash simply use <code class="docutils literal notranslate"><span class="pre">${n
 </section>
 <section id="stop-running-on-program-failures">
 <h3>Stop running on program failures<a class="headerlink" href="#stop-running-on-program-failures" title="Permalink to this heading">#</a></h3>
-<p>By default bash (and hence Slurm) will continue to execute a script even
-if a command fails. If this is not detected, then it can lead to
+<p>By default, bash (and hence Slurm) will continue to execute a script
+even if a command fails. If this is not detected, then it can lead to
 partially or wholly corrupt data:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1"># 1. Create some data</span>
@@ -416,7 +418,7 @@ complicated tasks.</p>
 <section id="checking-your-scripts-for-common-mistakes">
 <h2>Checking your scripts for common mistakes<a class="headerlink" href="#checking-your-scripts-for-common-mistakes" title="Permalink to this heading">#</a></h2>
 <p>In addition to implementing the suggestions listed on this page, it is
-recommended that you use the <a class="reference external" href="https://github.com/koalaman/shellcheck">shellcheck</a> to check your bash scripts for
+recommended that you use the <a class="reference external" href="https://github.com/koalaman/shellcheck">ShellCheck</a> to check your bash scripts for
 common mistakes.</p>
 <p>For example, if we run shell check on the very first script shown on
 this page:</p>

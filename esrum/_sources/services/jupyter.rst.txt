@@ -25,7 +25,7 @@ It is also recommended that you run your notebook in a tmux session or
 similar, to avoid the notebook shutting down if you lose connection to
 the server. See :ref:`p_tips_tmux` for more information.
 
-To actually connect to the notebook server, you will need to setup port
+To actually connect to the notebook server, you will need to set up port
 forwarding using the port-number from your command.
 
 ****************************************
@@ -91,9 +91,9 @@ The ``LocalForward`` option consists of two parts: The port used by the
 notebook on Esrum (XXXXX), and the address via which the notebook on
 Esrum should be accessible on your PC (localhost:XXXXX).
 
-Alternatively, you can start start/stop port forwarding on demand by
-using an explicit SSH command. The ``-N`` option is optional and stops
-ssh from starting a shell once it has connected to Esrum:
+Alternatively, you can start/stop port forwarding on demand by using an
+explicit SSH command. The ``-N`` option is optional and stops ssh from
+starting a shell once it has connected to Esrum:
 
 .. code:: shell
 

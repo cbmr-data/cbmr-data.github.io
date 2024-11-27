@@ -9,32 +9,33 @@ The Esrum cluster is a cluster managed by the `Data Analytics Platform`_
 support is handled by UCPH-IT_.
 
 In addition to the documentation provided here, UCPH-IT also provides
-documentation for the `UCPH computing/HPC Systems`_ on KUNet.
+documentation for the `UCPH computing/HPC Systems`_ on KUnet.
 
 **************
  Architecture
 **************
 
-The cluster consists of a head node, 12 compute nodes, 1 GPU/Hi-mem
-node, 2 Rstudio servers, and 1 server for running containers:
+The cluster consists of a head node, 12 compute nodes, 1 GPU /
+high-memory node, 2 RStudio servers, and 1 server for running
+containers:
 
-+----+--------------+------+-------------------------+---------------------+-----------------+
-|    | Node         | RAM  | CPUs                    | GPUs                | Name            |
-+====+==============+======+=========================+=====================+=================+
-| 1  | Head         | 2 TB | 2x24 core AMD EPYC 7413 |                     | *esrumhead01fl* |
-+----+--------------+------+-------------------------+---------------------+-----------------+
-| 12 | Compute      | 2 TB | 2x32 core AMD EPYC 7543 |                     | *esrumcmpn\*fl* |
-+----+--------------+------+-------------------------+---------------------+-----------------+
-| 1  | GPU / Hi-mem | 4 TB | 2x32 core AMD EPYC 75F3 | 2x NVIDIA A100 80GB | *esrumgpun01fl* |
-+----+--------------+------+-------------------------+---------------------+-----------------+
-| 2  | Rstudio      | 2 TB | 2x32 core AMD EPYC 7543 |                     | *esrumweb\*fl*  |
-+----+--------------+------+-------------------------+---------------------+-----------------+
-| 1  | Container    | 2 TB | 2x32 core AMD EPYC 7543 |                     | *esrumcont01fl* |
-+----+--------------+------+-------------------------+---------------------+-----------------+
++----+--------------------+------+-------------------------+---------------------+-----------------+
+|    | Node               | RAM  | CPUs                    | GPUs                | Name            |
++====+====================+======+=========================+=====================+=================+
+| 1  | Head               | 2 TB | 2x24 core AMD EPYC 7413 |                     | *esrumhead01fl* |
++----+--------------------+------+-------------------------+---------------------+-----------------+
+| 12 | Compute            | 2 TB | 2x32 core AMD EPYC 7543 |                     | *esrumcmpn\*fl* |
++----+--------------------+------+-------------------------+---------------------+-----------------+
+| 1  | GPU / high-memory  | 4 TB | 2x32 core AMD EPYC 75F3 | 2x NVIDIA A100 80GB | *esrumgpun01fl* |
++----+--------------------+------+-------------------------+---------------------+-----------------+
+| 2  | Rstudio            | 2 TB | 2x32 core AMD EPYC 7543 |                     | *esrumweb\*fl*  |
++----+--------------------+------+-------------------------+---------------------+-----------------+
+| 1  | Container          | 2 TB | 2x32 core AMD EPYC 7543 |                     | *esrumcont01fl* |
++----+--------------------+------+-------------------------+---------------------+-----------------+
 
 Users connect to the "head" node, from which jobs can be submitted to
 the individual compute nodes using the Slurm_ Workload Manager for
-running tasks. An :ref:`s_service_rstudio` web server and a
+running tasks. Two :ref:`RStudio <s_service_rstudio>` web servers and a
 :ref:`p_usage_shiny` server, both managed by UCPH-IT, are also
 available.
 
@@ -55,7 +56,7 @@ individual project owners, with each project folder containing a
 standard set of sub-folders (``apps``, ``data``, ``people``,
 ``scratch``).
 
-Datasets used by several projects may made available via read-only
+Datasets used by several projects may be made available via read-only
 network shares. As with projects, access is administered by the data
 owner.
 
@@ -67,12 +68,12 @@ new projects/data-shared.
  Backup policies and quotas
 ****************************
 
-Your ``/home`` and the ``apps``. ``data``, and ``people`` folders in
-each projects are automatically backed up. The ``scratch`` folders are
-NOT backed up. The specific frequency and duration of backups differ for
+Your ``/home`` folder and the ``apps``. ``data``, and ``people`` folders
+in projects are automatically backed up. The ``scratch`` folders are NOT
+backed up. The specific frequency and duration of backups differ for
 each type of folder and may also differ for individual projects.
 
-As a rule folders for projects involving GDPR protected data (indicated
+As a rule, folders for projects involving GDPR protected data (indicated
 by the project name ending with ``-AUDIT``) is subject to more frequent
 backups. However, on-site backups are kept for a shorter time to prevent
 the unauthorized recovery of intentionally deleted data.
@@ -83,7 +84,7 @@ See :ref:`p_usage_filesystem` for more information.
  Additional resources
 **********************
 
--  Official `UCPH computing/HPC Systems`_ documentation on KUNet.
+-  Official `UCPH computing/HPC Systems`_ documentation on KUnet.
 
 .. _cbmr: https://cbmr.ku.dk/
 

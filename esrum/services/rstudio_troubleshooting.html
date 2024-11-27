@@ -166,11 +166,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../usage/access/access.html">Applying for access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/access/connecting.html">Connecting to the cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage/filesystem.html">Projects, data, and home folders</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/filesystem.html">Data storage on Esrum</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Data storage on Esrum</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../usage/projects.html">Creating projects and datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../usage/slurm/basics.html">Basic Slurm jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../usage/slurm/advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/gpu.html">Using the GPU/hi-MEM node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/gpu.html">Using the GPU / high-memory node</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/modules.html">Software on Esrum</a></li>
@@ -193,7 +196,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Outreach</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../communications/messages.html">Messages from Data Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../communications/messages.html">Welcome email</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../communications/presentations.html">Presentations</a></li>
 </ul>
 
@@ -240,9 +243,9 @@
           <section id="incorrect-or-invalid-username-password">
 <h1>Incorrect or invalid username/password<a class="headerlink" href="#incorrect-or-invalid-username-password" title="Permalink to this heading">#</a></h1>
 <p>Please make sure that you are entering your username in the short form
-(i.e. <code class="docutils literal notranslate"><span class="pre">abc123</span></code>) and that you have have applied for and been given
-access to the Esrum HPC (see <a class="reference internal" href="../usage/access/access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a>). If the
-problem persists, please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us for assistance.</p>
+(i.e. <code class="docutils literal notranslate"><span class="pre">abc123</span></code>) and that you have applied for and been given access to
+the Esrum HPC (see <a class="reference internal" href="../usage/access/access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a>). If the problem
+persists, please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us for assistance.</p>
 </section>
 <section id="logging-in-takes-a-very-long-time">
 <h1>Logging in takes a very long time<a class="headerlink" href="#logging-in-takes-a-very-long-time" title="Permalink to this heading">#</a></h1>
@@ -250,9 +253,9 @@ problem persists, please <a class="reference internal" href="../contact.html#p-c
 loaded into your R session and will restore it when you return later, so
 that you can continue your work. However, this many result in large
 amounts of data being saved and loading this data may result in a large
-delay when you attempt to login at a later date.</p>
+delay when you attempt to log in at a later date.</p>
 <p>It is therefore recommended that you regularly clean up your workspace
-using the built in tools, when you no longer need to have the data
+using the built-in tools, when you no longer need to have the data
 loaded in R.</p>
 <p>You can remove individual bits of data using the <code class="docutils literal notranslate"><span class="pre">rm</span></code> function in R.
 This works both when using regular R and when using RStudio. The
@@ -276,7 +279,7 @@ the saved data on startup. This is accomplished via the <code class="docutils li
 <span class="pre">Options...</span></code> accessible from the <code class="docutils literal notranslate"><span class="pre">Tools</span></code> menu:</p>
 <img alt="../_images/rstudio_gc_03.png" class="align-center" src="../_images/rstudio_gc_03.png" />
 <p>Should your R session have grown to such a size that you simply cannot
-login and clean it up, then it my be necessary to remove the files
+log in and clean it up, then it may be necessary to remove the files
 containing the data that R/RStudio has saved. This data is stored in two
 locations:</p>
 <ol class="arabic simple">
@@ -285,10 +288,10 @@ saves your data if you answer yes <code class="docutils literal notranslate"><sp
 when quitting R.</p></li>
 <li><p>In the <code class="docutils literal notranslate"><span class="pre">environment</span></code> file in your RStudio session folder
 (<code class="docutils literal notranslate"><span class="pre">~/.local/share/rstudio/sessions/active/session-*/suspended-session-data/environment</span></code>).
-This is where Rstudio saves your data should your login time-out
+This is where RStudio saves your data should your login time-out
 while using RStudio.</p></li>
 </ol>
-<p>Please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us and we can help you remove the correct files.</p>
+<p>Please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us if you need help removing the correct files.</p>
 </section>
 <section id="libstdc-so-6-version-glibcxx-3-4-26-not-found">
 <h1>libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found<a class="headerlink" href="#libstdc-so-6-version-glibcxx-3-4-26-not-found" title="Permalink to this heading">#</a></h1>

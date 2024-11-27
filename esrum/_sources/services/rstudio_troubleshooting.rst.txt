@@ -2,9 +2,9 @@ Incorrect or invalid username/password
 ======================================
 
 Please make sure that you are entering your username in the short form
-(i.e. ``abc123``) and that you have have applied for and been given
-access to the Esrum HPC (see :ref:`p_usage_access_applying`). If the
-problem persists, please :ref:`p_contact` us for assistance.
+(i.e. ``abc123``) and that you have applied for and been given access to
+the Esrum HPC (see :ref:`p_usage_access_applying`). If the problem
+persists, please :ref:`p_contact` us for assistance.
 
 Logging in takes a very long time
 =================================
@@ -13,10 +13,10 @@ Similar to regular R, RStudio will automatically save the data you have
 loaded into your R session and will restore it when you return later, so
 that you can continue your work. However, this many result in large
 amounts of data being saved and loading this data may result in a large
-delay when you attempt to login at a later date.
+delay when you attempt to log in at a later date.
 
 It is therefore recommended that you regularly clean up your workspace
-using the built in tools, when you no longer need to have the data
+using the built-in tools, when you no longer need to have the data
 loaded in R.
 
 You can remove individual bits of data using the ``rm`` function in R.
@@ -51,7 +51,7 @@ Options...`` accessible from the ``Tools`` menu:
    :align: center
 
 Should your R session have grown to such a size that you simply cannot
-login and clean it up, then it my be necessary to remove the files
+log in and clean it up, then it may be necessary to remove the files
 containing the data that R/RStudio has saved. This data is stored in two
 locations:
 
@@ -61,10 +61,10 @@ locations:
 
 #. In the ``environment`` file in your RStudio session folder
    (``~/.local/share/rstudio/sessions/active/session-*/suspended-session-data/environment``).
-   This is where Rstudio saves your data should your login time-out
+   This is where RStudio saves your data should your login time-out
    while using RStudio.
 
-Please :ref:`p_contact` us and we can help you remove the correct files.
+Please :ref:`p_contact` us if you need help removing the correct files.
 
 libstdc++.so.6: version ``'GLIBCXX_3.4.26'`` not found
 ======================================================

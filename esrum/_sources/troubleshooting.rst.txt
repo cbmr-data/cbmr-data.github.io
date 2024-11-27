@@ -36,3 +36,9 @@ to the cluster.
 *******************
 
 .. include:: services/jupyter_troubleshooting.rst
+
+***********
+ Snakemake
+***********
+
+.. include:: tips/snakemake_troubleshooting.rst

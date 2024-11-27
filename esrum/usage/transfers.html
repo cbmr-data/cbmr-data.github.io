@@ -166,11 +166,14 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="access/access.html">Applying for access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="access/connecting.html">Connecting to the cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="filesystem.html">Projects, data, and home folders</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="filesystem.html">Data storage on Esrum</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Data storage on Esrum</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Creating projects and datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="slurm/basics.html">Basic Slurm jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="slurm/advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="slurm/gpu.html">Using the GPU/hi-MEM node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slurm/gpu.html">Using the GPU / high-memory node</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Software on Esrum</a></li>
@@ -193,7 +196,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Outreach</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../communications/messages.html">Messages from Data Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../communications/messages.html">Welcome email</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../communications/presentations.html">Presentations</a></li>
 </ul>
 
@@ -241,7 +244,7 @@
 <span id="p-transfers"></span><h1>Transferring data<a class="headerlink" href="#transferring-data" title="Permalink to this heading">#</a></h1>
 <p>This section describes how to perform bulk data transfers between Esrum,
 your PC/Laptop, repositories such as SIF/Erda, and servers like
-Computerome.</p>
+Computerome. <a class="reference internal" href="#bluewhale"><span class="std std-ref">Secure emails using Bluewhale</span></a> is also briefly described.</p>
 <p>File transfers (including project-to-project transfers) should if at all
 possible be run on a compute node, as high amounts of network traffic
 may degrade performance on the head node for all users of the cluster.
@@ -299,7 +302,7 @@ datasets<span class="w">  </span>hdir<span class="w">      </span>ndir<span clas
 you may either need to approve the connection attempt or (as shown
 above) enter a one-time password.</p>
 <p>Official documentation is provided on the <a class="reference external" href="https://kunet.ku.dk/work-areas/research/Research%20Infrastructure/research-it/ucph-computing-hpc-systems/Pages/default.aspx">UCPH computing/HPC Systems</a>
-pages on KUNet.</p>
+pages on KUnet.</p>
 </section>
 <section id="transferring-data-to-from-the-n-and-h-drives">
 <span id="p-tranfers-sifanderda"></span><h2>Transferring data to/from the N: and H: drives<a class="headerlink" href="#transferring-data-to-from-the-n-and-h-drives" title="Permalink to this heading">#</a></h2>
@@ -333,7 +336,7 @@ cluster.</p>
 <section id="transferring-data-to-from-sif-and-erda">
 <h2>Transferring data to/from SIF and ERDA<a class="headerlink" href="#transferring-data-to-from-sif-and-erda" title="Permalink to this heading">#</a></h2>
 <p>Connecting to the <a class="reference external" href="https://sif.ku.dk/">SIF</a> or <a class="reference external" href="https://erda.ku.dk/">ERDA</a> servers requires that the user has
-successfully authenticated using Two Factor Authentication. Futhermore,
+successfully authenticated using Two-factor authentication. Furthermore,
 this must be done using the same IP from which the user intends to
 connect, in this case from the Esrum IP.</p>
 <p>This poses some challenges, as running a full-fledged browser over SSH
@@ -400,19 +403,19 @@ looks something like <code class="docutils literal notranslate"><span class="pre
 <p>Remember to set a password for the project on SIF before attempting
 to login! This is done on the <code class="docutils literal notranslate"><span class="pre">Setup</span></code> page described above.</p>
 </div>
-<p>The two <code class="docutils literal notranslate"><span class="pre">set</span></code> commands are required to prevent lftp from performing
-simultaneous downloads (not supported by SIF) and to prevent lftp from
-re-trying repeatedly on failure. As SIF sends an email every time you
-fail to login, allowing retries typically means receiving a large number
-of emails if a transfer fails.</p>
+<p>The two <code class="docutils literal notranslate"><span class="pre">set</span></code> commands are required to prevent <code class="docutils literal notranslate"><span class="pre">lftp</span></code> from
+performing simultaneous downloads (not supported by SIF) and to prevent
+<code class="docutils literal notranslate"><span class="pre">lftp</span></code> from re-trying repeatedly on failure. As SIF sends an email
+every time you fail to log in, allowing retries typically means
+receiving numerous emails if a transfer fails.</p>
 </section>
 <section id="transferring-data-to-from-computerome">
 <span id="p-transfers-computerome"></span><h2>Transferring data to/from Computerome<a class="headerlink" href="#transferring-data-to-from-computerome" title="Permalink to this heading">#</a></h2>
-<p>When transferring data/to from computerome you should <em>always</em> run the
+<p>When transferring data/to from Computerome you should <em>always</em> run the
 transfer software on Esrum (or on your PC/laptop) and you should
 <em>always</em> connect to Computerome via <code class="docutils literal notranslate"><span class="pre">transfer.computerome.dk</span></code> instead
 of <code class="docutils literal notranslate"><span class="pre">ssh.computerome.dk</span></code>.</p>
-<p>For example, to transfer data to computerome, you might run</p>
+<p>For example, to transfer data to Computerome, you might run</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>rsync<span class="w"> </span>-av<span class="w"> </span>./<span class="w"> </span><span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>@transfer.computerome.dk:/home/projects/ab_12345/people/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/
 </pre></div>
 </div>
@@ -428,8 +431,20 @@ example) <code class="docutils literal notranslate"><span class="pre">rsync</spa
 data to or download data from this server.</p></li>
 <li><p>While it is possible to transfer data to/from Computerome from/to
 Esrum by running your software on a node, this involves paying for an
-node on computerome for the duration of the transfer.</p></li>
+node on Computerome for the duration of the transfer.</p></li>
 </ol>
+</section>
+<section id="secure-emails-using-bluewhale">
+<span id="bluewhale"></span><h2>Secure emails using Bluewhale<a class="headerlink" href="#secure-emails-using-bluewhale" title="Permalink to this heading">#</a></h2>
+<p>UCPH offers the ability to securely email large files, up to 20 GB in
+size, using <a class="reference external" href="https://bluewhale.dk/">Bluewhale</a>. Files sent this way
+are encrypted using a password or using an SMS pin-code that is
+automatically sent to the recipient.</p>
+<p>This service is available as plugins for Outlook (for Windows only) and
+via the web-portal <a class="reference external" href="https://bluewhale.ku.dk/">https://bluewhale.ku.dk/</a>. For more information,
+please refer to the official UCPH documentation on Email security in
+<a class="reference external" href="https://kunet.ku.dk/medarbejderguide/Sider/It/E-mail-sikkerhed.aspx">Danish</a>
+or <a class="reference external" href="https://kunet.ku.dk/employee-guide/Pages/IT/Email-security.aspx">English</a>.</p>
 </section>
 </section>
 
@@ -494,6 +509,7 @@ node on computerome for the duration of the transfer.</p></li>
 <li><a class="reference internal" href="#transferring-data-to-from-the-n-and-h-drives">Transferring data to/from the N: and H: drives</a></li>
 <li><a class="reference internal" href="#transferring-data-to-from-sif-and-erda">Transferring data to/from SIF and ERDA</a></li>
 <li><a class="reference internal" href="#transferring-data-to-from-computerome">Transferring data to/from Computerome</a></li>
+<li><a class="reference internal" href="#secure-emails-using-bluewhale">Secure emails using Bluewhale</a></li>
 </ul>
 </li>
 </ul>

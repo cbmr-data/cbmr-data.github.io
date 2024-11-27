@@ -14,7 +14,7 @@ RStudio servers.
    using Slurm as described in :ref:`p_usage_slurm`.
 
    Resource intensive tasks running on the RStudio server will likely
-   negatively impact everyone using the service and we will therefore
+   negatively impact everyone using the service, and we may therefore
    terminate such tasks without warning if we deem it necessary.
 
 ************
@@ -41,7 +41,7 @@ that you ``R/4.3.3`` (or another version of ``R/4.3.x``) with
 ``gcc/8.5.0``. This ensures that the R libraries you install are
 compatible between the compute nodes and the RStudio servers.
 
-By default the 4.3.x versions of R loads ``gcc/8.5.0``, so you can
+By default, the 4.3.x versions of R loads ``gcc/8.5.0``, so you can
 simply use the ``--auto`` option when loading ``R/4.3.x``:
 
 .. code:: shell
@@ -56,7 +56,7 @@ available on the RStudio server and you will need to install them again.
 .. warning::
 
    Using a GCC version greater than 8.x with ``R/4.3.x`` may cause
-   modules you install to fail to load on the Rstudio server with the
+   modules you install to fail to load on the RStudio server with the
    errors similar to the following:
 
    .. code::
@@ -201,14 +201,14 @@ you and press enter:
 
 The RStudio_ servers can be found at https://esrumweb01fl/rstudio/ and
 https://esrumweb02fl/rstudio/. You *must* have applied for access as
-described on the :ref:`p_usage_access_applying` page and you *must* be
+described on the :ref:`p_usage_access_applying` page, and you *must* be
 connected via the UCPH VPN in order to connect to these servers.
 
 If you have not been granted access, or if you are not connected via the
 VPN, then you will likely see a browser error message like ``This site
 can't be reached``. See :ref:`p_usage_connecting` for more information.
 
-To login, use the short form of your UPCH username (i.e. ``abc123``):
+To login, use the short form of your UCPH username (i.e. ``abc123``):
 
 .. image:: images/rstudio_login.png
    :align: center
@@ -228,7 +228,7 @@ In particular,
    cause significant slow-downs for *everyone* using the service.
 
    We therefore recommend that you load a (small) subset of your data in
-   Rstudio, that you use that subset of data to develop your analyses
+   RStudio, that you use that subset of data to develop your analyses
    processes, and that you use that to process your complete dataset via
    an R-script submitted to Slurm as described in :ref:`p_usage_slurm`.
 
@@ -237,13 +237,13 @@ In particular,
 
 -  Don't keep data in memory that you do not need. Data that you no
    longer need can be freed with the ``rm`` function or using the broom
-   icon on the ``Environment`` tab in Rstudio. This also helps prevent
+   icon on the ``Environment`` tab in RStudio. This also helps prevent
    RStudio from filling your home folder when your session is closed
    (see Troubleshooting below).
 
 -  Do not run resource intensive tasks via the embedded terminal. As
    noted above, such tasks will be terminated without warning if deemed
-   to have a negative impact on other users. Instead such tasks should
+   to have a negative impact on other users. Instead, such tasks should
    be run using Slurm as described in :ref:`p_usage_slurm`.
 
 Preserving loaded data
@@ -256,11 +256,11 @@ of memory used (here 143 MiB):
 .. image:: images/rstudio_environment.png
    :align: center
 
-By default this data will be saved to your RStudio folder on the
+By default, this data will be saved to your RStudio folder on the
 ``/scratch`` drive when you quit your session or when it automatically
 suspends after 9 hours of inactivity. This may, however, result in very
 large amounts of data being saved to disk and, consequently, large of
-amounts of data having to be read when you login again, resulting in
+amounts of data having to be read when you log in again, resulting in
 login taking a very long time.
 
 For this reason we recommend disabling the saving and loading of
@@ -271,10 +271,10 @@ as shown:
    :align: center
 
 This ensures that you always start with a fresh session and that you
-therefore are able to login quickly to the RStudio server.
+therefore are able to log in quickly to the RStudio server.
 
-It is also recommended to keep the ``Always save history (even when not
-saving .RData)`` option enabled, as the commands you type into the R
+It is also recommended that the ``Always save history (even when not
+saving .RData)`` option is enabled, as the commands you type into the R
 terminal will otherwise *not* be saved.
 
 *****************

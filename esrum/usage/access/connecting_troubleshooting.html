@@ -166,11 +166,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="access.html">Applying for access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="connecting.html">Connecting to the cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../filesystem.html">Projects, data, and home folders</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../filesystem.html">Data storage on Esrum</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Data storage on Esrum</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../projects.html">Creating projects and datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../slurm/basics.html">Basic Slurm jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../slurm/advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../slurm/gpu.html">Using the GPU/hi-MEM node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../slurm/gpu.html">Using the GPU / high-memory node</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html">Software on Esrum</a></li>
@@ -193,7 +196,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Outreach</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../communications/messages.html">Messages from Data Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../communications/messages.html">Welcome email</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../communications/presentations.html">Presentations</a></li>
 </ul>
 
@@ -237,57 +240,37 @@
           </label>
         </div>
         <article role="main">
-          <p>If have not already been granted access to the server, then please see
-the <a class="reference internal" href="access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a> page before continuing!</p>
+          <p>If you have not already been granted access to the server, then please
+see the <a class="reference internal" href="access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a> page before continuing!</p>
 <section id="timeout-while-connecting-to-the-cluster">
 <h1>Timeout while connecting to the cluster<a class="headerlink" href="#timeout-while-connecting-to-the-cluster" title="Permalink to this heading">#</a></h1>
 <p>You may experience timeout errors when you attempt to connect to the
 server:</p>
 <img alt="../../_images/connecting_ssh_timeout.gif" class="gif" src="../../_images/connecting_ssh_timeout.gif" />
-<ol class="arabic">
-<li><p>Firstly verify that you are correctly connected to the UCPH network:</p>
-<ol class="arabic simple">
-<li><p>You must either use a wired connection while physically at CBMR.</p></li>
-<li><p>Or you must connect via the UCPH VPN.</p></li>
-</ol>
-<p>It is not possible to connect to using WIFI at CBMR nor is it
-possible to from outside of CBMR without the use of the VPN. See the
-official VPN documentation in <a class="reference external" href="https://kunet.ku.dk/medarbejderguide/Sider/It/Fjernadgang-vpn.aspx">Danish</a> or <a class="reference external" href="https://kunet.ku.dk/employee-guide/Pages/IT/Remote-access.aspx">English</a> for more
-information.</p>
-</li>
-<li><p>If neither using a wired connection nor connecting the the UCPH VPN
-fixes the problem, you may need to create a support ticket to have
-UCPH IT permit you to connect to the server.</p>
-<ol class="arabic simple">
-<li><p>Login to the UCPH <a class="reference external" href="https://serviceportal.ku.dk/">IT Serviceportal</a>.</p></li>
-<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Ticket</span></code> / <code class="docutils literal notranslate"><span class="pre">Opret</span> <span class="pre">Sag</span></code> button.</p></li>
-<li><p>Tick/select the <code class="docutils literal notranslate"><span class="pre">Research</span> <span class="pre">IT</span></code> / <code class="docutils literal notranslate"><span class="pre">Forsknings</span> <span class="pre">IT</span></code> category in
-the category/filters list on the left side of the screen.</p></li>
-<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Research</span> <span class="pre">Applications</span> <span class="pre">Counseling</span> <span class="pre">and</span> <span class="pre">Support</span></code> /
-<code class="docutils literal notranslate"><span class="pre">Forskningsapplikationer</span> <span class="pre">Rådgivning</span> <span class="pre">og</span> <span class="pre">support</span></code> button.</p></li>
-<li><p>Click the <code class="docutils literal notranslate"><span class="pre">REQUEST</span></code> / <code class="docutils literal notranslate"><span class="pre">Bestil</span></code> button.</p></li>
-<li><p>Write something like &quot;SSH connection times out when attempting to
-connect to esrumhead01fl.unicph.domain&quot; in the &quot;Please describe&quot;
-text-box and describe the steps you have taken to try to fix this
-problem: Tried wired connection at CBMR, tried VPN, etc.</p></li>
-<li><p>Write &quot;esrumhead01fl.unicph.domain&quot; in the System name text-box.</p></li>
-<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Review</span> <span class="pre">&amp;</span> <span class="pre">submit</span></code> / <code class="docutils literal notranslate"><span class="pre">Gennemse</span> <span class="pre">&amp;</span> <span class="pre">bestil</span></code> button.</p></li>
-<li><p>Review your ticket and then click the <code class="docutils literal notranslate"><span class="pre">Submit</span></code> / <code class="docutils literal notranslate"><span class="pre">Bestil</span></code>
-button.</p></li>
-</ol>
-</li>
-</ol>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>If you are not an employee at CBMR you may not have permission to
-open a ticket as described above. In that case simply
-<a class="reference internal" href="../../contact.html#p-contact"><span class="std std-ref">Contact</span></a> us and we will forward your issue to KU-IT.</p>
-</div>
+<p>Firstly verify that you are correctly connected to the UCPH network. In
+order to connect to Esrum you must either use a wired connection in a
+CBMR office, or you must be connected through the UCPH VPN. See the
+official VPN documentation in <a class="reference external" href="https://kunet.ku.dk/medarbejderguide/Sider/It/Fjernadgang-vpn.aspx">Danish</a> or <a class="reference external" href="https://kunet.ku.dk/employee-guide/Pages/IT/Remote-access.aspx">English</a> for more information.</p>
+<p>If you are still unable to connect to Esrum after verifying that you are
+correctly connected to the UCPH network, then please try to visit either
+our <a class="reference external" href="https://cbmrcat.unicph.domain/projects/">Project Manager</a> or our
+<a class="reference external" href="https://cbmrcat.unicph.domain/">Cohort Catalog</a>.</p>
+<p>If you are able to visit either of the Project Manager or Cohort Catalog
+pages, then you most likely do not have proper permissions to connect to
+Esrum. Please <a class="reference internal" href="../../contact.html#p-contact"><span class="std std-ref">contact us</span></a> and we will provide further
+guidance.</p>
+<p>If you are unable to connect to the VPN or to either of the above pages
+while connected to the VPN, then there may be other problems with your
+account. We recommend that you either <a class="reference internal" href="../../contact.html#p-contact"><span class="std std-ref">contact us</span></a> for
+assistance or, if you prefer, that you submit a ticket to the UCPH-IT
+<a class="reference external" href="https://serviceportal.ku.dk/">Serviceportal</a>, using the <code class="docutils literal notranslate"><span class="pre">Research</span> <span class="pre">Applications</span> <span class="pre">Counseling</span> <span class="pre">and</span>
+<span class="pre">Support</span></code> / <code class="docutils literal notranslate"><span class="pre">Forskningsapplikationer</span> <span class="pre">Rådgivning</span> <span class="pre">og</span> <span class="pre">support</span></code> ticket
+category.</p>
 </section>
 <section id="file-uploads-using-mobaxterm-never-start">
 <h1>File uploads using MobaXterm never start<a class="headerlink" href="#file-uploads-using-mobaxterm-never-start" title="Permalink to this heading">#</a></h1>
 <p>Please make sure that your session is configured to use the <code class="docutils literal notranslate"><span class="pre">SCP</span>
-<span class="pre">(enhanced</span> <span class="pre">speed)</span></code> browser type. See step 4 in in the
+<span class="pre">(enhanced</span> <span class="pre">speed)</span></code> browser type. See step 4 in the
 <a class="reference internal" href="connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section.</p>
 </section>
 <section id="ucph-network-folders-in-ucph-are-not-available-when-using-mobaxterm">

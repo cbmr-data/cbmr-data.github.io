@@ -166,11 +166,14 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../usage/access/access.html">Applying for access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/access/connecting.html">Connecting to the cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../usage/filesystem.html">Projects, data, and home folders</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/filesystem.html">Data storage on Esrum</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Data storage on Esrum</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../usage/projects.html">Creating projects and datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../usage/slurm/basics.html">Basic Slurm jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../usage/slurm/advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/gpu.html">Using the GPU/hi-MEM node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/gpu.html">Using the GPU / high-memory node</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/modules.html">Software on Esrum</a></li>
@@ -193,7 +196,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Outreach</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../communications/messages.html">Messages from Data Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../communications/messages.html">Welcome email</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../communications/presentations.html">Presentations</a></li>
 </ul>
 
@@ -244,12 +247,11 @@ terminals, to name your terminals to remind yourself what you were
 working with, and to leave your terminals running in the background when
 you disconnect from the server (whether intentionally or
 unintentionally).</p>
-<p>Using <a class="reference external" href="https://github.com/tmux/tmux/wiki">tmux</a> is therefore highly recommended when you are working on the
-cluster, since it lets you work uninterrupted over multiple days,
-without having to leave your computer running at all time and without
-having to worry about your internet connection staying up. Anyone
-already using GNU <a class="reference external" href="https://www.gnu.org/software/screen/">screen</a> or one of the other alternatives can of course
-keep using those.</p>
+<p>Using <a class="reference external" href="https://github.com/tmux/tmux/wiki">tmux</a>, or an equivalent tool such as <cite>screen</cite>, is therefore highly
+recommended when you are working on the cluster, since it lets you work
+uninterrupted over multiple days, without having to leave your computer
+running at all time and without having to worry about your internet
+connection staying up.</p>
 <p>The following gives brief introduction to using <a class="reference external" href="https://github.com/tmux/tmux/wiki">tmux</a>. A more detailed
 <a class="reference external" href="https://github.com/tmux/tmux/wiki/Getting-Started">getting started</a> guide can be found in the official <a class="reference external" href="https://github.com/tmux/tmux/wiki">tmux</a>
 documentation.</p>
@@ -296,11 +298,11 @@ the current session has been closed.</p>
 server until you re-attach to the session. You will typically detach
 once your jobs are running or simply if you need to leave for the day.</p>
 <p>To disconnect from the current session, use the keyboard shortcut
-<code class="docutils literal notranslate"><span class="pre">CTRL+b</span> <span class="pre">d</span></code>. This returns you to your regular terminal and you can
+<code class="docutils literal notranslate"><span class="pre">CTRL+b</span> <span class="pre">d</span></code>. This returns you to your regular terminal, and you can
 safely disconnect from the server:</p>
 <p>Once you wish to resume your work, you can use the <code class="docutils literal notranslate"><span class="pre">tmux</span> <span class="pre">attach</span></code>
-(command to re-open your running sessions, optionally specifying the
-name of the session you wish to open (see also below):</p>
+command to re-open your running sessions, optionally specifying the name
+of the session you wish to open (see also below):</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span><span class="c1">## either</span>
 <span class="gp">$ </span>tmux<span class="w"> </span>attach
 <span class="gp">#</span><span class="c1">## or</span>
@@ -314,7 +316,7 @@ to the correct session after you've attached tmux.</p>
 <h3>Naming your sessions and windows<a class="headerlink" href="#naming-your-sessions-and-windows" title="Permalink to this heading">#</a></h3>
 <p>tmux allows you to give custom names to each session (group of
 terminals) and each window (terminal), in order to help you
-differentiate between them. This is not required, but is is recommended
+differentiate between them. This is not required, but it is recommended
 to do so if you work on multiple things at once.</p>
 <p>When starting a new session with the command <code class="docutils literal notranslate"><span class="pre">tmux</span> <span class="pre">new</span></code>, you can also
 give the session a name with <code class="docutils literal notranslate"><span class="pre">-s</span></code> and the window can be given a name
@@ -358,7 +360,7 @@ Tmux keeps running after this along with your terminals.</p></li>
 </ul>
 <p><strong>Scrolling in a tmux window</strong></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">CTRL+b</span> <span class="pre">PageUp</span></code> Enables scrolling with PageUp/PageDown and arrow
+<li><p><code class="docutils literal notranslate"><span class="pre">CTRL+b</span> <span class="pre">PageUp</span></code> Enables scrolling with Page Up/Page Down and arrow
 keys. Press ESC to exit scrolling mode. Current line-number is
 indicated in yellow in the top right corner.</p></li>
 </ul>

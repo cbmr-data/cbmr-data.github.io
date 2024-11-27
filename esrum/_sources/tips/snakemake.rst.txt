@@ -5,60 +5,65 @@
 ##########################
 
 This page describes how to best use Snakemake on the Esrum cluster. As
-this suggests setting a number of options (described below), a basic
+this includes a number of suggested settings (described below), a basic
 profile file is provided below to automatically set these.
 
-Snakemake must either be run in a Slurm job or Snakemake must be
-configured to run the individual rules in the ``Snakefile`` via Slurm as
-described below.
+Snakemake can either be run directly, where all rules (*i.e.* tasks) are
+run on the same system as Snakemake itself, or Snakemake can be
+configured to use Slurm to run the individual rules, allowing these to
+be run on any compute node on Esrum. The choice between the two options
+boils down to the following considerations:
 
-**********************************
- Running snakemake jobs via Slurm
-**********************************
+-  If the steps in your Snakemake pipeline are very short, then you
+   should run your pipeline *in* a regular ``sbatch`` script, via
+   ``srun``, or *in* an interactive session. This is because Slurm adds
+   some overhead to jobs, which for very short rules may result in a
+   significant increase in the total runtime.
 
-The recommended way to use Snakemake with Slurm is to use the
-``--slurm`` and ``--jobs N`` options, where the ``N`` is the maximum
-number of jobs you want to queue simultaneously:
+-  If your steps run for a longer time or take up significant amount of
+   resources, then you should enable Slurm support when running your
+   pipeline. This ensures that you only reserve resources for your rules
+   *while* they are running and enables you to run more rules
+   simultaneously than can fit on one compute node.
+
+-  If any of your rules make use of GPUs, then you *must* enable Slurm
+   support when running Snakemake. This ensures that GPUs are *only*
+   reserved while they are actively being used, which we require since
+   GPUs are a very limited resource on Esrum. See below for how to
+   reserve GPUs for your rules.
+
+For most bioinformatics pipelines, the most efficient choice is to run
+Snakemake with Slurm support enabled.
+
+**************************************
+ Running Snakemake with Slurm support
+**************************************
+
+To run Snakemake with Slurm support enabled, simply pass the options
+``--slurm`` and ``--jobs N``, where the ``N`` is the maximum number of
+jobs you want to queue simultaneously. For example,
 
 .. code::
 
    $ module load snakemake/7.30.1
    $ snakemake --slurm --jobs 32
 
-This command will queue at most 32 jobs on Slurm. Note that we do not
-need to specify the maximum number of CPUs (via ``--cores``), since
-Slurm will take care that.
+This command will run your pipeline via Slurm and queue at most 32 jobs
+at once. Note that we do not need to specify the maximum number of CPUs
+(via ``--cores``), since Slurm will take care that (see below).
+
+Note also that you *must* run Snakemake on the head node when using the
+``--slurm`` option. This is required for Snakemake to be able to
+interact with Slurm. Furthermore, you *should* be running it a ``tmux``
+or ``screen`` session to ensure that Snakemake keeps running after you
+log out. See the :ref:`p_tips_tmux` page for more information.
 
 .. note::
 
    Some older tutorials may suggest setting Slurm options via the
-   Snakemake ``--cluster`` option and similar. However, with modern
-   versions of Snakemake it is sufficient to add ``--slurm`` when
-   running Snakemake and that is the method we recommend using.
-
-Running Snakemake with ``--slurm`` has a number of advantages over
-running Snakemake in a Slurm job (via ``sbatch`` or ``srun``) or in an
-interactive session on a compute node:
-
--  Resources are only reserved for the duration of individual rules,
-   meaning other jobs (yours and those of other users) can make use of
-   those resources.
-
--  Your can run more jobs simultaneously than can fit on a single
-   compute node.
-
--  You can run a mix of jobs that require GPUs and jobs that do not
-   require GPUs.
-
-However, there are also some disadvantages:
-
--  Running a rule via Slurm adds some overhead, which may result in a
-   significant increase in the runtime for very brief rules.
-
--  Rules queued via Slurm are not necessarily terminate if you stop
-   snakemake, meaning that you may have to terminate these yourself. See
-   the :ref:`p_usage_slurm_basics` page for information about how to
-   query and scancel running/queued jobs on Slurm.
+   ``--cluster`` option. However, with modern versions of Snakemake it
+   is sufficient to add ``--slurm`` when running Snakemake and that is
+   the method we recommend using.
 
 Requesting CPUs
 ===============
@@ -80,9 +85,9 @@ Requesting memory
 =================
 
 Snakemake will by default estimate the amount of memory needed for a
-rule as a function of the input data (``max(2*input.size_mb, 1000)``),
-corresponding to two times the size of the input but no less than 1000
-MB.
+rule based on the size of the input data (``max(2*input.size_mb,
+1000)``), which translates to two times the size of the input but no
+less than 1000 MB.
 
 This is, however, frequently less than the Slurm default of ~16 GB per
 CPU reserved, and we therefore recommend overriding this default using
@@ -104,18 +109,19 @@ your rule:
        input: ...
        output: ...
        resources:
-           mem_mb: 65536
+           mem_mb: 64 * 1024
 
 The ``mem_mb`` specifies a *total* amount of memory to reserve in MB and
 the above example therefore requests 64 GB for this specific rule.
 
-Using the GPU/high-MEM queue
-============================
+Using the GPU / high-memory nodes
+=================================
 
-Running a job on the GPU/high-MEM is accomplished by specifying that you
-want to use the ``gpuqueue`` by adding ``slurm_partition="gpuqueue"`` to
-the ``resources`` section of your rule. Once you have done so, you can
-reserve GPUs as shown below:
+Running a job on the GPU / high-memory nodes is accomplished by
+specifying that you want to use the ``gpuqueue`` by adding
+``slurm_partition="gpuqueue"`` to the ``resources`` section of your
+rule. Once you have done so, you can reserve GPUs using the
+``slurm_extra`` resource:
 
 .. code:: python
 
@@ -124,13 +130,14 @@ reserve GPUs as shown below:
        output: "my_output.dat"
        shell: "my-command {input} > {output}"
        resources:
-           # Run this task on the GPU queue
+           # Run this rule on the GPU queue
            slurm_partition="gpuqueue",
            # Reserve 1 GPU for this job
            slurm_extra="--gres=gpu:1",
 
-If you need memory rather than GPUs, then you specify the amount needed
-in MB using the ``mem_mb`` resource as described above:
+If you need memory rather than GPUs, then omit the ``slurm_extra``
+resource and instead specify the amount of RAM needed in MB, using the
+``mem_mb`` resource as described above:
 
 .. code:: python
 
@@ -139,7 +146,7 @@ in MB using the ``mem_mb`` resource as described above:
        output: "my_output.dat"
        shell: "my-command {input} > {output}"
        resources:
-           # Run this task on the GPU queue
+           # Run this rule on the GPU queue
            slurm_partition="gpuqueue",
            # Reserve 3 TB of memory (specified in MB)
            mem_mb=3 * 1024 * 1024,
@@ -175,13 +182,13 @@ rule:
 
    Remember to specify version numbers for the module you are using;
    this helps ensures that your analyses are reproducible and that they
-   wont suddenly break when new versions of modules are added.
+   won't suddenly break when new versions of modules are added.
 
 ***************************
  Other recommended options
 ***************************
 
-This section describes a handful of settings that
+This section describes a handful of settings that we recommend using:
 
 -  ``--latency-wait 60``: This option increases the length of time
    snakemake will wait for missing output files to appear. This is
@@ -241,3 +248,9 @@ simply by specifying the option again:
 .. code:: console
 
    $ snakemake --profile /projects/cbmr_shared/apps/config/snakemake/latest --jobs 16
+
+*****************
+ Troubleshooting
+*****************
+
+.. include:: snakemake_troubleshooting.rst

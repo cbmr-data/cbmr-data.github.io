@@ -3,7 +3,7 @@ libtk8.6.so: cannot open shared object file
 ===========================================
 
 Users connecting to Esrum with X11 forwarding enabled, for example using
-mobaXterm with default settings, may observe the following error when
+MobaXterm with default settings, may observe the following error when
 running the ``install.packages``:
 
 .. code:: console
@@ -93,7 +93,7 @@ running the following commands:
 
    .. code:: shell
 
-    for lib in $(ls);do echo "Testing ${lib}"; Rscript <(echo "library(${lib})") > /dev/null;done
+      for lib in $(ls);do echo "Testing ${lib}"; Rscript <(echo "library(${lib})") > /dev/null;done
 
 Output will look like the following:
 
@@ -113,7 +113,7 @@ Output will look like the following:
    Testing labeling
    Testing later
 
-Locate the error messages like the one shown above in the output and and
+Locate the error messages like the one shown above in the output and
 reinstall the affected libraries using the ``install.packages`` command:
 
 .. code:: shell

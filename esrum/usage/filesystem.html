@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="search" title="Search" href="../search.html" /><link rel="next" title="Running jobs using Slurm" href="slurm/index.html" /><link rel="prev" title="Connecting to the cluster" href="access/connecting.html" />
+<link rel="search" title="Search" href="../search.html" /><link rel="next" title="Creating projects and datasets" href="projects.html" /><link rel="prev" title="Connecting to the cluster" href="access/connecting.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
-        <title>Projects, data, and home folders - Esrum Cluster documentation</title>
+        <title>Data storage on Esrum - Esrum Cluster documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -166,11 +166,14 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="access/access.html">Applying for access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="access/connecting.html">Connecting to the cluster</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Projects, data, and home folders</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Data storage on Esrum</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Data storage on Esrum</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Creating projects and datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="slurm/basics.html">Basic Slurm jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="slurm/advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="slurm/gpu.html">Using the GPU/hi-MEM node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slurm/gpu.html">Using the GPU / high-memory node</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Software on Esrum</a></li>
@@ -193,7 +196,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Outreach</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../communications/messages.html">Messages from Data Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../communications/messages.html">Welcome email</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../communications/presentations.html">Presentations</a></li>
 </ul>
 
@@ -237,10 +240,18 @@
           </label>
         </div>
         <article role="main">
-          <section id="projects-data-and-home-folders">
-<span id="p-usage-filesystem"></span><h1>Projects, data, and home folders<a class="headerlink" href="#projects-data-and-home-folders" title="Permalink to this heading">#</a></h1>
+          <section id="data-storage-on-esrum">
+<span id="p-usage-filesystem"></span><h1>Data storage on Esrum<a class="headerlink" href="#data-storage-on-esrum" title="Permalink to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 <p>This section describes the layout of your home folder on Esrum, as well
-as the location and layout of projects and data-shares.</p>
+as the location and layout of projects, shared datasets, and per-node
+&quot;scratch&quot; folders.</p>
+<p>When you are first given access to Esrum, you will by default have
+access to your home folder, the scratch folders on each node, and the
+CBMR wide project folder (<code class="docutils literal notranslate"><span class="pre">/projects/cbmr_shared</span></code>). Please see the
+<a class="reference internal" href="access/access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a> page for information about applying for
+access to additional projects and datasets.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Every folder described below is located on a network drive, except
@@ -251,7 +262,7 @@ depending on the network load.</p>
 </div>
 <section id="your-home-folder">
 <span id="s-home-folder"></span><h2>Your home folder<a class="headerlink" href="#your-home-folder" title="Permalink to this heading">#</a></h2>
-<p>Your home folder can hold 100GB of data and is meant to store your
+<p>Your home folder can hold 100 GB of data and is meant to store your
 personal programs and related caches, configuration files, and similar
 files that are not related to your projects.</p>
 <p>We recommended that you to keep your non-project related scripts and
@@ -271,29 +282,29 @@ home folder!</p>
 </div>
 <section id="ucph-network-drives">
 <span id="s-ucph-network-drives"></span><h3>UCPH network drives<a class="headerlink" href="#ucph-network-drives" title="Permalink to this heading">#</a></h3>
-<p>When you login to Esrum for the first time, your home folder should
+<p>When you log in to Esrum for the first time, your home folder should
 contain a single folder named <code class="docutils literal notranslate"><span class="pre">ucph</span></code>. This folder in turn contains
-your UCPH network drives (formerly <code class="docutils literal notranslate"><span class="pre">H:</span></code> and <code class="docutils literal notranslate"><span class="pre">N:</span></code>).</p>
+your UCPH network drives, formerly <code class="docutils literal notranslate"><span class="pre">H:</span></code> and <code class="docutils literal notranslate"><span class="pre">N:</span></code>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Note that these drives are only accessible from the head node. If you
 need to analyze data located on either of these shared drives, then
-you will need to copy it an appropriate projects folder.</p>
+you will need to copy it an appropriate project folder.</p>
 <p>Note furthermore that access to these folders will not be available
-if you login using Kerberos (GSSAPI). See the
+if you log in using Kerberos (GSSAPI). See the
 <a class="reference internal" href="access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page for instructions for how to disable
 this feature if you are using MobaXterm.</p>
 </div>
 </section>
 </section>
-<section id="your-project-folders">
-<span id="s-project-folders"></span><h2>Your project folders<a class="headerlink" href="#your-project-folders" title="Permalink to this heading">#</a></h2>
+<section id="project-folders">
+<span id="s-project-folders"></span><h2>Project folders<a class="headerlink" href="#project-folders" title="Permalink to this heading">#</a></h2>
 <p>The majority of your work on Esrum should take place in project folder
 corresponding either to your research group or to actual projects. This
 ensures that your collaborators can access your results and that nobody
 else can! See the <a class="reference internal" href="access/access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a> page for instructions
 on how to apply for access to projects.</p>
-<p>Project folders are located in the <code class="docutils literal notranslate"><span class="pre">/projects</span></code> folder:</p>
+<p>Projects on Esrum are located in the <code class="docutils literal notranslate"><span class="pre">/projects</span></code> folder:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls<span class="w"> </span>-1<span class="w"> </span>/projects
 <span class="go">phenomics-AUDIT</span>
 <span class="go">genotyping</span>
@@ -314,7 +325,7 @@ automatically backed up every day.</p>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">/projects/&lt;project-name&gt;/apps</span></code></p>
 <p>The apps folder is intended for storing software shared between
-project members. See <a class="reference internal" href="../tips/modules.html#p-tips-modules"><span class="std std-ref">Creating environment modules</span></a> for how to setup a shared
+project members. See <a class="reference internal" href="../tips/modules.html#p-tips-modules"><span class="std std-ref">Creating environment modules</span></a> for how to set up a shared
 repository of software that can be used with the module system. The
 <code class="docutils literal notranslate"><span class="pre">apps</span></code> folder is automatically backed up every day.</p>
 </li>
@@ -331,15 +342,37 @@ to be backed up, including for example publicly available datasets,
 large index files, and such.</p>
 </li>
 </ul>
-<p>Unlike your <code class="docutils literal notranslate"><span class="pre">/home</span></code> folder, there are no limits on how much you store
-in these folders.</p>
+<p>There is currently no limits on how much you store in these folders.
+However, as UCPH has indicated that they will charge for storage in the
+future, we recommend regularly cleaning up your project folders.</p>
+<p>See the <a class="reference internal" href="projects.html#p-usage-projects"><span class="std std-ref">Creating projects and datasets</span></a> page for how to request a new project
+folder.</p>
+</section>
+<section id="datasets">
+<h2>Datasets<a class="headerlink" href="#datasets" title="Permalink to this heading">#</a></h2>
+<p>Unlike projects, datasets are meant for static data that may be accessed
+by multiple parties. Access to datasets is therefore segregated into
+users who only have read access and users with read and write access
+(the owners). Examples of datasets include shared resources, cohorts, as
+well as automatically deposited instrument data.</p>
+<p>Datasets on Esrum are located in the <code class="docutils literal notranslate"><span class="pre">/datasets</span></code> folder. Unlike
+projects, where you will find four standard folders, the directory
+structure of <code class="docutils literal notranslate"><span class="pre">/datasets</span></code> folders are entirely up to the owner.</p>
+<p>Similarly to projects, dataset folders (meant for) containing GDPR data
+are marked by the <code class="docutils literal notranslate"><span class="pre">-AUDIT</span></code> suffix. GDPR datasets must be stored in
+such folders and <em>nowhere else</em>!</p>
+<p>There is currently no limits on how much you store in these folders.
+However, as UCPH has indicated that they will charge for storage in the
+future, we recommend only storing data that you actually need.</p>
+<p>See the <a class="reference internal" href="projects.html#p-usage-projects"><span class="std std-ref">Creating projects and datasets</span></a> page for how to request a new dataset
+folder.</p>
 </section>
 <section id="scratch-folders">
 <h2>Scratch folders<a class="headerlink" href="#scratch-folders" title="Permalink to this heading">#</a></h2>
-<p>Every node on esrum (including the head node) has a 1.5-3 TB scratch
+<p>Every node on Esrum (including the head node) has a 1.5-3 TB scratch
 drive available at <code class="docutils literal notranslate"><span class="pre">/scratch</span></code>. This is intended for short-lived
 temporary files generated as part of jobs running on the cluster, and
-can provide a significant performance benefit if a job for example
+can provide a significant performance benefit if a job, for example,
 writes a lot of small temporary files.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -361,7 +394,7 @@ username when using the scratch-drive as part of your scripts:</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The scratch-drives have limited capacity and are <em>only</em> intended for
-short-lived, temporary files. Do not use it to store results and
+short-lived, temporary files. Do not use it to store results, and
 please remember to clean up after your jobs. Files left on the
 scratch-drive <em>will</em> be deleted.</p>
 </div>
@@ -382,9 +415,9 @@ $<span class="w"> </span>ls
 <p>Each timestamped folder contains a full snapshot of the parent folder
 (<code class="docutils literal notranslate"><span class="pre">/home</span></code>, <code class="docutils literal notranslate"><span class="pre">/apps</span></code>, etc.) and you can copy data from these snapshots
 should you need to restore deleted or modified files.</p>
-<p>Snapshots of audited projects are only accessible for a limited time and
-you may therefore need to contact UCPH-IT to restore deleted data for
-such projects.</p>
+<p>Snapshots of audited projects are only accessible for a limited time,
+and you may therefore need to contact UCPH-IT to restore deleted data
+for such projects.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Please contact UCPH-IT should you need to restore a large amount of
@@ -398,12 +431,12 @@ deleted data.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="slurm/index.html">
+          <a class="next-page" href="projects.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Running jobs using Slurm</div>
+                <div class="title">Creating projects and datasets</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -448,12 +481,13 @@ deleted data.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Projects, data, and home folders</a><ul>
+<li><a class="reference internal" href="#">Data storage on Esrum</a><ul>
 <li><a class="reference internal" href="#your-home-folder">Your home folder</a><ul>
 <li><a class="reference internal" href="#ucph-network-drives">UCPH network drives</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#your-project-folders">Your project folders</a></li>
+<li><a class="reference internal" href="#project-folders">Project folders</a></li>
+<li><a class="reference internal" href="#datasets">Datasets</a></li>
 <li><a class="reference internal" href="#scratch-folders">Scratch folders</a></li>
 <li><a class="reference internal" href="#backups">Backups</a></li>
 </ul>

@@ -1,11 +1,23 @@
 .. _p_usage_filesystem:
 
-##################################
- Projects, data, and home folders
-##################################
+#######################
+ Data storage on Esrum
+#######################
+
+.. toctree::
+   :hidden:
+
+   projects
 
 This section describes the layout of your home folder on Esrum, as well
-as the location and layout of projects and data-shares.
+as the location and layout of projects, shared datasets, and per-node
+"scratch" folders.
+
+When you are first given access to Esrum, you will by default have
+access to your home folder, the scratch folders on each node, and the
+CBMR wide project folder (``/projects/cbmr_shared``). Please see the
+:ref:`p_usage_access_applying` page for information about applying for
+access to additional projects and datasets.
 
 .. warning::
 
@@ -21,7 +33,7 @@ as the location and layout of projects and data-shares.
  Your home folder
 ******************
 
-Your home folder can hold 100GB of data and is meant to store your
+Your home folder can hold 100 GB of data and is meant to store your
 personal programs and related caches, configuration files, and similar
 files that are not related to your projects.
 
@@ -46,26 +58,26 @@ that your colleagues may depend on should be stored there.
 UCPH network drives
 ===================
 
-When you login to Esrum for the first time, your home folder should
+When you log in to Esrum for the first time, your home folder should
 contain a single folder named ``ucph``. This folder in turn contains
-your UCPH network drives (formerly ``H:`` and ``N:``).
+your UCPH network drives, formerly ``H:`` and ``N:``.
 
 .. warning::
 
    Note that these drives are only accessible from the head node. If you
    need to analyze data located on either of these shared drives, then
-   you will need to copy it an appropriate projects folder.
+   you will need to copy it an appropriate project folder.
 
    Note furthermore that access to these folders will not be available
-   if you login using Kerberos (GSSAPI). See the
+   if you log in using Kerberos (GSSAPI). See the
    :ref:`p_usage_connecting` page for instructions for how to disable
    this feature if you are using MobaXterm.
 
 .. _s_project_folders:
 
-**********************
- Your project folders
-**********************
+*****************
+ Project folders
+*****************
 
 The majority of your work on Esrum should take place in project folder
 corresponding either to your research group or to actual projects. This
@@ -73,7 +85,7 @@ ensures that your collaborators can access your results and that nobody
 else can! See the :ref:`p_usage_access_applying` page for instructions
 on how to apply for access to projects.
 
-Project folders are located in the ``/projects`` folder:
+Projects on Esrum are located in the ``/projects`` folder:
 
 .. code::
 
@@ -99,7 +111,7 @@ Projects folder always contain the following four sub-folders:
 -  ``/projects/<project-name>/apps``
 
    The apps folder is intended for storing software shared between
-   project members. See :ref:`p_tips_modules` for how to setup a shared
+   project members. See :ref:`p_tips_modules` for how to set up a shared
    repository of software that can be used with the module system. The
    ``apps`` folder is automatically backed up every day.
 
@@ -117,17 +129,46 @@ Projects folder always contain the following four sub-folders:
    to be backed up, including for example publicly available datasets,
    large index files, and such.
 
-Unlike your ``/home`` folder, there are no limits on how much you store
-in these folders.
+There is currently no limits on how much you store in these folders.
+However, as UCPH has indicated that they will charge for storage in the
+future, we recommend regularly cleaning up your project folders.
+
+See the :ref:`p_usage_projects` page for how to request a new project
+folder.
+
+**********
+ Datasets
+**********
+
+Unlike projects, datasets are meant for static data that may be accessed
+by multiple parties. Access to datasets is therefore segregated into
+users who only have read access and users with read and write access
+(the owners). Examples of datasets include shared resources, cohorts, as
+well as automatically deposited instrument data.
+
+Datasets on Esrum are located in the ``/datasets`` folder. Unlike
+projects, where you will find four standard folders, the directory
+structure of ``/datasets`` folders are entirely up to the owner.
+
+Similarly to projects, dataset folders (meant for) containing GDPR data
+are marked by the ``-AUDIT`` suffix. GDPR datasets must be stored in
+such folders and *nowhere else*!
+
+There is currently no limits on how much you store in these folders.
+However, as UCPH has indicated that they will charge for storage in the
+future, we recommend only storing data that you actually need.
+
+See the :ref:`p_usage_projects` page for how to request a new dataset
+folder.
 
 *****************
  Scratch folders
 *****************
 
-Every node on esrum (including the head node) has a 1.5-3 TB scratch
+Every node on Esrum (including the head node) has a 1.5-3 TB scratch
 drive available at ``/scratch``. This is intended for short-lived
 temporary files generated as part of jobs running on the cluster, and
-can provide a significant performance benefit if a job for example
+can provide a significant performance benefit if a job, for example,
 writes a lot of small temporary files.
 
 .. note::
@@ -152,7 +193,7 @@ username when using the scratch-drive as part of your scripts:
 .. warning::
 
    The scratch-drives have limited capacity and are *only* intended for
-   short-lived, temporary files. Do not use it to store results and
+   short-lived, temporary files. Do not use it to store results, and
    please remember to clean up after your jobs. Files left on the
    scratch-drive *will* be deleted.
 
@@ -177,9 +218,9 @@ Each timestamped folder contains a full snapshot of the parent folder
 (``/home``, ``/apps``, etc.) and you can copy data from these snapshots
 should you need to restore deleted or modified files.
 
-Snapshots of audited projects are only accessible for a limited time and
-you may therefore need to contact UCPH-IT to restore deleted data for
-such projects.
+Snapshots of audited projects are only accessible for a limited time,
+and you may therefore need to contact UCPH-IT to restore deleted data
+for such projects.
 
 .. warning::
 

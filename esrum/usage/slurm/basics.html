@@ -166,11 +166,14 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../access/access.html">Applying for access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../access/connecting.html">Connecting to the cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../filesystem.html">Projects, data, and home folders</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Running jobs using Slurm</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../filesystem.html">Data storage on Esrum</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Data storage on Esrum</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../projects.html">Creating projects and datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Running jobs using Slurm</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Basic Slurm jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gpu.html">Using the GPU/hi-MEM node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html">Using the GPU / high-memory node</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html">Software on Esrum</a></li>
@@ -193,7 +196,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Outreach</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../communications/messages.html">Messages from Data Analytics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../communications/messages.html">Welcome email</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../communications/presentations.html">Presentations</a></li>
 </ul>
 
@@ -241,7 +244,7 @@
 <span id="p-usage-slurm-basics"></span><h1>Basic Slurm jobs<a class="headerlink" href="#basic-slurm-jobs" title="Permalink to this heading">#</a></h1>
 <p>This section describes the basics of queuing jobs using on the Esrum
 cluster using the Slurm Workload Manager. This includes queuing tasks
-with the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command , monitoring jobs with <code class="docutils literal notranslate"><span class="pre">squeue</span></code> and
+with the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command, monitoring jobs with <code class="docutils literal notranslate"><span class="pre">squeue</span></code> and
 <code class="docutils literal notranslate"><span class="pre">saccact</span></code>, cancelling jobs with <code class="docutils literal notranslate"><span class="pre">scancel</span></code>, and reserving resources
 for jobs that need more CPUs or more RAM.</p>
 <p>Users of the PBS (<code class="docutils literal notranslate"><span class="pre">qsub</span></code>) queuing system on e.g. <code class="docutils literal notranslate"><span class="pre">porus</span></code> or
@@ -272,7 +275,7 @@ scripting languages by using the appropriate shebang (highlighted):</p>
 </div>
 <p>Slurm scripts function like regular scripts for most part, meaning that
 the current directory corresponds to the directory in which you executed
-the script, that you can access environment variables set outside of the
+the script, that you can access environment variables set outside the
 script, and that it is possible to pass command-line arguments to your
 scripts (see below).</p>
 </section>
@@ -398,7 +401,7 @@ below) or individual sub-tasks. See the <a class="reference internal" href="adva
 <section id="setting-options">
 <h2>Setting options<a class="headerlink" href="#setting-options" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command offers two methods for setting options, such as
-resource requirements, notifications, etc (see e.g.
+resource requirements, notifications, etc. (see e.g.
 <a class="reference internal" href="#s-common-options"><span class="std std-ref">Common options</span></a>). The first option is simply to specify the
 options on the command line (e.g. <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">--my-option</span> <span class="pre">my_script.sh</span></code>).</p>
 <p>Note that options for <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> <em>must</em> be placed before the filename
@@ -445,7 +448,7 @@ and thereby break the <code class="docutils literal notranslate"><span class="pr
 </section>
 <section id="reserving-resources">
 <span id="id1"></span><h2>Reserving resources<a class="headerlink" href="#reserving-resources" title="Permalink to this heading">#</a></h2>
-<p>By default a <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> will request 1 CPU and just under 15 GB of ram
+<p>By default, a <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> will request 1 CPU and just under 15 GB of ram
 per reserved CPU. Jobs will not be executed before the requested
 resources are available on a node and your jobs cannot exceed the amount
 of resources you've requested.</p>
@@ -461,12 +464,12 @@ module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
 </span></pre></div>
 </div>
 <p>Notice that we need to not only reserve the CPUs, but we in almost all
-cases also need tell to our programs to actually use those CPUs. With
+cases also need to tell to our programs to actually use those CPUs. With
 <code class="docutils literal notranslate"><span class="pre">igzip</span></code> this is accomplished by using the <code class="docutils literal notranslate"><span class="pre">--threads</span></code> option as
 shown above. If this is not done then the reserved CPUs will have no
 effect on how long it takes for your program to run!</p>
 <p>To avoid having to write the same number of threads multiple times, we
-can instead use hte <code class="docutils literal notranslate"><span class="pre">${SLURM_CPUS_PER_TASK}</span></code> variable, which is
+can instead use the <code class="docutils literal notranslate"><span class="pre">${SLURM_CPUS_PER_TASK}</span></code> variable, which is
 automatically set to the number of CPUs we've requested:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH --cpus-per-task 8</span>
@@ -499,14 +502,14 @@ has 4 TB of RAM available, of which 3920 GB can be reserved by Slurm,
 and may be used for jobs that have very high memory requirements.
 However, since we only have one GPU node we ask that you use the regular
 nodes unless your jobs actually require that much RAM. See the
-<a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU/hi-MEM node</span></a> section for how to use the GPU node with or
+<a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory node</span></a> section for how to use the GPU node with or
 without reserving a GPU.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">--nodes</span></code> option and the <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code> option will start
 <em>identical</em> tasks on one or more nodes, so you should <em>not</em> be using
 these options unless your tools are specifically designed for this!
-Otherwise each instance will try to write to the same output file(s)
+Otherwise, each instance will try to write to the same output file(s)
 and will produce results that are very likely corrupt.</p>
 <p>If you need to run the same command on a set of files/samples, then
 see the <a class="reference internal" href="advanced.html#s-job-arrays"><span class="std std-ref">Monitoring your jobs</span></a> section.</p>
@@ -578,15 +581,15 @@ easily readable form:</p>
 <code class="docutils literal notranslate"><span class="pre">ExtraMemWasted</span></code> column, which show the number CPUs that went unused
 on average the memory that was requested that went unused. Note that
 <code class="docutils literal notranslate"><span class="pre">ExtraMem</span></code> only counts memory requested <em>in addition</em> to the default
-allocation of ~16GB of RAM per CPU. That is because any additional
+allocation of ~16 GB of RAM per CPU. That is because any additional
 reserved memory results in CPUs going unused <em>unless</em> a user explicitly
-asks for less RAM than the default ~16GB per CPU.</p>
+asks for less RAM than the default ~16 GB per CPU.</p>
 <p>The final column indicates that number of CPU hours your job wasted,
 calculated as the length of time your job ran multiplied by the number
 of reserved CPUs wasted and the number of CPUs that would have been able
-to get the default 16GB of RAM had <code class="docutils literal notranslate"><span class="pre">ExtraMemWasted</span></code> been zero. Aim for
-your jobs to resemble the third job, not the second job and especially
-not the first job in the example!</p>
+to get the default 16 GB of RAM had <code class="docutils literal notranslate"><span class="pre">ExtraMemWasted</span></code> been zero. Aim
+for your jobs to resemble the third job, not the second job and
+especially not the first job in the example!</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Wasted</span></code> statistics are based on snapshots of resource usage
@@ -652,7 +655,7 @@ run sbatch from another script.</p></li>
 <span id="s-interactive-session"></span><h2>Interactive sessions<a class="headerlink" href="#interactive-sessions" title="Permalink to this heading">#</a></h2>
 <p>If you need to run an interactive process, for example if you need to
 use an interactive R shell to process a large dataset, or if you just
-need to experiment with running an computationally heavy process, then
+need to experiment with running a computationally heavy process, then
 you can start a shell on one of the compute nodes as follows:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[abc123@esrumhead01fl ~] $ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--<span class="w"> </span>/bin/bash
 <span class="gp">[abc123@esrumcmpn07fl ~] $</span>
@@ -671,10 +674,10 @@ default 1 CPU and 15 GB of RAM:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--cpus-per-task<span class="w"> </span><span class="m">4</span><span class="w"> </span>--mem<span class="w"> </span>128G<span class="w"> </span>--pty<span class="w"> </span>--<span class="w"> </span>/bin/bash
 </pre></div>
 </div>
-<p>It is also possible to start an interactive session on the GPU/High-MEM
-nodes. See the <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU/hi-MEM node</span></a> page for more information. See
-the <a class="reference internal" href="advanced.html#p-usage-slurm-advanced"><span class="std std-ref">Advanced Slurm jobs</span></a> page for more information about the
-<code class="docutils literal notranslate"><span class="pre">srun</span></code> command.</p>
+<p>It is also possible to start an interactive session on the GPU /
+high-memory nodes. See the <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory node</span></a> page for more
+information. See the <a class="reference internal" href="advanced.html#p-usage-slurm-advanced"><span class="std std-ref">Advanced Slurm jobs</span></a> page for more
+information about the <code class="docutils literal notranslate"><span class="pre">srun</span></code> command.</p>
 <p>Once you are done, be sure to exit the interactive shell by using the
 <code class="docutils literal notranslate"><span class="pre">exit</span></code> command or pressing <code class="docutils literal notranslate"><span class="pre">Ctrl+D</span></code>, so that the resources reserved
 for your shell are made available to other users!</p>
@@ -729,8 +732,8 @@ available for download <a class="reference download internal" download="" href="
 <section id="what-s-next">
 <span id="s-slurm-basics-troubleshooting"></span><h2>What's next<a class="headerlink" href="#what-s-next" title="Permalink to this heading">#</a></h2>
 <p>The next section of the documentation covers advanced usage of Slurm,
-including how to run jobs on the High-MEM/GPU node. However, if you have
-not already done so then it is recommended that you read the
+including how to run jobs on the GPU / high-memory node. However, if you
+have not already done so, then it is recommended that you read the
 <a class="reference internal" href="../modules.html#p-usage-modules"><span class="std std-ref">Software on Esrum</span></a> page for an introduction on how to use the module
 system on Esrum to load the software you need for your work.</p>
 </section>
@@ -755,7 +758,7 @@ sbatch:<span class="w"> </span>error:<span class="w"> </span>Batch<span class="w
 <p>To solve this, simply reduce the number of CPUs and/or the amount of RAM
 requested to fit within the limits described above. If your task does
 require more than 1993 GB of RAM, then you need to run your task on the
-GPU queue as described on the <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU/hi-MEM node</span></a> page.</p>
+GPU queue as described on the <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory node</span></a> page.</p>
 <p>Additionally, you may receive this message if you request GPUs without
 specifying the correct queue or if you request too many GPUs:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># --partition=gpuqueue not specified</span>
@@ -769,7 +772,7 @@ srun:<span class="w"> </span>error:<span class="w"> </span>Unable<span class="w"
 </div>
 <p>To solve this error, simply avoid requesting more than 2 GPUs, and
 remember to include the <code class="docutils literal notranslate"><span class="pre">--partition</span></code> option. See also the
-<a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU/hi-MEM node</span></a> section.</p>
+<a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory node</span></a> section.</p>
 </section>
 </section>
 <section id="additional-resources">

@@ -7,7 +7,7 @@
 Users of the Esrum cluster have two options for running Shiny_ servers:
 Either via a publicly accessible server for non-GDPR
 project/non-confidential data or by running Shiny directly or through
-Rstudio on data in access controlled projects.
+RStudio on data in access-controlled projects.
 
 *************************
  The public Shiny server

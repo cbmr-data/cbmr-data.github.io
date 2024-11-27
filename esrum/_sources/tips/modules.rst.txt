@@ -156,7 +156,7 @@ information.
 ****************************
 
 Making modules for python software is a bit more complicated, but can
-typically be accomplished as follows (using visidata_ as an example):
+typically be accomplished as follows (using VisiData_ as an example):
 
 .. code:: shell
 
