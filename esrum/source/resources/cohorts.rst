@@ -44,6 +44,6 @@ automated email that ``Changes to your Identity were processed``, after
 which it may take up to 24 hours before you can access the project
 folder(s) on Esrum.
 
-.. _catalog of cohort variables: https://cbmrcat.unicph.domain.com
+.. _catalog of cohort variables: https://cbmrcat.unicph.domain/
 
-.. _list of cohorts: https://cbmrcat.unicph.domain.com/cohorts.html
+.. _list of cohorts: https://cbmrcat.unicph.domain/cohorts/
