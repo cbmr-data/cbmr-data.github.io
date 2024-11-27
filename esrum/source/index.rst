@@ -25,7 +25,7 @@
    :hidden:
    :caption: Resources
 
-   resources/human
+   resources/cohorts
 
 ..
    resources/common
