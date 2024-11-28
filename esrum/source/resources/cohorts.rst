@@ -16,9 +16,6 @@ brief descriptions of the cohorts and of the variables associated with
 these, respectively, but you are welcome to :ref:`contact us
 <p_contact>` if you have any questions regarding these.
 
-Not all cohorts and variables are currently covered, but content is
-continually being expanded.
-
 .. warning::
 
    You must be connected to the UCPH VPN to access either of these
