@@ -278,7 +278,7 @@ if they are found to impact the usability of the system.</p>
 </section>
 <section id="transferring-data-to-from-esrum">
 <h2>Transferring data to/from Esrum<a class="headerlink" href="#transferring-data-to-from-esrum" title="Permalink to this heading">#</a></h2>
-<p>An official SFTP server is made available at <code class="docutils literal notranslate"><span class="pre">sftp.ku.dk</span></code>. This server
+<p>A public SFTP server is made available at <code class="docutils literal notranslate"><span class="pre">sftp.ku.dk</span></code>. This server
 allows you to access your home folder, your projects, and your datasets
 from another computer, whether a personal computer or another
 server/cluster, and either upload data from that computer to Esrum or
@@ -288,8 +288,7 @@ the UCPH-IT VPN to connect to <code class="docutils literal notranslate"><span c
 standard tool such as <code class="docutils literal notranslate"><span class="pre">scp</span></code>, <code class="docutils literal notranslate"><span class="pre">sftp</span></code>, <code class="docutils literal notranslate"><span class="pre">lftp</span></code>, and <code class="docutils literal notranslate"><span class="pre">rsync</span></code>, or
 graphical tools such as <a class="reference external" href="https://filezilla-project.org/">FileZilla</a> and <a class="reference external" href="https://mobaxterm.mobatek.net/">MobaXterm</a> (see the
 <a class="reference internal" href="access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page), on the other computer:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>srun<span class="w"> </span>--pty<span class="w"> </span>--<span class="w"> </span>bash
-$<span class="w"> </span>sftp<span class="w"> </span>sftp://abc123@sftp.ku.dk
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sftp<span class="w"> </span>sftp://abc123@sftp.ku.dk
 <span class="o">(</span>abc123@sftp.ku.dk<span class="o">)</span><span class="w"> </span>Enter<span class="w"> </span>password
 Password:<span class="w"> </span>******
 <span class="o">(</span>abc123@sftp.ku.dk<span class="o">)</span><span class="w"> </span>Enter<span class="w"> </span>one-time<span class="w"> </span>password
