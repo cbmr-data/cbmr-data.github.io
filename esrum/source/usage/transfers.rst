@@ -43,7 +43,7 @@ of data.
  Transferring data to/from Esrum
 *********************************
 
-An official SFTP server is made available at ``sftp.ku.dk``. This server
+A public SFTP server is made available at ``sftp.ku.dk``. This server
 allows you to access your home folder, your projects, and your datasets
 from another computer, whether a personal computer or another
 server/cluster, and either upload data from that computer to Esrum or
@@ -57,7 +57,6 @@ graphical tools such as FileZilla_ and MobaXterm_ (see the
 
 .. code:: shell
 
-   $ srun --pty -- bash
    $ sftp sftp://abc123@sftp.ku.dk
    (abc123@sftp.ku.dk) Enter password
    Password: ******
