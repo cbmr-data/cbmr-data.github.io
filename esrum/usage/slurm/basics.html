@@ -173,7 +173,7 @@
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Running jobs using Slurm</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Basic Slurm jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gpu.html">Using the GPU / high-memory node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html">Using the GPU / high-memory nodes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html">Software on Esrum</a></li>
@@ -506,7 +506,7 @@ has 4 TB of RAM available, of which 3920 GB can be reserved by Slurm,
 and may be used for jobs that have very high memory requirements.
 However, since we only have one GPU node we ask that you use the regular
 nodes unless your jobs actually require that much RAM. See the
-<a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory node</span></a> section for how to use the GPU node with or
+<a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory nodes</span></a> section for how to use the GPU node with or
 without reserving a GPU.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -679,7 +679,7 @@ default 1 CPU and 15 GB of RAM:</p>
 </pre></div>
 </div>
 <p>It is also possible to start an interactive session on the GPU /
-high-memory nodes. See the <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory node</span></a> page for more
+high-memory nodes. See the <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory nodes</span></a> page for more
 information. See the <a class="reference internal" href="advanced.html#p-usage-slurm-advanced"><span class="std std-ref">Advanced Slurm jobs</span></a> page for more
 information about the <code class="docutils literal notranslate"><span class="pre">srun</span></code> command.</p>
 <p>Once you are done, be sure to exit the interactive shell by using the
@@ -734,7 +734,7 @@ more robust bash scripts. A template using those recommendations is
 available for download <a class="reference download internal" download="" href="../../_downloads/49203405115f2f4c7de966ac8b3525da/robust_sbatch.sh"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a>.</p>
 </section>
 <section id="what-s-next">
-<span id="s-slurm-basics-troubleshooting"></span><h2>What's next<a class="headerlink" href="#what-s-next" title="Permalink to this heading">#</a></h2>
+<h2>What's next<a class="headerlink" href="#what-s-next" title="Permalink to this heading">#</a></h2>
 <p>The next section of the documentation covers advanced usage of Slurm,
 including how to run jobs on the GPU / high-memory node. However, if you
 have not already done so, then it is recommended that you read the
@@ -742,7 +742,7 @@ have not already done so, then it is recommended that you read the
 system on Esrum to load the software you need for your work.</p>
 </section>
 <section id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
+<span id="s-slurm-basics-troubleshooting"></span><h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
 <section id="error-requested-node-configuration-is-not-available">
 <h3>Error: Requested node configuration is not available<a class="headerlink" href="#error-requested-node-configuration-is-not-available" title="Permalink to this heading">#</a></h3>
 <p>If you request too many CPUs (more than 128), or too much RAM (more than
@@ -762,7 +762,7 @@ sbatch:<span class="w"> </span>error:<span class="w"> </span>Batch<span class="w
 <p>To solve this, simply reduce the number of CPUs and/or the amount of RAM
 requested to fit within the limits described above. If your task does
 require more than 1993 GB of RAM, then you need to run your task on the
-GPU queue as described on the <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory node</span></a> page.</p>
+GPU queue as described on the <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory nodes</span></a> page.</p>
 <p>Additionally, you may receive this message if you request GPUs without
 specifying the correct queue or if you request too many GPUs:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># --partition=gpuqueue not specified</span>
@@ -776,7 +776,7 @@ srun:<span class="w"> </span>error:<span class="w"> </span>Unable<span class="w"
 </div>
 <p>To solve this error, simply avoid requesting more than 2 GPUs, and
 remember to include the <code class="docutils literal notranslate"><span class="pre">--partition</span></code> option. See also the
-<a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory node</span></a> section.</p>
+<a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory nodes</span></a> section.</p>
 </section>
 </section>
 <section id="additional-resources">

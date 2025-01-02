@@ -173,7 +173,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="usage/slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="usage/slurm/basics.html">Basic Slurm jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage/slurm/advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage/slurm/gpu.html">Using the GPU / high-memory node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage/slurm/gpu.html">Using the GPU / high-memory nodes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="usage/modules.html">Software on Esrum</a></li>
@@ -254,8 +254,11 @@ documentation for the <a class="reference external" href="https://kunet.ku.dk/wo
 <section id="architecture">
 <h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this heading">#</a></h2>
 <p>The cluster consists of a head node, 12 compute nodes, 1 GPU /
-high-memory node, 2 RStudio servers, and 1 server for running
-containers:</p>
+high-memory node, 2 GPU nodes, 2 <a class="reference internal" href="services/r.html#s-service-rstudio"><span class="std std-ref">RStudio</span></a> web
+servers, and 1 server for running containers. A <a class="reference internal" href="services/shiny.html#p-usage-shiny"><span class="std std-ref">Shiny servers</span></a>
+server managed by UCPH-IT is also available.</p>
+<p>Users connect to the &quot;head&quot; node, from which jobs can be submitted to
+the individual compute nodes using the <a class="reference external" href="https://slurm.schedmd.com/">Slurm</a> Workload Manager:</p>
 <div class="table-wrapper docutils container">
 <table class="docutils align-default">
 <thead>
@@ -290,13 +293,20 @@ containers:</p>
 <td><p><em>esrumgpun01fl</em></p></td>
 </tr>
 <tr class="row-odd"><td><p>2</p></td>
+<td><p>GPU</p></td>
+<td><p>2 TB</p></td>
+<td><p>2x32 core AMD EPYC 9354</p></td>
+<td><p>2x NVIDIA H100 80GB</p></td>
+<td><p><em>esrumgpun0[3-4]fl</em></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
 <td><p>Rstudio</p></td>
 <td><p>2 TB</p></td>
 <td><p>2x32 core AMD EPYC 7543</p></td>
 <td></td>
 <td><p><em>esrumweb*fl</em></p></td>
 </tr>
-<tr class="row-even"><td><p>1</p></td>
+<tr class="row-odd"><td><p>1</p></td>
 <td><p>Container</p></td>
 <td><p>2 TB</p></td>
 <td><p>2x32 core AMD EPYC 7543</p></td>
@@ -306,11 +316,6 @@ containers:</p>
 </tbody>
 </table>
 </div>
-<p>Users connect to the &quot;head&quot; node, from which jobs can be submitted to
-the individual compute nodes using the <a class="reference external" href="https://slurm.schedmd.com/">Slurm</a> Workload Manager for
-running tasks. Two <a class="reference internal" href="services/r.html#s-service-rstudio"><span class="std std-ref">RStudio</span></a> web servers and a
-<a class="reference internal" href="services/shiny.html#p-usage-shiny"><span class="std std-ref">Shiny servers</span></a> server, both managed by UCPH-IT, are also
-available.</p>
 </section>
 <section id="software">
 <h2>Software<a class="headerlink" href="#software" title="Permalink to this heading">#</a></h2>
