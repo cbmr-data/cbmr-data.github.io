@@ -589,8 +589,6 @@ See also the :ref:`p_tips_robustscripts` page for tips on how to write
 more robust bash scripts. A template using those recommendations is
 available for download :download:`here <scripts/robust_sbatch.sh>`.
 
-.. _s_slurm_basics_troubleshooting:
-
 *************
  What's next
 *************
@@ -600,6 +598,8 @@ including how to run jobs on the GPU / high-memory node. However, if you
 have not already done so, then it is recommended that you read the
 :ref:`p_usage_modules` page for an introduction on how to use the module
 system on Esrum to load the software you need for your work.
+
+.. _s_slurm_basics_troubleshooting:
 
 *****************
  Troubleshooting
