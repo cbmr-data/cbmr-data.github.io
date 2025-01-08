@@ -11,7 +11,28 @@
 
 This section describes the layout of your home folder on Esrum, as well
 as the location and layout of projects, shared datasets, and per-node
-"scratch" folders.
+"scratch" folders. Briefly, the file system looks as follows:
+
+.. code:: text
+
+   /home/
+     abc123/
+       ucph/
+         hdir/
+         ndir/
+         sdir/
+   /projects/
+     my-project/
+       apps/
+       data/
+       people/
+       scratch/
+     my-human-project-AUDIT/
+       ...
+   /datasets/
+     my-dataset/
+     my-human-dataset-AUDIT/
+   /scratch/
 
 When you are first given access to Esrum, you will by default have
 access to your home folder, the scratch folders on each node, and the
