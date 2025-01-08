@@ -76,23 +76,50 @@ that your colleagues may depend on should be stored there.
 
 .. _s_ucph_network_drives:
 
-UCPH network drives
-===================
+UCPH network drives (H:, N:, and S:)
+====================================
 
 When you log in to Esrum for the first time, your home folder should
-contain a single folder named ``ucph``. This folder in turn contains
-your UCPH network drives, formerly ``H:`` and ``N:``.
+contain a (link to a) single folder named ``ucph``. This folder in turn
+contains (links to) your UCPH network drives:
 
-.. warning::
+-  ``~/ucph/hdir``: The H-drive is your personal drive for storing data
+   that is not shared with anyone else. This may include personal and
+   confidential data.
 
-   Note that these drives are only accessible from the head node. If you
-   need to analyze data located on either of these shared drives, then
-   you will need to copy it an appropriate project folder.
+-  ``~/ucph/ndir``: The N-drive is used shared data that is neither
+   personal nor confidential. You will have access to any number of
+   subfolders depending on your affiliations, including the
+   ``SUN-CBMR-Shared-Info`` containing files shared across the entire
+   center.
 
-   Note furthermore that access to these folders will not be available
-   if you log in using Kerberos (GSSAPI). See the
-   :ref:`p_usage_connecting` page for instructions for how to disable
-   this feature if you are using MobaXterm.
+-  ``~/ucph/sdir``: The S-drive (``S:``) is meant for sharing of
+   sensitive and personal data with other employees at UCPH. For more
+   information, see the `official documentation
+   <https://kunet.ku.dk/employee-guide/Pages/IT/S-drive.aspx>`_.
+
+These network drives are only accessible from the head node and access
+is furthermore time-limited. You may therefore have to log out and log
+in to regain access to the folders if you have been logged in for a
+while.
+
+It is therefore recommended to always copy data that you are working on
+to an existing project folder. Never use your home folder for this and
+remember that projects have to be audited (indicated by the ``-AUDIT``
+suffix) if you are working on sensitive/protected data.
+
+Should you be missing any of these folders, then please see the
+:ref:`s_filesystem_troubleshooting` section below.
+
+If the folders/links exist, but you cannot access them, then please make
+sure that you are not using GSSAPI (Kerberos) to login. See the
+:ref:`s_network_drives_mobaxterm` section for instructions for how to
+disable this feature if you are using MobaXterm.
+
+.. tip::
+
+   You can also access your network drives online via
+   https://webfile.ku.dk/.
 
 .. _s_project_folders:
 
@@ -115,12 +142,12 @@ Projects on Esrum are located in the ``/projects`` folder:
    genotyping
    ...
 
-The ``-AUDIT`` suffix indicates that the phenomics project has been
+The ``-AUDIT`` suffix indicates that the ``phenomics`` project has been
 configured for work on GDPR data. All work on GDPR data should take
 place in project or data-shares (see below) marked with ``-AUDIT`` and
 *nowhere else*!
 
-Projects folder always contain the following four sub-folders:
+Projects folder always contains the following four sub-folders:
 
 -  ``/projects/<project-name>/people``
 
@@ -131,7 +158,7 @@ Projects folder always contain the following four sub-folders:
 
 -  ``/projects/<project-name>/apps``
 
-   The apps folder is intended for storing software shared between
+   The ``apps`` folder is intended for storing software shared between
    project members. See :ref:`p_tips_modules` for how to set up a shared
    repository of software that can be used with the module system. The
    ``apps`` folder is automatically backed up every day.
@@ -247,6 +274,14 @@ for such projects.
 
    Please contact UCPH-IT should you need to restore a large amount of
    deleted data.
+
+.. _s_filesystem_troubleshooting:
+
+*****************
+ Troubleshooting
+*****************
+
+.. include:: filesystem_troubleshooting.rst
 
 .. _red hat enterprise linux: https://en.wikipedia.org/wiki/Red_Hat_Enterprise_Linux
 
