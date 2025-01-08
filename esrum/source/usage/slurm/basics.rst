@@ -68,20 +68,35 @@ file ``chr1.fasta``. This script is saved as ``my_script.sh``:
 
    #!/bin/bash
 
+   module purge
    module load igzip/2.30.0
    igzip --keep "chr1.fasta"
 
-The ``module`` command is used load the required software from the
-UCPH-IT provided library of scientific and other software. The
-:ref:`p_usage_modules` page gives an introduction to using modules on
-Esrum, but for now all you need to know is that the above command makes
-the ``igzip`` tool available to us. We could also have loaded the module
-on the command-line before queuing the command, as Slurm will remember
-what modules we have loaded, but it is recommended to load all required
-software *in* your job scripts to ensure that they are reproducible.
+This script consists of three parts:
 
-The ``--keep`` option for ``igzip`` is used to prevent igzip from
-deleting our input file when it is done.
+#. Firstly we run ``module purge`` to unload any modules we have already
+   loaded. The advantage of this is that it ensures that we are only
+   using the modules we ask for, and exactly the versions we ask for.
+
+#. Secondly, we use the ``module load`` command to load the ``igzip``
+   module from the UCPH-IT software library, which makes the ``igzip``
+   tool available to us. See the :ref:`p_usage_modules` page for an
+   introduction to using modules on Esrum.
+
+#. And finally, we run the ``igzip`` command on our FASTA file. The
+   ``--keep`` option for ``igzip`` is used to prevent igzip from
+   deleting our input file when it is done.
+
+.. tip::
+
+   We could also have loaded the module on the command-line before
+   queuing the command, and skipped the ``module purge`` and ``module
+   load`` commands, as Slurm remembers what modules we have loaded when
+   we run ``sbatch``. However, it is strongly recommended to load all
+   required software *in* your ``sbatch`` scripts to ensure that they
+   are reproducible. See the :ref:`s_sbatch_environment` section for
+   additional information about controlling what ``sbatch`` inherits
+   from your current environment.
 
 To queue this script, run the ``sbatch`` command with the filename of
 the script as an argument:
@@ -132,6 +147,7 @@ instead of hard-coding that filename:
 
    #!/bin/bash
 
+   module purge
    module load igzip/2.30.0
    igzip --keep "${1}"
 
@@ -148,8 +164,8 @@ update our script every time.
 
 For further information, see `this
 <https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script>`_
-this tutorial for a brief overview of ways to use command-line arguments
-in a bash script.
+tutorial for a brief overview of ways to use command-line arguments in a
+bash script.
 
 **********************
  Monitoring your jobs
@@ -233,11 +249,12 @@ We could instead modify ``my_script.sh`` by adding a line containing
 ``#SBATCH --my-option`` near the top of the file:
 
 .. code-block:: bash
-   :emphasize-lines: 2
+   :emphasize-lines: 3
 
    #!/bin/bash
    #SBATCH --my-option
 
+   module purge
    module load igzip/2.30.0
    igzip --keep "chr1.fasta"
 
@@ -282,11 +299,12 @@ with 8 CPUs, and is therefore automatically assigned 8 * 15 ~= 120
 gigabytes of RAM:
 
 .. code-block:: bash
-   :emphasize-lines: 2,5
+   :emphasize-lines: 2,6
 
    #!/bin/bash
    #SBATCH --cpus-per-task 8
 
+   module purge
    module load igzip/2.30.0
    igzip --keep --threads 8 "chr1.fasta"
 
@@ -301,11 +319,12 @@ can instead use the ``${SLURM_CPUS_PER_TASK}`` variable, which is
 automatically set to the number of CPUs we've requested:
 
 .. code-block:: bash
-   :emphasize-lines: 5
+   :emphasize-lines: 6
 
    #!/bin/bash
    #SBATCH --cpus-per-task 8
 
+   module purge
    module load igzip/2.30.0
    igzip --keep --threads ${SLURM_CPUS_PER_TASK} "chr1.fasta"
 
@@ -320,12 +339,13 @@ regardless of how many (or how few) CPUs you reserve.
 The following script a task with 8 CPUs and 512 gigabytes of RAM:
 
 .. code-block:: bash
-   :emphasize-lines: 3
+   :emphasize-lines: 4
 
    #!/bin/bash
    #SBATCH --cpus-per-task 8
    #SBATCH --mem 512G
 
+   module purge
    module load igzip/2.30.0
    igzip --keep --threads ${SLURM_CPUS_PER_TASK} "chr1.fasta"
 
