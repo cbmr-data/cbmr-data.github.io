@@ -99,14 +99,22 @@ contains (links to) your UCPH network drives:
    <https://kunet.ku.dk/employee-guide/Pages/IT/S-drive.aspx>`_.
 
 These network drives are only accessible from the head node and access
-is furthermore time-limited. You may therefore have to log out and log
-in to regain access to the folders if you have been logged in for a
-while.
+is furthermore time-limited: Your access expires about 10 hours after
+logging in.
 
 It is therefore recommended to always copy data that you are working on
 to an existing project folder. Never use your home folder for this and
 remember that projects have to be audited (indicated by the ``-AUDIT``
 suffix) if you are working on sensitive/protected data.
+
+.. warning::
+
+   Because access to these network drives are time-limited, you should
+   never leave a terminal or other process (e.g. tmux or screen) running
+   *in* a network drive folder. Doing so results a lot of error messages
+   being written to the system logs, and to avoid this we may either
+   contact you to terminate those processes or simply terminate them
+   ourselves.
 
 Should you be missing any of these folders, then please see the
 :ref:`s_filesystem_troubleshooting` section below.
