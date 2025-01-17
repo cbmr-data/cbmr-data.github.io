@@ -7,7 +7,7 @@
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
         <title>Connecting to the cluster - Esrum Cluster documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
@@ -321,8 +321,11 @@ created it), double-click on <code class="docutils literal notranslate"><span cl
 left side of MobaXterm, or select <code class="docutils literal notranslate"><span class="pre">Esrum</span></code> from the list that appears
 when clicking on the <code class="docutils literal notranslate"><span class="pre">Sessions</span></code> button on the main menu.</p>
 <img alt="../../_images/mobaxterm_07.png" class="align-center" src="../../_images/mobaxterm_07.png" />
-<p>Note that you must disable login using Kerberos (GSSAPI) if you wish to
-access the UCPH network drives (<code class="docutils literal notranslate"><span class="pre">H:</span></code> and <code class="docutils literal notranslate"><span class="pre">N:</span></code>) via Esrum. To do so,
+</section>
+<section id="accessing-network-drives-via-mobaxterm">
+<span id="s-network-drives-mobaxterm"></span><h3>Accessing network drives via MobaXterm<a class="headerlink" href="#accessing-network-drives-via-mobaxterm" title="Permalink to this heading">#</a></h3>
+<p>In order to access your UCPH network drives (<code class="docutils literal notranslate"><span class="pre">H:</span></code>, <code class="docutils literal notranslate"><span class="pre">N:</span></code>, and <code class="docutils literal notranslate"><span class="pre">S:</span></code>)
+via Esrum, you must disable logins using Kerberos (GSSAPI). To do so,
 open the <code class="docutils literal notranslate"><span class="pre">Configuration</span></code> dialog as shown:</p>
 <img alt="../../_images/mobaxterm_08.png" class="align-center" src="../../_images/mobaxterm_08.png" />
 <p>Then untick the <code class="docutils literal notranslate"><span class="pre">GSSAPI</span> <span class="pre">Kerberos</span></code> checkbox as shown and click the
@@ -504,6 +507,7 @@ described in the <a class="reference internal" href="#s-configure-mobaxterm"><sp
 <li><a class="reference internal" href="#connecting-on-windows">Connecting on Windows</a><ul>
 <li><a class="reference internal" href="#configuring-mobaxterm">Configuring MobaXterm</a></li>
 <li><a class="reference internal" href="#reconnecting-with-mobaxterm">Reconnecting with MobaXterm</a></li>
+<li><a class="reference internal" href="#accessing-network-drives-via-mobaxterm">Accessing network drives via MobaXterm</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#connecting-on-osx">Connecting on OSX</a></li>

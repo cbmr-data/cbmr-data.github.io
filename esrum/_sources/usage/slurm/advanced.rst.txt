@@ -8,6 +8,45 @@ The following page describes how to use the ``srun`` command to run
 simple commands on the cluster, how to queue batches of jobs using
 ``sbatch``, including how to manage these jobs and how to map
 
+.. _s_sbatch_environment:
+
+***********************************
+ Controlling environment variables
+***********************************
+
+By default, your ``sbatch`` script and ``srun`` command will inherit
+environment variables set before you run ``sbatch``/``srun``. This means
+that, among other things, modules loaded prior to running your job will
+remain loaded once your job starts running.
+
+However, if you are running tools that are affected by environment
+variables, this may result in your script acting differently depending
+on in what context you run it, and making it hard to reproduce your
+analyses. To mitigate this, it is possible to control what environment
+variables are inherited via the ``--export`` option for
+``sbatch``/``srun``.
+
+The recommended usage is ``--export=TMPDIR``, which only inherits the
+``TMPDIR`` variable from your terminal. The motivation for doing so is
+that we've configured it to point to the `/scratch` folder, ensuring
+that there is plenty capacity for whatever temporary files your programs
+might generate:
+
+.. code-block:: bash
+
+   #!/bin/bash
+   #SBATCH --export=TMPDIR
+
+   module purge
+   module load samtools/1.20
+   samtools --version
+
+Note that it is still recommended to run ``module purge``, despite using
+``--export``, as sbatch will execute your bash startup scripts and those
+may still load modules automatically.
+
+.. _p_usage_srun:
+
 *****************************
  Running commands using srun
 *****************************

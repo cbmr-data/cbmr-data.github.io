@@ -7,7 +7,7 @@
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
         <title>Advanced Slurm jobs - Esrum Cluster documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
@@ -249,8 +249,37 @@
 <p>The following page describes how to use the <code class="docutils literal notranslate"><span class="pre">srun</span></code> command to run
 simple commands on the cluster, how to queue batches of jobs using
 <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>, including how to manage these jobs and how to map</p>
+<section id="controlling-environment-variables">
+<span id="s-sbatch-environment"></span><h2>Controlling environment variables<a class="headerlink" href="#controlling-environment-variables" title="Permalink to this heading">#</a></h2>
+<p>By default, your <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> script and <code class="docutils literal notranslate"><span class="pre">srun</span></code> command will inherit
+environment variables set before you run <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>/<code class="docutils literal notranslate"><span class="pre">srun</span></code>. This means
+that, among other things, modules loaded prior to running your job will
+remain loaded once your job starts running.</p>
+<p>However, if you are running tools that are affected by environment
+variables, this may result in your script acting differently depending
+on in what context you run it, and making it hard to reproduce your
+analyses. To mitigate this, it is possible to control what environment
+variables are inherited via the <code class="docutils literal notranslate"><span class="pre">--export</span></code> option for
+<code class="docutils literal notranslate"><span class="pre">sbatch</span></code>/<code class="docutils literal notranslate"><span class="pre">srun</span></code>.</p>
+<p>The recommended usage is <code class="docutils literal notranslate"><span class="pre">--export=TMPDIR</span></code>, which only inherits the
+<code class="docutils literal notranslate"><span class="pre">TMPDIR</span></code> variable from your terminal. The motivation for doing so is
+that we've configured it to point to the <cite>/scratch</cite> folder, ensuring
+that there is plenty capacity for whatever temporary files your programs
+might generate:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --export=TMPDIR</span>
+
+module<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>samtools/1.20
+samtools<span class="w"> </span>--version
+</pre></div>
+</div>
+<p>Note that it is still recommended to run <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code>, despite using
+<code class="docutils literal notranslate"><span class="pre">--export</span></code>, as sbatch will execute your bash startup scripts and those
+may still load modules automatically.</p>
+</section>
 <section id="running-commands-using-srun">
-<h2>Running commands using srun<a class="headerlink" href="#running-commands-using-srun" title="Permalink to this heading">#</a></h2>
+<span id="p-usage-srun"></span><h2>Running commands using srun<a class="headerlink" href="#running-commands-using-srun" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">srun</span></code> command can be used to queue and execute simple commands on
 the nodes, and for most part it should feel no different from running a
 command without Slurm. Simply prefix your command with <code class="docutils literal notranslate"><span class="pre">srun</span></code> and the
@@ -673,6 +702,7 @@ bgzip<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Advanced Slurm jobs</a><ul>
+<li><a class="reference internal" href="#controlling-environment-variables">Controlling environment variables</a></li>
 <li><a class="reference internal" href="#running-commands-using-srun">Running commands using srun</a><ul>
 <li><a class="reference internal" href="#cancelling-srun">Cancelling srun</a></li>
 </ul>

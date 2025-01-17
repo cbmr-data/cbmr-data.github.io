@@ -5,12 +5,16 @@
 ###################
 
 `Jupyter Notebooks`_ are available via the module system on Esrum and
-may be started as follows:
+can be run on regular compute nodes or on the GPU/high-memory node,
+depending on the kind of analyses you wish to run and the size of your
+workload:
+
+To start a notebook on a node, run the following commands:
 
 .. code:: console
 
    $ module load jupyter-notebook
-   $ jupyter notebook --no-browser --port=XXXXX
+   $ srun --pty -- jupyter notebook --no-browser --port=XXXXX
 
 .. raw:: html
 
@@ -21,12 +25,30 @@ may be started as follows:
    The XXXXX in the above command must be replaced with a valid port number. To avoid trouble you should pick a number in the range 49152 to 65535, and you must not pick a number used by another user on Esrum.
    </noscript>
 
-It is also recommended that you run your notebook in a tmux session or
-similar, to avoid the notebook shutting down if you lose connection to
-the server. See :ref:`p_tips_tmux` for more information.
+By default, this will allocate a single CPU and ~16 GB of RAM to your
+notebook. Please see the :ref:`reserving_resources` section for
+instructions on how to reserve additional resources and the
+:ref:`p_usage_slurm_gpu` page for instructions on how to reserve GPU /
+high-memory resources. The ``srun`` accepts the same options as
+``sbatch``.
 
-To actually connect to the notebook server, you will need to set up port
-forwarding using the port-number from your command.
+To connect to the notebook server, you will first need to set up a
+connection from your PC to the node where your notebook is running. This
+is called "port forwarding" and is described below.
+
+.. tip::
+
+   See the :ref:`p_usage_slurm` pages for information about how to
+   reserve CPUs, memory, and/or GPUs when using ``srun``. The ``srun``
+   command takes the same command-line options as ``sbatch``, as
+   described :ref:`here <p_usage_srun>`.
+
+.. tip::
+
+   It is recommended that you execute the above commands in a ``tmux``
+   or ``screen`` session, to avoid the notebook shutting down if you
+   lose connection to the server. See :ref:`p_tips_tmux` for more
+   information.
 
 ****************************************
  Port forwarding in Windows (MobaXterm)
@@ -34,6 +56,18 @@ forwarding using the port-number from your command.
 
 The following instructions assume that you are using MobaXterm. If not,
 then please refer to the documentation for your tool of choice.
+
+#. Run the following command on the head node to determine on which node
+   which your notebook is running:
+
+   .. code:: console
+
+      $ squeue --me --name jupyter
+      JOBID  PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+      551600 standardq  jupyter   abc123  R       8:49      1 esrumcmpn07fl
+
+   In this example the notebook is running on ``esrumcmpn07fl``, but
+   your notebook may be running on any of the nodes on Esrum!
 
 #. Install and configure MobaXterm as described in
    :ref:`s_configure_mobaxterm`.
@@ -48,14 +82,26 @@ then please refer to the documentation for your tool of choice.
    .. image:: images/mobaxterm_tunnel_02.png
       :align: center
 
-#. Fill out the tunnel dialogue as indicated, replacing ``12356`` with
-   your chosen port number (e.g. XXXXX) and replacing ``abc123`` with
-   your UCPH username. The full name of the SSH server (written in the
-   top row on bottom right) is ``esrumhead01fl.unicph.domain``. Finally
-   click ``Save``:
+#. Follow these steps to configure the tunnel:
 
    .. image:: images/mobaxterm_tunnel_03.png
       :align: center
+
+   #. In middle-left box, write your chosen port number (e.g. ``XXXXX``)
+      where the screenshot shows ``12345``.
+
+   #. In the top-right pair of boxes, replace ``localhost`` with the
+      name of the node where your notebook is running (this was
+      ``esrumcmpn07fl`` in the example above, but your notebook will
+      likely be running on a different node), and replace ``12345`` with
+      your chosen port number (e.g. ``XXXXX``).
+
+   #. In the middle-right trio of boxes, write the full name of the head
+      node (``esrumhead01fl.unicph.domain``), write your UCPH username
+      where the screenshot has ``abc123``, and set the final value to
+      ``22``.
+
+   #. Finally, click ``Save``.
 
 #. If the tunnel does not start automatically, press either the "Play"
    button or the ``Start all tunnels`` button:

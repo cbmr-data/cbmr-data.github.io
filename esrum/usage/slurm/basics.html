@@ -7,7 +7,7 @@
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
         <title>Basic Slurm jobs - Esrum Cluster documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
@@ -294,20 +294,35 @@ those features with Slurm.</p>
 file <code class="docutils literal notranslate"><span class="pre">chr1.fasta</span></code>. This script is saved as <code class="docutils literal notranslate"><span class="pre">my_script.sh</span></code>:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
+module<span class="w"> </span>purge
 module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
 igzip<span class="w"> </span>--keep<span class="w"> </span><span class="s2">&quot;chr1.fasta&quot;</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">module</span></code> command is used load the required software from the
-UCPH-IT provided library of scientific and other software. The
-<a class="reference internal" href="../modules.html#p-usage-modules"><span class="std std-ref">Software on Esrum</span></a> page gives an introduction to using modules on
-Esrum, but for now all you need to know is that the above command makes
-the <code class="docutils literal notranslate"><span class="pre">igzip</span></code> tool available to us. We could also have loaded the module
-on the command-line before queuing the command, as Slurm will remember
-what modules we have loaded, but it is recommended to load all required
-software <em>in</em> your job scripts to ensure that they are reproducible.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">--keep</span></code> option for <code class="docutils literal notranslate"><span class="pre">igzip</span></code> is used to prevent igzip from
-deleting our input file when it is done.</p>
+<p>This script consists of three parts:</p>
+<ol class="arabic simple">
+<li><p>Firstly we run <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code> to unload any modules we have already
+loaded. The advantage of this is that it ensures that we are only
+using the modules we ask for, and exactly the versions we ask for.</p></li>
+<li><p>Secondly, we use the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code> command to load the <code class="docutils literal notranslate"><span class="pre">igzip</span></code>
+module from the UCPH-IT software library, which makes the <code class="docutils literal notranslate"><span class="pre">igzip</span></code>
+tool available to us. See the <a class="reference internal" href="../modules.html#p-usage-modules"><span class="std std-ref">Software on Esrum</span></a> page for an
+introduction to using modules on Esrum.</p></li>
+<li><p>And finally, we run the <code class="docutils literal notranslate"><span class="pre">igzip</span></code> command on our FASTA file. The
+<code class="docutils literal notranslate"><span class="pre">--keep</span></code> option for <code class="docutils literal notranslate"><span class="pre">igzip</span></code> is used to prevent igzip from
+deleting our input file when it is done.</p></li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>We could also have loaded the module on the command-line before
+queuing the command, and skipped the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code> and <code class="docutils literal notranslate"><span class="pre">module</span>
+<span class="pre">load</span></code> commands, as Slurm remembers what modules we have loaded when
+we run <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>. However, it is strongly recommended to load all
+required software <em>in</em> your <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> scripts to ensure that they
+are reproducible. See the <a class="reference internal" href="advanced.html#s-sbatch-environment"><span class="std std-ref">Controlling environment variables</span></a> section for
+additional information about controlling what <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> inherits
+from your current environment.</p>
+</div>
 <p>To queue this script, run the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command with the filename of
 the script as an argument:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls
@@ -346,6 +361,7 @@ to update our script above to take a filename on the command line
 instead of hard-coding that filename:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
+module<span class="w"> </span>purge
 module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
 igzip<span class="w"> </span>--keep<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span>
 </pre></div>
@@ -359,8 +375,8 @@ name of the file we wanted to compress on the command-line:</p>
 submit a job for any file that we want to process, without having to
 update our script every time.</p>
 <p>For further information, see <a class="reference external" href="https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script">this</a>
-this tutorial for a brief overview of ways to use command-line arguments
-in a bash script.</p>
+tutorial for a brief overview of ways to use command-line arguments in a
+bash script.</p>
 </section>
 </section>
 <section id="monitoring-your-jobs">
@@ -422,8 +438,9 @@ like, is to use <code class="docutils literal notranslate"><span class="pre">#SB
 <p>We could instead modify <code class="docutils literal notranslate"><span class="pre">my_script.sh</span></code> by adding a line containing
 <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--my-option</span></code> near the top of the file:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="hll"><span class="c1">#SBATCH --my-option</span>
-</span>
+<span class="c1">#SBATCH --my-option</span>
+<span class="hll">
+</span>module<span class="w"> </span>purge
 module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
 igzip<span class="w"> </span>--keep<span class="w"> </span><span class="s2">&quot;chr1.fasta&quot;</span>
 </pre></div>
@@ -463,6 +480,7 @@ gigabytes of RAM:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="hll"><span class="c1">#SBATCH --cpus-per-task 8</span>
 </span>
+module<span class="w"> </span>purge
 module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
 <span class="hll">igzip<span class="w"> </span>--keep<span class="w"> </span>--threads<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="s2">&quot;chr1.fasta&quot;</span>
 </span></pre></div>
@@ -478,6 +496,7 @@ automatically set to the number of CPUs we've requested:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH --cpus-per-task 8</span>
 
+module<span class="w"> </span>purge
 module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
 <span class="hll">igzip<span class="w"> </span>--keep<span class="w"> </span>--threads<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span><span class="w"> </span><span class="s2">&quot;chr1.fasta&quot;</span>
 </span></pre></div>
@@ -492,8 +511,9 @@ regardless of how many (or how few) CPUs you reserve.</p>
 <p>The following script a task with 8 CPUs and 512 gigabytes of RAM:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH --cpus-per-task 8</span>
-<span class="hll"><span class="c1">#SBATCH --mem 512G</span>
-</span>
+<span class="c1">#SBATCH --mem 512G</span>
+<span class="hll">
+</span>module<span class="w"> </span>purge
 module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
 igzip<span class="w"> </span>--keep<span class="w"> </span>--threads<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span><span class="w"> </span><span class="s2">&quot;chr1.fasta&quot;</span>
 </pre></div>

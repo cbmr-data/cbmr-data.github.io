@@ -102,8 +102,13 @@ when clicking on the ``Sessions`` button on the main menu.
 .. image:: images/mobaxterm_07.png
    :align: center
 
-Note that you must disable login using Kerberos (GSSAPI) if you wish to
-access the UCPH network drives (``H:`` and ``N:``) via Esrum. To do so,
+.. _s_network_drives_mobaxterm:
+
+Accessing network drives via MobaXterm
+======================================
+
+In order to access your UCPH network drives (``H:``, ``N:``, and ``S:``)
+via Esrum, you must disable logins using Kerberos (GSSAPI). To do so,
 open the ``Configuration`` dialog as shown:
 
 .. image:: images/mobaxterm_08.png

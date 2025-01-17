@@ -7,7 +7,7 @@
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
         <title>Jupyter Notebooks - Esrum Cluster documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="../_static/css/playback.css?v=2c0b8537" />
@@ -247,9 +247,12 @@
           <section id="jupyter-notebooks">
 <span id="p-service-jupyter"></span><h1>Jupyter Notebooks<a class="headerlink" href="#jupyter-notebooks" title="Permalink to this heading">#</a></h1>
 <p><a class="reference external" href="https://jupyter.org/">Jupyter Notebooks</a> are available via the module system on Esrum and
-may be started as follows:</p>
+can be run on regular compute nodes or on the GPU/high-memory node,
+depending on the kind of analyses you wish to run and the size of your
+workload:</p>
+<p>To start a notebook on a node, run the following commands:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>jupyter-notebook
-<span class="gp">$ </span>jupyter<span class="w"> </span>notebook<span class="w"> </span>--no-browser<span class="w"> </span>--port<span class="o">=</span>XXXXX
+<span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--<span class="w"> </span>jupyter<span class="w"> </span>notebook<span class="w"> </span>--no-browser<span class="w"> </span>--port<span class="o">=</span>XXXXX
 </pre></div>
 </div>
 <script>
@@ -257,16 +260,44 @@ may be started as follows:</p>
 </script>
 <noscript>
 The XXXXX in the above command must be replaced with a valid port number. To avoid trouble you should pick a number in the range 49152 to 65535, and you must not pick a number used by another user on Esrum.
-</noscript><p>It is also recommended that you run your notebook in a tmux session or
-similar, to avoid the notebook shutting down if you lose connection to
-the server. See <a class="reference internal" href="../tips/tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> for more information.</p>
-<p>To actually connect to the notebook server, you will need to set up port
-forwarding using the port-number from your command.</p>
+</noscript><p>By default, this will allocate a single CPU and ~16 GB of RAM to your
+notebook. Please see the <a class="reference internal" href="../usage/slurm/basics.html#reserving-resources"><span class="std std-ref">Reserving resources</span></a> section for
+instructions on how to reserve additional resources and the
+<a class="reference internal" href="../usage/slurm/gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory nodes</span></a> page for instructions on how to reserve GPU /
+high-memory resources. The <code class="docutils literal notranslate"><span class="pre">srun</span></code> accepts the same options as
+<code class="docutils literal notranslate"><span class="pre">sbatch</span></code>.</p>
+<p>To connect to the notebook server, you will first need to set up a
+connection from your PC to the node where your notebook is running. This
+is called &quot;port forwarding&quot; and is described below.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>See the <a class="reference internal" href="../usage/slurm/index.html#p-usage-slurm"><span class="std std-ref">Running jobs using Slurm</span></a> pages for information about how to
+reserve CPUs, memory, and/or GPUs when using <code class="docutils literal notranslate"><span class="pre">srun</span></code>. The <code class="docutils literal notranslate"><span class="pre">srun</span></code>
+command takes the same command-line options as <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>, as
+described <a class="reference internal" href="../usage/slurm/advanced.html#p-usage-srun"><span class="std std-ref">here</span></a>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It is recommended that you execute the above commands in a <code class="docutils literal notranslate"><span class="pre">tmux</span></code>
+or <code class="docutils literal notranslate"><span class="pre">screen</span></code> session, to avoid the notebook shutting down if you
+lose connection to the server. See <a class="reference internal" href="../tips/tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> for more
+information.</p>
+</div>
 <section id="port-forwarding-in-windows-mobaxterm">
 <h2>Port forwarding in Windows (MobaXterm)<a class="headerlink" href="#port-forwarding-in-windows-mobaxterm" title="Permalink to this heading">#</a></h2>
 <p>The following instructions assume that you are using MobaXterm. If not,
 then please refer to the documentation for your tool of choice.</p>
 <ol class="arabic">
+<li><p>Run the following command on the head node to determine on which node
+which your notebook is running:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>squeue<span class="w"> </span>--me<span class="w"> </span>--name<span class="w"> </span>jupyter
+<span class="go">JOBID  PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
+<span class="go">551600 standardq  jupyter   abc123  R       8:49      1 esrumcmpn07fl</span>
+</pre></div>
+</div>
+<p>In this example the notebook is running on <code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl</span></code>, but
+your notebook may be running on any of the nodes on Esrum!</p>
+</li>
 <li><p>Install and configure MobaXterm as described in
 <a class="reference internal" href="../usage/access/connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a>.</p></li>
 <li><p>Click the middle <code class="docutils literal notranslate"><span class="pre">Tunneling</span></code> button on the toolbar.</p>
@@ -275,12 +306,22 @@ then please refer to the documentation for your tool of choice.</p>
 <li><p>Click the bottom-left <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">SSH</span> <span class="pre">Tunnel</span></code> button.</p>
 <img alt="../_images/mobaxterm_tunnel_02.png" class="align-center" src="../_images/mobaxterm_tunnel_02.png" />
 </li>
-<li><p>Fill out the tunnel dialogue as indicated, replacing <code class="docutils literal notranslate"><span class="pre">12356</span></code> with
-your chosen port number (e.g. XXXXX) and replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code> with
-your UCPH username. The full name of the SSH server (written in the
-top row on bottom right) is <code class="docutils literal notranslate"><span class="pre">esrumhead01fl.unicph.domain</span></code>. Finally
-click <code class="docutils literal notranslate"><span class="pre">Save</span></code>:</p>
+<li><p>Follow these steps to configure the tunnel:</p>
 <img alt="../_images/mobaxterm_tunnel_03.png" class="align-center" src="../_images/mobaxterm_tunnel_03.png" />
+<ol class="arabic simple">
+<li><p>In middle-left box, write your chosen port number (e.g. <code class="docutils literal notranslate"><span class="pre">XXXXX</span></code>)
+where the screenshot shows <code class="docutils literal notranslate"><span class="pre">12345</span></code>.</p></li>
+<li><p>In the top-right pair of boxes, replace <code class="docutils literal notranslate"><span class="pre">localhost</span></code> with the
+name of the node where your notebook is running (this was
+<code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl</span></code> in the example above, but your notebook will
+likely be running on a different node), and replace <code class="docutils literal notranslate"><span class="pre">12345</span></code> with
+your chosen port number (e.g. <code class="docutils literal notranslate"><span class="pre">XXXXX</span></code>).</p></li>
+<li><p>In the middle-right trio of boxes, write the full name of the head
+node (<code class="docutils literal notranslate"><span class="pre">esrumhead01fl.unicph.domain</span></code>), write your UCPH username
+where the screenshot has <code class="docutils literal notranslate"><span class="pre">abc123</span></code>, and set the final value to
+<code class="docutils literal notranslate"><span class="pre">22</span></code>.</p></li>
+<li><p>Finally, click <code class="docutils literal notranslate"><span class="pre">Save</span></code>.</p></li>
+</ol>
 </li>
 <li><p>If the tunnel does not start automatically, press either the &quot;Play&quot;
 button or the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">all</span> <span class="pre">tunnels</span></code> button:</p>
