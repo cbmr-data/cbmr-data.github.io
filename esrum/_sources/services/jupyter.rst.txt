@@ -7,7 +7,21 @@
 `Jupyter Notebooks`_ are available via the module system on Esrum and
 can be run on regular compute nodes or on the GPU/high-memory node,
 depending on the kind of analyses you wish to run and the size of your
-workload:
+workload.
+
+By default, Jupyter only includes support for Python notebooks, but
+instructions are included :ref:`below <s_jupyter_kernels>` for how to
+add support for R.
+
+.. note::
+
+   We are currently working on making Jupyter available along with the
+   :ref:`s_service_rstudio`. We will announce when this service is
+   ready.
+
+*****************************
+ Starting a Jupyter notebook
+*****************************
 
 To start a notebook on a node, run the following commands:
 
@@ -16,43 +30,41 @@ To start a notebook on a node, run the following commands:
    $ module load jupyter-notebook
    $ srun --pty -- jupyter notebook --no-browser --port=XXXXX
 
+The number used in the argument ``--port=XXXXX`` must be a value in the
+range 49152 to 65535, and must not be a number used by another user on
+Esrum. The number shown here was randomly selected for you, and you can
+refresh this page for a different suggestion.
+
 .. raw:: html
 
-   <script>
-    document.write("The number used in the argument <code class=\"docutils literal notranslate\"><span class=\"pre\">--port=XXXXX</span></code> must be a value in the range 49152 to 65535, and must not be a number used by another user on Esrum. The number shown here was randomly selected for you and you can refresh this page for a different suggestion.")
-   </script>
    <noscript>
-   The XXXXX in the above command must be replaced with a valid port number. To avoid trouble you should pick a number in the range 49152 to 65535, and you must not pick a number used by another user on Esrum.
+   <div class="admonition warning"><p class="admonition-title">Warning</p><p>A random port could not be selected, because Javascript is disabled. Please choose a number in the range 49152 to 65535, and use this number whenever the documentation says <code class="docutils literal notranslate"><span class="pre">XXXXX</span></code></p></div>
    </noscript>
 
-By default, this will allocate a single CPU and ~16 GB of RAM to your
-notebook. Please see the :ref:`reserving_resources` section for
-instructions on how to reserve additional resources and the
-:ref:`p_usage_slurm_gpu` page for instructions on how to reserve GPU /
-high-memory resources. The ``srun`` accepts the same options as
-``sbatch``.
+This will allocate a single CPU and ~16 GB of RAM to your notebook. If
+you need additional resources for your notebook, then please see the
+:ref:`reserving_resources` section for instructions on how to reserve
+additional CPUs and RAM, and the :ref:`p_usage_slurm_gpu` page for
+instructions on how to reserve GPUs or large amounts of memory. The
+``srun`` accepts the same options as ``sbatch``.
+
+.. tip::
+
+   It is recommended that you execute the ``srun`` command in a ``tmux``
+   or ``screen`` session, to avoid the notebook shutting down if you
+   lose connection to the head node. See :ref:`p_tips_tmux` for more
+   information.
+
+************************************
+ Connecting to the Jupyter Notebook
+************************************
 
 To connect to the notebook server, you will first need to set up a
 connection from your PC to the node where your notebook is running. This
 is called "port forwarding" and is described below.
 
-.. tip::
-
-   See the :ref:`p_usage_slurm` pages for information about how to
-   reserve CPUs, memory, and/or GPUs when using ``srun``. The ``srun``
-   command takes the same command-line options as ``sbatch``, as
-   described :ref:`here <p_usage_srun>`.
-
-.. tip::
-
-   It is recommended that you execute the above commands in a ``tmux``
-   or ``screen`` session, to avoid the notebook shutting down if you
-   lose connection to the server. See :ref:`p_tips_tmux` for more
-   information.
-
-****************************************
- Port forwarding in Windows (MobaXterm)
-****************************************
+Port forwarding on Windows
+==========================
 
 The following instructions assume that you are using MobaXterm. If not,
 then please refer to the documentation for your tool of choice.
@@ -116,53 +128,78 @@ open your notebook via the
 ``http://localhost:XXXXX/?token=${long_text_here}`` URL that Jupyter
 Notebook printed in your terminal.
 
-******************************
- Port forwarding on Linux/OSX
-******************************
+Port forwarding on Linux/OSX
+============================
 
-It is recommended to enable port forwarding using your ``~/.ssh/config``
-file. This is accomplished by adding a ``LocalForward`` line to your
-entry for Esrum as shown below (see also the section about
-:ref:`s_connecting_linux`):
-
-.. code:: text
-
-   Host esrum esrumhead01fl esrumhead01fl.unicph.domain
-       HostName esrumhead01fl.unicph.domain
-       User abc123
-
-       LocalForward XXXXX localhost:XXXXX
-
-The ``LocalForward`` option consists of two parts: The port used by the
-notebook on Esrum (XXXXX), and the address via which the notebook on
-Esrum should be accessible on your PC (localhost:XXXXX).
-
-Alternatively, you can start/stop port forwarding on demand by using an
-explicit SSH command. The ``-N`` option is optional and stops ssh from
-starting a shell once it has connected to Esrum:
+Port forwarding on Linux/OSX can be accomplished using the command-line,
+replacing ``esrumcmpn07fl`` in the following command with the node your
+notebook is running on (see above):
 
 .. code:: shell
 
-   $ ssh -S none -N -L XXXXX:localhost:XXXXX abc123@esrumhead01fl.unicph.domain
+   $ ssh -S none -N -L 'XXXXX:esrumcmpn07fl:XXXXX' abc123@esrumhead01fl.unicph.domain
 
-Once you have port forwarding is enabled, you can open your notebook via
-the ``http://localhost:XXXXX/?token=${long_text_here}`` URL that Jupyter
-Notebook printed in your terminal.
+While this command is running, you can open your notebook via the
+``http://localhost:XXXXX/?token=${long_text_here}`` URL that Jupyter
+Notebook printed in your terminal on Esrum.
 
 .. note::
 
-   The `-S none` option is recommended in case shared connections are
-   enabled (see the `ControlMaster` section in `man ssh`), in which case
-   the `ssh` command may otherwise not open the specified ports if a
-   connection already exists.
+   The ``-S none`` option is recommended in case shared connections are
+   enabled (see the ``ControlMaster`` section in ``man ssh``), in which
+   case the ``ssh`` command may otherwise not open the specified ports
+   if a connection already exists. The ``-N`` option prevents ``ssh``
+   from open a shell on Esrum, which ensures that you do not
+   accidentally use this terminal and then close it, while still using
+   the notebook, and the ``-L`` option configures the actual port
+   forwarding.
 
-.. raw:: html
+.. _s_jupyter_kernels:
 
-   <script defer>
-    document.addEventListener('DOMContentLoaded', function() {
-      replaceTextContent(document.body, "XXXXX", getEphemeralPort());
-    });
-   </script>
+*******************************
+ Adding an R kernel to Jupyter
+*******************************
+
+The Jupyter module only comes with a Python kernel. If you instead wish
+to use R in your Jupyter notebook, you can add an R Kernel for the
+specific version of R that you wish to use.
+
+To do so, run the following commands, replacing `R/4.3.3` with the
+version of R that you wish to use:
+
+.. code-block::
+
+   $ module load jupyter-notebook/6.5.4
+   $ module load --auto R/4.3.3
+   $ R
+   > install.packages('IRkernel')
+   > name <- paste("ir", gsub("\\.", "", getRversion()), sep="")
+   > displayname <- paste("R", getRversion())
+   > IRkernel::installspec(name=name, displayname=displayname)
+   > quit(save="no")
+
+This will make an R kernel with the name ``R 4.3.3`` available in
+Jupyter. You can repeat these commands for each version of R that you
+wish to make available as a kernel. Run the command ``module purge``
+between each, to ensure that you have loaded only the expected version
+of R and ``gcc`` that R depends on.
+
+Once you are done adding R versions, you start notebook as shown above:
+
+.. code-block::
+
+   $ module load jupyter-notebook/6.5.4
+   $ srun --pty -- jupyter notebook --no-browser --port=XXXXX
+
+While you do not need to load the R module first, if you only wish to
+run R code, you must do so if you wish to install R libraries via the
+notebook:
+
+.. code-block::
+
+   $ module load jupyter-notebook/6.5.4
+   $ module load --auto R/4.3.3
+   $ srun --pty -- jupyter notebook --no-browser --port=XXXXX
 
 *****************
  Troubleshooting
@@ -175,3 +212,11 @@ Notebook printed in your terminal.
 .. _jupyter notebooks: https://jupyter.org/
 
 .. _rstudio: https://posit.co/products/open-source/rstudio/
+
+.. raw:: html
+
+   <script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+      replaceTextContent(document.body, "XXXXX", getEphemeralPort());
+    });
+   </script>

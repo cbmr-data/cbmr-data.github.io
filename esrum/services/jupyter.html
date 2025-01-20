@@ -249,42 +249,50 @@
 <p><a class="reference external" href="https://jupyter.org/">Jupyter Notebooks</a> are available via the module system on Esrum and
 can be run on regular compute nodes or on the GPU/high-memory node,
 depending on the kind of analyses you wish to run and the size of your
-workload:</p>
+workload.</p>
+<p>By default, Jupyter only includes support for Python notebooks, but
+instructions are included <a class="reference internal" href="#s-jupyter-kernels"><span class="std std-ref">below</span></a> for how to
+add support for R.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We are currently working on making Jupyter available along with the
+<a class="reference internal" href="r.html#s-service-rstudio"><span class="std std-ref">RStudio servers</span></a>. We will announce when this service is
+ready.</p>
+</div>
+<section id="starting-a-jupyter-notebook">
+<h2>Starting a Jupyter notebook<a class="headerlink" href="#starting-a-jupyter-notebook" title="Permalink to this heading">#</a></h2>
 <p>To start a notebook on a node, run the following commands:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>jupyter-notebook
 <span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--<span class="w"> </span>jupyter<span class="w"> </span>notebook<span class="w"> </span>--no-browser<span class="w"> </span>--port<span class="o">=</span>XXXXX
 </pre></div>
 </div>
-<script>
- document.write("The number used in the argument <code class=\"docutils literal notranslate\"><span class=\"pre\">--port=XXXXX</span></code> must be a value in the range 49152 to 65535, and must not be a number used by another user on Esrum. The number shown here was randomly selected for you and you can refresh this page for a different suggestion.")
-</script>
+<p>The number used in the argument <code class="docutils literal notranslate"><span class="pre">--port=XXXXX</span></code> must be a value in the
+range 49152 to 65535, and must not be a number used by another user on
+Esrum. The number shown here was randomly selected for you, and you can
+refresh this page for a different suggestion.</p>
 <noscript>
-The XXXXX in the above command must be replaced with a valid port number. To avoid trouble you should pick a number in the range 49152 to 65535, and you must not pick a number used by another user on Esrum.
-</noscript><p>By default, this will allocate a single CPU and ~16 GB of RAM to your
-notebook. Please see the <a class="reference internal" href="../usage/slurm/basics.html#reserving-resources"><span class="std std-ref">Reserving resources</span></a> section for
-instructions on how to reserve additional resources and the
-<a class="reference internal" href="../usage/slurm/gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory nodes</span></a> page for instructions on how to reserve GPU /
-high-memory resources. The <code class="docutils literal notranslate"><span class="pre">srun</span></code> accepts the same options as
-<code class="docutils literal notranslate"><span class="pre">sbatch</span></code>.</p>
+<div class="admonition warning"><p class="admonition-title">Warning</p><p>A random port could not be selected, because Javascript is disabled. Please choose a number in the range 49152 to 65535, and use this number whenever the documentation says <code class="docutils literal notranslate"><span class="pre">XXXXX</span></code></p></div>
+</noscript><p>This will allocate a single CPU and ~16 GB of RAM to your notebook. If
+you need additional resources for your notebook, then please see the
+<a class="reference internal" href="../usage/slurm/basics.html#reserving-resources"><span class="std std-ref">Reserving resources</span></a> section for instructions on how to reserve
+additional CPUs and RAM, and the <a class="reference internal" href="../usage/slurm/gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory nodes</span></a> page for
+instructions on how to reserve GPUs or large amounts of memory. The
+<code class="docutils literal notranslate"><span class="pre">srun</span></code> accepts the same options as <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It is recommended that you execute the <code class="docutils literal notranslate"><span class="pre">srun</span></code> command in a <code class="docutils literal notranslate"><span class="pre">tmux</span></code>
+or <code class="docutils literal notranslate"><span class="pre">screen</span></code> session, to avoid the notebook shutting down if you
+lose connection to the head node. See <a class="reference internal" href="../tips/tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> for more
+information.</p>
+</div>
+</section>
+<section id="connecting-to-the-jupyter-notebook">
+<h2>Connecting to the Jupyter Notebook<a class="headerlink" href="#connecting-to-the-jupyter-notebook" title="Permalink to this heading">#</a></h2>
 <p>To connect to the notebook server, you will first need to set up a
 connection from your PC to the node where your notebook is running. This
 is called &quot;port forwarding&quot; and is described below.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>See the <a class="reference internal" href="../usage/slurm/index.html#p-usage-slurm"><span class="std std-ref">Running jobs using Slurm</span></a> pages for information about how to
-reserve CPUs, memory, and/or GPUs when using <code class="docutils literal notranslate"><span class="pre">srun</span></code>. The <code class="docutils literal notranslate"><span class="pre">srun</span></code>
-command takes the same command-line options as <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>, as
-described <a class="reference internal" href="../usage/slurm/advanced.html#p-usage-srun"><span class="std std-ref">here</span></a>.</p>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>It is recommended that you execute the above commands in a <code class="docutils literal notranslate"><span class="pre">tmux</span></code>
-or <code class="docutils literal notranslate"><span class="pre">screen</span></code> session, to avoid the notebook shutting down if you
-lose connection to the server. See <a class="reference internal" href="../tips/tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> for more
-information.</p>
-</div>
-<section id="port-forwarding-in-windows-mobaxterm">
-<h2>Port forwarding in Windows (MobaXterm)<a class="headerlink" href="#port-forwarding-in-windows-mobaxterm" title="Permalink to this heading">#</a></h2>
+<section id="port-forwarding-on-windows">
+<h3>Port forwarding on Windows<a class="headerlink" href="#port-forwarding-on-windows" title="Permalink to this heading">#</a></h3>
 <p>The following instructions assume that you are using MobaXterm. If not,
 then please refer to the documentation for your tool of choice.</p>
 <ol class="arabic">
@@ -335,42 +343,65 @@ open your notebook via the
 Notebook printed in your terminal.</p>
 </section>
 <section id="port-forwarding-on-linux-osx">
-<h2>Port forwarding on Linux/OSX<a class="headerlink" href="#port-forwarding-on-linux-osx" title="Permalink to this heading">#</a></h2>
-<p>It is recommended to enable port forwarding using your <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code>
-file. This is accomplished by adding a <code class="docutils literal notranslate"><span class="pre">LocalForward</span></code> line to your
-entry for Esrum as shown below (see also the section about
-<a class="reference internal" href="../usage/access/connecting.html#s-connecting-linux"><span class="std std-ref">Connecting on Linux</span></a>):</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Host esrum esrumhead01fl esrumhead01fl.unicph.domain
-    HostName esrumhead01fl.unicph.domain
-    User abc123
-
-    LocalForward XXXXX localhost:XXXXX
+<h3>Port forwarding on Linux/OSX<a class="headerlink" href="#port-forwarding-on-linux-osx" title="Permalink to this heading">#</a></h3>
+<p>Port forwarding on Linux/OSX can be accomplished using the command-line,
+replacing <code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl</span></code> in the following command with the node your
+notebook is running on (see above):</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ssh<span class="w"> </span>-S<span class="w"> </span>none<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="s1">&#39;XXXXX:esrumcmpn07fl:XXXXX&#39;</span><span class="w"> </span>abc123@esrumhead01fl.unicph.domain
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">LocalForward</span></code> option consists of two parts: The port used by the
-notebook on Esrum (XXXXX), and the address via which the notebook on
-Esrum should be accessible on your PC (localhost:XXXXX).</p>
-<p>Alternatively, you can start/stop port forwarding on demand by using an
-explicit SSH command. The <code class="docutils literal notranslate"><span class="pre">-N</span></code> option is optional and stops ssh from
-starting a shell once it has connected to Esrum:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ssh<span class="w"> </span>-S<span class="w"> </span>none<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span>XXXXX:localhost:XXXXX<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
-</pre></div>
-</div>
-<p>Once you have port forwarding is enabled, you can open your notebook via
-the <code class="docutils literal notranslate"><span class="pre">http://localhost:XXXXX/?token=${long_text_here}</span></code> URL that Jupyter
-Notebook printed in your terminal.</p>
+<p>While this command is running, you can open your notebook via the
+<code class="docutils literal notranslate"><span class="pre">http://localhost:XXXXX/?token=${long_text_here}</span></code> URL that Jupyter
+Notebook printed in your terminal on Esrum.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <cite>-S none</cite> option is recommended in case shared connections are
-enabled (see the <cite>ControlMaster</cite> section in <cite>man ssh</cite>), in which case
-the <cite>ssh</cite> command may otherwise not open the specified ports if a
-connection already exists.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">-S</span> <span class="pre">none</span></code> option is recommended in case shared connections are
+enabled (see the <code class="docutils literal notranslate"><span class="pre">ControlMaster</span></code> section in <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">ssh</span></code>), in which
+case the <code class="docutils literal notranslate"><span class="pre">ssh</span></code> command may otherwise not open the specified ports
+if a connection already exists. The <code class="docutils literal notranslate"><span class="pre">-N</span></code> option prevents <code class="docutils literal notranslate"><span class="pre">ssh</span></code>
+from open a shell on Esrum, which ensures that you do not
+accidentally use this terminal and then close it, while still using
+the notebook, and the <code class="docutils literal notranslate"><span class="pre">-L</span></code> option configures the actual port
+forwarding.</p>
 </div>
-<script defer>
- document.addEventListener('DOMContentLoaded', function() {
-   replaceTextContent(document.body, "XXXXX", getEphemeralPort());
- });
-</script></section>
+</section>
+</section>
+<section id="adding-an-r-kernel-to-jupyter">
+<span id="s-jupyter-kernels"></span><h2>Adding an R kernel to Jupyter<a class="headerlink" href="#adding-an-r-kernel-to-jupyter" title="Permalink to this heading">#</a></h2>
+<p>The Jupyter module only comes with a Python kernel. If you instead wish
+to use R in your Jupyter notebook, you can add an R Kernel for the
+specific version of R that you wish to use.</p>
+<p>To do so, run the following commands, replacing <cite>R/4.3.3</cite> with the
+version of R that you wish to use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>jupyter-notebook/6.5.4
+<span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>--auto<span class="w"> </span>R/4.3.3
+<span class="gp">$ </span>R
+<span class="go">&gt; install.packages(&#39;IRkernel&#39;)</span>
+<span class="go">&gt; name &lt;- paste(&quot;ir&quot;, gsub(&quot;\\.&quot;, &quot;&quot;, getRversion()), sep=&quot;&quot;)</span>
+<span class="go">&gt; displayname &lt;- paste(&quot;R&quot;, getRversion())</span>
+<span class="go">&gt; IRkernel::installspec(name=name, displayname=displayname)</span>
+<span class="go">&gt; quit(save=&quot;no&quot;)</span>
+</pre></div>
+</div>
+<p>This will make an R kernel with the name <code class="docutils literal notranslate"><span class="pre">R</span> <span class="pre">4.3.3</span></code> available in
+Jupyter. You can repeat these commands for each version of R that you
+wish to make available as a kernel. Run the command <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code>
+between each, to ensure that you have loaded only the expected version
+of R and <code class="docutils literal notranslate"><span class="pre">gcc</span></code> that R depends on.</p>
+<p>Once you are done adding R versions, you start notebook as shown above:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>jupyter-notebook/6.5.4
+<span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--<span class="w"> </span>jupyter<span class="w"> </span>notebook<span class="w"> </span>--no-browser<span class="w"> </span>--port<span class="o">=</span>XXXXX
+</pre></div>
+</div>
+<p>While you do not need to load the R module first, if you only wish to
+run R code, you must do so if you wish to install R libraries via the
+notebook:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>jupyter-notebook/6.5.4
+<span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>--auto<span class="w"> </span>R/4.3.3
+<span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--<span class="w"> </span>jupyter<span class="w"> </span>notebook<span class="w"> </span>--no-browser<span class="w"> </span>--port<span class="o">=</span>XXXXX
+</pre></div>
+</div>
+</section>
 <section id="troubleshooting">
 <h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
 <section id="jupyter-notebooks-browser-error-when-opening-url">
@@ -401,7 +432,11 @@ that you are using a wired connection at CBMR and/or that the VPN is
 activated and try again.</p>
 </li>
 </ul>
-</section>
+<script defer>
+ document.addEventListener('DOMContentLoaded', function() {
+   replaceTextContent(document.body, "XXXXX", getEphemeralPort());
+ });
+</script></section>
 </section>
 </section>
 
@@ -461,8 +496,13 @@ activated and try again.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Jupyter Notebooks</a><ul>
-<li><a class="reference internal" href="#port-forwarding-in-windows-mobaxterm">Port forwarding in Windows (MobaXterm)</a></li>
+<li><a class="reference internal" href="#starting-a-jupyter-notebook">Starting a Jupyter notebook</a></li>
+<li><a class="reference internal" href="#connecting-to-the-jupyter-notebook">Connecting to the Jupyter Notebook</a><ul>
+<li><a class="reference internal" href="#port-forwarding-on-windows">Port forwarding on Windows</a></li>
 <li><a class="reference internal" href="#port-forwarding-on-linux-osx">Port forwarding on Linux/OSX</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#adding-an-r-kernel-to-jupyter">Adding an R kernel to Jupyter</a></li>
 <li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
 <li><a class="reference internal" href="#jupyter-notebooks-browser-error-when-opening-url">Jupyter Notebooks: Browser error when opening URL</a></li>
 </ul>
