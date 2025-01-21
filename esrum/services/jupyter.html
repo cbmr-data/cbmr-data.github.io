@@ -263,7 +263,7 @@ ready.</p>
 <h2>Starting a Jupyter notebook<a class="headerlink" href="#starting-a-jupyter-notebook" title="Permalink to this heading">#</a></h2>
 <p>To start a notebook on a node, run the following commands:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>jupyter-notebook
-<span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--<span class="w"> </span>jupyter<span class="w"> </span>notebook<span class="w"> </span>--no-browser<span class="w"> </span>--port<span class="o">=</span>XXXXX
+<span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--<span class="w"> </span>jupyter<span class="w"> </span>notebook<span class="w"> </span>--no-browser<span class="w"> </span>--ip<span class="o">=</span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="o">=</span>XXXXX
 </pre></div>
 </div>
 <p>The number used in the argument <code class="docutils literal notranslate"><span class="pre">--port=XXXXX</span></code> must be a value in the
@@ -291,6 +291,29 @@ information.</p>
 <p>To connect to the notebook server, you will first need to set up a
 connection from your PC to the node where your notebook is running. This
 is called &quot;port forwarding&quot; and is described below.</p>
+<section id="port-forwarding-on-linux-osx">
+<h3>Port forwarding on Linux/OSX<a class="headerlink" href="#port-forwarding-on-linux-osx" title="Permalink to this heading">#</a></h3>
+<p>Port forwarding on Linux/OSX can be accomplished using the command-line,
+replacing <code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl</span></code> in the following command with the node your
+notebook is running on (see above):</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ssh<span class="w"> </span>-S<span class="w"> </span>none<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="s1">&#39;XXXXX:esrumcmpn07fl:XXXXX&#39;</span><span class="w"> </span>abc123@esrumhead01fl.unicph.domain
+</pre></div>
+</div>
+<p>While this command is running, you can open your notebook via the
+<code class="docutils literal notranslate"><span class="pre">http://localhost:XXXXX/?token=${long_text_here}</span></code> URL that Jupyter
+Notebook printed in your terminal on Esrum.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">-S</span> <span class="pre">none</span></code> option is recommended in case shared connections are
+enabled (see the <code class="docutils literal notranslate"><span class="pre">ControlMaster</span></code> section in <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">ssh</span></code>), in which
+case the <code class="docutils literal notranslate"><span class="pre">ssh</span></code> command may otherwise not open the specified ports
+if a connection already exists. The <code class="docutils literal notranslate"><span class="pre">-N</span></code> option prevents <code class="docutils literal notranslate"><span class="pre">ssh</span></code>
+from open a shell on Esrum, which ensures that you do not
+accidentally use this terminal and then close it, while still using
+the notebook, and the <code class="docutils literal notranslate"><span class="pre">-L</span></code> option configures the actual port
+forwarding.</p>
+</div>
+</section>
 <section id="port-forwarding-on-windows">
 <h3>Port forwarding on Windows<a class="headerlink" href="#port-forwarding-on-windows" title="Permalink to this heading">#</a></h3>
 <p>The following instructions assume that you are using MobaXterm. If not,
@@ -341,29 +364,6 @@ button or the <code class="docutils literal notranslate"><span class="pre">Start
 open your notebook via the
 <code class="docutils literal notranslate"><span class="pre">http://localhost:XXXXX/?token=${long_text_here}</span></code> URL that Jupyter
 Notebook printed in your terminal.</p>
-</section>
-<section id="port-forwarding-on-linux-osx">
-<h3>Port forwarding on Linux/OSX<a class="headerlink" href="#port-forwarding-on-linux-osx" title="Permalink to this heading">#</a></h3>
-<p>Port forwarding on Linux/OSX can be accomplished using the command-line,
-replacing <code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl</span></code> in the following command with the node your
-notebook is running on (see above):</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ssh<span class="w"> </span>-S<span class="w"> </span>none<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="s1">&#39;XXXXX:esrumcmpn07fl:XXXXX&#39;</span><span class="w"> </span>abc123@esrumhead01fl.unicph.domain
-</pre></div>
-</div>
-<p>While this command is running, you can open your notebook via the
-<code class="docutils literal notranslate"><span class="pre">http://localhost:XXXXX/?token=${long_text_here}</span></code> URL that Jupyter
-Notebook printed in your terminal on Esrum.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">-S</span> <span class="pre">none</span></code> option is recommended in case shared connections are
-enabled (see the <code class="docutils literal notranslate"><span class="pre">ControlMaster</span></code> section in <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">ssh</span></code>), in which
-case the <code class="docutils literal notranslate"><span class="pre">ssh</span></code> command may otherwise not open the specified ports
-if a connection already exists. The <code class="docutils literal notranslate"><span class="pre">-N</span></code> option prevents <code class="docutils literal notranslate"><span class="pre">ssh</span></code>
-from open a shell on Esrum, which ensures that you do not
-accidentally use this terminal and then close it, while still using
-the notebook, and the <code class="docutils literal notranslate"><span class="pre">-L</span></code> option configures the actual port
-forwarding.</p>
-</div>
 </section>
 </section>
 <section id="adding-an-r-kernel-to-jupyter">
@@ -422,8 +422,9 @@ your forwarded ports match those used by Jupyter Notebook on Esrum.</p>
 <li><p>&quot;Localhost refused to connect&quot; or &quot;Unable to connect&quot;</p>
 <p>This typically indicates that port forwarding isn't active, or that
 you have entered the wrong port number in your browser. Verify that
-port forwarding is active and that you are using the correct port
-number in the <code class="docutils literal notranslate"><span class="pre">localhost</span></code> URL.</p>
+port forwarding is active from your computer and you didn't accidentally
+ssh from esrumhead to esrumhead. Double check also that you are
+consistently using the correct port numbers.</p>
 </li>
 <li><p>&quot;Check if there is a typo in esrumweb01fl&quot; or &quot;We're having trouble
 finding that site&quot;</p>
@@ -498,8 +499,8 @@ activated and try again.</p>
 <li><a class="reference internal" href="#">Jupyter Notebooks</a><ul>
 <li><a class="reference internal" href="#starting-a-jupyter-notebook">Starting a Jupyter notebook</a></li>
 <li><a class="reference internal" href="#connecting-to-the-jupyter-notebook">Connecting to the Jupyter Notebook</a><ul>
-<li><a class="reference internal" href="#port-forwarding-on-windows">Port forwarding on Windows</a></li>
 <li><a class="reference internal" href="#port-forwarding-on-linux-osx">Port forwarding on Linux/OSX</a></li>
+<li><a class="reference internal" href="#port-forwarding-on-windows">Port forwarding on Windows</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#adding-an-r-kernel-to-jupyter">Adding an R kernel to Jupyter</a></li>

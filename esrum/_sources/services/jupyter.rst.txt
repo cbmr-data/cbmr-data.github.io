@@ -28,7 +28,7 @@ To start a notebook on a node, run the following commands:
 .. code:: console
 
    $ module load jupyter-notebook
-   $ srun --pty -- jupyter notebook --no-browser --port=XXXXX
+   $ srun --pty -- jupyter notebook --no-browser --ip=0.0.0.0 --port=XXXXX
 
 The number used in the argument ``--port=XXXXX`` must be a value in the
 range 49152 to 65535, and must not be a number used by another user on
@@ -62,6 +62,33 @@ instructions on how to reserve GPUs or large amounts of memory. The
 To connect to the notebook server, you will first need to set up a
 connection from your PC to the node where your notebook is running. This
 is called "port forwarding" and is described below.
+
+Port forwarding on Linux/OSX
+============================
+
+Port forwarding on Linux/OSX can be accomplished using the command-line,
+replacing ``esrumcmpn07fl`` in the following command with the node your
+notebook is running on (see above):
+
+.. code:: shell
+
+   $ ssh -S none -N -L 'XXXXX:esrumcmpn07fl:XXXXX' abc123@esrumhead01fl.unicph.domain
+
+While this command is running, you can open your notebook via the
+``http://localhost:XXXXX/?token=${long_text_here}`` URL that Jupyter
+Notebook printed in your terminal on Esrum.
+
+.. note::
+
+   The ``-S none`` option is recommended in case shared connections are
+   enabled (see the ``ControlMaster`` section in ``man ssh``), in which
+   case the ``ssh`` command may otherwise not open the specified ports
+   if a connection already exists. The ``-N`` option prevents ``ssh``
+   from open a shell on Esrum, which ensures that you do not
+   accidentally use this terminal and then close it, while still using
+   the notebook, and the ``-L`` option configures the actual port
+   forwarding.
+
 
 Port forwarding on Windows
 ==========================
@@ -128,31 +155,6 @@ open your notebook via the
 ``http://localhost:XXXXX/?token=${long_text_here}`` URL that Jupyter
 Notebook printed in your terminal.
 
-Port forwarding on Linux/OSX
-============================
-
-Port forwarding on Linux/OSX can be accomplished using the command-line,
-replacing ``esrumcmpn07fl`` in the following command with the node your
-notebook is running on (see above):
-
-.. code:: shell
-
-   $ ssh -S none -N -L 'XXXXX:esrumcmpn07fl:XXXXX' abc123@esrumhead01fl.unicph.domain
-
-While this command is running, you can open your notebook via the
-``http://localhost:XXXXX/?token=${long_text_here}`` URL that Jupyter
-Notebook printed in your terminal on Esrum.
-
-.. note::
-
-   The ``-S none`` option is recommended in case shared connections are
-   enabled (see the ``ControlMaster`` section in ``man ssh``), in which
-   case the ``ssh`` command may otherwise not open the specified ports
-   if a connection already exists. The ``-N`` option prevents ``ssh``
-   from open a shell on Esrum, which ensures that you do not
-   accidentally use this terminal and then close it, while still using
-   the notebook, and the ``-L`` option configures the actual port
-   forwarding.
 
 .. _s_jupyter_kernels:
 
