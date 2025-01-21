@@ -20,8 +20,9 @@ says "This site can't be reached".
 
    This typically indicates that port forwarding isn't active, or that
    you have entered the wrong port number in your browser. Verify that
-   port forwarding is active and that you are using the correct port
-   number in the ``localhost`` URL.
+   port forwarding is active from your computer and you didn't accidentally
+   ssh from esrumhead to esrumhead. Double check also that you are
+   consistently using the correct port numbers.
 
 -  "Check if there is a typo in esrumweb01fl" or "We're having trouble
    finding that site"
