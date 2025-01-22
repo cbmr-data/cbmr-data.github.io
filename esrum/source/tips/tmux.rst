@@ -27,7 +27,7 @@ documentation.
 To get started, ``cd`` to the directory you wish to work in and run
 ``tmux`` or the longer (but equivalent) command ``tmux new``:
 
-.. code::
+.. code-block::
 
    $ cd /projects/my_project/people/abc123
    $ tmux
@@ -64,7 +64,7 @@ between them using ``Ctrl+b n`` to switch to the next terminal and
 To close the terminals you've created, use either the ``exit`` command
 or press ``CTRL+d`` while on an empty line:
 
-.. code::
+.. code-block::
 
    ### either
    $ exit
@@ -96,7 +96,7 @@ Once you wish to resume your work, you can use the ``tmux attach``
 command to re-open your running sessions, optionally specifying the name
 of the session you wish to open (see also below):
 
-.. code::
+.. code-block::
 
    ### either
    $ tmux attach
@@ -122,7 +122,7 @@ give the session a name with ``-s`` and the window can be given a name
 with ``-n`` as follows. However, this can only if you are not already in
 an active tmux session:
 
-.. code::
+.. code-block::
 
    $ tmux new -s project -n task
 

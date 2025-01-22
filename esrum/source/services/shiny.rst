@@ -35,7 +35,7 @@ cannot access the ``ndir`` folder, then please see the
 
 It is strongly recommended that you create a folder with your username:
 
-.. code:: console
+.. code-block::
 
    $ mkdir -p ~/ucph/ndir/SUN-CBMR-shinyapp/$USER
 
@@ -44,7 +44,7 @@ home folder named ``shiny``. To verify that everything is working
 correctly, create a file name ``app.R`` in
 ``~/ucph/ndir/SUN-CBMR-shinyapp/$USER`` with the following content:
 
-.. code:: R
+.. code-block:: R
 
    library(shiny)
 

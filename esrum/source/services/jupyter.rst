@@ -25,7 +25,7 @@ add support for R.
 
 To start a notebook on a node, run the following commands:
 
-.. code:: console
+.. code-block::
 
    $ module load jupyter-notebook
    $ srun --pty -- jupyter notebook --no-browser --ip=0.0.0.0 --port=XXXXX
@@ -93,7 +93,7 @@ job is running. This can be done in a couple of ways:
 -  Alternatively, run the following command on the head node in a
    separate terminal:
 
-   .. code:: shell
+   .. code-block::
 
       $ squeue --me --name jupyter
       JOBID  PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -115,7 +115,7 @@ This is accomplished using the following command-line, replacing
 running (see above), and replacing ``abc123`` with your UCPH short
 username:
 
-.. code:: shell
+.. code-block::
 
    $ ssh -S none -N -L 'XXXXX:esrumcmpn07fl:XXXXX' abc123@esrumhead01fl.unicph.domain
 

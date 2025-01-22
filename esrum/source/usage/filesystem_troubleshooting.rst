@@ -9,7 +9,7 @@ Once you have logged in to Esrum *without* GSSAPI enabled, and if the
 folder(s) are still missing, then run the following command to create
 any missing network folders:
 
-.. code::
+.. code-block::
 
    $ bash /etc/profile.d/symlink-ucphmaps.sh
 

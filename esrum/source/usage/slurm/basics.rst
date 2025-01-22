@@ -64,7 +64,7 @@ those features with Slurm.
 We start with a simple script, with which we will compress the FASTA
 file ``chr1.fasta``. This script is saved as ``my_script.sh``:
 
-.. code-block:: shell
+.. code-block:: bash
 
    #!/bin/bash
 
@@ -101,7 +101,7 @@ This script consists of three parts:
 To queue this script, run the ``sbatch`` command with the filename of
 the script as an argument:
 
-.. code-block:: shell
+.. code-block::
 
    $ ls
    chr1.fasta  my_script.sh
@@ -119,7 +119,7 @@ also find a file named ``slurm-${JOBID}.out`` in the current folder,
 where ``${JOBID}`` is the ID reported by ``sbatch`` (``8503`` in this
 example):
 
-.. code-block:: shell
+.. code-block::
 
    $ ls
    chr1.fasta  chr1.fasta.gz  my_script.sh  slurm-8503.out
@@ -130,7 +130,7 @@ this can be changed (see :ref:`s_common_options`). So if we had
 misspelled the filename in our command then the resulting error message
 would be found in the ``out`` file:
 
-.. code-block:: shell
+.. code-block::
 
    $ cat slurm-8503.out
    igzip: chr1.fast does not exist
@@ -143,7 +143,7 @@ to that script, just as if you were running it normally. This allows us
 to update our script above to take a filename on the command line
 instead of hard-coding that filename:
 
-.. code-block:: shell
+.. code-block:: bash
 
    #!/bin/bash
 
@@ -154,7 +154,7 @@ instead of hard-coding that filename:
 We can then invoke the script using ``sbatch`` as above, specifying the
 name of the file we wanted to compress on the command-line:
 
-.. code-block:: shell
+.. code-block::
 
    $ sbatch my_script.sh "chr1.fasta"
 
@@ -175,7 +175,7 @@ You can check the status of your queued and running jobs using the
 ``squeue --me`` command. The ``--me`` option ensures that only *your*
 jobs are shown, rather than everyone's jobs:
 
-.. code-block:: shell
+.. code-block::
 
    $ squeue --me
    JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -188,7 +188,7 @@ pending, `and so on
 Completed jobs are removed from the ``squeue`` list and can instead be
 listed using ``sacct``:
 
-.. code-block:: shell
+.. code-block::
 
    $ sacct
           JobID    JobName  Partition    Account  AllocCPUS      State ExitCode
@@ -205,7 +205,7 @@ listed using ``sacct``:
 Already running jobs can be cancelled using the ``scancel`` command and
 the ID of the job you want to cancel:
 
-.. code-block:: shell
+.. code-block::
 
    $ squeue --me
    JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -214,7 +214,7 @@ the ID of the job you want to cancel:
 
 Should you wish to cancel *all* your jobs, use the ``-u`` option:
 
-.. code-block:: shell
+.. code-block::
 
    $ scancel -u ${USER}
 
@@ -241,7 +241,7 @@ like, is to use ``#SBATCH`` comments.
 
 For example, instead of queuing our job with the command
 
-.. code-block:: shell
+.. code-block::
 
    $ sbatch --my-option my_script.sh
 
@@ -420,7 +420,7 @@ The ``/usr/bin/time -f "CPU = %P, MEM = %MKB"`` command can be used to
 estimate the efficiency from using multiple threads and to show how much
 memory a program used:
 
-.. code-block:: console
+.. code-block::
 
    $ /usr/bin/time -f "CPU = %P, MEM = %M" my-command --threads 1 ...
    CPU = 99%, MEM = 840563KB
@@ -440,7 +440,7 @@ easier to verify that you are not needlessly reserving resources. A
 helper script is provided that summarizes some of this information in an
 easily readable form:
 
-.. code-block:: console
+.. code-block::
 
    $ source /projects/cbmr_shared/apps/modules/activate.sh
    $ module load sacct-usage
@@ -514,7 +514,7 @@ not mentioned above. All of these options may be specified using
    with ``--verbose`` to verify that your options are correctly set
    before queuing your job:
 
-   .. code-block:: shell
+   .. code-block::
 
       $ sbatch --test-only --verbose my_script.sh
       sbatch: defined options

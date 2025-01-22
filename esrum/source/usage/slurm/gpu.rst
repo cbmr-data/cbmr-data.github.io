@@ -55,7 +55,7 @@ node:
 
 This script can then be submitted as usual:
 
-.. code-block:: shell
+.. code-block::
 
    $ sbatch my_hi_mem_job.sh
    Submitted batch job 217217
@@ -93,7 +93,7 @@ reserve 1 GPU per job, which is normally also more efficient.
 
 This script can then be submitted as usual:
 
-.. code-block:: shell
+.. code-block::
 
    $ sbatch my_gpu_job.sh
    Submitted batch job 217218
@@ -121,7 +121,7 @@ To request an A100 GPU, replace the ``--gres=gpu:1`` option with
 
 This script can then be submitted as usual:
 
-.. code-block:: shell
+.. code-block::
 
    $ sbatch my_h100_job.sh
    Submitted batch job 217219
@@ -231,7 +231,7 @@ above.
 To watch the content of this log-file, firstly determine the job ID of
 your job running on the GPU node:
 
-.. code-block:: shell
+.. code-block::
 
    $ squeue --me --partition=gpuqueue
     JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)

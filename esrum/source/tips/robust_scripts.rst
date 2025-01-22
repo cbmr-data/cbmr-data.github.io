@@ -38,7 +38,7 @@ access slurm options in batch scripts. However, unlike in most
 programming languages, it is not an error to access a variable that does
 not exist:
 
-.. code:: shell
+.. code-block::
 
    $ cat myscript.sh
    #!/bin/bash
@@ -57,7 +57,7 @@ While there are cases where it is useful to allow missing variables,
 most of the time this is a mistake. To prevent this, you can set the
 ``nounset`` option, which causes bash to terminate on unset variables:
 
-.. code:: shell
+.. code-block::
 
    $ cat myscript.sh
    #!/bin/bash
@@ -86,7 +86,7 @@ By default, bash (and hence Slurm) will continue to execute a script
 even if a command fails. If this is not detected, then it can lead to
 partially or wholly corrupt data:
 
-.. code:: bash
+.. code-block:: bash
 
    #!/bin/bash
    # 1. Create some data
@@ -98,7 +98,7 @@ partially or wholly corrupt data:
 
 This produces the following output:
 
-.. code:: shell
+.. code-block::
 
    $ ls
    my-sketch.sh
@@ -116,7 +116,7 @@ There are several ways to handle these kinds of errors. We call ``exit``
 with the argument (exit code) 1 to indicate to Slurm that the command
 failed.
 
-.. code:: bash
+.. code-block:: bash
 
    # 1. Exit if command fails, but nothing else
    sed -i -e's# dog # parrot ' sketch.txt || exit 1
@@ -131,7 +131,7 @@ failed.
 
 This, however, does not work well if you wish to pipe commands:
 
-.. code:: bash
+.. code-block:: bash
 
    if ! sed -i -e's# dog # parrot ' sketch.txt | gzip > sketch.txt.gz; then
        echo "We're closin' for lunch."
@@ -164,7 +164,7 @@ To mitigate these problems, we can make use of the following options:
 
 Running this script produces the following, helpful output:
 
-.. code:: shell
+.. code-block::
 
    $ ls
    my-sketch.sh
@@ -186,7 +186,7 @@ Putting it all together
 The following bash script template combines the suggestions above and
 thereby helps avoid *some* of the pitfalls of using bash
 
-.. code:: bash
+.. code-block:: bash
 
    #!/bin/bash
    # FIXME: SBATCH commands go here!
@@ -219,7 +219,7 @@ common mistakes.
 For example, if we run shell check on the very first script shown on
 this page:
 
-.. code:: shell
+.. code-block::
 
    $ module load shellcheck
    $ shellcheck myscript.sh
@@ -243,7 +243,7 @@ mentioned above, as well as the ``errexit`` option that is equivalent to
 the ``trap`` command above but which prints less information about the
 failure:
 
-.. code:: shell
+.. code-block::
 
    $ snakemake
    sed: -e expression #1, char 16: unterminated `s' command
