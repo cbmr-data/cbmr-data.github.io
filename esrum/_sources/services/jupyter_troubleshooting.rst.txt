@@ -19,10 +19,21 @@ says "This site can't be reached".
 -  "Localhost refused to connect" or "Unable to connect"
 
    This typically indicates that port forwarding isn't active, or that
-   you have entered the wrong port number in your browser. Verify that
-   port forwarding is active from your computer and you didn't accidentally
-   ssh from esrumhead to esrumhead. Double check also that you are
-   consistently using the correct port numbers.
+   you have entered the wrong port number in your browser. Therefore,
+
+   -  Verify that port forwarding is active: On OSX/Linux that means
+      verifying that an ``ssh`` command is running as described in the
+      :ref:`s_ports_osx_linux` section, and on Windows that means
+      activating port forwarding in MobaXterm as described in the
+      :ref:`s_ports_windows` section.
+
+   -  If using the instructions for Linux/OSX, verify that you ran the
+      ``ssh`` command on your laptop or desktop, and *not* on the Esrum
+      head node.
+
+   -  Verify that either of these are using the same port number as in
+      the ``jupyter`` command you ran or as in the ``http://127.0.0.1``
+      URL printed by Jupyter.
 
 -  "Check if there is a typo in esrumweb01fl" or "We're having trouble
    finding that site"

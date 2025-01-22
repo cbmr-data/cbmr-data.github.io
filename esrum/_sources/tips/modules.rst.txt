@@ -103,7 +103,7 @@ the module files. This organization is designed to simplify maintenance.
 
       $ module use --prepend /projects/my-project/apps/modules/modulefiles/
       $ module avail
-      ------------------------ /home/zlc187/modules ------------------------
+      ----------- /projects/my-project/apps/modules/modulefiles/ -----------
       seqtk/1.4
       $ module load seqtk/1.4
       ./seqtk

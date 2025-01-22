@@ -285,23 +285,68 @@ or <code class="docutils literal notranslate"><span class="pre">screen</span></c
 lose connection to the head node. See <a class="reference internal" href="../tips/tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> for more
 information.</p>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can also start your Jupyter notebook in an interactive Slurm
+session, as described in the <a class="reference internal" href="../usage/slurm/basics.html#s-interactive-session"><span class="std std-ref">Interactive sessions</span></a> section, if
+you prefer. If you do so, then it is recommended to use the arguments
+<code class="docutils literal notranslate"><span class="pre">--name</span> <span class="pre">jupyter</span></code> or similar, so that you can easily identify the
+job (see below). It is still recommended that you start this session
+in a <code class="docutils literal notranslate"><span class="pre">tmux</span></code> or <code class="docutils literal notranslate"><span class="pre">screen</span></code> session (see the previous tip).</p>
+</div>
 </section>
 <section id="connecting-to-the-jupyter-notebook">
 <h2>Connecting to the Jupyter Notebook<a class="headerlink" href="#connecting-to-the-jupyter-notebook" title="Permalink to this heading">#</a></h2>
 <p>To connect to the notebook server, you will first need to set up a
-connection from your PC to the node where your notebook is running. This
-is called &quot;port forwarding&quot; and is described below.</p>
-<section id="port-forwarding-on-linux-osx">
-<h3>Port forwarding on Linux/OSX<a class="headerlink" href="#port-forwarding-on-linux-osx" title="Permalink to this heading">#</a></h3>
-<p>Port forwarding on Linux/OSX can be accomplished using the command-line,
-replacing <code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl</span></code> in the following command with the node your
-notebook is running on (see above):</p>
+connection from your PC to the compute node where your notebook is
+running. This is called &quot;port forwarding&quot; and is described below.</p>
+<p>However, to do so you must first determine on which compute node your
+job is running. This can be done in a couple of ways:</p>
+<ul>
+<li><p>Look for the URLs printed by Jupyter when you started it on Esrum:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">To access the notebook, open this file in a browser:</span>
+<span class="go">    file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html</span>
+<span class="go">  Or copy and paste one of these URLs:</span>
+<span class="hll"><span class="go">      http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz</span>
+</span><span class="go">   or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz</span>
+</pre></div>
+</div>
+<p>In this example, our notebook is running on the <code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl</span></code>
+node. All Esrum node names end with <code class="docutils literal notranslate"><span class="pre">.unicph.domain</span></code>, but we do not
+need to include this part of the name.</p>
+</li>
+<li><p>Alternatively, run the following command on the head node in a
+separate terminal:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>squeue<span class="w"> </span>--me<span class="w"> </span>--name<span class="w"> </span>jupyter
+JOBID<span class="w">  </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
+<span class="m">551600</span><span class="w"> </span>standardq<span class="w">  </span>jupyter<span class="w">   </span>abc123<span class="w">  </span>R<span class="w">       </span><span class="m">8</span>:49<span class="w">      </span><span class="m">1</span><span class="w"> </span>esrumcmpn07fl
+</pre></div>
+</div>
+<p>By looking in the <code class="docutils literal notranslate"><span class="pre">NODELIST</span></code> column, we can see that the notebook
+is running on <code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl</span></code>, as above.</p>
+</li>
+</ul>
+<section id="port-forwarding-for-osx-linux-users">
+<span id="s-ports-osx-linux"></span><h3>Port forwarding for OSX/Linux users<a class="headerlink" href="#port-forwarding-for-osx-linux-users" title="Permalink to this heading">#</a></h3>
+<p>The following instructions describe how to set up port forwarding to
+Esrum from your laptop or PC running OSX or Linux.</p>
+<p>This is accomplished using the following command-line, replacing
+<code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl</span></code> with the name of the node on which your notebook is
+running (see above), and replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code> with your UCPH short
+username:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ssh<span class="w"> </span>-S<span class="w"> </span>none<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="s1">&#39;XXXXX:esrumcmpn07fl:XXXXX&#39;</span><span class="w"> </span>abc123@esrumhead01fl.unicph.domain
 </pre></div>
 </div>
 <p>While this command is running, you can open your notebook via the
-<code class="docutils literal notranslate"><span class="pre">http://localhost:XXXXX/?token=${long_text_here}</span></code> URL that Jupyter
-Notebook printed in your terminal on Esrum.</p>
+<code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:XXXXX/?token=${long_text_here}</span></code> URL that Jupyter
+Notebook printed in your terminal on Esrum. Typically, this can be done
+by pressing Ctrl and left-clicking on the URL in the terminal.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you created a <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> file as suggested in the
+<a class="reference internal" href="../usage/access/connecting.html#s-connecting-linux"><span class="std std-ref">Connecting on Linux</span></a> section, then you can use the shorter
+command <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-S</span> <span class="pre">none</span> <span class="pre">-N</span> <span class="pre">-L</span> <span class="pre">'XXXXX:esrumcmpn07fl:XXXXX'</span> <span class="pre">esrum</span></code>.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">-S</span> <span class="pre">none</span></code> option is recommended in case shared connections are
@@ -314,21 +359,13 @@ the notebook, and the <code class="docutils literal notranslate"><span class="pr
 forwarding.</p>
 </div>
 </section>
-<section id="port-forwarding-on-windows">
-<h3>Port forwarding on Windows<a class="headerlink" href="#port-forwarding-on-windows" title="Permalink to this heading">#</a></h3>
-<p>The following instructions assume that you are using MobaXterm. If not,
-then please refer to the documentation for your tool of choice.</p>
+<section id="port-forwarding-for-windows-users">
+<span id="s-ports-windows"></span><h3>Port forwarding for Windows users<a class="headerlink" href="#port-forwarding-for-windows-users" title="Permalink to this heading">#</a></h3>
+<p>The following instructions describe how to set up port forwarding to
+Esrum from a PC running Windows, and also assume that you are using
+MobaXterm. If not, then please refer to the documentation for your
+software of choice.</p>
 <ol class="arabic">
-<li><p>Run the following command on the head node to determine on which node
-which your notebook is running:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>squeue<span class="w"> </span>--me<span class="w"> </span>--name<span class="w"> </span>jupyter
-<span class="go">JOBID  PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
-<span class="go">551600 standardq  jupyter   abc123  R       8:49      1 esrumcmpn07fl</span>
-</pre></div>
-</div>
-<p>In this example the notebook is running on <code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl</span></code>, but
-your notebook may be running on any of the nodes on Esrum!</p>
-</li>
 <li><p>Install and configure MobaXterm as described in
 <a class="reference internal" href="../usage/access/connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a>.</p></li>
 <li><p>Click the middle <code class="docutils literal notranslate"><span class="pre">Tunneling</span></code> button on the toolbar.</p>
@@ -349,21 +386,22 @@ likely be running on a different node), and replace <code class="docutils litera
 your chosen port number (e.g. <code class="docutils literal notranslate"><span class="pre">XXXXX</span></code>).</p></li>
 <li><p>In the middle-right trio of boxes, write the full name of the head
 node (<code class="docutils literal notranslate"><span class="pre">esrumhead01fl.unicph.domain</span></code>), write your UCPH username
-where the screenshot has <code class="docutils literal notranslate"><span class="pre">abc123</span></code>, and set the final value to
-<code class="docutils literal notranslate"><span class="pre">22</span></code>.</p></li>
+where the screenshot has <code class="docutils literal notranslate"><span class="pre">abc123</span></code>, and make sure that the value
+is <code class="docutils literal notranslate"><span class="pre">22</span></code>.</p></li>
 <li><p>Finally, click <code class="docutils literal notranslate"><span class="pre">Save</span></code>.</p></li>
 </ol>
 </li>
-<li><p>If the tunnel does not start automatically, press either the &quot;Play&quot;
-button or the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">all</span> <span class="pre">tunnels</span></code> button:</p>
+<li><p>If the tunnel does not start automatically, press either the
+Play-icon button or the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">all</span> <span class="pre">tunnels</span></code> button:</p>
 <img alt="../_images/mobaxterm_tunnel_04.png" class="align-center" src="../_images/mobaxterm_tunnel_04.png" />
 </li>
 <li><p>Enter your password and your SSH tunnel should now be active.</p></li>
 </ol>
 <p>Once you have configured MobaXterm and enabled port forwarding, you can
 open your notebook via the
-<code class="docutils literal notranslate"><span class="pre">http://localhost:XXXXX/?token=${long_text_here}</span></code> URL that Jupyter
-Notebook printed in your terminal.</p>
+<code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:XXXXX/?token=${long_text_here}</span></code> URL that Jupyter
+Notebook printed in your terminal on Esrum. Typically, this can be done
+by pressing Ctrl and left-clicking on the URL in the terminal.</p>
 </section>
 </section>
 <section id="adding-an-r-kernel-to-jupyter">
@@ -421,10 +459,20 @@ your forwarded ports match those used by Jupyter Notebook on Esrum.</p>
 </li>
 <li><p>&quot;Localhost refused to connect&quot; or &quot;Unable to connect&quot;</p>
 <p>This typically indicates that port forwarding isn't active, or that
-you have entered the wrong port number in your browser. Verify that
-port forwarding is active from your computer and you didn't accidentally
-ssh from esrumhead to esrumhead. Double check also that you are
-consistently using the correct port numbers.</p>
+you have entered the wrong port number in your browser. Therefore,</p>
+<ul class="simple">
+<li><p>Verify that port forwarding is active: On OSX/Linux that means
+verifying that an <code class="docutils literal notranslate"><span class="pre">ssh</span></code> command is running as described in the
+<a class="reference internal" href="#s-ports-osx-linux"><span class="std std-ref">Port forwarding for OSX/Linux users</span></a> section, and on Windows that means
+activating port forwarding in MobaXterm as described in the
+<a class="reference internal" href="#s-ports-windows"><span class="std std-ref">Port forwarding for Windows users</span></a> section.</p></li>
+<li><p>If using the instructions for Linux/OSX, verify that you ran the
+<code class="docutils literal notranslate"><span class="pre">ssh</span></code> command on your laptop or desktop, and <em>not</em> on the Esrum
+head node.</p></li>
+<li><p>Verify that either of these are using the same port number as in
+the <code class="docutils literal notranslate"><span class="pre">jupyter</span></code> command you ran or as in the <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1</span></code>
+URL printed by Jupyter.</p></li>
+</ul>
 </li>
 <li><p>&quot;Check if there is a typo in esrumweb01fl&quot; or &quot;We're having trouble
 finding that site&quot;</p>
@@ -499,8 +547,8 @@ activated and try again.</p>
 <li><a class="reference internal" href="#">Jupyter Notebooks</a><ul>
 <li><a class="reference internal" href="#starting-a-jupyter-notebook">Starting a Jupyter notebook</a></li>
 <li><a class="reference internal" href="#connecting-to-the-jupyter-notebook">Connecting to the Jupyter Notebook</a><ul>
-<li><a class="reference internal" href="#port-forwarding-on-linux-osx">Port forwarding on Linux/OSX</a></li>
-<li><a class="reference internal" href="#port-forwarding-on-windows">Port forwarding on Windows</a></li>
+<li><a class="reference internal" href="#port-forwarding-for-osx-linux-users">Port forwarding for OSX/Linux users</a></li>
+<li><a class="reference internal" href="#port-forwarding-for-windows-users">Port forwarding for Windows users</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#adding-an-r-kernel-to-jupyter">Adding an R kernel to Jupyter</a></li>

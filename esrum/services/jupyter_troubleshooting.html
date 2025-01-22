@@ -261,10 +261,20 @@ your forwarded ports match those used by Jupyter Notebook on Esrum.</p>
 </li>
 <li><p>&quot;Localhost refused to connect&quot; or &quot;Unable to connect&quot;</p>
 <p>This typically indicates that port forwarding isn't active, or that
-you have entered the wrong port number in your browser. Verify that
-port forwarding is active from your computer and you didn't accidentally
-ssh from esrumhead to esrumhead. Double check also that you are
-consistently using the correct port numbers.</p>
+you have entered the wrong port number in your browser. Therefore,</p>
+<ul class="simple">
+<li><p>Verify that port forwarding is active: On OSX/Linux that means
+verifying that an <code class="docutils literal notranslate"><span class="pre">ssh</span></code> command is running as described in the
+<a class="reference internal" href="jupyter.html#s-ports-osx-linux"><span class="std std-ref">Port forwarding for OSX/Linux users</span></a> section, and on Windows that means
+activating port forwarding in MobaXterm as described in the
+<a class="reference internal" href="jupyter.html#s-ports-windows"><span class="std std-ref">Port forwarding for Windows users</span></a> section.</p></li>
+<li><p>If using the instructions for Linux/OSX, verify that you ran the
+<code class="docutils literal notranslate"><span class="pre">ssh</span></code> command on your laptop or desktop, and <em>not</em> on the Esrum
+head node.</p></li>
+<li><p>Verify that either of these are using the same port number as in
+the <code class="docutils literal notranslate"><span class="pre">jupyter</span></code> command you ran or as in the <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1</span></code>
+URL printed by Jupyter.</p></li>
+</ul>
 </li>
 <li><p>&quot;Check if there is a typo in esrumweb01fl&quot; or &quot;We're having trouble
 finding that site&quot;</p>
