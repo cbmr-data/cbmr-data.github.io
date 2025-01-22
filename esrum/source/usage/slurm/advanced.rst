@@ -441,13 +441,13 @@ filenames in a bash script.
       # Find row where 1. column matches SLURM_ARRAY_TASK_ID and print 3. column
       FILENAME=$(awk -v ID=${SLURM_ARRAY_TASK_ID} '$1 == ID {print $3; exit}' my_samples.tsv)
 
-   By default ``awk`` will split columns by any whitespace, but if you
+   By default, ``awk`` will split columns by any whitespace, but if you
    have a tab separated file (``.tsv``) file it is worthwhile to specify
    this using the ``FS`` (field separator) option:
 
    .. code-block:: bash
 
-      # Find row where 1. column matches SLURM_ARRAY_TASK_ID and print 3. column
+      # Find row where column 1 matches SLURM_ARRAY_TASK_ID and print column 3
       FILENAME=$(awk -v FS="\t" -v ID=${SLURM_ARRAY_TASK_ID} '$1 == ID {print $3; exit}' my_samples.tsv)
 
    This ensures that ``awk`` returns the correct cell even if other

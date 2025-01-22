@@ -23,7 +23,7 @@ to the VPN.
  Connecting on Windows
 ***********************
 
-Windows users will need to install a SSH client in order to be able to
+Windows users will need to install an SSH client in order to be able to
 connect to the server. Options include MobaXterm_, Putty_, and Windows
 Subsystem for Linux (WSL_), and much more. The following demonstrates
 how to set up MobaXterm. Please refer to the :ref:`s_connecting_linux`

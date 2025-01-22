@@ -40,4 +40,4 @@ says "This site can't be reached".
 
    You are most likely connecting from a network outside UCPH. Make sure
    that you are using a wired connection at CBMR and/or that the VPN is
-   activated and try again.
+   activated and try again. See the :ref:`p_usage_connecting` page for more information about connecting to the UCPH VPN.

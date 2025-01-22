@@ -147,9 +147,10 @@ Port forwarding for Windows users
 =================================
 
 The following instructions describe how to set up port forwarding to
-Esrum from a PC running Windows, and also assume that you are using
-MobaXterm. If not, then please refer to the documentation for your
-software of choice.
+Esrum from your laptop or PC running Windows. It is furthermore assumed
+that you are using MobaXterm to connect to Esrum (see the
+:ref:`s_configure_mobaxterm` section). If not, then please refer to the
+documentation for your software of choice.
 
 #. Install and configure MobaXterm as described in
    :ref:`s_configure_mobaxterm`.
