@@ -30,11 +30,17 @@ Then go to [127.0.0.1:8000](http://127.0.0.1:8000/). The page automatically refr
 
 ### Automatically format RST files
 
-The `rstfmt` command can be used to automatically format `.rst` files for consistency:
+The `rstfmt` command can be used to automatically format `.rst` files for consistency. Currently, this requires a custom version of `rstfmt`that supports the `code-block` directive. This can be installed any `pip` compatible tool:
+
+```console
+pip install git+https://github.com/MikkelSchubert/rstfmt.git
+```
+
+This can be run as follows
 
 ```console
 cd /path/to/cbmr-data.github.io/esrum
-find -name '*.rst' | rstfmt
+find -name '*.rst' -exec rstfmt "{}" +
 ```
 
 If using VSCode, the [Custom Local Formatters](https://marketplace.visualstudio.com/items?itemName=jkillian.custom-local-formatters) extension can be used to enable automatic formatting of documentation. This requires merging the following configuration into your workspace configuration:
@@ -52,6 +58,8 @@ If using VSCode, the [Custom Local Formatters](https://marketplace.visualstudio.
   "editor.formatOnSave": true
 }
 ```
+
+WARNING: Currently this breaks the header formatting in troubleshooting sections, since these files are inserted verbatim into other RST files and therefore should not start with top-level headers.
 
 ### Recording console output
 
