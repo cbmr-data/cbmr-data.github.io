@@ -119,27 +119,44 @@ username:
 
    $ ssh -S none -N -L 'XXXXX:esrumcmpn07fl:XXXXX' abc123@esrumhead01fl.unicph.domain
 
+.. note::
+
+   The ``-S none`` option ensures that SSH opens a new connection even
+   if shared connections are enabled (see the ``ControlMaster`` section
+   in ``man ssh``), which is required to forward the requested ports.
+   The ``-N`` option prevents ``ssh`` from open a shell on Esrum, which
+   ensures that you do not accidentally use this terminal and then close
+   it, while still using the notebook, and the ``-L`` option configures
+   the actual port forwarding.
+
 While this command is running, you can open your notebook via the
 ``http://127.0.0.1:XXXXX/?token=${long_text_here}`` URL that Jupyter
-Notebook printed in your terminal on Esrum. Typically, this can be done
-by pressing Ctrl and left-clicking on the URL in the terminal.
+Notebook printed in your terminal on Esrum:
+
+.. code-block:: console
+   :emphasize-lines: 5
+
+   To access the notebook, open this file in a browser:
+       file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html
+     Or copy and paste one of these URLs:
+         http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
+      or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
+
+Typically, this can be done by pressing Ctrl and left-clicking on the
+URL in the terminal:
+
+.. warning::
+
+   The URL including the node name
+   (`http://esrumcmpn07fl.unicph.domain:XXXXX/`) will not work, since
+   you do not have direct access to the node! You must use the URL
+   starting with `http://127.0.0.1:XXXXX/`
 
 .. tip::
 
    If you created a ``~/.ssh/config`` file as suggested in the
    :ref:`s_connecting_linux` section, then you can use the shorter
    command ``ssh -S none -N -L 'XXXXX:esrumcmpn07fl:XXXXX' esrum``.
-
-.. note::
-
-   The ``-S none`` option is recommended in case shared connections are
-   enabled (see the ``ControlMaster`` section in ``man ssh``), in which
-   case the ``ssh`` command may otherwise not open the specified ports
-   if a connection already exists. The ``-N`` option prevents ``ssh``
-   from open a shell on Esrum, which ensures that you do not
-   accidentally use this terminal and then close it, while still using
-   the notebook, and the ``-L`` option configures the actual port
-   forwarding.
 
 .. _s_ports_windows:
 
@@ -197,8 +214,26 @@ documentation for your software of choice.
 Once you have configured MobaXterm and enabled port forwarding, you can
 open your notebook via the
 ``http://127.0.0.1:XXXXX/?token=${long_text_here}`` URL that Jupyter
-Notebook printed in your terminal on Esrum. Typically, this can be done
-by pressing Ctrl and left-clicking on the URL in the terminal.
+Notebook printed in your terminal on Esrum:
+
+.. code-block:: console
+   :emphasize-lines: 5
+
+   To access the notebook, open this file in a browser:
+       file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html
+     Or copy and paste one of these URLs:
+         http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
+      or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
+
+Typically, this can be done by pressing Ctrl and left-clicking on the
+URL in the terminal.
+
+.. warning::
+
+   The URL including the node name
+   (`http://esrumcmpn07fl.unicph.domain:XXXXX/`) will not work, since
+   you do not have direct access to the node! You must use the URL
+   starting with `http://127.0.0.1:XXXXX/`
 
 .. _s_jupyter_kernels:
 

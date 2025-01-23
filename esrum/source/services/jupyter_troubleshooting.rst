@@ -9,14 +9,14 @@ listed here.
 When using Chrome, the cause is typically listed below the line that
 says "This site can't be reached".
 
--  "The connection was reset"
+-  ``The connection was reset``
 
    This typically indicates that Jupyter Notebook isn't running on the
    server, or that it is running on a different port than the one you've
    forwarded. Check that Jupyter Notebook is running and make sure that
    your forwarded ports match those used by Jupyter Notebook on Esrum.
 
--  "Localhost refused to connect" or "Unable to connect"
+-  ``Localhost refused to connect`` or ``Unable to connect``
 
    This typically indicates that port forwarding isn't active, or that
    you have entered the wrong port number in your browser. Therefore,
@@ -35,9 +35,18 @@ says "This site can't be reached".
       the ``jupyter`` command you ran or as in the ``http://127.0.0.1``
       URL printed by Jupyter.
 
--  "Check if there is a typo in esrumweb01fl" or "We're having trouble
-   finding that site"
+   -  Verify that you are using the *second* URL that Jupyter prints on
+      the terminal, namely the URL starting with
+      ``http://127.0.0.1:XXXX``:
 
-   You are most likely connecting from a network outside UCPH. Make sure
-   that you are using a wired connection at CBMR and/or that the VPN is
-   activated and try again. See the :ref:`p_usage_connecting` page for more information about connecting to the UCPH VPN.
+      .. code-block:: console
+         :emphasize-lines: 5
+
+         To access the notebook, open this file in a browser:
+             file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html
+             Or copy and paste one of these URLs:
+                 http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
+             or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
+
+      For security reasons it is not possible to connect directly to the
+      compute nodes.
