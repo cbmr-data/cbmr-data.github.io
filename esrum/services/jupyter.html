@@ -317,9 +317,9 @@ need to include this part of the name.</p>
 </li>
 <li><p>Alternatively, run the following command on the head node in a
 separate terminal:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>squeue<span class="w"> </span>--me<span class="w"> </span>--name<span class="w"> </span>jupyter
-JOBID<span class="w">  </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
-<span class="m">551600</span><span class="w"> </span>standardq<span class="w">  </span>jupyter<span class="w">   </span>abc123<span class="w">  </span>R<span class="w">       </span><span class="m">8</span>:49<span class="w">      </span><span class="m">1</span><span class="w"> </span>esrumcmpn07fl
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>squeue<span class="w"> </span>--me<span class="w"> </span>--name<span class="w"> </span>jupyter
+<span class="go">JOBID  PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
+<span class="go">551600 standardq  jupyter   abc123  R       8:49      1 esrumcmpn07fl</span>
 </pre></div>
 </div>
 <p>By looking in the <code class="docutils literal notranslate"><span class="pre">NODELIST</span></code> column, we can see that the notebook
@@ -334,37 +334,52 @@ Esrum from your laptop or PC running OSX or Linux.</p>
 <code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl</span></code> with the name of the node on which your notebook is
 running (see above), and replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code> with your UCPH short
 username:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ssh<span class="w"> </span>-S<span class="w"> </span>none<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="s1">&#39;XXXXX:esrumcmpn07fl:XXXXX&#39;</span><span class="w"> </span>abc123@esrumhead01fl.unicph.domain
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>-S<span class="w"> </span>none<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="s1">&#39;XXXXX:esrumcmpn07fl:XXXXX&#39;</span><span class="w"> </span>abc123@esrumhead01fl.unicph.domain
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">-S</span> <span class="pre">none</span></code> option ensures that SSH opens a new connection even
+if shared connections are enabled (see the <code class="docutils literal notranslate"><span class="pre">ControlMaster</span></code> section
+in <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">ssh</span></code>), which is required to forward the requested ports.
+The <code class="docutils literal notranslate"><span class="pre">-N</span></code> option prevents <code class="docutils literal notranslate"><span class="pre">ssh</span></code> from open a shell on Esrum, which
+ensures that you do not accidentally use this terminal and then close
+it, while still using the notebook, and the <code class="docutils literal notranslate"><span class="pre">-L</span></code> option configures
+the actual port forwarding.</p>
 </div>
 <p>While this command is running, you can open your notebook via the
 <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:XXXXX/?token=${long_text_here}</span></code> URL that Jupyter
-Notebook printed in your terminal on Esrum. Typically, this can be done
-by pressing Ctrl and left-clicking on the URL in the terminal.</p>
+Notebook printed in your terminal on Esrum:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">To access the notebook, open this file in a browser:</span>
+<span class="go">    file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html</span>
+<span class="go">  Or copy and paste one of these URLs:</span>
+<span class="go">      http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz</span>
+<span class="hll"><span class="go">   or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz</span>
+</span></pre></div>
+</div>
+<p>Typically, this can be done by pressing Ctrl and left-clicking on the
+URL in the terminal:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The URL including the node name
+(<cite>http://esrumcmpn07fl.unicph.domain:XXXXX/</cite>) will not work, since
+you do not have direct access to the node! You must use the URL
+starting with <cite>http://127.0.0.1:XXXXX/</cite></p>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>If you created a <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> file as suggested in the
 <a class="reference internal" href="../usage/access/connecting.html#s-connecting-linux"><span class="std std-ref">Connecting on Linux</span></a> section, then you can use the shorter
 command <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-S</span> <span class="pre">none</span> <span class="pre">-N</span> <span class="pre">-L</span> <span class="pre">'XXXXX:esrumcmpn07fl:XXXXX'</span> <span class="pre">esrum</span></code>.</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">-S</span> <span class="pre">none</span></code> option is recommended in case shared connections are
-enabled (see the <code class="docutils literal notranslate"><span class="pre">ControlMaster</span></code> section in <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">ssh</span></code>), in which
-case the <code class="docutils literal notranslate"><span class="pre">ssh</span></code> command may otherwise not open the specified ports
-if a connection already exists. The <code class="docutils literal notranslate"><span class="pre">-N</span></code> option prevents <code class="docutils literal notranslate"><span class="pre">ssh</span></code>
-from open a shell on Esrum, which ensures that you do not
-accidentally use this terminal and then close it, while still using
-the notebook, and the <code class="docutils literal notranslate"><span class="pre">-L</span></code> option configures the actual port
-forwarding.</p>
-</div>
 </section>
 <section id="port-forwarding-for-windows-users">
 <span id="s-ports-windows"></span><h3>Port forwarding for Windows users<a class="headerlink" href="#port-forwarding-for-windows-users" title="Permalink to this heading">#</a></h3>
 <p>The following instructions describe how to set up port forwarding to
-Esrum from a PC running Windows, and also assume that you are using
-MobaXterm. If not, then please refer to the documentation for your
-software of choice.</p>
+Esrum from your laptop or PC running Windows. It is furthermore assumed
+that you are using MobaXterm to connect to Esrum (see the
+<a class="reference internal" href="../usage/access/connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section). If not, then please refer to the
+documentation for your software of choice.</p>
 <ol class="arabic">
 <li><p>Install and configure MobaXterm as described in
 <a class="reference internal" href="../usage/access/connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a>.</p></li>
@@ -400,8 +415,23 @@ Play-icon button or the <code class="docutils literal notranslate"><span class="
 <p>Once you have configured MobaXterm and enabled port forwarding, you can
 open your notebook via the
 <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:XXXXX/?token=${long_text_here}</span></code> URL that Jupyter
-Notebook printed in your terminal on Esrum. Typically, this can be done
-by pressing Ctrl and left-clicking on the URL in the terminal.</p>
+Notebook printed in your terminal on Esrum:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">To access the notebook, open this file in a browser:</span>
+<span class="go">    file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html</span>
+<span class="go">  Or copy and paste one of these URLs:</span>
+<span class="go">      http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz</span>
+<span class="hll"><span class="go">   or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz</span>
+</span></pre></div>
+</div>
+<p>Typically, this can be done by pressing Ctrl and left-clicking on the
+URL in the terminal.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The URL including the node name
+(<cite>http://esrumcmpn07fl.unicph.domain:XXXXX/</cite>) will not work, since
+you do not have direct access to the node! You must use the URL
+starting with <cite>http://127.0.0.1:XXXXX/</cite></p>
+</div>
 </section>
 </section>
 <section id="adding-an-r-kernel-to-jupyter">
@@ -451,16 +481,16 @@ listed here.</p>
 <p>When using Chrome, the cause is typically listed below the line that
 says &quot;This site can't be reached&quot;.</p>
 <ul>
-<li><p>&quot;The connection was reset&quot;</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">connection</span> <span class="pre">was</span> <span class="pre">reset</span></code></p>
 <p>This typically indicates that Jupyter Notebook isn't running on the
 server, or that it is running on a different port than the one you've
 forwarded. Check that Jupyter Notebook is running and make sure that
 your forwarded ports match those used by Jupyter Notebook on Esrum.</p>
 </li>
-<li><p>&quot;Localhost refused to connect&quot; or &quot;Unable to connect&quot;</p>
+<li><p><code class="docutils literal notranslate"><span class="pre">Localhost</span> <span class="pre">refused</span> <span class="pre">to</span> <span class="pre">connect</span></code> or <code class="docutils literal notranslate"><span class="pre">Unable</span> <span class="pre">to</span> <span class="pre">connect</span></code></p>
 <p>This typically indicates that port forwarding isn't active, or that
 you have entered the wrong port number in your browser. Therefore,</p>
-<ul class="simple">
+<ul>
 <li><p>Verify that port forwarding is active: On OSX/Linux that means
 verifying that an <code class="docutils literal notranslate"><span class="pre">ssh</span></code> command is running as described in the
 <a class="reference internal" href="#s-ports-osx-linux"><span class="std std-ref">Port forwarding for OSX/Linux users</span></a> section, and on Windows that means
@@ -472,13 +502,20 @@ head node.</p></li>
 <li><p>Verify that either of these are using the same port number as in
 the <code class="docutils literal notranslate"><span class="pre">jupyter</span></code> command you ran or as in the <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1</span></code>
 URL printed by Jupyter.</p></li>
-</ul>
+<li><p>Verify that you are using the <em>second</em> URL that Jupyter prints on
+the terminal, namely the URL starting with
+<code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:XXXX</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">To access the notebook, open this file in a browser:</span>
+<span class="go">    file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html</span>
+<span class="go">    Or copy and paste one of these URLs:</span>
+<span class="go">        http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz</span>
+<span class="hll"><span class="go">    or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz</span>
+</span></pre></div>
+</div>
+<p>For security reasons it is not possible to connect directly to the
+compute nodes.</p>
 </li>
-<li><p>&quot;Check if there is a typo in esrumweb01fl&quot; or &quot;We're having trouble
-finding that site&quot;</p>
-<p>You are most likely connecting from a network outside UCPH. Make sure
-that you are using a wired connection at CBMR and/or that the VPN is
-activated and try again.</p>
+</ul>
 </li>
 </ul>
 <script defer>

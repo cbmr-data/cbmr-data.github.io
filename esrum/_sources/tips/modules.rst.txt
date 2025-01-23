@@ -39,14 +39,14 @@ the module files. This organization is designed to simplify maintenance.
 
 #. Create a subfolder in the ``apps`` for your modules:
 
-   .. code:: shell
+   .. code-block::
 
       $ mkdir -p /projects/my-project/apps/modules
 
 #. Create a subfolder for the ``seqtk`` module scripts and a folder in
    which we can build our own copy of ``seqtk``:
 
-   .. code:: shell
+   .. code-block::
 
       $ mkdir -p /projects/my-project/apps/modules/modulefiles/seqtk
       $ mkdir -p /projects/my-project/apps/modules/software/seqtk/1.4
@@ -69,7 +69,7 @@ the module files. This organization is designed to simplify maintenance.
 
 #. Next download and compile ``seqtk 1.4``:
 
-   .. code:: shell
+   .. code-block::
 
       $ cd /projects/my-project/apps/modules/software/seqtk/1.4
       $ wget "https://github.com/lh3/seqtk/archive/refs/tags/v1.4.tar.gz"
@@ -80,7 +80,7 @@ the module files. This organization is designed to simplify maintenance.
 
 #. Place a symlink to the executable in a separate ``bin`` folder:
 
-   .. code:: shell
+   .. code-block::
 
       $ cd /projects/my-project/apps/modules/software/seqtk/1.4
       $ mkdir bin
@@ -99,7 +99,7 @@ the module files. This organization is designed to simplify maintenance.
 #. Finally, run ``module use`` to registers your module repository so
    that you can load your modules:
 
-   .. code:: shell
+   .. code-block::
 
       $ module use --prepend /projects/my-project/apps/modules/modulefiles/
       $ module avail
@@ -141,7 +141,7 @@ For more complicated software it is recommended to use the functionality
 that is often built to install it directly in the target directory. An
 example might look like the following:
 
-.. code:: shell
+.. code-block::
 
    $ tar xvzf my-software-1.23.tar.gz
    $ cd my-software-1.23
@@ -158,7 +158,7 @@ information.
 Making modules for python software is a bit more complicated, but can
 typically be accomplished as follows (using VisiData_ as an example):
 
-.. code:: shell
+.. code-block::
 
    # Basic setup
    $ mkdir -p /projects/my-project/apps/modules/software/visidata/2.11

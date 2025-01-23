@@ -6,7 +6,7 @@ Users connecting to Esrum with X11 forwarding enabled, for example using
 MobaXterm with default settings, may observe the following error when
 running the ``install.packages``:
 
-.. code:: console
+.. code-block::
 
    --- Please select a CRAN mirror for use in this session ---
    Error: .onLoad failed in loadNamespace() for 'tcltk', details:
@@ -17,7 +17,7 @@ running the ``install.packages``:
 If so, then you must disable graphical menus before running
 ``install.packages`` by first entering the following command:
 
-.. code:: console
+.. code-block::
 
    > options(menu.graphics=FALSE)
 
@@ -26,7 +26,7 @@ Then simply run ``install.packages`` again.
 You can also set the R option permanently by running the following in
 your (bash) terminal:
 
-.. code:: console
+.. code-block::
 
    $ echo 'options(menu.graphics=FALSE)' | tee -a ~/.Rprofile
 
@@ -38,7 +38,7 @@ the GCC module other than ``gcc/8.5.0``, then this library may fail to
 load on the RStudio node or when ``gcc/8.5.0`` is loaded on the
 head/compute nodes:
 
-.. code::
+.. code-block::
 
    $ R
    > library(wk)
@@ -53,7 +53,7 @@ one of two methods:
    :ref:`s_service_rstudio` section, and simply install the affected
    packages using the ``install.packages`` function:
 
-   .. code::
+   .. code-block::
 
       > install.packages("wk")
 
@@ -63,7 +63,7 @@ one of two methods:
 #. Connect to the head node or a compute node, and take care to load the
    correct version of GCC before loading R:
 
-   .. code:: shell
+   .. code-block::
 
       $ module load gcc/8.5.0 R/4.3.2
       $ R
@@ -79,25 +79,25 @@ that we find the package name, namely ``wk`` in this case.
 You can identify all affected packages in your "global" R library by
 running the following commands:
 
-.. code:: shell
+.. code-block::
 
-   module load gcc/8.5.0 R/4.3.2
+   $ module load gcc/8.5.0 R/4.3.2
 
 #. cd to your R library
 
-   .. code:: shell
+   .. code-block::
 
-      cd ~/R/x86_64-pc-linux-gnu-library/4.3/
+      $ cd ~/R/x86_64-pc-linux-gnu-library/4.3/
 
 #. Test every installed library
 
-   .. code:: shell
+   .. code-block::
 
-      for lib in $(ls);do echo "Testing ${lib}"; Rscript <(echo "library(${lib})") > /dev/null;done
+      $ for lib in $(ls);do echo "Testing ${lib}"; Rscript <(echo "library(${lib})") > /dev/null;done
 
 Output will look like the following:
 
-.. code:: shell
+.. code-block::
 
    Testing httpuv
    Testing igraph
@@ -116,7 +116,7 @@ Output will look like the following:
 Locate the error messages like the one shown above in the output and
 reinstall the affected libraries using the ``install.packages`` command:
 
-.. code:: shell
+.. code-block::
 
    $ R
    > install.packages(c("igraph", "isoband"))

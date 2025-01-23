@@ -249,15 +249,15 @@
 <p>If you request too many CPUs (more than 128), or too much RAM (more than
 1993 GB for compute nodes and more than 3920 GB for the GPU node), then
 Slurm will report that the request cannot be satisfied:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># More than 128 CPUs requested</span>
-$<span class="w"> </span>sbatch<span class="w"> </span>--cpus-per-task<span class="w"> </span><span class="m">200</span><span class="w"> </span>my_script.sh
-sbatch:<span class="w"> </span>error:<span class="w"> </span>CPU<span class="w"> </span>count<span class="w"> </span>per<span class="w"> </span>node<span class="w"> </span>can<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>satisfied
-sbatch:<span class="w"> </span>error:<span class="w"> </span>Batch<span class="w"> </span>job<span class="w"> </span>submission<span class="w"> </span>failed:<span class="w"> </span>Requested<span class="w"> </span>node<span class="w"> </span>configuration<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>available
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>More<span class="w"> </span>than<span class="w"> </span><span class="m">128</span><span class="w"> </span>CPUs<span class="w"> </span>requested
+<span class="gp">$ </span>sbatch<span class="w"> </span>--cpus-per-task<span class="w"> </span><span class="m">200</span><span class="w"> </span>my_script.sh
+<span class="go">sbatch: error: CPU count per node can not be satisfied</span>
+<span class="go">sbatch: error: Batch job submission failed: Requested node configuration is not available</span>
 
-<span class="c1"># More than 1993 GB RAM requested on compute node</span>
-$<span class="w"> </span>sbatch<span class="w"> </span>--mem<span class="w"> </span>2000G<span class="w"> </span>my_script.sh
-sbatch:<span class="w"> </span>error:<span class="w"> </span>Memory<span class="w"> </span>specification<span class="w"> </span>can<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>satisfied
-sbatch:<span class="w"> </span>error:<span class="w"> </span>Batch<span class="w"> </span>job<span class="w"> </span>submission<span class="w"> </span>failed:<span class="w"> </span>Requested<span class="w"> </span>node<span class="w"> </span>configuration<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>available
+<span class="gp"># </span>More<span class="w"> </span>than<span class="w"> </span><span class="m">1993</span><span class="w"> </span>GB<span class="w"> </span>RAM<span class="w"> </span>requested<span class="w"> </span>on<span class="w"> </span>compute<span class="w"> </span>node
+<span class="gp">$ </span>sbatch<span class="w"> </span>--mem<span class="w"> </span>2000G<span class="w"> </span>my_script.sh
+<span class="go">sbatch: error: Memory specification can not be satisfied</span>
+<span class="go">sbatch: error: Batch job submission failed: Requested node configuration is not available</span>
 </pre></div>
 </div>
 <p>To solve this, simply reduce the number of CPUs and/or the amount of RAM
@@ -266,13 +266,13 @@ require more than 1993 GB of RAM, then you need to run your task on the
 GPU queue as described on the <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory nodes</span></a> page.</p>
 <p>Additionally, you may receive this message if you request GPUs without
 specifying the correct queue or if you request too many GPUs:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># --partition=gpuqueue not specified</span>
-$<span class="w"> </span>srun<span class="w"> </span>--gres<span class="o">=</span>gpu:2<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
-srun:<span class="w"> </span>error:<span class="w"> </span>Unable<span class="w"> </span>to<span class="w"> </span>allocate<span class="w"> </span>resources:<span class="w"> </span>Requested<span class="w"> </span>node<span class="w"> </span>configuration<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>available
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>not<span class="w"> </span>specified
+<span class="gp">$ </span>srun<span class="w"> </span>--gres<span class="o">=</span>gpu:2<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
+<span class="go">srun: error: Unable to allocate resources: Requested node configuration is not available</span>
 
-<span class="c1"># More than 2 GPUs requested</span>
-$<span class="w"> </span>srun<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--gres<span class="o">=</span>gpu:3<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
-srun:<span class="w"> </span>error:<span class="w"> </span>Unable<span class="w"> </span>to<span class="w"> </span>allocate<span class="w"> </span>resources:<span class="w"> </span>Requested<span class="w"> </span>node<span class="w"> </span>configuration<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>available
+<span class="gp"># </span>More<span class="w"> </span>than<span class="w"> </span><span class="m">2</span><span class="w"> </span>GPUs<span class="w"> </span>requested
+<span class="gp">$ </span>srun<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--gres<span class="o">=</span>gpu:3<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
+<span class="go">srun: error: Unable to allocate resources: Requested node configuration is not available</span>
 </pre></div>
 </div>
 <p>To solve this error, simply avoid requesting more than 2 GPUs, and

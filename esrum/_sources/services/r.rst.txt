@@ -44,7 +44,7 @@ compatible between the compute nodes and the RStudio servers.
 By default, the 4.3.x versions of R loads ``gcc/8.5.0``, so you can
 simply use the ``--auto`` option when loading ``R/4.3.x``:
 
-.. code:: shell
+.. code-block::
 
    $ module load --auto R/4.3.3
    Loading R/4.3.3
@@ -59,7 +59,7 @@ available on the RStudio server and you will need to install them again.
    modules you install to fail to load on the RStudio server with the
    errors similar to the following:
 
-   .. code::
+   .. code-block::
 
       Error: package or namespace load failed for ‘wk’ in dyn.load(file, DLLpath = DLLpath, ...):
       unable to load shared object '/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so':
@@ -77,7 +77,7 @@ impact other users, but also makes make your analyses reproducible.
 To run an R script on the command-line, simply use the ``Rscript``
 command:
 
-.. code:: shell
+.. code-block::
 
    $ cat my_script.R
    cat("Hello, world!\n")
@@ -88,13 +88,13 @@ For simple scripts you can use the ``commandArgs`` function to pass
 arguments to your scripts, allowing you to use them to process arbitrary
 data-sets:
 
-.. code:: R
+.. code-block:: R
 
    args <- commandArgs(trailingOnly = TRUE)
 
    cat("Hello, ", args[1], "!\n", sep="")
 
-.. code:: console
+.. code-block::
 
    $ Rscript my_script.R world
    Hello, world!
@@ -114,7 +114,7 @@ library and it can also be downloaded :download:`here
 This allows you to document your command-line options, specify default
 values, and much more:
 
-.. code:: shell
+.. code-block::
 
    $ Rscript my_script.R
    usage: my_script.R [--] [--help] [--opts OPTS] [--p-value P-VALUE]
@@ -142,9 +142,8 @@ Finally, you write can write a small bash script to automatically load
 the required version of R and to call your script when you submit it to
 Slurm (using your preferred version of R):
 
-.. code:: console
+.. code-block:: bash
 
-   $ cat run_rscript.sh
    #!/bin/bash
 
    module load gcc/8.5.0 R/4.1.2
@@ -154,7 +153,7 @@ The ``"${@}"`` safely passes all your command-line arguments to
 ``Rscript``, even if they contain spaces. This wrapper script can then
 be used to submit/call any of your R-scripts:
 
-.. code:: console
+.. code-block::
 
    $ sbatch run_rscript.sh my_script.R my_data.tsv --p-value 0.01
    Submitted batch job 18090212
@@ -167,7 +166,7 @@ Installing R modules
 Modules may be installed in your home folder using the
 ``install.packages`` command:
 
-.. code:: console
+.. code-block::
 
    $ module load gcc/8.5.0 R/4.3.1
    $ R
@@ -183,7 +182,7 @@ When asked to pick a mirror, either pick ``0-Cloud`` by entering ``1``
 and pressing enter, or enter the number corresponding to a location near
 you and press enter:
 
-.. code:: console
+.. code-block::
 
    --- Please select a CRAN mirror for use in this session ---
    Secure CRAN mirrors

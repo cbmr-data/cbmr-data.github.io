@@ -270,20 +270,20 @@ documentation</a>.</p>
 <p>The first step is to determine what modules are available on the server.
 This is accomplished with the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code> command, that lists all
 available modules by default:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>avail
---------------------------<span class="w"> </span>/opt/software/modules<span class="w"> </span>--------------------------
-anaconda2/4.0.0<span class="w">            </span>libpng/1.6.39<span class="w">               </span>texlive/2023
-anaconda3/4.0.0<span class="w">            </span>libtool/2.4.7<span class="w">               </span>tiff/4.5.0
-anaconda3/5.3.1<span class="w">            </span>libuv/1.44.2<span class="w">                </span>topspin/4.1.4
-anaconda3/2020.11<span class="w">          </span>libxkbcommon/1.3.0<span class="w">          </span>trimgalore/0.6.6
-anaconda3/2021.05<span class="w">          </span>libxscrnsaver/1.0.0<span class="w">         </span>trnascan-se/2.0.11
-<span class="o">[</span>...<span class="o">]</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>avail
+<span class="go">-------------------------- /opt/software/modules --------------------------</span>
+<span class="go">anaconda2/4.0.0            libpng/1.6.39               texlive/2023</span>
+<span class="go">anaconda3/4.0.0            libtool/2.4.7               tiff/4.5.0</span>
+<span class="go">anaconda3/5.3.1            libuv/1.44.2                topspin/4.1.4</span>
+<span class="go">anaconda3/2020.11          libxkbcommon/1.3.0          trimgalore/0.6.6</span>
+<span class="go">anaconda3/2021.05          libxscrnsaver/1.0.0         trnascan-se/2.0.11</span>
+<span class="go">[...]</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">avail</span></code> command can also be used to list module versions by name:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>avail<span class="w"> </span>samtools
---------------------------<span class="w"> </span>/opt/software/modules<span class="w"> </span>--------------------------
-samtools/1.12<span class="w">  </span>samtools/1.17
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>avail<span class="w"> </span>samtools
+<span class="go">-------------------------- /opt/software/modules --------------------------</span>
+<span class="go">samtools/1.12  samtools/1.17</span>
 </pre></div>
 </div>
 <p>Additionally, auto-completion is available in the bash shell if you
@@ -291,15 +291,15 @@ press tab after a module (partial) name when running <cite>module load</cite> (s
 below).</p>
 <p>If you are not sure of the exact name of a module, then the <code class="docutils literal notranslate"><span class="pre">search</span></code>
 command can be used to search module names and descriptions:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>search<span class="w"> </span>conda
-<span class="w"> </span>--------------------------<span class="w"> </span>/opt/software/modules<span class="w"> </span>---------------------------
-<span class="w">     </span>cellranger/3.1.0:<span class="w"> </span>a<span class="w"> </span><span class="nb">set</span><span class="w"> </span>of<span class="w"> </span>analysis<span class="w"> </span>pipelines<span class="w"> </span>that<span class="w"> </span>process<span class="w"> </span><span class="o">[</span>...<span class="o">]</span>
-<span class="w">     </span>cellranger/6.1.1:<span class="w"> </span>a<span class="w"> </span><span class="nb">set</span><span class="w"> </span>of<span class="w"> </span>analysis<span class="w"> </span>pipelines<span class="w"> </span>that<span class="w"> </span>process<span class="w"> </span><span class="o">[</span>...<span class="o">]</span>
-<span class="w">     </span>cellranger/6.1.2:<span class="w"> </span>a<span class="w"> </span><span class="nb">set</span><span class="w"> </span>of<span class="w"> </span>analysis<span class="w"> </span>pipelines<span class="w"> </span>that<span class="w"> </span>process<span class="w"> </span><span class="o">[</span>...<span class="o">]</span>
-<span class="w">          </span>mamba/1.4.1:<span class="w"> </span>a<span class="w"> </span>fast,<span class="w"> </span>robust,<span class="w"> </span>and<span class="w"> </span>cross-platform<span class="w"> </span>package<span class="w"> </span><span class="o">[</span>...<span class="o">]</span>
-<span class="w">         </span>mamba/23.3.1:<span class="w"> </span>a<span class="w"> </span>fast,<span class="w"> </span>robust,<span class="w"> </span>and<span class="w"> </span>cross-platform<span class="w"> </span>package<span class="w"> </span><span class="o">[</span>...<span class="o">]</span>
-<span class="w">      </span>miniconda/4.9.2:<span class="w"> </span>free<span class="w"> </span>minimal<span class="w"> </span>installer<span class="w"> </span><span class="k">for</span><span class="w"> </span>conda
-<span class="w">     </span>miniconda/4.10.4:<span class="w"> </span>free<span class="w"> </span>minimal<span class="w"> </span>installer<span class="w"> </span><span class="k">for</span><span class="w"> </span>conda
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>search<span class="w"> </span>conda
+<span class="go"> -------------------------- /opt/software/modules ---------------------------</span>
+<span class="go">     cellranger/3.1.0: a set of analysis pipelines that process [...]</span>
+<span class="go">     cellranger/6.1.1: a set of analysis pipelines that process [...]</span>
+<span class="go">     cellranger/6.1.2: a set of analysis pipelines that process [...]</span>
+<span class="go">          mamba/1.4.1: a fast, robust, and cross-platform package [...]</span>
+<span class="go">         mamba/23.3.1: a fast, robust, and cross-platform package [...]</span>
+<span class="go">      miniconda/4.9.2: free minimal installer for conda</span>
+<span class="go">     miniconda/4.10.4: free minimal installer for conda</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -318,22 +318,22 @@ as described in the <a class="reference internal" href="#s-requesting-missing-mo
 <p>The modules are loaded using the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code> command. This command
 adds the executable to your PATH and performs any other setup required
 to run the software.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>samtools
--bash:<span class="w"> </span>samtools:<span class="w"> </span><span class="nb">command</span><span class="w"> </span>not<span class="w"> </span>found
-$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>samtools
-$<span class="w"> </span>samtools
-Program:<span class="w"> </span>samtools<span class="w"> </span><span class="o">(</span>Tools<span class="w"> </span><span class="k">for</span><span class="w"> </span>alignments<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>SAM<span class="w"> </span>format<span class="o">)</span>
-Version:<span class="w"> </span><span class="m">1</span>.17<span class="w"> </span><span class="o">(</span>using<span class="w"> </span>htslib<span class="w"> </span><span class="m">1</span>.17<span class="o">)</span>
-<span class="o">[</span>...<span class="o">]</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>samtools
+<span class="go">-bash: samtools: command not found</span>
+<span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>samtools
+<span class="gp">$ </span>samtools
+<span class="go">Program: samtools (Tools for alignments in the SAM format)</span>
+<span class="go">Version: 1.17 (using htslib 1.17)</span>
+<span class="go">[...]</span>
 </pre></div>
 </div>
 <p>It is highly recommended to specify the exact version of a module that
 you want to load. This ensure that your results are reproducible:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>samtools/1.12
-$<span class="w"> </span>samtools
-Program:<span class="w"> </span>samtools<span class="w"> </span><span class="o">(</span>Tools<span class="w"> </span><span class="k">for</span><span class="w"> </span>alignments<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>SAM<span class="w"> </span>format<span class="o">)</span>
-Version:<span class="w"> </span><span class="m">1</span>.12<span class="w"> </span><span class="o">(</span>using<span class="w"> </span>htslib<span class="w"> </span><span class="m">1</span>.12<span class="o">)</span>
-<span class="o">[</span>...<span class="o">]</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>samtools/1.12
+<span class="gp">$ </span>samtools
+<span class="go">Program: samtools (Tools for alignments in the SAM format)</span>
+<span class="go">Version: 1.12 (using htslib 1.12)</span>
+<span class="go">[...]</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -346,45 +346,43 @@ ways while you are still working on a project.</p>
 you use when loading modules.</p>
 </div>
 <p>In some cases one module will require another module:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>bcftools/1.16
-Loading<span class="w"> </span>bcftools/1.16
-ERROR:<span class="w"> </span>bcftools/1.16<span class="w"> </span>cannot<span class="w"> </span>be<span class="w"> </span>loaded<span class="w"> </span>due<span class="w"> </span>to<span class="w"> </span>missing<span class="w"> </span>prereq.
-<span class="w">   </span>HINT:<span class="w"> </span>the<span class="w"> </span>following<span class="w"> </span>module<span class="w"> </span>must<span class="w"> </span>be<span class="w"> </span>loaded<span class="w"> </span>first:<span class="w"> </span>perl
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>bcftools/1.16
+<span class="go">Loading bcftools/1.16</span>
+<span class="go">ERROR: bcftools/1.16 cannot be loaded due to missing prereq.</span>
+<span class="go">   HINT: the following module must be loaded first: perl</span>
 </pre></div>
 </div>
 <p>In that case you simply need to load the required module first. This can
 be done in done manually:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>perl
-$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>bcftools/1.16
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>perl
+<span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>bcftools/1.16
 </pre></div>
 </div>
 <p>Or automatically:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>--auto<span class="w"> </span>bcftools
-Loading<span class="w"> </span>bcftools/1.16
-<span class="w">  </span>Loading<span class="w"> </span>requirement:<span class="w"> </span>perl/5.26.3
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>--auto<span class="w"> </span>bcftools
+<span class="go">Loading bcftools/1.16</span>
+<span class="go">  Loading requirement: perl/5.26.3</span>
 </pre></div>
 </div>
-<p>Note that it is <em>not</em> recommended to use the <code class="docutils literal notranslate"><span class="pre">--auto</span></code> option when
-loading R; see the <a class="reference internal" href="../services/r.html#p-service-r"><span class="std std-ref">R and RStudio</span></a> page for more information.</p>
 </section>
 <section id="listing-and-unloading-loaded-modules">
 <h3>Listing and unloading loaded modules<a class="headerlink" href="#listing-and-unloading-loaded-modules" title="Permalink to this heading">#</a></h3>
 <p>The modules you have loaded can be listed using the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">list</span></code>
 command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>modules<span class="w"> </span>list
-Currently<span class="w"> </span>Loaded<span class="w"> </span>Modulefiles:
-<span class="w"> </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>perl/5.26.3<span class="w">   </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>bcftools/1.16<span class="w">   </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>samtools/1.12
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>modules<span class="w"> </span>list
+<span class="go">Currently Loaded Modulefiles:</span>
+<span class="go"> 1) perl/5.26.3   2) bcftools/1.16   3) samtools/1.12</span>
 </pre></div>
 </div>
 <p>To remove a module that you no longer need, use the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">unload</span></code>
 command to unload a single module or the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code> command to
 unload all modules:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Unload the samtools module</span>
-$<span class="w"> </span>module<span class="w"> </span>unload<span class="w"> </span>samtools
-<span class="c1"># Unload the remaining modules</span>
-$<span class="w"> </span>module<span class="w"> </span>purge
-$<span class="w"> </span>modules<span class="w"> </span>list
-No<span class="w"> </span>Modulefiles<span class="w"> </span>Currently<span class="w"> </span>Loaded.
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Unload<span class="w"> </span>the<span class="w"> </span>samtools<span class="w"> </span>module
+<span class="gp">$ </span>module<span class="w"> </span>unload<span class="w"> </span>samtools
+<span class="gp"># </span>Unload<span class="w"> </span>the<span class="w"> </span>remaining<span class="w"> </span>modules
+<span class="gp">$ </span>module<span class="w"> </span>purge
+<span class="gp">$ </span>modules<span class="w"> </span>list
+<span class="go">No Modulefiles Currently Loaded.</span>
 </pre></div>
 </div>
 </section>
@@ -408,8 +406,8 @@ possible to do this by hand.</p>
 <h3>Managing modules with <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">save/restore</span></code><a class="headerlink" href="#managing-modules-with-module-save-restore" title="Permalink to this heading">#</a></h3>
 <p>To export a list of your currently used models, use the following
 command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>config<span class="w"> </span>collection_pin_version<span class="w"> </span><span class="m">1</span>
-$<span class="w"> </span>module<span class="w"> </span>save<span class="w"> </span>./modules.txt
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>config<span class="w"> </span>collection_pin_version<span class="w"> </span><span class="m">1</span>
+<span class="gp">$ </span>module<span class="w"> </span>save<span class="w"> </span>./modules.txt
 </pre></div>
 </div>
 <p>There are two important points here: Firstly, the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">config</span>
@@ -422,37 +420,37 @@ the list as a local file is recommended as it allows other users to see
 what software you used.</p>
 <p>If used correctly, the <code class="docutils literal notranslate"><span class="pre">./modules.txt</span></code> file will contain the currently
 loaded modules, e.g:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>list
-Currently<span class="w"> </span>Loaded<span class="w"> </span>Modulefiles:
-<span class="m">1</span><span class="o">)</span><span class="w"> </span>gcc/11.2.0<span class="w">   </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>samtools/1.17<span class="w">   </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>perl/5.26.3<span class="w">   </span><span class="m">4</span><span class="o">)</span><span class="w"> </span>bcftools/1.16
-$<span class="w"> </span>module<span class="w"> </span>config<span class="w"> </span>collection_pin_version<span class="w"> </span><span class="m">1</span>
-$<span class="w"> </span>module<span class="w"> </span>save<span class="w"> </span>./modules.txt
-$<span class="w"> </span>cat<span class="w"> </span>modules.txt
-module<span class="w"> </span>use<span class="w"> </span>--append<span class="w"> </span>/opt/software/modules
-module<span class="w"> </span>load<span class="w"> </span>gcc/11.2.0
-module<span class="w"> </span>load<span class="w"> </span>samtools/1.17
-module<span class="w"> </span>load<span class="w"> </span>perl/5.26.3
-module<span class="w"> </span>load<span class="w"> </span>bcftools/1.16
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>list
+<span class="go">Currently Loaded Modulefiles:</span>
+<span class="go">1) gcc/11.2.0   2) samtools/1.17   3) perl/5.26.3   4) bcftools/1.16</span>
+<span class="gp">$ </span>module<span class="w"> </span>config<span class="w"> </span>collection_pin_version<span class="w"> </span><span class="m">1</span>
+<span class="gp">$ </span>module<span class="w"> </span>save<span class="w"> </span>./modules.txt
+<span class="gp">$ </span>cat<span class="w"> </span>modules.txt
+<span class="go">module use --append /opt/software/modules</span>
+<span class="go">module load gcc/11.2.0</span>
+<span class="go">module load samtools/1.17</span>
+<span class="go">module load perl/5.26.3</span>
+<span class="go">module load bcftools/1.16</span>
 </pre></div>
 </div>
 <p>To load the saved modules, simply run <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">restore</span></code> with the same
 filename (and a directory component):</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>list
-No<span class="w"> </span>Modulefiles<span class="w"> </span>Currently<span class="w"> </span>Loaded.
-$<span class="w"> </span>module<span class="w"> </span>restore<span class="w"> </span>./modules.txt
-$<span class="w"> </span>module<span class="w"> </span>list
-Currently<span class="w"> </span>Loaded<span class="w"> </span>Modulefiles:
-<span class="m">1</span><span class="o">)</span><span class="w"> </span>gcc/11.2.0<span class="w">   </span><span class="m">2</span><span class="o">)</span><span class="w"> </span>samtools/1.17<span class="w">   </span><span class="m">3</span><span class="o">)</span><span class="w"> </span>perl/5.26.3<span class="w">   </span><span class="m">4</span><span class="o">)</span><span class="w"> </span>bcftools/1.16
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>list
+<span class="go">No Modulefiles Currently Loaded.</span>
+<span class="gp">$ </span>module<span class="w"> </span>restore<span class="w"> </span>./modules.txt
+<span class="gp">$ </span>module<span class="w"> </span>list
+<span class="go">Currently Loaded Modulefiles:</span>
+<span class="go">1) gcc/11.2.0   2) samtools/1.17   3) perl/5.26.3   4) bcftools/1.16</span>
 </pre></div>
 </div>
 <p>Alternative, use the <code class="docutils literal notranslate"><span class="pre">.</span></code> or <code class="docutils literal notranslate"><span class="pre">source</span></code> command to execute the content
 of the file in your current shell. This has the same effect as running
 <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">restore</span></code>:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>./modules.txt
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">source</span><span class="w"> </span>./modules.txt
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>.<span class="w"> </span>./modules.txt
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>.<span class="w"> </span>./modules.txt
 </pre></div>
 </div>
 <p>Simply running the script with <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">modules.sh</span></code> will not work.</p>
@@ -466,12 +464,12 @@ given access to this project, then please <a class="reference internal" href="..
 and we will grant you access to the project.</p>
 <p>To make use of these modules, run the following command in your
 terminal:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>use<span class="w"> </span>--prepend<span class="w"> </span>/projects/cbmr_shared/apps/modules/modulefiles/
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>use<span class="w"> </span>--prepend<span class="w"> </span>/projects/cbmr_shared/apps/modules/modulefiles/
 </pre></div>
 </div>
 <p>A small helper script is also available to run this command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/projects/cbmr_shared/apps/modules/activate.sh
-Using<span class="w"> </span>modules<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s1">&#39;/projects/cbmr_shared/apps/modules/modulefiles/&#39;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">source</span><span class="w"> </span>/projects/cbmr_shared/apps/modules/activate.sh
+<span class="go">Using modules in &#39;/projects/cbmr_shared/apps/modules/modulefiles/&#39;</span>
 </pre></div>
 </div>
 <p>You can add the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">use</span></code> command to the end of your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code>
@@ -507,11 +505,11 @@ describe&quot; text-box (see below).</p></li>
 <li><p>The homepage of the software.</p></li>
 </ol>
 <p>A request may look like the following:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Requesting the addition of environment modules for the following software:</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Requesting the addition of environment modules for the following software:
 
-<span class="go">1. seqtk v1.4 (https://github.com/lh3/seqtk)</span>
-<span class="go">2. jq v1.5 (https://stedolan.github.io/jq/)</span>
-<span class="go">3. igzip v2.30.0 (https://github.com/intel/isa-l)</span>
+1. seqtk v1.4 (https://github.com/lh3/seqtk)
+2. jq v1.5 (https://stedolan.github.io/jq/)
+3. igzip v2.30.0 (https://github.com/intel/isa-l)
 </pre></div>
 </div>
 <div class="admonition warning">

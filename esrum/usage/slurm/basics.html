@@ -292,7 +292,7 @@ speed, and that it supports multiple threads. This allows us to test
 those features with Slurm.</p>
 <p>We start with a simple script, with which we will compress the FASTA
 file <code class="docutils literal notranslate"><span class="pre">chr1.fasta</span></code>. This script is saved as <code class="docutils literal notranslate"><span class="pre">my_script.sh</span></code>:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
 module<span class="w"> </span>purge
 module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
@@ -325,10 +325,10 @@ from your current environment.</p>
 </div>
 <p>To queue this script, run the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command with the filename of
 the script as an argument:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls
-chr1.fasta<span class="w">  </span>my_script.sh
-$<span class="w"> </span>sbatch<span class="w"> </span>my_script.sh
-Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">8503</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls
+<span class="go">chr1.fasta  my_script.sh</span>
+<span class="gp">$ </span>sbatch<span class="w"> </span>my_script.sh
+<span class="go">Submitted batch job 8503</span>
 </pre></div>
 </div>
 <p>Notice that we do not need to set the current working directory in our
@@ -340,8 +340,8 @@ pause, or otherwise manipulate your job (see below).</p>
 also find a file named <code class="docutils literal notranslate"><span class="pre">slurm-${JOBID}.out</span></code> in the current folder,
 where <code class="docutils literal notranslate"><span class="pre">${JOBID}</span></code> is the ID reported by <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> (<code class="docutils literal notranslate"><span class="pre">8503</span></code> in this
 example):</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls
-chr1.fasta<span class="w">  </span>chr1.fasta.gz<span class="w">  </span>my_script.sh<span class="w">  </span>slurm-8503.out
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls
+<span class="go">chr1.fasta  chr1.fasta.gz  my_script.sh  slurm-8503.out</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">slurm-8503.out</span></code> file contains any console output produced by your
@@ -349,8 +349,8 @@ script/commands. This includes both STDOUT and STDERR by default, but
 this can be changed (see <a class="reference internal" href="#s-common-options"><span class="std std-ref">Common options</span></a>). So if we had
 misspelled the filename in our command then the resulting error message
 would be found in the <code class="docutils literal notranslate"><span class="pre">out</span></code> file:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>slurm-8503.out
-igzip:<span class="w"> </span>chr1.fast<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>exist
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cat<span class="w"> </span>slurm-8503.out
+<span class="go">igzip: chr1.fast does not exist</span>
 </pre></div>
 </div>
 <section id="passing-arguments-to-sbatch-scripts">
@@ -359,7 +359,7 @@ igzip:<span class="w"> </span>chr1.fast<span class="w"> </span>does<span class="
 to that script, just as if you were running it normally. This allows us
 to update our script above to take a filename on the command line
 instead of hard-coding that filename:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
 module<span class="w"> </span>purge
 module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
@@ -368,7 +368,7 @@ igzip<span class="w"> </span>--keep<span class="w"> </span><span class="s2">&quo
 </div>
 <p>We can then invoke the script using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> as above, specifying the
 name of the file we wanted to compress on the command-line:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbatch<span class="w"> </span>my_script.sh<span class="w"> </span><span class="s2">&quot;chr1.fasta&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>my_script.sh<span class="w"> </span><span class="s2">&quot;chr1.fasta&quot;</span>
 </pre></div>
 </div>
 <p>This is equivalent to the original script, except that we can now easily
@@ -384,20 +384,20 @@ bash script.</p>
 <p>You can check the status of your queued and running jobs using the
 <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">--me</span></code> command. The <code class="docutils literal notranslate"><span class="pre">--me</span></code> option ensures that only <em>your</em>
 jobs are shown, rather than everyone's jobs:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>squeue<span class="w"> </span>--me
-JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
-<span class="w"> </span><span class="m">8503</span><span class="w"> </span>standardq<span class="w"> </span>my_scrip<span class="w">   </span>abc123<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:02<span class="w">      </span><span class="m">1</span><span class="w"> </span>esrumcmpn01fl
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>squeue<span class="w"> </span>--me
+<span class="go">JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
+<span class="go"> 8503 standardq my_scrip   abc123  R       0:02      1 esrumcmpn01fl</span>
 </pre></div>
 </div>
 <p>The ST column indicating the status of the job (R for running, PD for
 pending, <a class="reference external" href="https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES">and so on</a>).</p>
 <p>Completed jobs are removed from the <code class="docutils literal notranslate"><span class="pre">squeue</span></code> list and can instead be
 listed using <code class="docutils literal notranslate"><span class="pre">sacct</span></code>:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sacct
-<span class="w">       </span>JobID<span class="w">    </span>JobName<span class="w">  </span>Partition<span class="w">    </span>Account<span class="w">  </span>AllocCPUS<span class="w">      </span>State<span class="w"> </span>ExitCode
-------------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>----------<span class="w"> </span>--------
-<span class="m">8503</span><span class="w">         </span>my_script+<span class="w"> </span>standardq+<span class="w">                     </span><span class="m">1</span><span class="w">  </span>COMPLETED<span class="w">      </span><span class="m">0</span>:0
-<span class="m">8503</span>.batch<span class="w">        </span>batch<span class="w">                                </span><span class="m">1</span><span class="w">  </span>COMPLETED<span class="w">      </span><span class="m">0</span>:0
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sacct
+<span class="go">       JobID    JobName  Partition    Account  AllocCPUS      State ExitCode</span>
+<span class="go">------------ ---------- ---------- ---------- ---------- ---------- --------</span>
+<span class="go">8503         my_script+ standardq+                     1  COMPLETED      0:0</span>
+<span class="go">8503.batch        batch                                1  COMPLETED      0:0</span>
 </pre></div>
 </div>
 </section>
@@ -405,14 +405,14 @@ listed using <code class="docutils literal notranslate"><span class="pre">sacct<
 <span id="s-cancelling-jobs"></span><h2>Cancelling jobs<a class="headerlink" href="#cancelling-jobs" title="Permalink to this heading">#</a></h2>
 <p>Already running jobs can be cancelled using the <code class="docutils literal notranslate"><span class="pre">scancel</span></code> command and
 the ID of the job you want to cancel:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>squeue<span class="w"> </span>--me
-JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
-<span class="w"> </span><span class="m">8503</span><span class="w"> </span>standardq<span class="w"> </span>my_scrip<span class="w">   </span>abc123<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:02<span class="w">      </span><span class="m">1</span><span class="w"> </span>esrumcmpn01fl
-$<span class="w"> </span>scancel<span class="w"> </span><span class="m">8503</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>squeue<span class="w"> </span>--me
+<span class="go">JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
+<span class="go"> 8503 standardq my_scrip   abc123  R       0:02      1 esrumcmpn01fl</span>
+<span class="gp">$ </span>scancel<span class="w"> </span><span class="m">8503</span>
 </pre></div>
 </div>
 <p>Should you wish to cancel <em>all</em> your jobs, use the <code class="docutils literal notranslate"><span class="pre">-u</span></code> option:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>scancel<span class="w"> </span>-u<span class="w"> </span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>scancel<span class="w"> </span>-u<span class="w"> </span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span>
 </pre></div>
 </div>
 <p>When running batch jobs you can either cancel the entire job (array, see
@@ -432,7 +432,7 @@ using standard scripting techniques.</p>
 <p>The second option, which we recommend for resource requirements and the
 like, is to use <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> comments.</p>
 <p>For example, instead of queuing our job with the command</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbatch<span class="w"> </span>--my-option<span class="w"> </span>my_script.sh
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>--my-option<span class="w"> </span>my_script.sh
 </pre></div>
 </div>
 <p>We could instead modify <code class="docutils literal notranslate"><span class="pre">my_script.sh</span></code> by adding a line containing
@@ -655,17 +655,17 @@ run. See the <code class="docutils literal notranslate"><span class="pre">sbatch
 <li><p><code class="docutils literal notranslate"><span class="pre">--test-only</span></code> can be used to test your batch scripts. Combine it
 with <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> to verify that your options are correctly set
 before queuing your job:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbatch<span class="w"> </span>--test-only<span class="w"> </span>--verbose<span class="w"> </span>my_script.sh
-sbatch:<span class="w"> </span>defined<span class="w"> </span>options
-sbatch:<span class="w"> </span>--------------------<span class="w"> </span>--------------------
-sbatch:<span class="w"> </span>cpus-per-task<span class="w">       </span>:<span class="w"> </span><span class="m">8</span>
-sbatch:<span class="w"> </span>test-only<span class="w">           </span>:<span class="w"> </span><span class="nb">set</span>
-sbatch:<span class="w"> </span><span class="nb">time</span><span class="w">                </span>:<span class="w"> </span><span class="m">01</span>:00:00
-sbatch:<span class="w"> </span>verbose<span class="w">             </span>:<span class="w"> </span><span class="m">1</span>
-sbatch:<span class="w"> </span>--------------------<span class="w"> </span>--------------------
-sbatch:<span class="w"> </span>end<span class="w"> </span>of<span class="w"> </span>defined<span class="w"> </span>options
-<span class="o">[</span>...<span class="o">]</span>
-sbatch:<span class="w"> </span>Job<span class="w"> </span><span class="m">8568</span><span class="w"> </span>to<span class="w"> </span>start<span class="w"> </span>at<span class="w"> </span><span class="m">2023</span>-06-28T12:15:32<span class="w"> </span>using<span class="w"> </span><span class="m">8</span><span class="w"> </span>processors<span class="w"> </span>on<span class="w"> </span>nodes<span class="w"> </span>esrumcmpn02fl<span class="w"> </span><span class="k">in</span><span class="w"> </span>partition<span class="w"> </span>standardqueue
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>--test-only<span class="w"> </span>--verbose<span class="w"> </span>my_script.sh
+<span class="go">sbatch: defined options</span>
+<span class="go">sbatch: -------------------- --------------------</span>
+<span class="go">sbatch: cpus-per-task       : 8</span>
+<span class="go">sbatch: test-only           : set</span>
+<span class="go">sbatch: time                : 01:00:00</span>
+<span class="go">sbatch: verbose             : 1</span>
+<span class="go">sbatch: -------------------- --------------------</span>
+<span class="go">sbatch: end of defined options</span>
+<span class="go">[...]</span>
+<span class="go">sbatch: Job 8568 to start at 2023-06-28T12:15:32 using 8 processors on nodes esrumcmpn02fl in partition standardqueue</span>
 </pre></div>
 </div>
 </li>
@@ -768,15 +768,15 @@ system on Esrum to load the software you need for your work.</p>
 <p>If you request too many CPUs (more than 128), or too much RAM (more than
 1993 GB for compute nodes and more than 3920 GB for the GPU node), then
 Slurm will report that the request cannot be satisfied:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># More than 128 CPUs requested</span>
-$<span class="w"> </span>sbatch<span class="w"> </span>--cpus-per-task<span class="w"> </span><span class="m">200</span><span class="w"> </span>my_script.sh
-sbatch:<span class="w"> </span>error:<span class="w"> </span>CPU<span class="w"> </span>count<span class="w"> </span>per<span class="w"> </span>node<span class="w"> </span>can<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>satisfied
-sbatch:<span class="w"> </span>error:<span class="w"> </span>Batch<span class="w"> </span>job<span class="w"> </span>submission<span class="w"> </span>failed:<span class="w"> </span>Requested<span class="w"> </span>node<span class="w"> </span>configuration<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>available
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>More<span class="w"> </span>than<span class="w"> </span><span class="m">128</span><span class="w"> </span>CPUs<span class="w"> </span>requested
+<span class="gp">$ </span>sbatch<span class="w"> </span>--cpus-per-task<span class="w"> </span><span class="m">200</span><span class="w"> </span>my_script.sh
+<span class="go">sbatch: error: CPU count per node can not be satisfied</span>
+<span class="go">sbatch: error: Batch job submission failed: Requested node configuration is not available</span>
 
-<span class="c1"># More than 1993 GB RAM requested on compute node</span>
-$<span class="w"> </span>sbatch<span class="w"> </span>--mem<span class="w"> </span>2000G<span class="w"> </span>my_script.sh
-sbatch:<span class="w"> </span>error:<span class="w"> </span>Memory<span class="w"> </span>specification<span class="w"> </span>can<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>satisfied
-sbatch:<span class="w"> </span>error:<span class="w"> </span>Batch<span class="w"> </span>job<span class="w"> </span>submission<span class="w"> </span>failed:<span class="w"> </span>Requested<span class="w"> </span>node<span class="w"> </span>configuration<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>available
+<span class="gp"># </span>More<span class="w"> </span>than<span class="w"> </span><span class="m">1993</span><span class="w"> </span>GB<span class="w"> </span>RAM<span class="w"> </span>requested<span class="w"> </span>on<span class="w"> </span>compute<span class="w"> </span>node
+<span class="gp">$ </span>sbatch<span class="w"> </span>--mem<span class="w"> </span>2000G<span class="w"> </span>my_script.sh
+<span class="go">sbatch: error: Memory specification can not be satisfied</span>
+<span class="go">sbatch: error: Batch job submission failed: Requested node configuration is not available</span>
 </pre></div>
 </div>
 <p>To solve this, simply reduce the number of CPUs and/or the amount of RAM
@@ -785,13 +785,13 @@ require more than 1993 GB of RAM, then you need to run your task on the
 GPU queue as described on the <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory nodes</span></a> page.</p>
 <p>Additionally, you may receive this message if you request GPUs without
 specifying the correct queue or if you request too many GPUs:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># --partition=gpuqueue not specified</span>
-$<span class="w"> </span>srun<span class="w"> </span>--gres<span class="o">=</span>gpu:2<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
-srun:<span class="w"> </span>error:<span class="w"> </span>Unable<span class="w"> </span>to<span class="w"> </span>allocate<span class="w"> </span>resources:<span class="w"> </span>Requested<span class="w"> </span>node<span class="w"> </span>configuration<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>available
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>not<span class="w"> </span>specified
+<span class="gp">$ </span>srun<span class="w"> </span>--gres<span class="o">=</span>gpu:2<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
+<span class="go">srun: error: Unable to allocate resources: Requested node configuration is not available</span>
 
-<span class="c1"># More than 2 GPUs requested</span>
-$<span class="w"> </span>srun<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--gres<span class="o">=</span>gpu:3<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
-srun:<span class="w"> </span>error:<span class="w"> </span>Unable<span class="w"> </span>to<span class="w"> </span>allocate<span class="w"> </span>resources:<span class="w"> </span>Requested<span class="w"> </span>node<span class="w"> </span>configuration<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>available
+<span class="gp"># </span>More<span class="w"> </span>than<span class="w"> </span><span class="m">2</span><span class="w"> </span>GPUs<span class="w"> </span>requested
+<span class="gp">$ </span>srun<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--gres<span class="o">=</span>gpu:3<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
+<span class="go">srun: error: Unable to allocate resources: Requested node configuration is not available</span>
 </pre></div>
 </div>
 <p>To solve this error, simply avoid requesting more than 2 GPUs, and

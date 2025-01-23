@@ -437,12 +437,12 @@ other nodes.</p>
 </div>
 <p>It is recommended that you create a sub-folder containing your UCPH-IT
 username when using the scratch-drive as part of your scripts:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Create<span class="w"> </span>temporary<span class="w"> </span>folder<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>form<span class="w"> </span>/scratch/abc123
-<span class="go">mkdir -p &quot;/scratch/${USER}&quot;</span>
-<span class="gp"># </span>Some<span class="w"> </span>software<span class="w"> </span>use<span class="w"> </span>the<span class="w"> </span>TMPDIR<span class="w"> </span>to<span class="w"> </span>place<span class="w"> </span>temporary<span class="w"> </span>files
-<span class="go">export TMPDIR=&quot;/scratch/${USER}&quot;</span>
-<span class="gp"># </span>Other<span class="w"> </span>software<span class="w"> </span>has<span class="w"> </span>options<span class="w"> </span><span class="k">for</span><span class="w"> </span>where<span class="w"> </span>to<span class="w"> </span>place<span class="w"> </span>temporary<span class="w"> </span>files
-<span class="go">mysoftware --in &quot;mydata&quot; --out &quot;myresults&quot; --temp &quot;/scratch/${USER}&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create temporary folder in the form /scratch/abc123</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;/scratch/</span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="c1"># Some software use the TMPDIR to place temporary files</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">TMPDIR</span><span class="o">=</span><span class="s2">&quot;/scratch/</span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="c1"># Other software has options for where to place temporary files</span>
+mysoftware<span class="w"> </span>--in<span class="w"> </span><span class="s2">&quot;mydata&quot;</span><span class="w"> </span>--out<span class="w"> </span><span class="s2">&quot;myresults&quot;</span><span class="w"> </span>--temp<span class="w"> </span><span class="s2">&quot;/scratch/</span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -459,11 +459,11 @@ scratch-drive <em>will</em> be deleted.</p>
 <code class="docutils literal notranslate"><span class="pre">/data</span></code>, and <code class="docutils literal notranslate"><span class="pre">/people</span></code> via special hidden <code class="docutils literal notranslate"><span class="pre">.snapshot</span></code> folders in
 the root of each of these folders. For example, to access the snapshots
 of the <code class="docutils literal notranslate"><span class="pre">/data</span></code> folder in the project <code class="docutils literal notranslate"><span class="pre">phenomics</span></code>:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/projects/phenomics/data/.snapshot
-$<span class="w"> </span>ls
-<span class="m">42</span>-Research-hourly-7D-2023-09-01_02:00
-<span class="m">42</span>-Research-daily-30D-2023-09-02_02:00
-<span class="m">42</span>-Research-weekly-104W-2023-09-03_02:00
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/projects/phenomics/data/.snapshot
+<span class="gp">$ </span>ls
+<span class="go">42-Research-hourly-7D-2023-09-01_02:00</span>
+<span class="go">42-Research-daily-30D-2023-09-02_02:00</span>
+<span class="go">42-Research-weekly-104W-2023-09-03_02:00</span>
 </pre></div>
 </div>
 <p>Each timestamped folder contains a full snapshot of the parent folder

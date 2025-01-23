@@ -5,7 +5,7 @@ If you request too many CPUs (more than 128), or too much RAM (more than
 1993 GB for compute nodes and more than 3920 GB for the GPU node), then
 Slurm will report that the request cannot be satisfied:
 
-.. code-block:: shell
+.. code-block::
 
    # More than 128 CPUs requested
    $ sbatch --cpus-per-task 200 my_script.sh
@@ -25,7 +25,7 @@ GPU queue as described on the :ref:`p_usage_slurm_gpu` page.
 Additionally, you may receive this message if you request GPUs without
 specifying the correct queue or if you request too many GPUs:
 
-.. code-block:: shell
+.. code-block::
 
    # --partition=gpuqueue not specified
    $ srun --gres=gpu:2 -- echo "Hello world!"

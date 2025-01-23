@@ -13,7 +13,7 @@ This section describes the layout of your home folder on Esrum, as well
 as the location and layout of projects, shared datasets, and per-node
 "scratch" folders. Briefly, the file system looks as follows:
 
-.. code:: text
+.. code-block:: text
 
    /home/
      abc123/
@@ -143,7 +143,7 @@ on how to apply for access to projects.
 
 Projects on Esrum are located in the ``/projects`` folder:
 
-.. code::
+.. code-block::
 
    $ ls -1 /projects
    phenomics-AUDIT
@@ -237,7 +237,7 @@ writes a lot of small temporary files.
 It is recommended that you create a sub-folder containing your UCPH-IT
 username when using the scratch-drive as part of your scripts:
 
-.. code:: console
+.. code-block:: bash
 
    # Create temporary folder in the form /scratch/abc123
    mkdir -p "/scratch/${USER}"
@@ -262,7 +262,7 @@ Backups are available your home folder and in project folders ``/apps``,
 the root of each of these folders. For example, to access the snapshots
 of the ``/data`` folder in the project ``phenomics``:
 
-.. code:: shell
+.. code-block::
 
    $ cd /projects/phenomics/data/.snapshot
    $ ls

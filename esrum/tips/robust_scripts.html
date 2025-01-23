@@ -273,14 +273,14 @@ in scripts that you import into your shell using the <code class="docutils liter
 access slurm options in batch scripts. However, unlike in most
 programming languages, it is not an error to access a variable that does
 not exist:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>myscript.sh
-<span class="c1">#!/bin/bash</span>
-<span class="nv">MY_VARIABLE</span><span class="o">=</span><span class="s2">&quot;record&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Tourist: I will not buy this </span><span class="si">${</span><span class="nv">MY_VARIABL</span><span class="si">}</span><span class="s2">, it is scratched.&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Clerk: Sorry?&quot;</span>
-$<span class="w"> </span>bash<span class="w"> </span>myscript.sh
-Tourist:<span class="w"> </span>I<span class="w"> </span>will<span class="w"> </span>not<span class="w"> </span>buy<span class="w"> </span>this<span class="w"> </span>,<span class="w"> </span>it<span class="w"> </span>is<span class="w"> </span>scratched.
-Clerk:<span class="w"> </span>Sorry?
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cat<span class="w"> </span>myscript.sh
+<span class="gp">#</span>!/bin/bash
+<span class="go">MY_VARIABLE=&quot;record&quot;</span>
+<span class="go">echo &quot;Tourist: I will not buy this ${MY_VARIABL}, it is scratched.&quot;</span>
+<span class="go">echo &quot;Clerk: Sorry?&quot;</span>
+<span class="gp">$ </span>bash<span class="w"> </span>myscript.sh
+<span class="go">Tourist: I will not buy this , it is scratched.</span>
+<span class="go">Clerk: Sorry?</span>
 </pre></div>
 </div>
 <p>Note how the script keeps executing even though we made a mistake. A
@@ -289,14 +289,14 @@ bash silent do the wrong thing.</p>
 <p>While there are cases where it is useful to allow missing variables,
 most of the time this is a mistake. To prevent this, you can set the
 <code class="docutils literal notranslate"><span class="pre">nounset</span></code> option, which causes bash to terminate on unset variables:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>myscript.sh
-<span class="c1">#!/bin/bash</span>
-<span class="nb">set</span><span class="w"> </span>-o<span class="w"> </span>nounset<span class="w">  </span><span class="c1"># Exit on unset variables</span>
-<span class="nv">MY_VARIABLE</span><span class="o">=</span><span class="s2">&quot;record&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Tourist: I will not buy this </span><span class="si">${</span><span class="nv">MY_VARIABL</span><span class="si">}</span><span class="s2">, it is scratched.&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Clerk: Sorry?&quot;</span>
-$<span class="w"> </span>bash<span class="w"> </span>myscript.sh
-test.sh:<span class="w"> </span>line<span class="w"> </span><span class="m">4</span>:<span class="w"> </span>MY_VARIABL:<span class="w"> </span>unbound<span class="w"> </span>variable
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cat<span class="w"> </span>myscript.sh
+<span class="gp">#</span>!/bin/bash
+<span class="go">set -o nounset  # Exit on unset variables</span>
+<span class="go">MY_VARIABLE=&quot;record&quot;</span>
+<span class="go">echo &quot;Tourist: I will not buy this ${MY_VARIABL}, it is scratched.&quot;</span>
+<span class="go">echo &quot;Clerk: Sorry?&quot;</span>
+<span class="gp">$ </span>bash<span class="w"> </span>myscript.sh
+<span class="go">test.sh: line 4: MY_VARIABL: unbound variable</span>
 </pre></div>
 </div>
 <p>This not only tells us that there is a problem with our script (and
@@ -325,14 +325,14 @@ gzip<span class="w"> </span>sketch.txt
 </pre></div>
 </div>
 <p>This produces the following output:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls
-my-sketch.sh
-$<span class="w"> </span>bash<span class="w"> </span>my-sketch.sh
-sed:<span class="w"> </span>-e<span class="w"> </span>expression<span class="w"> </span><span class="c1">#1, char 16: unterminated `s&#39; command</span>
-$<span class="w"> </span>ls
-my-sketch.sh<span class="w"> </span>sketch.txt.gz
-$<span class="w"> </span>zcat<span class="w"> </span>sketch.txt.gz
-I<span class="w"> </span>wish<span class="w"> </span>to<span class="w"> </span>complain<span class="w"> </span>about<span class="w"> </span>this<span class="w"> </span>dog<span class="w"> </span>what<span class="w"> </span>I<span class="w"> </span>purchased<span class="w"> </span>not<span class="w"> </span>half<span class="w"> </span>an<span class="w"> </span>hour<span class="w"> </span>ago<span class="w"> </span>from<span class="w"> </span>this<span class="w"> </span>very<span class="w"> </span>boutique.
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls
+<span class="go">my-sketch.sh</span>
+<span class="gp">$ </span>bash<span class="w"> </span>my-sketch.sh
+<span class="go">sed: -e expression #1, char 16: unterminated `s&#39; command</span>
+<span class="gp">$ </span>ls
+<span class="go">my-sketch.sh sketch.txt.gz</span>
+<span class="gp">$ </span>zcat<span class="w"> </span>sketch.txt.gz
+<span class="go">I wish to complain about this dog what I purchased not half an hour ago from this very boutique.</span>
 </pre></div>
 </div>
 <p>In more complicated scripts and/or if slurm logs are not carefully
@@ -380,13 +380,13 @@ gzip<span class="w"> </span>sketch.txt
 </pre></div>
 </div>
 <p>Running this script produces the following, helpful output:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls
-my-sketch.sh
-$<span class="w"> </span>bash<span class="w"> </span>my-sketch.sh
-sed:<span class="w"> </span>-e<span class="w"> </span>expression<span class="w"> </span><span class="c1">#1, char 16: unterminated `s&#39; command</span>
-sketch.sh:<span class="w"> </span>Error<span class="w"> </span>on<span class="w"> </span>line<span class="w"> </span><span class="m">13</span>:<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span>-e<span class="s1">&#39;s# dog # parrot &#39;</span><span class="w"> </span>sketch.txt
-$<span class="w"> </span>ls
-my-sketch.sh<span class="w"> </span>sketch.txt
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls
+<span class="go">my-sketch.sh</span>
+<span class="gp">$ </span>bash<span class="w"> </span>my-sketch.sh
+<span class="go">sed: -e expression #1, char 16: unterminated `s&#39; command</span>
+<span class="go">sketch.sh: Error on line 13: sed -i -e&#39;s# dog # parrot &#39; sketch.txt</span>
+<span class="gp">$ </span>ls
+<span class="go">my-sketch.sh sketch.txt</span>
 </pre></div>
 </div>
 </section>
@@ -426,16 +426,16 @@ recommended that you use the <a class="reference external" href="https://github.
 common mistakes.</p>
 <p>For example, if we run shell check on the very first script shown on
 this page:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>shellcheck
-$<span class="w"> </span>shellcheck<span class="w"> </span>myscript.sh
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>shellcheck
+<span class="gp">$ </span>shellcheck<span class="w"> </span>myscript.sh
 
-In<span class="w"> </span>myscript.sh<span class="w"> </span>line<span class="w"> </span><span class="m">2</span>:
-<span class="nv">MY_VARIABLE</span><span class="o">=</span><span class="s2">&quot;record&quot;</span>
-^---------^<span class="w"> </span>SC2034<span class="w"> </span><span class="o">(</span>warning<span class="o">)</span>:<span class="w"> </span>MY_VARIABLE<span class="w"> </span>appears<span class="w"> </span>unused.<span class="w"> </span>Verify<span class="w"> </span>use<span class="w"> </span><span class="o">(</span>or<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="k">if</span><span class="w"> </span>used<span class="w"> </span>externally<span class="o">)</span>.
+<span class="go">In myscript.sh line 2:</span>
+<span class="go">MY_VARIABLE=&quot;record&quot;</span>
+<span class="go">^---------^ SC2034 (warning): MY_VARIABLE appears unused. Verify use (or export if used externally).</span>
 
-In<span class="w"> </span>myscript.sh<span class="w"> </span>line<span class="w"> </span><span class="m">3</span>:
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;I will not buy this </span><span class="si">${</span><span class="nv">MY_VARIABL</span><span class="si">}</span><span class="s2">, it is scratched.&quot;</span>
-<span class="w">                        </span>^-----------^<span class="w"> </span>SC2153<span class="w"> </span><span class="o">(</span>info<span class="o">)</span>:<span class="w"> </span>Possible<span class="w"> </span>misspelling:<span class="w"> </span>MY_VARIABL<span class="w"> </span>may<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>assigned.<span class="w"> </span>Did<span class="w"> </span>you<span class="w"> </span>mean<span class="w"> </span>MY_VARIABLE?
+<span class="go">In myscript.sh line 3:</span>
+<span class="go">echo &quot;I will not buy this ${MY_VARIABL}, it is scratched.&quot;</span>
+<span class="go">                        ^-----------^ SC2153 (info): Possible misspelling: MY_VARIABL may not be assigned. Did you mean MY_VARIABLE?</span>
 </pre></div>
 </div>
 </section>
@@ -447,16 +447,16 @@ already running commands in a <a class="reference external" href="https://snakem
 mentioned above, as well as the <code class="docutils literal notranslate"><span class="pre">errexit</span></code> option that is equivalent to
 the <code class="docutils literal notranslate"><span class="pre">trap</span></code> command above but which prints less information about the
 failure:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>snakemake
-sed:<span class="w"> </span>-e<span class="w"> </span>expression<span class="w"> </span><span class="c1">#1, char 16: unterminated `s&#39; command</span>
-<span class="o">[</span>Thu<span class="w"> </span>Aug<span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">11</span>:26:32<span class="w"> </span><span class="m">2024</span><span class="o">]</span>
-Error<span class="w"> </span><span class="k">in</span><span class="w"> </span>rule<span class="w"> </span><span class="m">1</span>:
-<span class="w">    </span>jobid:<span class="w"> </span><span class="m">0</span>
-<span class="w">    </span>input:<span class="w"> </span>my-input.txt
-<span class="w">    </span>output:<span class="w"> </span>my-output.txt
-<span class="w">    </span>shell:
-<span class="w">        </span>sed<span class="w"> </span>-i<span class="w"> </span>-e<span class="s1">&#39;s# dog # parrot &#39;</span><span class="w"> </span>my-input.txt<span class="w"> </span>&gt;<span class="w"> </span>my-output.txt
-<span class="w">        </span><span class="o">(</span>one<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>commands<span class="w"> </span>exited<span class="w"> </span>with<span class="w"> </span>non-zero<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>code<span class="p">;</span><span class="w"> </span>note<span class="w"> </span>that<span class="w"> </span>snakemake<span class="w"> </span>uses<span class="w"> </span>bash<span class="w"> </span>strict<span class="w"> </span>mode!<span class="o">)</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>snakemake
+<span class="go">sed: -e expression #1, char 16: unterminated `s&#39; command</span>
+<span class="go">[Thu Aug 29 11:26:32 2024]</span>
+<span class="go">Error in rule 1:</span>
+<span class="go">    jobid: 0</span>
+<span class="go">    input: my-input.txt</span>
+<span class="go">    output: my-output.txt</span>
+<span class="go">    shell:</span>
+<span class="go">        sed -i -e&#39;s# dog # parrot &#39; my-input.txt &gt; my-output.txt</span>
+<span class="go">        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)</span>
 </pre></div>
 </div>
 <p>Note, however, that this does not apply to bash scripts that you execute

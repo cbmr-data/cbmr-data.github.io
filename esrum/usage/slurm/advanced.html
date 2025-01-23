@@ -302,11 +302,11 @@ option if simply you want to be able to wait for your script to finish.</p>
 <h3>Cancelling srun<a class="headerlink" href="#cancelling-srun" title="Permalink to this heading">#</a></h3>
 <p>To cancel a job running with srun, simply press <cite>Ctrl + c</cite> twice within
 1 second:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>srun<span class="w"> </span>gzip<span class="w"> </span>chr20.fasta
-&lt;ctrl+c&gt;<span class="w"> </span>srun:<span class="w"> </span>interrupt<span class="w"> </span><span class="o">(</span>one<span class="w"> </span>more<span class="w"> </span>within<span class="w"> </span><span class="m">1</span><span class="w"> </span>sec<span class="w"> </span>to<span class="w"> </span>abort<span class="o">)</span>
-srun:<span class="w"> </span><span class="nv">StepId</span><span class="o">=</span><span class="m">8717</span>.0<span class="w"> </span>task<span class="w"> </span><span class="m">0</span>:<span class="w"> </span>running
-&lt;ctrl+c&gt;<span class="w"> </span>srun:<span class="w"> </span>sending<span class="w"> </span>Ctrl-C<span class="w"> </span>to<span class="w"> </span><span class="nv">StepId</span><span class="o">=</span><span class="m">8717</span>.0
-srun:<span class="w"> </span>Job<span class="w"> </span>step<span class="w"> </span>aborted:<span class="w"> </span>Waiting<span class="w"> </span>up<span class="w"> </span>to<span class="w"> </span><span class="m">32</span><span class="w"> </span>seconds<span class="w"> </span><span class="k">for</span><span class="w"> </span>job<span class="w"> </span>step<span class="w"> </span>to<span class="w"> </span>finish.
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>gzip<span class="w"> </span>chr20.fasta
+<span class="go">&lt;ctrl+c&gt; srun: interrupt (one more within 1 sec to abort)</span>
+<span class="go">srun: StepId=8717.0 task 0: running</span>
+<span class="go">&lt;ctrl+c&gt; srun: sending Ctrl-C to StepId=8717.0</span>
+<span class="go">srun: Job step aborted: Waiting up to 32 seconds for job step to finish.</span>
 </pre></div>
 </div>
 <p>See also the <a class="reference internal" href="basics.html#s-cancelling-jobs"><span class="std std-ref">Cancelling jobs</span></a> section on the
@@ -331,8 +331,8 @@ script.</p></li>
 receive email notifications when your jobs are started, finish, fail,
 are requeued, or some combination. This is accomplished by using the
 <code class="docutils literal notranslate"><span class="pre">--mail-user</span></code> and <code class="docutils literal notranslate"><span class="pre">--mail-type</span></code> options:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbatch<span class="w"> </span>my_script.sh<span class="w"> </span>--mail-user<span class="o">=</span>abc123@ku.dk<span class="w"> </span>--mail-type<span class="o">=</span>END,FAIL
-Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">8503</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>my_script.sh<span class="w"> </span>--mail-user<span class="o">=</span>abc123@ku.dk<span class="w"> </span>--mail-type<span class="o">=</span>END,FAIL
+<span class="go">Submitted batch job 8503</span>
 </pre></div>
 </div>
 <p>When run like this, Slurm will send a notification to
@@ -358,10 +358,10 @@ you prefer, but see the warning below regarding GPU resources.</p>
 <p>The first option for directly monitoring jobs is to request a job on the
 same server using the <code class="docutils literal notranslate"><span class="pre">--nodelist</span></code> option to specify the exact node
 you wish your job to monitor:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>squeue<span class="w"> </span>--me
-JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
-<span class="w"> </span><span class="m">8503</span><span class="w"> </span>standardq<span class="w"> </span>my_scrip<span class="w">   </span>abc123<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:02<span class="w">      </span><span class="m">1</span><span class="w"> </span>esrumcmpn03fl
-$<span class="w"> </span>srun<span class="w"> </span>--pty<span class="w"> </span>--nodelist<span class="w"> </span>esrumcmpn03fl<span class="w"> </span>htop
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>squeue<span class="w"> </span>--me
+<span class="go">JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
+<span class="go"> 8503 standardq my_scrip   abc123  R       0:02      1 esrumcmpn03fl</span>
+<span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--nodelist<span class="w"> </span>esrumcmpn03fl<span class="w"> </span>htop
 </pre></div>
 </div>
 <p>This requests an interactive shell on the node on which our job is
@@ -372,10 +372,10 @@ advantage that it does not impact your job.</p>
 job you wish to monitor, which means that you can perform your
 monitoring even if the node is completely booked. This is done using the
 <code class="docutils literal notranslate"><span class="pre">--overlap</span></code> and <code class="docutils literal notranslate"><span class="pre">--jobid</span></code> command-line options:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>squeue<span class="w"> </span>--me
-JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
-<span class="w"> </span><span class="m">8503</span><span class="w"> </span>standardq<span class="w"> </span>my_scrip<span class="w">   </span>abc123<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:02<span class="w">      </span><span class="m">1</span><span class="w"> </span>esrumcmpn03fl
-$<span class="w"> </span>srun<span class="w"> </span>--pty<span class="w"> </span>--overlap<span class="w"> </span>--jobid<span class="w"> </span><span class="m">8503</span><span class="w"> </span>htop
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>squeue<span class="w"> </span>--me
+<span class="go">JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
+<span class="go"> 8503 standardq my_scrip   abc123  R       0:02      1 esrumcmpn03fl</span>
+<span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--overlap<span class="w"> </span>--jobid<span class="w"> </span><span class="m">8503</span><span class="w"> </span>htop
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">--jobid</span></code> option takes as its argument the ID of the job we wish
@@ -416,9 +416,9 @@ resource utilization on the cluster.</p>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">slurmboard</span></code> utility is available in the <code class="docutils literal notranslate"><span class="pre">cbmr_shared</span></code> project,
 and can be loaded as follows:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>.<span class="w"> </span>/projects/cbmr_shared/apps/modules/activate.sh
-$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>slurmboard
-$<span class="w"> </span>slurmboard
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>.<span class="w"> </span>/projects/cbmr_shared/apps/modules/activate.sh
+<span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>slurmboard
+<span class="gp">$ </span>slurmboard
 </pre></div>
 </div>
 </section>
@@ -454,21 +454,21 @@ task IDs.</p>
 <p>Values used with <code class="docutils literal notranslate"><span class="pre">--array</span></code> must be in the range 0 to 1000.</p>
 </div>
 <p>Our script can then be run as before:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls
-chr1.fasta<span class="w"> </span>chr2.fasta<span class="w"> </span>chr3.fasta<span class="w"> </span>chr4.fasta<span class="w"> </span>chr5.fasta<span class="w"> </span>my_script.sh
-$<span class="w"> </span>sbatch<span class="w"> </span>my_script.sh
-Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">8504</span>
-$<span class="w"> </span>squeue<span class="w"> </span>--me
-<span class="w"> </span>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
-8504_1<span class="w"> </span>standardq<span class="w"> </span>my_scrip<span class="w">   </span>abc123<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:02<span class="w">      </span><span class="m">1</span><span class="w"> </span>esrumcmpn01fl
-8504_2<span class="w"> </span>standardq<span class="w"> </span>my_scrip<span class="w">   </span>abc123<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:02<span class="w">      </span><span class="m">1</span><span class="w"> </span>esrumcmpn01fl
-8504_3<span class="w"> </span>standardq<span class="w"> </span>my_scrip<span class="w">   </span>abc123<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:02<span class="w">      </span><span class="m">1</span><span class="w"> </span>esrumcmpn01fl
-8504_4<span class="w"> </span>standardq<span class="w"> </span>my_scrip<span class="w">   </span>abc123<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:02<span class="w">      </span><span class="m">1</span><span class="w"> </span>esrumcmpn01fl
-8504_5<span class="w"> </span>standardq<span class="w"> </span>my_scrip<span class="w">   </span>abc123<span class="w">  </span>R<span class="w">       </span><span class="m">0</span>:02<span class="w">      </span><span class="m">1</span><span class="w"> </span>esrumcmpn01fl
-$<span class="w"> </span>ls
-chr1.fasta.gz<span class="w">  </span>chr4.fasta.gz<span class="w">  </span>slurm-8507_1.out<span class="w">  </span>slurm-8507_4.out
-chr2.fasta.gz<span class="w">  </span>chr5.fasta.gz<span class="w">  </span>slurm-8507_2.out<span class="w">  </span>slurm-8507_5.out
-chr3.fasta.gz<span class="w">  </span>my_script.sh<span class="w">   </span>slurm-8507_3.out
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls
+<span class="go">chr1.fasta chr2.fasta chr3.fasta chr4.fasta chr5.fasta my_script.sh</span>
+<span class="gp">$ </span>sbatch<span class="w"> </span>my_script.sh
+<span class="go">Submitted batch job 8504</span>
+<span class="gp">$ </span>squeue<span class="w"> </span>--me
+<span class="go"> JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
+<span class="go">8504_1 standardq my_scrip   abc123  R       0:02      1 esrumcmpn01fl</span>
+<span class="go">8504_2 standardq my_scrip   abc123  R       0:02      1 esrumcmpn01fl</span>
+<span class="go">8504_3 standardq my_scrip   abc123  R       0:02      1 esrumcmpn01fl</span>
+<span class="go">8504_4 standardq my_scrip   abc123  R       0:02      1 esrumcmpn01fl</span>
+<span class="go">8504_5 standardq my_scrip   abc123  R       0:02      1 esrumcmpn01fl</span>
+<span class="gp">$ </span>ls
+<span class="go">chr1.fasta.gz  chr4.fasta.gz  slurm-8507_1.out  slurm-8507_4.out</span>
+<span class="go">chr2.fasta.gz  chr5.fasta.gz  slurm-8507_2.out  slurm-8507_5.out</span>
+<span class="go">chr3.fasta.gz  my_script.sh   slurm-8507_3.out</span>
 </pre></div>
 </div>
 <p>Unlike a normal <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command, where Slurm creates a single
@@ -518,13 +518,13 @@ the same time.</p>
 <p>Job arrays can either be cancelled as a whole or in part. To cancel the
 entire job (all tasks in the array) simply use the primary job ID before
 the underscore/dot:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>scancel<span class="w"> </span><span class="m">8504</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>scancel<span class="w"> </span><span class="m">8504</span>
 </pre></div>
 </div>
 <p>To cancel part of a batch job/array, instead specify the ID of the
 sub-task after the ID of the batch job, using a dot (<code class="docutils literal notranslate"><span class="pre">.</span></code>) to separate
 the two IDs instead of an underscore (<code class="docutils literal notranslate"><span class="pre">_</span></code>):</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>scancel<span class="w"> </span><span class="m">8504</span>.1
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>scancel<span class="w"> </span><span class="m">8504</span>.1
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -561,9 +561,9 @@ manner (e.g. 001, 002, etc.), using for example the printf command:</p>
 <li><p>Using a table of filenames:</p>
 <p>Given a text file <code class="docutils literal notranslate"><span class="pre">my_samples.txt</span></code> containing one filename per
 line:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">/path/to/first_sample.vcf</span>
-<span class="go">/path/to/second_sample.vcf</span>
-<span class="go">/path/to/third_sample.vcf</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>/path/to/first_sample.vcf
+/path/to/second_sample.vcf
+/path/to/third_sample.vcf
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prints the Nth line</span>
@@ -608,10 +608,10 @@ bgzip<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</
 <span class="nv">FILENAME</span><span class="o">=</span><span class="k">$(</span>awk<span class="w"> </span>-v<span class="w"> </span><span class="nv">ID</span><span class="o">=</span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span><span class="w"> </span><span class="s1">&#39;$1 == ID {print $3; exit}&#39;</span><span class="w"> </span>my_samples.tsv<span class="k">)</span>
 </pre></div>
 </div>
-<p>By default <code class="docutils literal notranslate"><span class="pre">awk</span></code> will split columns by any whitespace, but if you
+<p>By default, <code class="docutils literal notranslate"><span class="pre">awk</span></code> will split columns by any whitespace, but if you
 have a tab separated file (<code class="docutils literal notranslate"><span class="pre">.tsv</span></code>) file it is worthwhile to specify
 this using the <code class="docutils literal notranslate"><span class="pre">FS</span></code> (field separator) option:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find row where 1. column matches SLURM_ARRAY_TASK_ID and print 3. column</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find row where column 1 matches SLURM_ARRAY_TASK_ID and print column 3</span>
 <span class="nv">FILENAME</span><span class="o">=</span><span class="k">$(</span>awk<span class="w"> </span>-v<span class="w"> </span><span class="nv">FS</span><span class="o">=</span><span class="s2">&quot;\t&quot;</span><span class="w"> </span>-v<span class="w"> </span><span class="nv">ID</span><span class="o">=</span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span><span class="w"> </span><span class="s1">&#39;$1 == ID {print $3; exit}&#39;</span><span class="w"> </span>my_samples.tsv<span class="k">)</span>
 </pre></div>
 </div>

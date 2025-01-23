@@ -25,7 +25,7 @@ following gives two examples of using the ``rm`` function, one removing
 a single variable and the other removing *all* variables in the current
 session:
 
-.. code:: r
+.. code-block:: r
 
    # 1. Remove the variable `my_variable`
    rm(my_variable)

@@ -319,7 +319,7 @@ less than 1000 MB.</p>
 <p>This is, however, frequently less than the Slurm default of ~16 GB per
 CPU reserved, and we therefore recommend overriding this default using
 the <code class="docutils literal notranslate"><span class="pre">--default-resources</span></code> option:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">snakemake --default-resources mem_mb_per_cpu=15948</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>snakemake<span class="w"> </span>--default-resources<span class="w"> </span><span class="nv">mem_mb_per_cpu</span><span class="o">=</span><span class="m">15948</span>
 </pre></div>
 </div>
 <p>This corresponds to the behavior of <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> and <code class="docutils literal notranslate"><span class="pre">srun</span></code>.</p>

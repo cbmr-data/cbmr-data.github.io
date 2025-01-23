@@ -276,9 +276,9 @@ that you <code class="docutils literal notranslate"><span class="pre">R/4.3.3</s
 compatible between the compute nodes and the RStudio servers.</p>
 <p>By default, the 4.3.x versions of R loads <code class="docutils literal notranslate"><span class="pre">gcc/8.5.0</span></code>, so you can
 simply use the <code class="docutils literal notranslate"><span class="pre">--auto</span></code> option when loading <code class="docutils literal notranslate"><span class="pre">R/4.3.x</span></code>:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>--auto<span class="w"> </span>R/4.3.3
-Loading<span class="w"> </span>R/4.3.3
-<span class="w">  </span>Loading<span class="w"> </span>requirement:<span class="w"> </span>gcc/8.5.0
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>--auto<span class="w"> </span>R/4.3.3
+<span class="go">Loading R/4.3.3</span>
+<span class="go">  Loading requirement: gcc/8.5.0</span>
 </pre></div>
 </div>
 <p>R modules installed using versions of R other than <code class="docutils literal notranslate"><span class="pre">4.3.x</span></code> will not be
@@ -303,10 +303,10 @@ submitted to slurm. This not only ensures that your analyses do not
 impact other users, but also makes make your analyses reproducible.</p>
 <p>To run an R script on the command-line, simply use the <code class="docutils literal notranslate"><span class="pre">Rscript</span></code>
 command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>my_script.R
-cat<span class="o">(</span><span class="s2">&quot;Hello, world!\n&quot;</span><span class="o">)</span>
-$<span class="w"> </span>Rscript<span class="w"> </span>my_script.R
-Hello,<span class="w"> </span>world!
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cat<span class="w"> </span>my_script.R
+<span class="go">cat(&quot;Hello, world!\n&quot;)</span>
+<span class="gp">$ </span>Rscript<span class="w"> </span>my_script.R
+<span class="go">Hello, world!</span>
 </pre></div>
 </div>
 <p>For simple scripts you can use the <code class="docutils literal notranslate"><span class="pre">commandArgs</span></code> function to pass
@@ -341,37 +341,36 @@ library and it can also be downloaded <a class="reference download internal" dow
 </div>
 <p>This allows you to document your command-line options, specify default
 values, and much more:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>Rscript<span class="w"> </span>my_script.R
-usage:<span class="w"> </span>my_script.R<span class="w"> </span><span class="o">[</span>--<span class="o">]</span><span class="w"> </span><span class="o">[</span>--help<span class="o">]</span><span class="w"> </span><span class="o">[</span>--opts<span class="w"> </span>OPTS<span class="o">]</span><span class="w"> </span><span class="o">[</span>--p-value<span class="w"> </span>P-VALUE<span class="o">]</span>
-<span class="w">    </span>input_file
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>Rscript<span class="w"> </span>my_script.R
+<span class="go">usage: my_script.R [--] [--help] [--opts OPTS] [--p-value P-VALUE]</span>
+<span class="go">    input_file</span>
 
-This<span class="w"> </span>is<span class="w"> </span>my<span class="w"> </span>script!
+<span class="go">This is my script!</span>
 
-positional<span class="w"> </span>arguments:
-input_file<span class="w">     </span>My<span class="w"> </span>data
+<span class="go">positional arguments:</span>
+<span class="go">input_file     My data</span>
 
-flags:
--h,<span class="w"> </span>--help<span class="w">     </span>show<span class="w"> </span>this<span class="w"> </span><span class="nb">help</span><span class="w"> </span>message<span class="w"> </span>and<span class="w"> </span><span class="nb">exit</span>
+<span class="go">flags:</span>
+<span class="go">-h, --help     show this help message and exit</span>
 
-optional<span class="w"> </span>arguments:
--x,<span class="w"> </span>--opts<span class="w">     </span>RDS<span class="w"> </span>file<span class="w"> </span>containing<span class="w"> </span>argument<span class="w"> </span>values
--p,<span class="w"> </span>--p-value<span class="w">  </span>Maximum<span class="w"> </span>P-value<span class="w"> </span><span class="o">[</span>default:<span class="w"> </span><span class="m">0</span>.05<span class="o">]</span>
+<span class="go">optional arguments:</span>
+<span class="go">-x, --opts     RDS file containing argument values</span>
+<span class="go">-p, --p-value  Maximum P-value [default: 0.05]</span>
 
-Error<span class="w"> </span><span class="k">in</span><span class="w"> </span>parse_args<span class="o">(</span>parser<span class="o">)</span><span class="w"> </span>:
-Missing<span class="w"> </span>required<span class="w"> </span>arguments:<span class="w"> </span>expecting<span class="w"> </span><span class="m">1</span><span class="w"> </span>values<span class="w"> </span>but<span class="w"> </span>got<span class="w"> </span><span class="m">0</span><span class="w"> </span>values:<span class="w"> </span><span class="o">()</span>.
-Execution<span class="w"> </span>halted
-$<span class="w"> </span>Rscript<span class="w"> </span>my_script.R<span class="w"> </span>my_data.tsv
-I<span class="w"> </span>would<span class="w"> </span>process<span class="w"> </span>the<span class="w"> </span>file<span class="w"> </span>my_data.tsv<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>max<span class="w"> </span>P-value<span class="w"> </span>of<span class="w"> </span><span class="m">0</span>.05
+<span class="go">Error in parse_args(parser) :</span>
+<span class="go">Missing required arguments: expecting 1 values but got 0 values: ().</span>
+<span class="go">Execution halted</span>
+<span class="gp">$ </span>Rscript<span class="w"> </span>my_script.R<span class="w"> </span>my_data.tsv
+<span class="go">I would process the file my_data.tsv with a max P-value of 0.05</span>
 </pre></div>
 </div>
 <p>Finally, you write can write a small bash script to automatically load
 the required version of R and to call your script when you submit it to
 Slurm (using your preferred version of R):</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cat<span class="w"> </span>run_rscript.sh
-<span class="gp">#</span>!/bin/bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
-<span class="go">module load gcc/8.5.0 R/4.1.2</span>
-<span class="go">Rscript &quot;${@}&quot;</span>
+module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.1.2
+Rscript<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="p">@</span><span class="si">}</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">&quot;${&#64;}&quot;</span></code> safely passes all your command-line arguments to
@@ -529,9 +528,9 @@ that fails to load.</p>
 </li>
 <li><p>Connect to the head node or a compute node, and take care to load the
 correct version of GCC before loading R:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
-$<span class="w"> </span>R
-&gt;<span class="w"> </span>install.packages<span class="o">(</span><span class="s2">&quot;wk&quot;</span><span class="o">)</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
+<span class="gp">$ </span>R
+<span class="go">&gt; install.packages(&quot;wk&quot;)</span>
 </pre></div>
 </div>
 </li>
@@ -544,41 +543,41 @@ which specifies the kind of system we are running on. Immediately after
 that we find the package name, namely <code class="docutils literal notranslate"><span class="pre">wk</span></code> in this case.</p>
 <p>You can identify all affected packages in your &quot;global&quot; R library by
 running the following commands:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
 </pre></div>
 </div>
 <ol class="arabic">
 <li><p>cd to your R library</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/R/x86_64-pc-linux-gnu-library/4.3/
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>~/R/x86_64-pc-linux-gnu-library/4.3/
 </pre></div>
 </div>
 </li>
 <li><p>Test every installed library</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span>lib<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>ls<span class="k">)</span><span class="p">;</span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Testing </span><span class="si">${</span><span class="nv">lib</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span>Rscript<span class="w"> </span>&lt;<span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;library(</span><span class="si">${</span><span class="nv">lib</span><span class="si">}</span><span class="s2">)&quot;</span><span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="k">done</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="k">for</span><span class="w"> </span>lib<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>ls<span class="k">)</span><span class="p">;</span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Testing </span><span class="si">${</span><span class="nv">lib</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span>Rscript<span class="w"> </span>&lt;<span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;library(</span><span class="si">${</span><span class="nv">lib</span><span class="si">}</span><span class="s2">)&quot;</span><span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="k">done</span>
 </pre></div>
 </div>
 </li>
 </ol>
 <p>Output will look like the following:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Testing<span class="w"> </span>httpuv
-Testing<span class="w"> </span>igraph
-Error:<span class="w"> </span>package<span class="w"> </span>or<span class="w"> </span>namespace<span class="w"> </span>load<span class="w"> </span>failed<span class="w"> </span><span class="k">for</span><span class="w"> </span>‘igraph’<span class="w"> </span><span class="k">in</span><span class="w"> </span>dyn.load<span class="o">(</span>file,<span class="w"> </span><span class="nv">DLLpath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>DLLpath,<span class="w"> </span>...<span class="o">)</span>:
-unable<span class="w"> </span>to<span class="w"> </span>load<span class="w"> </span>shared<span class="w"> </span>object<span class="w"> </span><span class="s1">&#39;/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/igraph/libs/igraph.so&#39;</span>:
-/opt/software/gcc/8.5.0/lib64/libstdc++.so.6:<span class="w"> </span>version<span class="w"> </span><span class="sb">`</span>GLIBCXX_3.4.29<span class="s1">&#39; not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/igraph/libs/igraph.so)</span>
-<span class="s1">Execution halted</span>
-<span class="s1">Testing isoband</span>
-<span class="s1">Error: package or namespace load failed for ‘isoband’ in dyn.load(file, DLLpath = DLLpath, ...):</span>
-<span class="s1">unable to load shared object &#39;</span>/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so<span class="s1">&#39;:</span>
-<span class="s1">/opt/software/gcc/8.5.0/lib64/libstdc++.so.6: version`GLIBCXX_3.4.29&#39;</span><span class="w"> </span>not<span class="w"> </span>found<span class="w"> </span><span class="o">(</span>required<span class="w"> </span>by<span class="w"> </span>/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so<span class="o">)</span>
-Execution<span class="w"> </span>halted
-Testing<span class="w"> </span>labeling
-Testing<span class="w"> </span>later
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Testing httpuv</span>
+<span class="go">Testing igraph</span>
+<span class="go">Error: package or namespace load failed for ‘igraph’ in dyn.load(file, DLLpath = DLLpath, ...):</span>
+<span class="go">unable to load shared object &#39;/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/igraph/libs/igraph.so&#39;:</span>
+<span class="go">/opt/software/gcc/8.5.0/lib64/libstdc++.so.6: version `GLIBCXX_3.4.29&#39; not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/igraph/libs/igraph.so)</span>
+<span class="go">Execution halted</span>
+<span class="go">Testing isoband</span>
+<span class="go">Error: package or namespace load failed for ‘isoband’ in dyn.load(file, DLLpath = DLLpath, ...):</span>
+<span class="go">unable to load shared object &#39;/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so&#39;:</span>
+<span class="go">/opt/software/gcc/8.5.0/lib64/libstdc++.so.6: version`GLIBCXX_3.4.29&#39; not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so)</span>
+<span class="go">Execution halted</span>
+<span class="go">Testing labeling</span>
+<span class="go">Testing later</span>
 </pre></div>
 </div>
 <p>Locate the error messages like the one shown above in the output and
 reinstall the affected libraries using the <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> command:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>R
-&gt;<span class="w"> </span>install.packages<span class="o">(</span>c<span class="o">(</span><span class="s2">&quot;igraph&quot;</span>,<span class="w"> </span><span class="s2">&quot;isoband&quot;</span><span class="o">))</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>R
+<span class="go">&gt; install.packages(c(&quot;igraph&quot;, &quot;isoband&quot;))</span>
 </pre></div>
 </div>
 </section>

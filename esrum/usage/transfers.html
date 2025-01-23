@@ -288,17 +288,17 @@ the UCPH-IT VPN to connect to <code class="docutils literal notranslate"><span c
 standard tool such as <code class="docutils literal notranslate"><span class="pre">scp</span></code>, <code class="docutils literal notranslate"><span class="pre">sftp</span></code>, <code class="docutils literal notranslate"><span class="pre">lftp</span></code>, and <code class="docutils literal notranslate"><span class="pre">rsync</span></code>, or
 graphical tools such as <a class="reference external" href="https://filezilla-project.org/">FileZilla</a> and <a class="reference external" href="https://mobaxterm.mobatek.net/">MobaXterm</a> (see the
 <a class="reference internal" href="access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page), on the other computer:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sftp<span class="w"> </span>sftp://abc123@sftp.ku.dk
-<span class="o">(</span>abc123@sftp.ku.dk<span class="o">)</span><span class="w"> </span>Enter<span class="w"> </span>password
-Password:<span class="w"> </span>******
-<span class="o">(</span>abc123@sftp.ku.dk<span class="o">)</span><span class="w"> </span>Enter<span class="w"> </span>one-time<span class="w"> </span>password
-Enter<span class="w"> </span>one-time<span class="w"> </span>password:<span class="w"> </span>******
-Connected<span class="w"> </span>to<span class="w"> </span>sftp.ku.dk.
-sftp&gt;<span class="w"> </span>ls
-ucph
-sftp&gt;<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>ucph/
-sftp&gt;<span class="w"> </span>ls
-datasets<span class="w">  </span>hdir<span class="w">      </span>ndir<span class="w">      </span>projects
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sftp<span class="w"> </span>sftp://abc123@sftp.ku.dk
+<span class="gp gp-VirtualEnv">(abc123@sftp.ku.dk)</span> <span class="go">Enter password</span>
+<span class="go">Password: ******</span>
+<span class="gp gp-VirtualEnv">(abc123@sftp.ku.dk)</span> <span class="go">Enter one-time password</span>
+<span class="go">Enter one-time password: ******</span>
+<span class="go">Connected to sftp.ku.dk.</span>
+<span class="go">sftp&gt; ls</span>
+<span class="go">ucph</span>
+<span class="go">sftp&gt; cd ucph/</span>
+<span class="go">sftp&gt; ls</span>
+<span class="go">datasets  hdir      ndir      projects</span>
 </pre></div>
 </div>
 <p>Depending on how you have configured <a class="reference external" href="https://mfa.ku.dk/">UCPH two-factor authentication</a>,
@@ -348,7 +348,7 @@ authenticate to <a class="reference external" href="https://sif.ku.dk/">SIF</a> 
 available on the cluster (<a class="reference external" href="https://en.wikipedia.org/wiki/Lynx_(web_browser)">Lynx</a>):</p>
 <ol class="arabic">
 <li><p>Start Lynx as follows:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>lynx<span class="w"> </span>-accept_all_cookies<span class="w"> </span><span class="s2">&quot;https://sif.ku.dk&quot;</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>lynx<span class="w"> </span>-accept_all_cookies<span class="w"> </span><span class="s2">&quot;https://sif.ku.dk&quot;</span>
 </pre></div>
 </div>
 <img alt="../_images/sif_login_01.png" src="../_images/sif_login_01.png" />
@@ -387,15 +387,15 @@ folder recursively, simply use the <code class="docutils literal notranslate"><s
 <code class="docutils literal notranslate"><span class="pre">mirror</span></code>.</p>
 <p>For example, to download the contents of the folder <code class="docutils literal notranslate"><span class="pre">my_data</span></code> into a
 project, you might run the following:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mkdir<span class="w"> </span>/projects/my_project-AUDIT/data/my_data
-$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/projects/my_project-AUDIT/data/my_data
-$<span class="w"> </span>lftp<span class="w"> </span>sftp://sif-io.erda.dk
-&gt;<span class="w"> </span>user<span class="w"> </span><span class="si">${</span><span class="nv">YOUR_PROJECT_USERNAME</span><span class="si">}</span>
-Password:<span class="w"> </span>***********
-&gt;<span class="w"> </span><span class="nb">set</span><span class="w"> </span>net:connection-limit<span class="w"> </span><span class="m">1</span>
-&gt;<span class="w"> </span><span class="nb">set</span><span class="w"> </span>net:max-retries<span class="w"> </span><span class="m">1</span><span class="p">;</span>
-&gt;<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>my_data
-&gt;<span class="w"> </span>mirror
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>/projects/my_project-AUDIT/data/my_data
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/projects/my_project-AUDIT/data/my_data
+<span class="gp">$ </span>lftp<span class="w"> </span>sftp://sif-io.erda.dk
+<span class="go">&gt; user ${YOUR_PROJECT_USERNAME}</span>
+<span class="go">Password: ***********</span>
+<span class="go">&gt; set net:connection-limit 1</span>
+<span class="go">&gt; set net:max-retries 1;</span>
+<span class="go">&gt; cd my_data</span>
+<span class="go">&gt; mirror</span>
 </pre></div>
 </div>
 <p>Your project username (<code class="docutils literal notranslate"><span class="pre">${YOUR_PROJECT_USERNAME}</span></code>) is available via
@@ -419,7 +419,7 @@ transfer software on Esrum (or on your PC/laptop) and you should
 <em>always</em> connect to Computerome via <code class="docutils literal notranslate"><span class="pre">transfer.computerome.dk</span></code> instead
 of <code class="docutils literal notranslate"><span class="pre">ssh.computerome.dk</span></code>.</p>
 <p>For example, to transfer data to Computerome, you might run</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>rsync<span class="w"> </span>-av<span class="w"> </span>./<span class="w"> </span><span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>@transfer.computerome.dk:/home/projects/ab_12345/people/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>rsync<span class="w"> </span>-av<span class="w"> </span>./<span class="w"> </span><span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>@transfer.computerome.dk:/home/projects/ab_12345/people/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/
 </pre></div>
 </div>
 <p>This recursively transfers the current folder to a project folder on

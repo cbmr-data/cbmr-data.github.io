@@ -36,7 +36,7 @@ The first step is to determine what modules are available on the server.
 This is accomplished with the ``module avail`` command, that lists all
 available modules by default:
 
-.. code:: shell
+.. code-block::
 
    $ module avail
    -------------------------- /opt/software/modules --------------------------
@@ -49,7 +49,7 @@ available modules by default:
 
 The ``avail`` command can also be used to list module versions by name:
 
-.. code:: shell
+.. code-block::
 
    $ module avail samtools
    -------------------------- /opt/software/modules --------------------------
@@ -62,7 +62,7 @@ below).
 If you are not sure of the exact name of a module, then the ``search``
 command can be used to search module names and descriptions:
 
-.. code:: shell
+.. code-block::
 
    $ module search conda
     -------------------------- /opt/software/modules ---------------------------
@@ -92,7 +92,7 @@ The modules are loaded using the ``module load`` command. This command
 adds the executable to your PATH and performs any other setup required
 to run the software.
 
-.. code:: shell
+.. code-block::
 
    $ samtools
    -bash: samtools: command not found
@@ -105,7 +105,7 @@ to run the software.
 It is highly recommended to specify the exact version of a module that
 you want to load. This ensure that your results are reproducible:
 
-.. code:: shell
+.. code-block::
 
    $ module load samtools/1.12
    $ samtools
@@ -125,7 +125,7 @@ you want to load. This ensure that your results are reproducible:
 
 In some cases one module will require another module:
 
-.. code:: shell
+.. code-block::
 
    $ module load bcftools/1.16
    Loading bcftools/1.16
@@ -135,21 +135,18 @@ In some cases one module will require another module:
 In that case you simply need to load the required module first. This can
 be done in done manually:
 
-.. code:: shell
+.. code-block::
 
    $ module load perl
    $ module load bcftools/1.16
 
 Or automatically:
 
-.. code:: shell
+.. code-block::
 
    $ module load --auto bcftools
    Loading bcftools/1.16
      Loading requirement: perl/5.26.3
-
-Note that it is *not* recommended to use the ``--auto`` option when
-loading R; see the :ref:`p_service_r` page for more information.
 
 Listing and unloading loaded modules
 ====================================
@@ -157,7 +154,7 @@ Listing and unloading loaded modules
 The modules you have loaded can be listed using the ``module list``
 command:
 
-.. code:: shell
+.. code-block::
 
    $ modules list
    Currently Loaded Modulefiles:
@@ -167,7 +164,7 @@ To remove a module that you no longer need, use the ``module unload``
 command to unload a single module or the ``module purge`` command to
 unload all modules:
 
-.. code:: shell
+.. code-block::
 
    # Unload the samtools module
    $ module unload samtools
@@ -200,7 +197,7 @@ Managing modules with ``module save/restore``
 To export a list of your currently used models, use the following
 command:
 
-.. code:: shell
+.. code-block::
 
    $ module config collection_pin_version 1
    $ module save ./modules.txt
@@ -218,7 +215,7 @@ what software you used.
 If used correctly, the ``./modules.txt`` file will contain the currently
 loaded modules, e.g:
 
-.. code:: shell
+.. code-block::
 
    $ module list
    Currently Loaded Modulefiles:
@@ -235,7 +232,7 @@ loaded modules, e.g:
 To load the saved modules, simply run ``module restore`` with the same
 filename (and a directory component):
 
-.. code:: shell
+.. code-block::
 
    $ module list
    No Modulefiles Currently Loaded.
@@ -248,13 +245,13 @@ Alternative, use the ``.`` or ``source`` command to execute the content
 of the file in your current shell. This has the same effect as running
 ``module restore``:
 
-.. code:: shell
+.. code-block::
 
    $ source ./modules.txt
 
 or
 
-.. code:: shell
+.. code-block::
 
    $ . ./modules.txt
 
@@ -274,13 +271,13 @@ and we will grant you access to the project.
 To make use of these modules, run the following command in your
 terminal:
 
-.. code-block:: shell
+.. code-block::
 
    $ module use --prepend /projects/cbmr_shared/apps/modules/modulefiles/
 
 A small helper script is also available to run this command:
 
-.. code-block:: shell
+.. code-block::
 
    $ source /projects/cbmr_shared/apps/modules/activate.sh
    Using modules in '/projects/cbmr_shared/apps/modules/modulefiles/'
@@ -324,7 +321,7 @@ Your request should include the following information:
 
 A request may look like the following:
 
-.. code::
+.. code-block:: text
 
    Requesting the addition of environment modules for the following software:
 

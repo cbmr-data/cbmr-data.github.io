@@ -284,8 +284,8 @@ my-memory-hungry-command
 </pre></div>
 </div>
 <p>This script can then be submitted as usual:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbatch<span class="w"> </span>my_hi_mem_job.sh
-Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">217217</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>my_hi_mem_job.sh
+<span class="go">Submitted batch job 217217</span>
 </pre></div>
 </div>
 <p>See the <a class="reference internal" href="basics.html#p-usage-slurm-basics"><span class="std std-ref">Basic Slurm jobs</span></a> and <a class="reference internal" href="advanced.html#p-usage-slurm-advanced"><span class="std std-ref">Advanced Slurm jobs</span></a>
@@ -313,10 +313,10 @@ our job. This can be increased to <code class="docutils literal notranslate"><sp
 node, but because of the limited number of GPUs we ask that you only
 reserve 1 GPU per job, which is normally also more efficient.</p>
 <p>This script can then be submitted as usual:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbatch<span class="w"> </span>my_gpu_job.sh
-Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">217218</span>
-$<span class="w"> </span>cat<span class="w"> </span>slurm-217218.out
-GPU<span class="w"> </span><span class="m">0</span>:<span class="w"> </span>NVIDIA<span class="w"> </span>A100<span class="w"> </span>80GB<span class="w"> </span>PCIe<span class="w"> </span><span class="o">(</span>UUID:<span class="w"> </span>GPU-4f2ff8df-0d18-a99b-9fb8-67aa0867f7a3<span class="o">)</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>my_gpu_job.sh
+<span class="go">Submitted batch job 217218</span>
+<span class="gp">$ </span>cat<span class="w"> </span>slurm-217218.out
+<span class="go">GPU 0: NVIDIA A100 80GB PCIe (UUID: GPU-4f2ff8df-0d18-a99b-9fb8-67aa0867f7a3)</span>
 </pre></div>
 </div>
 <section id="requesting-specific-gpus">
@@ -334,10 +334,10 @@ nvidia-smi<span class="w"> </span>-L
 </pre></div>
 </div>
 <p>This script can then be submitted as usual:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sbatch<span class="w"> </span>my_h100_job.sh
-Submitted<span class="w"> </span>batch<span class="w"> </span>job<span class="w"> </span><span class="m">217219</span>
-$<span class="w"> </span>cat<span class="w"> </span>slurm-217219.out
-GPU<span class="w"> </span><span class="m">0</span>:<span class="w"> </span>NVIDIA<span class="w"> </span>H100<span class="w"> </span>NVL<span class="w"> </span><span class="o">(</span>UUID:<span class="w"> </span>GPU-c43d0655-2d15-7e66-90b3-9b732a1d13ba<span class="o">)</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>my_h100_job.sh
+<span class="go">Submitted batch job 217219</span>
+<span class="gp">$ </span>cat<span class="w"> </span>slurm-217219.out
+<span class="go">GPU 0: NVIDIA H100 NVL (UUID: GPU-c43d0655-2d15-7e66-90b3-9b732a1d13ba)</span>
 </pre></div>
 </div>
 <p>We recommend looking at current GPU utilization before submitting your
@@ -428,9 +428,9 @@ node that contains the output from the <code class="docutils literal notranslate
 above.</p>
 <p>To watch the content of this log-file, firstly determine the job ID of
 your job running on the GPU node:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>squeue<span class="w"> </span>--me<span class="w"> </span>--partition<span class="o">=</span>gpuqueue
-<span class="w"> </span>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>NAME<span class="w">     </span>USER<span class="w"> </span>ST<span class="w">       </span>TIME<span class="w">  </span>NODES<span class="w"> </span>NODELIST<span class="o">(</span>REASON<span class="o">)</span>
-<span class="m">570316</span><span class="w">  </span>gpuqueue<span class="w">     </span>bash<span class="w">   </span>abc123<span class="w">  </span>R<span class="w">      </span><span class="m">13</span>:55<span class="w">      </span><span class="m">1</span><span class="w"> </span>esrumgpun01fl
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>squeue<span class="w"> </span>--me<span class="w"> </span>--partition<span class="o">=</span>gpuqueue
+<span class="go"> JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
+<span class="go">570316  gpuqueue     bash   abc123  R      13:55      1 esrumgpun01fl</span>
 </pre></div>
 </div>
 <p>Then we use <code class="docutils literal notranslate"><span class="pre">srun</span></code> with the <code class="docutils literal notranslate"><span class="pre">--overlap</span></code> option to run a command

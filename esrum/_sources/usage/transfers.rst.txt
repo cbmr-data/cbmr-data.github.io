@@ -55,7 +55,7 @@ standard tool such as ``scp``, ``sftp``, ``lftp``, and ``rsync``, or
 graphical tools such as FileZilla_ and MobaXterm_ (see the
 :ref:`p_usage_connecting` page), on the other computer:
 
-.. code:: shell
+.. code-block::
 
    $ sftp sftp://abc123@sftp.ku.dk
    (abc123@sftp.ku.dk) Enter password
@@ -95,7 +95,7 @@ The following command, for example, recursively copies the files in
 ``/from/path/`` to the folder ``/to/path/``, with a max transfer-rate of
 50 MB/s:
 
-.. code:: console
+.. code-block::
 
    $ rsync -av --progress=summary --bwlimit=50M /from/path/ /to/path/
 
@@ -130,9 +130,9 @@ available on the cluster (Lynx_):
 
 #. Start Lynx as follows:
 
-   .. code:: shell
+   .. code-block::
 
-      lynx -accept_all_cookies "https://sif.ku.dk"
+      $ lynx -accept_all_cookies "https://sif.ku.dk"
 
    .. image:: images/sif_login_01.png
 
@@ -178,7 +178,7 @@ folder recursively, simply use the ``mirror -R`` command instead of just
 For example, to download the contents of the folder ``my_data`` into a
 project, you might run the following:
 
-.. code:: shell
+.. code-block::
 
    $ mkdir /projects/my_project-AUDIT/data/my_data
    $ cd /projects/my_project-AUDIT/data/my_data
@@ -218,9 +218,9 @@ of ``ssh.computerome.dk``.
 
 For example, to transfer data to Computerome, you might run
 
-.. code:: shell
+.. code-block::
 
-   srun rsync -av ./ ${USERNAME}@transfer.computerome.dk:/home/projects/ab_12345/people/${USERNAME}/
+   $ srun rsync -av ./ ${USERNAME}@transfer.computerome.dk:/home/projects/ab_12345/people/${USERNAME}/
 
 This recursively transfers the current folder to a project folder on
 Computerome, using ``srun`` to run the actual transfer on a worker node

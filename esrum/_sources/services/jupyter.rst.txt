@@ -25,7 +25,7 @@ add support for R.
 
 To start a notebook on a node, run the following commands:
 
-.. code:: console
+.. code-block::
 
    $ module load jupyter-notebook
    $ srun --pty -- jupyter notebook --no-browser --ip=0.0.0.0 --port=XXXXX
@@ -93,7 +93,7 @@ job is running. This can be done in a couple of ways:
 -  Alternatively, run the following command on the head node in a
    separate terminal:
 
-   .. code:: shell
+   .. code-block::
 
       $ squeue --me --name jupyter
       JOBID  PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -115,14 +115,42 @@ This is accomplished using the following command-line, replacing
 running (see above), and replacing ``abc123`` with your UCPH short
 username:
 
-.. code:: shell
+.. code-block::
 
    $ ssh -S none -N -L 'XXXXX:esrumcmpn07fl:XXXXX' abc123@esrumhead01fl.unicph.domain
 
+.. note::
+
+   The ``-S none`` option ensures that SSH opens a new connection even
+   if shared connections are enabled (see the ``ControlMaster`` section
+   in ``man ssh``), which is required to forward the requested ports.
+   The ``-N`` option prevents ``ssh`` from open a shell on Esrum, which
+   ensures that you do not accidentally use this terminal and then close
+   it, while still using the notebook, and the ``-L`` option configures
+   the actual port forwarding.
+
 While this command is running, you can open your notebook via the
 ``http://127.0.0.1:XXXXX/?token=${long_text_here}`` URL that Jupyter
-Notebook printed in your terminal on Esrum. Typically, this can be done
-by pressing Ctrl and left-clicking on the URL in the terminal.
+Notebook printed in your terminal on Esrum:
+
+.. code-block:: console
+   :emphasize-lines: 5
+
+   To access the notebook, open this file in a browser:
+       file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html
+     Or copy and paste one of these URLs:
+         http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
+      or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
+
+Typically, this can be done by pressing Ctrl and left-clicking on the
+URL in the terminal:
+
+.. warning::
+
+   The URL including the node name
+   (`http://esrumcmpn07fl.unicph.domain:XXXXX/`) will not work, since
+   you do not have direct access to the node! You must use the URL
+   starting with `http://127.0.0.1:XXXXX/`
 
 .. tip::
 
@@ -130,26 +158,16 @@ by pressing Ctrl and left-clicking on the URL in the terminal.
    :ref:`s_connecting_linux` section, then you can use the shorter
    command ``ssh -S none -N -L 'XXXXX:esrumcmpn07fl:XXXXX' esrum``.
 
-.. note::
-
-   The ``-S none`` option is recommended in case shared connections are
-   enabled (see the ``ControlMaster`` section in ``man ssh``), in which
-   case the ``ssh`` command may otherwise not open the specified ports
-   if a connection already exists. The ``-N`` option prevents ``ssh``
-   from open a shell on Esrum, which ensures that you do not
-   accidentally use this terminal and then close it, while still using
-   the notebook, and the ``-L`` option configures the actual port
-   forwarding.
-
 .. _s_ports_windows:
 
 Port forwarding for Windows users
 =================================
 
 The following instructions describe how to set up port forwarding to
-Esrum from a PC running Windows, and also assume that you are using
-MobaXterm. If not, then please refer to the documentation for your
-software of choice.
+Esrum from your laptop or PC running Windows. It is furthermore assumed
+that you are using MobaXterm to connect to Esrum (see the
+:ref:`s_configure_mobaxterm` section). If not, then please refer to the
+documentation for your software of choice.
 
 #. Install and configure MobaXterm as described in
    :ref:`s_configure_mobaxterm`.
@@ -196,8 +214,26 @@ software of choice.
 Once you have configured MobaXterm and enabled port forwarding, you can
 open your notebook via the
 ``http://127.0.0.1:XXXXX/?token=${long_text_here}`` URL that Jupyter
-Notebook printed in your terminal on Esrum. Typically, this can be done
-by pressing Ctrl and left-clicking on the URL in the terminal.
+Notebook printed in your terminal on Esrum:
+
+.. code-block:: console
+   :emphasize-lines: 5
+
+   To access the notebook, open this file in a browser:
+       file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html
+     Or copy and paste one of these URLs:
+         http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
+      or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
+
+Typically, this can be done by pressing Ctrl and left-clicking on the
+URL in the terminal.
+
+.. warning::
+
+   The URL including the node name
+   (`http://esrumcmpn07fl.unicph.domain:XXXXX/`) will not work, since
+   you do not have direct access to the node! You must use the URL
+   starting with `http://127.0.0.1:XXXXX/`
 
 .. _s_jupyter_kernels:
 
