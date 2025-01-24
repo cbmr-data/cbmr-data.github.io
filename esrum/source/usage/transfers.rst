@@ -78,9 +78,9 @@ pages on KUnet.
 
 .. _p_tranfers_sifanderda:
 
-************************************************
- Transferring data to/from the N: and H: drives
-************************************************
+*****************************************************
+ Transferring data to/from the H:, N:, and S: drives
+*****************************************************
 
 As noted in the :ref:`s_ucph_network_drives` section, the ``N:`` and
 ``H:`` drives are accessible via the ``~/ucph`` folder, but *only* from
