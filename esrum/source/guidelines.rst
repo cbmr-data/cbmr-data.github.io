@@ -95,6 +95,20 @@ Immediate intervention under the supervision of a user with appropriate
 access to protected data, for example while providing direct support, is
 not considered establishing privileged access.
 
+******************
+ Acknowledgements
+******************
+
+If you make use of the Esrum HPC cluster, human cohorts managed by Data
+Analytics, or otherwise receive support from the platform, then we ask
+that you kindly acknowledge the platform in any resulting publications,
+presentations, or other scientific output. For example via an
+acknowledgement such as,
+
+   HPC facilities and technical expertise was provided by the Data
+   Analytics Platform at the Novo Nordisk Foundation Center for Basic
+   Metabolic Research.
+
 .. _gdpr sensitive data: https://kunet.ku.dk/work-areas/research/data/personal-data/Pages/default.aspx
 
 .. _identity management system: https://identity.ku.dk

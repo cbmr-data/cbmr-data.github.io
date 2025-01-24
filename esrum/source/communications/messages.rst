@@ -37,6 +37,9 @@ place to ensure fair and efficient utilization of the cluster's
 resources for all users. Failure to follow these guidelines may result
 in a loss of access to the cluster!
 
+We also ask that you acknowledge the use of services and resources
+provided by the Data Analytics Platform, as described in the guidelines.
+
 Best regards,
 
 The Data Analytics Platform
