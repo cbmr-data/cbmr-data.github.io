@@ -73,9 +73,10 @@ your tasks on the cluster.
  Access to protected data by staff
 ***********************************
 
-Access to protected data may be required for maintenance, data
-processing, formatting, storage, indexing, curation, or to provide other
-services requested from the Data Analytics Platform (DAP).
+The Data Analytics Platform (DAP) may require access to protected data
+in order to provide services requested of the platform. This may include
+maintenance, data processing, formatting, storage, indexing, curation,
+and more.
 
 When this need arises, DAP will either
 
