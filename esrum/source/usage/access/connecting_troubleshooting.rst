@@ -51,7 +51,9 @@ UCPH network-folders in ``~/ucph`` are not available when using MobaXterm
 =========================================================================
 
 Please make sure that you have disabled use of ``GSSAPI Kerberos`` as
-described in the :ref:`s_configure_mobaxterm` section.
+described in the :ref:`s_configure_mobaxterm` section. Similarly, if
+using Linux or OSX, then you cannot be authenticating using a Kerberos
+ticket.
 
 .. _danish: https://kunet.ku.dk/medarbejderguide/Sider/It/Fjernadgang-vpn.aspx
 
