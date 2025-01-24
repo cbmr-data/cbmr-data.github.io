@@ -8,11 +8,17 @@ This section describes how to perform bulk data transfers between Esrum,
 your PC/Laptop, repositories such as SIF/Erda, and servers like
 Computerome. :ref:`bluewhale` is also briefly described.
 
-File transfers (including project-to-project transfers) should if at all
-possible be run on a compute node, as high amounts of network traffic
-may degrade performance on the head node for all users of the cluster.
-See the :ref:`s_interactive_session` section for how to open a shell on
-a compute node.
+File transfers (including project-to-project transfers) should, if at
+all possible, be run on a compute node, as high amounts of network
+traffic on the head node may impact all users of Esrum. This can be done
+using either a :ref:`sbatch script <p_usage_slurm_basics>`, :ref:`srun
+<p_usage_srun>` commands, or an :ref:`interactive session
+<s_interactive_session>` on a compute node.
+
+.. warning::
+
+   Transfers running on the head node may be terminated without warning
+   if they are found to impact the usability of the system.
 
 If you have an existing compute project or dataset on a UCPH-IT managed
 cluster, then you may be able to connect it directly to the Esrum
@@ -24,20 +30,6 @@ Please :ref:`contact us <p_contact>` for more information.
    Data must not be copied out of audited ``/datasets`` or ``/projects``
    folders without permission from the relevant data controller! See the
    :ref:`p_guidelines` for more information.
-
-***************
- Best practice
-***************
-
-Data transfers running on Esrum should, when at all possible, be run on
-a worker node using either ``sbatch`` or ``srun``. This ensures that
-other users are not impacted if one or more users are transferring a lot
-of data.
-
-.. warning::
-
-   Transfers running on the head node may be terminated without warning
-   if they are found to impact the usability of the system.
 
 *********************************
  Transferring data to/from Esrum
@@ -78,9 +70,9 @@ pages on KUnet.
 
 .. _p_tranfers_sifanderda:
 
-************************************************
- Transferring data to/from the N: and H: drives
-************************************************
+*****************************************************
+ Transferring data to/from the H:, N:, and S: drives
+*****************************************************
 
 As noted in the :ref:`s_ucph_network_drives` section, the ``N:`` and
 ``H:`` drives are accessible via the ``~/ucph`` folder, but *only* from

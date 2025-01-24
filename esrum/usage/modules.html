@@ -365,6 +365,41 @@ be done in done manually:</p>
 </pre></div>
 </div>
 </section>
+<section id="additional-activation-steps">
+<h3>Additional activation steps<a class="headerlink" href="#additional-activation-steps" title="Permalink to this heading">#</a></h3>
+<p>Some modules require additional steps before you can use them. If so,
+then this is typically described in the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">display</span></code> text:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>display<span class="w"> </span>cellect/1.0
+
+<span class="go">    /opt/software/modules/cellect/1.0:</span>
+
+<span class="go">    module-whatis   {CELL-type Expression-specific integration for Complex Traits (CELLECT) is a computational toolkit for identifing likely etiologic cell-types underlying complex traits.}</span>
+<span class="go">    conflict        cellect</span>
+<span class="go">    prereq          miniconda/4.12.0</span>
+<span class="go">    prepend-path    PATH /opt/software/cellect/1.0</span>
+<span class="go">    setenv          CELLECT /opt/software/cellect/1.0</span>
+
+<span class="hll"><span class="go">    This module relies on snakemake which is available using: module load miniconda/4.12.0 followed by conda activate snakemake. You will need to provide your own config-file specifying an outdir.</span>
+</span><span class="go">    To read more about cellect go to https://github.com/perslab/CELLECT?tab=readme-ov-file</span>
+</pre></div>
+</div>
+<p>Thus, if we wanted to use <code class="docutils literal notranslate"><span class="pre">cellect/1.0</span></code>, we would need to perform the
+following steps:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>display<span class="w"> </span>cellect/1.0
+<span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>miniconda/4.12.0
+<span class="gp">$ </span>conda<span class="w"> </span>activate<span class="w"> </span>snakemake
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Modules that make use of (ana)conda environments may cause conflict
+with other modules and/or your own conda environments. For this
+reason, if you need to use multiple modules and one or more of them
+uses (ana)conda, it is instead recommended to create a custom conda
+environment containing all the software you need. This minimizes the
+risk of conflicts and errors.</p>
+</div>
+</section>
 <section id="listing-and-unloading-loaded-modules">
 <h3>Listing and unloading loaded modules<a class="headerlink" href="#listing-and-unloading-loaded-modules" title="Permalink to this heading">#</a></h3>
 <p>The modules you have loaded can be listed using the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">list</span></code>
@@ -581,6 +616,7 @@ UCPH-IT.</p>
 <li><a class="reference internal" href="#basic-usage">Basic usage</a><ul>
 <li><a class="reference internal" href="#finding-available-modules">Finding available modules</a></li>
 <li><a class="reference internal" href="#loading-a-module">Loading a module</a></li>
+<li><a class="reference internal" href="#additional-activation-steps">Additional activation steps</a></li>
 <li><a class="reference internal" href="#listing-and-unloading-loaded-modules">Listing and unloading loaded modules</a></li>
 </ul>
 </li>

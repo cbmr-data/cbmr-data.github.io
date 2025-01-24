@@ -249,11 +249,15 @@
 <p>This section describes how to perform bulk data transfers between Esrum,
 your PC/Laptop, repositories such as SIF/Erda, and servers like
 Computerome. <a class="reference internal" href="#bluewhale"><span class="std std-ref">Secure emails using Bluewhale</span></a> is also briefly described.</p>
-<p>File transfers (including project-to-project transfers) should if at all
-possible be run on a compute node, as high amounts of network traffic
-may degrade performance on the head node for all users of the cluster.
-See the <a class="reference internal" href="slurm/basics.html#s-interactive-session"><span class="std std-ref">Interactive sessions</span></a> section for how to open a shell on
-a compute node.</p>
+<p>File transfers (including project-to-project transfers) should, if at
+all possible, be run on a compute node, as high amounts of network
+traffic on the head node may impact all users of Esrum. This can be done
+using either a <a class="reference internal" href="slurm/basics.html#p-usage-slurm-basics"><span class="std std-ref">sbatch script</span></a>, <a class="reference internal" href="slurm/advanced.html#p-usage-srun"><span class="std std-ref">srun</span></a> commands, or an <a class="reference internal" href="slurm/basics.html#s-interactive-session"><span class="std std-ref">interactive session</span></a> on a compute node.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Transfers running on the head node may be terminated without warning
+if they are found to impact the usability of the system.</p>
+</div>
 <p>If you have an existing compute project or dataset on a UCPH-IT managed
 cluster, then you may be able to connect it directly to the Esrum
 cluster and thereby remove the need for transferring data entirely.
@@ -264,18 +268,6 @@ Please <a class="reference internal" href="../contact.html#p-contact"><span clas
 folders without permission from the relevant data controller! See the
 <a class="reference internal" href="../guidelines.html#p-guidelines"><span class="std std-ref">Guidelines and policies</span></a> for more information.</p>
 </div>
-<section id="best-practice">
-<h2>Best practice<a class="headerlink" href="#best-practice" title="Permalink to this heading">#</a></h2>
-<p>Data transfers running on Esrum should, when at all possible, be run on
-a worker node using either <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> or <code class="docutils literal notranslate"><span class="pre">srun</span></code>. This ensures that
-other users are not impacted if one or more users are transferring a lot
-of data.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Transfers running on the head node may be terminated without warning
-if they are found to impact the usability of the system.</p>
-</div>
-</section>
 <section id="transferring-data-to-from-esrum">
 <h2>Transferring data to/from Esrum<a class="headerlink" href="#transferring-data-to-from-esrum" title="Permalink to this heading">#</a></h2>
 <p>A public SFTP server is made available at <code class="docutils literal notranslate"><span class="pre">sftp.ku.dk</span></code>. This server
@@ -307,8 +299,8 @@ above) enter a one-time password.</p>
 <p>Official documentation is provided on the <a class="reference external" href="https://kunet.ku.dk/work-areas/research/Research%20Infrastructure/research-it/ucph-computing-hpc-systems/Pages/default.aspx">UCPH computing/HPC Systems</a>
 pages on KUnet.</p>
 </section>
-<section id="transferring-data-to-from-the-n-and-h-drives">
-<span id="p-tranfers-sifanderda"></span><h2>Transferring data to/from the N: and H: drives<a class="headerlink" href="#transferring-data-to-from-the-n-and-h-drives" title="Permalink to this heading">#</a></h2>
+<section id="transferring-data-to-from-the-h-n-and-s-drives">
+<span id="p-tranfers-sifanderda"></span><h2>Transferring data to/from the H:, N:, and S: drives<a class="headerlink" href="#transferring-data-to-from-the-h-n-and-s-drives" title="Permalink to this heading">#</a></h2>
 <p>As noted in the <a class="reference internal" href="filesystem.html#s-ucph-network-drives"><span class="std std-ref">UCPH network drives (H:, N:, and S:)</span></a> section, the <code class="docutils literal notranslate"><span class="pre">N:</span></code> and
 <code class="docutils literal notranslate"><span class="pre">H:</span></code> drives are accessible via the <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> folder, but <em>only</em> from
 the head node.</p>
@@ -507,9 +499,8 @@ or <a class="reference external" href="https://kunet.ku.dk/employee-guide/Pages/
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Transferring data</a><ul>
-<li><a class="reference internal" href="#best-practice">Best practice</a></li>
 <li><a class="reference internal" href="#transferring-data-to-from-esrum">Transferring data to/from Esrum</a></li>
-<li><a class="reference internal" href="#transferring-data-to-from-the-n-and-h-drives">Transferring data to/from the N: and H: drives</a></li>
+<li><a class="reference internal" href="#transferring-data-to-from-the-h-n-and-s-drives">Transferring data to/from the H:, N:, and S: drives</a></li>
 <li><a class="reference internal" href="#transferring-data-to-from-sif-and-erda">Transferring data to/from SIF and ERDA</a></li>
 <li><a class="reference internal" href="#transferring-data-to-from-computerome">Transferring data to/from Computerome</a></li>
 <li><a class="reference internal" href="#secure-emails-using-bluewhale">Secure emails using Bluewhale</a></li>

@@ -63,7 +63,12 @@ Phenomics Platform) and is available to employees at CBMR as well as
 collaborators visiting CBMR.
 
 You are always welcome to :ref:`contact us <p_contact>` if you have
-questions or problems relating to the cluster.
+questions or problems relating to the cluster, cohorts, other services
+or resources provided by the platform.
+
+We kindly ask that you acknowledge the use of services or resources
+provided by the Data Analytics Platform. See :ref:`p_guidelines` for
+more information.
 
 .. note::
 

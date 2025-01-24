@@ -256,13 +256,14 @@ to the cluster.</p>
 see the <a class="reference internal" href="usage/access/access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a> page before continuing!</p>
 <section id="timeout-while-connecting-to-the-cluster">
 <h3>Timeout while connecting to the cluster<a class="headerlink" href="#timeout-while-connecting-to-the-cluster" title="Permalink to this heading">#</a></h3>
-<p>You may experience timeout errors when you attempt to connect to the
-server:</p>
+<p>You may experience timeout errors when you attempt to connect to Esrum:</p>
+<p>On Linux:</p>
 <img alt="_images/connecting_ssh_timeout.gif" class="gif" src="_images/connecting_ssh_timeout.gif" />
-<p>Firstly verify that you are correctly connected to the UCPH network. In
-order to connect to Esrum you must either use a wired connection in a
-CBMR office, or you must be connected through the UCPH VPN. See the
-official VPN documentation in <a class="reference external" href="https://kunet.ku.dk/medarbejderguide/Sider/It/Fjernadgang-vpn.aspx">Danish</a> or <a class="reference external" href="https://kunet.ku.dk/employee-guide/Pages/IT/Remote-access.aspx">English</a> for more information.</p>
+<p>On Windows, using MobaXterm:</p>
+<img alt="_images/connecting_mobaxterm_timeout.png" class="align-center" src="_images/connecting_mobaxterm_timeout.png" />
+<p>Firstly verify that you are correctly connected to the UCPH VPN. This is
+required to connect to Esrum. See the <a class="reference internal" href="usage/access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page for
+more information.</p>
 <p>If you are still unable to connect to Esrum after verifying that you are
 correctly connected to the UCPH network, then please try to visit either
 our <a class="reference external" href="https://cbmrcat.unicph.domain/projects/">Project Manager</a> or our
@@ -288,7 +289,9 @@ category.</p>
 <section id="ucph-network-folders-in-ucph-are-not-available-when-using-mobaxterm">
 <h3>UCPH network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available when using MobaXterm<a class="headerlink" href="#ucph-network-folders-in-ucph-are-not-available-when-using-mobaxterm" title="Permalink to this heading">#</a></h3>
 <p>Please make sure that you have disabled use of <code class="docutils literal notranslate"><span class="pre">GSSAPI</span> <span class="pre">Kerberos</span></code> as
-described in the <a class="reference internal" href="usage/access/connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section.</p>
+described in the <a class="reference internal" href="usage/access/connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section. Similarly, if
+using Linux or OSX, then you cannot be authenticating using a Kerberos
+ticket.</p>
 </section>
 </section>
 <section id="slurm-basics">
@@ -327,6 +330,17 @@ specifying the correct queue or if you request too many GPUs:</p>
 <p>To solve this error, simply avoid requesting more than 2 GPUs, and
 remember to include the <code class="docutils literal notranslate"><span class="pre">--partition</span></code> option. See also the
 <a class="reference internal" href="usage/slurm/gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory nodes</span></a> section.</p>
+</section>
+<section id="x11-forwarding-is-working-in-mobaxterm">
+<h3>X11 forwarding is working in MobaXterm<a class="headerlink" href="#x11-forwarding-is-working-in-mobaxterm" title="Permalink to this heading">#</a></h3>
+<p>Firstly right-click on <code class="docutils literal notranslate"><span class="pre">Esrum</span></code> in the list of <code class="docutils literal notranslate"><span class="pre">User</span> <span class="pre">sessions</span></code> and
+select <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">session</span></code>. Make sure that the <code class="docutils literal notranslate"><span class="pre">Advanced</span> <span class="pre">SSH</span> <span class="pre">settings</span></code>
+tab is open and verify that X11 forwarding is enabled as shown:</p>
+<img alt="_images/mobaxterm_x11_session.png" class="align-center" src="_images/mobaxterm_x11_session.png" />
+<p>Secondly, press the <code class="docutils literal notranslate"><span class="pre">OK</span></code> button and open the <code class="docutils literal notranslate"><span class="pre">Settings</span></code> via the
+gears icon on the main toolbar. Then select the <code class="docutils literal notranslate"><span class="pre">X11</span></code> tab and verify
+that X11 support is configured as shown:</p>
+<img alt="_images/mobaxterm_x11_settings.png" class="align-center" src="_images/mobaxterm_x11_settings.png" />
 </section>
 </section>
 <section id="r">
@@ -630,6 +644,7 @@ when using the <code class="docutils literal notranslate"><span class="pre">--sl
 </li>
 <li><a class="reference internal" href="#slurm-basics">Slurm basics</a><ul>
 <li><a class="reference internal" href="#error-requested-node-configuration-is-not-available">Error: Requested node configuration is not available</a></li>
+<li><a class="reference internal" href="#x11-forwarding-is-working-in-mobaxterm">X11 forwarding is working in MobaXterm</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#r">R</a><ul>

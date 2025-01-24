@@ -148,6 +148,46 @@ Or automatically:
    Loading bcftools/1.16
      Loading requirement: perl/5.26.3
 
+Additional activation steps
+===========================
+
+Some modules require additional steps before you can use them. If so,
+then this is typically described in the ``module display`` text:
+
+.. code-block::
+   :emphasize-lines: 11
+
+   $ module display cellect/1.0
+
+       /opt/software/modules/cellect/1.0:
+
+       module-whatis   {CELL-type Expression-specific integration for Complex Traits (CELLECT) is a computational toolkit for identifing likely etiologic cell-types underlying complex traits.}
+       conflict        cellect
+       prereq          miniconda/4.12.0
+       prepend-path    PATH /opt/software/cellect/1.0
+       setenv          CELLECT /opt/software/cellect/1.0
+
+       This module relies on snakemake which is available using: module load miniconda/4.12.0 followed by conda activate snakemake. You will need to provide your own config-file specifying an outdir.
+       To read more about cellect go to https://github.com/perslab/CELLECT?tab=readme-ov-file
+
+Thus, if we wanted to use ``cellect/1.0``, we would need to perform the
+following steps:
+
+.. code-block::
+
+   $ module display cellect/1.0
+   $ module load miniconda/4.12.0
+   $ conda activate snakemake
+
+.. warning::
+
+   Modules that make use of (ana)conda environments may cause conflict
+   with other modules and/or your own conda environments. For this
+   reason, if you need to use multiple modules and one or more of them
+   uses (ana)conda, it is instead recommended to create a custom conda
+   environment containing all the software you need. This minimizes the
+   risk of conflicts and errors.
+
 Listing and unloading loaded modules
 ====================================
 

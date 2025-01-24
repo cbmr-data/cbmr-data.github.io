@@ -708,11 +708,29 @@ for your shell are made available to other users!</p>
 <section id="running-graphical-programs">
 <h3>Running graphical programs<a class="headerlink" href="#running-graphical-programs" title="Permalink to this heading">#</a></h3>
 <p>Should you need to run a graphical program in an interactive session,
-then you must 1) enable X11 forwarding in the program you use to connect
-to the cluster (e.g. using <code class="docutils literal notranslate"><span class="pre">-X</span></code> option with <code class="docutils literal notranslate"><span class="pre">ssh</span></code>), and 2) specify
-the <code class="docutils literal notranslate"><span class="pre">--x11</span></code> option when starting your interactive session:</p>
+then you must firstly enable X11 forwarding when connecting to the
+cluster.</p>
+<ul>
+<li><p>On Windows, if you are using MobaXterm, then X11 should already be
+enabled. If X11 forwarding is not enabled, then see the
+<a class="reference internal" href="#s-slurm-basics-troubleshooting"><span class="std std-ref">Troubleshooting</span></a> section below.</p></li>
+<li><p>On Linux and OSX, when using <code class="docutils literal notranslate"><span class="pre">ssh</span></code>, you must either include the
+<code class="docutils literal notranslate"><span class="pre">-X</span></code> option when connecting to the server:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>-X<span class="w"> </span>esrumhead01fl
-<span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>--<span class="w"> </span>/bin/bash
+</pre></div>
+</div>
+<p>Or you must enable X11 forwarding in your <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> file:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Host esrum esrumhead01fl esrumhead01fl.unicph.domain</span>
+<span class="go">  HostName esrumhead01fl.unicph.domain</span>
+<span class="go">  User abc123</span>
+<span class="hll"><span class="go">  ForwardX11 yes</span>
+</span></pre></div>
+</div>
+</li>
+</ul>
+<p>Once you have connected to Esrum with X11 forwarding enabled, you must
+start an interactive session with the <code class="docutils literal notranslate"><span class="pre">--x11</span></code> option:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>--<span class="w"> </span>/bin/bash
 <span class="gp">$ </span>xclock
 </pre></div>
 </div>
@@ -797,6 +815,17 @@ specifying the correct queue or if you request too many GPUs:</p>
 <p>To solve this error, simply avoid requesting more than 2 GPUs, and
 remember to include the <code class="docutils literal notranslate"><span class="pre">--partition</span></code> option. See also the
 <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory nodes</span></a> section.</p>
+</section>
+<section id="x11-forwarding-is-working-in-mobaxterm">
+<h3>X11 forwarding is working in MobaXterm<a class="headerlink" href="#x11-forwarding-is-working-in-mobaxterm" title="Permalink to this heading">#</a></h3>
+<p>Firstly right-click on <code class="docutils literal notranslate"><span class="pre">Esrum</span></code> in the list of <code class="docutils literal notranslate"><span class="pre">User</span> <span class="pre">sessions</span></code> and
+select <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">session</span></code>. Make sure that the <code class="docutils literal notranslate"><span class="pre">Advanced</span> <span class="pre">SSH</span> <span class="pre">settings</span></code>
+tab is open and verify that X11 forwarding is enabled as shown:</p>
+<img alt="../../_images/mobaxterm_x11_session.png" class="align-center" src="../../_images/mobaxterm_x11_session.png" />
+<p>Secondly, press the <code class="docutils literal notranslate"><span class="pre">OK</span></code> button and open the <code class="docutils literal notranslate"><span class="pre">Settings</span></code> via the
+gears icon on the main toolbar. Then select the <code class="docutils literal notranslate"><span class="pre">X11</span></code> tab and verify
+that X11 support is configured as shown:</p>
+<img alt="../../_images/mobaxterm_x11_settings.png" class="align-center" src="../../_images/mobaxterm_x11_settings.png" />
 </section>
 </section>
 <section id="additional-resources">
@@ -888,6 +917,7 @@ remember to include the <code class="docutils literal notranslate"><span class="
 <li><a class="reference internal" href="#what-s-next">What's next</a></li>
 <li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
 <li><a class="reference internal" href="#error-requested-node-configuration-is-not-available">Error: Requested node configuration is not available</a></li>
+<li><a class="reference internal" href="#x11-forwarding-is-working-in-mobaxterm">X11 forwarding is working in MobaXterm</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#additional-resources">Additional resources</a></li>

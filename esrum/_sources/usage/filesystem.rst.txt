@@ -102,8 +102,10 @@ These network drives are only accessible from the head node and access
 is furthermore time-limited: Your access expires about 10 hours after
 logging in.
 
-It is therefore recommended to always copy data that you are working on
-to an existing project folder. Never use your home folder for this and
+It is therefore recommended to always copy data that you are working to
+the corresponding `/projects` folder. If you don't have a `/projects`
+folder, then see the :ref:`p_usage_projects` page for instructions on
+how to request a new project. Never use your home folder for this and
 remember that projects have to be audited (indicated by the ``-AUDIT``
 suffix) if you are working on sensitive/protected data.
 

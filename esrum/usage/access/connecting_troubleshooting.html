@@ -248,13 +248,14 @@
 see the <a class="reference internal" href="access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a> page before continuing!</p>
 <section id="timeout-while-connecting-to-the-cluster">
 <h1>Timeout while connecting to the cluster<a class="headerlink" href="#timeout-while-connecting-to-the-cluster" title="Permalink to this heading">#</a></h1>
-<p>You may experience timeout errors when you attempt to connect to the
-server:</p>
+<p>You may experience timeout errors when you attempt to connect to Esrum:</p>
+<p>On Linux:</p>
 <img alt="../../_images/connecting_ssh_timeout.gif" class="gif" src="../../_images/connecting_ssh_timeout.gif" />
-<p>Firstly verify that you are correctly connected to the UCPH network. In
-order to connect to Esrum you must either use a wired connection in a
-CBMR office, or you must be connected through the UCPH VPN. See the
-official VPN documentation in <a class="reference external" href="https://kunet.ku.dk/medarbejderguide/Sider/It/Fjernadgang-vpn.aspx">Danish</a> or <a class="reference external" href="https://kunet.ku.dk/employee-guide/Pages/IT/Remote-access.aspx">English</a> for more information.</p>
+<p>On Windows, using MobaXterm:</p>
+<img alt="../../_images/connecting_mobaxterm_timeout.png" class="align-center" src="../../_images/connecting_mobaxterm_timeout.png" />
+<p>Firstly verify that you are correctly connected to the UCPH VPN. This is
+required to connect to Esrum. See the <a class="reference internal" href="connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page for
+more information.</p>
 <p>If you are still unable to connect to Esrum after verifying that you are
 correctly connected to the UCPH network, then please try to visit either
 our <a class="reference external" href="https://cbmrcat.unicph.domain/projects/">Project Manager</a> or our
@@ -280,7 +281,9 @@ category.</p>
 <section id="ucph-network-folders-in-ucph-are-not-available-when-using-mobaxterm">
 <h1>UCPH network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available when using MobaXterm<a class="headerlink" href="#ucph-network-folders-in-ucph-are-not-available-when-using-mobaxterm" title="Permalink to this heading">#</a></h1>
 <p>Please make sure that you have disabled use of <code class="docutils literal notranslate"><span class="pre">GSSAPI</span> <span class="pre">Kerberos</span></code> as
-described in the <a class="reference internal" href="connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section.</p>
+described in the <a class="reference internal" href="connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section. Similarly, if
+using Linux or OSX, then you cannot be authenticating using a Kerberos
+ticket.</p>
 </section>
 
         </article>
