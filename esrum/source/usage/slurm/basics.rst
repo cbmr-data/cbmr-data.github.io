@@ -578,13 +578,35 @@ Running graphical programs
 ==========================
 
 Should you need to run a graphical program in an interactive session,
-then you must 1) enable X11 forwarding in the program you use to connect
-to the cluster (e.g. using ``-X`` option with ``ssh``), and 2) specify
-the ``--x11`` option when starting your interactive session:
+then you must firstly enable X11 forwarding when connecting to the
+cluster.
+
+-  On Windows, if you are using MobaXterm, then X11 should already be
+   enabled. If X11 forwarding is not enabled, then see the
+   :ref:`s_slurm_basics_troubleshooting` section below.
+
+-  On Linux and OSX, when using ``ssh``, you must either include the
+   ``-X`` option when connecting to the server:
+
+   .. code-block::
+
+      $ ssh -X esrumhead01fl
+
+   Or you must enable X11 forwarding in your ``~/.ssh/config`` file:
+
+   .. code-block::
+      :emphasize-lines: 4
+
+      Host esrum esrumhead01fl esrumhead01fl.unicph.domain
+        HostName esrumhead01fl.unicph.domain
+        User abc123
+        ForwardX11 yes
+
+Once you have connected to Esrum with X11 forwarding enabled, you must
+start an interactive session with the ``--x11`` option:
 
 .. code-block::
 
-   $ ssh -X esrumhead01fl
    $ srun --pty --x11 -- /bin/bash
    $ xclock
 

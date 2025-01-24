@@ -38,3 +38,21 @@ specifying the correct queue or if you request too many GPUs:
 To solve this error, simply avoid requesting more than 2 GPUs, and
 remember to include the ``--partition`` option. See also the
 :ref:`p_usage_slurm_gpu` section.
+
+
+X11 forwarding is working in MobaXterm
+=======================================
+
+Firstly right-click on ``Esrum`` in the list of ``User sessions`` and
+select ``Edit session``. Make sure that the ``Advanced SSH settings``
+tab is open and verify that X11 forwarding is enabled as shown:
+
+.. image:: /usage/slurm/images/mobaxterm_x11_session.png
+    :align: center
+
+Secondly, press the ``OK`` button and open the ``Settings`` via the
+gears icon on the main toolbar. Then select the ``X11`` tab and verify
+that X11 support is configured as shown:
+
+.. image:: /usage/slurm/images/mobaxterm_x11_settings.png
+    :align: center
