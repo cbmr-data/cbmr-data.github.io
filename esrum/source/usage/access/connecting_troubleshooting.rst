@@ -4,16 +4,21 @@ see the :ref:`p_usage_access_applying` page before continuing!
 Timeout while connecting to the cluster
 ========================================
 
-You may experience timeout errors when you attempt to connect to the
-server:
+You may experience timeout errors when you attempt to connect to Esrum:
 
-.. image:: /usage/images/connecting_ssh_timeout.gif
+On Linux:
+
+.. image:: /usage/access/images/connecting_ssh_timeout.gif
    :class: gif
 
-Firstly verify that you are correctly connected to the UCPH network. In
-order to connect to Esrum you must either use a wired connection in a
-CBMR office, or you must be connected through the UCPH VPN. See the
-official VPN documentation in Danish_ or English_ for more information.
+On Windows, using MobaXterm:
+
+.. image:: /usage/access/images/connecting_mobaxterm_timeout.png
+    :align: center
+
+Firstly verify that you are correctly connected to the UCPH VPN. This is
+required to connect to Esrum. See the :ref:`p_usage_connecting` page for
+more information.
 
 If you are still unable to connect to Esrum after verifying that you are
 correctly connected to the UCPH network, then please try to visit either
