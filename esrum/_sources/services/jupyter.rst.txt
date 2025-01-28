@@ -110,10 +110,10 @@ Port forwarding for OSX/Linux users
 The following instructions describe how to set up port forwarding to
 Esrum from your laptop or PC running OSX or Linux.
 
-This is accomplished using the following command-line, replacing
-``esrumcmpn07fl`` with the name of the node on which your notebook is
-running (see above), and replacing ``abc123`` with your UCPH short
-username:
+This is accomplished by running the following command-line *on your
+laptop or PC*, replacing ``esrumcmpn07fl`` with the name of the node on
+which your notebook is running (see above), and replacing ``abc123``
+with your UCPH short username:
 
 .. code-block::
 

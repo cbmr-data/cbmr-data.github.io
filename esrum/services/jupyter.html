@@ -330,10 +330,10 @@ is running on <code class="docutils literal notranslate"><span class="pre">esrum
 <span id="s-ports-osx-linux"></span><h3>Port forwarding for OSX/Linux users<a class="headerlink" href="#port-forwarding-for-osx-linux-users" title="Permalink to this heading">#</a></h3>
 <p>The following instructions describe how to set up port forwarding to
 Esrum from your laptop or PC running OSX or Linux.</p>
-<p>This is accomplished using the following command-line, replacing
-<code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl</span></code> with the name of the node on which your notebook is
-running (see above), and replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code> with your UCPH short
-username:</p>
+<p>This is accomplished by running the following command-line <em>on your
+laptop or PC</em>, replacing <code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl</span></code> with the name of the node on
+which your notebook is running (see above), and replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code>
+with your UCPH short username:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>-S<span class="w"> </span>none<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="s1">&#39;XXXXX:esrumcmpn07fl:XXXXX&#39;</span><span class="w"> </span>abc123@esrumhead01fl.unicph.domain
 </pre></div>
 </div>
