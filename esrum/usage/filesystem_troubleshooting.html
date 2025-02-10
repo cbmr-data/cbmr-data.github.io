@@ -157,7 +157,7 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
-<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Us</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview of cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guidelines.html">Guidelines and policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
@@ -266,7 +266,27 @@ access the network drives (<code class="docutils literal notranslate"><span clas
 <code class="docutils literal notranslate"><span class="pre">~/ucph/sdir</span></code>), then please make sure that you are not logging in
 using Kerberos (GSSAPI). See the <a class="reference internal" href="access/connecting.html#s-network-drives-mobaxterm"><span class="std std-ref">Accessing network drives via MobaXterm</span></a>
 section for instructions for how to disable this feature if you are
-using MobaXterm.</p>
+using MobaXterm. Note, however, that your login is also valid for about
+10 hours, after which you will lose access to the network drives.</p>
+<p>In either case, you can also re-authenticate after connecting to Esrum,
+by running the <code class="docutils literal notranslate"><span class="pre">kinit</span></code> command in your terminal on Esrum:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>kinit
+Password<span class="w"> </span><span class="k">for</span><span class="w"> </span>abc123@UNICPH.DOMAIN:<span class="w"> </span>*********
+</pre></div>
+</div>
+<p>After a minute or two your <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> drives should be accessible again.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">kinit</span></code> may fail if you are using a <code class="docutils literal notranslate"><span class="pre">conda</span></code> environment:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(base)</span> <span class="gp">$ </span>kinit
+<span class="go">kinit: Unknown credential cache type while getting default ccache</span>
+</pre></div>
+</div>
+<p>In that case, run the command <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code> to deactivate the
+current/base environment. This may require running <code class="docutils literal notranslate"><span class="pre">conda</span>
+<span class="pre">deactivate</span></code> multiple times; your terminal line should not start with
+<code class="docutils literal notranslate"><span class="pre">(base)</span></code> or similar.</p>
+</div>
 </section>
 
         </article>

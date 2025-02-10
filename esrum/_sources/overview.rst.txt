@@ -23,21 +23,24 @@ server managed by UCPH-IT is also available.
 Users connect to the "head" node, from which jobs can be submitted to
 the individual compute nodes using the Slurm_ Workload Manager:
 
-+----+--------------------+------+-------------------------+---------------------+---------------------+
-|    | Node               | RAM  | CPUs                    | GPUs                | Name                |
-+====+====================+======+=========================+=====================+=====================+
-| 1  | Head               | 2 TB | 2x24 core AMD EPYC 7413 |                     | *esrumhead01fl*     |
-+----+--------------------+------+-------------------------+---------------------+---------------------+
-| 12 | Compute            | 2 TB | 2x32 core AMD EPYC 7543 |                     | *esrumcmpn\*fl*     |
-+----+--------------------+------+-------------------------+---------------------+---------------------+
-| 1  | GPU / high-memory  | 4 TB | 2x32 core AMD EPYC 75F3 | 2x NVIDIA A100 80GB | *esrumgpun01fl*     |
-+----+--------------------+------+-------------------------+---------------------+---------------------+
-| 2  | GPU                | 2 TB | 2x32 core AMD EPYC 9354 | 2x NVIDIA H100 80GB | *esrumgpun0[3-4]fl* |
-+----+--------------------+------+-------------------------+---------------------+---------------------+
-| 2  | Rstudio            | 2 TB | 2x32 core AMD EPYC 7543 |                     | *esrumweb\*fl*      |
-+----+--------------------+------+-------------------------+---------------------+---------------------+
-| 1  | Container          | 2 TB | 2x32 core AMD EPYC 7543 |                     | *esrumcont01fl*     |
-+----+--------------------+------+-------------------------+---------------------+---------------------+
++----+--------------------+------+-------------------------+---------------------+-----------------------------------+
+|    | Node               | RAM  | CPUs                    | GPUs                | Name(s)                           |
++====+====================+======+=========================+=====================+===================================+
+| 1  | Head               | 2 TB | 2x24 core AMD EPYC 7413 |                     | *esrumhead01fl*                   |
++----+--------------------+------+-------------------------+---------------------+-----------------------------------+
+| 12 | Compute            | 2 TB | 2x32 core AMD EPYC 7543 |                     | *esrumcmpn01fl* - *esrumcmpn12fl* |
++----+--------------------+------+-------------------------+---------------------+-----------------------------------+
+| 1  | GPU / high-memory  | 4 TB | 2x32 core AMD EPYC 75F3 | 2x NVIDIA A100 80GB | *esrumgpun01fl*                   |
++----+--------------------+------+-------------------------+---------------------+-----------------------------------+
+| 2  | GPU                | 2 TB | 2x32 core AMD EPYC 9354 | 2x NVIDIA H100 80GB | *esrumgpun03fl*, *esrumgpun04fl*  |
++----+--------------------+------+-------------------------+---------------------+-----------------------------------+
+| 2  | Rstudio            | 2 TB | 2x32 core AMD EPYC 7543 |                     | *esrumweb01fl*, *esrumweb02fl*    |
++----+--------------------+------+-------------------------+---------------------+-----------------------------------+
+| 1  | Container*         | 2 TB | 2x32 core AMD EPYC 7543 |                     | *esrumcont01fl*                   |
++----+--------------------+------+-------------------------+---------------------+-----------------------------------+
+
+\* *The container node is made available as a compute node when not in
+use.*
 
 **********
  Software
@@ -79,6 +82,22 @@ backups. However, on-site backups are kept for a shorter time to prevent
 the unauthorized recovery of intentionally deleted data.
 
 See :ref:`p_usage_filesystem` for more information.
+
+********************
+ Security and risks
+********************
+
+While UCPH-IT has performed a formal risk assessment of the Esrum HPC
+cluster, this assessment is not publicly available at the time of
+writing. A less formal and non-exhaustive overview of data security at
+Esrum can be found `here
+<https://cbmrcat/static/esrum-security-2024-02-04-1.docx>`_, in English
+and Danish. This summary was authored by the :ref:`Data Analytics
+Platform <p_contact>`.
+
+Note that you must be connected to the UCPH VPN to access this document.
+See the :ref:`p_usage_connecting` page for information about using the
+VPN.
 
 **********************
  Additional resources
