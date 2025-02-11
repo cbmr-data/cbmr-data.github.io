@@ -130,9 +130,6 @@ While Mac/OSX users can connect as described in the
 :ref:`s_connecting_linux` section below, there are also graphical
 interfaces available, including for example Tabby_.
 
-..
-   TODO: Describe how to setup tabby.
-
 .. _s_connecting_linux:
 
 *********************
