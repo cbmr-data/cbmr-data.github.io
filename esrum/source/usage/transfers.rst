@@ -43,8 +43,8 @@ download data from Esrum to that computer.
 
 Unlike the ``esrumhead01fl`` node, you do not need to be connected to
 the UCPH-IT VPN to connect to ``sftp.ku.dk``. You only need access to
-standard tool such as ``scp``, ``sftp``, ``lftp``, and ``rsync``, or
-graphical tools such as FileZilla_ and MobaXterm_ (see the
+standard tool such as ``scp``, ``sftp``, and ``rsync``, or graphical
+tools such as FileZilla_ and MobaXterm_ (see the
 :ref:`p_usage_connecting` page), on the other computer:
 
 .. code-block::
@@ -67,6 +67,12 @@ above) enter a one-time password.
 
 Official documentation is provided on the `UCPH computing/HPC Systems`_
 pages on KUnet.
+
+.. warning::
+
+   Not all software can be used to connect to ``sftp.ku.dk``, due to the
+   use of two-factor authentication. For example, ``lftp`` is known to
+   fail to log in because of this.
 
 .. _p_tranfers_sifanderda:
 
