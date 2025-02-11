@@ -3,7 +3,7 @@
 .. _p_human_cohorts:
 
 ###############
- Human Cohorts
+ Human cohorts
 ###############
 
 The Data Analytics Platform maintains a `list of cohorts`_ and an

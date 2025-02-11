@@ -1,7 +1,7 @@
 .. _p_contact:
 
 ############
- Contact Us
+ Contact us
 ############
 
 The Esrum HPC cluster is supported by the `Data Analytics Platform`_,
