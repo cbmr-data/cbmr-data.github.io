@@ -226,7 +226,7 @@ and can be loaded as follows:
 
 .. code-block::
 
-   $ . /projects/cbmr_shared/apps/modules/activate.sh
+   $ source /projects/cbmr_shared/apps/modules/activate.sh
    $ module load slurmboard
    $ slurmboard
 

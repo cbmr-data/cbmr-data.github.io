@@ -293,7 +293,7 @@ or
 
 .. code-block::
 
-   $ . ./modules.txt
+   $ source ./modules.txt
 
 Simply running the script with ``bash modules.sh`` will not work.
 
