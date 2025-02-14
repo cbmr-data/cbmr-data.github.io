@@ -112,7 +112,7 @@ to the correct session after you've attached tmux.
 Naming your sessions and windows
 ================================
 
-tmux allows you to give custom names to each session (group of
+``tmux`` allows you to give custom names to each session (group of
 terminals) and each window (terminal), in order to help you
 differentiate between them. This is not required, but it is recommended
 to do so if you work on multiple things at once.

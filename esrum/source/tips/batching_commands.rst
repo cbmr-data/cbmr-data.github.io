@@ -7,7 +7,7 @@
 This section describes way to batch commands without using Slurm. This
 is intended to be used both with singular jobs and in conjunction with
 Slurm job arrays (see the :ref:`s_job_arrays` section), for example when
-you need to run a large number of small jobs.
+you need to run many small jobs.
 
 Running tasks as described on this page has a lower overhead than jobs
 scheduled tasks via Slurm, and is therefore well suited for running
@@ -111,7 +111,7 @@ number of CPUs being idle until the last task has finished.
 For this reason we advise that you do not reserve more CPUs than what is
 needed to run 1/3 to 1/2 of your jobs at once. This also allows you to
 queue that many more simultaneous jobs on Slurm, and will typically
-result in a overall greater throughput than simply using the maximum
+result in an overall greater throughput than simply using the maximum
 number of processes with ``parallel``.
 
 Using the ``plonk`` example from above:

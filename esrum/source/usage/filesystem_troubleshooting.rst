@@ -1,9 +1,9 @@
 The ``~/ucph`` folder or subfolders are missing
 ================================================
 
-Firstly, make sure that you are not logging in GSSAPI (Kerberos) to
-login. See the :ref:`p_usage_connecting` page for instructions for how
-to disable this feature if you are using MobaXterm.
+Firstly, make sure that you are not using GSSAPI (Kerberos) to log in.
+See the :ref:`p_usage_connecting` page for instructions for how to
+disable this feature if you are using MobaXterm.
 
 Once you have logged in to Esrum *without* GSSAPI enabled, and if the
 folder(s) are still missing, then run the following command to create

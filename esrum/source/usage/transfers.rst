@@ -5,7 +5,7 @@
 ###################
 
 This section describes how to perform bulk data transfers between Esrum,
-your PC/Laptop, repositories such as SIF/Erda, and servers like
+your PC/Laptop, repositories such as SIF/ERDA, and servers like
 Computerome. :ref:`bluewhale` is also briefly described.
 
 File transfers (including project-to-project transfers) should, if at
@@ -97,10 +97,11 @@ The following command, for example, recursively copies the files in
 
    $ rsync -av --progress=summary --bwlimit=50M /from/path/ /to/path/
 
-It is furthermore recommended to run your transfer in a ``tmux`` (or
-``screen``) instance. See the :ref:`p_tips_tmux` page for more
-information. This allows your transfer to keep running after you log
-off.
+.. tip::
+
+   Running your transfer in a ``tmux`` or ``screen`` session is
+   recommended. This allows your transfer to keep running after you log
+   off from Esrum. See the :ref:`p_tips_tmux` page for more information.
 
 If you have need to transfer amounts of data that are not feasible with
 this rate limit in place, then please :ref:`p_contact` us for
@@ -195,7 +196,7 @@ looks something like ``Johann.Gambolputty@sund.ku.dk@MyProject``.
 .. warning::
 
    Remember to set a password for the project on SIF before attempting
-   to login! This is done on the ``Setup`` page described above.
+   to log in! This is done on the ``Setup`` page described above.
 
 The two ``set`` commands are required to prevent ``lftp`` from
 performing simultaneous downloads (not supported by SIF) and to prevent
@@ -233,7 +234,7 @@ This avoids two big issues:
    data to or download data from this server.
 
 #. While it is possible to transfer data to/from Computerome from/to
-   Esrum by running your software on a node, this involves paying for an
+   Esrum by running your software on a node, this involves paying for a
    node on Computerome for the duration of the transfer.
 
 .. _bluewhale:

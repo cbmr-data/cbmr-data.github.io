@@ -113,7 +113,7 @@ the module files. This organization is designed to simplify maintenance.
 
    The ``module use`` command can optionally be added to your
    ``.profile``, ``.bashrc``, or similar to automatically enable this
-   module repository when you login.
+   module repository when you log in.
 
 ****************************
  Dependencies and conflicts

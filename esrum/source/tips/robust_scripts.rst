@@ -184,7 +184,7 @@ Putting it all together
 =======================
 
 The following bash script template combines the suggestions above and
-thereby helps avoid *some* of the pitfalls of using bash
+thereby helps avoid *some* pitfalls of using bash
 
 .. code-block:: bash
 
@@ -204,8 +204,8 @@ thereby helps avoid *some* of the pitfalls of using bash
    }
 
 Note however that is not guaranteed to catch all errors (see the `bash
-pitfalls`_ page for more information) and it is therefore recommended to
-use a more robust programming language or proper pipeline for more
+pitfalls`_ page for more information). Using a more robust programming
+language, or proper a pipeline, is therefore recommended for more
 complicated tasks.
 
 *******************************************

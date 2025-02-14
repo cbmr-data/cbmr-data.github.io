@@ -43,7 +43,7 @@ simply asking the project/dataset owner to add you to the project or
 dataset in question, but the following provides a brief summary of how
 to apply through the IDM:
 
-#. Login at identity.ku.dk_.
+#. Log in at identity.ku.dk_.
 
 #. Click on the ``Manage My Access`` button. See below if you instead
    have a ``Manage User Access`` button.
