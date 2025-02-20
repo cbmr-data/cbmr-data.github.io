@@ -48,9 +48,29 @@ data`_.
 
 See :ref:`p_usage_filesystem` for more information.
 
-***************
- Running tasks
-***************
+.. _s_guidelines_llms:
+
+*******************************
+ Use of Generative AI and LLMs
+*******************************
+
+Use of Generative AI / Large Language Models (LLMs) is permitted in
+accordance with the general guidelines and rules for using ChatGPT and
+similar technologies at UCPH: In `Danish
+<https://kunet.ku.dk/arbejdsomraader/undervisning/digital-laering/ai-og-chatgpt/retningslinjer%20og%20regler/Sider/retningslinjer%20og%20regler.aspx>`_
+and in `English
+<https://kunet.ku.dk/work-areas/teaching/digital-learning/chatgpt-and-ai/guidelines-and-rules-for-chatgpt/Pages/default.aspx>`_.
+
+Briefly,
+
+-  It is your responsibility that no sensitive information is
+   transmitted to external systems.
+-  If possible, run the models locally on Esrum using our :ref:`GPU
+   nodes <p_usage_slurm_gpu>`.
+
+**************
+ Running jobs
+**************
 
 -  Do not run big jobs on the head node (``esrumhead01fl``), as doing so
    may impact the ability of everyone to use the cluster. However, we do
