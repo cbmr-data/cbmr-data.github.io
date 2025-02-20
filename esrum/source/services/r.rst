@@ -277,6 +277,30 @@ It is also recommended that the ``Always save history (even when not
 saving .RData)`` option is enabled, as the commands you type into the R
 terminal will otherwise *not* be saved.
 
+.. _s_rstudio_copilot:
+
+Use of GitHub Copilot
+=====================
+
+You can make use of GitHub Copilot_ in RStudio, provided that you have a
+valid license. Please refer to the :ref:`guidelines on use of generative
+AI and LLMs <s_guidelines_llms>` before doing so.
+
+-  To enable Copilot_, click on the ``Tools`` menu and select ``Global
+   Options``:
+
+   .. image:: images/rstudio_copilot_1.png
+      :align: center
+
+-  Open the ``Copilot`` tab and tick the ``Enable Github Copilot``
+   checkbox. Then click the ``Sign In`` button:
+
+   .. image:: images/rstudio_copilot_2.png
+      :align: center
+
+-  Finally, copy the verification code you are shown, click on the
+   displayed link, and follow the instructions on Github.
+
 *****************
  Troubleshooting
 *****************
@@ -286,6 +310,8 @@ terminal will otherwise *not* be saved.
 .. include:: rstudio_troubleshooting.rst
 
 .. _argparser: https://cran.r-project.org/web/packages/argparser/index.html
+
+.. _copilot: https://github.com/features/copilot
 
 .. _gcc: https://gcc.gnu.org/
 
