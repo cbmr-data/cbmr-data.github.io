@@ -83,7 +83,7 @@ running the following commands:
 
    $ module load gcc/8.5.0 R/4.3.2
 
-#. cd to your R library
+#. ``cd`` to your R library
 
    .. code-block::
 

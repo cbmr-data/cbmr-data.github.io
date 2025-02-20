@@ -51,7 +51,8 @@ simply use the ``--auto`` option when loading ``R/4.3.x``:
      Loading requirement: gcc/8.5.0
 
 R modules installed using versions of R other than ``4.3.x`` will not be
-available on the RStudio server and you will need to install them again.
+available on the RStudio server, and you will need to install them
+again.
 
 .. warning::
 
@@ -72,7 +73,7 @@ Submitting R scripts using Slurm
 
 The recommended way to run R on Esrum is as non-interactive scripts
 submitted to slurm. This not only ensures that your analyses do not
-impact other users, but also makes make your analyses reproducible.
+impact other users, but also makes your analyses reproducible.
 
 To run an R script on the command-line, simply use the ``Rscript``
 command:
@@ -99,13 +100,13 @@ data-sets:
    $ Rscript my_script.R world
    Hello, world!
 
-If your script requires a heterogenous set of input files or options to
+If your script requires a heterogeneous set of input files or options to
 run, then it is recommended to use an argument parser such as the
-argparser_ R library. To use the argparser library you must first
+argparser_ R library. To use the ``argparser`` library you must first
 install it using the ``install.packages("argparser")`` command.
 
-The following is a brief example of how you might use the ``argparser``
-library and it can also be downloaded :download:`here
+The following shows a brief example of how you might use the
+``argparser`` library. It can also be downloaded :download:`here
 <scripts/argparser.R>`.
 
 .. literalinclude:: scripts/argparser.R
@@ -207,7 +208,7 @@ If you have not been granted access, or if you are not connected via the
 VPN, then you will likely see a browser error message like ``This site
 can't be reached``. See :ref:`p_usage_connecting` for more information.
 
-To login, use the short form of your UCPH username (i.e. ``abc123``):
+To log in, use the short form of your UCPH username (i.e. ``abc123``):
 
 .. image:: images/rstudio_login.png
    :align: center
@@ -260,7 +261,7 @@ By default, this data will be saved to your RStudio folder on the
 suspends after 9 hours of inactivity. This may, however, result in very
 large amounts of data being saved to disk and, consequently, large of
 amounts of data having to be read when you log in again, resulting in
-login taking a very long time.
+logging in taking a very long time.
 
 For this reason we recommend disabling the saving and loading of
 ``.RData`` in the ``Global Settings`` accessible via the ``Tools Menu``

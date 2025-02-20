@@ -157,7 +157,7 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../contact.html">Contact Us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contact.html">Contact us</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview of cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../guidelines.html">Guidelines and policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting.html">Troubleshooting</a></li>
@@ -181,7 +181,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../resources/cohorts.html">Human Cohorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/cohorts.html">Human cohorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/common.html">Common datasets</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other services</span></p>
 <ul>
@@ -274,9 +275,9 @@ module<span class="w"> </span>load<span class="w"> </span>samtools/1.20
 samtools<span class="w"> </span>--version
 </pre></div>
 </div>
-<p>Note that it is still recommended to run <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code>, despite using
-<code class="docutils literal notranslate"><span class="pre">--export</span></code>, as sbatch will execute your bash startup scripts and those
-may still load modules automatically.</p>
+<p>Run <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code> first is recommended, even when using <code class="docutils literal notranslate"><span class="pre">--export</span></code>,
+as sbatch will execute your bash startup scripts and those may also load
+modules automatically.</p>
 </section>
 <section id="running-commands-using-srun">
 <span id="p-usage-srun"></span><h2>Running commands using srun<a class="headerlink" href="#running-commands-using-srun" title="Permalink to this heading">#</a></h2>
@@ -329,7 +330,7 @@ for example useful if you want to queue and wait for jobs in a
 script.</p></li>
 <li><p>In addition to actively monitoring your jobs, it is possible to
 receive email notifications when your jobs are started, finish, fail,
-are requeued, or some combination. This is accomplished by using the
+are re-queued, or some combination. This is accomplished by using the
 <code class="docutils literal notranslate"><span class="pre">--mail-user</span></code> and <code class="docutils literal notranslate"><span class="pre">--mail-type</span></code> options:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>my_script.sh<span class="w"> </span>--mail-user<span class="o">=</span>abc123@ku.dk<span class="w"> </span>--mail-type<span class="o">=</span>END,FAIL
 <span class="go">Submitted batch job 8503</span>
@@ -416,7 +417,7 @@ resource utilization on the cluster.</p>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">slurmboard</span></code> utility is available in the <code class="docutils literal notranslate"><span class="pre">cbmr_shared</span></code> project,
 and can be loaded as follows:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>.<span class="w"> </span>/projects/cbmr_shared/apps/modules/activate.sh
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">source</span><span class="w"> </span>/projects/cbmr_shared/apps/modules/activate.sh
 <span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>slurmboard
 <span class="gp">$ </span>slurmboard
 </pre></div>
@@ -472,8 +473,8 @@ task IDs.</p>
 </pre></div>
 </div>
 <p>Unlike a normal <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command, where Slurm creates a single
-<code class="docutils literal notranslate"><span class="pre">.out</span></code> file, an <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">--array</span></code> command will create an <code class="docutils literal notranslate"><span class="pre">.out</span></code>
-file is for each task in the array.</p>
+<code class="docutils literal notranslate"><span class="pre">.out</span></code> file, an <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">--array</span></code> command will create a <code class="docutils literal notranslate"><span class="pre">.out</span></code> file
+is for each task in the array.</p>
 <p>In this example there was a simple one-to-one mapping between the
 <code class="docutils literal notranslate"><span class="pre">SLURM_ARRAY_TASK_ID</span></code> and our data, but that is not always the case.
 The <a class="reference internal" href="#mapping-task-ids-to-data">Mapping task IDs to data</a> section below describes several ways you
@@ -481,7 +482,7 @@ might use to map the <code class="docutils literal notranslate"><span class="pre
 data/filenames.</p>
 <section id="limiting-simultaneous-jobs">
 <h3>Limiting simultaneous jobs<a class="headerlink" href="#limiting-simultaneous-jobs" title="Permalink to this heading">#</a></h3>
-<p>By default Slurm will attempt to run every job in an array at the same
+<p>By default, Slurm will attempt to run every job in an array at the same
 time, provided that there are resources available. Since Esrum is a
 shared resource we ask that you consider how much of the cluster you'll
 be using and limit the number of simultaneous jobs to a reasonable

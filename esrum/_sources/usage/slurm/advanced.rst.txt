@@ -41,9 +41,9 @@ might generate:
    module load samtools/1.20
    samtools --version
 
-Note that it is still recommended to run ``module purge``, despite using
-``--export``, as sbatch will execute your bash startup scripts and those
-may still load modules automatically.
+Run ``module purge`` first is recommended, even when using ``--export``,
+as sbatch will execute your bash startup scripts and those may also load
+modules automatically.
 
 .. _p_usage_srun:
 
@@ -118,7 +118,7 @@ Slurm offers a number of ways in which you may monitor your jobs:
 
 -  In addition to actively monitoring your jobs, it is possible to
    receive email notifications when your jobs are started, finish, fail,
-   are requeued, or some combination. This is accomplished by using the
+   are re-queued, or some combination. This is accomplished by using the
    ``--mail-user`` and ``--mail-type`` options:
 
    .. code-block::
@@ -226,7 +226,7 @@ and can be loaded as follows:
 
 .. code-block::
 
-   $ . /projects/cbmr_shared/apps/modules/activate.sh
+   $ source /projects/cbmr_shared/apps/modules/activate.sh
    $ module load slurmboard
    $ slurmboard
 
@@ -289,8 +289,8 @@ Our script can then be run as before:
    chr3.fasta.gz  my_script.sh   slurm-8507_3.out
 
 Unlike a normal ``sbatch`` command, where Slurm creates a single
-``.out`` file, an ``sbatch --array`` command will create an ``.out``
-file is for each task in the array.
+``.out`` file, an ``sbatch --array`` command will create a ``.out`` file
+is for each task in the array.
 
 In this example there was a simple one-to-one mapping between the
 ``SLURM_ARRAY_TASK_ID`` and our data, but that is not always the case.
@@ -301,7 +301,7 @@ data/filenames.
 Limiting simultaneous jobs
 ==========================
 
-By default Slurm will attempt to run every job in an array at the same
+By default, Slurm will attempt to run every job in an array at the same
 time, provided that there are resources available. Since Esrum is a
 shared resource we ask that you consider how much of the cluster you'll
 be using and limit the number of simultaneous jobs to a reasonable

@@ -194,7 +194,7 @@ This section describes a handful of settings that we recommend using:
    snakemake will wait for missing output files to appear. This is
    required when using ``--slurm`` since a job will be running on a
    different node than snakemake itself and since it may take some
-   amount of times for files to propagate over the network filesystem.
+   amount of times for files to propagate over the network file system.
 
 -  ``--rerun-incomplete``: This option ensures that snakemake reruns
    jobs that were not run to completion.

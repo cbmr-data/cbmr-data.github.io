@@ -26,8 +26,6 @@
    :caption: Resources
 
    resources/cohorts
-
-..
    resources/common
 
 .. toctree::

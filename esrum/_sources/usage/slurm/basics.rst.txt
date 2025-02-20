@@ -84,7 +84,7 @@ This script consists of three parts:
    introduction to using modules on Esrum.
 
 #. And finally, we run the ``igzip`` command on our FASTA file. The
-   ``--keep`` option for ``igzip`` is used to prevent igzip from
+   ``--keep`` option for ``igzip`` is used to prevent ``igzip`` from
    deleting our input file when it is done.
 
 .. tip::
@@ -92,11 +92,10 @@ This script consists of three parts:
    We could also have loaded the module on the command-line before
    queuing the command, and skipped the ``module purge`` and ``module
    load`` commands, as Slurm remembers what modules we have loaded when
-   we run ``sbatch``. However, it is strongly recommended to load all
-   required software *in* your ``sbatch`` scripts to ensure that they
-   are reproducible. See the :ref:`s_sbatch_environment` section for
-   additional information about controlling what ``sbatch`` inherits
-   from your current environment.
+   we run ``sbatch``. However, loading all required software *in* your
+   ``sbatch`` scripts ensures that the script is reproducible. See the
+   :ref:`s_sbatch_environment` section for additional information about
+   controlling what ``sbatch`` inherits from your current environment.
 
 To queue this script, run the ``sbatch`` command with the filename of
 the script as an argument:

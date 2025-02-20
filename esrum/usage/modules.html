@@ -157,7 +157,7 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
-<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact us</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview of cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guidelines.html">Guidelines and policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
@@ -181,7 +181,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../resources/cohorts.html">Human Cohorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/cohorts.html">Human cohorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/common.html">Common datasets</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other services</span></p>
 <ul>
@@ -327,8 +328,8 @@ to run the software.</p>
 <span class="go">[...]</span>
 </pre></div>
 </div>
-<p>It is highly recommended to specify the exact version of a module that
-you want to load. This ensure that your results are reproducible:</p>
+<p>Specifying the exact version of a module that you want to load is highly
+recommended. This ensures that your results are reproducible:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>samtools/1.12
 <span class="gp">$ </span>samtools
 <span class="go">Program: samtools (Tools for alignments in the SAM format)</span>
@@ -392,12 +393,11 @@ following steps:</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Modules that make use of (ana)conda environments may cause conflict
-with other modules and/or your own conda environments. For this
-reason, if you need to use multiple modules and one or more of them
-uses (ana)conda, it is instead recommended to create a custom conda
-environment containing all the software you need. This minimizes the
-risk of conflicts and errors.</p>
+<p>Modules that make use of conda environments may cause conflict with
+other modules and/or your own conda environments. For this reason, if
+you need to use multiple modules and one or more of them uses conda,
+creating a personal conda environment containing all the software you
+need is recommended. This minimizes the risk of conflicts and errors.</p>
 </div>
 </section>
 <section id="listing-and-unloading-loaded-modules">
@@ -485,7 +485,7 @@ of the file in your current shell. This has the same effect as running
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>.<span class="w"> </span>./modules.txt
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">source</span><span class="w"> </span>./modules.txt
 </pre></div>
 </div>
 <p>Simply running the script with <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">modules.sh</span></code> will not work.</p>
@@ -514,13 +514,13 @@ Esrum.</p>
 <section id="requesting-software-modules">
 <span id="s-requesting-missing-modules"></span><h2>Requesting software modules<a class="headerlink" href="#requesting-software-modules" title="Permalink to this heading">#</a></h2>
 <p>If the software you need is not available as a module, or if the
-specific version you need is not available as a module, then you you can
+specific version you need is not available as a module, then you can
 request it through UCPH-IT as described below. You are also welcome to
-<a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact Us</span></a> us if you need help determining the exact software
+<a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact us</span></a> us if you need help determining the exact software
 and/or versions you need to request, or if you have other questions.</p>
 <p>To request software,</p>
 <ol class="arabic simple">
-<li><p>Login to the UCPH <a class="reference external" href="https://serviceportal.ku.dk/">IT Serviceportal</a>.</p></li>
+<li><p>Log in to the UCPH <a class="reference external" href="https://serviceportal.ku.dk/">IT Serviceportal</a>.</p></li>
 <li><p>Click the <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Ticket</span></code> / <code class="docutils literal notranslate"><span class="pre">Opret</span> <span class="pre">Sag</span></code> button.</p></li>
 <li><p>Tick/select the <code class="docutils literal notranslate"><span class="pre">Research</span> <span class="pre">IT</span></code> / <code class="docutils literal notranslate"><span class="pre">Forsknings</span> <span class="pre">IT</span></code> category in the
 category/filters list on the left side of the screen.</p></li>
@@ -551,7 +551,7 @@ describe&quot; text-box (see below).</p></li>
 <p class="admonition-title">Warning</p>
 <p>If you are not an employee at CBMR you may not have permission to
 open a ticket as described above. In that case simply
-<a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact Us</span></a> us with your request and we will forward it to
+<a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact us</span></a> us with your request, and we will forward it to
 UCPH-IT.</p>
 </div>
 </section>

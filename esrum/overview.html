@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="search" title="Search" href="search.html" /><link rel="next" title="Guidelines and policies" href="guidelines.html" /><link rel="prev" title="Contact Us" href="contact.html" />
+<link rel="search" title="Search" href="search.html" /><link rel="next" title="Guidelines and policies" href="guidelines.html" /><link rel="prev" title="Contact us" href="contact.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
         <title>Overview of cluster - Esrum Cluster documentation</title>
@@ -157,7 +157,7 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact Us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact.html">Contact us</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Overview of cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guidelines.html">Guidelines and policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
@@ -181,7 +181,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="resources/cohorts.html">Human Cohorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources/cohorts.html">Human cohorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resources/common.html">Common datasets</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other services</span></p>
 <ul>
@@ -254,9 +255,10 @@ documentation for the <a class="reference external" href="https://kunet.ku.dk/wo
 <section id="architecture">
 <h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this heading">#</a></h2>
 <p>The cluster consists of a head node, 12 compute nodes, 1 GPU /
-high-memory node, 2 GPU nodes, 2 <a class="reference internal" href="services/r.html#s-service-rstudio"><span class="std std-ref">RStudio</span></a> web
-servers, and 1 server for running containers. A <a class="reference internal" href="services/shiny.html#p-usage-shiny"><span class="std std-ref">Shiny servers</span></a>
-server managed by UCPH-IT is also available.</p>
+high-memory node, 3 GPU nodes, 2 <a class="reference internal" href="services/r.html#s-service-rstudio"><span class="std std-ref">RStudio</span></a> web
+servers, and 1 server for running <a class="reference internal" href="services/containers.html#p-containers"><span class="std std-ref">containers</span></a>. A
+<a class="reference internal" href="services/shiny.html#p-usage-shiny"><span class="std std-ref">Shiny server</span></a> server managed by UCPH-IT is also
+available.</p>
 <p>Users connect to the &quot;head&quot; node, from which jobs can be submitted to
 the individual compute nodes using the <a class="reference external" href="https://slurm.schedmd.com/">Slurm</a> Workload Manager:</p>
 <div class="table-wrapper docutils container">
@@ -297,7 +299,7 @@ the individual compute nodes using the <a class="reference external" href="https
 <td><p>2 TB</p></td>
 <td><p>2x32 core AMD EPYC 9354</p></td>
 <td><p>2x NVIDIA H100 80GB</p></td>
-<td><p><em>esrumgpun03fl</em>, <em>esrumgpun04fl</em></p></td>
+<td><p><em>esrumgpun02fl</em> - <em>esrumgpun04fl</em></p></td>
 </tr>
 <tr class="row-even"><td><p>2</p></td>
 <td><p>Rstudio</p></td>
@@ -390,7 +392,7 @@ VPN.</p>
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Contact Us</div>
+                <div class="title">Contact us</div>
                 
               </div>
             </a>

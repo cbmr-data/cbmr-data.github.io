@@ -157,7 +157,7 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
-<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact us</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview of cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guidelines.html">Guidelines and policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
@@ -181,7 +181,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../resources/cohorts.html">Human Cohorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/cohorts.html">Human cohorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/common.html">Common datasets</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other services</span></p>
 <ul class="current">
@@ -328,16 +329,20 @@ singularity:</p>
 </div>
 <p>The singularity image can then be run using the <code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">run</span></code>
 command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>singularity<span class="w"> </span>run<span class="w"> </span>my_image_v1.2.3.sif
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>singularity<span class="w"> </span>run<span class="w"> </span>--bind<span class="w"> </span>/projects,/datasets,/scratch<span class="w"> </span>my_image_v1.2.3.sif
 </pre></div>
 </div>
+<p>Singularity will make your home folder available by default, but the
+<code class="docutils literal notranslate"><span class="pre">--bind</span></code> option is required to make the <code class="docutils literal notranslate"><span class="pre">/projects</span></code>, the
+<code class="docutils literal notranslate"><span class="pre">/datasets</span></code>, and the <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> folder accessible to the software
+running in the container.</p>
 </section>
 </section>
 <section id="podman-containers">
 <h2>Podman containers<a class="headerlink" href="#podman-containers" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">esrumcont01fl</span></code> node is dedicated to running containerized
 software that is not suitable for conversion to/running via Singularity.
-Please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact Us</span></a> us if you wish to run containers on the
+Please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact us</span></a> us if you wish to run containers on the
 container node.</p>
 </section>
 </section>

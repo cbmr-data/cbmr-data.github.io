@@ -167,7 +167,7 @@ graphical interfaces.
  Monitoring GPU utilization
 ****************************
 
-It is highly recommended to monitor GPU utilization when you run jobs on
+Monitoring of GPU utilization is highly recommended when you run jobs on
 the GPU node: To make full use of the hardware you want to keep GPU
 utilization at 100% and to do so you typically want to load as much data
 into GPU memory as possible. The exact way in which you can accomplish

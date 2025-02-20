@@ -1,7 +1,7 @@
 sacct: error: Problem talking to the database: Connection refused
 =================================================================
 
-If you are running Snakemake with the ``--slurm`` option on a compete
+If you are running Snakemake with the ``--slurm`` option on a compute
 node, i.e. not the head node, then you will receive errors such as the
 following:
 

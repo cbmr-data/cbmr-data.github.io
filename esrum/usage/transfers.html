@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="search" title="Search" href="../search.html" /><link rel="next" title="Human Cohorts" href="../resources/cohorts.html" /><link rel="prev" title="Software on Esrum" href="modules.html" />
+<link rel="search" title="Search" href="../search.html" /><link rel="next" title="Human cohorts" href="../resources/cohorts.html" /><link rel="prev" title="Software on Esrum" href="modules.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
         <title>Transferring data - Esrum Cluster documentation</title>
@@ -157,7 +157,7 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
-<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact us</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview of cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guidelines.html">Guidelines and policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
@@ -181,7 +181,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../resources/cohorts.html">Human Cohorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/cohorts.html">Human cohorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/common.html">Common datasets</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other services</span></p>
 <ul>
@@ -247,7 +248,7 @@
           <section id="transferring-data">
 <span id="p-transfers"></span><h1>Transferring data<a class="headerlink" href="#transferring-data" title="Permalink to this heading">#</a></h1>
 <p>This section describes how to perform bulk data transfers between Esrum,
-your PC/Laptop, repositories such as SIF/Erda, and servers like
+your PC/Laptop, repositories such as SIF/ERDA, and servers like
 Computerome. <a class="reference internal" href="#bluewhale"><span class="std std-ref">Secure emails using Bluewhale</span></a> is also briefly described.</p>
 <p>File transfers (including project-to-project transfers) should, if at
 all possible, be run on a compute node, as high amounts of network
@@ -277,8 +278,8 @@ server/cluster, and either upload data from that computer to Esrum or
 download data from Esrum to that computer.</p>
 <p>Unlike the <code class="docutils literal notranslate"><span class="pre">esrumhead01fl</span></code> node, you do not need to be connected to
 the UCPH-IT VPN to connect to <code class="docutils literal notranslate"><span class="pre">sftp.ku.dk</span></code>. You only need access to
-standard tool such as <code class="docutils literal notranslate"><span class="pre">scp</span></code>, <code class="docutils literal notranslate"><span class="pre">sftp</span></code>, <code class="docutils literal notranslate"><span class="pre">lftp</span></code>, and <code class="docutils literal notranslate"><span class="pre">rsync</span></code>, or
-graphical tools such as <a class="reference external" href="https://filezilla-project.org/">FileZilla</a> and <a class="reference external" href="https://mobaxterm.mobatek.net/">MobaXterm</a> (see the
+standard tool such as <code class="docutils literal notranslate"><span class="pre">scp</span></code>, <code class="docutils literal notranslate"><span class="pre">sftp</span></code>, and <code class="docutils literal notranslate"><span class="pre">rsync</span></code>, or graphical
+tools such as <a class="reference external" href="https://filezilla-project.org/">FileZilla</a> and <a class="reference external" href="https://mobaxterm.mobatek.net/">MobaXterm</a> (see the
 <a class="reference internal" href="access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page), on the other computer:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sftp<span class="w"> </span>sftp://abc123@sftp.ku.dk
 <span class="gp gp-VirtualEnv">(abc123@sftp.ku.dk)</span> <span class="go">Enter password</span>
@@ -298,6 +299,12 @@ you may either need to approve the connection attempt or (as shown
 above) enter a one-time password.</p>
 <p>Official documentation is provided on the <a class="reference external" href="https://kunet.ku.dk/work-areas/research/Research%20Infrastructure/research-it/ucph-computing-hpc-systems/Pages/default.aspx">UCPH computing/HPC Systems</a>
 pages on KUnet.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Not all software can be used to connect to <code class="docutils literal notranslate"><span class="pre">sftp.ku.dk</span></code>, due to the
+use of two-factor authentication. For example, <code class="docutils literal notranslate"><span class="pre">lftp</span></code> is known to
+fail to log in because of this.</p>
+</div>
 </section>
 <section id="transferring-data-to-from-the-h-n-and-s-drives">
 <span id="p-tranfers-sifanderda"></span><h2>Transferring data to/from the H:, N:, and S: drives<a class="headerlink" href="#transferring-data-to-from-the-h-n-and-s-drives" title="Permalink to this heading">#</a></h2>
@@ -314,12 +321,14 @@ limits the transfer-rate to 50 MB/s on average (or ~20 seconds per GB).</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rsync<span class="w"> </span>-av<span class="w"> </span>--progress<span class="o">=</span>summary<span class="w"> </span>--bwlimit<span class="o">=</span>50M<span class="w"> </span>/from/path/<span class="w"> </span>/to/path/
 </pre></div>
 </div>
-<p>It is furthermore recommended to run your transfer in a <code class="docutils literal notranslate"><span class="pre">tmux</span></code> (or
-<code class="docutils literal notranslate"><span class="pre">screen</span></code>) instance. See the <a class="reference internal" href="../tips/tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> page for more
-information. This allows your transfer to keep running after you log
-off.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Running your transfer in a <code class="docutils literal notranslate"><span class="pre">tmux</span></code> or <code class="docutils literal notranslate"><span class="pre">screen</span></code> session is
+recommended. This allows your transfer to keep running after you log
+off from Esrum. See the <a class="reference internal" href="../tips/tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> page for more information.</p>
+</div>
 <p>If you have need to transfer amounts of data that are not feasible with
-this rate limit in place, then please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact Us</span></a> us for
+this rate limit in place, then please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact us</span></a> us for
 assistance.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -396,7 +405,7 @@ looks something like <code class="docutils literal notranslate"><span class="pre
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Remember to set a password for the project on SIF before attempting
-to login! This is done on the <code class="docutils literal notranslate"><span class="pre">Setup</span></code> page described above.</p>
+to log in! This is done on the <code class="docutils literal notranslate"><span class="pre">Setup</span></code> page described above.</p>
 </div>
 <p>The two <code class="docutils literal notranslate"><span class="pre">set</span></code> commands are required to prevent <code class="docutils literal notranslate"><span class="pre">lftp</span></code> from
 performing simultaneous downloads (not supported by SIF) and to prevent
@@ -425,7 +434,7 @@ account if you keep trying. This applies both to running (for
 example) <code class="docutils literal notranslate"><span class="pre">rsync</span></code> on <code class="docutils literal notranslate"><span class="pre">ssh.computerome.dk</span></code> or if you attempt upload
 data to or download data from this server.</p></li>
 <li><p>While it is possible to transfer data to/from Computerome from/to
-Esrum by running your software on a node, this involves paying for an
+Esrum by running your software on a node, this involves paying for a
 node on Computerome for the duration of the transfer.</p></li>
 </ol>
 </section>
@@ -453,7 +462,7 @@ or <a class="reference external" href="https://kunet.ku.dk/employee-guide/Pages/
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Human Cohorts</div>
+                <div class="title">Human cohorts</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>

@@ -157,7 +157,7 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../contact.html">Contact Us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contact.html">Contact us</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview of cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../guidelines.html">Guidelines and policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting.html">Troubleshooting</a></li>
@@ -181,7 +181,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../resources/cohorts.html">Human Cohorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/cohorts.html">Human cohorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/common.html">Common datasets</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other services</span></p>
 <ul>
@@ -309,7 +310,7 @@ module from the UCPH-IT software library, which makes the <code class="docutils 
 tool available to us. See the <a class="reference internal" href="../modules.html#p-usage-modules"><span class="std std-ref">Software on Esrum</span></a> page for an
 introduction to using modules on Esrum.</p></li>
 <li><p>And finally, we run the <code class="docutils literal notranslate"><span class="pre">igzip</span></code> command on our FASTA file. The
-<code class="docutils literal notranslate"><span class="pre">--keep</span></code> option for <code class="docutils literal notranslate"><span class="pre">igzip</span></code> is used to prevent igzip from
+<code class="docutils literal notranslate"><span class="pre">--keep</span></code> option for <code class="docutils literal notranslate"><span class="pre">igzip</span></code> is used to prevent <code class="docutils literal notranslate"><span class="pre">igzip</span></code> from
 deleting our input file when it is done.</p></li>
 </ol>
 <div class="admonition tip">
@@ -317,11 +318,10 @@ deleting our input file when it is done.</p></li>
 <p>We could also have loaded the module on the command-line before
 queuing the command, and skipped the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code> and <code class="docutils literal notranslate"><span class="pre">module</span>
 <span class="pre">load</span></code> commands, as Slurm remembers what modules we have loaded when
-we run <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>. However, it is strongly recommended to load all
-required software <em>in</em> your <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> scripts to ensure that they
-are reproducible. See the <a class="reference internal" href="advanced.html#s-sbatch-environment"><span class="std std-ref">Controlling environment variables</span></a> section for
-additional information about controlling what <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> inherits
-from your current environment.</p>
+we run <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>. However, loading all required software <em>in</em> your
+<code class="docutils literal notranslate"><span class="pre">sbatch</span></code> scripts ensures that the script is reproducible. See the
+<a class="reference internal" href="advanced.html#s-sbatch-environment"><span class="std std-ref">Controlling environment variables</span></a> section for additional information about
+controlling what <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> inherits from your current environment.</p>
 </div>
 <p>To queue this script, run the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command with the filename of
 the script as an argument:</p>

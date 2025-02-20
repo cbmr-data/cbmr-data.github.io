@@ -61,7 +61,7 @@ locations:
 
 #. In the ``environment`` file in your RStudio session folder
    (``~/.local/share/rstudio/sessions/active/session-*/suspended-session-data/environment``).
-   This is where RStudio saves your data should your login time-out
+   This is where RStudio saves your data should your login time out
    while using RStudio.
 
 Please :ref:`p_contact` us if you need help removing the correct files.

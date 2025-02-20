@@ -157,7 +157,7 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
-<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact Us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact us</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview of cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guidelines.html">Guidelines and policies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
@@ -181,7 +181,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../resources/cohorts.html">Human Cohorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/cohorts.html">Human cohorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources/common.html">Common datasets</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other services</span></p>
 <ul>
@@ -408,7 +409,7 @@ won't suddenly break when new versions of modules are added.</p>
 snakemake will wait for missing output files to appear. This is
 required when using <code class="docutils literal notranslate"><span class="pre">--slurm</span></code> since a job will be running on a
 different node than snakemake itself and since it may take some
-amount of times for files to propagate over the network filesystem.</p></li>
+amount of times for files to propagate over the network file system.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--rerun-incomplete</span></code>: This option ensures that snakemake reruns
 jobs that were not run to completion.</p></li>
 </ul>
@@ -458,7 +459,7 @@ simply by specifying the option again:</p>
 <h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
 <section id="sacct-error-problem-talking-to-the-database-connection-refused">
 <h3>sacct: error: Problem talking to the database: Connection refused<a class="headerlink" href="#sacct-error-problem-talking-to-the-database-connection-refused" title="Permalink to this heading">#</a></h3>
-<p>If you are running Snakemake with the <code class="docutils literal notranslate"><span class="pre">--slurm</span></code> option on a compete
+<p>If you are running Snakemake with the <code class="docutils literal notranslate"><span class="pre">--slurm</span></code> option on a compute
 node, i.e. not the head node, then you will receive errors such as the
 following:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Job 0 has been submitted with SLURM jobid 512921 (log: .snakemake/slurm_logs/rule_foo/512921.log).</span>

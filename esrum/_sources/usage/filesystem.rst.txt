@@ -76,8 +76,8 @@ that your colleagues may depend on should be stored there.
 
 .. _s_ucph_network_drives:
 
-UCPH network drives (H:, N:, and S:)
-====================================
+UCPH network drives (``H:``, ``N:``, and ``S:``)
+================================================
 
 When you log in to Esrum for the first time, your home folder should
 contain a (link to a) single folder named ``ucph``. This folder in turn

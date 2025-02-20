@@ -102,8 +102,8 @@ to run the software.
    Version: 1.17 (using htslib 1.17)
    [...]
 
-It is highly recommended to specify the exact version of a module that
-you want to load. This ensure that your results are reproducible:
+Specifying the exact version of a module that you want to load is highly
+recommended. This ensures that your results are reproducible:
 
 .. code-block::
 
@@ -181,12 +181,11 @@ following steps:
 
 .. warning::
 
-   Modules that make use of (ana)conda environments may cause conflict
-   with other modules and/or your own conda environments. For this
-   reason, if you need to use multiple modules and one or more of them
-   uses (ana)conda, it is instead recommended to create a custom conda
-   environment containing all the software you need. This minimizes the
-   risk of conflicts and errors.
+   Modules that make use of conda environments may cause conflict with
+   other modules and/or your own conda environments. For this reason, if
+   you need to use multiple modules and one or more of them uses conda,
+   creating a personal conda environment containing all the software you
+   need is recommended. This minimizes the risk of conflicts and errors.
 
 Listing and unloading loaded modules
 ====================================
@@ -293,7 +292,7 @@ or
 
 .. code-block::
 
-   $ . ./modules.txt
+   $ source ./modules.txt
 
 Simply running the script with ``bash modules.sh`` will not work.
 
@@ -333,14 +332,14 @@ Esrum.
 *****************************
 
 If the software you need is not available as a module, or if the
-specific version you need is not available as a module, then you you can
+specific version you need is not available as a module, then you can
 request it through UCPH-IT as described below. You are also welcome to
 :ref:`p_contact` us if you need help determining the exact software
 and/or versions you need to request, or if you have other questions.
 
 To request software,
 
-#. Login to the UCPH `IT Serviceportal`_.
+#. Log in to the UCPH `IT Serviceportal`_.
 #. Click the ``Create Ticket`` / ``Opret Sag`` button.
 #. Tick/select the ``Research IT`` / ``Forsknings IT`` category in the
    category/filters list on the left side of the screen.
@@ -373,7 +372,7 @@ A request may look like the following:
 
    If you are not an employee at CBMR you may not have permission to
    open a ticket as described above. In that case simply
-   :ref:`p_contact` us with your request and we will forward it to
+   :ref:`p_contact` us with your request, and we will forward it to
    UCPH-IT.
 
 .. _environment modules: https://modules.sourceforge.net/
