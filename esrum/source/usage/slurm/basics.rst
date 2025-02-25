@@ -107,16 +107,27 @@ the script as an argument:
    $ sbatch my_script.sh
    Submitted batch job 8503
 
-Notice that we do not need to set the current working directory in our
-script (unlike PBS). As noted above, this defaults to the directory in
-which you queued the script. The number reported by sbatch is the job ID
-of your job (``JOBID``), which you will need should you want to cancel,
-pause, or otherwise manipulate your job (see below).
+This will queue your script to be run using 1 CPU and about 16 GB of
+RAM. See the :ref:`reserving_resources` section below, for how to
+increase the amount of resources available to your script. By default,
+there is no limit on the maximum running time ("wall time") for jobs on
+Esrum.
+
+The number reported by sbatch is the job ID of your job (``JOBID``),
+which you will need should you want to cancel, pause, or otherwise
+manipulate your job (see below).
+
+.. note::
+
+   We do not need to set the current working directory in our script
+   (unlike PBS): ``sbatch`` uses the current directory as the working
+   directory, as if we had run the script directly using `bash
+   my_script.sh`.
 
 Once the job has started running (or has completed running), you will
 also find a file named ``slurm-${JOBID}.out`` in the current folder,
-where ``${JOBID}`` is the ID reported by ``sbatch`` (``8503`` in this
-example):
+where ``${JOBID}`` is the ID reported by ``sbatch``, ``8503`` in this
+example:
 
 .. code-block::
 
