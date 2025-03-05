@@ -49,7 +49,9 @@ use.*
 
 The nodes all run Red Hat Enterprise Linux 8 and a range of scientific
 and other software is made available using :ref:`environment modules
-<p_usage_modules>`. Missing software can be requested via UCPH-IT.
+<p_usage_modules>`. Missing software can be requested via UCPH-IT and/or
+data-analytics. See the :ref:`s_requesting_missing_modules` section for
+more information.
 
 **************************
  Projects and data-shares

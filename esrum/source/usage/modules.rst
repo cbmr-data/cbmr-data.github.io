@@ -341,12 +341,16 @@ Esrum.
 *****************************
 
 If the software you need is not available as a module, or if the
-specific version you need is not available as a module, then you can
-request it through UCPH-IT as described below. You are also welcome to
-:ref:`p_contact` us if you need help determining the exact software
-and/or versions you need to request, or if you have other questions.
+specific version you need is not available, then you can request it
+through UCPH-IT as described below.
 
-To request software,
+Software modules managed by UCPH-IT are available to the entirety of
+UCPH, so if you need modules for software with licenses that do not
+permit this, or if you need modules tailored for your specific needs,
+then you are also welcome to :ref:`contact us <p_contact>` for
+assistance.
+
+To request software through UCPH-IT,
 
 #. Log in to the UCPH `IT Serviceportal`_.
 #. Click the ``Create Ticket`` / ``Opret Sag`` button.
