@@ -259,22 +259,36 @@ username when using the scratch-drive as part of your scripts:
  Backups
 *********
 
-Backups are available your home folder and in project folders ``/apps``,
-``/data``, and ``/people`` via special hidden ``.snapshot`` folders in
-the root of each of these folders. For example, to access the snapshots
-of the ``/data`` folder in the project ``phenomics``:
+Backups are available your home folder, in project folders (excluding
+the ``scratch`` folder), in datasets, and in your network drive folders.
+These are stored in special, hidden ``.snapshot`` folders in the root of
+each of these folders. For example,
+
+-  ``/datasets/cbmr_shared/.snapshot/``
+-  ``/projects/cbmr_shared/apps/.snapshot/``
+-  ``/projects/cbmr_shared/data/.snapshot/``
+-  ``/projects/cbmr_shared/people/.snapshot/``
+-  ``~/.snapshot``
+-  ``~/ucph/hdir/.snapshot/``
+-  ``~/ucph/ndir/SUN-CBMR-Shared-Info/.snapshot/``
+-  ``~/ucph/sdir/SUN-CBMR-Shared/.snapshot/``
+
+These folders do not appear when you list the content of the parent
+folder, even you use `ls -a`, but they can be accessed like any other
+folder:
 
 .. code-block::
 
-   $ cd /projects/phenomics/data/.snapshot
+   $ cd /projects/cbmr_shared/data/.snapshot
    $ ls
    42-Research-hourly-7D-2023-09-01_02:00
    42-Research-daily-30D-2023-09-02_02:00
    42-Research-weekly-104W-2023-09-03_02:00
+   [...]
 
-Each timestamped folder contains a full snapshot of the parent folder
-(``/home``, ``/apps``, etc.) and you can copy data from these snapshots
-should you need to restore deleted or modified files.
+Each timestamped folder contains a full snapshot of the parent folder,
+and you can copy data from these snapshots should you need to restore
+deleted or modified files.
 
 Snapshots of audited projects are only accessible for a limited time,
 and you may therefore need to contact UCPH-IT to restore deleted data

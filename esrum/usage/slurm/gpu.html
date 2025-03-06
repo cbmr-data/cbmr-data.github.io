@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Software on Esrum" href="../modules.html" /><link rel="prev" title="Advanced Slurm jobs" href="advanced.html" />
+<link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Software on Esrum" href="../modules.html" /><link rel="prev" title="Monitoring slurm jobs" href="monitoring.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
-        <title>Using the GPU / high-memory nodes - Esrum Cluster documentation</title>
+        <title>GPU / high-memory jobs - Esrum Cluster documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -173,7 +173,8 @@
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Running jobs using Slurm</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="basics.html">Basic Slurm jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Using the GPU / high-memory nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monitoring.html">Monitoring slurm jobs</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">GPU / high-memory jobs</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html">Software on Esrum</a></li>
@@ -245,15 +246,15 @@
           </label>
         </div>
         <article role="main">
-          <section id="using-the-gpu-high-memory-nodes">
-<span id="p-usage-slurm-gpu"></span><h1>Using the GPU / high-memory nodes<a class="headerlink" href="#using-the-gpu-high-memory-nodes" title="Permalink to this heading">#</a></h1>
-<p>This page describes how to schedule tasks on the dedicated GPU nodes and
-on the combined GPU / high-memory node. The cluster currently includes 1
-node with 2x A100 Nvidia GPUs and 4 TB of RAM, and 2 nodes with 2x H100
-Nvidia and 2 TB of RAM.</p>
-<p>These nodes are intended for tasks that can make use of GPUs, and for
-tasks that require more than the 2 TB of RAM available on regular
-compute nodes.</p>
+          <section id="gpu-high-memory-jobs">
+<span id="p-usage-slurm-gpu"></span><h1>GPU / high-memory jobs<a class="headerlink" href="#gpu-high-memory-jobs" title="Permalink to this heading">#</a></h1>
+<p>The cluster currently includes 1 node with 2x A100 Nvidia GPUs and 4 TB
+of RAM, and 3 nodes with 2x H100 Nvidia GPUs and 2 TB of RAM. We refer
+to these as the GPU and/or high-memory nodes, and this page describes
+how to use them.</p>
+<p>These nodes are intended for tasks that make use of GPUs, and for
+individual jobs that require more than the 2 TB of RAM available on the
+regular compute nodes.</p>
 <section id="running-jobs-on-the-gpu-high-memory-node">
 <h2>Running jobs on the GPU / high-memory node<a class="headerlink" href="#running-jobs-on-the-gpu-high-memory-node" title="Permalink to this heading">#</a></h2>
 <p>By default, jobs submitted via Slurm will only run on regular nodes,
@@ -344,7 +345,7 @@ nvidia-smi<span class="w"> </span>-L
 <p>We recommend looking at current GPU utilization before submitting your
 job, as any time saved by running on a faster (H100) GPU may be lost
 from having to wait for them to be idle. See <code class="docutils literal notranslate"><span class="pre">slurmboard</span></code> utility
-described in the <a class="reference internal" href="advanced.html#s-monitoring-slurm"><span class="std std-ref">Monitoring the cluster</span></a> section provides a simple way
+described in the <a class="reference internal" href="monitoring.html#s-monitoring-slurm"><span class="std std-ref">Monitoring the cluster</span></a> section provides a simple way
 to see GPU reservations.</p>
 </section>
 <section id="running-an-interactive-session">
@@ -372,87 +373,9 @@ without warning.</p>
 </section>
 </section>
 <section id="monitoring-gpu-utilization">
-<span id="s-monitoring-gpu-utilization"></span><h2>Monitoring GPU utilization<a class="headerlink" href="#monitoring-gpu-utilization" title="Permalink to this heading">#</a></h2>
-<p>Monitoring of GPU utilization is highly recommended when you run jobs on
-the GPU node: To make full use of the hardware you want to keep GPU
-utilization at 100% and to do so you typically want to load as much data
-into GPU memory as possible. The exact way in which you can accomplish
-this depends on the software you are running, but can often be
-accomplished by increasing the size of the batches you are processing.</p>
-<p>The way in which you are using the GPUs will affect how you can monitor
-them, depending on whether you have reserved a GPU for an interactive
-session:</p>
-<section id="monitoring-an-interactive-session">
-<h3>Monitoring an interactive session<a class="headerlink" href="#monitoring-an-interactive-session" title="Permalink to this heading">#</a></h3>
-<p>If you are running a job in an interactive session, then you can monitor
-the reserved GPU(s) directly using the <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nvidia-smi<span class="w"> </span>-l<span class="w"> </span><span class="m">5</span>
-<span class="go">Thu Apr  4 14:30:46 2024</span>
-<span class="go">+---------------------------------------------------------------------------------------+</span>
-<span class="go">| NVIDIA-SMI 545.23.08              Driver Version: 545.23.08    CUDA Version: 12.3     |</span>
-<span class="go">|-----------------------------------------+----------------------+----------------------+</span>
-<span class="go">| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |</span>
-<span class="go">| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |</span>
-<span class="go">|                                         |                      |               MIG M. |</span>
-<span class="go">|=========================================+======================+======================|</span>
-<span class="go">|   0  NVIDIA A100 80GB PCIe          On  | 00000000:27:00.0 Off |                    0 |</span>
-<span class="go">| N/A   57C    P0             307W / 300W |  52357MiB / 81920MiB |         99%  Default |</span>
-<span class="go">|                                         |                      |             Disabled |</span>
-<span class="go">+-----------------------------------------+----------------------+----------------------+</span>
-<span class="go">|   1  NVIDIA A100 80GB PCIe          On  | 00000000:A3:00.0 Off |                    0 |</span>
-<span class="go">| N/A   56C    P0             298W / 300W |  58893MiB / 81920MiB |        100%  Default |</span>
-<span class="go">|                                         |                      |             Disabled |</span>
-<span class="go">+-----------------------------------------+----------------------+----------------------+</span>
-<span class="go">+---------------------------------------------------------------------------------------+</span>
-<span class="go">| Processes:                                                                            |</span>
-<span class="go">|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |</span>
-<span class="go">|        ID   ID                                                                 Usage  |</span>
-<span class="go">|=======================================================================================|</span>
-<span class="go">|    0   N/A  N/A   2807877  C   dorado                                        52344MiB |</span>
-<span class="go">|    1   N/A  N/A   2807849  C   dorado                                        58880MiB |</span>
-<span class="go">+---------------------------------------------------------------------------------------+</span>
-</pre></div>
-</div>
-<p>This will print resource usage for the GPUs you have reserved for your
-interactive session (and only for those GPUs), and continue to print it
-every 5 seconds afterwards via the <code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">5</span></code> option. Other monitoring
-tools are available (for example <code class="docutils literal notranslate"><span class="pre">gpustat</span></code>), but are outside the scope
-of this documentation.</p>
-</section>
-<section id="monitoring-a-slurm-job">
-<h3>Monitoring a Slurm job<a class="headerlink" href="#monitoring-a-slurm-job" title="Permalink to this heading">#</a></h3>
-<p>If you have started a standard (non-interactive) job via Slurm, then you
-will not be able to directly run <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> nor will you be able to
-join the running job using <code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">-j</span></code> due to the way Slurm handles
-special resources. We have therefore set up log-files on the GPU nodes
-node that contains the output from the <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> command as shown
-above.</p>
-<p>To watch the content of this log-file, firstly determine the job ID of
-your job running on the GPU node:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>squeue<span class="w"> </span>--me<span class="w"> </span>--partition<span class="o">=</span>gpuqueue
-<span class="go"> JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
-<span class="go">570316  gpuqueue     bash   abc123  R      13:55      1 esrumgpun01fl</span>
-</pre></div>
-</div>
-<p>Then we use <code class="docutils literal notranslate"><span class="pre">srun</span></code> with the <code class="docutils literal notranslate"><span class="pre">--overlap</span></code> option to run a command
-<em>inside</em> this job, which we specify using the <code class="docutils literal notranslate"><span class="pre">--jobid</span> <span class="pre">570316</span></code> option.
-The <code class="docutils literal notranslate"><span class="pre">--gres=none</span></code> option is required, since otherwise Slurm would try
-to reserve the GPU our job already uses and eventually time out.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--overlap<span class="w"> </span>--jobid<span class="w"> </span><span class="m">570316</span><span class="w"> </span>--gres<span class="o">=</span>none<span class="w"> </span>--pty<span class="w"> </span>--<span class="w"> </span>watch<span class="w"> </span>-n<span class="w"> </span><span class="m">15</span><span class="w"> </span>-d<span class="w"> </span>cat<span class="w"> </span>/scratch/gpus/nvidia-smi.txt
-</pre></div>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Remember to replace the <code class="docutils literal notranslate"><span class="pre">570316</span></code> with the ID of <em>your</em> job!</p>
-</div>
-<p>This prints the contents of the log-file every 15 seconds (which is how
-often the files are updated) and optionally highlights the changes since
-the last <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> run. To disable the highlighting, simply remove
-the <code class="docutils literal notranslate"><span class="pre">-d</span></code> option from the command.</p>
-<p>This command does not take up additional resources on the GPU node and
-will automatically exit when your job finishes. See the
-<a class="reference internal" href="advanced.html#s-monitoring-processes-in-jobs"><span class="std std-ref">Monitoring processes in jobs</span></a> for more information.</p>
-</section>
+<h2>Monitoring GPU utilization<a class="headerlink" href="#monitoring-gpu-utilization" title="Permalink to this heading">#</a></h2>
+<p>Please see the <a class="reference internal" href="monitoring.html#s-monitoring-gpu-utilization"><span class="std std-ref">Monitoring GPU utilization</span></a> section on the
+<a class="reference internal" href="monitoring.html#p-usage-slurm-monitor"><span class="std std-ref">Monitoring slurm jobs</span></a> page.</p>
 </section>
 <section id="troubleshooting">
 <h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
@@ -477,14 +400,14 @@ will automatically exit when your job finishes. See the
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="advanced.html">
+          <a class="prev-page" href="monitoring.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Advanced Slurm jobs</div>
+                <div class="title">Monitoring slurm jobs</div>
                 
               </div>
             </a>
@@ -518,18 +441,14 @@ will automatically exit when your job finishes. See the
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Using the GPU / high-memory nodes</a><ul>
+<li><a class="reference internal" href="#">GPU / high-memory jobs</a><ul>
 <li><a class="reference internal" href="#running-jobs-on-the-gpu-high-memory-node">Running jobs on the GPU / high-memory node</a></li>
 <li><a class="reference internal" href="#reserving-gpus">Reserving GPUs</a><ul>
 <li><a class="reference internal" href="#requesting-specific-gpus">Requesting specific GPUs</a></li>
 <li><a class="reference internal" href="#running-an-interactive-session">Running an interactive session</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#monitoring-gpu-utilization">Monitoring GPU utilization</a><ul>
-<li><a class="reference internal" href="#monitoring-an-interactive-session">Monitoring an interactive session</a></li>
-<li><a class="reference internal" href="#monitoring-a-slurm-job">Monitoring a Slurm job</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#monitoring-gpu-utilization">Monitoring GPU utilization</a></li>
 <li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
 <li><a class="reference internal" href="#error-requested-node-configuration-is-not-available">Error: Requested node configuration is not available</a></li>
 </ul>

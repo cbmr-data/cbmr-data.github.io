@@ -1,17 +1,17 @@
 .. _p_usage_slurm_gpu:
 
-###################################
- Using the GPU / high-memory nodes
-###################################
+########################
+ GPU / high-memory jobs
+########################
 
-This page describes how to schedule tasks on the dedicated GPU nodes and
-on the combined GPU / high-memory node. The cluster currently includes 1
-node with 2x A100 Nvidia GPUs and 4 TB of RAM, and 2 nodes with 2x H100
-Nvidia and 2 TB of RAM.
+The cluster currently includes 1 node with 2x A100 Nvidia GPUs and 4 TB
+of RAM, and 3 nodes with 2x H100 Nvidia GPUs and 2 TB of RAM. We refer
+to these as the GPU and/or high-memory nodes, and this page describes
+how to use them.
 
-These nodes are intended for tasks that can make use of GPUs, and for
-tasks that require more than the 2 TB of RAM available on regular
-compute nodes.
+These nodes are intended for tasks that make use of GPUs, and for
+individual jobs that require more than the 2 TB of RAM available on the
+regular compute nodes.
 
 ********************************************
  Running jobs on the GPU / high-memory node
@@ -161,103 +161,12 @@ graphical interfaces.
    Interactive sessions left running on the GPU node may be terminated
    without warning.
 
-.. _s_monitoring_gpu_utilization:
-
 ****************************
  Monitoring GPU utilization
 ****************************
 
-Monitoring of GPU utilization is highly recommended when you run jobs on
-the GPU node: To make full use of the hardware you want to keep GPU
-utilization at 100% and to do so you typically want to load as much data
-into GPU memory as possible. The exact way in which you can accomplish
-this depends on the software you are running, but can often be
-accomplished by increasing the size of the batches you are processing.
-
-The way in which you are using the GPUs will affect how you can monitor
-them, depending on whether you have reserved a GPU for an interactive
-session:
-
-Monitoring an interactive session
-=================================
-
-If you are running a job in an interactive session, then you can monitor
-the reserved GPU(s) directly using the ``nvidia-smi`` command:
-
-.. code-block::
-
-   $ nvidia-smi -l 5
-   Thu Apr  4 14:30:46 2024
-   +---------------------------------------------------------------------------------------+
-   | NVIDIA-SMI 545.23.08              Driver Version: 545.23.08    CUDA Version: 12.3     |
-   |-----------------------------------------+----------------------+----------------------+
-   | GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
-   | Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
-   |                                         |                      |               MIG M. |
-   |=========================================+======================+======================|
-   |   0  NVIDIA A100 80GB PCIe          On  | 00000000:27:00.0 Off |                    0 |
-   | N/A   57C    P0             307W / 300W |  52357MiB / 81920MiB |         99%  Default |
-   |                                         |                      |             Disabled |
-   +-----------------------------------------+----------------------+----------------------+
-   |   1  NVIDIA A100 80GB PCIe          On  | 00000000:A3:00.0 Off |                    0 |
-   | N/A   56C    P0             298W / 300W |  58893MiB / 81920MiB |        100%  Default |
-   |                                         |                      |             Disabled |
-   +-----------------------------------------+----------------------+----------------------+
-   +---------------------------------------------------------------------------------------+
-   | Processes:                                                                            |
-   |  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
-   |        ID   ID                                                                 Usage  |
-   |=======================================================================================|
-   |    0   N/A  N/A   2807877  C   dorado                                        52344MiB |
-   |    1   N/A  N/A   2807849  C   dorado                                        58880MiB |
-   +---------------------------------------------------------------------------------------+
-
-This will print resource usage for the GPUs you have reserved for your
-interactive session (and only for those GPUs), and continue to print it
-every 5 seconds afterwards via the ``-l 5`` option. Other monitoring
-tools are available (for example ``gpustat``), but are outside the scope
-of this documentation.
-
-Monitoring a Slurm job
-======================
-
-If you have started a standard (non-interactive) job via Slurm, then you
-will not be able to directly run ``nvidia-smi`` nor will you be able to
-join the running job using ``srun -j`` due to the way Slurm handles
-special resources. We have therefore set up log-files on the GPU nodes
-node that contains the output from the ``nvidia-smi`` command as shown
-above.
-
-To watch the content of this log-file, firstly determine the job ID of
-your job running on the GPU node:
-
-.. code-block::
-
-   $ squeue --me --partition=gpuqueue
-    JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-   570316  gpuqueue     bash   abc123  R      13:55      1 esrumgpun01fl
-
-Then we use ``srun`` with the ``--overlap`` option to run a command
-*inside* this job, which we specify using the ``--jobid 570316`` option.
-The ``--gres=none`` option is required, since otherwise Slurm would try
-to reserve the GPU our job already uses and eventually time out.
-
-.. code-block::
-
-   $ srun --overlap --jobid 570316 --gres=none --pty -- watch -n 15 -d cat /scratch/gpus/nvidia-smi.txt
-
-.. warning::
-
-   Remember to replace the ``570316`` with the ID of *your* job!
-
-This prints the contents of the log-file every 15 seconds (which is how
-often the files are updated) and optionally highlights the changes since
-the last ``nvidia-smi`` run. To disable the highlighting, simply remove
-the ``-d`` option from the command.
-
-This command does not take up additional resources on the GPU node and
-will automatically exit when your job finishes. See the
-:ref:`s_monitoring_processes_in_jobs` for more information.
+Please see the :ref:`s_monitoring_gpu_utilization` section on the
+:ref:`p_usage_slurm_monitor` page.
 
 *****************
  Troubleshooting

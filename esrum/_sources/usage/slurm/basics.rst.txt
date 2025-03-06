@@ -107,16 +107,27 @@ the script as an argument:
    $ sbatch my_script.sh
    Submitted batch job 8503
 
-Notice that we do not need to set the current working directory in our
-script (unlike PBS). As noted above, this defaults to the directory in
-which you queued the script. The number reported by sbatch is the job ID
-of your job (``JOBID``), which you will need should you want to cancel,
-pause, or otherwise manipulate your job (see below).
+This will queue your script to be run using 1 CPU and about 16 GB of
+RAM. See the :ref:`reserving_resources` section below, for how to
+increase the amount of resources available to your script. By default,
+there is no limit on the maximum running time ("wall time") for jobs on
+Esrum.
+
+The number reported by sbatch is the job ID of your job (``JOBID``),
+which you will need should you want to cancel, pause, or otherwise
+manipulate your job (see below).
+
+.. note::
+
+   We do not need to set the current working directory in our script
+   (unlike PBS): ``sbatch`` uses the current directory as the working
+   directory, as if we had run the script directly using `bash
+   my_script.sh`.
 
 Once the job has started running (or has completed running), you will
 also find a file named ``slurm-${JOBID}.out`` in the current folder,
-where ``${JOBID}`` is the ID reported by ``sbatch`` (``8503`` in this
-example):
+where ``${JOBID}`` is the ID reported by ``sbatch``, ``8503`` in this
+example:
 
 .. code-block::
 
@@ -194,6 +205,9 @@ listed using ``sacct``:
    ------------ ---------- ---------- ---------- ---------- ---------- --------
    8503         my_script+ standardq+                     1  COMPLETED      0:0
    8503.batch        batch                                1  COMPLETED      0:0
+
+For more ways to monitor your jobs and the processes running in your
+jobs, see the :ref:`p_usage_slurm_monitor` page.
 
 .. _s_cancelling_jobs:
 
@@ -398,6 +412,11 @@ We therefore recommended that you
    and only increasing the number after it has been determined that the
    software benefits from the additional CPUs.
 
+-  See if you can split your job into multiple (sub-)jobs that can run
+   in parallel via Slurm, for example by submitting one job per
+   chromosome or one job per sample. See the :ref:`s_job_arrays` section
+   for more information about batching jobs.
+
 In addition, we ask that you consider the impact of your job on other
 users: While it isn't a problem if you reserve a lot of resources for a
 short amount of time, it will cause problems for other users if you were
@@ -405,85 +424,9 @@ to, for example, reserve all available resources for several days.
 
 When starting large jobs, it is also worth considering how busy the
 cluster is; while the queuing system should down-prioritize people who
-have been running a lot of jobs recently, nobody enjoys waiting days or
-hours for a short job to be stated. The :ref:`s_monitoring_slurm`
-describes a simple way in which you can monitor overall slurm activity.
-
-Monitoring resources used by jobs
-=================================
-
-Once you have actually started running a job, you have several options
-for monitoring resource usage:
-
-The ``/usr/bin/time -f "CPU = %P, MEM = %MKB"`` command can be used to
-estimate the efficiency from using multiple threads and to show how much
-memory a program used:
-
-.. code-block::
-
-   $ /usr/bin/time -f "CPU = %P, MEM = %M" my-command --threads 1 ...
-   CPU = 99%, MEM = 840563KB
-   $ /usr/bin/time -f "CPU = %P, MEM = %M" my-command --threads 4 ...
-   CPU = 345%, MEM = 892341KB
-   $ /usr/bin/time -f "CPU = %P, MEM = %M" my-command --threads 8 ...
-   CPU = 605%, MEM = 936324KB
-
-In this example increasing the number of threads/CPUs to 4 did not
-result in a 4x increase in CPU usage, but only an 3.5x increase with 4
-CPUs and only a 6x increase with 8 CPUs. Here it would be more efficient
-to run to tasks with 4 CPUs rather than one task with 8 CPUs.
-
-The ``sacct`` command may be used to review the average CPU usage, the
-peak memory usage, disk I/O, and more for completed jobs. This makes it
-easier to verify that you are not needlessly reserving resources. A
-helper script is provided that summarizes some of this information in an
-easily readable form:
-
-.. code-block::
-
-   $ source /projects/cbmr_shared/apps/modules/activate.sh
-   $ module load sacct-usage
-   $ sacct-usage
-         Age  User    Job   State         Elapsed  CPUs  CPUsWasted  ExtraMem  ExtraMemWasted  CPUHoursWasted
-   13:32:04s  abc123  1     FAILED     252:04:52s     8         6.9     131.4           131.4         4012.14
-   10:54:32s  abc123  2[1]  COMPLETED   02:49:25s    32        15.7       0.0             0.0           44.38
-   01:48:43s  abc123  3     COMPLETED   01:00:53s    24         2.4       0.0             0.0            2.43
-
-The important information is found in the ``CPUsWasted`` column and the
-``ExtraMemWasted`` column, which show the number CPUs that went unused
-on average the memory that was requested that went unused. Note that
-``ExtraMem`` only counts memory requested *in addition* to the default
-allocation of ~16 GB of RAM per CPU. That is because any additional
-reserved memory results in CPUs going unused *unless* a user explicitly
-asks for less RAM than the default ~16 GB per CPU.
-
-The final column indicates that number of CPU hours your job wasted,
-calculated as the length of time your job ran multiplied by the number
-of reserved CPUs wasted and the number of CPUs that would have been able
-to get the default 16 GB of RAM had ``ExtraMemWasted`` been zero. Aim
-for your jobs to resemble the third job, not the second job and
-especially not the first job in the example!
-
-.. warning::
-
-   The ``Wasted`` statistics are based on snapshots of resource usage
-   produced by Slurm and are therefore not 100% accurate. Notably, the
-   memory usage statistics are based on maximum memory usage of
-   individual processes, rather than the maximum cumulative memory
-   usage, and may therefore greatly overestimate wasted memory if you
-   are running multiple simultaneous processes in a pipeline.
-
-When reserving jobs with additional resources it can also be useful to
-monitor CPU/memory usage in real time. This can help diagnose poor
-resource usage much faster than waiting for the program to finish
-running. See the :ref:`s_monitoring_processes_in_jobs` section for
-information about how to do so.
-
-Because of this it is often more efficient to split your job into
-multiple sub-jobs (for example one job per chromosome) rather than
-increasing the number of threads used for the individual jobs. See the
-:ref:`p_usage_slurm_advanced` page for more information about batching
-jobs.
+have been running a lot of jobs recently, nobody enjoys waiting hours or
+days for a short job to be stated. See the :ref:`s_monitoring_slurm`
+section for how to monitor the overall activity of the cluster.
 
 .. _s_common_options:
 

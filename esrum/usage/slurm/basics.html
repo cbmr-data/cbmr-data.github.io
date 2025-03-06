@@ -173,7 +173,8 @@
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Running jobs using Slurm</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Basic Slurm jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gpu.html">Using the GPU / high-memory nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monitoring.html">Monitoring slurm jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html">GPU / high-memory jobs</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html">Software on Esrum</a></li>
@@ -331,15 +332,25 @@ the script as an argument:</p>
 <span class="go">Submitted batch job 8503</span>
 </pre></div>
 </div>
-<p>Notice that we do not need to set the current working directory in our
-script (unlike PBS). As noted above, this defaults to the directory in
-which you queued the script. The number reported by sbatch is the job ID
-of your job (<code class="docutils literal notranslate"><span class="pre">JOBID</span></code>), which you will need should you want to cancel,
-pause, or otherwise manipulate your job (see below).</p>
+<p>This will queue your script to be run using 1 CPU and about 16 GB of
+RAM. See the <a class="reference internal" href="#reserving-resources"><span class="std std-ref">Reserving resources</span></a> section below, for how to
+increase the amount of resources available to your script. By default,
+there is no limit on the maximum running time (&quot;wall time&quot;) for jobs on
+Esrum.</p>
+<p>The number reported by sbatch is the job ID of your job (<code class="docutils literal notranslate"><span class="pre">JOBID</span></code>),
+which you will need should you want to cancel, pause, or otherwise
+manipulate your job (see below).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We do not need to set the current working directory in our script
+(unlike PBS): <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> uses the current directory as the working
+directory, as if we had run the script directly using <cite>bash
+my_script.sh</cite>.</p>
+</div>
 <p>Once the job has started running (or has completed running), you will
 also find a file named <code class="docutils literal notranslate"><span class="pre">slurm-${JOBID}.out</span></code> in the current folder,
-where <code class="docutils literal notranslate"><span class="pre">${JOBID}</span></code> is the ID reported by <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> (<code class="docutils literal notranslate"><span class="pre">8503</span></code> in this
-example):</p>
+where <code class="docutils literal notranslate"><span class="pre">${JOBID}</span></code> is the ID reported by <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>, <code class="docutils literal notranslate"><span class="pre">8503</span></code> in this
+example:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls
 <span class="go">chr1.fasta  chr1.fasta.gz  my_script.sh  slurm-8503.out</span>
 </pre></div>
@@ -400,6 +411,8 @@ listed using <code class="docutils literal notranslate"><span class="pre">sacct<
 <span class="go">8503.batch        batch                                1  COMPLETED      0:0</span>
 </pre></div>
 </div>
+<p>For more ways to monitor your jobs and the processes running in your
+jobs, see the <a class="reference internal" href="monitoring.html#p-usage-slurm-monitor"><span class="std std-ref">Monitoring slurm jobs</span></a> page.</p>
 </section>
 <section id="cancelling-jobs">
 <span id="s-cancelling-jobs"></span><h2>Cancelling jobs<a class="headerlink" href="#cancelling-jobs" title="Permalink to this heading">#</a></h2>
@@ -416,7 +429,7 @@ the ID of the job you want to cancel:</p>
 </pre></div>
 </div>
 <p>When running batch jobs you can either cancel the entire job (array, see
-below) or individual sub-tasks. See the <a class="reference internal" href="advanced.html#s-job-arrays"><span class="std std-ref">Monitoring your jobs</span></a> section.</p>
+below) or individual sub-tasks. See the <a class="reference internal" href="advanced.html#s-job-arrays"><span class="std std-ref">Running multiple tasks using arrays</span></a> section.</p>
 </section>
 <section id="setting-options">
 <h2>Setting options<a class="headerlink" href="#setting-options" title="Permalink to this heading">#</a></h2>
@@ -526,7 +539,7 @@ has 4 TB of RAM available, of which 3920 GB can be reserved by Slurm,
 and may be used for jobs that have very high memory requirements.
 However, since we only have one GPU node we ask that you use the regular
 nodes unless your jobs actually require that much RAM. See the
-<a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory nodes</span></a> section for how to use the GPU node with or
+<a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">GPU / high-memory jobs</span></a> section for how to use the GPU node with or
 without reserving a GPU.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -536,7 +549,7 @@ these options unless your tools are specifically designed for this!
 Otherwise, each instance will try to write to the same output file(s)
 and will produce results that are very likely corrupt.</p>
 <p>If you need to run the same command on a set of files/samples, then
-see the <a class="reference internal" href="advanced.html#s-job-arrays"><span class="std std-ref">Monitoring your jobs</span></a> section.</p>
+see the <a class="reference internal" href="advanced.html#s-job-arrays"><span class="std std-ref">Running multiple tasks using arrays</span></a> section.</p>
 </div>
 <section id="best-practice-for-reserving-resources">
 <span id="s-best-practice-resources"></span><h3>Best practice for reserving resources<a class="headerlink" href="#best-practice-for-reserving-resources" title="Permalink to this heading">#</a></h3>
@@ -557,6 +570,10 @@ starting a lot of jobs.</p></li>
 doing so. You can for example start with 2, 4, or 8 CPUs per task,
 and only increasing the number after it has been determined that the
 software benefits from the additional CPUs.</p></li>
+<li><p>See if you can split your job into multiple (sub-)jobs that can run
+in parallel via Slurm, for example by submitting one job per
+chromosome or one job per sample. See the <a class="reference internal" href="advanced.html#s-job-arrays"><span class="std std-ref">Running multiple tasks using arrays</span></a> section
+for more information about batching jobs.</p></li>
 </ul>
 <p>In addition, we ask that you consider the impact of your job on other
 users: While it isn't a problem if you reserve a lot of resources for a
@@ -564,75 +581,9 @@ short amount of time, it will cause problems for other users if you were
 to, for example, reserve all available resources for several days.</p>
 <p>When starting large jobs, it is also worth considering how busy the
 cluster is; while the queuing system should down-prioritize people who
-have been running a lot of jobs recently, nobody enjoys waiting days or
-hours for a short job to be stated. The <a class="reference internal" href="advanced.html#s-monitoring-slurm"><span class="std std-ref">Monitoring the cluster</span></a>
-describes a simple way in which you can monitor overall slurm activity.</p>
-</section>
-<section id="monitoring-resources-used-by-jobs">
-<h3>Monitoring resources used by jobs<a class="headerlink" href="#monitoring-resources-used-by-jobs" title="Permalink to this heading">#</a></h3>
-<p>Once you have actually started running a job, you have several options
-for monitoring resource usage:</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">/usr/bin/time</span> <span class="pre">-f</span> <span class="pre">&quot;CPU</span> <span class="pre">=</span> <span class="pre">%P,</span> <span class="pre">MEM</span> <span class="pre">=</span> <span class="pre">%MKB&quot;</span></code> command can be used to
-estimate the efficiency from using multiple threads and to show how much
-memory a program used:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>/usr/bin/time<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;CPU = %P, MEM = %M&quot;</span><span class="w"> </span>my-command<span class="w"> </span>--threads<span class="w"> </span><span class="m">1</span><span class="w"> </span>...
-<span class="go">CPU = 99%, MEM = 840563KB</span>
-<span class="gp">$ </span>/usr/bin/time<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;CPU = %P, MEM = %M&quot;</span><span class="w"> </span>my-command<span class="w"> </span>--threads<span class="w"> </span><span class="m">4</span><span class="w"> </span>...
-<span class="go">CPU = 345%, MEM = 892341KB</span>
-<span class="gp">$ </span>/usr/bin/time<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;CPU = %P, MEM = %M&quot;</span><span class="w"> </span>my-command<span class="w"> </span>--threads<span class="w"> </span><span class="m">8</span><span class="w"> </span>...
-<span class="go">CPU = 605%, MEM = 936324KB</span>
-</pre></div>
-</div>
-<p>In this example increasing the number of threads/CPUs to 4 did not
-result in a 4x increase in CPU usage, but only an 3.5x increase with 4
-CPUs and only a 6x increase with 8 CPUs. Here it would be more efficient
-to run to tasks with 4 CPUs rather than one task with 8 CPUs.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">sacct</span></code> command may be used to review the average CPU usage, the
-peak memory usage, disk I/O, and more for completed jobs. This makes it
-easier to verify that you are not needlessly reserving resources. A
-helper script is provided that summarizes some of this information in an
-easily readable form:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">source</span><span class="w"> </span>/projects/cbmr_shared/apps/modules/activate.sh
-<span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>sacct-usage
-<span class="gp">$ </span>sacct-usage
-<span class="go">      Age  User    Job   State         Elapsed  CPUs  CPUsWasted  ExtraMem  ExtraMemWasted  CPUHoursWasted</span>
-<span class="go">13:32:04s  abc123  1     FAILED     252:04:52s     8         6.9     131.4           131.4         4012.14</span>
-<span class="go">10:54:32s  abc123  2[1]  COMPLETED   02:49:25s    32        15.7       0.0             0.0           44.38</span>
-<span class="go">01:48:43s  abc123  3     COMPLETED   01:00:53s    24         2.4       0.0             0.0            2.43</span>
-</pre></div>
-</div>
-<p>The important information is found in the <code class="docutils literal notranslate"><span class="pre">CPUsWasted</span></code> column and the
-<code class="docutils literal notranslate"><span class="pre">ExtraMemWasted</span></code> column, which show the number CPUs that went unused
-on average the memory that was requested that went unused. Note that
-<code class="docutils literal notranslate"><span class="pre">ExtraMem</span></code> only counts memory requested <em>in addition</em> to the default
-allocation of ~16 GB of RAM per CPU. That is because any additional
-reserved memory results in CPUs going unused <em>unless</em> a user explicitly
-asks for less RAM than the default ~16 GB per CPU.</p>
-<p>The final column indicates that number of CPU hours your job wasted,
-calculated as the length of time your job ran multiplied by the number
-of reserved CPUs wasted and the number of CPUs that would have been able
-to get the default 16 GB of RAM had <code class="docutils literal notranslate"><span class="pre">ExtraMemWasted</span></code> been zero. Aim
-for your jobs to resemble the third job, not the second job and
-especially not the first job in the example!</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">Wasted</span></code> statistics are based on snapshots of resource usage
-produced by Slurm and are therefore not 100% accurate. Notably, the
-memory usage statistics are based on maximum memory usage of
-individual processes, rather than the maximum cumulative memory
-usage, and may therefore greatly overestimate wasted memory if you
-are running multiple simultaneous processes in a pipeline.</p>
-</div>
-<p>When reserving jobs with additional resources it can also be useful to
-monitor CPU/memory usage in real time. This can help diagnose poor
-resource usage much faster than waiting for the program to finish
-running. See the <a class="reference internal" href="advanced.html#s-monitoring-processes-in-jobs"><span class="std std-ref">Monitoring processes in jobs</span></a> section for
-information about how to do so.</p>
-<p>Because of this it is often more efficient to split your job into
-multiple sub-jobs (for example one job per chromosome) rather than
-increasing the number of threads used for the individual jobs. See the
-<a class="reference internal" href="advanced.html#p-usage-slurm-advanced"><span class="std std-ref">Advanced Slurm jobs</span></a> page for more information about batching
-jobs.</p>
+have been running a lot of jobs recently, nobody enjoys waiting hours or
+days for a short job to be stated. See the <a class="reference internal" href="monitoring.html#s-monitoring-slurm"><span class="std std-ref">Monitoring the cluster</span></a>
+section for how to monitor the overall activity of the cluster.</p>
 </section>
 <section id="common-options">
 <span id="s-common-options"></span><h3>Common options<a class="headerlink" href="#common-options" title="Permalink to this heading">#</a></h3>
@@ -699,7 +650,7 @@ default 1 CPU and 15 GB of RAM:</p>
 </pre></div>
 </div>
 <p>It is also possible to start an interactive session on the GPU /
-high-memory nodes. See the <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory nodes</span></a> page for more
+high-memory nodes. See the <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">GPU / high-memory jobs</span></a> page for more
 information. See the <a class="reference internal" href="advanced.html#p-usage-slurm-advanced"><span class="std std-ref">Advanced Slurm jobs</span></a> page for more
 information about the <code class="docutils literal notranslate"><span class="pre">srun</span></code> command.</p>
 <p>Once you are done, be sure to exit the interactive shell by using the
@@ -800,7 +751,7 @@ Slurm will report that the request cannot be satisfied:</p>
 <p>To solve this, simply reduce the number of CPUs and/or the amount of RAM
 requested to fit within the limits described above. If your task does
 require more than 1993 GB of RAM, then you need to run your task on the
-GPU queue as described on the <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory nodes</span></a> page.</p>
+GPU queue as described on the <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">GPU / high-memory jobs</span></a> page.</p>
 <p>Additionally, you may receive this message if you request GPUs without
 specifying the correct queue or if you request too many GPUs:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>not<span class="w"> </span>specified
@@ -814,7 +765,7 @@ specifying the correct queue or if you request too many GPUs:</p>
 </div>
 <p>To solve this error, simply avoid requesting more than 2 GPUs, and
 remember to include the <code class="docutils literal notranslate"><span class="pre">--partition</span></code> option. See also the
-<a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory nodes</span></a> section.</p>
+<a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">GPU / high-memory jobs</span></a> section.</p>
 </section>
 <section id="x11-forwarding-is-working-in-mobaxterm">
 <h3>X11 forwarding is working in MobaXterm<a class="headerlink" href="#x11-forwarding-is-working-in-mobaxterm" title="Permalink to this heading">#</a></h3>
@@ -905,7 +856,6 @@ that X11 support is configured as shown:</p>
 <li><a class="reference internal" href="#setting-options">Setting options</a></li>
 <li><a class="reference internal" href="#reserving-resources">Reserving resources</a><ul>
 <li><a class="reference internal" href="#best-practice-for-reserving-resources">Best practice for reserving resources</a></li>
-<li><a class="reference internal" href="#monitoring-resources-used-by-jobs">Monitoring resources used by jobs</a></li>
 <li><a class="reference internal" href="#common-options">Common options</a></li>
 </ul>
 </li>

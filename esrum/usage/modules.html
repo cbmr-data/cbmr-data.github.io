@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="search" title="Search" href="../search.html" /><link rel="next" title="Transferring data" href="transfers.html" /><link rel="prev" title="Using the GPU / high-memory nodes" href="slurm/gpu.html" />
+<link rel="search" title="Search" href="../search.html" /><link rel="next" title="Transferring data" href="transfers.html" /><link rel="prev" title="GPU / high-memory jobs" href="slurm/gpu.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
         <title>Software on Esrum - Esrum Cluster documentation</title>
@@ -173,7 +173,8 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="slurm/basics.html">Basic Slurm jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="slurm/advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="slurm/gpu.html">Using the GPU / high-memory nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slurm/monitoring.html">Monitoring slurm jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slurm/gpu.html">GPU / high-memory jobs</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Software on Esrum</a></li>
@@ -494,17 +495,26 @@ of the file in your current shell. This has the same effect as running
 <section id="shared-cbmr-modules">
 <span id="s-shared-modules"></span><h2>Shared CBMR modules<a class="headerlink" href="#shared-cbmr-modules" title="Permalink to this heading">#</a></h2>
 <p>The Data Analytics team manages a small collection of modules for custom
-tools in the <cite>cbmr_shared</cite> project folder. If you have not already been
-given access to this project, then please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">contact us</span></a>
-and we will grant you access to the project.</p>
-<p>To make use of these modules, run the following command in your
-terminal:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>use<span class="w"> </span>--prepend<span class="w"> </span>/projects/cbmr_shared/apps/modules/modulefiles/
+tools in the <code class="docutils literal notranslate"><span class="pre">cbmr_shared</span></code> project, located under
+<code class="docutils literal notranslate"><span class="pre">/projects/cbmr_shared/apps/modules</span></code>. You should have access to these
+modules by default. If that is not the case, then please contact
+<a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">contact us</span></a>.</p>
+<p>These modules should be listed first when you use the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code>
+command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">---------------- /projects/cbmr_shared/apps/modules/modulefiles ----------------</span>
+<span class="go">add_dbsnp_ids/20231206_1  msconvert/20250218_1    sacct-usage/20240603_1</span>
+<span class="go">annovep/20230808          pgs-calc/1.5.4          slurmboard/0.0.1</span>
+<span class="go">[...]</span>
+
+<span class="go">---------------------------- /opt/software/modules -----------------------------</span>
+<span class="go">ABC/1.0.0                         macs/3.0.0                       zlib/1.2.11</span>
+<span class="go">adapterremoval/2.3.3              mageck/0.5.9.4                   zlib/1.2.13</span>
+<span class="go">[...]</span>
 </pre></div>
 </div>
-<p>A small helper script is also available to run this command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">source</span><span class="w"> </span>/projects/cbmr_shared/apps/modules/activate.sh
-<span class="go">Using modules in &#39;/projects/cbmr_shared/apps/modules/modulefiles/&#39;</span>
+<p>Should the modules not be listed, then you can manually register them
+using the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">use</span></code> command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>use<span class="w"> </span>--prepend<span class="w"> </span>/projects/cbmr_shared/apps/modules/modulefiles/
 </pre></div>
 </div>
 <p>You can add the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">use</span></code> command to the end of your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code>
@@ -514,11 +524,14 @@ Esrum.</p>
 <section id="requesting-software-modules">
 <span id="s-requesting-missing-modules"></span><h2>Requesting software modules<a class="headerlink" href="#requesting-software-modules" title="Permalink to this heading">#</a></h2>
 <p>If the software you need is not available as a module, or if the
-specific version you need is not available as a module, then you can
-request it through UCPH-IT as described below. You are also welcome to
-<a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact us</span></a> us if you need help determining the exact software
-and/or versions you need to request, or if you have other questions.</p>
-<p>To request software,</p>
+specific version you need is not available, then you can request it
+through UCPH-IT as described below.</p>
+<p>Software modules managed by UCPH-IT are available to the entirety of
+UCPH, so if you need modules for software with licenses that do not
+permit this, or if you need modules tailored for your specific needs,
+then you are also welcome to <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">contact us</span></a> for
+assistance.</p>
+<p>To request software through UCPH-IT,</p>
 <ol class="arabic simple">
 <li><p>Log in to the UCPH <a class="reference external" href="https://serviceportal.ku.dk/">IT Serviceportal</a>.</p></li>
 <li><p>Click the <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Ticket</span></code> / <code class="docutils literal notranslate"><span class="pre">Opret</span> <span class="pre">Sag</span></code> button.</p></li>
@@ -578,7 +591,7 @@ UCPH-IT.</p>
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Using the GPU / high-memory nodes</div>
+                <div class="title">GPU / high-memory jobs</div>
                 
               </div>
             </a>

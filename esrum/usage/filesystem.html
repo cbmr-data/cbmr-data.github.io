@@ -173,7 +173,8 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="slurm/basics.html">Basic Slurm jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="slurm/advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="slurm/gpu.html">Using the GPU / high-memory nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slurm/monitoring.html">Monitoring slurm jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slurm/gpu.html">GPU / high-memory jobs</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">Software on Esrum</a></li>
@@ -458,20 +459,34 @@ scratch-drive <em>will</em> be deleted.</p>
 </section>
 <section id="backups">
 <h2>Backups<a class="headerlink" href="#backups" title="Permalink to this heading">#</a></h2>
-<p>Backups are available your home folder and in project folders <code class="docutils literal notranslate"><span class="pre">/apps</span></code>,
-<code class="docutils literal notranslate"><span class="pre">/data</span></code>, and <code class="docutils literal notranslate"><span class="pre">/people</span></code> via special hidden <code class="docutils literal notranslate"><span class="pre">.snapshot</span></code> folders in
-the root of each of these folders. For example, to access the snapshots
-of the <code class="docutils literal notranslate"><span class="pre">/data</span></code> folder in the project <code class="docutils literal notranslate"><span class="pre">phenomics</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/projects/phenomics/data/.snapshot
+<p>Backups are available your home folder, in project folders (excluding
+the <code class="docutils literal notranslate"><span class="pre">scratch</span></code> folder), in datasets, and in your network drive folders.
+These are stored in special, hidden <code class="docutils literal notranslate"><span class="pre">.snapshot</span></code> folders in the root of
+each of these folders. For example,</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/datasets/cbmr_shared/.snapshot/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/projects/cbmr_shared/apps/.snapshot/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/projects/cbmr_shared/data/.snapshot/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/projects/cbmr_shared/people/.snapshot/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~/.snapshot</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~/ucph/hdir/.snapshot/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~/ucph/ndir/SUN-CBMR-Shared-Info/.snapshot/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~/ucph/sdir/SUN-CBMR-Shared/.snapshot/</span></code></p></li>
+</ul>
+<p>These folders do not appear when you list the content of the parent
+folder, even you use <cite>ls -a</cite>, but they can be accessed like any other
+folder:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/projects/cbmr_shared/data/.snapshot
 <span class="gp">$ </span>ls
 <span class="go">42-Research-hourly-7D-2023-09-01_02:00</span>
 <span class="go">42-Research-daily-30D-2023-09-02_02:00</span>
 <span class="go">42-Research-weekly-104W-2023-09-03_02:00</span>
+<span class="go">[...]</span>
 </pre></div>
 </div>
-<p>Each timestamped folder contains a full snapshot of the parent folder
-(<code class="docutils literal notranslate"><span class="pre">/home</span></code>, <code class="docutils literal notranslate"><span class="pre">/apps</span></code>, etc.) and you can copy data from these snapshots
-should you need to restore deleted or modified files.</p>
+<p>Each timestamped folder contains a full snapshot of the parent folder,
+and you can copy data from these snapshots should you need to restore
+deleted or modified files.</p>
 <p>Snapshots of audited projects are only accessible for a limited time,
 and you may therefore need to contact UCPH-IT to restore deleted data
 for such projects.</p>

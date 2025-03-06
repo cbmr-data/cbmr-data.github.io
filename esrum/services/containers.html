@@ -173,7 +173,8 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../usage/slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../usage/slurm/basics.html">Basic Slurm jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../usage/slurm/advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/gpu.html">Using the GPU / high-memory nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/monitoring.html">Monitoring slurm jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/gpu.html">GPU / high-memory jobs</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/modules.html">Software on Esrum</a></li>
@@ -315,7 +316,7 @@ a single file:</p>
 </pre></div>
 </div>
 <p>Once the image has been exported, you can transfer it to Esrum using
-<code class="docutils literal notranslate"><span class="pre">scp</span></code> or another suck method:</p>
+<code class="docutils literal notranslate"><span class="pre">scp</span></code> or another such method:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>scp<span class="w"> </span>~/my_image_v1.2.3.tar<span class="w"> </span>abc1232@esrumhead01fl.unicph.domain:/projects/my_project/scratch/
 </pre></div>
 </div>
@@ -329,11 +330,11 @@ singularity:</p>
 </div>
 <p>The singularity image can then be run using the <code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">run</span></code>
 command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>singularity<span class="w"> </span>run<span class="w"> </span>--bind<span class="w"> </span>/projects,/datasets,/scratch<span class="w"> </span>my_image_v1.2.3.sif
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>singularity<span class="w"> </span>run<span class="w"> </span>--bind<span class="w"> </span>/maps,/projects,/datasets,/scratch<span class="w"> </span>my_image_v1.2.3.sif
 </pre></div>
 </div>
 <p>Singularity will make your home folder available by default, but the
-<code class="docutils literal notranslate"><span class="pre">--bind</span></code> option is required to make the <code class="docutils literal notranslate"><span class="pre">/projects</span></code>, the
+<code class="docutils literal notranslate"><span class="pre">--bind</span></code> option is required to make the <code class="docutils literal notranslate"><span class="pre">/maps</span></code>, <code class="docutils literal notranslate"><span class="pre">/projects</span></code>, the
 <code class="docutils literal notranslate"><span class="pre">/datasets</span></code>, and the <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> folder accessible to the software
 running in the container.</p>
 </section>

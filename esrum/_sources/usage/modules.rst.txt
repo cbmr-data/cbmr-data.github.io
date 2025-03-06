@@ -303,23 +303,32 @@ Simply running the script with ``bash modules.sh`` will not work.
 *********************
 
 The Data Analytics team manages a small collection of modules for custom
-tools in the `cbmr_shared` project folder. If you have not already been
-given access to this project, then please :ref:`contact us <p_contact>`
-and we will grant you access to the project.
+tools in the ``cbmr_shared`` project, located under
+``/projects/cbmr_shared/apps/modules``. You should have access to these
+modules by default. If that is not the case, then please contact
+:ref:`contact us <p_contact>`.
 
-To make use of these modules, run the following command in your
-terminal:
+These modules should be listed first when you use the ``module avail``
+command:
+
+.. code-block::
+
+   ---------------- /projects/cbmr_shared/apps/modules/modulefiles ----------------
+   add_dbsnp_ids/20231206_1  msconvert/20250218_1    sacct-usage/20240603_1
+   annovep/20230808          pgs-calc/1.5.4          slurmboard/0.0.1
+   [...]
+
+   ---------------------------- /opt/software/modules -----------------------------
+   ABC/1.0.0                         macs/3.0.0                       zlib/1.2.11
+   adapterremoval/2.3.3              mageck/0.5.9.4                   zlib/1.2.13
+   [...]
+
+Should the modules not be listed, then you can manually register them
+using the ``module use`` command:
 
 .. code-block::
 
    $ module use --prepend /projects/cbmr_shared/apps/modules/modulefiles/
-
-A small helper script is also available to run this command:
-
-.. code-block::
-
-   $ source /projects/cbmr_shared/apps/modules/activate.sh
-   Using modules in '/projects/cbmr_shared/apps/modules/modulefiles/'
 
 You can add the ``module use`` command to the end of your ``~/.bashrc``
 file to make the shared modules available every time you connect to
@@ -332,12 +341,16 @@ Esrum.
 *****************************
 
 If the software you need is not available as a module, or if the
-specific version you need is not available as a module, then you can
-request it through UCPH-IT as described below. You are also welcome to
-:ref:`p_contact` us if you need help determining the exact software
-and/or versions you need to request, or if you have other questions.
+specific version you need is not available, then you can request it
+through UCPH-IT as described below.
 
-To request software,
+Software modules managed by UCPH-IT are available to the entirety of
+UCPH, so if you need modules for software with licenses that do not
+permit this, or if you need modules tailored for your specific needs,
+then you are also welcome to :ref:`contact us <p_contact>` for
+assistance.
+
+To request software through UCPH-IT,
 
 #. Log in to the UCPH `IT Serviceportal`_.
 #. Click the ``Create Ticket`` / ``Opret Sag`` button.

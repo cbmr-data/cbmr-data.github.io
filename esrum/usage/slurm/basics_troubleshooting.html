@@ -173,7 +173,8 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="basics.html">Basic Slurm jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gpu.html">Using the GPU / high-memory nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monitoring.html">Monitoring slurm jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html">GPU / high-memory jobs</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html">Software on Esrum</a></li>
@@ -264,7 +265,7 @@ Slurm will report that the request cannot be satisfied:</p>
 <p>To solve this, simply reduce the number of CPUs and/or the amount of RAM
 requested to fit within the limits described above. If your task does
 require more than 1993 GB of RAM, then you need to run your task on the
-GPU queue as described on the <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory nodes</span></a> page.</p>
+GPU queue as described on the <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">GPU / high-memory jobs</span></a> page.</p>
 <p>Additionally, you may receive this message if you request GPUs without
 specifying the correct queue or if you request too many GPUs:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>not<span class="w"> </span>specified
@@ -278,7 +279,7 @@ specifying the correct queue or if you request too many GPUs:</p>
 </div>
 <p>To solve this error, simply avoid requesting more than 2 GPUs, and
 remember to include the <code class="docutils literal notranslate"><span class="pre">--partition</span></code> option. See also the
-<a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">Using the GPU / high-memory nodes</span></a> section.</p>
+<a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">GPU / high-memory jobs</span></a> section.</p>
 </section>
 <section id="x11-forwarding-is-working-in-mobaxterm">
 <h1>X11 forwarding is working in MobaXterm<a class="headerlink" href="#x11-forwarding-is-working-in-mobaxterm" title="Permalink to this heading">#</a></h1>

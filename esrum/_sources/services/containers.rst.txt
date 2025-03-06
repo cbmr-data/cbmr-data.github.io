@@ -90,7 +90,7 @@ a single file:
    $ podman save my-image:v1.2.3 --output ~/my_image_v1.2.3.tar
 
 Once the image has been exported, you can transfer it to Esrum using
-``scp`` or another suck method:
+``scp`` or another such method:
 
 .. code-block::
 
@@ -111,10 +111,10 @@ command:
 
 .. code-block::
 
-   $ singularity run --bind /projects,/datasets,/scratch my_image_v1.2.3.sif
+   $ singularity run --bind /maps,/projects,/datasets,/scratch my_image_v1.2.3.sif
 
 Singularity will make your home folder available by default, but the
-``--bind`` option is required to make the ``/projects``, the
+``--bind`` option is required to make the ``/maps``, ``/projects``, the
 ``/datasets``, and the ``/scratch`` folder accessible to the software
 running in the container.
 

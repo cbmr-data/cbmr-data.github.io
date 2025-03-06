@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Using the GPU / high-memory nodes" href="gpu.html" /><link rel="prev" title="Basic Slurm jobs" href="basics.html" />
+<link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Monitoring slurm jobs" href="monitoring.html" /><link rel="prev" title="Basic Slurm jobs" href="basics.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
         <title>Advanced Slurm jobs - Esrum Cluster documentation</title>
@@ -173,7 +173,8 @@
 <li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Running jobs using Slurm</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="basics.html">Basic Slurm jobs</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gpu.html">Using the GPU / high-memory nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monitoring.html">Monitoring slurm jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html">GPU / high-memory jobs</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html">Software on Esrum</a></li>
@@ -314,117 +315,8 @@ option if simply you want to be able to wait for your script to finish.</p>
 <a class="reference internal" href="basics.html#p-usage-slurm-basics"><span class="std std-ref">Basic Slurm jobs</span></a> page.</p>
 </section>
 </section>
-<section id="monitoring-your-jobs">
-<span id="s-job-arrays"></span><h2>Monitoring your jobs<a class="headerlink" href="#monitoring-your-jobs" title="Permalink to this heading">#</a></h2>
-<p>Slurm offers a number of ways in which you may monitor your jobs:</p>
-<ul>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">squeue</span></code> command allows you to list jobs that have not yet
-finished (or failed). The recommended use is either <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">--me</span></code>
-to show all your jobs or <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">--job</span> <span class="pre">${JOB_ID}</span></code>, where
-<code class="docutils literal notranslate"><span class="pre">${JOB_ID}</span></code> is the ID of the job whose status you want to inspect.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">sacct</span></code> command allows you list jobs that have finished running
-(or failed).</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">--wait</span></code> option makes <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> wait until your job has
-completed before returning (similar to how <code class="docutils literal notranslate"><span class="pre">srun</span></code> works). This is
-for example useful if you want to queue and wait for jobs in a
-script.</p></li>
-<li><p>In addition to actively monitoring your jobs, it is possible to
-receive email notifications when your jobs are started, finish, fail,
-are re-queued, or some combination. This is accomplished by using the
-<code class="docutils literal notranslate"><span class="pre">--mail-user</span></code> and <code class="docutils literal notranslate"><span class="pre">--mail-type</span></code> options:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>my_script.sh<span class="w"> </span>--mail-user<span class="o">=</span>abc123@ku.dk<span class="w"> </span>--mail-type<span class="o">=</span>END,FAIL
-<span class="go">Submitted batch job 8503</span>
-</pre></div>
-</div>
-<p>When run like this, Slurm will send a notification to
-<code class="docutils literal notranslate"><span class="pre">abc123&#64;ku.dk</span></code> when the job is completed or fails. The possible
-options are <code class="docutils literal notranslate"><span class="pre">NONE</span></code> (the default), <code class="docutils literal notranslate"><span class="pre">BEGIN</span></code>, <code class="docutils literal notranslate"><span class="pre">END</span></code>, <code class="docutils literal notranslate"><span class="pre">FAIL</span></code>,
-<code class="docutils literal notranslate"><span class="pre">REQUEUE</span></code>, <code class="docutils literal notranslate"><span class="pre">ALL</span></code>, or some combination as shown above.</p>
-</li>
-</ul>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Remember to use your account UCPH email address as the recipient!</p>
-</div>
-<section id="monitoring-processes-in-jobs">
-<span id="s-monitoring-processes-in-jobs"></span><h3>Monitoring processes in jobs<a class="headerlink" href="#monitoring-processes-in-jobs" title="Permalink to this heading">#</a></h3>
-<p>In addition to monitoring jobs at a high level, it is possible to
-actively monitor the processes running in your jobs via (interactive)
-shells running on the same node as the job you wish to monitor. This is
-particularly useful to make sure that tasks make efficient use of the
-allocated resources.</p>
-<p>In these examples we will use the <code class="docutils literal notranslate"><span class="pre">htop</span></code> command to monitor our jobs,
-but you can use basic <code class="docutils literal notranslate"><span class="pre">top</span></code>, a <code class="docutils literal notranslate"><span class="pre">bash</span></code> shell, or any other command
-you prefer, but see the warning below regarding GPU resources.</p>
-<p>The first option for directly monitoring jobs is to request a job on the
-same server using the <code class="docutils literal notranslate"><span class="pre">--nodelist</span></code> option to specify the exact node
-you wish your job to monitor:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>squeue<span class="w"> </span>--me
-<span class="go">JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
-<span class="go"> 8503 standardq my_scrip   abc123  R       0:02      1 esrumcmpn03fl</span>
-<span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--nodelist<span class="w"> </span>esrumcmpn03fl<span class="w"> </span>htop
-</pre></div>
-</div>
-<p>This requests an interactive shell on the node on which our job is
-running (<code class="docutils literal notranslate"><span class="pre">esrumcmpn03fl</span></code>) and starts the <code class="docutils literal notranslate"><span class="pre">htop</span></code> tool. This method
-requires that there are free resources on the node, but has the
-advantage that it does not impact your job.</p>
-<p>Alternatively, you can make use of (overlap) the resources used by the
-job you wish to monitor, which means that you can perform your
-monitoring even if the node is completely booked. This is done using the
-<code class="docutils literal notranslate"><span class="pre">--overlap</span></code> and <code class="docutils literal notranslate"><span class="pre">--jobid</span></code> command-line options:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>squeue<span class="w"> </span>--me
-<span class="go">JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
-<span class="go"> 8503 standardq my_scrip   abc123  R       0:02      1 esrumcmpn03fl</span>
-<span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--overlap<span class="w"> </span>--jobid<span class="w"> </span><span class="m">8503</span><span class="w"> </span>htop
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">--jobid</span></code> option takes as its argument the ID of the job we wish
-to monitor, which we can obtain using for example the <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">--me</span></code>
-command (from the <code class="docutils literal notranslate"><span class="pre">JOBID</span></code> column).</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>It is not possible to use <code class="docutils literal notranslate"><span class="pre">--overlap</span></code> when you have reserved GPUs
-using the <code class="docutils literal notranslate"><span class="pre">--gres</span></code> option. This also means that you cannot monitor
-GPU resource usage in this manner, as other jobs on the same node
-cannot access already reserved GPUs. See the
-<a class="reference internal" href="gpu.html#s-monitoring-gpu-utilization"><span class="std std-ref">Monitoring GPU utilization</span></a> section for instructions on how
-to monitor GPU utilization.</p>
-</div>
-</section>
-</section>
-<section id="monitoring-the-cluster">
-<span id="s-monitoring-slurm"></span><h2>Monitoring the cluster<a class="headerlink" href="#monitoring-the-cluster" title="Permalink to this heading">#</a></h2>
-<p>The <a class="reference external" href="https://github.com/cbmr-data/slurmboard">slurmboard</a> utility is made available to make it easy to monitor
-activity on the cluster, for example to decide how many resources you
-can reasonably use for a job (see <a class="reference internal" href="basics.html#s-best-practice-resources"><span class="std std-ref">Best practice for reserving resources</span></a>):</p>
-<img alt="../../_images/slurmboard.png" class="align-center" src="../../_images/slurmboard.png" />
-<p>Briefly, this utility displays every node in the cluster, their status,
-and available resources for each of these. The resources (CPUs, Memory,
-and GPUs) columns are colored as follows: Yellow indicates resources
-that have been reserved; green indicates resources that are actively
-being used; purple indicates resources that may be inaccessible due to
-other resources being reserved (e.g. RAM being inaccessible due to all
-CPUs being reserved vice versa); and black indicates resources that are
-unavailable due to nodes being offline or under maintenance.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The Data Analytics Platform uses this utility to monitor how busy the
-cluster is and how job are performing. In particular, we may reach
-out to you if we notice that your jobs consistently use significantly
-fewer resources than the amount reserved, in order to optimize
-resource utilization on the cluster.</p>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">slurmboard</span></code> utility is available in the <code class="docutils literal notranslate"><span class="pre">cbmr_shared</span></code> project,
-and can be loaded as follows:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">source</span><span class="w"> </span>/projects/cbmr_shared/apps/modules/activate.sh
-<span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>slurmboard
-<span class="gp">$ </span>slurmboard
-</pre></div>
-</div>
-</section>
 <section id="running-multiple-tasks-using-arrays">
-<h2>Running multiple tasks using arrays<a class="headerlink" href="#running-multiple-tasks-using-arrays" title="Permalink to this heading">#</a></h2>
+<span id="s-job-arrays"></span><h2>Running multiple tasks using arrays<a class="headerlink" href="#running-multiple-tasks-using-arrays" title="Permalink to this heading">#</a></h2>
 <p>As suggested by the name, the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command is able to run jobs in
 batches. This is accomplished using &quot;job arrays&quot;, which allows you to
 automatically queue and run the same command on multiple inputs.</p>
@@ -652,12 +544,12 @@ bgzip<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="gpu.html">
+          <a class="next-page" href="monitoring.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Using the GPU / high-memory nodes</div>
+                <div class="title">Monitoring slurm jobs</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -708,11 +600,6 @@ bgzip<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</
 <li><a class="reference internal" href="#cancelling-srun">Cancelling srun</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#monitoring-your-jobs">Monitoring your jobs</a><ul>
-<li><a class="reference internal" href="#monitoring-processes-in-jobs">Monitoring processes in jobs</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#monitoring-the-cluster">Monitoring the cluster</a></li>
 <li><a class="reference internal" href="#running-multiple-tasks-using-arrays">Running multiple tasks using arrays</a><ul>
 <li><a class="reference internal" href="#limiting-simultaneous-jobs">Limiting simultaneous jobs</a></li>
 <li><a class="reference internal" href="#managing-job-arrays">Managing job arrays</a></li>

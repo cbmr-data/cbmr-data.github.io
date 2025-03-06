@@ -1,0 +1,599 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="search" title="Search" href="../../search.html" /><link rel="next" title="GPU / high-memory jobs" href="gpu.html" /><link rel="prev" title="Advanced Slurm jobs" href="advanced.html" />
+
+    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+        <title>Monitoring slurm jobs - Esrum Cluster documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e2322aab" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Esrum Cluster  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">Esrum Cluster  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contact.html">Contact us</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview of cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guidelines.html">Guidelines and policies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the cluster</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../access/access.html">Applying for access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../access/connecting.html">Connecting to the cluster</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../filesystem.html">Data storage on Esrum</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Data storage on Esrum</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../projects.html">Creating projects and datasets</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Running jobs using Slurm</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basics.html">Basic Slurm jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html">Advanced Slurm jobs</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Monitoring slurm jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html">GPU / high-memory jobs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Software on Esrum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfers.html">Transferring data</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/cohorts.html">Human cohorts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../resources/common.html">Common datasets</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../services/r.html">R and RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../services/jupyter.html">Jupyter Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../services/containers.html">Containerized software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../services/shiny.html">Shiny servers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tips and tricks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tips/modules.html">Creating environment modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tips/tmux.html">Persistent sessions with tmux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tips/batching_commands.html">Batching commands in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tips/robust_scripts.html">Writing robust bash scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tips/snakemake.html">Using Snakemake on Esrum</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Outreach</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../communications/messages.html">Welcome email</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../communications/presentations.html">Presentations</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/cbmr-data/cbmr-data.github.io/edit/main/esrum/source/usage/slurm/monitoring.rst" title="Edit this page">
+    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
+      <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" />
+    </svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="monitoring-slurm-jobs">
+<span id="p-usage-slurm-monitor"></span><h1>Monitoring slurm jobs<a class="headerlink" href="#monitoring-slurm-jobs" title="Permalink to this heading">#</a></h1>
+<p>This section describes the techniques for monitoring jobs running
+through slurm, the amount of resources they are currently using (CPUs,
+RAM, and GPUs), the overall amount of resources used by completed jobs,
+and whether jobs have started running, have finished running, or have
+failed.</p>
+<p>Additionally, it is described how to monitor the overall activity level
+of the cluster, to help inform how many resources you can reasonably
+reserve for a set of jobs. See the <a class="reference internal" href="basics.html#s-best-practice-resources"><span class="std std-ref">Best practice for reserving resources</span></a>
+section.</p>
+<section id="e-mail-notifications-on-job-completion">
+<h2>E-mail notifications on job completion<a class="headerlink" href="#e-mail-notifications-on-job-completion" title="Permalink to this heading">#</a></h2>
+<p>In addition to actively monitoring your jobs using <code class="docutils literal notranslate"><span class="pre">squeue</span></code>, it is
+possible to receive email notifications when your jobs are started,
+finish, fail, are re-queued, or some combination. This is accomplished
+by using the <code class="docutils literal notranslate"><span class="pre">--mail-user</span></code> and <code class="docutils literal notranslate"><span class="pre">--mail-type</span></code> options:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>--mail-user<span class="o">=</span>abc123@ku.dk<span class="w"> </span>--mail-type<span class="o">=</span>END,FAIL<span class="w"> </span>my_script.sh
+<span class="go">Submitted batch job 8503</span>
+</pre></div>
+</div>
+<p>These options can naturally also be embedded in your sbatch script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --mail-user=abc123@ku.dk --mail-type=END,FAIL</span>
+
+my-commands
+</pre></div>
+</div>
+<p>and queued as usual:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>my-script.sh
+<span class="go">Submitted batch job 8504</span>
+</pre></div>
+</div>
+<p>When these options are enabled, Slurm will send a notification to
+<code class="docutils literal notranslate"><span class="pre">abc123&#64;ku.dk</span></code> account when the job is completed or if it fails. The
+possible values for <code class="docutils literal notranslate"><span class="pre">--mail-type</span></code> are <code class="docutils literal notranslate"><span class="pre">NONE</span></code> (the default),
+<code class="docutils literal notranslate"><span class="pre">BEGIN</span></code>, <code class="docutils literal notranslate"><span class="pre">END</span></code>, <code class="docutils literal notranslate"><span class="pre">FAIL</span></code>, <code class="docutils literal notranslate"><span class="pre">REQUEUE</span></code>, <code class="docutils literal notranslate"><span class="pre">ALL</span></code>, or some combination
+as shown above.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Remember to use your own <code class="docutils literal notranslate"><span class="pre">&#64;ku.dk</span></code> email address as the recipient,
+instead of <code class="docutils literal notranslate"><span class="pre">abc123&#64;ku.dk</span></code>. It is possible to use email addresses
+outside <code class="docutils literal notranslate"><span class="pre">&#64;ku.dk</span></code>, but some providers will silently block these
+emails, and we therefore recommend using your <code class="docutils literal notranslate"><span class="pre">&#64;ku.dk</span></code> address.</p>
+</div>
+</section>
+<section id="monitoring-overall-resource-usage-by-jobs">
+<h2>Monitoring overall resource usage by jobs<a class="headerlink" href="#monitoring-overall-resource-usage-by-jobs" title="Permalink to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">sacct</span></code> command may be used to review the average CPU usage, the
+peak memory usage, disk I/O, and more for completed jobs. This makes it
+easier to verify that you are not needlessly reserving resources:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sacct<span class="w"> </span>-o<span class="w"> </span>JobID,Elapsed,State,AllocCPUS,AveCPU,ReqMem,MaxVMSize
+</pre></div>
+</div>
+<p>A full description of the data printed by <code class="docutils literal notranslate"><span class="pre">sacct</span></code> command can be found
+in the <a class="reference external" href="https://slurm.schedmd.com/archive/slurm-20.11.9/sacct.html">sacct manual</a>, but briefly, this prints the job ID, the amount
+of time the job has been running, the state of the job (queued, running,
+completed, etc.), number of CPUs allocated, the CPU utilization
+(preferably this should be the number of CPUs allocated times the
+elapsed time), the amount of memory requested, and the peak virtual
+memory size.</p>
+<p>Alternatively, we provide a helper that summarizes some of this
+information in a more easily readable form:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>sacct-usage
+<span class="gp">$ </span>sacct-usage
+<span class="go">      Age  User    Job   State         Elapsed  CPUs  CPUsWasted  ExtraMem  ExtraMemWasted  CPUHoursWasted</span>
+<span class="go">13:32:04s  abc123  1     FAILED     252:04:52s     8         6.9     131.4           131.4         4012.14</span>
+<span class="go">10:54:32s  abc123  2[1]  COMPLETED   02:49:25s    32        15.7       0.0             0.0           44.38</span>
+<span class="go">01:48:43s  abc123  3     COMPLETED   01:00:53s    24         2.4       0.0             0.0            2.43</span>
+</pre></div>
+</div>
+<p>The important information is found in the <code class="docutils literal notranslate"><span class="pre">CPUsWasted</span></code> column and the
+<code class="docutils literal notranslate"><span class="pre">ExtraMemWasted</span></code> column, which show the number CPUs that went unused
+on average, and the amount of <em>extra</em> memory that went unused. Note that
+<code class="docutils literal notranslate"><span class="pre">ExtraMem</span></code> only counts memory above the default allocation of ~16 GB
+of RAM per CPU, as our policy is that you shouldn't have to worry about
+using less than that. If you want to see the full memory usage, then use
+the <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> option.</p>
+<p>The final column indicates that number of CPU hours your job wasted,
+calculated as the length of time your job ran multiplied by the number
+of reserved CPUs and the number of CPUs that would have been able to get
+the default 16 GB of RAM had <code class="docutils literal notranslate"><span class="pre">ExtraMemWasted</span></code> been zero.</p>
+<p>Aim for your jobs to resemble the third job, not the second job and
+especially not the first job in the example!</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Wasted</span></code> statistics are based on snapshots of resource usage
+produced by Slurm and are therefore not 100% accurate. Notably, the
+memory usage statistics are based on maximum memory usage of
+individual processes, rather than the maximum cumulative memory
+usage, and may therefore greatly overestimate wasted memory if you
+are running multiple simultaneous processes in a pipeline.</p>
+</div>
+</section>
+<section id="monitoring-individual-processes-in-a-job">
+<h2>Monitoring individual processes in a job<a class="headerlink" href="#monitoring-individual-processes-in-a-job" title="Permalink to this heading">#</a></h2>
+<p>While <code class="docutils literal notranslate"><span class="pre">sacct</span></code> can report on the overall resource usage of you job, it
+can also be helpful to track resource usage for individual commands that
+you are running. This is particularly useful when attempting to optimize
+the number of CPUs used commands run in a job.</p>
+<p>One way of doing this is via the <code class="docutils literal notranslate"><span class="pre">time</span></code> command, which can report the
+efficiency from using multiple threads and to show how much memory a
+program used. This is acoomplished by pre-pending <code class="docutils literal notranslate"><span class="pre">/usr/bin/time</span> <span class="pre">-f</span>
+<span class="pre">&quot;CPU</span> <span class="pre">=</span> <span class="pre">%P,</span> <span class="pre">MEM</span> <span class="pre">=</span> <span class="pre">%MKB&quot;</span></code> to the command that you want to measure, as
+shown in this example, where we wish to measure the resource usage of
+the <code class="docutils literal notranslate"><span class="pre">my-command</span></code> program:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>/usr/bin/time<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;CPU = %P, MEM = %M&quot;</span><span class="w"> </span>my-command<span class="w"> </span>--threads<span class="w"> </span><span class="m">1</span><span class="w"> </span>...
+<span class="go">CPU = 99%, MEM = 840563KB</span>
+<span class="gp">$ </span>/usr/bin/time<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;CPU = %P, MEM = %M&quot;</span><span class="w"> </span>my-command<span class="w"> </span>--threads<span class="w"> </span><span class="m">4</span><span class="w"> </span>...
+<span class="go">CPU = 345%, MEM = 892341KB</span>
+<span class="gp">$ </span>/usr/bin/time<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;CPU = %P, MEM = %M&quot;</span><span class="w"> </span>my-command<span class="w"> </span>--threads<span class="w"> </span><span class="m">8</span><span class="w"> </span>...
+<span class="go">CPU = 605%, MEM = 936324KB</span>
+</pre></div>
+</div>
+<p>In this example, increasing the number of threads/CPUs to 4 did not
+result in a 4x increase in CPU usage, but only an 3.5x increase with 4
+CPUs and only a 6x increase with 8 CPUs. This means that it would be
+more efficient to run two tasks with 4 CPUs in parallel, rather than
+running one task with 8 CPUs.</p>
+</section>
+<section id="live-monitoring-of-processes-in-jobs">
+<span id="s-live-monitoring"></span><h2>Live monitoring of processes in jobs<a class="headerlink" href="#live-monitoring-of-processes-in-jobs" title="Permalink to this heading">#</a></h2>
+<p>In addition to monitoring jobs at a high level, it is possible to
+actively monitor the processes running in your jobs via (interactive)
+shells running on the same node as the job you wish to monitor. This
+allows us to estimate resource usage <em>before</em> a job has finished
+running. In this example we will use the <code class="docutils literal notranslate"><span class="pre">htop</span></code> command to monitor our
+jobs, but you can use basic <code class="docutils literal notranslate"><span class="pre">top</span></code>, a <code class="docutils literal notranslate"><span class="pre">bash</span></code> shell, or any other
+command you prefer.</p>
+<p>The first option for directly monitoring jobs is to request a job on the
+same server using the <code class="docutils literal notranslate"><span class="pre">--nodelist</span></code> option to specify the node your job
+is running on. However, this will not work if all resources on the node
+are reserved, and for that reason we recommend running <code class="docutils literal notranslate"><span class="pre">htop</span></code> <em>inside</em>
+your existing job.</p>
+<p>This is done using the <code class="docutils literal notranslate"><span class="pre">--overlap</span></code> and <code class="docutils literal notranslate"><span class="pre">--jobid</span></code> command-line
+options for <code class="docutils literal notranslate"><span class="pre">srun</span></code>, which tells Slurm that your new job should overlap
+an existing job, and the ID of the job to overlap. The job ID can obtain
+using for example the <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">--me</span></code> command (from the <code class="docutils literal notranslate"><span class="pre">JOBID</span></code>
+column), as shown here:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>squeue<span class="w"> </span>--me
+<span class="go">JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
+<span class="go"> 8503 standardq my_scrip   abc123  R       0:02      1 esrumcmpn03fl</span>
+<span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--overlap<span class="w"> </span>--jobid<span class="w"> </span><span class="m">8503</span><span class="w"> </span>--gres<span class="o">=</span>none<span class="w"> </span>htop
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--pty</span></code> option gives us an interactive session, which allows us to
+interact directly with <code class="docutils literal notranslate"><span class="pre">htop</span></code>. See the <a class="reference internal" href="basics.html#s-interactive-session"><span class="std std-ref">Interactive sessions</span></a>
+section for more information. The <code class="docutils literal notranslate"><span class="pre">--gres=none</span></code> option is required to
+overlap jobs that reserve GPUs, since Slurm does not permit those to be
+shared, even for overlapping jobs. See below for instructions on how to
+monitor GPU utilization.</p>
+</section>
+<section id="monitoring-gpu-utilization">
+<span id="s-monitoring-gpu-utilization"></span><h2>Monitoring GPU utilization<a class="headerlink" href="#monitoring-gpu-utilization" title="Permalink to this heading">#</a></h2>
+<p>Monitoring of GPU utilization is highly recommended when you run jobs on
+the GPU node: To make full use of the hardware you want to keep GPU
+utilization at 100% and to do so you typically want to load as much data
+into GPU memory as possible. The exact way in which you can accomplish
+this depends on the software you are running, but can often be
+accomplished by increasing the size of the batches you are processing.</p>
+<p>The way in which you are using the GPUs will affect how you can monitor
+them, depending on whether you have reserved a GPU for an interactive
+session:</p>
+<section id="monitoring-an-interactive-session">
+<h3>Monitoring an interactive session<a class="headerlink" href="#monitoring-an-interactive-session" title="Permalink to this heading">#</a></h3>
+<p>If you are running a job in an <a class="reference internal" href="basics.html#s-interactive-session"><span class="std std-ref">interactive session</span></a>, then you can monitor the reserved GPU(s)
+directly using the <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nvidia-smi<span class="w"> </span>-l<span class="w"> </span><span class="m">5</span>
+<span class="go">Thu Apr  4 14:30:46 2024</span>
+<span class="go">+---------------------------------------------------------------------------------------+</span>
+<span class="go">| NVIDIA-SMI 545.23.08              Driver Version: 545.23.08    CUDA Version: 12.3     |</span>
+<span class="go">|-----------------------------------------+----------------------+----------------------+</span>
+<span class="go">| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |</span>
+<span class="go">| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |</span>
+<span class="go">|                                         |                      |               MIG M. |</span>
+<span class="go">|=========================================+======================+======================|</span>
+<span class="go">|   0  NVIDIA A100 80GB PCIe          On  | 00000000:27:00.0 Off |                    0 |</span>
+<span class="go">| N/A   57C    P0             307W / 300W |  52357MiB / 81920MiB |         99%  Default |</span>
+<span class="go">|                                         |                      |             Disabled |</span>
+<span class="go">+-----------------------------------------+----------------------+----------------------+</span>
+<span class="go">|   1  NVIDIA A100 80GB PCIe          On  | 00000000:A3:00.0 Off |                    0 |</span>
+<span class="go">| N/A   56C    P0             298W / 300W |  58893MiB / 81920MiB |        100%  Default |</span>
+<span class="go">|                                         |                      |             Disabled |</span>
+<span class="go">+-----------------------------------------+----------------------+----------------------+</span>
+<span class="go">+---------------------------------------------------------------------------------------+</span>
+<span class="go">| Processes:                                                                            |</span>
+<span class="go">|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |</span>
+<span class="go">|        ID   ID                                                                 Usage  |</span>
+<span class="go">|=======================================================================================|</span>
+<span class="go">|    0   N/A  N/A   2807877  C   dorado                                        52344MiB |</span>
+<span class="go">|    1   N/A  N/A   2807849  C   dorado                                        58880MiB |</span>
+<span class="go">+---------------------------------------------------------------------------------------+</span>
+</pre></div>
+</div>
+<p>This will print resource usage for the GPUs you have reserved for your
+interactive session (and only for those GPUs), and continue to print it
+every 5 seconds afterwards via the <code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">5</span></code> option. Other monitoring
+tools are available (for example <code class="docutils literal notranslate"><span class="pre">gpustat</span></code>), but are outside the scope
+of this documentation.</p>
+</section>
+<section id="monitoring-a-slurm-job">
+<h3>Monitoring a Slurm job<a class="headerlink" href="#monitoring-a-slurm-job" title="Permalink to this heading">#</a></h3>
+<p>If you have started a standard (non-interactive) job via Slurm, then you
+will not be able to directly run <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> nor will you be able to
+join the running job using <code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">-j</span></code> due to the way Slurm handles
+special resources. We have therefore set up log-files on the GPU nodes
+node that contains the output from the <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> command as shown
+above.</p>
+<p>To watch the content of this log-file, firstly determine the job ID of
+your job running on the GPU node:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>squeue<span class="w"> </span>--me<span class="w"> </span>--partition<span class="o">=</span>gpuqueue
+<span class="go"> JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
+<span class="go">570316  gpuqueue     bash   abc123  R      13:55      1 esrumgpun01fl</span>
+</pre></div>
+</div>
+<p>Then we use <code class="docutils literal notranslate"><span class="pre">srun</span></code> with the <code class="docutils literal notranslate"><span class="pre">--overlap</span></code> option to run a command
+<em>inside</em> this job, which we specify using the <code class="docutils literal notranslate"><span class="pre">--jobid</span> <span class="pre">570316</span></code> option.
+The <code class="docutils literal notranslate"><span class="pre">--gres=none</span></code> option is required, since otherwise Slurm would try
+to reserve the GPU our job already uses and eventually time out.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--overlap<span class="w"> </span>--jobid<span class="w"> </span><span class="m">570316</span><span class="w"> </span>--gres<span class="o">=</span>none<span class="w"> </span>--pty<span class="w"> </span>--<span class="w"> </span>watch<span class="w"> </span>-n<span class="w"> </span><span class="m">15</span><span class="w"> </span>-d<span class="w"> </span>cat<span class="w"> </span>/scratch/gpus/nvidia-smi.txt
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Remember to replace the <code class="docutils literal notranslate"><span class="pre">570316</span></code> with the ID of <em>your</em> job!</p>
+</div>
+<p>This prints the contents of the log-file every 15 seconds (which is how
+often the files are updated) and optionally highlights the changes since
+the last <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> run. To disable the highlighting, simply remove
+the <code class="docutils literal notranslate"><span class="pre">-d</span></code> option from the command.</p>
+<p>This command does not take up additional resources on the GPU node and
+will automatically exit when your job finishes. See the
+<a class="reference internal" href="#s-live-monitoring"><span class="std std-ref">Live monitoring of processes in jobs</span></a> for more information.</p>
+</section>
+</section>
+<section id="monitoring-the-cluster">
+<span id="s-monitoring-slurm"></span><h2>Monitoring the cluster<a class="headerlink" href="#monitoring-the-cluster" title="Permalink to this heading">#</a></h2>
+<p>The <a class="reference external" href="https://github.com/cbmr-data/slurmboard">slurmboard</a> utility is made available as part of the <code class="docutils literal notranslate"><span class="pre">cbmr_shared</span></code>
+project folder, in order to make it easy to monitor activity on the
+cluster, for example to decide how many resources you can reasonably use
+for a job (see <a class="reference internal" href="basics.html#s-best-practice-resources"><span class="std std-ref">Best practice for reserving resources</span></a>):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>slurmboard
+<span class="gp">$ </span>slurmboard
+</pre></div>
+</div>
+<img alt="../../_images/slurmboard.png" class="align-center" src="../../_images/slurmboard.png" />
+<p>Briefly, this utility displays every node in the cluster, their status,
+and available resources for each of these. The resources (CPUs, Memory,
+and GPUs) columns are colored as follows: Yellow indicates resources
+that have been reserved; green indicates resources that are actively
+being used; purple indicates resources that may be inaccessible due to
+other resources being reserved (e.g. RAM being inaccessible due to all
+CPUs being reserved vice versa); and black indicates resources that are
+unavailable due to nodes being offline or under maintenance.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Data Analytics Platform uses this utility to monitor how busy the
+cluster is and how job are performing. In particular, we may reach
+out to you if we notice that your jobs consistently use significantly
+fewer resources than the amount reserved, in order to optimize
+resource utilization on the cluster.</p>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="gpu.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">GPU / high-memory jobs</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="advanced.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Advanced Slurm jobs</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023-2024, CBMR Data Analytics; licensed under CC-BY 4.0
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Monitoring slurm jobs</a><ul>
+<li><a class="reference internal" href="#e-mail-notifications-on-job-completion">E-mail notifications on job completion</a></li>
+<li><a class="reference internal" href="#monitoring-overall-resource-usage-by-jobs">Monitoring overall resource usage by jobs</a></li>
+<li><a class="reference internal" href="#monitoring-individual-processes-in-a-job">Monitoring individual processes in a job</a></li>
+<li><a class="reference internal" href="#live-monitoring-of-processes-in-jobs">Live monitoring of processes in jobs</a></li>
+<li><a class="reference internal" href="#monitoring-gpu-utilization">Monitoring GPU utilization</a><ul>
+<li><a class="reference internal" href="#monitoring-an-interactive-session">Monitoring an interactive session</a></li>
+<li><a class="reference internal" href="#monitoring-a-slurm-job">Monitoring a Slurm job</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#monitoring-the-cluster">Monitoring the cluster</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../_static/js/custom.js?v=3a8ddbd3"></script>
+    <script src="../../_static/js/libgif.js?v=7adcb026"></script>
+    <script src="../../_static/js/playback.js?v=d7002ce9"></script>
+    </body>
+</html>
