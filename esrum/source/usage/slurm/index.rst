@@ -37,6 +37,7 @@ The documentation for running jobs is split into three sections:
 
    basics
    advanced
+   monitoring
    gpu
 
 .. _slurm: https://slurm.schedmd.com/overview.html
