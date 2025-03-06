@@ -1,17 +1,17 @@
 .. _p_usage_slurm_gpu:
 
-###################################
- Using the GPU / high-memory nodes
-###################################
+########################
+ GPU / high-memory jobs
+########################
 
-This page describes how to schedule tasks on the dedicated GPU nodes and
-on the combined GPU / high-memory node. The cluster currently includes 1
-node with 2x A100 Nvidia GPUs and 4 TB of RAM, and 2 nodes with 2x H100
-Nvidia and 2 TB of RAM.
+The cluster currently includes 1 node with 2x A100 Nvidia GPUs and 4 TB
+of RAM, and 3 nodes with 2x H100 Nvidia GPUs and 2 TB of RAM. We refer
+to these as the GPU and/or high-memory nodes, and this page describes
+how to use them.
 
-These nodes are intended for tasks that can make use of GPUs, and for
-tasks that require more than the 2 TB of RAM available on regular
-compute nodes.
+These nodes are intended for tasks that make use of GPUs, and for
+individual jobs that require more than the 2 TB of RAM available on the
+regular compute nodes.
 
 ********************************************
  Running jobs on the GPU / high-memory node
