@@ -69,4 +69,4 @@ Please :ref:`p_contact` us if you need help removing the correct files.
 libstdc++.so.6: version ``'GLIBCXX_3.4.26'`` not found
 ======================================================
 
-See the troubleshooting section on the :ref:`p_service_r` page.
+See the troubleshooting section on the :ref:`p_tips_r` page.

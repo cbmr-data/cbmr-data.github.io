@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="search" title="Search" href="../search.html" /><link rel="next" title="Jupyter Notebooks" href="jupyter.html" /><link rel="prev" title="Common datasets" href="../resources/common.html" />
+<link rel="search" title="Search" href="../search.html" /><link rel="next" title="Welcome email" href="../communications/messages.html" /><link rel="prev" title="Using Snakemake on Esrum" href="snakemake.html" />
 
     <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
-        <title>R and RStudio - Esrum Cluster documentation</title>
+        <title>Using R on Esrum - Esrum Cluster documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
@@ -186,19 +186,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../resources/common.html">Common datasets</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Other services</span></p>
-<ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">R and RStudio</a></li>
-<li class="toctree-l1"><a class="reference internal" href="jupyter.html">Jupyter Notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="containers.html">Containerized software</a></li>
-<li class="toctree-l1"><a class="reference internal" href="shiny.html">Shiny servers</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../services/rstudio.html">RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/jupyter.html">Jupyter Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/containers.html">Containerized software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/shiny.html">Shiny servers</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tips and tricks</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../tips/modules.html">Creating environment modules</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tips/tmux.html">Persistent sessions with tmux</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tips/batching_commands.html">Batching commands in bash</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tips/robust_scripts.html">Writing robust bash scripts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tips/snakemake.html">Using Snakemake on Esrum</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Creating environment modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tmux.html">Persistent sessions with tmux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="batching_commands.html">Batching commands in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="robust_scripts.html">Writing robust bash scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="snakemake.html">Using Snakemake on Esrum</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Using R on Esrum</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Outreach</span></p>
 <ul>
@@ -224,7 +225,7 @@
         </a>
         <div class="content-icon-container">
           <div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/cbmr-data/cbmr-data.github.io/edit/main/esrum/source/services/r.rst" title="Edit this page">
+  <a class="muted-link" href="https://github.com/cbmr-data/cbmr-data.github.io/edit/main/esrum/source/tips/r.rst" title="Edit this page">
     <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
@@ -246,29 +247,16 @@
           </label>
         </div>
         <article role="main">
-          <section id="r-and-rstudio">
-<span id="p-service-r"></span><h1>R and RStudio<a class="headerlink" href="#r-and-rstudio" title="Permalink to this heading">#</a></h1>
-<p>Users of the Esrum cluster have the option running R directly or via two
-RStudio servers.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The RStudio servers are <em>only</em> for running R. If you need to run
-other tasks then you <em>must</em> connect to the head node and run them
-using Slurm as described in <a class="reference internal" href="../usage/slurm/index.html#p-usage-slurm"><span class="std std-ref">Running jobs using Slurm</span></a>.</p>
-<p>Resource intensive tasks running on the RStudio server will likely
-negatively impact everyone using the service, and we may therefore
-terminate such tasks without warning if we deem it necessary.</p>
-</div>
-<section id="r-on-esrum">
-<h2>R on Esrum<a class="headerlink" href="#r-on-esrum" title="Permalink to this heading">#</a></h2>
-<p>This section describes steps required to use R and lays out various tips
-for making your work easier. See below</p>
-<p>While it is also possible to use R on a compute node interactively, this
-page section focuses in particular on how to run R scripts
-non-interactively via Slurm in order to take full advantage of the
+          <section id="using-r-on-esrum">
+<span id="p-tips-r"></span><h1>Using R on Esrum<a class="headerlink" href="#using-r-on-esrum" title="Permalink to this heading">#</a></h1>
+<p>This section how to use R on Esrum and lays out various tips for making
+your work easier. This section is primarily focused on running R
+non-interactively via Slurm, in order to take full advantage of the
 available compute resources.</p>
+<p>For interactive work, we recommend using the <a class="reference internal" href="../services/rstudio.html#p-service-rstudio"><span class="std std-ref">RStudio</span></a>
+servers or using an <a class="reference internal" href="../usage/slurm/basics.html#s-interactive-session"><span class="std std-ref">Interactive sessions</span></a>.</p>
 <section id="selecting-an-r-version">
-<h3>Selecting an R version<a class="headerlink" href="#selecting-an-r-version" title="Permalink to this heading">#</a></h3>
+<h2>Selecting an R version<a class="headerlink" href="#selecting-an-r-version" title="Permalink to this heading">#</a></h2>
 <p>Several versions of R are available via the module system. To load
 these, you need to load the version of R you want <em>and</em> a version of
 <a class="reference external" href="https://gcc.gnu.org/">GCC</a>, which is required to install/load R libraries.</p>
@@ -300,7 +288,7 @@ errors similar to the following:</p>
 </div>
 </section>
 <section id="submitting-r-scripts-using-slurm">
-<h3>Submitting R scripts using Slurm<a class="headerlink" href="#submitting-r-scripts-using-slurm" title="Permalink to this heading">#</a></h3>
+<h2>Submitting R scripts using Slurm<a class="headerlink" href="#submitting-r-scripts-using-slurm" title="Permalink to this heading">#</a></h2>
 <p>The recommended way to run R on Esrum is as non-interactive scripts
 submitted to slurm. This not only ensures that your analyses do not
 impact other users, but also makes your analyses reproducible.</p>
@@ -329,7 +317,7 @@ run, then it is recommended to use an argument parser such as the
 <a class="reference external" href="https://cran.r-project.org/web/packages/argparser/index.html">argparser</a> R library. To use the <code class="docutils literal notranslate"><span class="pre">argparser</span></code> library you must first
 install it using the <code class="docutils literal notranslate"><span class="pre">install.packages(&quot;argparser&quot;)</span></code> command.</p>
 <p>The following shows a brief example of how you might use the
-<code class="docutils literal notranslate"><span class="pre">argparser</span></code> library. It can also be downloaded <a class="reference download internal" download="" href="../_downloads/4cffb1257281bb7de8b3917b47b00bc1/argparser.R"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a>.</p>
+<code class="docutils literal notranslate"><span class="pre">argparser</span></code> library. It can also be downloaded <a class="reference download internal" download="" href="../_downloads/50776684ebe76d5c0bfb781ff5577690/argparser.R"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a>.</p>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="c1">#!/usr/bin/env Rscript</span>
 <span class="w">   </span><span class="nf">library</span><span class="p">(</span><span class="n">argparser</span><span class="p">)</span>
 
@@ -387,7 +375,7 @@ be used to submit/call any of your R-scripts:</p>
 </div>
 </section>
 <section id="installing-r-modules">
-<h3>Installing R modules<a class="headerlink" href="#installing-r-modules" title="Permalink to this heading">#</a></h3>
+<h2>Installing R modules<a class="headerlink" href="#installing-r-modules" title="Permalink to this heading">#</a></h2>
 <p>Modules may be installed in your home folder using the
 <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> command:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.1
@@ -414,90 +402,8 @@ you and press enter:</p>
 </pre></div>
 </div>
 </section>
-</section>
-<section id="rstudio-servers">
-<span id="s-service-rstudio"></span><h2>RStudio servers<a class="headerlink" href="#rstudio-servers" title="Permalink to this heading">#</a></h2>
-<p>The <a class="reference external" href="https://posit.co/products/open-source/rstudio/">RStudio</a> servers can be found at <a class="reference external" href="https://esrumweb01fl/rstudio/">https://esrumweb01fl/rstudio/</a> and
-<a class="reference external" href="https://esrumweb02fl/rstudio/">https://esrumweb02fl/rstudio/</a>. You <em>must</em> have applied for access as
-described on the <a class="reference internal" href="../usage/access/access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a> page, and you <em>must</em> be
-connected via the UCPH VPN in order to connect to these servers.</p>
-<p>If you have not been granted access, or if you are not connected via the
-VPN, then you will likely see a browser error message like <code class="docutils literal notranslate"><span class="pre">This</span> <span class="pre">site</span>
-<span class="pre">can't</span> <span class="pre">be</span> <span class="pre">reached</span></code>. See <a class="reference internal" href="../usage/access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> for more information.</p>
-<p>To log in, use the short form of your UCPH username (i.e. <code class="docutils literal notranslate"><span class="pre">abc123</span></code>):</p>
-<img alt="../_images/rstudio_login.png" class="align-center" src="../_images/rstudio_login.png" />
-<section id="rstudio-server-best-practice">
-<h3>RStudio server best practice<a class="headerlink" href="#rstudio-server-best-practice" title="Permalink to this heading">#</a></h3>
-<p>Since the RStudio server is a shared resource where that many users may
-be using simultaneously, we ask that you show consideration towards
-other users of the server.</p>
-<p>In particular,</p>
-<ul>
-<li><p>Try to limit the size of the data-sets you work with on the RStudio
-server. Since <em>all</em> data has to be read from (or written to) network
-drives, one person reading or writing a large amount of data can
-cause significant slow-downs for <em>everyone</em> using the service.</p>
-<p>We therefore recommend that you load a (small) subset of your data in
-RStudio, that you use that subset of data to develop your analyses
-processes, and that you use that to process your complete dataset via
-an R-script submitted to Slurm as described in <a class="reference internal" href="../usage/slurm/index.html#p-usage-slurm"><span class="std std-ref">Running jobs using Slurm</span></a>.</p>
-<p>See the <a class="reference internal" href="#p-service-r"><span class="std std-ref">R and RStudio</span></a> page for additional guidance on how to use
-R with Slurm.</p>
-</li>
-<li><p>Don't keep data in memory that you do not need. Data that you no
-longer need can be freed with the <code class="docutils literal notranslate"><span class="pre">rm</span></code> function or using the broom
-icon on the <code class="docutils literal notranslate"><span class="pre">Environment</span></code> tab in RStudio. This also helps prevent
-RStudio from filling your home folder when your session is closed
-(see Troubleshooting below).</p></li>
-<li><p>Do not run resource intensive tasks via the embedded terminal. As
-noted above, such tasks will be terminated without warning if deemed
-to have a negative impact on other users. Instead, such tasks should
-be run using Slurm as described in <a class="reference internal" href="../usage/slurm/index.html#p-usage-slurm"><span class="std std-ref">Running jobs using Slurm</span></a>.</p></li>
-</ul>
-</section>
-<section id="preserving-loaded-data">
-<h3>Preserving loaded data<a class="headerlink" href="#preserving-loaded-data" title="Permalink to this heading">#</a></h3>
-<p>Data that you have loaded into R and other variables you have defined
-are visible on the <code class="docutils literal notranslate"><span class="pre">Environment</span></code> tab in RStudio along with the amount
-of memory used (here 143 MiB):</p>
-<img alt="../_images/rstudio_environment.png" class="align-center" src="../_images/rstudio_environment.png" />
-<p>By default, this data will be saved to your RStudio folder on the
-<code class="docutils literal notranslate"><span class="pre">/scratch</span></code> drive when you quit your session or when it automatically
-suspends after 9 hours of inactivity. This may, however, result in very
-large amounts of data being saved to disk and, consequently, large of
-amounts of data having to be read when you log in again, resulting in
-logging in taking a very long time.</p>
-<p>For this reason we recommend disabling the saving and loading of
-<code class="docutils literal notranslate"><span class="pre">.RData</span></code> in the <code class="docutils literal notranslate"><span class="pre">Global</span> <span class="pre">Settings</span></code> accessible via the <code class="docutils literal notranslate"><span class="pre">Tools</span> <span class="pre">Menu</span></code>
-as shown:</p>
-<img alt="../_images/rstudio_workspace_data.png" class="align-center" src="../_images/rstudio_workspace_data.png" />
-<p>This ensures that you always start with a fresh session and that you
-therefore are able to log in quickly to the RStudio server.</p>
-<p>It is also recommended that the <code class="docutils literal notranslate"><span class="pre">Always</span> <span class="pre">save</span> <span class="pre">history</span> <span class="pre">(even</span> <span class="pre">when</span> <span class="pre">not</span>
-<span class="pre">saving</span> <span class="pre">.RData)</span></code> option is enabled, as the commands you type into the R
-terminal will otherwise <em>not</em> be saved.</p>
-</section>
-<section id="use-of-github-copilot">
-<span id="s-rstudio-copilot"></span><h3>Use of GitHub Copilot<a class="headerlink" href="#use-of-github-copilot" title="Permalink to this heading">#</a></h3>
-<p>You can make use of GitHub <a class="reference external" href="https://github.com/features/copilot">Copilot</a> in RStudio, provided that you have a
-valid license. Please refer to the <a class="reference internal" href="../guidelines.html#s-guidelines-llms"><span class="std std-ref">guidelines on use of generative
-AI and LLMs</span></a> before doing so.</p>
-<ul>
-<li><p>To enable <a class="reference external" href="https://github.com/features/copilot">Copilot</a>, click on the <code class="docutils literal notranslate"><span class="pre">Tools</span></code> menu and select <code class="docutils literal notranslate"><span class="pre">Global</span>
-<span class="pre">Options</span></code>:</p>
-<img alt="../_images/rstudio_copilot_1.png" class="align-center" src="../_images/rstudio_copilot_1.png" />
-</li>
-<li><p>Open the <code class="docutils literal notranslate"><span class="pre">Copilot</span></code> tab and tick the <code class="docutils literal notranslate"><span class="pre">Enable</span> <span class="pre">Github</span> <span class="pre">Copilot</span></code>
-checkbox. Then click the <code class="docutils literal notranslate"><span class="pre">Sign</span> <span class="pre">In</span></code> button:</p>
-<img alt="../_images/rstudio_copilot_2.png" class="align-center" src="../_images/rstudio_copilot_2.png" />
-</li>
-<li><p>Finally, copy the verification code you are shown, click on the
-displayed link, and follow the instructions on Github.</p></li>
-</ul>
-</section>
-</section>
 <section id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
+<span id="s-service-rstudio"></span><h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
 <section id="libtk8-6-so-cannot-open-shared-object-file">
 <h3>libtk8.6.so: cannot open shared object file<a class="headerlink" href="#libtk8-6-so-cannot-open-shared-object-file" title="Permalink to this heading">#</a></h3>
 <p>Users connecting to Esrum with X11 forwarding enabled, for example using
@@ -539,7 +445,7 @@ head/compute nodes:</p>
 one of two methods:</p>
 <ol class="arabic">
 <li><p>Connect to the RStudio server as described in the
-<a class="reference internal" href="#s-service-rstudio"><span class="std std-ref">RStudio servers</span></a> section, and simply install the affected
+<a class="reference internal" href="#s-service-rstudio"><span class="std std-ref">Troubleshooting</span></a> section, and simply install the affected
 packages using the <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> function:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; install.packages(&quot;wk&quot;)</span>
 </pre></div>
@@ -602,63 +508,6 @@ reinstall the affected libraries using the <code class="docutils literal notrans
 </pre></div>
 </div>
 </section>
-<section id="incorrect-or-invalid-username-password">
-<h3>Incorrect or invalid username/password<a class="headerlink" href="#incorrect-or-invalid-username-password" title="Permalink to this heading">#</a></h3>
-<p>Please make sure that you are entering your username in the short form
-(i.e. <code class="docutils literal notranslate"><span class="pre">abc123</span></code>) and that you have applied for and been given access to
-the Esrum HPC (see <a class="reference internal" href="../usage/access/access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a>). If the problem
-persists, please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact us</span></a> us for assistance.</p>
-</section>
-<section id="logging-in-takes-a-very-long-time">
-<h3>Logging in takes a very long time<a class="headerlink" href="#logging-in-takes-a-very-long-time" title="Permalink to this heading">#</a></h3>
-<p>Similar to regular R, RStudio will automatically save the data you have
-loaded into your R session and will restore it when you return later, so
-that you can continue your work. However, this many result in large
-amounts of data being saved and loading this data may result in a large
-delay when you attempt to log in at a later date.</p>
-<p>It is therefore recommended that you regularly clean up your workspace
-using the built-in tools, when you no longer need to have the data
-loaded in R.</p>
-<p>You can remove individual bits of data using the <code class="docutils literal notranslate"><span class="pre">rm</span></code> function in R.
-This works both when using regular R and when using RStudio. The
-following gives two examples of using the <code class="docutils literal notranslate"><span class="pre">rm</span></code> function, one removing
-a single variable and the other removing <em>all</em> variables in the current
-session:</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Remove the variable `my_variable`</span>
-<span class="nf">rm</span><span class="p">(</span><span class="n">my_variable</span><span class="p">)</span>
-
-<span class="c1"># 2. Remove all variables from your R session</span>
-<span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ls</span><span class="p">())</span>
-</pre></div>
-</div>
-<p>Alternatively you can remove all data saved in your R session using the
-broom icon on the <code class="docutils literal notranslate"><span class="pre">Environment</span></code> tab:</p>
-<img alt="../_images/rstudio_gc_01.png" class="align-center" src="../_images/rstudio_gc_01.png" />
-<img alt="../_images/rstudio_gc_02.png" class="align-center" src="../_images/rstudio_gc_02.png" />
-<p>If you wish to prevent this issue in the first case, then you can also
-turn off saving the data in your session on exit and/or turn off loading
-the saved data on startup. This is accomplished via the <code class="docutils literal notranslate"><span class="pre">Global</span>
-<span class="pre">Options...</span></code> accessible from the <code class="docutils literal notranslate"><span class="pre">Tools</span></code> menu:</p>
-<img alt="../_images/rstudio_gc_03.png" class="align-center" src="../_images/rstudio_gc_03.png" />
-<p>Should your R session have grown to such a size that you simply cannot
-log in and clean it up, then it may be necessary to remove the files
-containing the data that R/RStudio has saved. This data is stored in two
-locations:</p>
-<ol class="arabic simple">
-<li><p>In the <code class="docutils literal notranslate"><span class="pre">.RData</span></code> file in your home (<code class="docutils literal notranslate"><span class="pre">~/.RData</span></code>). This is where R
-saves your data if you answer yes <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">workspace</span> <span class="pre">image?</span> <span class="pre">[y/n/c]</span></code>
-when quitting R.</p></li>
-<li><p>In the <code class="docutils literal notranslate"><span class="pre">environment</span></code> file in your RStudio session folder
-(<code class="docutils literal notranslate"><span class="pre">~/.local/share/rstudio/sessions/active/session-*/suspended-session-data/environment</span></code>).
-This is where RStudio saves your data should your login time out
-while using RStudio.</p></li>
-</ol>
-<p>Please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact us</span></a> us if you need help removing the correct files.</p>
-</section>
-<section id="id1">
-<h3>libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-<p>See the troubleshooting section on the <a class="reference internal" href="#p-service-r"><span class="std std-ref">R and RStudio</span></a> page.</p>
-</section>
 </section>
 </section>
 
@@ -667,23 +516,23 @@ while using RStudio.</p></li>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="jupyter.html">
+          <a class="next-page" href="../communications/messages.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Jupyter Notebooks</div>
+                <div class="title">Welcome email</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../resources/common.html">
+          <a class="prev-page" href="snakemake.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Common datasets</div>
+                <div class="title">Using Snakemake on Esrum</div>
                 
               </div>
             </a>
@@ -717,25 +566,13 @@ while using RStudio.</p></li>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">R and RStudio</a><ul>
-<li><a class="reference internal" href="#r-on-esrum">R on Esrum</a><ul>
+<li><a class="reference internal" href="#">Using R on Esrum</a><ul>
 <li><a class="reference internal" href="#selecting-an-r-version">Selecting an R version</a></li>
 <li><a class="reference internal" href="#submitting-r-scripts-using-slurm">Submitting R scripts using Slurm</a></li>
 <li><a class="reference internal" href="#installing-r-modules">Installing R modules</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#rstudio-servers">RStudio servers</a><ul>
-<li><a class="reference internal" href="#rstudio-server-best-practice">RStudio server best practice</a></li>
-<li><a class="reference internal" href="#preserving-loaded-data">Preserving loaded data</a></li>
-<li><a class="reference internal" href="#use-of-github-copilot">Use of GitHub Copilot</a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
 <li><a class="reference internal" href="#libtk8-6-so-cannot-open-shared-object-file">libtk8.6.so: cannot open shared object file</a></li>
 <li><a class="reference internal" href="#libstdc-so-6-version-glibcxx-3-4-26-not-found">libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found</a></li>
-<li><a class="reference internal" href="#incorrect-or-invalid-username-password">Incorrect or invalid username/password</a></li>
-<li><a class="reference internal" href="#logging-in-takes-a-very-long-time">Logging in takes a very long time</a></li>
-<li><a class="reference internal" href="#id1">libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found</a></li>
 </ul>
 </li>
 </ul>
