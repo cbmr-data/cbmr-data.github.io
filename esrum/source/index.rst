@@ -32,7 +32,7 @@
    :hidden:
    :caption: Other services
 
-   services/r
+   services/rstudio
    services/jupyter
    services/containers
    services/shiny
@@ -46,6 +46,7 @@
    tips/batching_commands
    tips/robust_scripts
    tips/snakemake
+   tips/r
 
 .. toctree::
    :hidden:
@@ -116,7 +117,7 @@ workshop to be announced:
 In addition, this documentation contains an overview of the
 :ref:`cluster architecture and features <p_overview>`, describes the
 various other services accessible as part of the HPC cluster, such as
-:ref:`Rstudio servers <p_service_r>`, :ref:`Shiny servers
+:ref:`Rstudio servers <p_service_rstudio>`, :ref:`Shiny servers
 <p_usage_shiny>`, and :ref:`persistent podman containers
 <p_containers>`.
 

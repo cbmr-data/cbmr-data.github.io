@@ -23,7 +23,7 @@ to the cluster.
  R
 ***
 
-.. include:: services/r_troubleshooting.rst
+.. include:: tips/r_troubleshooting.rst
 
 *********
  Rstudio
