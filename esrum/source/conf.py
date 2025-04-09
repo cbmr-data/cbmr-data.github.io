@@ -53,3 +53,7 @@ html_js_files = [
     "js/libgif.js",
     "js/playback.js",
 ]
+
+# Apply unreleased (after furu v2024.4.27) changes for better readability
+pygments_style = "a11y-light"
+pygments_dark_style = "a11y-dark"
