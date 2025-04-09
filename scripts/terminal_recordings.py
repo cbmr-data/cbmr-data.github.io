@@ -10,7 +10,6 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List, Literal, NoReturn, Optional, Tuple, TypedDict, Union
 
-
 AsciinemaHeader = Dict[str, Union[int, float, str, None]]
 AsciinemaRecord = Tuple[float, str, str]
 
@@ -302,22 +301,6 @@ def main(argv: List[str]) -> int:
         return 1
 
     return args.main(args)
-
-    args = parse_args(argv)
-    eprint("Reading asciinema file", args.input)
-    header, records = read_asciinema_v2(args.input)
-
-    if not any(kind in "ac" for _, kind, _ in records):
-        eprint(
-            "No user input in recording. Please edit the second column in rows "
-            'representing user input from "o" to "a" (converted to "a" as is) or "c" ('
-            "(split into a key-press per character). This allows this script to "
-            "normalize timings for key presses, etc."
-        )
-
-        return 1
-
-    return 0
 
 
 if __name__ == "__main__":
