@@ -126,10 +126,10 @@ the number of CPUs used commands run in a job.
 
 One way of doing this is via the ``time`` command, which can report the
 efficiency from using multiple threads and to show how much memory a
-program used. This is acoomplished by pre-pending ``/usr/bin/time -f
-"CPU = %P, MEM = %MKB"`` to the command that you want to measure, as
-shown in this example, where we wish to measure the resource usage of
-the ``my-command`` program:
+program used. This is acoomplished by prepending ``/usr/bin/time -f "CPU
+= %P, MEM = %MKB"`` to the command that you want to measure, as shown in
+this example, where we wish to measure the resource usage of the
+``my-command`` program:
 
 .. code-block::
 

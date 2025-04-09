@@ -161,7 +161,7 @@ then this is typically described in the ``module display`` text:
 
        /opt/software/modules/cellect/1.0:
 
-       module-whatis   {CELL-type Expression-specific integration for Complex Traits (CELLECT) is a computational toolkit for identifing likely etiologic cell-types underlying complex traits.}
+       module-whatis   {CELL-type Expression-specific integration for Complex Traits (CELLECT) is a computational toolkit for identifying likely etiologic cell-types underlying complex traits.}
        conflict        cellect
        prereq          miniconda/4.12.0
        prepend-path    PATH /opt/software/cellect/1.0

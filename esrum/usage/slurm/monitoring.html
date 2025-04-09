@@ -349,10 +349,10 @@ you are running. This is particularly useful when attempting to optimize
 the number of CPUs used commands run in a job.</p>
 <p>One way of doing this is via the <code class="docutils literal notranslate"><span class="pre">time</span></code> command, which can report the
 efficiency from using multiple threads and to show how much memory a
-program used. This is acoomplished by pre-pending <code class="docutils literal notranslate"><span class="pre">/usr/bin/time</span> <span class="pre">-f</span>
-<span class="pre">&quot;CPU</span> <span class="pre">=</span> <span class="pre">%P,</span> <span class="pre">MEM</span> <span class="pre">=</span> <span class="pre">%MKB&quot;</span></code> to the command that you want to measure, as
-shown in this example, where we wish to measure the resource usage of
-the <code class="docutils literal notranslate"><span class="pre">my-command</span></code> program:</p>
+program used. This is acoomplished by prepending <code class="docutils literal notranslate"><span class="pre">/usr/bin/time</span> <span class="pre">-f</span> <span class="pre">&quot;CPU</span>
+<span class="pre">=</span> <span class="pre">%P,</span> <span class="pre">MEM</span> <span class="pre">=</span> <span class="pre">%MKB&quot;</span></code> to the command that you want to measure, as shown in
+this example, where we wish to measure the resource usage of the
+<code class="docutils literal notranslate"><span class="pre">my-command</span></code> program:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>/usr/bin/time<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;CPU = %P, MEM = %M&quot;</span><span class="w"> </span>my-command<span class="w"> </span>--threads<span class="w"> </span><span class="m">1</span><span class="w"> </span>...
 <span class="go">CPU = 99%, MEM = 840563KB</span>
 <span class="gp">$ </span>/usr/bin/time<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;CPU = %P, MEM = %M&quot;</span><span class="w"> </span>my-command<span class="w"> </span>--threads<span class="w"> </span><span class="m">4</span><span class="w"> </span>...
