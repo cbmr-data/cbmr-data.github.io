@@ -145,7 +145,7 @@ on how to apply for access to projects.
 
 Projects on Esrum are located in the ``/projects`` folder:
 
-.. code-block::
+.. code-block:: console
 
    $ ls -1 /projects
    phenomics-AUDIT
@@ -240,6 +240,7 @@ It is recommended that you create a sub-folder containing your UCPH-IT
 username when using the scratch-drive as part of your scripts:
 
 .. code-block:: bash
+   :linenos:
 
    # Create temporary folder in the form /scratch/abc123
    mkdir -p "/scratch/${USER}"
@@ -277,7 +278,7 @@ These folders do not appear when you list the content of the parent
 folder, even you use `ls -a`, but they can be accessed like any other
 folder:
 
-.. code-block::
+.. code-block:: console
 
    $ cd /projects/cbmr_shared/data/.snapshot
    $ ls

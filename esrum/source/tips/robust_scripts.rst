@@ -38,7 +38,7 @@ access slurm options in batch scripts. However, unlike in most
 programming languages, it is not an error to access a variable that does
 not exist:
 
-.. code-block::
+.. code-block:: console
 
    $ cat myscript.sh
    #!/bin/bash
@@ -57,7 +57,7 @@ While there are cases where it is useful to allow missing variables,
 most of the time this is a mistake. To prevent this, you can set the
 ``nounset`` option, which causes bash to terminate on unset variables:
 
-.. code-block::
+.. code-block:: console
 
    $ cat myscript.sh
    #!/bin/bash
@@ -87,6 +87,7 @@ even if a command fails. If this is not detected, then it can lead to
 partially or wholly corrupt data:
 
 .. code-block:: bash
+   :linenos:
 
    #!/bin/bash
    # 1. Create some data
@@ -98,7 +99,7 @@ partially or wholly corrupt data:
 
 This produces the following output:
 
-.. code-block::
+.. code-block:: console
 
    $ ls
    my-sketch.sh
@@ -117,6 +118,7 @@ with the argument (exit code) 1 to indicate to Slurm that the command
 failed.
 
 .. code-block:: bash
+   :linenos:
 
    # 1. Exit if command fails, but nothing else
    sed -i -e's# dog # parrot ' sketch.txt || exit 1
@@ -132,6 +134,7 @@ failed.
 This, however, does not work well if you wish to pipe commands:
 
 .. code-block:: bash
+   :linenos:
 
    if ! sed -i -e's# dog # parrot ' sketch.txt | gzip > sketch.txt.gz; then
        echo "We're closin' for lunch."
@@ -144,6 +147,7 @@ the ``gzip`` command succeeds even if ``sed`` fails.
 To mitigate these problems, we can make use of the following options:
 
 .. code-block:: bash
+   :linenos:
    :emphasize-lines: 3-8
 
    #!/bin/bash
@@ -164,7 +168,7 @@ To mitigate these problems, we can make use of the following options:
 
 Running this script produces the following, helpful output:
 
-.. code-block::
+.. code-block:: console
 
    $ ls
    my-sketch.sh
@@ -187,6 +191,7 @@ The following bash script template combines the suggestions above and
 thereby helps avoid *some* pitfalls of using bash
 
 .. code-block:: bash
+   :linenos:
 
    #!/bin/bash
    # FIXME: SBATCH commands go here!
@@ -219,7 +224,7 @@ common mistakes.
 For example, if we run shell check on the very first script shown on
 this page:
 
-.. code-block::
+.. code-block:: console
 
    $ module load shellcheck
    $ shellcheck myscript.sh
@@ -243,7 +248,7 @@ mentioned above, as well as the ``errexit`` option that is equivalent to
 the ``trap`` command above but which prints less information about the
 failure:
 
-.. code-block::
+.. code-block:: console
 
    $ snakemake
    sed: -e expression #1, char 16: unterminated `s' command

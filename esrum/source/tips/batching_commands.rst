@@ -27,6 +27,7 @@ script. For example, this script runs the ``plonk`` command on a number
 of population VCF files:
 
 .. code-block:: bash
+   :linenos:
 
    #!/bin/bash
    module load plonk/3.14
@@ -39,6 +40,7 @@ The following command indexes a number of (small) BAM files in the
 current directory:
 
 .. code-block:: bash
+   :linenos:
 
    #!/bin/bash
    module load samtools/1.17
@@ -60,6 +62,7 @@ The GNU parallel_ commands offers a range of options for running
 commands in parallel.
 
 .. code-block:: bash
+   :linenos:
 
    #!/bin/bash
    module load plonk/3.14
@@ -76,6 +79,7 @@ with the current value.
 The second ``xargs`` example above can be run in parallel as follows:
 
 .. code-block:: bash
+   :linenos:
 
    #!/bin/bash
    module load samtools/1.17
@@ -90,6 +94,7 @@ Additionally, ``parallel`` can read values from STDIN, meaning that the
 above could also be written as
 
 .. code-block:: bash
+   :linenos:
 
    #!/bin/bash
    module load samtools/1.17
@@ -117,6 +122,7 @@ number of processes with ``parallel``.
 Using the ``plonk`` example from above:
 
 .. code-block:: bash
+   :linenos:
 
    #!/bin/bash
    module load plonk/3.14
@@ -132,6 +138,7 @@ threads for my job and then run 3 instances of ``plonk`` using
 ``parallel``.
 
 .. code-block:: bash
+   :linenos:
 
    #!/bin/bash
    #SBATCH --cpus-per-task=12

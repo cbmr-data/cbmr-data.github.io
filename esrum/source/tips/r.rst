@@ -28,7 +28,7 @@ compatible between the compute nodes and the RStudio servers.
 By default, the 4.3.x versions of R loads ``gcc/8.5.0``, so you can
 simply use the ``--auto`` option when loading ``R/4.3.x``:
 
-.. code-block::
+.. code-block:: console
 
    $ module load --auto R/4.3.3
    Loading R/4.3.3
@@ -44,7 +44,7 @@ again.
    modules you install to fail to load on the RStudio server with the
    errors similar to the following:
 
-   .. code-block::
+   .. code-block:: text
 
       Error: package or namespace load failed for ‘wk’ in dyn.load(file, DLLpath = DLLpath, ...):
       unable to load shared object '/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so':
@@ -63,7 +63,7 @@ impact other users, but also makes your analyses reproducible.
 To run an R script on the command-line, simply use the ``Rscript``
 command:
 
-.. code-block::
+.. code-block:: console
 
    $ cat my_script.R
    cat("Hello, world!\n")
@@ -75,12 +75,13 @@ arguments to your scripts, allowing you to use them to process arbitrary
 data-sets:
 
 .. code-block:: R
+   :linenos:
 
    args <- commandArgs(trailingOnly = TRUE)
 
    cat("Hello, ", args[1], "!\n", sep="")
 
-.. code-block::
+.. code-block:: console
 
    $ Rscript my_script.R world
    Hello, world!
@@ -100,7 +101,7 @@ The following shows a brief example of how you might use the
 This allows you to document your command-line options, specify default
 values, and much more:
 
-.. code-block::
+.. code-block:: console
 
    $ Rscript my_script.R
    usage: my_script.R [--] [--help] [--opts OPTS] [--p-value P-VALUE]
@@ -129,6 +130,7 @@ the required version of R and to call your script when you submit it to
 Slurm (using your preferred version of R):
 
 .. code-block:: bash
+   :linenos:
 
    #!/bin/bash
 
@@ -139,7 +141,7 @@ The ``"${@}"`` safely passes all your command-line arguments to
 ``Rscript``, even if they contain spaces. This wrapper script can then
 be used to submit/call any of your R-scripts:
 
-.. code-block::
+.. code-block:: console
 
    $ sbatch run_rscript.sh my_script.R my_data.tsv --p-value 0.01
    Submitted batch job 18090212
@@ -153,7 +155,7 @@ be used to submit/call any of your R-scripts:
 Modules may be installed in your home folder using the
 ``install.packages`` command:
 
-.. code-block::
+.. code-block:: console
 
    $ module load gcc/8.5.0 R/4.3.1
    $ R
@@ -169,7 +171,7 @@ When asked to pick a mirror, either pick ``0-Cloud`` by entering ``1``
 and pressing enter, or enter the number corresponding to a location near
 you and press enter:
 
-.. code-block::
+.. code-block:: text
 
    --- Please select a CRAN mirror for use in this session ---
    Secure CRAN mirrors

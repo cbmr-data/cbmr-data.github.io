@@ -33,6 +33,7 @@ that there is plenty capacity for whatever temporary files your programs
 might generate:
 
 .. code-block:: bash
+   :linenos:
 
    #!/bin/bash
    #SBATCH --export=TMPDIR
@@ -56,7 +57,7 @@ the nodes, and for most part it should feel no different from running a
 command without Slurm. Simply prefix your command with ``srun`` and the
 queuing system takes care of running it on the first available node:
 
-.. code-block::
+.. code-block:: console
 
    $ srun gzip chr20.fasta
 
@@ -68,7 +69,7 @@ Except for the ``srun`` prefix, this is exactly as if you ran the
 to a file or to another command, then you *must* wrap your commands in a
 bash (or similar) script:
 
-.. code-block::
+.. code-block:: console
 
    $ srun bash my_script.sh
 
@@ -84,7 +85,7 @@ Cancelling srun
 To cancel a job running with srun, simply press `Ctrl + c` twice within
 1 second:
 
-.. code-block::
+.. code-block:: console
 
    $ srun gzip chr20.fasta
    <ctrl+c> srun: interrupt (one more within 1 sec to abort)
@@ -111,6 +112,7 @@ script to make use of the ``SLURM_ARRAY_TASK_ID`` variable, which
 specifies the numerical ID of a task:
 
 .. code-block:: bash
+   :linenos:
 
    #!/bin/bash
    #SBATCH --cpus-per-task=8
@@ -137,7 +139,7 @@ task IDs.
 
 Our script can then be run as before:
 
-.. code-block::
+.. code-block:: console
 
    $ ls
    chr1.fasta chr2.fasta chr3.fasta chr4.fasta chr5.fasta my_script.sh
@@ -182,6 +184,7 @@ jobs, each requesting 8 CPUs. However, the ``%16`` appended to the
 same time:
 
 .. code-block:: bash
+   :linenos:
 
    #!/bin/bash
    #SBATCH --cpus-per-task=8
@@ -195,6 +198,7 @@ In addition to limiting the number of simultaneously running jobs, you
 can also give your jobs a lower priority using the ``--nice`` option:
 
 .. code-block:: bash
+   :linenos:
 
    #SBATCH --nice
 
@@ -214,7 +218,7 @@ Job arrays can either be cancelled as a whole or in part. To cancel the
 entire job (all tasks in the array) simply use the primary job ID before
 the underscore/dot:
 
-.. code-block::
+.. code-block:: console
 
    $ scancel 8504
 
@@ -222,7 +226,7 @@ To cancel part of a batch job/array, instead specify the ID of the
 sub-task after the ID of the batch job, using a dot (``.``) to separate
 the two IDs instead of an underscore (``_``):
 
-.. code-block::
+.. code-block:: console
 
    $ scancel 8504.1
 
@@ -249,6 +253,7 @@ filenames in a bash script.
    simply written as 1, 2, etc.:
 
    .. code-block:: bash
+      :linenos:
 
       # Simple numbering: sample1.vcf, sample2.vcf, etc.
       FILENAME="sample${SLURM_ARRAY_TASK_ID}.vcf"
@@ -257,6 +262,7 @@ filenames in a bash script.
    manner (e.g. 001, 002, etc.), using for example the printf command:
 
    .. code-block:: bash
+      :linenos:
 
       # Formatted numbering: sample001.vcf, sample002.vcf, etc.
       FILENAME=$(printf "sample%03i.vcf" ${SLURM_ARRAY_TASK_ID})
@@ -275,6 +281,7 @@ filenames in a bash script.
       /path/to/third_sample.vcf
 
    .. code-block:: bash
+      :linenos:
 
       # Prints the Nth line
       FILENAME=$(sed "${SLURM_ARRAY_TASK_ID}q;d" my_samples.txt)
@@ -282,6 +289,7 @@ filenames in a bash script.
    A sbatch script could look as follows:
 
    .. code-block:: bash
+      :linenos:
 
       #!/bin/bash
       #SBATCH --array=1-3
@@ -304,6 +312,7 @@ filenames in a bash script.
    +----+--------+------------------------------+
 
    .. code-block:: bash
+      :linenos:
 
       # Find row where 1. column matches SLURM_ARRAY_TASK_ID and print 3. column
       FILENAME=$(awk -v ID=${SLURM_ARRAY_TASK_ID} '$1 == ID {print $3; exit}' my_samples.tsv)
@@ -313,6 +322,7 @@ filenames in a bash script.
    this using the ``FS`` (field separator) option:
 
    .. code-block:: bash
+      :linenos:
 
       # Find row where column 1 matches SLURM_ARRAY_TASK_ID and print column 3
       FILENAME=$(awk -v FS="\t" -v ID=${SLURM_ARRAY_TASK_ID} '$1 == ID {print $3; exit}' my_samples.tsv)
@@ -323,6 +333,7 @@ filenames in a bash script.
    A sbatch script could look as follows:
 
    .. code-block:: bash
+      :linenos:
 
       #!/bin/bash
       #SBATCH --array=1-3

@@ -43,7 +43,7 @@ To run Snakemake with Slurm support enabled, simply pass the options
 ``--slurm`` and ``--jobs N``, where the ``N`` is the maximum number of
 jobs you want to queue simultaneously. For example,
 
-.. code-block::
+.. code-block:: console
 
    $ module load snakemake/7.30.1
    $ snakemake --slurm --jobs 32
@@ -72,6 +72,7 @@ Snakemake will automatically request a number of CPUs corresponding to
 the number of threads used by a rule:
 
 .. code-block:: python
+   :linenos:
 
    rule my_rule:
        input: ...
@@ -93,7 +94,7 @@ This is, however, frequently less than the Slurm default of ~16 GB per
 CPU reserved, and we therefore recommend overriding this default using
 the ``--default-resources`` option:
 
-.. code-block::
+.. code-block:: console
 
    $ snakemake --default-resources mem_mb_per_cpu=15948
 
@@ -104,6 +105,7 @@ you can request additional memory using the ``resources`` section of
 your rule:
 
 .. code-block:: python
+   :linenos:
 
    rule my_rule:
        input: ...
@@ -124,6 +126,7 @@ rule. Once you have done so, you can reserve GPUs using the
 ``slurm_extra`` resource:
 
 .. code-block:: python
+   :linenos:
 
    rule gpu_example:
        input: "my_input.dat"
@@ -140,6 +143,7 @@ resource and instead specify the amount of RAM needed in MB, using the
 ``mem_mb`` resource as described above:
 
 .. code-block:: python
+   :linenos:
 
    rule high_mem_example:
        input: "my_input.dat"
@@ -169,6 +173,7 @@ load the environment modules listed in the ``envmodules`` section of a
 rule:
 
 .. code-block:: python
+   :linenos:
 
    rule my_rule:
        input: "my_input.bam"
@@ -210,6 +215,7 @@ The recommended profile is also available at
 symlink pointing to the latest version of the profile
 
 .. code-block:: yaml
+   :linenos:
 
    # Maximum number of jobs to queue at once
    jobs: 32
@@ -238,14 +244,14 @@ This profile is also available at
 To make use of the profile, run Snakemake with the ``--profile``
 argument and the location of the folder containing your profile:
 
-.. code-block::
+.. code-block:: console
 
    $ snakemake --profile /projects/cbmr_shared/apps/config/snakemake/latest
 
 Options specified in this profile can be overridden on the command-line
 simply by specifying the option again:
 
-.. code-block::
+.. code-block:: console
 
    $ snakemake --profile /projects/cbmr_shared/apps/config/snakemake/latest --jobs 16
 

@@ -36,7 +36,7 @@ The first step is to determine what modules are available on the server.
 This is accomplished with the ``module avail`` command, that lists all
 available modules by default:
 
-.. code-block::
+.. code-block:: console
 
    $ module avail
    -------------------------- /opt/software/modules --------------------------
@@ -49,7 +49,7 @@ available modules by default:
 
 The ``avail`` command can also be used to list module versions by name:
 
-.. code-block::
+.. code-block:: console
 
    $ module avail samtools
    -------------------------- /opt/software/modules --------------------------
@@ -62,7 +62,7 @@ below).
 If you are not sure of the exact name of a module, then the ``search``
 command can be used to search module names and descriptions:
 
-.. code-block::
+.. code-block:: console
 
    $ module search conda
     -------------------------- /opt/software/modules ---------------------------
@@ -92,7 +92,7 @@ The modules are loaded using the ``module load`` command. This command
 adds the executable to your PATH and performs any other setup required
 to run the software.
 
-.. code-block::
+.. code-block:: console
 
    $ samtools
    -bash: samtools: command not found
@@ -105,7 +105,7 @@ to run the software.
 Specifying the exact version of a module that you want to load is highly
 recommended. This ensures that your results are reproducible:
 
-.. code-block::
+.. code-block:: console
 
    $ module load samtools/1.12
    $ samtools
@@ -125,7 +125,7 @@ recommended. This ensures that your results are reproducible:
 
 In some cases one module will require another module:
 
-.. code-block::
+.. code-block:: console
 
    $ module load bcftools/1.16
    Loading bcftools/1.16
@@ -135,14 +135,14 @@ In some cases one module will require another module:
 In that case you simply need to load the required module first. This can
 be done in done manually:
 
-.. code-block::
+.. code-block:: console
 
    $ module load perl
    $ module load bcftools/1.16
 
 Or automatically:
 
-.. code-block::
+.. code-block:: console
 
    $ module load --auto bcftools
    Loading bcftools/1.16
@@ -154,7 +154,7 @@ Additional activation steps
 Some modules require additional steps before you can use them. If so,
 then this is typically described in the ``module display`` text:
 
-.. code-block::
+.. code-block:: console
    :emphasize-lines: 11
 
    $ module display cellect/1.0
@@ -173,7 +173,7 @@ then this is typically described in the ``module display`` text:
 Thus, if we wanted to use ``cellect/1.0``, we would need to perform the
 following steps:
 
-.. code-block::
+.. code-block:: console
 
    $ module display cellect/1.0
    $ module load miniconda/4.12.0
@@ -193,21 +193,24 @@ Listing and unloading loaded modules
 The modules you have loaded can be listed using the ``module list``
 command:
 
-.. code-block::
+.. code-block:: console
 
    $ modules list
    Currently Loaded Modulefiles:
     1) perl/5.26.3   2) bcftools/1.16   3) samtools/1.12
 
 To remove a module that you no longer need, use the ``module unload``
-command to unload a single module or the ``module purge`` command to
-unload all modules:
+command to unload a single module:
 
-.. code-block::
+.. code-block:: console
 
-   # Unload the samtools module
    $ module unload samtools
-   # Unload the remaining modules
+
+Alternatively, you can use the ``module purge`` command to unload all
+modules:
+
+.. code-block:: console
+
    $ module purge
    $ modules list
    No Modulefiles Currently Loaded.
@@ -236,7 +239,7 @@ Managing modules with ``module save/restore``
 To export a list of your currently used models, use the following
 command:
 
-.. code-block::
+.. code-block:: console
 
    $ module config collection_pin_version 1
    $ module save ./modules.txt
@@ -254,7 +257,7 @@ what software you used.
 If used correctly, the ``./modules.txt`` file will contain the currently
 loaded modules, e.g:
 
-.. code-block::
+.. code-block:: console
 
    $ module list
    Currently Loaded Modulefiles:
@@ -271,7 +274,7 @@ loaded modules, e.g:
 To load the saved modules, simply run ``module restore`` with the same
 filename (and a directory component):
 
-.. code-block::
+.. code-block:: console
 
    $ module list
    No Modulefiles Currently Loaded.
@@ -284,13 +287,13 @@ Alternative, use the ``.`` or ``source`` command to execute the content
 of the file in your current shell. This has the same effect as running
 ``module restore``:
 
-.. code-block::
+.. code-block:: console
 
    $ source ./modules.txt
 
 or
 
-.. code-block::
+.. code-block:: console
 
    $ source ./modules.txt
 
@@ -311,7 +314,7 @@ modules by default. If that is not the case, then please contact
 These modules should be listed first when you use the ``module avail``
 command:
 
-.. code-block::
+.. code-block:: console
 
    ---------------- /projects/cbmr_shared/apps/modules/modulefiles ----------------
    add_dbsnp_ids/20231206_1  msconvert/20250218_1    sacct-usage/20240603_1
@@ -326,7 +329,7 @@ command:
 Should the modules not be listed, then you can manually register them
 using the ``module use`` command:
 
-.. code-block::
+.. code-block:: console
 
    $ module use --prepend /projects/cbmr_shared/apps/modules/modulefiles/
 

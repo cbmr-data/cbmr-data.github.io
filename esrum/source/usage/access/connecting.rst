@@ -142,7 +142,7 @@ using KDE5. If that is not the case, or if you prefer a command-line
 solution, then you can also connect using ``openconnect``, replacing
 ``abc123`` with your UCPH username:
 
-.. code-block::
+.. code-block:: console
 
    $ sudo openconnect -u abc123 vpn.ku.dk
 
@@ -168,7 +168,7 @@ Once connected to the VPN, you can connect to the cluster using ``ssh``
 and the following terminal command, again replacing ``abc123`` with your
 UCPH username:
 
-.. code-block::
+.. code-block:: console
 
    $ ssh abc123@esrumhead01fl.unicph.domain
 
@@ -178,7 +178,7 @@ UCPH username:
 It is recommended to add an entry for the cluster to your
 ``.ssh/config`` file, replacing ``abc123`` with your UCPH username:
 
-.. code-block::
+.. code-block:: console
 
    $ cat ~/.ssh/config
    Host esrum esrumhead01fl esrumhead01fl.unicph.domain
@@ -189,7 +189,7 @@ This allows you to connect to the server using the names ``esrum``,
 ``esrumhead01fl``, or ``esrumhead01fl.unicph.domain``, and without
 having to specify your username:
 
-.. code-block::
+.. code-block:: console
 
    $ ssh esrum
    abc123@esrumhead01fl.unicph.domain's password:

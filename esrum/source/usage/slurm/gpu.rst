@@ -29,6 +29,7 @@ these resources. You must therefore select use the option
 follows in a sbatch script:
 
 .. code-block:: bash
+   :linenos:
    :emphasize-lines: 2
 
    #!/bin/bash
@@ -45,6 +46,7 @@ For example, to run a job using 2.5 TB of RAM on the GPU / high-memory
 node:
 
 .. code-block:: bash
+   :linenos:
    :emphasize-lines: 2
 
    #!/bin/bash
@@ -55,7 +57,7 @@ node:
 
 This script can then be submitted as usual:
 
-.. code-block::
+.. code-block:: console
 
    $ sbatch my_hi_mem_job.sh
    Submitted batch job 217217
@@ -79,6 +81,7 @@ queue, as described above. This might look as follows in a ``sbatch``
 script:
 
 .. code-block:: bash
+   :linenos:
    :emphasize-lines: 2
 
    #!/bin/bash
@@ -93,7 +96,7 @@ reserve 1 GPU per job, which is normally also more efficient.
 
 This script can then be submitted as usual:
 
-.. code-block::
+.. code-block:: console
 
    $ sbatch my_gpu_job.sh
    Submitted batch job 217218
@@ -112,6 +115,7 @@ To request an A100 GPU, replace the ``--gres=gpu:1`` option with
 ``--gres=gpu:1`` option with ``--gres=gpu:h100:1``. For example,
 
 .. code-block:: bash
+   :linenos:
    :emphasize-lines: 2
 
    #!/bin/bash
@@ -121,7 +125,7 @@ To request an A100 GPU, replace the ``--gres=gpu:1`` option with
 
 This script can then be submitted as usual:
 
-.. code-block::
+.. code-block:: console
 
    $ sbatch my_h100_job.sh
    Submitted batch job 217219
@@ -148,7 +152,7 @@ To start an interactive session using a GPU you simply apply the same
 you need a GPU, as well as other resource options described in the
 :ref:`reserving_resources` section:
 
-.. code-block::
+.. code-block:: console
 
    $ srun --pty --partition=gpuqueue -- /bin/bash
 

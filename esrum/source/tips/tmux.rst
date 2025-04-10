@@ -27,7 +27,7 @@ documentation.
 To get started, ``cd`` to the directory you wish to work in and run
 ``tmux`` or the longer (but equivalent) command ``tmux new``:
 
-.. code-block::
+.. code-block:: console
 
    $ cd /projects/my_project/people/abc123
    $ tmux
@@ -62,17 +62,9 @@ between them using ``Ctrl+b n`` to switch to the next terminal and
    TODO: Screenshot
 
 To close the terminals you've created, use either the ``exit`` command
-or press ``CTRL+d`` while on an empty line:
-
-.. code-block::
-
-   ### either
-   $ exit
-   ### or
-   $ <press CTRL+d>
-
-tmux_ will exit with the message ``[exited]`` once the last terminal in
-the current session has been closed.
+or press ``CTRL+d`` while on an empty line. tmux_ will exit with the
+message ``[exited]`` once the last terminal in the current session has
+been closed.
 
 ..
    TODO: Screenshot
@@ -93,21 +85,32 @@ safely disconnect from the server:
    TODO: Screenshot
 
 Once you wish to resume your work, you can use the ``tmux attach``
-command to re-open your running sessions, optionally specifying the name
-of the session you wish to open (see also below):
+command to re-open your running sessions:
 
-.. code-block::
+.. code-block:: console
 
-   ### either
    $ tmux attach
-   ### or
-   $ tmux attach -t project
 
-Alternatively, you can use the keyboard shortcut ``CTRL+b s`` to switch
-to the correct session after you've attached tmux.
+Once you've connected to tmux, you can use the keyboard shortcut
+``CTRL+b s`` to switch to the correct session.
 
 ..
    TODO: Screenshot
+
+Alternatively, you can list your sessions with ``tmux ls`` and attach to
+one of them:
+
+.. code-block:: console
+
+   $ tmux ls
+   0: 1 windows (created Thu Apr 10 16:31:43 2025)
+   mice: 2 windows (created Thu Apr 10 16:32:04 2025)
+   $ tmux attach -t mice
+
+.. tip::
+
+   Instead of writing ``tmux attach``, you can use the shortcut ``tmux
+   at``.
 
 Naming your sessions and windows
 ================================
@@ -122,7 +125,7 @@ give the session a name with ``-s`` and the window can be given a name
 with ``-n`` as follows. However, this can only if you are not already in
 an active tmux session:
 
-.. code-block::
+.. code-block:: console
 
    $ tmux new -s project -n task
 
