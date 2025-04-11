@@ -4,17 +4,20 @@ see the :ref:`p_usage_access_applying` page before continuing!
 Timeout while connecting to the cluster
 ========================================
 
-You may experience timeout errors when you attempt to connect to Esrum:
+You may experience timeout errors when you attempt to connect to Esrum.
 
-On Linux:
+On Linux, this typically results in an ``Operation timed out`` message:
 
-.. image:: /usage/access/images/connecting_ssh_timeout.gif
-   :class: gif
+.. code-block:: console
 
-On Windows, using MobaXterm:
+    $ ssh abc123@esrumhead01fl.unicph.domain
+    ssh: connect to host esrumhead01fl.unicph.domain port 22: Operation timed out
+
+On Windows, using MobaXterm, it may result in a ``connection timed out``
+message:
 
 .. image:: /usage/access/images/connecting_mobaxterm_timeout.png
-    :align: center
+   :align: center
 
 Firstly verify that you are correctly connected to the UCPH VPN. This is
 required to connect to Esrum. See the :ref:`p_usage_connecting` page for

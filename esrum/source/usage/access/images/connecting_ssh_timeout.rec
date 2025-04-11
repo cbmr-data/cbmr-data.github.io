@@ -1,6 +1,0 @@
-{"version": 2, "width": 80, "height": 3, "timestamp": 1681388634, "env": {"SHELL": "/bin/zsh", "TERM": "xterm-256color"}}
-{"action": "output", "value": "\u001b[?2004h\u001b]0;abc123@SUND1234567: ~\u0007\u001b[01;32mabc123@SUND1234567\u001b[00m:\u001b[01;34m~\u001b[00m$ "}
-{"action": "type", "value": "ssh abc123@esrumhead01fl.unicph.domain\r\n"}
-{"action": "wait", "value": 3000}
-{"action": "output", "value": "ssh: connect to host esrumhead01fl.unicph.domain port 22: Operation timed out\n\r"}
-{"action": "output", "value": "\u001b[?2004h\u001b]0;abc123@SUND1234567: ~\u0007\u001b[01;32mabc123@SUND1234567\u001b[00m:\u001b[01;34m~\u001b[00m$ "}
