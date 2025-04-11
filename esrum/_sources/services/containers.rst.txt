@@ -104,7 +104,7 @@ singularity:
    $ ssh abc123@esrumhead01fl.unicph.domain
    $ module load --auto singularity
    $ cd /projects/my_project/scratch/
-   $ singularity build my_image _v1.2.3.sif docker-archive://my_image_v1.2.3.tar
+   $ singularity build my_image_v1.2.3.sif docker-archive://my_image_v1.2.3.tar
 
 The singularity image can then be run using the ``singularity run``
 command:
