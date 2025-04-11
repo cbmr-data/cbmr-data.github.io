@@ -1,7 +1,6 @@
 name: publish
 
 on:
-  pull_request:
   push:
     branches:
       - main
@@ -44,9 +43,9 @@ jobs:
           git commit -m "Update documentation" -a || true
 
       # Push changes to gh-pages
-      # - name: Push changes
-      #   uses: ad-m/github-push-action@77c5b412c50b723d2a4fbc6d71fb5723bcd439aa # master (2024-07-01)
-      #   with:
-      #     branch: gh-pages
-      #     directory: gh-pages
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push changes
+        uses: ad-m/github-push-action@77c5b412c50b723d2a4fbc6d71fb5723bcd439aa # master (2024-07-01)
+        with:
+          branch: gh-pages
+          directory: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
