@@ -13,7 +13,10 @@ author = "CBMR Data Analytics"
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = []
+extensions = [
+    # https://github.com/executablebooks/sphinx-copybutton
+    "sphinx_copybutton",
+]
 
 templates_path = ["_templates"]
 exclude_patterns = []
@@ -57,3 +60,9 @@ html_js_files = [
 # Apply unreleased (after furu v2024.4.27) changes for better readability
 pygments_style = "a11y-light"
 pygments_dark_style = "a11y-dark"
+
+# Exclude line numbers, prompts, and terminal output when copying from `console` blocks
+copybutton_exclude = ".linenos, .gp, .go"
+# Handle bash, R, and python prompts
+copybutton_prompt_text = r"\$ |> |>>> "
+copybutton_prompt_is_regexp = True
