@@ -109,6 +109,10 @@ how to request a new project. Never use your home folder for this and
 remember that projects have to be audited (indicated by the ``-AUDIT``
 suffix) if you are working on sensitive/protected data.
 
+Should you be missing any of these folders, or should you be unable to
+access the folders, then please see the
+:ref:`s_filesystem_troubleshooting` section below.
+
 .. warning::
 
    Because access to these network drives are time-limited, you should
@@ -117,14 +121,6 @@ suffix) if you are working on sensitive/protected data.
    being written to the system logs, and to avoid this we may either
    contact you to terminate those processes or simply terminate them
    ourselves.
-
-Should you be missing any of these folders, then please see the
-:ref:`s_filesystem_troubleshooting` section below.
-
-If the folders/links exist, but you cannot access them, then please make
-sure that you are not using GSSAPI (Kerberos) to login. See the
-:ref:`s_network_drives_mobaxterm` section for instructions for how to
-disable this feature if you are using MobaXterm.
 
 .. tip::
 
@@ -275,7 +271,7 @@ each of these folders. For example,
 -  ``~/ucph/sdir/SUN-CBMR-Shared/.snapshot/``
 
 These folders do not appear when you list the content of the parent
-folder, even you use `ls -a`, but they can be accessed like any other
+folder, even you use ``ls -a``, but they can be accessed like any other
 folder:
 
 .. code-block:: console

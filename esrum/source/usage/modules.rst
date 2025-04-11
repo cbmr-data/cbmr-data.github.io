@@ -283,13 +283,13 @@ filename (and a directory component):
    Currently Loaded Modulefiles:
    1) gcc/11.2.0   2) samtools/1.17   3) perl/5.26.3   4) bcftools/1.16
 
-Alternative, use the ``.`` or ``source`` command to execute the content
-of the file in your current shell. This has the same effect as running
-``module restore``:
+Alternative, use the ``.`` command or the ``source`` command to execute
+the content of the file in your current shell. This has the same effect
+as running ``module restore``:
 
 .. code-block:: console
 
-   $ source ./modules.txt
+   $ . ./modules.txt
 
 or
 

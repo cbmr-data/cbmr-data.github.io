@@ -288,8 +288,6 @@ notebook:
 
 .. include:: jupyter_troubleshooting.rst
 
-.. _argparser: https://cran.r-project.org/web/packages/argparser/index.html
-
 .. _jupyter notebooks: https://jupyter.org/
 
 .. _rstudio: https://posit.co/products/open-source/rstudio/

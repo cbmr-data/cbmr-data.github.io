@@ -234,8 +234,9 @@ the two IDs instead of an underscore (``_``):
 
    While it is possible to use ``sbatch`` with jobs of any size, it
    should be remembered that Slurm imposes some overhead on jobs. It is
-   therefore preferable to run jobs in batches, instead of running each
-   task individually.
+   therefore preferable to run fast commands in batches, instead of
+   submitting each command to slurm, individually. See the
+   :ref:`p_tips_batching` page for more information.
 
 Mapping task IDs to data
 ========================
