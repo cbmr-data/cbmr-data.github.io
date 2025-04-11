@@ -1,37 +1,38 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="">
+<html class="no-js" lang="en" data-content_root="../../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Advanced Slurm jobs" href="advanced.html" /><link rel="prev" title="Running jobs using Slurm" href="index.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.4.7 and Furo 2024.04.27 -->
         <title>Basic Slurm jobs - Esrum Cluster documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=437aa6ec" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e2322aab" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=16bf9909" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
       }
     }
@@ -113,6 +114,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -246,9 +249,9 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <section id="basic-slurm-jobs">
-<span id="p-usage-slurm-basics"></span><h1>Basic Slurm jobs<a class="headerlink" href="#basic-slurm-jobs" title="Permalink to this heading">#</a></h1>
+<span id="p-usage-slurm-basics"></span><h1>Basic Slurm jobs<a class="headerlink" href="#basic-slurm-jobs" title="Link to this heading">¶</a></h1>
 <p>This section describes the basics of queuing jobs using on the Esrum
 cluster using the Slurm Workload Manager. This includes queuing tasks
 with the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command, monitoring jobs with <code class="docutils literal notranslate"><span class="pre">squeue</span></code> and
@@ -258,14 +261,14 @@ for jobs that need more CPUs or more RAM.</p>
 <code class="docutils literal notranslate"><span class="pre">computerome</span></code> can use this <a class="reference external" href="https://www.nrel.gov/hpc/assets/pdfs/pbs-to-slurm-translation-sheet.pdf">PBS to Slurm translation-sheet</a> to
 migrate <code class="docutils literal notranslate"><span class="pre">qsub</span></code> scripts/commands to <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>.</p>
 <section id="a-basic-job-script">
-<h2>A basic job script<a class="headerlink" href="#a-basic-job-script" title="Permalink to this heading">#</a></h2>
+<h2>A basic job script<a class="headerlink" href="#a-basic-job-script" title="Link to this heading">¶</a></h2>
 <p>In order to run a job using the Slurm workload manager, you must first
 write a shell script containing the commands that you want to execute.
 In the following example we just run a single command, <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;Hello,</span>
 <span class="pre">slurm!&quot;</span></code>, but scripts can contain any number of commands.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello, slurm!&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello, slurm!&quot;</span>
 </pre></div>
 </div>
 <p>The script can be named anything you like and does not need to be
@@ -275,9 +278,9 @@ execute it.</p>
 <p>We use <code class="docutils literal notranslate"><span class="pre">#!/bin/bash</span></code> for the examples in this section, to indicate
 that they are bash scripts, but it is also possible to use other
 scripting languages by using the appropriate shebang (highlighted):</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="ch">#!/usr/bin/env python3</span>
-</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, slurm!&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">1</span><span class="ch">#!/usr/bin/env python3</span>
+</span><span class="linenos">2</span>
+<span class="linenos">3</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, slurm!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Slurm scripts function like regular scripts for most part, meaning that
@@ -287,7 +290,7 @@ script, and that it is possible to pass command-line arguments to your
 scripts (see below).</p>
 </section>
 <section id="queuing-a-job">
-<h2>Queuing a job<a class="headerlink" href="#queuing-a-job" title="Permalink to this heading">#</a></h2>
+<h2>Queuing a job<a class="headerlink" href="#queuing-a-job" title="Link to this heading">¶</a></h2>
 <p>In the following examples we will use the <code class="docutils literal notranslate"><span class="pre">igzip</span></code> command to compress
 a file. The <code class="docutils literal notranslate"><span class="pre">igzip</span></code> command is similar to <code class="docutils literal notranslate"><span class="pre">gzip</span></code> except that it is
 only available via a module, that it sacrifices compression ratio for
@@ -295,11 +298,11 @@ speed, and that it supports multiple threads. This allows us to test
 those features with Slurm.</p>
 <p>We start with a simple script, with which we will compress the FASTA
 file <code class="docutils literal notranslate"><span class="pre">chr1.fasta</span></code>. This script is saved as <code class="docutils literal notranslate"><span class="pre">my_script.sh</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-
-module<span class="w"> </span>purge
-module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
-igzip<span class="w"> </span>--keep<span class="w"> </span><span class="s2">&quot;chr1.fasta&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span>module<span class="w"> </span>purge
+<span class="linenos">4</span>module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
+<span class="linenos">5</span>igzip<span class="w"> </span>--keep<span class="w"> </span><span class="s2">&quot;chr1.fasta&quot;</span>
 </pre></div>
 </div>
 <p>This script consists of three parts:</p>
@@ -366,16 +369,16 @@ would be found in the <code class="docutils literal notranslate"><span class="pr
 </pre></div>
 </div>
 <section id="passing-arguments-to-sbatch-scripts">
-<h3>Passing arguments to sbatch scripts<a class="headerlink" href="#passing-arguments-to-sbatch-scripts" title="Permalink to this heading">#</a></h3>
+<h3>Passing arguments to sbatch scripts<a class="headerlink" href="#passing-arguments-to-sbatch-scripts" title="Link to this heading">¶</a></h3>
 <p>Arguments specified after the name of the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> script are passed
 to that script, just as if you were running it normally. This allows us
 to update our script above to take a filename on the command line
 instead of hard-coding that filename:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-
-module<span class="w"> </span>purge
-module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
-igzip<span class="w"> </span>--keep<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span>module<span class="w"> </span>purge
+<span class="linenos">4</span>module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
+<span class="linenos">5</span>igzip<span class="w"> </span>--keep<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
 <p>We can then invoke the script using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> as above, specifying the
@@ -392,7 +395,7 @@ bash script.</p>
 </section>
 </section>
 <section id="monitoring-your-jobs">
-<h2>Monitoring your jobs<a class="headerlink" href="#monitoring-your-jobs" title="Permalink to this heading">#</a></h2>
+<h2>Monitoring your jobs<a class="headerlink" href="#monitoring-your-jobs" title="Link to this heading">¶</a></h2>
 <p>You can check the status of your queued and running jobs using the
 <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">--me</span></code> command. The <code class="docutils literal notranslate"><span class="pre">--me</span></code> option ensures that only <em>your</em>
 jobs are shown, rather than everyone's jobs:</p>
@@ -416,7 +419,7 @@ listed using <code class="docutils literal notranslate"><span class="pre">sacct<
 jobs, see the <a class="reference internal" href="monitoring.html#p-usage-slurm-monitor"><span class="std std-ref">Monitoring slurm jobs</span></a> page.</p>
 </section>
 <section id="cancelling-jobs">
-<span id="s-cancelling-jobs"></span><h2>Cancelling jobs<a class="headerlink" href="#cancelling-jobs" title="Permalink to this heading">#</a></h2>
+<span id="s-cancelling-jobs"></span><h2>Cancelling jobs<a class="headerlink" href="#cancelling-jobs" title="Link to this heading">¶</a></h2>
 <p>Already running jobs can be cancelled using the <code class="docutils literal notranslate"><span class="pre">scancel</span></code> command and
 the ID of the job you want to cancel:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>squeue<span class="w"> </span>--me
@@ -433,7 +436,7 @@ the ID of the job you want to cancel:</p>
 below) or individual sub-tasks. See the <a class="reference internal" href="advanced.html#s-job-arrays"><span class="std std-ref">Running multiple tasks using arrays</span></a> section.</p>
 </section>
 <section id="setting-options">
-<h2>Setting options<a class="headerlink" href="#setting-options" title="Permalink to this heading">#</a></h2>
+<h2>Setting options<a class="headerlink" href="#setting-options" title="Link to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command offers two methods for setting options, such as
 resource requirements, notifications, etc. (see e.g.
 <a class="reference internal" href="#s-common-options"><span class="std std-ref">Common options</span></a>). The first option is simply to specify the
@@ -451,12 +454,12 @@ like, is to use <code class="docutils literal notranslate"><span class="pre">#SB
 </div>
 <p>We could instead modify <code class="docutils literal notranslate"><span class="pre">my_script.sh</span></code> by adding a line containing
 <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--my-option</span></code> near the top of the file:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1">#SBATCH --my-option</span>
-<span class="hll">
-</span>module<span class="w"> </span>purge
-module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
-igzip<span class="w"> </span>--keep<span class="w"> </span><span class="s2">&quot;chr1.fasta&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
+<span class="hll"><span class="linenos">2</span><span class="c1">#SBATCH --my-option</span>
+</span><span class="linenos">3</span>
+<span class="linenos">4</span>module<span class="w"> </span>purge
+<span class="linenos">5</span>module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
+<span class="linenos">6</span>igzip<span class="w"> </span>--keep<span class="w"> </span><span class="s2">&quot;chr1.fasta&quot;</span>
 </pre></div>
 </div>
 <p>If we do so, then running <code class="docutils literal notranslate"><span class="pre">sbatch</span> <span class="pre">my_script.sh</span></code> becomes the equivalent
@@ -482,7 +485,7 @@ and thereby break the <code class="docutils literal notranslate"><span class="pr
 </div>
 </section>
 <section id="reserving-resources">
-<span id="id1"></span><h2>Reserving resources<a class="headerlink" href="#reserving-resources" title="Permalink to this heading">#</a></h2>
+<span id="id1"></span><h2>Reserving resources<a class="headerlink" href="#reserving-resources" title="Link to this heading">¶</a></h2>
 <p>By default, a <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> will request 1 CPU and just under 15 GB of ram
 per reserved CPU. Jobs will not be executed before the requested
 resources are available on a node and your jobs cannot exceed the amount
@@ -491,12 +494,12 @@ of resources you've requested.</p>
 <code class="docutils literal notranslate"><span class="pre">-c</span></code> or <code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code> option. The following script runs a job
 with 8 CPUs, and is therefore automatically assigned 8 * 15 ~= 120
 gigabytes of RAM:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="hll"><span class="c1">#SBATCH --cpus-per-task 8</span>
-</span>
-module<span class="w"> </span>purge
-module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
-<span class="hll">igzip<span class="w"> </span>--keep<span class="w"> </span>--threads<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="s2">&quot;chr1.fasta&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
+<span class="hll"><span class="linenos">2</span><span class="c1">#SBATCH --cpus-per-task 8</span>
+</span><span class="linenos">3</span>
+<span class="linenos">4</span>module<span class="w"> </span>purge
+<span class="linenos">5</span>module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
+<span class="hll"><span class="linenos">6</span>igzip<span class="w"> </span>--keep<span class="w"> </span>--threads<span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="s2">&quot;chr1.fasta&quot;</span>
 </span></pre></div>
 </div>
 <p>Notice that we need to not only reserve the CPUs, but we in almost all
@@ -507,12 +510,12 @@ effect on how long it takes for your program to run!</p>
 <p>To avoid having to write the same number of threads multiple times, we
 can instead use the <code class="docutils literal notranslate"><span class="pre">${SLURM_CPUS_PER_TASK}</span></code> variable, which is
 automatically set to the number of CPUs we've requested:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1">#SBATCH --cpus-per-task 8</span>
-
-module<span class="w"> </span>purge
-module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
-<span class="hll">igzip<span class="w"> </span>--keep<span class="w"> </span>--threads<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span><span class="w"> </span><span class="s2">&quot;chr1.fasta&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
+<span class="linenos">2</span><span class="c1">#SBATCH --cpus-per-task 8</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span>module<span class="w"> </span>purge
+<span class="linenos">5</span>module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
+<span class="hll"><span class="linenos">6</span>igzip<span class="w"> </span>--keep<span class="w"> </span>--threads<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span><span class="w"> </span><span class="s2">&quot;chr1.fasta&quot;</span>
 </span></pre></div>
 </div>
 <p>The amount of RAM allocated by default should be sufficient for most
@@ -523,13 +526,13 @@ CPUs you request (defaulting to just under 15 GB per CPU), while the
 <code class="docutils literal notranslate"><span class="pre">--mem</span></code> option allows you to request a specific amount of memory
 regardless of how many (or how few) CPUs you reserve.</p>
 <p>The following script a task with 8 CPUs and 512 gigabytes of RAM:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1">#SBATCH --cpus-per-task 8</span>
-<span class="c1">#SBATCH --mem 512G</span>
-<span class="hll">
-</span>module<span class="w"> </span>purge
-module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
-igzip<span class="w"> </span>--keep<span class="w"> </span>--threads<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span><span class="w"> </span><span class="s2">&quot;chr1.fasta&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
+<span class="linenos">2</span><span class="c1">#SBATCH --cpus-per-task 8</span>
+<span class="linenos">3</span><span class="c1">#SBATCH --mem 512G</span>
+<span class="hll"><span class="linenos">4</span>
+</span><span class="linenos">5</span>module<span class="w"> </span>purge
+<span class="linenos">6</span>module<span class="w"> </span>load<span class="w"> </span>igzip/2.30.0
+<span class="linenos">7</span>igzip<span class="w"> </span>--keep<span class="w"> </span>--threads<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span><span class="w"> </span><span class="s2">&quot;chr1.fasta&quot;</span>
 </pre></div>
 </div>
 <p>The same total could have been requested by using <code class="docutils literal notranslate"><span class="pre">#SBATCH</span>
@@ -553,7 +556,7 @@ and will produce results that are very likely corrupt.</p>
 see the <a class="reference internal" href="advanced.html#s-job-arrays"><span class="std std-ref">Running multiple tasks using arrays</span></a> section.</p>
 </div>
 <section id="best-practice-for-reserving-resources">
-<span id="s-best-practice-resources"></span><h3>Best practice for reserving resources<a class="headerlink" href="#best-practice-for-reserving-resources" title="Permalink to this heading">#</a></h3>
+<span id="s-best-practice-resources"></span><h3>Best practice for reserving resources<a class="headerlink" href="#best-practice-for-reserving-resources" title="Link to this heading">¶</a></h3>
 <p>Determining how many CPUs and how much memory you need to reserve for
 your jobs can be difficult:</p>
 <p>Few programs benefit from using a lot of threads (CPUs) due to overhead
@@ -587,7 +590,7 @@ days for a short job to be stated. See the <a class="reference internal" href="m
 section for how to monitor the overall activity of the cluster.</p>
 </section>
 <section id="common-options">
-<span id="s-common-options"></span><h3>Common options<a class="headerlink" href="#common-options" title="Permalink to this heading">#</a></h3>
+<span id="s-common-options"></span><h3>Common options<a class="headerlink" href="#common-options" title="Link to this heading">¶</a></h3>
 <p>The following provides a brief overview of common options for <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>
 not mentioned above. All of these options may be specified using
 <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> comments.</p>
@@ -628,7 +631,7 @@ run sbatch from another script.</p></li>
 </section>
 </section>
 <section id="interactive-sessions">
-<span id="s-interactive-session"></span><h2>Interactive sessions<a class="headerlink" href="#interactive-sessions" title="Permalink to this heading">#</a></h2>
+<span id="s-interactive-session"></span><h2>Interactive sessions<a class="headerlink" href="#interactive-sessions" title="Link to this heading">¶</a></h2>
 <p>If you need to run an interactive process, for example if you need to
 use an interactive R shell to process a large dataset, or if you just
 need to experiment with running a computationally heavy process, then
@@ -658,7 +661,7 @@ information about the <code class="docutils literal notranslate"><span class="pr
 <code class="docutils literal notranslate"><span class="pre">exit</span></code> command or pressing <code class="docutils literal notranslate"><span class="pre">Ctrl+D</span></code>, so that the resources reserved
 for your shell are made available to other users!</p>
 <section id="running-graphical-programs">
-<h3>Running graphical programs<a class="headerlink" href="#running-graphical-programs" title="Permalink to this heading">#</a></h3>
+<h3>Running graphical programs<a class="headerlink" href="#running-graphical-programs" title="Link to this heading">¶</a></h3>
 <p>Should you need to run a graphical program in an interactive session,
 then you must firstly enable X11 forwarding when connecting to the
 cluster.</p>
@@ -672,10 +675,10 @@ enabled. If X11 forwarding is not enabled, then see the
 </pre></div>
 </div>
 <p>Or you must enable X11 forwarding in your <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> file:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Host esrum esrumhead01fl esrumhead01fl.unicph.domain</span>
-<span class="go">  HostName esrumhead01fl.unicph.domain</span>
-<span class="go">  User abc123</span>
-<span class="hll"><span class="go">  ForwardX11 yes</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Host esrum esrumhead01fl esrumhead01fl.unicph.domain
+  HostName esrumhead01fl.unicph.domain
+  User abc123
+<span class="hll">  ForwardX11 yes
 </span></pre></div>
 </div>
 </li>
@@ -692,7 +695,7 @@ see a small clock application on your desktop:</p>
 </section>
 </section>
 <section id="sbatch-template-script">
-<h2><code class="docutils literal notranslate"><span class="pre">sbatch</span></code> template script<a class="headerlink" href="#sbatch-template-script" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">sbatch</span></code> template script<a class="headerlink" href="#sbatch-template-script" title="Link to this heading">¶</a></h2>
 <p>The following is a simple template for use with the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command.
 This script can also be downloaded <a class="reference download internal" download="" href="../../_downloads/eef93ad11e793473b503cfdf552be41a/my_sbatch.sh"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a>.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
@@ -724,7 +727,7 @@ more robust bash scripts. A template using those recommendations is
 available for download <a class="reference download internal" download="" href="../../_downloads/49203405115f2f4c7de966ac8b3525da/robust_sbatch.sh"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a>.</p>
 </section>
 <section id="what-s-next">
-<h2>What's next<a class="headerlink" href="#what-s-next" title="Permalink to this heading">#</a></h2>
+<h2>What's next<a class="headerlink" href="#what-s-next" title="Link to this heading">¶</a></h2>
 <p>The next section of the documentation covers advanced usage of Slurm,
 including how to run jobs on the GPU / high-memory node. However, if you
 have not already done so, then it is recommended that you read the
@@ -732,19 +735,20 @@ have not already done so, then it is recommended that you read the
 system on Esrum to load the software you need for your work.</p>
 </section>
 <section id="troubleshooting">
-<span id="s-slurm-basics-troubleshooting"></span><h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
+<span id="s-slurm-basics-troubleshooting"></span><h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">¶</a></h2>
 <section id="error-requested-node-configuration-is-not-available">
-<h3>Error: Requested node configuration is not available<a class="headerlink" href="#error-requested-node-configuration-is-not-available" title="Permalink to this heading">#</a></h3>
+<h3>Error: Requested node configuration is not available<a class="headerlink" href="#error-requested-node-configuration-is-not-available" title="Link to this heading">¶</a></h3>
 <p>If you request too many CPUs (more than 128), or too much RAM (more than
 1993 GB for compute nodes and more than 3920 GB for the GPU node), then
-Slurm will report that the request cannot be satisfied:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>More<span class="w"> </span>than<span class="w"> </span><span class="m">128</span><span class="w"> </span>CPUs<span class="w"> </span>requested
-<span class="gp">$ </span>sbatch<span class="w"> </span>--cpus-per-task<span class="w"> </span><span class="m">200</span><span class="w"> </span>my_script.sh
+Slurm will report that the request cannot be satisfied.</p>
+<p>If more than 128 CPUs requested:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>--cpus-per-task<span class="w"> </span><span class="m">200</span><span class="w"> </span>my_script.sh
 <span class="go">sbatch: error: CPU count per node can not be satisfied</span>
 <span class="go">sbatch: error: Batch job submission failed: Requested node configuration is not available</span>
-
-<span class="gp"># </span>More<span class="w"> </span>than<span class="w"> </span><span class="m">1993</span><span class="w"> </span>GB<span class="w"> </span>RAM<span class="w"> </span>requested<span class="w"> </span>on<span class="w"> </span>compute<span class="w"> </span>node
-<span class="gp">$ </span>sbatch<span class="w"> </span>--mem<span class="w"> </span>2000G<span class="w"> </span>my_script.sh
+</pre></div>
+</div>
+<p>More than 1993 GB RAM requested on compute node:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>--mem<span class="w"> </span>2000G<span class="w"> </span>my_script.sh
 <span class="go">sbatch: error: Memory specification can not be satisfied</span>
 <span class="go">sbatch: error: Batch job submission failed: Requested node configuration is not available</span>
 </pre></div>
@@ -754,13 +758,14 @@ requested to fit within the limits described above. If your task does
 require more than 1993 GB of RAM, then you need to run your task on the
 GPU queue as described on the <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">GPU / high-memory jobs</span></a> page.</p>
 <p>Additionally, you may receive this message if you request GPUs without
-specifying the correct queue or if you request too many GPUs:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>not<span class="w"> </span>specified
-<span class="gp">$ </span>srun<span class="w"> </span>--gres<span class="o">=</span>gpu:2<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
+specifying the correct queue or if you request too many GPUs.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">--partition=gpuqueue</span></code> not specified:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--gres<span class="o">=</span>gpu:2<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
 <span class="go">srun: error: Unable to allocate resources: Requested node configuration is not available</span>
-
-<span class="gp"># </span>More<span class="w"> </span>than<span class="w"> </span><span class="m">2</span><span class="w"> </span>GPUs<span class="w"> </span>requested
-<span class="gp">$ </span>srun<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--gres<span class="o">=</span>gpu:3<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
+</pre></div>
+</div>
+<p>If more than 2 GPUs requested:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--gres<span class="o">=</span>gpu:3<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
 <span class="go">srun: error: Unable to allocate resources: Requested node configuration is not available</span>
 </pre></div>
 </div>
@@ -769,7 +774,7 @@ remember to include the <code class="docutils literal notranslate"><span class="
 <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">GPU / high-memory jobs</span></a> section.</p>
 </section>
 <section id="x11-forwarding-is-working-in-mobaxterm">
-<h3>X11 forwarding is working in MobaXterm<a class="headerlink" href="#x11-forwarding-is-working-in-mobaxterm" title="Permalink to this heading">#</a></h3>
+<h3>X11 forwarding is working in MobaXterm<a class="headerlink" href="#x11-forwarding-is-working-in-mobaxterm" title="Link to this heading">¶</a></h3>
 <p>Firstly right-click on <code class="docutils literal notranslate"><span class="pre">Esrum</span></code> in the list of <code class="docutils literal notranslate"><span class="pre">User</span> <span class="pre">sessions</span></code> and
 select <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">session</span></code>. Make sure that the <code class="docutils literal notranslate"><span class="pre">Advanced</span> <span class="pre">SSH</span> <span class="pre">settings</span></code>
 tab is open and verify that X11 forwarding is enabled as shown:</p>
@@ -781,7 +786,7 @@ that X11 support is configured as shown:</p>
 </section>
 </section>
 <section id="additional-resources">
-<h2>Additional resources<a class="headerlink" href="#additional-resources" title="Permalink to this heading">#</a></h2>
+<h2>Additional resources<a class="headerlink" href="#additional-resources" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Slurm <a class="reference external" href="https://slurm.schedmd.com/overview.html">documentation</a></p></li>
 <li><p>Slurm <a class="reference external" href="https://slurm.schedmd.com/pdfs/summary.pdf">summary</a> (PDF)</p></li>
@@ -883,10 +888,12 @@ that X11 support is configured as shown:</p>
       
     </aside>
   </div>
-</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
+</div><script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=4e2eecee"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=a7c4b63f"></script>
     <script src="../../_static/js/custom.js?v=3a8ddbd3"></script>
     <script src="../../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../../_static/js/playback.js?v=d7002ce9"></script>

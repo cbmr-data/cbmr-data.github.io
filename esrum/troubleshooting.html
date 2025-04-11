@@ -1,37 +1,38 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="">
+<html class="no-js" lang="en" data-content_root="./">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="search" title="Search" href="search.html" /><link rel="next" title="Applying for access" href="usage/access/access.html" /><link rel="prev" title="Guidelines and policies" href="guidelines.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.4.7 and Furo 2024.04.27 -->
         <title>Troubleshooting - Esrum Cluster documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=437aa6ec" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="_static/css/playback.css?v=2c0b8537" />
-    <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e2322aab" />
+    <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=16bf9909" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
       }
     }
@@ -113,6 +114,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -246,23 +249,27 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <section id="troubleshooting">
-<h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h1>
+<h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">¶</a></h1>
 <p>This page gathers all troubleshooting steps from the other parts of this
 documentation for easy access. Remember that you are always welcome to
 <a class="reference internal" href="contact.html#p-contact"><span class="std std-ref">contact us</span></a> if you have questions or problems relating
 to the cluster.</p>
 <section id="connecting-to-esrum">
-<h2>Connecting to Esrum<a class="headerlink" href="#connecting-to-esrum" title="Permalink to this heading">#</a></h2>
+<h2>Connecting to Esrum<a class="headerlink" href="#connecting-to-esrum" title="Link to this heading">¶</a></h2>
 <p>If you have not already been granted access to the server, then please
 see the <a class="reference internal" href="usage/access/access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a> page before continuing!</p>
 <section id="timeout-while-connecting-to-the-cluster">
-<h3>Timeout while connecting to the cluster<a class="headerlink" href="#timeout-while-connecting-to-the-cluster" title="Permalink to this heading">#</a></h3>
-<p>You may experience timeout errors when you attempt to connect to Esrum:</p>
-<p>On Linux:</p>
-<img alt="_images/connecting_ssh_timeout.gif" class="gif" src="_images/connecting_ssh_timeout.gif" />
-<p>On Windows, using MobaXterm:</p>
+<h3>Timeout while connecting to the cluster<a class="headerlink" href="#timeout-while-connecting-to-the-cluster" title="Link to this heading">¶</a></h3>
+<p>You may experience timeout errors when you attempt to connect to Esrum.</p>
+<p>On Linux, this typically results in an <code class="docutils literal notranslate"><span class="pre">Operation</span> <span class="pre">timed</span> <span class="pre">out</span></code> message:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
+<span class="go">ssh: connect to host esrumhead01fl.unicph.domain port 22: Operation timed out</span>
+</pre></div>
+</div>
+<p>On Windows, using MobaXterm, it may result in a <code class="docutils literal notranslate"><span class="pre">connection</span> <span class="pre">timed</span> <span class="pre">out</span></code>
+message:</p>
 <img alt="_images/connecting_mobaxterm_timeout.png" class="align-center" src="_images/connecting_mobaxterm_timeout.png" />
 <p>Firstly verify that you are correctly connected to the UCPH VPN. This is
 required to connect to Esrum. See the <a class="reference internal" href="usage/access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page for
@@ -284,13 +291,13 @@ assistance or, if you prefer, that you submit a ticket to the UCPH-IT
 category.</p>
 </section>
 <section id="file-uploads-using-mobaxterm-never-start">
-<h3>File uploads using MobaXterm never start<a class="headerlink" href="#file-uploads-using-mobaxterm-never-start" title="Permalink to this heading">#</a></h3>
+<h3>File uploads using MobaXterm never start<a class="headerlink" href="#file-uploads-using-mobaxterm-never-start" title="Link to this heading">¶</a></h3>
 <p>Please make sure that your session is configured to use the <code class="docutils literal notranslate"><span class="pre">SCP</span>
 <span class="pre">(enhanced</span> <span class="pre">speed)</span></code> browser type. See step 4 in the
 <a class="reference internal" href="usage/access/connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section.</p>
 </section>
 <section id="ucph-network-folders-in-ucph-are-not-available-when-using-mobaxterm">
-<h3>UCPH network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available when using MobaXterm<a class="headerlink" href="#ucph-network-folders-in-ucph-are-not-available-when-using-mobaxterm" title="Permalink to this heading">#</a></h3>
+<h3>UCPH network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available when using MobaXterm<a class="headerlink" href="#ucph-network-folders-in-ucph-are-not-available-when-using-mobaxterm" title="Link to this heading">¶</a></h3>
 <p>Please make sure that you have disabled use of <code class="docutils literal notranslate"><span class="pre">GSSAPI</span> <span class="pre">Kerberos</span></code> as
 described in the <a class="reference internal" href="usage/access/connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section. Similarly, if
 using Linux or OSX, then you cannot be authenticating using a Kerberos
@@ -298,19 +305,20 @@ ticket.</p>
 </section>
 </section>
 <section id="slurm-basics">
-<h2>Slurm basics<a class="headerlink" href="#slurm-basics" title="Permalink to this heading">#</a></h2>
+<h2>Slurm basics<a class="headerlink" href="#slurm-basics" title="Link to this heading">¶</a></h2>
 <section id="error-requested-node-configuration-is-not-available">
-<h3>Error: Requested node configuration is not available<a class="headerlink" href="#error-requested-node-configuration-is-not-available" title="Permalink to this heading">#</a></h3>
+<h3>Error: Requested node configuration is not available<a class="headerlink" href="#error-requested-node-configuration-is-not-available" title="Link to this heading">¶</a></h3>
 <p>If you request too many CPUs (more than 128), or too much RAM (more than
 1993 GB for compute nodes and more than 3920 GB for the GPU node), then
-Slurm will report that the request cannot be satisfied:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>More<span class="w"> </span>than<span class="w"> </span><span class="m">128</span><span class="w"> </span>CPUs<span class="w"> </span>requested
-<span class="gp">$ </span>sbatch<span class="w"> </span>--cpus-per-task<span class="w"> </span><span class="m">200</span><span class="w"> </span>my_script.sh
+Slurm will report that the request cannot be satisfied.</p>
+<p>If more than 128 CPUs requested:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>--cpus-per-task<span class="w"> </span><span class="m">200</span><span class="w"> </span>my_script.sh
 <span class="go">sbatch: error: CPU count per node can not be satisfied</span>
 <span class="go">sbatch: error: Batch job submission failed: Requested node configuration is not available</span>
-
-<span class="gp"># </span>More<span class="w"> </span>than<span class="w"> </span><span class="m">1993</span><span class="w"> </span>GB<span class="w"> </span>RAM<span class="w"> </span>requested<span class="w"> </span>on<span class="w"> </span>compute<span class="w"> </span>node
-<span class="gp">$ </span>sbatch<span class="w"> </span>--mem<span class="w"> </span>2000G<span class="w"> </span>my_script.sh
+</pre></div>
+</div>
+<p>More than 1993 GB RAM requested on compute node:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>--mem<span class="w"> </span>2000G<span class="w"> </span>my_script.sh
 <span class="go">sbatch: error: Memory specification can not be satisfied</span>
 <span class="go">sbatch: error: Batch job submission failed: Requested node configuration is not available</span>
 </pre></div>
@@ -320,13 +328,14 @@ requested to fit within the limits described above. If your task does
 require more than 1993 GB of RAM, then you need to run your task on the
 GPU queue as described on the <a class="reference internal" href="usage/slurm/gpu.html#p-usage-slurm-gpu"><span class="std std-ref">GPU / high-memory jobs</span></a> page.</p>
 <p>Additionally, you may receive this message if you request GPUs without
-specifying the correct queue or if you request too many GPUs:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>not<span class="w"> </span>specified
-<span class="gp">$ </span>srun<span class="w"> </span>--gres<span class="o">=</span>gpu:2<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
+specifying the correct queue or if you request too many GPUs.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">--partition=gpuqueue</span></code> not specified:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--gres<span class="o">=</span>gpu:2<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
 <span class="go">srun: error: Unable to allocate resources: Requested node configuration is not available</span>
-
-<span class="gp"># </span>More<span class="w"> </span>than<span class="w"> </span><span class="m">2</span><span class="w"> </span>GPUs<span class="w"> </span>requested
-<span class="gp">$ </span>srun<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--gres<span class="o">=</span>gpu:3<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
+</pre></div>
+</div>
+<p>If more than 2 GPUs requested:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--gres<span class="o">=</span>gpu:3<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
 <span class="go">srun: error: Unable to allocate resources: Requested node configuration is not available</span>
 </pre></div>
 </div>
@@ -335,7 +344,7 @@ remember to include the <code class="docutils literal notranslate"><span class="
 <a class="reference internal" href="usage/slurm/gpu.html#p-usage-slurm-gpu"><span class="std std-ref">GPU / high-memory jobs</span></a> section.</p>
 </section>
 <section id="x11-forwarding-is-working-in-mobaxterm">
-<h3>X11 forwarding is working in MobaXterm<a class="headerlink" href="#x11-forwarding-is-working-in-mobaxterm" title="Permalink to this heading">#</a></h3>
+<h3>X11 forwarding is working in MobaXterm<a class="headerlink" href="#x11-forwarding-is-working-in-mobaxterm" title="Link to this heading">¶</a></h3>
 <p>Firstly right-click on <code class="docutils literal notranslate"><span class="pre">Esrum</span></code> in the list of <code class="docutils literal notranslate"><span class="pre">User</span> <span class="pre">sessions</span></code> and
 select <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">session</span></code>. Make sure that the <code class="docutils literal notranslate"><span class="pre">Advanced</span> <span class="pre">SSH</span> <span class="pre">settings</span></code>
 tab is open and verify that X11 forwarding is enabled as shown:</p>
@@ -347,17 +356,17 @@ that X11 support is configured as shown:</p>
 </section>
 </section>
 <section id="r">
-<h2>R<a class="headerlink" href="#r" title="Permalink to this heading">#</a></h2>
+<h2>R<a class="headerlink" href="#r" title="Link to this heading">¶</a></h2>
 <section id="libtk8-6-so-cannot-open-shared-object-file">
-<h3>libtk8.6.so: cannot open shared object file<a class="headerlink" href="#libtk8-6-so-cannot-open-shared-object-file" title="Permalink to this heading">#</a></h3>
+<h3>libtk8.6.so: cannot open shared object file<a class="headerlink" href="#libtk8-6-so-cannot-open-shared-object-file" title="Link to this heading">¶</a></h3>
 <p>Users connecting to Esrum with X11 forwarding enabled, for example using
 MobaXterm with default settings, may observe the following error when
 running the <code class="docutils literal notranslate"><span class="pre">install.packages</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">--- Please select a CRAN mirror for use in this session ---</span>
-<span class="go">Error: .onLoad failed in loadNamespace() for &#39;tcltk&#39;, details:</span>
-<span class="go">  call: dyn.load(file, DLLpath = DLLpath, ...)</span>
-<span class="go">  error: unable to load shared object &#39;/opt/software/R/4.3.1/lib64/R/library/tcltk/libs/tcltk.so&#39;:</span>
-<span class="go">  libtk8.6.so: cannot open shared object file: No such file or directory</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>--- Please select a CRAN mirror for use in this session ---
+Error: .onLoad failed in loadNamespace() for &#39;tcltk&#39;, details:
+  call: dyn.load(file, DLLpath = DLLpath, ...)
+  error: unable to load shared object &#39;/opt/software/R/4.3.1/lib64/R/library/tcltk/libs/tcltk.so&#39;:
+  libtk8.6.so: cannot open shared object file: No such file or directory
 </pre></div>
 </div>
 <p>If so, then you must disable graphical menus before running
@@ -373,7 +382,7 @@ your (bash) terminal:</p>
 </div>
 </section>
 <section id="libstdc-so-6-version-glibcxx-3-4-26-not-found">
-<h3>libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found<a class="headerlink" href="#libstdc-so-6-version-glibcxx-3-4-26-not-found" title="Permalink to this heading">#</a></h3>
+<h3>libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found<a class="headerlink" href="#libstdc-so-6-version-glibcxx-3-4-26-not-found" title="Link to this heading">¶</a></h3>
 <p>If you build an R library on the head/compute nodes using a version of
 the GCC module other than <code class="docutils literal notranslate"><span class="pre">gcc/8.5.0</span></code>, then this library may fail to
 load on the RStudio node or when <code class="docutils literal notranslate"><span class="pre">gcc/8.5.0</span></code> is loaded on the
@@ -430,19 +439,19 @@ running the following commands:</p>
 </li>
 </ol>
 <p>Output will look like the following:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Testing httpuv</span>
-<span class="go">Testing igraph</span>
-<span class="go">Error: package or namespace load failed for ‘igraph’ in dyn.load(file, DLLpath = DLLpath, ...):</span>
-<span class="go">unable to load shared object &#39;/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/igraph/libs/igraph.so&#39;:</span>
-<span class="go">/opt/software/gcc/8.5.0/lib64/libstdc++.so.6: version `GLIBCXX_3.4.29&#39; not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/igraph/libs/igraph.so)</span>
-<span class="go">Execution halted</span>
-<span class="go">Testing isoband</span>
-<span class="go">Error: package or namespace load failed for ‘isoband’ in dyn.load(file, DLLpath = DLLpath, ...):</span>
-<span class="go">unable to load shared object &#39;/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so&#39;:</span>
-<span class="go">/opt/software/gcc/8.5.0/lib64/libstdc++.so.6: version`GLIBCXX_3.4.29&#39; not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so)</span>
-<span class="go">Execution halted</span>
-<span class="go">Testing labeling</span>
-<span class="go">Testing later</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Testing httpuv
+Testing igraph
+Error: package or namespace load failed for ‘igraph’ in dyn.load(file, DLLpath = DLLpath, ...):
+unable to load shared object &#39;/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/igraph/libs/igraph.so&#39;:
+/opt/software/gcc/8.5.0/lib64/libstdc++.so.6: version `GLIBCXX_3.4.29&#39; not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/igraph/libs/igraph.so)
+Execution halted
+Testing isoband
+Error: package or namespace load failed for ‘isoband’ in dyn.load(file, DLLpath = DLLpath, ...):
+unable to load shared object &#39;/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so&#39;:
+/opt/software/gcc/8.5.0/lib64/libstdc++.so.6: version`GLIBCXX_3.4.29&#39; not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so)
+Execution halted
+Testing labeling
+Testing later
 </pre></div>
 </div>
 <p>Locate the error messages like the one shown above in the output and
@@ -454,16 +463,16 @@ reinstall the affected libraries using the <code class="docutils literal notrans
 </section>
 </section>
 <section id="rstudio">
-<h2>Rstudio<a class="headerlink" href="#rstudio" title="Permalink to this heading">#</a></h2>
+<h2>Rstudio<a class="headerlink" href="#rstudio" title="Link to this heading">¶</a></h2>
 <section id="incorrect-or-invalid-username-password">
-<h3>Incorrect or invalid username/password<a class="headerlink" href="#incorrect-or-invalid-username-password" title="Permalink to this heading">#</a></h3>
+<h3>Incorrect or invalid username/password<a class="headerlink" href="#incorrect-or-invalid-username-password" title="Link to this heading">¶</a></h3>
 <p>Please make sure that you are entering your username in the short form
 (i.e. <code class="docutils literal notranslate"><span class="pre">abc123</span></code>) and that you have applied for and been given access to
 the Esrum HPC (see <a class="reference internal" href="usage/access/access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a>). If the problem
 persists, please <a class="reference internal" href="contact.html#p-contact"><span class="std std-ref">Contact us</span></a> us for assistance.</p>
 </section>
 <section id="logging-in-takes-a-very-long-time">
-<h3>Logging in takes a very long time<a class="headerlink" href="#logging-in-takes-a-very-long-time" title="Permalink to this heading">#</a></h3>
+<h3>Logging in takes a very long time<a class="headerlink" href="#logging-in-takes-a-very-long-time" title="Link to this heading">¶</a></h3>
 <p>Similar to regular R, RStudio will automatically save the data you have
 loaded into your R session and will restore it when you return later, so
 that you can continue your work. However, this many result in large
@@ -477,11 +486,11 @@ This works both when using regular R and when using RStudio. The
 following gives two examples of using the <code class="docutils literal notranslate"><span class="pre">rm</span></code> function, one removing
 a single variable and the other removing <em>all</em> variables in the current
 session:</p>
-<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Remove the variable `my_variable`</span>
-<span class="nf">rm</span><span class="p">(</span><span class="n">my_variable</span><span class="p">)</span>
-
-<span class="c1"># 2. Remove all variables from your R session</span>
-<span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ls</span><span class="p">())</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># 1. Remove the variable `my_variable`</span>
+<span class="linenos">2</span><span class="nf">rm</span><span class="p">(</span><span class="n">my_variable</span><span class="p">)</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="c1"># 2. Remove all variables from your R session</span>
+<span class="linenos">5</span><span class="nf">rm</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">ls</span><span class="p">())</span>
 </pre></div>
 </div>
 <p>Alternatively you can remove all data saved in your R session using the
@@ -509,14 +518,14 @@ while using RStudio.</p></li>
 <p>Please <a class="reference internal" href="contact.html#p-contact"><span class="std std-ref">Contact us</span></a> us if you need help removing the correct files.</p>
 </section>
 <section id="id1">
-<h3>libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>libstdc++.so.6: version <code class="docutils literal notranslate"><span class="pre">'GLIBCXX_3.4.26'</span></code> not found<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
 <p>See the troubleshooting section on the <a class="reference internal" href="tips/r.html#p-tips-r"><span class="std std-ref">Using R on Esrum</span></a> page.</p>
 </section>
 </section>
 <section id="jupyter-notebooks">
-<h2>Jupyter Notebooks<a class="headerlink" href="#jupyter-notebooks" title="Permalink to this heading">#</a></h2>
+<h2>Jupyter Notebooks<a class="headerlink" href="#jupyter-notebooks" title="Link to this heading">¶</a></h2>
 <section id="jupyter-notebooks-browser-error-when-opening-url">
-<h3>Jupyter Notebooks: Browser error when opening URL<a class="headerlink" href="#jupyter-notebooks-browser-error-when-opening-url" title="Permalink to this heading">#</a></h3>
+<h3>Jupyter Notebooks: Browser error when opening URL<a class="headerlink" href="#jupyter-notebooks-browser-error-when-opening-url" title="Link to this heading">¶</a></h3>
 <p>Depending on your browser you may receive one of the following errors.
 The typical causes are listed, but the exact error message will depend
 on your browser. It is therefore helpful to review all possible causes
@@ -548,11 +557,11 @@ URL printed by Jupyter.</p></li>
 <li><p>Verify that you are using the <em>second</em> URL that Jupyter prints on
 the terminal, namely the URL starting with
 <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:XXXX</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">To access the notebook, open this file in a browser:</span>
-<span class="go">    file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html</span>
-<span class="go">    Or copy and paste one of these URLs:</span>
-<span class="go">        http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz</span>
-<span class="hll"><span class="go">    or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>To access the notebook, open this file in a browser:
+    file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html
+    Or copy and paste one of these URLs:
+        http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
+<span class="hll">    or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
 </span></pre></div>
 </div>
 <p>For security reasons it is not possible to connect directly to the
@@ -564,17 +573,17 @@ compute nodes.</p>
 </section>
 </section>
 <section id="snakemake">
-<h2>Snakemake<a class="headerlink" href="#snakemake" title="Permalink to this heading">#</a></h2>
+<h2>Snakemake<a class="headerlink" href="#snakemake" title="Link to this heading">¶</a></h2>
 <section id="sacct-error-problem-talking-to-the-database-connection-refused">
-<h3>sacct: error: Problem talking to the database: Connection refused<a class="headerlink" href="#sacct-error-problem-talking-to-the-database-connection-refused" title="Permalink to this heading">#</a></h3>
+<h3>sacct: error: Problem talking to the database: Connection refused<a class="headerlink" href="#sacct-error-problem-talking-to-the-database-connection-refused" title="Link to this heading">¶</a></h3>
 <p>If you are running Snakemake with the <code class="docutils literal notranslate"><span class="pre">--slurm</span></code> option on a compute
 node, i.e. not the head node, then you will receive errors such as the
 following:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Job 0 has been submitted with SLURM jobid 512921 (log: .snakemake/slurm_logs/rule_foo/512921.log).</span>
-<span class="go">The job status query failed with command: sacct -X --parsable2 --noheader --format=JobIdRaw,State --name 2d898259-73e4-435d-aa77-44dc44d84c1b</span>
-<span class="go">Error message: sacct: error: slurm_persist_conn_open_without_init: failed to open persistent connection to host:localhost:6819: Connection refused</span>
-<span class="go">sacct: error: Sending PersistInit msg: Connection refused</span>
-<span class="go">sacct: error: Problem talking to the database: Connection refused</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Job 0 has been submitted with SLURM jobid 512921 (log: .snakemake/slurm_logs/rule_foo/512921.log).
+The job status query failed with command: sacct -X --parsable2 --noheader --format=JobIdRaw,State --name 2d898259-73e4-435d-aa77-44dc44d84c1b
+Error message: sacct: error: slurm_persist_conn_open_without_init: failed to open persistent connection to host:localhost:6819: Connection refused
+sacct: error: Sending PersistInit msg: Connection refused
+sacct: error: Problem talking to the database: Connection refused
 </pre></div>
 </div>
 <p>To solve this, simply start your Snakemake pipeline on the head node
@@ -680,10 +689,12 @@ when using the <code class="docutils literal notranslate"><span class="pre">--sl
       
     </aside>
   </div>
-</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
+</div><script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=4e2eecee"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=a7c4b63f"></script>
     <script src="_static/js/custom.js?v=3a8ddbd3"></script>
     <script src="_static/js/libgif.js?v=7adcb026"></script>
     <script src="_static/js/playback.js?v=d7002ce9"></script>

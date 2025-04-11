@@ -24,6 +24,7 @@ In the following example we just run a single command, ``echo "Hello,
 slurm!"``, but scripts can contain any number of commands.
 
 .. code-block:: bash
+   :linenos:
 
    #!/bin/bash
 
@@ -39,6 +40,7 @@ that they are bash scripts, but it is also possible to use other
 scripting languages by using the appropriate shebang (highlighted):
 
 .. code-block:: python
+   :linenos:
    :emphasize-lines: 1
 
    #!/usr/bin/env python3
@@ -65,6 +67,7 @@ We start with a simple script, with which we will compress the FASTA
 file ``chr1.fasta``. This script is saved as ``my_script.sh``:
 
 .. code-block:: bash
+   :linenos:
 
    #!/bin/bash
 
@@ -100,7 +103,7 @@ This script consists of three parts:
 To queue this script, run the ``sbatch`` command with the filename of
 the script as an argument:
 
-.. code-block::
+.. code-block:: console
 
    $ ls
    chr1.fasta  my_script.sh
@@ -129,7 +132,7 @@ also find a file named ``slurm-${JOBID}.out`` in the current folder,
 where ``${JOBID}`` is the ID reported by ``sbatch``, ``8503`` in this
 example:
 
-.. code-block::
+.. code-block:: console
 
    $ ls
    chr1.fasta  chr1.fasta.gz  my_script.sh  slurm-8503.out
@@ -140,7 +143,7 @@ this can be changed (see :ref:`s_common_options`). So if we had
 misspelled the filename in our command then the resulting error message
 would be found in the ``out`` file:
 
-.. code-block::
+.. code-block:: console
 
    $ cat slurm-8503.out
    igzip: chr1.fast does not exist
@@ -154,6 +157,7 @@ to update our script above to take a filename on the command line
 instead of hard-coding that filename:
 
 .. code-block:: bash
+   :linenos:
 
    #!/bin/bash
 
@@ -164,7 +168,7 @@ instead of hard-coding that filename:
 We can then invoke the script using ``sbatch`` as above, specifying the
 name of the file we wanted to compress on the command-line:
 
-.. code-block::
+.. code-block:: console
 
    $ sbatch my_script.sh "chr1.fasta"
 
@@ -185,7 +189,7 @@ You can check the status of your queued and running jobs using the
 ``squeue --me`` command. The ``--me`` option ensures that only *your*
 jobs are shown, rather than everyone's jobs:
 
-.. code-block::
+.. code-block:: console
 
    $ squeue --me
    JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -198,7 +202,7 @@ pending, `and so on
 Completed jobs are removed from the ``squeue`` list and can instead be
 listed using ``sacct``:
 
-.. code-block::
+.. code-block:: console
 
    $ sacct
           JobID    JobName  Partition    Account  AllocCPUS      State ExitCode
@@ -218,7 +222,7 @@ jobs, see the :ref:`p_usage_slurm_monitor` page.
 Already running jobs can be cancelled using the ``scancel`` command and
 the ID of the job you want to cancel:
 
-.. code-block::
+.. code-block:: console
 
    $ squeue --me
    JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -227,7 +231,7 @@ the ID of the job you want to cancel:
 
 Should you wish to cancel *all* your jobs, use the ``-u`` option:
 
-.. code-block::
+.. code-block:: console
 
    $ scancel -u ${USER}
 
@@ -254,7 +258,7 @@ like, is to use ``#SBATCH`` comments.
 
 For example, instead of queuing our job with the command
 
-.. code-block::
+.. code-block:: console
 
    $ sbatch --my-option my_script.sh
 
@@ -262,7 +266,8 @@ We could instead modify ``my_script.sh`` by adding a line containing
 ``#SBATCH --my-option`` near the top of the file:
 
 .. code-block:: bash
-   :emphasize-lines: 3
+   :linenos:
+   :emphasize-lines: 2
 
    #!/bin/bash
    #SBATCH --my-option
@@ -312,6 +317,7 @@ with 8 CPUs, and is therefore automatically assigned 8 * 15 ~= 120
 gigabytes of RAM:
 
 .. code-block:: bash
+   :linenos:
    :emphasize-lines: 2,6
 
    #!/bin/bash
@@ -332,6 +338,7 @@ can instead use the ``${SLURM_CPUS_PER_TASK}`` variable, which is
 automatically set to the number of CPUs we've requested:
 
 .. code-block:: bash
+   :linenos:
    :emphasize-lines: 6
 
    #!/bin/bash
@@ -352,6 +359,7 @@ regardless of how many (or how few) CPUs you reserve.
 The following script a task with 8 CPUs and 512 gigabytes of RAM:
 
 .. code-block:: bash
+   :linenos:
    :emphasize-lines: 4
 
    #!/bin/bash
@@ -456,7 +464,7 @@ not mentioned above. All of these options may be specified using
    with ``--verbose`` to verify that your options are correctly set
    before queuing your job:
 
-   .. code-block::
+   .. code-block:: console
 
       $ sbatch --test-only --verbose my_script.sh
       sbatch: defined options
@@ -485,7 +493,7 @@ use an interactive R shell to process a large dataset, or if you just
 need to experiment with running a computationally heavy process, then
 you can start a shell on one of the compute nodes as follows:
 
-.. code-block::
+.. code-block:: console
 
    [abc123@esrumhead01fl ~] $ srun --pty -- /bin/bash
    [abc123@esrumcmpn07fl ~] $
@@ -503,7 +511,7 @@ be started from the head node.
 used for reserving additional resources if you need more than the
 default 1 CPU and 15 GB of RAM:
 
-.. code-block::
+.. code-block:: console
 
    $ srun --cpus-per-task 4 --mem 128G --pty -- /bin/bash
 
@@ -530,13 +538,13 @@ cluster.
 -  On Linux and OSX, when using ``ssh``, you must either include the
    ``-X`` option when connecting to the server:
 
-   .. code-block::
+   .. code-block:: console
 
       $ ssh -X esrumhead01fl
 
    Or you must enable X11 forwarding in your ``~/.ssh/config`` file:
 
-   .. code-block::
+   .. code-block:: text
       :emphasize-lines: 4
 
       Host esrum esrumhead01fl esrumhead01fl.unicph.domain
@@ -547,7 +555,7 @@ cluster.
 Once you have connected to Esrum with X11 forwarding enabled, you must
 start an interactive session with the ``--x11`` option:
 
-.. code-block::
+.. code-block:: console
 
    $ srun --pty --x11 -- /bin/bash
    $ xclock

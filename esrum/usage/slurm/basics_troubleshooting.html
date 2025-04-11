@@ -1,37 +1,38 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="">
+<html class="no-js" lang="en" data-content_root="../../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="search" title="Search" href="../../search.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.4.7 and Furo 2024.04.27 -->
         <title>Error: Requested node configuration is not available - Esrum Cluster documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=437aa6ec" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e2322aab" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=16bf9909" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
       }
     }
@@ -113,6 +114,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -246,19 +249,20 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <section id="error-requested-node-configuration-is-not-available">
-<h1>Error: Requested node configuration is not available<a class="headerlink" href="#error-requested-node-configuration-is-not-available" title="Permalink to this heading">#</a></h1>
+<h1>Error: Requested node configuration is not available<a class="headerlink" href="#error-requested-node-configuration-is-not-available" title="Link to this heading">¶</a></h1>
 <p>If you request too many CPUs (more than 128), or too much RAM (more than
 1993 GB for compute nodes and more than 3920 GB for the GPU node), then
-Slurm will report that the request cannot be satisfied:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>More<span class="w"> </span>than<span class="w"> </span><span class="m">128</span><span class="w"> </span>CPUs<span class="w"> </span>requested
-<span class="gp">$ </span>sbatch<span class="w"> </span>--cpus-per-task<span class="w"> </span><span class="m">200</span><span class="w"> </span>my_script.sh
+Slurm will report that the request cannot be satisfied.</p>
+<p>If more than 128 CPUs requested:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>--cpus-per-task<span class="w"> </span><span class="m">200</span><span class="w"> </span>my_script.sh
 <span class="go">sbatch: error: CPU count per node can not be satisfied</span>
 <span class="go">sbatch: error: Batch job submission failed: Requested node configuration is not available</span>
-
-<span class="gp"># </span>More<span class="w"> </span>than<span class="w"> </span><span class="m">1993</span><span class="w"> </span>GB<span class="w"> </span>RAM<span class="w"> </span>requested<span class="w"> </span>on<span class="w"> </span>compute<span class="w"> </span>node
-<span class="gp">$ </span>sbatch<span class="w"> </span>--mem<span class="w"> </span>2000G<span class="w"> </span>my_script.sh
+</pre></div>
+</div>
+<p>More than 1993 GB RAM requested on compute node:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>--mem<span class="w"> </span>2000G<span class="w"> </span>my_script.sh
 <span class="go">sbatch: error: Memory specification can not be satisfied</span>
 <span class="go">sbatch: error: Batch job submission failed: Requested node configuration is not available</span>
 </pre></div>
@@ -268,13 +272,14 @@ requested to fit within the limits described above. If your task does
 require more than 1993 GB of RAM, then you need to run your task on the
 GPU queue as described on the <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">GPU / high-memory jobs</span></a> page.</p>
 <p>Additionally, you may receive this message if you request GPUs without
-specifying the correct queue or if you request too many GPUs:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>not<span class="w"> </span>specified
-<span class="gp">$ </span>srun<span class="w"> </span>--gres<span class="o">=</span>gpu:2<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
+specifying the correct queue or if you request too many GPUs.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">--partition=gpuqueue</span></code> not specified:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--gres<span class="o">=</span>gpu:2<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
 <span class="go">srun: error: Unable to allocate resources: Requested node configuration is not available</span>
-
-<span class="gp"># </span>More<span class="w"> </span>than<span class="w"> </span><span class="m">2</span><span class="w"> </span>GPUs<span class="w"> </span>requested
-<span class="gp">$ </span>srun<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--gres<span class="o">=</span>gpu:3<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
+</pre></div>
+</div>
+<p>If more than 2 GPUs requested:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--gres<span class="o">=</span>gpu:3<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
 <span class="go">srun: error: Unable to allocate resources: Requested node configuration is not available</span>
 </pre></div>
 </div>
@@ -283,7 +288,7 @@ remember to include the <code class="docutils literal notranslate"><span class="
 <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">GPU / high-memory jobs</span></a> section.</p>
 </section>
 <section id="x11-forwarding-is-working-in-mobaxterm">
-<h1>X11 forwarding is working in MobaXterm<a class="headerlink" href="#x11-forwarding-is-working-in-mobaxterm" title="Permalink to this heading">#</a></h1>
+<h1>X11 forwarding is working in MobaXterm<a class="headerlink" href="#x11-forwarding-is-working-in-mobaxterm" title="Link to this heading">¶</a></h1>
 <p>Firstly right-click on <code class="docutils literal notranslate"><span class="pre">Esrum</span></code> in the list of <code class="docutils literal notranslate"><span class="pre">User</span> <span class="pre">sessions</span></code> and
 select <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">session</span></code>. Make sure that the <code class="docutils literal notranslate"><span class="pre">Advanced</span> <span class="pre">SSH</span> <span class="pre">settings</span></code>
 tab is open and verify that X11 forwarding is enabled as shown:</p>
@@ -325,10 +330,12 @@ that X11 support is configured as shown:</p>
       
     </aside>
   </div>
-</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
+</div><script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=4e2eecee"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=a7c4b63f"></script>
     <script src="../../_static/js/custom.js?v=3a8ddbd3"></script>
     <script src="../../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../../_static/js/playback.js?v=d7002ce9"></script>

@@ -1,37 +1,38 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="">
+<html class="no-js" lang="en" data-content_root="../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="search" title="Search" href="../search.html" /><link rel="next" title="Transferring data" href="transfers.html" /><link rel="prev" title="GPU / high-memory jobs" href="slurm/gpu.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.4.7 and Furo 2024.04.27 -->
         <title>Software on Esrum - Esrum Cluster documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=437aa6ec" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="../_static/css/playback.css?v=2c0b8537" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e2322aab" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=16bf9909" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
       }
     }
@@ -113,6 +114,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -246,9 +249,9 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <section id="software-on-esrum">
-<span id="p-usage-modules"></span><h1>Software on Esrum<a class="headerlink" href="#software-on-esrum" title="Permalink to this heading">#</a></h1>
+<span id="p-usage-modules"></span><h1>Software on Esrum<a class="headerlink" href="#software-on-esrum" title="Link to this heading">¶</a></h1>
 <p>A wide range of software (scientific and otherwise) is made available on
 Esrum via so-called <a class="reference external" href="https://modules.sourceforge.net/">Environment modules</a>. Environment modules allow
 you &quot;load&quot; specific software, and specific <em>versions</em> of software, as
@@ -263,13 +266,13 @@ private or shared environment modules as described in the
 <p>A collection of software managed by the Data Analytics team is also
 available. See the <a class="reference internal" href="#s-shared-modules"><span class="std std-ref">Shared CBMR modules</span></a> section below.</p>
 <section id="basic-usage">
-<h2>Basic usage<a class="headerlink" href="#basic-usage" title="Permalink to this heading">#</a></h2>
+<h2>Basic usage<a class="headerlink" href="#basic-usage" title="Link to this heading">¶</a></h2>
 <p>This section briefly describe how to carry out common tasks using the
 module system: Finding what modules are available, loading a module, and
 unloading them again. For more information see the <a class="reference external" href="https://modules.readthedocs.io/en/v4.5.2/">official
 documentation</a>.</p>
 <section id="finding-available-modules">
-<h3>Finding available modules<a class="headerlink" href="#finding-available-modules" title="Permalink to this heading">#</a></h3>
+<h3>Finding available modules<a class="headerlink" href="#finding-available-modules" title="Link to this heading">¶</a></h3>
 <p>The first step is to determine what modules are available on the server.
 This is accomplished with the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code> command, that lists all
 available modules by default:</p>
@@ -317,7 +320,7 @@ missing, then you can request that a module be added for that software
 as described in the <a class="reference internal" href="#s-requesting-missing-modules"><span class="std std-ref">Requesting software modules</span></a> section below.</p>
 </section>
 <section id="loading-a-module">
-<h3>Loading a module<a class="headerlink" href="#loading-a-module" title="Permalink to this heading">#</a></h3>
+<h3>Loading a module<a class="headerlink" href="#loading-a-module" title="Link to this heading">¶</a></h3>
 <p>The modules are loaded using the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span></code> command. This command
 adds the executable to your PATH and performs any other setup required
 to run the software.</p>
@@ -369,7 +372,7 @@ be done in done manually:</p>
 </div>
 </section>
 <section id="additional-activation-steps">
-<h3>Additional activation steps<a class="headerlink" href="#additional-activation-steps" title="Permalink to this heading">#</a></h3>
+<h3>Additional activation steps<a class="headerlink" href="#additional-activation-steps" title="Link to this heading">¶</a></h3>
 <p>Some modules require additional steps before you can use them. If so,
 then this is typically described in the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">display</span></code> text:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>display<span class="w"> </span>cellect/1.0
@@ -403,7 +406,7 @@ need is recommended. This minimizes the risk of conflicts and errors.</p>
 </div>
 </section>
 <section id="listing-and-unloading-loaded-modules">
-<h3>Listing and unloading loaded modules<a class="headerlink" href="#listing-and-unloading-loaded-modules" title="Permalink to this heading">#</a></h3>
+<h3>Listing and unloading loaded modules<a class="headerlink" href="#listing-and-unloading-loaded-modules" title="Link to this heading">¶</a></h3>
 <p>The modules you have loaded can be listed using the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">list</span></code>
 command:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>modules<span class="w"> </span>list
@@ -412,12 +415,13 @@ command:</p>
 </pre></div>
 </div>
 <p>To remove a module that you no longer need, use the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">unload</span></code>
-command to unload a single module or the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code> command to
-unload all modules:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Unload<span class="w"> </span>the<span class="w"> </span>samtools<span class="w"> </span>module
-<span class="gp">$ </span>module<span class="w"> </span>unload<span class="w"> </span>samtools
-<span class="gp"># </span>Unload<span class="w"> </span>the<span class="w"> </span>remaining<span class="w"> </span>modules
-<span class="gp">$ </span>module<span class="w"> </span>purge
+command to unload a single module:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>unload<span class="w"> </span>samtools
+</pre></div>
+</div>
+<p>Alternatively, you can use the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">purge</span></code> command to unload all
+modules:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>purge
 <span class="gp">$ </span>modules<span class="w"> </span>list
 <span class="go">No Modulefiles Currently Loaded.</span>
 </pre></div>
@@ -425,7 +429,7 @@ unload all modules:</p>
 </section>
 </section>
 <section id="making-your-analyses-reproducible">
-<h2>Making your analyses reproducible<a class="headerlink" href="#making-your-analyses-reproducible" title="Permalink to this heading">#</a></h2>
+<h2>Making your analyses reproducible<a class="headerlink" href="#making-your-analyses-reproducible" title="Link to this heading">¶</a></h2>
 <p>As described above you can load modules with or without versions
 specified. For a lot of software it is not very important that a
 specific version used, but even so it is highly recommended that you
@@ -440,7 +444,7 @@ were used when it is time to publish your results.</p></li>
 commands to record and restoring your used modules, but it is also
 possible to do this by hand.</p>
 <section id="managing-modules-with-module-save-restore">
-<h3>Managing modules with <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">save/restore</span></code><a class="headerlink" href="#managing-modules-with-module-save-restore" title="Permalink to this heading">#</a></h3>
+<h3>Managing modules with <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">save/restore</span></code><a class="headerlink" href="#managing-modules-with-module-save-restore" title="Link to this heading">¶</a></h3>
 <p>To export a list of your currently used models, use the following
 command:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>config<span class="w"> </span>collection_pin_version<span class="w"> </span><span class="m">1</span>
@@ -480,10 +484,10 @@ filename (and a directory component):</p>
 <span class="go">1) gcc/11.2.0   2) samtools/1.17   3) perl/5.26.3   4) bcftools/1.16</span>
 </pre></div>
 </div>
-<p>Alternative, use the <code class="docutils literal notranslate"><span class="pre">.</span></code> or <code class="docutils literal notranslate"><span class="pre">source</span></code> command to execute the content
-of the file in your current shell. This has the same effect as running
-<code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">restore</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">source</span><span class="w"> </span>./modules.txt
+<p>Alternative, use the <code class="docutils literal notranslate"><span class="pre">.</span></code> command or the <code class="docutils literal notranslate"><span class="pre">source</span></code> command to execute
+the content of the file in your current shell. This has the same effect
+as running <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">restore</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>.<span class="w"> </span>./modules.txt
 </pre></div>
 </div>
 <p>or</p>
@@ -494,7 +498,7 @@ of the file in your current shell. This has the same effect as running
 </section>
 </section>
 <section id="shared-cbmr-modules">
-<span id="s-shared-modules"></span><h2>Shared CBMR modules<a class="headerlink" href="#shared-cbmr-modules" title="Permalink to this heading">#</a></h2>
+<span id="s-shared-modules"></span><h2>Shared CBMR modules<a class="headerlink" href="#shared-cbmr-modules" title="Link to this heading">¶</a></h2>
 <p>The Data Analytics team manages a small collection of modules for custom
 tools in the <code class="docutils literal notranslate"><span class="pre">cbmr_shared</span></code> project, located under
 <code class="docutils literal notranslate"><span class="pre">/projects/cbmr_shared/apps/modules</span></code>. You should have access to these
@@ -523,7 +527,7 @@ file to make the shared modules available every time you connect to
 Esrum.</p>
 </section>
 <section id="requesting-software-modules">
-<span id="s-requesting-missing-modules"></span><h2>Requesting software modules<a class="headerlink" href="#requesting-software-modules" title="Permalink to this heading">#</a></h2>
+<span id="s-requesting-missing-modules"></span><h2>Requesting software modules<a class="headerlink" href="#requesting-software-modules" title="Link to this heading">¶</a></h2>
 <p>If the software you need is not available as a module, or if the
 specific version you need is not available, then you can request it
 through UCPH-IT as described below.</p>
@@ -651,10 +655,12 @@ UCPH-IT.</p>
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=4e2eecee"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=a7c4b63f"></script>
     <script src="../_static/js/custom.js?v=3a8ddbd3"></script>
     <script src="../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../_static/js/playback.js?v=d7002ce9"></script>

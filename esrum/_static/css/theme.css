@@ -13,3 +13,8 @@ div[class^="highlight-"] {
     /* Indent code-blocks */
     margin-left: 1em;
 }
+
+/* Prompt character in console code blocks */
+.gp {
+    color: var(--color-link);
+}

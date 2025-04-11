@@ -1,37 +1,38 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="">
+<html class="no-js" lang="en" data-content_root="../../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Software on Esrum" href="../modules.html" /><link rel="prev" title="Monitoring slurm jobs" href="monitoring.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.4.7 and Furo 2024.04.27 -->
         <title>GPU / high-memory jobs - Esrum Cluster documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=437aa6ec" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e2322aab" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=16bf9909" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
       }
     }
@@ -113,6 +114,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -246,9 +249,9 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <section id="gpu-high-memory-jobs">
-<span id="p-usage-slurm-gpu"></span><h1>GPU / high-memory jobs<a class="headerlink" href="#gpu-high-memory-jobs" title="Permalink to this heading">#</a></h1>
+<span id="p-usage-slurm-gpu"></span><h1>GPU / high-memory jobs<a class="headerlink" href="#gpu-high-memory-jobs" title="Link to this heading">¶</a></h1>
 <p>The cluster currently includes 1 node with 2x A100 Nvidia GPUs and 4 TB
 of RAM, and 3 nodes with 2x H100 Nvidia GPUs and 2 TB of RAM. We refer
 to these as the GPU and/or high-memory nodes, and this page describes
@@ -257,7 +260,7 @@ how to use them.</p>
 individual jobs that require more than the 2 TB of RAM available on the
 regular compute nodes.</p>
 <section id="running-jobs-on-the-gpu-high-memory-node">
-<h2>Running jobs on the GPU / high-memory node<a class="headerlink" href="#running-jobs-on-the-gpu-high-memory-node" title="Permalink to this heading">#</a></h2>
+<h2>Running jobs on the GPU / high-memory node<a class="headerlink" href="#running-jobs-on-the-gpu-high-memory-node" title="Link to this heading">¶</a></h2>
 <p>By default, jobs submitted via Slurm will only run on regular nodes,
 even if you ask for more than 2 TB of RAM or ask for a GPU. Attempting
 to run such a task will instead result in a <code class="docutils literal notranslate"><span class="pre">Requested</span> <span class="pre">node</span>
@@ -267,10 +270,10 @@ to in order prevent normal use of the cluster from blocking access to
 these resources. You must therefore select use the option
 <code class="docutils literal notranslate"><span class="pre">--partition=gpuqueue</span></code> to select the correct queue. This might look as
 follows in a sbatch script:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="hll"><span class="c1">#SBATCH --partition=gpuqueue</span>
-</span>
-my-memory-hungry-command
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
+<span class="hll"><span class="linenos">2</span><span class="c1">#SBATCH --partition=gpuqueue</span>
+</span><span class="linenos">3</span>
+<span class="linenos">4</span>my-memory-hungry-command
 </pre></div>
 </div>
 <p>While running on the GPU queue, you can reserve up to 3920 GB of RAM and
@@ -279,11 +282,11 @@ otherwise use the same defaults as the other nodes (~16 GB of RAM per
 CPU reserved).</p>
 <p>For example, to run a job using 2.5 TB of RAM on the GPU / high-memory
 node:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="hll"><span class="c1">#SBATCH --partition=gpuqueue</span>
-</span><span class="c1">#SBATCH --mem 2560G</span>
-
-my-memory-hungry-command
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
+<span class="hll"><span class="linenos">2</span><span class="c1">#SBATCH --partition=gpuqueue</span>
+</span><span class="linenos">3</span><span class="c1">#SBATCH --mem 2560G</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span>my-memory-hungry-command
 </pre></div>
 </div>
 <p>This script can then be submitted as usual:</p>
@@ -300,15 +303,15 @@ since leaving some unused resources permits other users to utilize the
 GPUs while your tasks are running.</p>
 </section>
 <section id="reserving-gpus">
-<h2>Reserving GPUs<a class="headerlink" href="#reserving-gpus" title="Permalink to this heading">#</a></h2>
+<h2>Reserving GPUs<a class="headerlink" href="#reserving-gpus" title="Link to this heading">¶</a></h2>
 <p>Requesting GPUs is done with the <code class="docutils literal notranslate"><span class="pre">--gres</span></code> option and also requires
 that using the <code class="docutils literal notranslate"><span class="pre">--partition=gpuqueue</span></code> option to select the correct
 queue, as described above. This might look as follows in a <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>
 script:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="hll"><span class="c1">#SBATCH --partition=gpuqueue --gres=gpu:1</span>
-</span>
-nvidia-smi<span class="w"> </span>-L
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
+<span class="hll"><span class="linenos">2</span><span class="c1">#SBATCH --partition=gpuqueue --gres=gpu:1</span>
+</span><span class="linenos">3</span>
+<span class="linenos">4</span>nvidia-smi<span class="w"> </span>-L
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">--gres=gpu:1</span></code> in the above asks Slurm to make 1 GPU available to
@@ -323,17 +326,17 @@ reserve 1 GPU per job, which is normally also more efficient.</p>
 </pre></div>
 </div>
 <section id="requesting-specific-gpus">
-<h3>Requesting specific GPUs<a class="headerlink" href="#requesting-specific-gpus" title="Permalink to this heading">#</a></h3>
+<h3>Requesting specific GPUs<a class="headerlink" href="#requesting-specific-gpus" title="Link to this heading">¶</a></h3>
 <p>As indicated above, the GPU nodes includes both Nvidia H100 and A100
 GPUs. By default, your job will be assigned to the first idle GPU(s),
 but it is also possible to request a specific GPU type.</p>
 <p>To request an A100 GPU, replace the <code class="docutils literal notranslate"><span class="pre">--gres=gpu:1</span></code> option with
 <code class="docutils literal notranslate"><span class="pre">--gres=gpu:a100:1</span></code>, and to request an H100 GPU, replace the
 <code class="docutils literal notranslate"><span class="pre">--gres=gpu:1</span></code> option with <code class="docutils literal notranslate"><span class="pre">--gres=gpu:h100:1</span></code>. For example,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="hll"><span class="c1">#SBATCH --partition=gpuqueue --gres=gpu:h100:1</span>
-</span>
-nvidia-smi<span class="w"> </span>-L
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
+<span class="hll"><span class="linenos">2</span><span class="c1">#SBATCH --partition=gpuqueue --gres=gpu:h100:1</span>
+</span><span class="linenos">3</span>
+<span class="linenos">4</span>nvidia-smi<span class="w"> </span>-L
 </pre></div>
 </div>
 <p>This script can then be submitted as usual:</p>
@@ -350,7 +353,7 @@ described in the <a class="reference internal" href="monitoring.html#s-monitorin
 to see GPU reservations.</p>
 </section>
 <section id="running-an-interactive-session">
-<h3>Running an interactive session<a class="headerlink" href="#running-an-interactive-session" title="Permalink to this heading">#</a></h3>
+<h3>Running an interactive session<a class="headerlink" href="#running-an-interactive-session" title="Link to this heading">¶</a></h3>
 <p>While it is possible to run an interactive session on the GPU /
 high-memory node, we ask that you limit the usage of such sessions as
 much as possible. If at all possible, prefer using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> or
@@ -374,14 +377,14 @@ without warning.</p>
 </section>
 </section>
 <section id="monitoring-gpu-utilization">
-<h2>Monitoring GPU utilization<a class="headerlink" href="#monitoring-gpu-utilization" title="Permalink to this heading">#</a></h2>
+<h2>Monitoring GPU utilization<a class="headerlink" href="#monitoring-gpu-utilization" title="Link to this heading">¶</a></h2>
 <p>Please see the <a class="reference internal" href="monitoring.html#s-monitoring-gpu-utilization"><span class="std std-ref">Monitoring GPU utilization</span></a> section on the
 <a class="reference internal" href="monitoring.html#p-usage-slurm-monitor"><span class="std std-ref">Monitoring slurm jobs</span></a> page.</p>
 </section>
 <section id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">¶</a></h2>
 <section id="error-requested-node-configuration-is-not-available">
-<h3>Error: Requested node configuration is not available<a class="headerlink" href="#error-requested-node-configuration-is-not-available" title="Permalink to this heading">#</a></h3>
+<h3>Error: Requested node configuration is not available<a class="headerlink" href="#error-requested-node-configuration-is-not-available" title="Link to this heading">¶</a></h3>
 <p>See the Slurm Basics <a class="reference internal" href="basics.html#s-slurm-basics-troubleshooting"><span class="std std-ref">Troubleshooting</span></a> section.</p>
 </section>
 </section>
@@ -465,10 +468,12 @@ without warning.</p>
       
     </aside>
   </div>
-</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
+</div><script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=4e2eecee"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=a7c4b63f"></script>
     <script src="../../_static/js/custom.js?v=3a8ddbd3"></script>
     <script src="../../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../../_static/js/playback.js?v=d7002ce9"></script>

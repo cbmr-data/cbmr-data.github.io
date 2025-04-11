@@ -26,6 +26,7 @@ a single variable and the other removing *all* variables in the current
 session:
 
 .. code-block:: r
+   :linenos:
 
    # 1. Remove the variable `my_variable`
    rm(my_variable)

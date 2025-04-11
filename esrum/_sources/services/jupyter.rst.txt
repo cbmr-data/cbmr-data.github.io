@@ -25,7 +25,7 @@ add support for R.
 
 To start a notebook on a node, run the following commands:
 
-.. code-block::
+.. code-block:: console
 
    $ module load jupyter-notebook
    $ srun --pty -- jupyter notebook --no-browser --ip=0.0.0.0 --port=XXXXX
@@ -77,7 +77,7 @@ job is running. This can be done in a couple of ways:
 
 -  Look for the URLs printed by Jupyter when you started it on Esrum:
 
-   .. code-block::
+   .. code-block:: text
       :emphasize-lines: 4
 
       To access the notebook, open this file in a browser:
@@ -93,7 +93,7 @@ job is running. This can be done in a couple of ways:
 -  Alternatively, run the following command on the head node in a
    separate terminal:
 
-   .. code-block::
+   .. code-block:: console
 
       $ squeue --me --name jupyter
       JOBID  PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -115,7 +115,7 @@ laptop or PC*, replacing ``esrumcmpn07fl`` with the name of the node on
 which your notebook is running (see above), and replacing ``abc123``
 with your UCPH short username:
 
-.. code-block::
+.. code-block:: console
 
    $ ssh -S none -N -L 'XXXXX:esrumcmpn07fl:XXXXX' abc123@esrumhead01fl.unicph.domain
 
@@ -133,7 +133,7 @@ While this command is running, you can open your notebook via the
 ``http://127.0.0.1:XXXXX/?token=${long_text_here}`` URL that Jupyter
 Notebook printed in your terminal on Esrum:
 
-.. code-block:: console
+.. code-block:: text
    :emphasize-lines: 5
 
    To access the notebook, open this file in a browser:
@@ -216,7 +216,7 @@ open your notebook via the
 ``http://127.0.0.1:XXXXX/?token=${long_text_here}`` URL that Jupyter
 Notebook printed in your terminal on Esrum:
 
-.. code-block:: console
+.. code-block:: text
    :emphasize-lines: 5
 
    To access the notebook, open this file in a browser:
@@ -248,7 +248,7 @@ specific version of R that you wish to use.
 To do so, run the following commands, replacing `R/4.3.3` with the
 version of R that you wish to use:
 
-.. code-block::
+.. code-block:: console
 
    $ module load jupyter-notebook/6.5.4
    $ module load --auto R/4.3.3
@@ -267,7 +267,7 @@ of R and ``gcc`` that R depends on.
 
 Once you are done adding R versions, you start notebook as shown above:
 
-.. code-block::
+.. code-block:: console
 
    $ module load jupyter-notebook/6.5.4
    $ srun --pty -- jupyter notebook --no-browser --port=XXXXX
@@ -276,7 +276,7 @@ While you do not need to load the R module first, if you only wish to
 run R code, you must do so if you wish to install R libraries via the
 notebook:
 
-.. code-block::
+.. code-block:: console
 
    $ module load jupyter-notebook/6.5.4
    $ module load --auto R/4.3.3
@@ -287,8 +287,6 @@ notebook:
 *****************
 
 .. include:: jupyter_troubleshooting.rst
-
-.. _argparser: https://cran.r-project.org/web/packages/argparser/index.html
 
 .. _jupyter notebooks: https://jupyter.org/
 

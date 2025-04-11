@@ -6,11 +6,9 @@
 
 This page describes how to request new projects (located in
 ``/projects``) and datasets (``/datasets``). For a detailed description
-of these, see the :ref:`p_usage_filesystem` page.
-
-Presently, instructions are given in English only, and it may therefore
-be helpful to change your Serviceportal_ language to English using the
-gear icon (⚙) on the left side of the page.
+of these, see the :ref:`p_usage_filesystem` page. As all Screenshots are
+in English, and it may be helpful to change your Serviceportal_ language
+to English using the gear icon (⚙) on the left side of the page.
 
 Briefly,
 
@@ -162,7 +160,8 @@ Review & Submit
 ===============
 
 Once you have filled in the above sections, click the ``Review &
-Submit`` button, verify your choices, and then click ``Submit`` to
+Submit`` button, verify your choices, and then click ``Submit`` to send
+the request to UCPH-IT.
 
 .. _identity management system: https://identity.ku.dk/
 

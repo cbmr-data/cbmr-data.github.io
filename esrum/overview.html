@@ -1,37 +1,38 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="">
+<html class="no-js" lang="en" data-content_root="./">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="search" title="Search" href="search.html" /><link rel="next" title="Guidelines and policies" href="guidelines.html" /><link rel="prev" title="Contact us" href="contact.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.4.7 and Furo 2024.04.27 -->
         <title>Overview of cluster - Esrum Cluster documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=437aa6ec" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="_static/css/playback.css?v=2c0b8537" />
-    <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e2322aab" />
+    <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=16bf9909" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
       }
     }
@@ -113,6 +114,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -246,16 +249,16 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <section id="overview-of-cluster">
-<span id="p-overview"></span><h1>Overview of cluster<a class="headerlink" href="#overview-of-cluster" title="Permalink to this heading">#</a></h1>
+<span id="p-overview"></span><h1>Overview of cluster<a class="headerlink" href="#overview-of-cluster" title="Link to this heading">¶</a></h1>
 <p>The Esrum cluster is a cluster managed by the <a class="reference external" href="https://cbmr.ku.dk/research-facilities/data-analytics/">Data Analytics Platform</a>
 (formerly the Phenomics Platform) at <a class="reference external" href="https://cbmr.ku.dk/">CBMR</a>. Hosting and technical
 support is handled by <a class="reference external" href="https://it.ku.dk">UCPH-IT</a>.</p>
 <p>In addition to the documentation provided here, UCPH-IT also provides
 documentation for the <a class="reference external" href="https://kunet.ku.dk/work-areas/research/Research%20Infrastructure/research-it/ucph-computing-hpc-systems/Pages/default.aspx">UCPH computing/HPC Systems</a> on KUnet.</p>
 <section id="architecture">
-<h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this heading">#</a></h2>
+<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">¶</a></h2>
 <p>The cluster consists of a head node, 12 compute nodes, 1 GPU /
 high-memory node, 3 GPU nodes, 2 <a class="reference internal" href="tips/r.html#s-service-rstudio"><span class="std std-ref">RStudio</span></a> web
 servers, and 1 server for running <a class="reference internal" href="services/containers.html#p-containers"><span class="std std-ref">containers</span></a>. A
@@ -324,14 +327,14 @@ the individual compute nodes using the <a class="reference external" href="https
 use.</em></p>
 </section>
 <section id="software">
-<h2>Software<a class="headerlink" href="#software" title="Permalink to this heading">#</a></h2>
+<h2>Software<a class="headerlink" href="#software" title="Link to this heading">¶</a></h2>
 <p>The nodes all run Red Hat Enterprise Linux 8 and a range of scientific
 and other software is made available using <a class="reference internal" href="usage/modules.html#p-usage-modules"><span class="std std-ref">environment modules</span></a>. Missing software can be requested via UCPH-IT and/or
 data-analytics. See the <a class="reference internal" href="usage/modules.html#s-requesting-missing-modules"><span class="std std-ref">Requesting software modules</span></a> section for
 more information.</p>
 </section>
 <section id="projects-and-data-shares">
-<h2>Projects and data-shares<a class="headerlink" href="#projects-and-data-shares" title="Permalink to this heading">#</a></h2>
+<h2>Projects and data-shares<a class="headerlink" href="#projects-and-data-shares" title="Link to this heading">¶</a></h2>
 <p>Access is managed on a per-project level, and is administrated by the
 individual project owners, with each project folder containing a
 standard set of sub-folders (<code class="docutils literal notranslate"><span class="pre">apps</span></code>, <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">people</span></code>,
@@ -344,7 +347,7 @@ existing projects/data-shared and for <a class="reference internal" href="usage/
 new projects/data-shared.</p>
 </section>
 <section id="backup-policies-and-quotas">
-<h2>Backup policies and quotas<a class="headerlink" href="#backup-policies-and-quotas" title="Permalink to this heading">#</a></h2>
+<h2>Backup policies and quotas<a class="headerlink" href="#backup-policies-and-quotas" title="Link to this heading">¶</a></h2>
 <p>Your <code class="docutils literal notranslate"><span class="pre">/home</span></code> folder and the <code class="docutils literal notranslate"><span class="pre">apps</span></code>. <code class="docutils literal notranslate"><span class="pre">data</span></code>, and <code class="docutils literal notranslate"><span class="pre">people</span></code> folders
 in projects are automatically backed up. The <code class="docutils literal notranslate"><span class="pre">scratch</span></code> folders are NOT
 backed up. The specific frequency and duration of backups differ for
@@ -356,7 +359,7 @@ the unauthorized recovery of intentionally deleted data.</p>
 <p>See <a class="reference internal" href="usage/filesystem.html#p-usage-filesystem"><span class="std std-ref">Data storage on Esrum</span></a> for more information.</p>
 </section>
 <section id="security-and-risks">
-<h2>Security and risks<a class="headerlink" href="#security-and-risks" title="Permalink to this heading">#</a></h2>
+<h2>Security and risks<a class="headerlink" href="#security-and-risks" title="Link to this heading">¶</a></h2>
 <p>While UCPH-IT has performed a formal risk assessment of the Esrum HPC
 cluster, this assessment is not publicly available at the time of
 writing. A less formal and non-exhaustive overview of data security at
@@ -368,7 +371,7 @@ See the <a class="reference internal" href="usage/access/connecting.html#p-usage
 VPN.</p>
 </section>
 <section id="additional-resources">
-<h2>Additional resources<a class="headerlink" href="#additional-resources" title="Permalink to this heading">#</a></h2>
+<h2>Additional resources<a class="headerlink" href="#additional-resources" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Official <a class="reference external" href="https://kunet.ku.dk/work-areas/research/Research%20Infrastructure/research-it/ucph-computing-hpc-systems/Pages/default.aspx">UCPH computing/HPC Systems</a> documentation on KUnet.</p></li>
 </ul>
@@ -448,10 +451,12 @@ VPN.</p>
       
     </aside>
   </div>
-</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
+</div><script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=4e2eecee"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=a7c4b63f"></script>
     <script src="_static/js/custom.js?v=3a8ddbd3"></script>
     <script src="_static/js/libgif.js?v=7adcb026"></script>
     <script src="_static/js/playback.js?v=d7002ce9"></script>

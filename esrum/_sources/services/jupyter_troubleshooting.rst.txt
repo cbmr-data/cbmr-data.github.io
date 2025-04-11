@@ -39,7 +39,7 @@ says "This site can't be reached".
       the terminal, namely the URL starting with
       ``http://127.0.0.1:XXXX``:
 
-      .. code-block:: console
+      .. code-block:: text
          :emphasize-lines: 5
 
          To access the notebook, open this file in a browser:

@@ -1,37 +1,38 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="">
+<html class="no-js" lang="en" data-content_root="../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="search" title="Search" href="../search.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.4.7 and Furo 2024.04.27 -->
         <title>The ~/ucph folder or subfolders are missing - Esrum Cluster documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=437aa6ec" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="../_static/css/playback.css?v=2c0b8537" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e2322aab" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=16bf9909" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
       }
     }
@@ -113,6 +114,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -246,9 +249,9 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <section id="the-ucph-folder-or-subfolders-are-missing">
-<h1>The <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> folder or subfolders are missing<a class="headerlink" href="#the-ucph-folder-or-subfolders-are-missing" title="Permalink to this heading">#</a></h1>
+<h1>The <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> folder or subfolders are missing<a class="headerlink" href="#the-ucph-folder-or-subfolders-are-missing" title="Link to this heading">¶</a></h1>
 <p>Firstly, make sure that you are not using GSSAPI (Kerberos) to log in.
 See the <a class="reference internal" href="access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page for instructions for how to
 disable this feature if you are using MobaXterm.</p>
@@ -263,7 +266,7 @@ folder containing links to <code class="docutils literal notranslate"><span clas
 <code class="docutils literal notranslate"><span class="pre">sdir</span></code> (<code class="docutils literal notranslate"><span class="pre">S:</span></code>).</p>
 </section>
 <section id="no-such-file-or-directory-when-accessing-network-drives">
-<h1><code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory</span></code> when accessing network drives<a class="headerlink" href="#no-such-file-or-directory-when-accessing-network-drives" title="Permalink to this heading">#</a></h1>
+<h1><code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory</span></code> when accessing network drives<a class="headerlink" href="#no-such-file-or-directory-when-accessing-network-drives" title="Link to this heading">¶</a></h1>
 <p>If you get a <code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory</span></code> error when attempting to
 access the network drives (<code class="docutils literal notranslate"><span class="pre">~/ucph/hdir</span></code>, <code class="docutils literal notranslate"><span class="pre">~/ucph/ndir</span></code>, or
 <code class="docutils literal notranslate"><span class="pre">~/ucph/sdir</span></code>), then please make sure that you are not logging in
@@ -273,8 +276,8 @@ using MobaXterm. Note, however, that your login is also valid for about
 10 hours, after which you will lose access to the network drives.</p>
 <p>In either case, you can also re-authenticate after connecting to Esrum,
 by running the <code class="docutils literal notranslate"><span class="pre">kinit</span></code> command in your terminal on Esrum:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>kinit
-Password<span class="w"> </span><span class="k">for</span><span class="w"> </span>abc123@UNICPH.DOMAIN:<span class="w"> </span>*********
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>kinit
+<span class="go">Password for abc123@UNICPH.DOMAIN: *********</span>
 </pre></div>
 </div>
 <p>After a minute or two your <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> drives should be accessible again.</p>
@@ -323,10 +326,12 @@ current/base environment. This may require running <code class="docutils literal
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=4e2eecee"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=a7c4b63f"></script>
     <script src="../_static/js/custom.js?v=3a8ddbd3"></script>
     <script src="../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../_static/js/playback.js?v=d7002ce9"></script>

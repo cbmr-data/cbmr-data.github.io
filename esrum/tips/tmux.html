@@ -1,37 +1,38 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="">
+<html class="no-js" lang="en" data-content_root="../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="search" title="Search" href="../search.html" /><link rel="next" title="Batching commands in bash" href="batching_commands.html" /><link rel="prev" title="Creating environment modules" href="modules.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.4.7 and Furo 2024.04.27 -->
         <title>Persistent sessions with tmux - Esrum Cluster documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=437aa6ec" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="../_static/css/playback.css?v=2c0b8537" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e2322aab" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=16bf9909" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
       }
     }
@@ -113,6 +114,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -246,9 +249,9 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <section id="persistent-sessions-with-tmux">
-<span id="p-tips-tmux"></span><h1>Persistent sessions with tmux<a class="headerlink" href="#persistent-sessions-with-tmux" title="Permalink to this heading">#</a></h1>
+<span id="p-tips-tmux"></span><h1>Persistent sessions with tmux<a class="headerlink" href="#persistent-sessions-with-tmux" title="Link to this heading">¶</a></h1>
 <p>This section describes how to use <a class="reference external" href="https://github.com/tmux/tmux/wiki">tmux</a> to manage multiple sets of
 terminals, to name your terminals to remind yourself what you were
 working with, and to leave your terminals running in the background when
@@ -263,7 +266,7 @@ connection staying up.</p>
 <a class="reference external" href="https://github.com/tmux/tmux/wiki/Getting-Started">getting started</a> guide can be found in the official <a class="reference external" href="https://github.com/tmux/tmux/wiki">tmux</a>
 documentation.</p>
 <section id="getting-started">
-<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h2>
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">¶</a></h2>
 <p>To get started, <code class="docutils literal notranslate"><span class="pre">cd</span></code> to the directory you wish to work in and run
 <code class="docutils literal notranslate"><span class="pre">tmux</span></code> or the longer (but equivalent) command <code class="docutils literal notranslate"><span class="pre">tmux</span> <span class="pre">new</span></code>:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/projects/my_project/people/abc123
@@ -278,7 +281,7 @@ start with the current working directory set to
 working directory before starting tmux is that all terminals opened in
 that session will start in that directory.</p>
 <section id="creating-and-navigating-between-terminals">
-<h3>Creating and navigating between terminals<a class="headerlink" href="#creating-and-navigating-between-terminals" title="Permalink to this heading">#</a></h3>
+<h3>Creating and navigating between terminals<a class="headerlink" href="#creating-and-navigating-between-terminals" title="Link to this heading">¶</a></h3>
 <p>You start your new session with a single, blank terminal, but you can
 create any number of additional terminals using the <code class="docutils literal notranslate"><span class="pre">Ctrl+b</span> <span class="pre">c</span></code>
 keyboard shortcut. To use this shortcut first press <code class="docutils literal notranslate"><span class="pre">Ctrl+b</span></code>, then
@@ -288,18 +291,12 @@ terminal gets listed on the tmux bar.</p>
 between them using <code class="docutils literal notranslate"><span class="pre">Ctrl+b</span> <span class="pre">n</span></code> to switch to the next terminal and
 <code class="docutils literal notranslate"><span class="pre">Ctrl+b</span> <span class="pre">p</span></code> to switch to the previous terminal.</p>
 <p>To close the terminals you've created, use either the <code class="docutils literal notranslate"><span class="pre">exit</span></code> command
-or press <code class="docutils literal notranslate"><span class="pre">CTRL+d</span></code> while on an empty line:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span><span class="c1">## either</span>
-<span class="gp">$ </span><span class="nb">exit</span>
-<span class="gp">#</span><span class="c1">## or</span>
-<span class="gp">$ </span>&lt;press<span class="w"> </span>CTRL+d&gt;
-</pre></div>
-</div>
-<p><a class="reference external" href="https://github.com/tmux/tmux/wiki">tmux</a> will exit with the message <code class="docutils literal notranslate"><span class="pre">[exited]</span></code> once the last terminal in
-the current session has been closed.</p>
+or press <code class="docutils literal notranslate"><span class="pre">CTRL+d</span></code> while on an empty line. <a class="reference external" href="https://github.com/tmux/tmux/wiki">tmux</a> will exit with the
+message <code class="docutils literal notranslate"><span class="pre">[exited]</span></code> once the last terminal in the current session has
+been closed.</p>
 </section>
 <section id="detaching-from-and-re-attaching-to-your-sessions">
-<h3>Detaching from and re-attaching to your sessions<a class="headerlink" href="#detaching-from-and-re-attaching-to-your-sessions" title="Permalink to this heading">#</a></h3>
+<h3>Detaching from and re-attaching to your sessions<a class="headerlink" href="#detaching-from-and-re-attaching-to-your-sessions" title="Link to this heading">¶</a></h3>
 <p>Instead of existing your terminal, tmux gives you the option of
 &quot;detaching&quot; from the session. This leaves everything running on the
 server until you re-attach to the session. You will typically detach
@@ -308,19 +305,28 @@ once your jobs are running or simply if you need to leave for the day.</p>
 <code class="docutils literal notranslate"><span class="pre">CTRL+b</span> <span class="pre">d</span></code>. This returns you to your regular terminal, and you can
 safely disconnect from the server:</p>
 <p>Once you wish to resume your work, you can use the <code class="docutils literal notranslate"><span class="pre">tmux</span> <span class="pre">attach</span></code>
-command to re-open your running sessions, optionally specifying the name
-of the session you wish to open (see also below):</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span><span class="c1">## either</span>
-<span class="gp">$ </span>tmux<span class="w"> </span>attach
-<span class="gp">#</span><span class="c1">## or</span>
-<span class="gp">$ </span>tmux<span class="w"> </span>attach<span class="w"> </span>-t<span class="w"> </span>project
+command to re-open your running sessions:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tmux<span class="w"> </span>attach
 </pre></div>
 </div>
-<p>Alternatively, you can use the keyboard shortcut <code class="docutils literal notranslate"><span class="pre">CTRL+b</span> <span class="pre">s</span></code> to switch
-to the correct session after you've attached tmux.</p>
+<p>Once you've connected to tmux, you can use the keyboard shortcut
+<code class="docutils literal notranslate"><span class="pre">CTRL+b</span> <span class="pre">s</span></code> to switch to the correct session.</p>
+<p>Alternatively, you can list your sessions with <code class="docutils literal notranslate"><span class="pre">tmux</span> <span class="pre">ls</span></code> and attach to
+one of them:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tmux<span class="w"> </span>ls
+<span class="go">0: 1 windows (created Thu Apr 10 16:31:43 2025)</span>
+<span class="go">mice: 2 windows (created Thu Apr 10 16:32:04 2025)</span>
+<span class="gp">$ </span>tmux<span class="w"> </span>attach<span class="w"> </span>-t<span class="w"> </span>mice
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Instead of writing <code class="docutils literal notranslate"><span class="pre">tmux</span> <span class="pre">attach</span></code>, you can use the shortcut <code class="docutils literal notranslate"><span class="pre">tmux</span>
+<span class="pre">at</span></code>.</p>
+</div>
 </section>
 <section id="naming-your-sessions-and-windows">
-<h3>Naming your sessions and windows<a class="headerlink" href="#naming-your-sessions-and-windows" title="Permalink to this heading">#</a></h3>
+<h3>Naming your sessions and windows<a class="headerlink" href="#naming-your-sessions-and-windows" title="Link to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">tmux</span></code> allows you to give custom names to each session (group of
 terminals) and each window (terminal), in order to help you
 differentiate between them. This is not required, but it is recommended
@@ -338,7 +344,7 @@ the <a class="reference internal" href="#basic-shortcuts">basic shortcuts</a> de
 </section>
 </section>
 <section id="basic-shortcuts">
-<h2>Basic shortcuts<a class="headerlink" href="#basic-shortcuts" title="Permalink to this heading">#</a></h2>
+<h2>Basic shortcuts<a class="headerlink" href="#basic-shortcuts" title="Link to this heading">¶</a></h2>
 <p>The following lists the basic shortcuts that you need to work with tmux.
 Additional shortcuts can be found in the tmux <a class="reference external" href="https://man.openbsd.org/OpenBSD-current/man1/tmux.1#DEFAULT_KEY_BINDINGS">manual page</a> (<code class="docutils literal notranslate"><span class="pre">man</span>
 <span class="pre">tmux</span></code>).</p>
@@ -373,7 +379,7 @@ indicated in yellow in the top right corner.</p></li>
 </ul>
 </section>
 <section id="additional-resources">
-<h2>Additional resources<a class="headerlink" href="#additional-resources" title="Permalink to this heading">#</a></h2>
+<h2>Additional resources<a class="headerlink" href="#additional-resources" title="Link to this heading">¶</a></h2>
 </section>
 </section>
 
@@ -452,10 +458,12 @@ indicated in yellow in the top right corner.</p></li>
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=4e2eecee"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=a7c4b63f"></script>
     <script src="../_static/js/custom.js?v=3a8ddbd3"></script>
     <script src="../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../_static/js/playback.js?v=d7002ce9"></script>

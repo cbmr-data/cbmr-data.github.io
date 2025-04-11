@@ -1,37 +1,38 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="">
+<html class="no-js" lang="en" data-content_root="../../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="search" title="Search" href="../../search.html" /><link rel="next" title="GPU / high-memory jobs" href="gpu.html" /><link rel="prev" title="Advanced Slurm jobs" href="advanced.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.4.7 and Furo 2024.04.27 -->
         <title>Monitoring slurm jobs - Esrum Cluster documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=437aa6ec" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e2322aab" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=16bf9909" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
       }
     }
@@ -113,6 +114,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -246,9 +249,9 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <section id="monitoring-slurm-jobs">
-<span id="p-usage-slurm-monitor"></span><h1>Monitoring slurm jobs<a class="headerlink" href="#monitoring-slurm-jobs" title="Permalink to this heading">#</a></h1>
+<span id="p-usage-slurm-monitor"></span><h1>Monitoring slurm jobs<a class="headerlink" href="#monitoring-slurm-jobs" title="Link to this heading">¶</a></h1>
 <p>This section describes the techniques for monitoring jobs running
 through slurm, the amount of resources they are currently using (CPUs,
 RAM, and GPUs), the overall amount of resources used by completed jobs,
@@ -259,7 +262,7 @@ of the cluster, to help inform how many resources you can reasonably
 reserve for a set of jobs. See the <a class="reference internal" href="basics.html#s-best-practice-resources"><span class="std std-ref">Best practice for reserving resources</span></a>
 section.</p>
 <section id="e-mail-notifications-on-job-completion">
-<h2>E-mail notifications on job completion<a class="headerlink" href="#e-mail-notifications-on-job-completion" title="Permalink to this heading">#</a></h2>
+<h2>E-mail notifications on job completion<a class="headerlink" href="#e-mail-notifications-on-job-completion" title="Link to this heading">¶</a></h2>
 <p>In addition to actively monitoring your jobs using <code class="docutils literal notranslate"><span class="pre">squeue</span></code>, it is
 possible to receive email notifications when your jobs are started,
 finish, fail, are re-queued, or some combination. This is accomplished
@@ -269,10 +272,10 @@ by using the <code class="docutils literal notranslate"><span class="pre">--mail
 </pre></div>
 </div>
 <p>These options can naturally also be embedded in your sbatch script:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1">#SBATCH --mail-user=abc123@ku.dk --mail-type=END,FAIL</span>
-
-my-commands
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
+<span class="linenos">2</span><span class="c1">#SBATCH --mail-user=abc123@ku.dk --mail-type=END,FAIL</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span>my-commands
 </pre></div>
 </div>
 <p>and queued as usual:</p>
@@ -294,7 +297,7 @@ emails, and we therefore recommend using your <code class="docutils literal notr
 </div>
 </section>
 <section id="monitoring-overall-resource-usage-by-jobs">
-<h2>Monitoring overall resource usage by jobs<a class="headerlink" href="#monitoring-overall-resource-usage-by-jobs" title="Permalink to this heading">#</a></h2>
+<h2>Monitoring overall resource usage by jobs<a class="headerlink" href="#monitoring-overall-resource-usage-by-jobs" title="Link to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">sacct</span></code> command may be used to review the average CPU usage, the
 peak memory usage, disk I/O, and more for completed jobs. This makes it
 easier to verify that you are not needlessly reserving resources:</p>
@@ -342,7 +345,7 @@ are running multiple simultaneous processes in a pipeline.</p>
 </div>
 </section>
 <section id="monitoring-individual-processes-in-a-job">
-<h2>Monitoring individual processes in a job<a class="headerlink" href="#monitoring-individual-processes-in-a-job" title="Permalink to this heading">#</a></h2>
+<h2>Monitoring individual processes in a job<a class="headerlink" href="#monitoring-individual-processes-in-a-job" title="Link to this heading">¶</a></h2>
 <p>While <code class="docutils literal notranslate"><span class="pre">sacct</span></code> can report on the overall resource usage of you job, it
 can also be helpful to track resource usage for individual commands that
 you are running. This is particularly useful when attempting to optimize
@@ -368,7 +371,7 @@ more efficient to run two tasks with 4 CPUs in parallel, rather than
 running one task with 8 CPUs.</p>
 </section>
 <section id="live-monitoring-of-processes-in-jobs">
-<span id="s-live-monitoring"></span><h2>Live monitoring of processes in jobs<a class="headerlink" href="#live-monitoring-of-processes-in-jobs" title="Permalink to this heading">#</a></h2>
+<span id="s-live-monitoring"></span><h2>Live monitoring of processes in jobs<a class="headerlink" href="#live-monitoring-of-processes-in-jobs" title="Link to this heading">¶</a></h2>
 <p>In addition to monitoring jobs at a high level, it is possible to
 actively monitor the processes running in your jobs via (interactive)
 shells running on the same node as the job you wish to monitor. This
@@ -400,7 +403,7 @@ shared, even for overlapping jobs. See below for instructions on how to
 monitor GPU utilization.</p>
 </section>
 <section id="monitoring-gpu-utilization">
-<span id="s-monitoring-gpu-utilization"></span><h2>Monitoring GPU utilization<a class="headerlink" href="#monitoring-gpu-utilization" title="Permalink to this heading">#</a></h2>
+<span id="s-monitoring-gpu-utilization"></span><h2>Monitoring GPU utilization<a class="headerlink" href="#monitoring-gpu-utilization" title="Link to this heading">¶</a></h2>
 <p>Monitoring of GPU utilization is highly recommended when you run jobs on
 the GPU node: To make full use of the hardware you want to keep GPU
 utilization at 100% and to do so you typically want to load as much data
@@ -411,7 +414,7 @@ accomplished by increasing the size of the batches you are processing.</p>
 them, depending on whether you have reserved a GPU for an interactive
 session:</p>
 <section id="monitoring-an-interactive-session">
-<h3>Monitoring an interactive session<a class="headerlink" href="#monitoring-an-interactive-session" title="Permalink to this heading">#</a></h3>
+<h3>Monitoring an interactive session<a class="headerlink" href="#monitoring-an-interactive-session" title="Link to this heading">¶</a></h3>
 <p>If you are running a job in an <a class="reference internal" href="basics.html#s-interactive-session"><span class="std std-ref">interactive session</span></a>, then you can monitor the reserved GPU(s)
 directly using the <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> command:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nvidia-smi<span class="w"> </span>-l<span class="w"> </span><span class="m">5</span>
@@ -448,7 +451,7 @@ tools are available (for example <code class="docutils literal notranslate"><spa
 of this documentation.</p>
 </section>
 <section id="monitoring-a-slurm-job">
-<h3>Monitoring a Slurm job<a class="headerlink" href="#monitoring-a-slurm-job" title="Permalink to this heading">#</a></h3>
+<h3>Monitoring a Slurm job<a class="headerlink" href="#monitoring-a-slurm-job" title="Link to this heading">¶</a></h3>
 <p>If you have started a standard (non-interactive) job via Slurm, then you
 will not be able to directly run <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> nor will you be able to
 join the running job using <code class="docutils literal notranslate"><span class="pre">srun</span> <span class="pre">-j</span></code> due to the way Slurm handles
@@ -483,7 +486,7 @@ will automatically exit when your job finishes. See the
 </section>
 </section>
 <section id="monitoring-the-cluster">
-<span id="s-monitoring-slurm"></span><h2>Monitoring the cluster<a class="headerlink" href="#monitoring-the-cluster" title="Permalink to this heading">#</a></h2>
+<span id="s-monitoring-slurm"></span><h2>Monitoring the cluster<a class="headerlink" href="#monitoring-the-cluster" title="Link to this heading">¶</a></h2>
 <p>The <a class="reference external" href="https://github.com/cbmr-data/slurmboard">slurmboard</a> utility is made available as part of the <code class="docutils literal notranslate"><span class="pre">cbmr_shared</span></code>
 project folder, in order to make it easy to monitor activity on the
 cluster, for example to decide how many resources you can reasonably use
@@ -589,10 +592,12 @@ resource utilization on the cluster.</p>
       
     </aside>
   </div>
-</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
+</div><script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=4e2eecee"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=a7c4b63f"></script>
     <script src="../../_static/js/custom.js?v=3a8ddbd3"></script>
     <script src="../../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../../_static/js/playback.js?v=d7002ce9"></script>

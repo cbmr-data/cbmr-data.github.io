@@ -9,7 +9,7 @@ Once you have logged in to Esrum *without* GSSAPI enabled, and if the
 folder(s) are still missing, then run the following command to create
 any missing network folders:
 
-.. code-block::
+.. code-block:: console
 
    $ bash /etc/profile.d/symlink-ucphmaps.sh
 
@@ -31,7 +31,7 @@ using MobaXterm. Note, however, that your login is also valid for about
 In either case, you can also re-authenticate after connecting to Esrum,
 by running the ``kinit`` command in your terminal on Esrum:
 
-.. code-block:: shell
+.. code-block:: console
 
    $ kinit
    Password for abc123@UNICPH.DOMAIN: *********
@@ -42,7 +42,7 @@ After a minute or two your ``~/ucph`` drives should be accessible again.
 
    ``kinit`` may fail if you are using a ``conda`` environment:
 
-   .. code-block::
+   .. code-block:: console
 
       (base) $ kinit
       kinit: Unknown credential cache type while getting default ccache

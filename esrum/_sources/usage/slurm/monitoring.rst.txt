@@ -24,7 +24,7 @@ possible to receive email notifications when your jobs are started,
 finish, fail, are re-queued, or some combination. This is accomplished
 by using the ``--mail-user`` and ``--mail-type`` options:
 
-.. code-block::
+.. code-block:: console
 
    $ sbatch --mail-user=abc123@ku.dk --mail-type=END,FAIL my_script.sh
    Submitted batch job 8503
@@ -32,6 +32,7 @@ by using the ``--mail-user`` and ``--mail-type`` options:
 These options can naturally also be embedded in your sbatch script:
 
 .. code-block:: bash
+   :linenos:
 
    #!/bin/bash
    #SBATCH --mail-user=abc123@ku.dk --mail-type=END,FAIL
@@ -66,7 +67,7 @@ The ``sacct`` command may be used to review the average CPU usage, the
 peak memory usage, disk I/O, and more for completed jobs. This makes it
 easier to verify that you are not needlessly reserving resources:
 
-.. code-block::
+.. code-block:: console
 
    $ sacct -o JobID,Elapsed,State,AllocCPUS,AveCPU,ReqMem,MaxVMSize
 
@@ -81,7 +82,7 @@ memory size.
 Alternatively, we provide a helper that summarizes some of this
 information in a more easily readable form:
 
-.. code-block::
+.. code-block:: console
 
    $ module load sacct-usage
    $ sacct-usage
@@ -131,7 +132,7 @@ program used. This is acoomplished by prepending ``/usr/bin/time -f "CPU
 this example, where we wish to measure the resource usage of the
 ``my-command`` program:
 
-.. code-block::
+.. code-block:: console
 
    $ /usr/bin/time -f "CPU = %P, MEM = %M" my-command --threads 1 ...
    CPU = 99%, MEM = 840563KB
@@ -172,7 +173,7 @@ an existing job, and the ID of the job to overlap. The job ID can obtain
 using for example the ``squeue --me`` command (from the ``JOBID``
 column), as shown here:
 
-.. code-block::
+.. code-block:: console
 
    $ squeue --me
    JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -210,7 +211,7 @@ If you are running a job in an :ref:`interactive session
 <s_interactive_session>`, then you can monitor the reserved GPU(s)
 directly using the ``nvidia-smi`` command:
 
-.. code-block::
+.. code-block:: console
 
    $ nvidia-smi -l 5
    Thu Apr  4 14:30:46 2024
@@ -257,7 +258,7 @@ above.
 To watch the content of this log-file, firstly determine the job ID of
 your job running on the GPU node:
 
-.. code-block::
+.. code-block:: console
 
    $ squeue --me --partition=gpuqueue
     JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -268,7 +269,7 @@ Then we use ``srun`` with the ``--overlap`` option to run a command
 The ``--gres=none`` option is required, since otherwise Slurm would try
 to reserve the GPU our job already uses and eventually time out.
 
-.. code-block::
+.. code-block:: console
 
    $ srun --overlap --jobid 570316 --gres=none --pty -- watch -n 15 -d cat /scratch/gpus/nvidia-smi.txt
 
@@ -296,7 +297,7 @@ project folder, in order to make it easy to monitor activity on the
 cluster, for example to decide how many resources you can reasonably use
 for a job (see :ref:`s_best_practice_resources`):
 
-.. code-block::
+.. code-block:: console
 
    $ module load slurmboard
    $ slurmboard

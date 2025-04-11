@@ -1,37 +1,38 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="">
+<html class="no-js" lang="en" data-content_root="../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="search" title="Search" href="../search.html" /><link rel="next" title="Containerized software" href="containers.html" /><link rel="prev" title="RStudio" href="rstudio.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.4.7 and Furo 2024.04.27 -->
         <title>Jupyter Notebooks - Esrum Cluster documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=437aa6ec" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="../_static/css/playback.css?v=2c0b8537" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e2322aab" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=16bf9909" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
       }
     }
@@ -113,6 +114,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -246,9 +249,9 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <section id="jupyter-notebooks">
-<span id="p-service-jupyter"></span><h1>Jupyter Notebooks<a class="headerlink" href="#jupyter-notebooks" title="Permalink to this heading">#</a></h1>
+<span id="p-service-jupyter"></span><h1>Jupyter Notebooks<a class="headerlink" href="#jupyter-notebooks" title="Link to this heading">¶</a></h1>
 <p><a class="reference external" href="https://jupyter.org/">Jupyter Notebooks</a> are available via the module system on Esrum and
 can be run on regular compute nodes or on the GPU/high-memory node,
 depending on the kind of analyses you wish to run and the size of your
@@ -263,7 +266,7 @@ add support for R.</p>
 ready.</p>
 </div>
 <section id="starting-a-jupyter-notebook">
-<h2>Starting a Jupyter notebook<a class="headerlink" href="#starting-a-jupyter-notebook" title="Permalink to this heading">#</a></h2>
+<h2>Starting a Jupyter notebook<a class="headerlink" href="#starting-a-jupyter-notebook" title="Link to this heading">¶</a></h2>
 <p>To start a notebook on a node, run the following commands:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>jupyter-notebook
 <span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--<span class="w"> </span>jupyter<span class="w"> </span>notebook<span class="w"> </span>--no-browser<span class="w"> </span>--ip<span class="o">=</span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="o">=</span>XXXXX
@@ -299,7 +302,7 @@ in a <code class="docutils literal notranslate"><span class="pre">tmux</span></c
 </div>
 </section>
 <section id="connecting-to-the-jupyter-notebook">
-<h2>Connecting to the Jupyter Notebook<a class="headerlink" href="#connecting-to-the-jupyter-notebook" title="Permalink to this heading">#</a></h2>
+<h2>Connecting to the Jupyter Notebook<a class="headerlink" href="#connecting-to-the-jupyter-notebook" title="Link to this heading">¶</a></h2>
 <p>To connect to the notebook server, you will first need to set up a
 connection from your PC to the compute node where your notebook is
 running. This is called &quot;port forwarding&quot; and is described below.</p>
@@ -307,11 +310,11 @@ running. This is called &quot;port forwarding&quot; and is described below.</p>
 job is running. This can be done in a couple of ways:</p>
 <ul>
 <li><p>Look for the URLs printed by Jupyter when you started it on Esrum:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">To access the notebook, open this file in a browser:</span>
-<span class="go">    file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html</span>
-<span class="go">  Or copy and paste one of these URLs:</span>
-<span class="hll"><span class="go">      http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz</span>
-</span><span class="go">   or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>To access the notebook, open this file in a browser:
+    file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html
+  Or copy and paste one of these URLs:
+<span class="hll">      http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
+</span>   or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
 </pre></div>
 </div>
 <p>In this example, our notebook is running on the <code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl</span></code>
@@ -330,7 +333,7 @@ is running on <code class="docutils literal notranslate"><span class="pre">esrum
 </li>
 </ul>
 <section id="port-forwarding-for-osx-linux-users">
-<span id="s-ports-osx-linux"></span><h3>Port forwarding for OSX/Linux users<a class="headerlink" href="#port-forwarding-for-osx-linux-users" title="Permalink to this heading">#</a></h3>
+<span id="s-ports-osx-linux"></span><h3>Port forwarding for OSX/Linux users<a class="headerlink" href="#port-forwarding-for-osx-linux-users" title="Link to this heading">¶</a></h3>
 <p>The following instructions describe how to set up port forwarding to
 Esrum from your laptop or PC running OSX or Linux.</p>
 <p>This is accomplished by running the following command-line <em>on your
@@ -353,11 +356,11 @@ the actual port forwarding.</p>
 <p>While this command is running, you can open your notebook via the
 <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:XXXXX/?token=${long_text_here}</span></code> URL that Jupyter
 Notebook printed in your terminal on Esrum:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">To access the notebook, open this file in a browser:</span>
-<span class="go">    file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html</span>
-<span class="go">  Or copy and paste one of these URLs:</span>
-<span class="go">      http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz</span>
-<span class="hll"><span class="go">   or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>To access the notebook, open this file in a browser:
+    file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html
+  Or copy and paste one of these URLs:
+      http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
+<span class="hll">   or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
 </span></pre></div>
 </div>
 <p>Typically, this can be done by pressing Ctrl and left-clicking on the
@@ -377,7 +380,7 @@ command <code class="docutils literal notranslate"><span class="pre">ssh</span> 
 </div>
 </section>
 <section id="port-forwarding-for-windows-users">
-<span id="s-ports-windows"></span><h3>Port forwarding for Windows users<a class="headerlink" href="#port-forwarding-for-windows-users" title="Permalink to this heading">#</a></h3>
+<span id="s-ports-windows"></span><h3>Port forwarding for Windows users<a class="headerlink" href="#port-forwarding-for-windows-users" title="Link to this heading">¶</a></h3>
 <p>The following instructions describe how to set up port forwarding to
 Esrum from your laptop or PC running Windows. It is furthermore assumed
 that you are using MobaXterm to connect to Esrum (see the
@@ -419,11 +422,11 @@ Play-icon button or the <code class="docutils literal notranslate"><span class="
 open your notebook via the
 <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:XXXXX/?token=${long_text_here}</span></code> URL that Jupyter
 Notebook printed in your terminal on Esrum:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">To access the notebook, open this file in a browser:</span>
-<span class="go">    file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html</span>
-<span class="go">  Or copy and paste one of these URLs:</span>
-<span class="go">      http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz</span>
-<span class="hll"><span class="go">   or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>To access the notebook, open this file in a browser:
+    file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html
+  Or copy and paste one of these URLs:
+      http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
+<span class="hll">   or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
 </span></pre></div>
 </div>
 <p>Typically, this can be done by pressing Ctrl and left-clicking on the
@@ -438,7 +441,7 @@ starting with <cite>http://127.0.0.1:XXXXX/</cite></p>
 </section>
 </section>
 <section id="adding-an-r-kernel-to-jupyter">
-<span id="s-jupyter-kernels"></span><h2>Adding an R kernel to Jupyter<a class="headerlink" href="#adding-an-r-kernel-to-jupyter" title="Permalink to this heading">#</a></h2>
+<span id="s-jupyter-kernels"></span><h2>Adding an R kernel to Jupyter<a class="headerlink" href="#adding-an-r-kernel-to-jupyter" title="Link to this heading">¶</a></h2>
 <p>The Jupyter module only comes with a Python kernel. If you instead wish
 to use R in your Jupyter notebook, you can add an R Kernel for the
 specific version of R that you wish to use.</p>
@@ -474,9 +477,9 @@ notebook:</p>
 </div>
 </section>
 <section id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">¶</a></h2>
 <section id="jupyter-notebooks-browser-error-when-opening-url">
-<h3>Jupyter Notebooks: Browser error when opening URL<a class="headerlink" href="#jupyter-notebooks-browser-error-when-opening-url" title="Permalink to this heading">#</a></h3>
+<h3>Jupyter Notebooks: Browser error when opening URL<a class="headerlink" href="#jupyter-notebooks-browser-error-when-opening-url" title="Link to this heading">¶</a></h3>
 <p>Depending on your browser you may receive one of the following errors.
 The typical causes are listed, but the exact error message will depend
 on your browser. It is therefore helpful to review all possible causes
@@ -508,11 +511,11 @@ URL printed by Jupyter.</p></li>
 <li><p>Verify that you are using the <em>second</em> URL that Jupyter prints on
 the terminal, namely the URL starting with
 <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:XXXX</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">To access the notebook, open this file in a browser:</span>
-<span class="go">    file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html</span>
-<span class="go">    Or copy and paste one of these URLs:</span>
-<span class="go">        http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz</span>
-<span class="hll"><span class="go">    or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>To access the notebook, open this file in a browser:
+    file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html
+    Or copy and paste one of these URLs:
+        http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
+<span class="hll">    or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
 </span></pre></div>
 </div>
 <p>For security reasons it is not possible to connect directly to the
@@ -607,10 +610,12 @@ compute nodes.</p>
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=4e2eecee"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=a7c4b63f"></script>
     <script src="../_static/js/custom.js?v=3a8ddbd3"></script>
     <script src="../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../_static/js/playback.js?v=d7002ce9"></script>

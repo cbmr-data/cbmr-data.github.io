@@ -1,37 +1,38 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="">
+<html class="no-js" lang="en" data-content_root="../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="search" title="Search" href="../search.html" /><link rel="next" title="Using R on Esrum" href="r.html" /><link rel="prev" title="Writing robust bash scripts" href="robust_scripts.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.4.7 and Furo 2024.04.27 -->
         <title>Using Snakemake on Esrum - Esrum Cluster documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=437aa6ec" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="../_static/css/playback.css?v=2c0b8537" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e2322aab" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=16bf9909" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
       }
     }
@@ -113,6 +114,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -246,9 +249,9 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <section id="using-snakemake-on-esrum">
-<span id="p-tips-snakemake"></span><h1>Using Snakemake on Esrum<a class="headerlink" href="#using-snakemake-on-esrum" title="Permalink to this heading">#</a></h1>
+<span id="p-tips-snakemake"></span><h1>Using Snakemake on Esrum<a class="headerlink" href="#using-snakemake-on-esrum" title="Link to this heading">¶</a></h1>
 <p>This page describes how to best use Snakemake on the Esrum cluster. As
 this includes a number of suggested settings (described below), a basic
 profile file is provided below to automatically set these.</p>
@@ -277,7 +280,7 @@ reserve GPUs for your rules.</p></li>
 <p>For most bioinformatics pipelines, the most efficient choice is to run
 Snakemake with Slurm support enabled.</p>
 <section id="running-snakemake-with-slurm-support">
-<h2>Running Snakemake with Slurm support<a class="headerlink" href="#running-snakemake-with-slurm-support" title="Permalink to this heading">#</a></h2>
+<h2>Running Snakemake with Slurm support<a class="headerlink" href="#running-snakemake-with-slurm-support" title="Link to this heading">¶</a></h2>
 <p>To run Snakemake with Slurm support enabled, simply pass the options
 <code class="docutils literal notranslate"><span class="pre">--slurm</span></code> and <code class="docutils literal notranslate"><span class="pre">--jobs</span> <span class="pre">N</span></code>, where the <code class="docutils literal notranslate"><span class="pre">N</span></code> is the maximum number of
 jobs you want to queue simultaneously. For example,</p>
@@ -301,20 +304,20 @@ is sufficient to add <code class="docutils literal notranslate"><span class="pre
 the method we recommend using.</p>
 </div>
 <section id="requesting-cpus">
-<h3>Requesting CPUs<a class="headerlink" href="#requesting-cpus" title="Permalink to this heading">#</a></h3>
+<h3>Requesting CPUs<a class="headerlink" href="#requesting-cpus" title="Link to this heading">¶</a></h3>
 <p>Snakemake will automatically request a number of CPUs corresponding to
 the number of threads used by a rule:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rule</span> <span class="n">my_rule</span><span class="p">:</span>
-    <span class="nb">input</span><span class="p">:</span> <span class="o">...</span>
-    <span class="n">output</span><span class="p">:</span> <span class="o">...</span>
-    <span class="n">threads</span><span class="p">:</span> <span class="mi">8</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">rule</span> <span class="n">my_rule</span><span class="p">:</span>
+<span class="linenos">2</span>    <span class="nb">input</span><span class="p">:</span> <span class="o">...</span>
+<span class="linenos">3</span>    <span class="n">output</span><span class="p">:</span> <span class="o">...</span>
+<span class="linenos">4</span>    <span class="n">threads</span><span class="p">:</span> <span class="mi">8</span>
 </pre></div>
 </div>
 <p>Snakemake will in other words reserve 8 CPUs for the above rule when
 submitting it through Slurm.</p>
 </section>
 <section id="requesting-memory">
-<h3>Requesting memory<a class="headerlink" href="#requesting-memory" title="Permalink to this heading">#</a></h3>
+<h3>Requesting memory<a class="headerlink" href="#requesting-memory" title="Link to this heading">¶</a></h3>
 <p>Snakemake will by default estimate the amount of memory needed for a
 rule based on the size of the input data (<code class="docutils literal notranslate"><span class="pre">max(2*input.size_mb,</span>
 <span class="pre">1000)</span></code>), which translates to two times the size of the input but no
@@ -329,46 +332,46 @@ the <code class="docutils literal notranslate"><span class="pre">--default-resou
 <p>Should a job require more memory than the default ~16 GB per CPU, then
 you can request additional memory using the <code class="docutils literal notranslate"><span class="pre">resources</span></code> section of
 your rule:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rule</span> <span class="n">my_rule</span><span class="p">:</span>
-    <span class="nb">input</span><span class="p">:</span> <span class="o">...</span>
-    <span class="n">output</span><span class="p">:</span> <span class="o">...</span>
-    <span class="n">resources</span><span class="p">:</span>
-        <span class="n">mem_mb</span><span class="p">:</span> <span class="mi">64</span> <span class="o">*</span> <span class="mi">1024</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">rule</span> <span class="n">my_rule</span><span class="p">:</span>
+<span class="linenos">2</span>    <span class="nb">input</span><span class="p">:</span> <span class="o">...</span>
+<span class="linenos">3</span>    <span class="n">output</span><span class="p">:</span> <span class="o">...</span>
+<span class="linenos">4</span>    <span class="n">resources</span><span class="p">:</span>
+<span class="linenos">5</span>        <span class="n">mem_mb</span><span class="p">:</span> <span class="mi">64</span> <span class="o">*</span> <span class="mi">1024</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">mem_mb</span></code> specifies a <em>total</em> amount of memory to reserve in MB and
 the above example therefore requests 64 GB for this specific rule.</p>
 </section>
 <section id="using-the-gpu-high-memory-nodes">
-<h3>Using the GPU / high-memory nodes<a class="headerlink" href="#using-the-gpu-high-memory-nodes" title="Permalink to this heading">#</a></h3>
+<h3>Using the GPU / high-memory nodes<a class="headerlink" href="#using-the-gpu-high-memory-nodes" title="Link to this heading">¶</a></h3>
 <p>Running a job on the GPU / high-memory nodes is accomplished by
 specifying that you want to use the <code class="docutils literal notranslate"><span class="pre">gpuqueue</span></code> by adding
 <code class="docutils literal notranslate"><span class="pre">slurm_partition=&quot;gpuqueue&quot;</span></code> to the <code class="docutils literal notranslate"><span class="pre">resources</span></code> section of your
 rule. Once you have done so, you can reserve GPUs using the
 <code class="docutils literal notranslate"><span class="pre">slurm_extra</span></code> resource:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rule</span> <span class="n">gpu_example</span><span class="p">:</span>
-    <span class="nb">input</span><span class="p">:</span> <span class="s2">&quot;my_input.dat&quot;</span>
-    <span class="n">output</span><span class="p">:</span> <span class="s2">&quot;my_output.dat&quot;</span>
-    <span class="n">shell</span><span class="p">:</span> <span class="s2">&quot;my-command </span><span class="si">{input}</span><span class="s2"> &gt; </span><span class="si">{output}</span><span class="s2">&quot;</span>
-    <span class="n">resources</span><span class="p">:</span>
-        <span class="c1"># Run this rule on the GPU queue</span>
-        <span class="n">slurm_partition</span><span class="o">=</span><span class="s2">&quot;gpuqueue&quot;</span><span class="p">,</span>
-        <span class="c1"># Reserve 1 GPU for this job</span>
-        <span class="n">slurm_extra</span><span class="o">=</span><span class="s2">&quot;--gres=gpu:1&quot;</span><span class="p">,</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">rule</span> <span class="n">gpu_example</span><span class="p">:</span>
+<span class="linenos">2</span>    <span class="nb">input</span><span class="p">:</span> <span class="s2">&quot;my_input.dat&quot;</span>
+<span class="linenos">3</span>    <span class="n">output</span><span class="p">:</span> <span class="s2">&quot;my_output.dat&quot;</span>
+<span class="linenos">4</span>    <span class="n">shell</span><span class="p">:</span> <span class="s2">&quot;my-command </span><span class="si">{input}</span><span class="s2"> &gt; </span><span class="si">{output}</span><span class="s2">&quot;</span>
+<span class="linenos">5</span>    <span class="n">resources</span><span class="p">:</span>
+<span class="linenos">6</span>        <span class="c1"># Run this rule on the GPU queue</span>
+<span class="linenos">7</span>        <span class="n">slurm_partition</span><span class="o">=</span><span class="s2">&quot;gpuqueue&quot;</span><span class="p">,</span>
+<span class="linenos">8</span>        <span class="c1"># Reserve 1 GPU for this job</span>
+<span class="linenos">9</span>        <span class="n">slurm_extra</span><span class="o">=</span><span class="s2">&quot;--gres=gpu:1&quot;</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>If you need memory rather than GPUs, then omit the <code class="docutils literal notranslate"><span class="pre">slurm_extra</span></code>
 resource and instead specify the amount of RAM needed in MB, using the
 <code class="docutils literal notranslate"><span class="pre">mem_mb</span></code> resource as described above:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rule</span> <span class="n">high_mem_example</span><span class="p">:</span>
-    <span class="nb">input</span><span class="p">:</span> <span class="s2">&quot;my_input.dat&quot;</span>
-    <span class="n">output</span><span class="p">:</span> <span class="s2">&quot;my_output.dat&quot;</span>
-    <span class="n">shell</span><span class="p">:</span> <span class="s2">&quot;my-command </span><span class="si">{input}</span><span class="s2"> &gt; </span><span class="si">{output}</span><span class="s2">&quot;</span>
-    <span class="n">resources</span><span class="p">:</span>
-        <span class="c1"># Run this rule on the GPU queue</span>
-        <span class="n">slurm_partition</span><span class="o">=</span><span class="s2">&quot;gpuqueue&quot;</span><span class="p">,</span>
-        <span class="c1"># Reserve 3 TB of memory (specified in MB)</span>
-        <span class="n">mem_mb</span><span class="o">=</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">,</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">rule</span> <span class="n">high_mem_example</span><span class="p">:</span>
+<span class="linenos">2</span>    <span class="nb">input</span><span class="p">:</span> <span class="s2">&quot;my_input.dat&quot;</span>
+<span class="linenos">3</span>    <span class="n">output</span><span class="p">:</span> <span class="s2">&quot;my_output.dat&quot;</span>
+<span class="linenos">4</span>    <span class="n">shell</span><span class="p">:</span> <span class="s2">&quot;my-command </span><span class="si">{input}</span><span class="s2"> &gt; </span><span class="si">{output}</span><span class="s2">&quot;</span>
+<span class="linenos">5</span>    <span class="n">resources</span><span class="p">:</span>
+<span class="linenos">6</span>        <span class="c1"># Run this rule on the GPU queue</span>
+<span class="linenos">7</span>        <span class="n">slurm_partition</span><span class="o">=</span><span class="s2">&quot;gpuqueue&quot;</span><span class="p">,</span>
+<span class="linenos">8</span>        <span class="c1"># Reserve 3 TB of memory (specified in MB)</span>
+<span class="linenos">9</span>        <span class="n">mem_mb</span><span class="o">=</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">,</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -380,20 +383,20 @@ reserving GPU resources.</p>
 </section>
 </section>
 <section id="using-environment-modules">
-<h2>Using environment modules<a class="headerlink" href="#using-environment-modules" title="Permalink to this heading">#</a></h2>
+<h2>Using environment modules<a class="headerlink" href="#using-environment-modules" title="Link to this heading">¶</a></h2>
 <p>Snakemake can automatically load environment required by a rule. This
 requires either that the <code class="docutils literal notranslate"><span class="pre">--use-envmodules</span></code> option is specified on the
 command-line or that <code class="docutils literal notranslate"><span class="pre">use-envmodules</span></code> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code> in your
 profile (see below). When that is done, Snakemake will automatically
 load the environment modules listed in the <code class="docutils literal notranslate"><span class="pre">envmodules</span></code> section of a
 rule:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rule</span> <span class="n">my_rule</span><span class="p">:</span>
-    <span class="nb">input</span><span class="p">:</span> <span class="s2">&quot;my_input.bam&quot;</span>
-    <span class="n">output</span><span class="p">:</span> <span class="s2">&quot;my_output.stats.txt&quot;</span>
-    <span class="n">shell</span><span class="p">:</span> <span class="s2">&quot;samtools stats </span><span class="si">{input}</span><span class="s2"> &gt; </span><span class="si">{output}</span><span class="s2">&quot;</span>
-    <span class="n">envmodules</span><span class="p">:</span>
-        <span class="s2">&quot;libdeflate/1.18&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;samtools-libdeflate/1.18&quot;</span><span class="p">,</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">rule</span> <span class="n">my_rule</span><span class="p">:</span>
+<span class="linenos">2</span>    <span class="nb">input</span><span class="p">:</span> <span class="s2">&quot;my_input.bam&quot;</span>
+<span class="linenos">3</span>    <span class="n">output</span><span class="p">:</span> <span class="s2">&quot;my_output.stats.txt&quot;</span>
+<span class="linenos">4</span>    <span class="n">shell</span><span class="p">:</span> <span class="s2">&quot;samtools stats </span><span class="si">{input}</span><span class="s2"> &gt; </span><span class="si">{output}</span><span class="s2">&quot;</span>
+<span class="linenos">5</span>    <span class="n">envmodules</span><span class="p">:</span>
+<span class="linenos">6</span>        <span class="s2">&quot;libdeflate/1.18&quot;</span><span class="p">,</span>
+<span class="linenos">7</span>        <span class="s2">&quot;samtools-libdeflate/1.18&quot;</span><span class="p">,</span>
 </pre></div>
 </div>
 <div class="admonition tip">
@@ -404,7 +407,7 @@ won't suddenly break when new versions of modules are added.</p>
 </div>
 </section>
 <section id="other-recommended-options">
-<h2>Other recommended options<a class="headerlink" href="#other-recommended-options" title="Permalink to this heading">#</a></h2>
+<h2>Other recommended options<a class="headerlink" href="#other-recommended-options" title="Link to this heading">¶</a></h2>
 <p>This section describes a handful of settings that we recommend using:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">--latency-wait</span> <span class="pre">60</span></code>: This option increases the length of time
@@ -418,30 +421,30 @@ jobs that were not run to completion.</p></li>
 <p>The profile below enables you to automatically set these options.</p>
 </section>
 <section id="snakemake-profile">
-<h2>Snakemake profile<a class="headerlink" href="#snakemake-profile" title="Permalink to this heading">#</a></h2>
+<h2>Snakemake profile<a class="headerlink" href="#snakemake-profile" title="Link to this heading">¶</a></h2>
 <p>The recommended profile is also available at
 <code class="docutils literal notranslate"><span class="pre">/projects/cbmr_shared/apps/config/snakemake/latest</span></code>. This is a
 symlink pointing to the latest version of the profile</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Maximum number of jobs to queue at once</span>
-<span class="nt">jobs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32</span>
-<span class="c1"># Use slurm for queuing jobs</span>
-<span class="nt">slurm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-
-<span class="c1"># (Optional) Enable the use of environmental modules</span>
-<span class="nt">use-envmodules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="c1"># Wait up to 60 seconds for the network file system</span>
-<span class="nt">latency-wait</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span>
-<span class="c1"># Re-run incomplete jobs</span>
-<span class="nt">rerun-incomplete</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
-
-<span class="c1"># Standard slurm resources; these match the `sbatch` defaults:</span>
-<span class="nt">default-resources</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Use standard queue by default (silences warning)</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;slurm_partition=standardqueue&quot;</span>
-<span class="w">  </span><span class="c1"># Same mem-per-CPU as Slurm defaults</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;mem_mb_per_cpu=15948&quot;</span>
-<span class="w">  </span><span class="c1"># (Optional) Runtime limit in minutes to catch jobs that hang</span>
-<span class="w">  </span><span class="c1">#- &quot;runtime=720&quot;</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># Maximum number of jobs to queue at once</span>
+<span class="linenos"> 2</span><span class="nt">jobs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32</span>
+<span class="linenos"> 3</span><span class="c1"># Use slurm for queuing jobs</span>
+<span class="linenos"> 4</span><span class="nt">slurm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="c1"># (Optional) Enable the use of environmental modules</span>
+<span class="linenos"> 7</span><span class="nt">use-envmodules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="linenos"> 8</span><span class="c1"># Wait up to 60 seconds for the network file system</span>
+<span class="linenos"> 9</span><span class="nt">latency-wait</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span>
+<span class="linenos">10</span><span class="c1"># Re-run incomplete jobs</span>
+<span class="linenos">11</span><span class="nt">rerun-incomplete</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="c1"># Standard slurm resources; these match the `sbatch` defaults:</span>
+<span class="linenos">14</span><span class="nt">default-resources</span><span class="p">:</span>
+<span class="linenos">15</span><span class="w">  </span><span class="c1"># Use standard queue by default (silences warning)</span>
+<span class="linenos">16</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;slurm_partition=standardqueue&quot;</span>
+<span class="linenos">17</span><span class="w">  </span><span class="c1"># Same mem-per-CPU as Slurm defaults</span>
+<span class="linenos">18</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;mem_mb_per_cpu=15948&quot;</span>
+<span class="linenos">19</span><span class="w">  </span><span class="c1"># (Optional) Runtime limit in minutes to catch jobs that hang</span>
+<span class="linenos">20</span><span class="w">  </span><span class="c1">#- &quot;runtime=720&quot;</span>
 </pre></div>
 </div>
 <p>This profile is also available at
@@ -458,17 +461,17 @@ simply by specifying the option again:</p>
 </div>
 </section>
 <section id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">¶</a></h2>
 <section id="sacct-error-problem-talking-to-the-database-connection-refused">
-<h3>sacct: error: Problem talking to the database: Connection refused<a class="headerlink" href="#sacct-error-problem-talking-to-the-database-connection-refused" title="Permalink to this heading">#</a></h3>
+<h3>sacct: error: Problem talking to the database: Connection refused<a class="headerlink" href="#sacct-error-problem-talking-to-the-database-connection-refused" title="Link to this heading">¶</a></h3>
 <p>If you are running Snakemake with the <code class="docutils literal notranslate"><span class="pre">--slurm</span></code> option on a compute
 node, i.e. not the head node, then you will receive errors such as the
 following:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Job 0 has been submitted with SLURM jobid 512921 (log: .snakemake/slurm_logs/rule_foo/512921.log).</span>
-<span class="go">The job status query failed with command: sacct -X --parsable2 --noheader --format=JobIdRaw,State --name 2d898259-73e4-435d-aa77-44dc44d84c1b</span>
-<span class="go">Error message: sacct: error: slurm_persist_conn_open_without_init: failed to open persistent connection to host:localhost:6819: Connection refused</span>
-<span class="go">sacct: error: Sending PersistInit msg: Connection refused</span>
-<span class="go">sacct: error: Problem talking to the database: Connection refused</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Job 0 has been submitted with SLURM jobid 512921 (log: .snakemake/slurm_logs/rule_foo/512921.log).
+The job status query failed with command: sacct -X --parsable2 --noheader --format=JobIdRaw,State --name 2d898259-73e4-435d-aa77-44dc44d84c1b
+Error message: sacct: error: slurm_persist_conn_open_without_init: failed to open persistent connection to host:localhost:6819: Connection refused
+sacct: error: Sending PersistInit msg: Connection refused
+sacct: error: Problem talking to the database: Connection refused
 </pre></div>
 </div>
 <p>To solve this, simply start your Snakemake pipeline on the head node
@@ -557,10 +560,12 @@ when using the <code class="docutils literal notranslate"><span class="pre">--sl
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=4e2eecee"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=a7c4b63f"></script>
     <script src="../_static/js/custom.js?v=3a8ddbd3"></script>
     <script src="../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../_static/js/playback.js?v=d7002ce9"></script>

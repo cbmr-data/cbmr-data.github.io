@@ -39,14 +39,14 @@ the module files. This organization is designed to simplify maintenance.
 
 #. Create a subfolder in the ``apps`` for your modules:
 
-   .. code-block::
+   .. code-block:: console
 
       $ mkdir -p /projects/my-project/apps/modules
 
 #. Create a subfolder for the ``seqtk`` module scripts and a folder in
    which we can build our own copy of ``seqtk``:
 
-   .. code-block::
+   .. code-block:: console
 
       $ mkdir -p /projects/my-project/apps/modules/modulefiles/seqtk
       $ mkdir -p /projects/my-project/apps/modules/software/seqtk/1.4
@@ -69,7 +69,7 @@ the module files. This organization is designed to simplify maintenance.
 
 #. Next download and compile ``seqtk 1.4``:
 
-   .. code-block::
+   .. code-block:: console
 
       $ cd /projects/my-project/apps/modules/software/seqtk/1.4
       $ wget "https://github.com/lh3/seqtk/archive/refs/tags/v1.4.tar.gz"
@@ -80,7 +80,7 @@ the module files. This organization is designed to simplify maintenance.
 
 #. Place a symlink to the executable in a separate ``bin`` folder:
 
-   .. code-block::
+   .. code-block:: console
 
       $ cd /projects/my-project/apps/modules/software/seqtk/1.4
       $ mkdir bin
@@ -99,7 +99,7 @@ the module files. This organization is designed to simplify maintenance.
 #. Finally, run ``module use`` to registers your module repository so
    that you can load your modules:
 
-   .. code-block::
+   .. code-block:: console
 
       $ module use --prepend /projects/my-project/apps/modules/modulefiles/
       $ module avail
@@ -141,7 +141,7 @@ For more complicated software it is recommended to use the functionality
 that is often built to install it directly in the target directory. An
 example might look like the following:
 
-.. code-block::
+.. code-block:: console
 
    $ tar xvzf my-software-1.23.tar.gz
    $ cd my-software-1.23
@@ -158,21 +158,37 @@ information.
 Making modules for python software is a bit more complicated, but can
 typically be accomplished as follows (using VisiData_ as an example):
 
-.. code-block::
+#. Basic setup
 
-   # Basic setup
-   $ mkdir -p /projects/my-project/apps/modules/software/visidata/2.11
-   $ cd /projects/my-project/apps/modules/software/visidata/2.11
-   # Load the required version of Python (if any)
-   $ module load python/3.9.16
-   # Create a virtual environment in `./venv` to contain our software
-   $ python3 -m venv ./venv
-   # Install our desired software
-   $ ./venv/bin/pip install visidata
-   # Create a bin folder as described above
-   $ mkdir bin
-   $ cd bin
-   $ ln -s ../venv/bin/visidata
+   .. code-block:: console
+
+      $ mkdir -p /projects/my-project/apps/modules/software/visidata/2.11
+      $ cd /projects/my-project/apps/modules/software/visidata/2.11
+
+#. Load the required version of Python (if any)
+
+   .. code-block:: console
+
+      $ module load python/3.9.16
+
+#. Create a virtual environment in `./venv` to contain our software
+
+   .. code-block:: console
+
+      $ python3 -m venv ./venv
+
+#. Install our desired software
+
+   .. code-block:: console
+
+      $ ./venv/bin/pip install visidata
+
+#. Create a bin folder as described above
+
+   .. code-block:: console
+
+      $ mkdir bin
+      $ ln -s ../venv/bin/visidata bin/
 
 Then all you need to do is to create a matching module file and save it
 as ``/projects/my-project/apps/modules/modulefiles/visidata/2.11``. The

@@ -1,37 +1,38 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="">
+<html class="no-js" lang="en" data-content_root="../../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Data storage on Esrum" href="../filesystem.html" /><link rel="prev" title="Applying for access" href="access.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.4.7 and Furo 2024.04.27 -->
         <title>Connecting to the cluster - Esrum Cluster documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=437aa6ec" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e2322aab" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=16bf9909" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
       }
     }
@@ -113,6 +114,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -246,9 +249,9 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <section id="connecting-to-the-cluster">
-<span id="p-usage-connecting"></span><h1>Connecting to the cluster<a class="headerlink" href="#connecting-to-the-cluster" title="Permalink to this heading">#</a></h1>
+<span id="p-usage-connecting"></span><h1>Connecting to the cluster<a class="headerlink" href="#connecting-to-the-cluster" title="Link to this heading">¶</a></h1>
 <p>If you have not already applied for and been granted access to the
 cluster, then please see the <a class="reference internal" href="access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a> page before
 continuing.</p>
@@ -262,14 +265,14 @@ pages on KUnet in <a class="reference external" href="https://kunet.ku.dk/medarb
 <a class="reference internal" href="#s-connecting-linux"><span class="std std-ref">Connecting on Linux</span></a> section for an alternative means of connecting
 to the VPN.</p>
 <section id="connecting-on-windows">
-<h2>Connecting on Windows<a class="headerlink" href="#connecting-on-windows" title="Permalink to this heading">#</a></h2>
+<h2>Connecting on Windows<a class="headerlink" href="#connecting-on-windows" title="Link to this heading">¶</a></h2>
 <p>Windows users will need to install an SSH client in order to be able to
 connect to the server. Options include <a class="reference external" href="https://mobaxterm.mobatek.net/">MobaXterm</a>, <a class="reference external" href="https://www.putty.org/">Putty</a>, and Windows
 Subsystem for Linux (<a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/about">WSL</a>), and much more. The following demonstrates
 how to set up MobaXterm. Please refer to the <a class="reference internal" href="#s-connecting-linux"><span class="std std-ref">Connecting on Linux</span></a>
 section if using <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/about">WSL</a>.</p>
 <section id="configuring-mobaxterm">
-<span id="s-configure-mobaxterm"></span><h3>Configuring MobaXterm<a class="headerlink" href="#configuring-mobaxterm" title="Permalink to this heading">#</a></h3>
+<span id="s-configure-mobaxterm"></span><h3>Configuring MobaXterm<a class="headerlink" href="#configuring-mobaxterm" title="Link to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>Install and open MobaXterm.</p></li>
 <li><p>Click left-most <code class="docutils literal notranslate"><span class="pre">Session</span></code> button on the toolbar.</p>
@@ -318,7 +321,7 @@ want to save your password.</p></li>
 </ol>
 </section>
 <section id="reconnecting-with-mobaxterm">
-<h3>Reconnecting with MobaXterm<a class="headerlink" href="#reconnecting-with-mobaxterm" title="Permalink to this heading">#</a></h3>
+<h3>Reconnecting with MobaXterm<a class="headerlink" href="#reconnecting-with-mobaxterm" title="Link to this heading">¶</a></h3>
 <p>To connect again another time, either use the desktop shortcut (if you
 created it), double-click on <code class="docutils literal notranslate"><span class="pre">Esrum</span></code> in the list of sessions on the
 left side of MobaXterm, or select <code class="docutils literal notranslate"><span class="pre">Esrum</span></code> from the list that appears
@@ -326,7 +329,7 @@ when clicking on the <code class="docutils literal notranslate"><span class="pre
 <img alt="../../_images/mobaxterm_07.png" class="align-center" src="../../_images/mobaxterm_07.png" />
 </section>
 <section id="accessing-network-drives-via-mobaxterm">
-<span id="s-network-drives-mobaxterm"></span><h3>Accessing network drives via MobaXterm<a class="headerlink" href="#accessing-network-drives-via-mobaxterm" title="Permalink to this heading">#</a></h3>
+<span id="s-network-drives-mobaxterm"></span><h3>Accessing network drives via MobaXterm<a class="headerlink" href="#accessing-network-drives-via-mobaxterm" title="Link to this heading">¶</a></h3>
 <p>In order to access your UCPH network drives (<code class="docutils literal notranslate"><span class="pre">H:</span></code>, <code class="docutils literal notranslate"><span class="pre">N:</span></code>, and <code class="docutils literal notranslate"><span class="pre">S:</span></code>)
 via Esrum, you must disable logins using Kerberos (GSSAPI). To do so,
 open the <code class="docutils literal notranslate"><span class="pre">Configuration</span></code> dialog as shown:</p>
@@ -337,13 +340,13 @@ open the <code class="docutils literal notranslate"><span class="pre">Configurat
 </section>
 </section>
 <section id="connecting-on-osx">
-<span id="s-connecting-osx"></span><h2>Connecting on OSX<a class="headerlink" href="#connecting-on-osx" title="Permalink to this heading">#</a></h2>
+<span id="s-connecting-osx"></span><h2>Connecting on OSX<a class="headerlink" href="#connecting-on-osx" title="Link to this heading">¶</a></h2>
 <p>While Mac/OSX users can connect as described in the
 <a class="reference internal" href="#s-connecting-linux"><span class="std std-ref">Connecting on Linux</span></a> section below, there are also graphical
 interfaces available, including for example <a class="reference external" href="https://github.com/Eugeny/tabby">Tabby</a>.</p>
 </section>
 <section id="connecting-on-linux">
-<span id="s-connecting-linux"></span><h2>Connecting on Linux<a class="headerlink" href="#connecting-on-linux" title="Permalink to this heading">#</a></h2>
+<span id="s-connecting-linux"></span><h2>Connecting on Linux<a class="headerlink" href="#connecting-on-linux" title="Link to this heading">¶</a></h2>
 <p>The official instructions for connecting to the VPN under Linux (in
 <a class="reference external" href="https://kunet.ku.dk/medarbejderguide/Sider/It/Fjernadgang-vpn.aspx">Danish</a> and <a class="reference external" href="https://kunet.ku.dk/employee-guide/Pages/IT/Remote-access.aspx">English</a>) are written under the assumption that you are
 using KDE5. If that is not the case, or if you prefer a command-line
@@ -409,15 +412,19 @@ when connecting to the server.</p>
 </div>
 </section>
 <section id="troubleshooting">
-<span id="s-connecting-troubleshooting"></span><h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
+<span id="s-connecting-troubleshooting"></span><h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">¶</a></h2>
 <p>If you have not already been granted access to the server, then please
 see the <a class="reference internal" href="access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a> page before continuing!</p>
 <section id="timeout-while-connecting-to-the-cluster">
-<h3>Timeout while connecting to the cluster<a class="headerlink" href="#timeout-while-connecting-to-the-cluster" title="Permalink to this heading">#</a></h3>
-<p>You may experience timeout errors when you attempt to connect to Esrum:</p>
-<p>On Linux:</p>
-<img alt="../../_images/connecting_ssh_timeout.gif" class="gif" src="../../_images/connecting_ssh_timeout.gif" />
-<p>On Windows, using MobaXterm:</p>
+<h3>Timeout while connecting to the cluster<a class="headerlink" href="#timeout-while-connecting-to-the-cluster" title="Link to this heading">¶</a></h3>
+<p>You may experience timeout errors when you attempt to connect to Esrum.</p>
+<p>On Linux, this typically results in an <code class="docutils literal notranslate"><span class="pre">Operation</span> <span class="pre">timed</span> <span class="pre">out</span></code> message:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
+<span class="go">ssh: connect to host esrumhead01fl.unicph.domain port 22: Operation timed out</span>
+</pre></div>
+</div>
+<p>On Windows, using MobaXterm, it may result in a <code class="docutils literal notranslate"><span class="pre">connection</span> <span class="pre">timed</span> <span class="pre">out</span></code>
+message:</p>
 <img alt="../../_images/connecting_mobaxterm_timeout.png" class="align-center" src="../../_images/connecting_mobaxterm_timeout.png" />
 <p>Firstly verify that you are correctly connected to the UCPH VPN. This is
 required to connect to Esrum. See the <a class="reference internal" href="#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page for
@@ -439,13 +446,13 @@ assistance or, if you prefer, that you submit a ticket to the UCPH-IT
 category.</p>
 </section>
 <section id="file-uploads-using-mobaxterm-never-start">
-<h3>File uploads using MobaXterm never start<a class="headerlink" href="#file-uploads-using-mobaxterm-never-start" title="Permalink to this heading">#</a></h3>
+<h3>File uploads using MobaXterm never start<a class="headerlink" href="#file-uploads-using-mobaxterm-never-start" title="Link to this heading">¶</a></h3>
 <p>Please make sure that your session is configured to use the <code class="docutils literal notranslate"><span class="pre">SCP</span>
 <span class="pre">(enhanced</span> <span class="pre">speed)</span></code> browser type. See step 4 in the
 <a class="reference internal" href="#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section.</p>
 </section>
 <section id="ucph-network-folders-in-ucph-are-not-available-when-using-mobaxterm">
-<h3>UCPH network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available when using MobaXterm<a class="headerlink" href="#ucph-network-folders-in-ucph-are-not-available-when-using-mobaxterm" title="Permalink to this heading">#</a></h3>
+<h3>UCPH network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available when using MobaXterm<a class="headerlink" href="#ucph-network-folders-in-ucph-are-not-available-when-using-mobaxterm" title="Link to this heading">¶</a></h3>
 <p>Please make sure that you have disabled use of <code class="docutils literal notranslate"><span class="pre">GSSAPI</span> <span class="pre">Kerberos</span></code> as
 described in the <a class="reference internal" href="#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section. Similarly, if
 using Linux or OSX, then you cannot be authenticating using a Kerberos
@@ -535,10 +542,12 @@ ticket.</p>
       
     </aside>
   </div>
-</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js?v=b3ba4146"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
-    <script src="../../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
+</div><script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=4e2eecee"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=a7c4b63f"></script>
     <script src="../../_static/js/custom.js?v=3a8ddbd3"></script>
     <script src="../../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../../_static/js/playback.js?v=d7002ce9"></script>

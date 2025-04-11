@@ -1,37 +1,38 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="">
+<html class="no-js" lang="en" data-content_root="../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="search" title="Search" href="../search.html" /><link rel="next" title="Writing robust bash scripts" href="robust_scripts.html" /><link rel="prev" title="Persistent sessions with tmux" href="tmux.html" />
 
-    <!-- Generated with Sphinx 7.1.2 and Furo 2024.01.29 -->
+    <!-- Generated with Sphinx 7.4.7 and Furo 2024.04.27 -->
         <title>Batching commands in bash - Esrum Cluster documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=437aa6ec" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="../_static/css/playback.css?v=2c0b8537" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e2322aab" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=16bf9909" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   
   }
   @media not print {
     body[data-theme="dark"] {
-      --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
-        --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
   
       }
     }
@@ -113,6 +114,8 @@
 <label class="overlay toc-overlay" for="__toc">
   <div class="visually-hidden">Hide table of contents sidebar</div>
 </label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
 
 
@@ -246,9 +249,9 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <article role="main">
+        <article role="main" id="furo-main-content">
           <section id="batching-commands-in-bash">
-<span id="p-tips-batching"></span><h1>Batching commands in bash<a class="headerlink" href="#batching-commands-in-bash" title="Permalink to this heading">#</a></h1>
+<span id="p-tips-batching"></span><h1>Batching commands in bash<a class="headerlink" href="#batching-commands-in-bash" title="Link to this heading">¶</a></h1>
 <p>This section describes way to batch commands without using Slurm. This
 is intended to be used both with singular jobs and in conjunction with
 Slurm job arrays (see the <a class="reference internal" href="../usage/slurm/advanced.html#s-job-arrays"><span class="std std-ref">Running multiple tasks using arrays</span></a> section), for example when
@@ -260,27 +263,27 @@ arrays if possible.</p>
 <p>This section covers basic loops in bash and the <cite>parallel</cite> command.
 Other options include <a class="reference external" href="https://man7.org/linux/man-pages/man1/xargs.1.html">xargs</a>, <a class="reference external" href="https://www.gnu.org/software/make/">make</a>, <a class="reference external" href="https://snakemake.readthedocs.io/">snakemake</a>, and much, much more.</p>
 <section id="running-commands-sequentially-in-bash">
-<h2>Running commands sequentially in bash<a class="headerlink" href="#running-commands-sequentially-in-bash" title="Permalink to this heading">#</a></h2>
+<h2>Running commands sequentially in bash<a class="headerlink" href="#running-commands-sequentially-in-bash" title="Link to this heading">¶</a></h2>
 <p>If you need to run a number of (very) short running commands, then it is
 likely more efficient to do so with a simple loop in your <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>
 script. For example, this script runs the <code class="docutils literal notranslate"><span class="pre">plonk</span></code> command on a number
 of population VCF files:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-module<span class="w"> </span>load<span class="w"> </span>plonk/3.14
-
-<span class="k">for</span><span class="w"> </span>pop<span class="w"> </span><span class="k">in</span><span class="w"> </span>CHB<span class="w"> </span>FIN<span class="w"> </span>GBR<span class="w"> </span>JPT<span class="w"> </span>PUR<span class="w"> </span>YRI<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<span class="w">  </span>plonk<span class="w"> </span>--input<span class="w"> </span><span class="s2">&quot;./my_data/</span><span class="si">${</span><span class="nv">pop</span><span class="si">}</span><span class="s2">.vcf&quot;</span><span class="w"> </span>--output<span class="w"> </span><span class="s2">&quot;./my_results/</span><span class="si">${</span><span class="nv">pop</span><span class="si">}</span><span class="s2">.out&quot;</span>
-<span class="k">done</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
+<span class="linenos">2</span>module<span class="w"> </span>load<span class="w"> </span>plonk/3.14
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="k">for</span><span class="w"> </span>pop<span class="w"> </span><span class="k">in</span><span class="w"> </span>CHB<span class="w"> </span>FIN<span class="w"> </span>GBR<span class="w"> </span>JPT<span class="w"> </span>PUR<span class="w"> </span>YRI<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="linenos">5</span><span class="w">  </span>plonk<span class="w"> </span>--input<span class="w"> </span><span class="s2">&quot;./my_data/</span><span class="si">${</span><span class="nv">pop</span><span class="si">}</span><span class="s2">.vcf&quot;</span><span class="w"> </span>--output<span class="w"> </span><span class="s2">&quot;./my_results/</span><span class="si">${</span><span class="nv">pop</span><span class="si">}</span><span class="s2">.out&quot;</span>
+<span class="linenos">6</span><span class="k">done</span>
 </pre></div>
 </div>
 <p>The following command indexes a number of (small) BAM files in the
 current directory:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-module<span class="w"> </span>load<span class="w"> </span>samtools/1.17
-
-<span class="k">for</span><span class="w"> </span>filename<span class="w"> </span><span class="k">in</span><span class="w"> </span>./*.bam<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<span class="w">  </span>samtools<span class="w"> </span>index<span class="w"> </span><span class="si">${</span><span class="nv">filename</span><span class="si">}</span>
-<span class="k">done</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
+<span class="linenos">2</span>module<span class="w"> </span>load<span class="w"> </span>samtools/1.17
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="k">for</span><span class="w"> </span>filename<span class="w"> </span><span class="k">in</span><span class="w"> </span>./*.bam<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="linenos">5</span><span class="w">  </span>samtools<span class="w"> </span>index<span class="w"> </span><span class="si">${</span><span class="nv">filename</span><span class="si">}</span>
+<span class="linenos">6</span><span class="k">done</span>
 </pre></div>
 </div>
 <p>However, it is important to remember that the total runtime will be the
@@ -289,44 +292,44 @@ other. It is therefore not recommended to use loops like this for
 commands that take more than a few of minutes to complete!</p>
 </section>
 <section id="running-commands-in-parallel-in-bash">
-<h2>Running commands in parallel in bash<a class="headerlink" href="#running-commands-in-parallel-in-bash" title="Permalink to this heading">#</a></h2>
+<h2>Running commands in parallel in bash<a class="headerlink" href="#running-commands-in-parallel-in-bash" title="Link to this heading">¶</a></h2>
 <p>The GNU <a class="reference external" href="https://www.gnu.org/software/parallel/">parallel</a> commands offers a range of options for running
 commands in parallel.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-module<span class="w"> </span>load<span class="w"> </span>plonk/3.14
-module<span class="w"> </span>load<span class="w"> </span>parallel/20230822
-
-parallel<span class="w"> </span>-P<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>plonk<span class="w"> </span>--input<span class="w"> </span><span class="s2">&quot;./my_data/{}.vcf&quot;</span><span class="w"> </span>--output<span class="w"> </span><span class="s2">&quot;./my_results/{}.out&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>:::<span class="w"> </span>CHB<span class="w"> </span>FIN<span class="w"> </span>GBR<span class="w"> </span>JPT<span class="w"> </span>PUR<span class="w"> </span>YRI
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
+<span class="linenos">2</span>module<span class="w"> </span>load<span class="w"> </span>plonk/3.14
+<span class="linenos">3</span>module<span class="w"> </span>load<span class="w"> </span>parallel/20230822
+<span class="linenos">4</span>
+<span class="linenos">5</span>parallel<span class="w"> </span>-P<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="linenos">6</span><span class="w">  </span>plonk<span class="w"> </span>--input<span class="w"> </span><span class="s2">&quot;./my_data/{}.vcf&quot;</span><span class="w"> </span>--output<span class="w"> </span><span class="s2">&quot;./my_results/{}.out&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="linenos">7</span><span class="w">  </span>:::<span class="w"> </span>CHB<span class="w"> </span>FIN<span class="w"> </span>GBR<span class="w"> </span>JPT<span class="w"> </span>PUR<span class="w"> </span>YRI
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">parallel</span></code> command will then execute <code class="docutils literal notranslate"><span class="pre">plonk</span></code> once for each of
 the values we specified after the <code class="docutils literal notranslate"><span class="pre">:::</span></code> and replace the text <code class="docutils literal notranslate"><span class="pre">{}</span></code>
 with the current value.</p>
 <p>The second <code class="docutils literal notranslate"><span class="pre">xargs</span></code> example above can be run in parallel as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-module<span class="w"> </span>load<span class="w"> </span>samtools/1.17
-module<span class="w"> </span>load<span class="w"> </span>parallel/20230822
-
-parallel<span class="w"> </span>-P<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>samtools<span class="w"> </span>index<span class="w"> </span><span class="s2">&quot;{}&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>:::<span class="w"> </span>./*.bam
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
+<span class="linenos">2</span>module<span class="w"> </span>load<span class="w"> </span>samtools/1.17
+<span class="linenos">3</span>module<span class="w"> </span>load<span class="w"> </span>parallel/20230822
+<span class="linenos">4</span>
+<span class="linenos">5</span>parallel<span class="w"> </span>-P<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="linenos">6</span><span class="w">  </span>samtools<span class="w"> </span>index<span class="w"> </span><span class="s2">&quot;{}&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="linenos">7</span><span class="w">  </span>:::<span class="w"> </span>./*.bam
 </pre></div>
 </div>
 <p>If no <code class="docutils literal notranslate"><span class="pre">{}</span></code> is specified the value will be appended to the command.
 Additionally, <code class="docutils literal notranslate"><span class="pre">parallel</span></code> can read values from STDIN, meaning that the
 above could also be written as</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-module<span class="w"> </span>load<span class="w"> </span>samtools/1.17
-module<span class="w"> </span>load<span class="w"> </span>parallel/20230822
-
-ls<span class="w"> </span>./*.bam<span class="w"> </span><span class="p">|</span><span class="w"> </span>parallel<span class="w"> </span>-P<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span><span class="w"> </span>samtools<span class="w"> </span>index
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
+<span class="linenos">2</span>module<span class="w"> </span>load<span class="w"> </span>samtools/1.17
+<span class="linenos">3</span>module<span class="w"> </span>load<span class="w"> </span>parallel/20230822
+<span class="linenos">4</span>
+<span class="linenos">5</span>ls<span class="w"> </span>./*.bam<span class="w"> </span><span class="p">|</span><span class="w"> </span>parallel<span class="w"> </span>-P<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span><span class="w"> </span>samtools<span class="w"> </span>index
 </pre></div>
 </div>
 <p>Each line on STDIN is treated as one value.</p>
 <section id="best-practices-for-reserving-resources">
-<h3>Best practices for reserving resources<a class="headerlink" href="#best-practices-for-reserving-resources" title="Permalink to this heading">#</a></h3>
+<h3>Best practices for reserving resources<a class="headerlink" href="#best-practices-for-reserving-resources" title="Link to this heading">¶</a></h3>
 <p>Note that when you reserve resources for a job using <code class="docutils literal notranslate"><span class="pre">parallel</span></code> that
 you generally should not reserve enough cores to run all jobs at once.
 This is because tasks are likely to take different amount of times to
@@ -338,27 +341,27 @@ queue that many more simultaneous jobs on Slurm, and will typically
 result in an overall greater throughput than simply using the maximum
 number of processes with <code class="docutils literal notranslate"><span class="pre">parallel</span></code>.</p>
 <p>Using the <code class="docutils literal notranslate"><span class="pre">plonk</span></code> example from above:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-module<span class="w"> </span>load<span class="w"> </span>plonk/3.14
-module<span class="w"> </span>load<span class="w"> </span>parallel/20230822
-
-parallel<span class="w"> </span>-P<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>plonk<span class="w"> </span>--input<span class="w"> </span><span class="s2">&quot;./my_data/{}.vcf&quot;</span><span class="w"> </span>--output<span class="w"> </span><span class="s2">&quot;./my_results/{}.out&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>:::<span class="w"> </span>CHB<span class="w"> </span>FIN<span class="w"> </span>GBR<span class="w"> </span>JPT<span class="w"> </span>PUR<span class="w"> </span>YRI
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
+<span class="linenos">2</span>module<span class="w"> </span>load<span class="w"> </span>plonk/3.14
+<span class="linenos">3</span>module<span class="w"> </span>load<span class="w"> </span>parallel/20230822
+<span class="linenos">4</span>
+<span class="linenos">5</span>parallel<span class="w"> </span>-P<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="linenos">6</span><span class="w">  </span>plonk<span class="w"> </span>--input<span class="w"> </span><span class="s2">&quot;./my_data/{}.vcf&quot;</span><span class="w"> </span>--output<span class="w"> </span><span class="s2">&quot;./my_results/{}.out&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="linenos">7</span><span class="w">  </span>:::<span class="w"> </span>CHB<span class="w"> </span>FIN<span class="w"> </span>GBR<span class="w"> </span>JPT<span class="w"> </span>PUR<span class="w"> </span>YRI
 </pre></div>
 </div>
 <p>Let's say that <code class="docutils literal notranslate"><span class="pre">plonk</span></code> is able to use multiple threads and that I
 decide to use 4 threads per process. In that case, I could reserve 12
 threads for my job and then run 3 instances of <code class="docutils literal notranslate"><span class="pre">plonk</span></code> using
 <code class="docutils literal notranslate"><span class="pre">parallel</span></code>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1">#SBATCH --cpus-per-task=12</span>
-module<span class="w"> </span>load<span class="w"> </span>plonk/3.14
-module<span class="w"> </span>load<span class="w"> </span>parallel/20230822
-
-parallel<span class="w"> </span>-P<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>plonk<span class="w"> </span>--threads<span class="w"> </span><span class="m">4</span><span class="w"> </span>--input<span class="w"> </span><span class="s2">&quot;./my_data/{}.vcf&quot;</span><span class="w"> </span>--output<span class="w"> </span><span class="s2">&quot;./my_results/{}.out&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>:::<span class="w"> </span>CHB<span class="w"> </span>FIN<span class="w"> </span>GBR<span class="w"> </span>JPT<span class="w"> </span>PUR<span class="w"> </span>YRI
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
+<span class="linenos">2</span><span class="c1">#SBATCH --cpus-per-task=12</span>
+<span class="linenos">3</span>module<span class="w"> </span>load<span class="w"> </span>plonk/3.14
+<span class="linenos">4</span>module<span class="w"> </span>load<span class="w"> </span>parallel/20230822
+<span class="linenos">5</span>
+<span class="linenos">6</span>parallel<span class="w"> </span>-P<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="linenos">7</span><span class="w">  </span>plonk<span class="w"> </span>--threads<span class="w"> </span><span class="m">4</span><span class="w"> </span>--input<span class="w"> </span><span class="s2">&quot;./my_data/{}.vcf&quot;</span><span class="w"> </span>--output<span class="w"> </span><span class="s2">&quot;./my_results/{}.out&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="linenos">8</span><span class="w">  </span>:::<span class="w"> </span>CHB<span class="w"> </span>FIN<span class="w"> </span>GBR<span class="w"> </span>JPT<span class="w"> </span>PUR<span class="w"> </span>YRI
 </pre></div>
 </div>
 <p>This however has the disadvantage that you have to make sure that
@@ -440,10 +443,12 @@ software uses) all line up.</p>
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
-    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=4e2eecee"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=a7c4b63f"></script>
     <script src="../_static/js/custom.js?v=3a8ddbd3"></script>
     <script src="../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../_static/js/playback.js?v=d7002ce9"></script>
