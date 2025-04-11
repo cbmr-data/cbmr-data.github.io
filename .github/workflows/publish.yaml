@@ -22,10 +22,11 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-      # Build esrum documentation
-      - uses: ammaraskar/sphinx-action@c61ac11d9ee097caf8983c10c8b5af5861b32b54 # master (2024-09-09)
-        with:
-          docs-folder: "esrum/"
+      - name: Install uv
+        uses: astral-sh/setup-uv@0c5e2b8115b80b4c7c5ddf6ffdd634974642d182 # v5.4.1
+
+      - name: Build documentation
+        run: make build-uv
 
       # Publish built docs to gh-pages branch
       - name: Commit documentation changes
