@@ -21,3 +21,10 @@ function replaceTextContent(elem, pattern, replacement) {
         elem.textContent = elem.textContent.replaceAll(pattern, replacement);
     }
 };
+
+/** Open external links in a new window */
+document.querySelectorAll('a.reference.external').forEach(
+    function (elem) {
+        elem.target = '_blank';
+    }
+);
