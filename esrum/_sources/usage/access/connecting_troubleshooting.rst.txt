@@ -50,8 +50,8 @@ Please make sure that your session is configured to use the ``SCP
 :ref:`s_configure_mobaxterm` section.
 
 
-UCPH network-folders in ``~/ucph`` are not available when using MobaXterm
-=========================================================================
+Network-folders in ``~/ucph`` are not available
+===============================================
 
 Please make sure that you have disabled use of ``GSSAPI Kerberos`` as
 described in the :ref:`s_configure_mobaxterm` section. Similarly, if

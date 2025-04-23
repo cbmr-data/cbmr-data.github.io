@@ -23,8 +23,11 @@ function replaceTextContent(elem, pattern, replacement) {
 };
 
 /** Open external links in a new window */
+let origin = (new URL(document.url)).origin;
 document.querySelectorAll('a.reference.external').forEach(
     function (elem) {
-        elem.target = '_blank';
+        if (new URL(elem.href).origin !== origin) {
+            elem.target = '_blank';
+        }
     }
 );

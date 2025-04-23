@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=16bf9909" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=8d9e8310" />
     
     
 
@@ -252,39 +252,69 @@
         <article role="main" id="furo-main-content">
           <section id="connecting-to-the-cluster">
 <span id="p-usage-connecting"></span><h1>Connecting to the cluster<a class="headerlink" href="#connecting-to-the-cluster" title="Link to this heading">¶</a></h1>
-<p>If you have not already applied for and been granted access to the
-cluster, then please see the <a class="reference internal" href="access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a> page before
-continuing.</p>
-<p>The cluster's is accessible via SSH at <code class="docutils literal notranslate"><span class="pre">esrumhead01fl.unicph.domain</span></code>.
-This is the Esrum &quot;head&quot; node, which serves as the entry-point for the
-cluster and which gives you access to the job management system used for
-running software (see <a class="reference internal" href="../slurm/index.html#p-usage-slurm"><span class="std std-ref">Running jobs using Slurm</span></a>)</p>
+<p>The cluster is accessible via <a class="reference external" href="https://en.wikipedia.org/wiki/Secure_Shell">SSH</a> at <code class="docutils literal notranslate"><span class="pre">esrumhead01fl.unicph.domain</span></code>.
+This is the Esrum &quot;head&quot; node, the entry-point to the cluster, where you
+will be queuing your analyses using the Slurm job management system, as
+described on the <a class="reference internal" href="../slurm/index.html#p-usage-slurm"><span class="std std-ref">Running jobs using Slurm</span></a> pages.</p>
+<p>Additionally, the two RStudio servers are accessible at
+<a class="reference external" href="https://esrumweb01fl/rstudio/">https://esrumweb01fl/rstudio/</a> and <a class="reference external" href="https://esrumweb02fl/rstudio/">https://esrumweb02fl/rstudio/</a>. See the
+<a class="reference internal" href="../../services/rstudio.html#p-service-rstudio"><span class="std std-ref">RStudio</span></a> page for more information.</p>
+<p>However, to connect to any of these, you must</p>
+<ol class="arabic simple">
+<li><p>Have been granted access by the Data Analytics team. If that is not
+the case, then please see the <a class="reference internal" href="access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a> page
+before continuing</p></li>
+<li><p>Be connected to the official UCPH <a class="reference external" href="en.wikipedia.org/wiki/VPN">VPN</a>. See below for more
+information.</p></li>
+<li><p>Follow the instructions for your operating system to configure an SSH
+client:</p></li>
+</ol>
+<div class="table-wrapper image-buttons docutils container">
+<table class="image-buttons docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#s-connecting-windows"><span class="std std-ref">Windows</span></a></p>
+<a class="reference external image-reference" href="#connecting-on-windows"><img alt="../../_images/os_windows.png" src="../../_images/os_windows.png" style="width: 128px;" />
+</a>
+</td>
+<td><p><a class="reference internal" href="#s-connecting-osx"><span class="std std-ref">OSX</span></a></p>
+<a class="reference external image-reference" href="#connecting-on-osx"><img alt="../../_images/os_macosx.png" src="../../_images/os_macosx.png" style="width: 128px;" />
+</a>
+</td>
+<td><p><a class="reference internal" href="#s-connecting-linux"><span class="std std-ref">Linux</span></a></p>
+<a class="reference external image-reference" href="#connecting-on-linux"><img alt="../../_images/os_linux.png" src="../../_images/os_linux.png" style="width: 128px;" />
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 <section id="connecting-on-windows">
-<h2>Connecting on Windows<a class="headerlink" href="#connecting-on-windows" title="Link to this heading">¶</a></h2>
+<span id="s-connecting-windows"></span><h2>Connecting on Windows<a class="headerlink" href="#connecting-on-windows" title="Link to this heading">¶</a></h2>
 <p>To connect to Esrum you will first have to connect to the UCPH VPN. For
-information about connecting to the VPN, see the support pages on KUnet
-in <a class="reference external" href="https://kunet.ku.dk/medarbejderguide/Sider/It/Fjernadgang-vpn.aspx">Danish</a> and <a class="reference external" href="https://kunet.ku.dk/employee-guide/Pages/IT/Remote-access.aspx">English</a>.</p>
-<p>Windows users will need to install an SSH client in order to be able to
-connect to the server. Options include <a class="reference external" href="https://mobaxterm.mobatek.net/">MobaXterm</a>, <a class="reference external" href="https://www.putty.org/">Putty</a>, and Windows
-Subsystem for Linux (<a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/about">WSL</a>), and much more. The following demonstrates
-how to set up MobaXterm. Please refer to the <a class="reference internal" href="#s-connecting-linux"><span class="std std-ref">Connecting on Linux</span></a>
-section if using <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/about">WSL</a>.</p>
+information about connecting to the VPN when using Windows, see the
+support pages on KUnet in <a class="reference external" href="https://kunet.ku.dk/medarbejderguide/Sider/It/Fjernadgang-vpn.aspx">Danish</a> and <a class="reference external" href="https://kunet.ku.dk/employee-guide/Pages/IT/Remote-access.aspx">English</a>.</p>
+<p>Windows users will additionally need to install an SSH client in order
+to be able to connect to the Esrum head node. Options include
+<a class="reference external" href="https://mobaxterm.mobatek.net/">MobaXterm</a>, <a class="reference external" href="https://www.putty.org/">Putty</a>, Windows Subsystem for Linux (<a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/about">WSL</a>), and many more.</p>
+<p>The following demonstrates how to connect using MobaXterm, but you are
+welcome to use any SSH client that you prefer. If using <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/about">WSL</a>, then see
+the <a class="reference internal" href="#s-connecting-linux"><span class="std std-ref">Connecting on Linux</span></a> section.</p>
 <section id="configuring-mobaxterm">
 <span id="s-configure-mobaxterm"></span><h3>Configuring MobaXterm<a class="headerlink" href="#configuring-mobaxterm" title="Link to this heading">¶</a></h3>
 <ol class="arabic">
-<li><p>Install and open MobaXterm.</p></li>
-<li><p>Click left-most <code class="docutils literal notranslate"><span class="pre">Session</span></code> button on the toolbar.</p>
+<li><p>Install and open <a class="reference external" href="https://mobaxterm.mobatek.net/">MobaXterm</a>.</p></li>
+<li><p>Click left-most button, labeled <code class="docutils literal notranslate"><span class="pre">Session</span></code>, on the toolbar.</p>
 <img alt="../../_images/mobaxterm_01.png" class="align-center" src="../../_images/mobaxterm_01.png" />
 </li>
-<li><p>Click on the left-most <code class="docutils literal notranslate"><span class="pre">SSH</span></code> button on the resulting <code class="docutils literal notranslate"><span class="pre">Session</span>
-<span class="pre">settings</span></code> dialog</p>
+<li><p>Click on the left-most button, labeled <code class="docutils literal notranslate"><span class="pre">SSH</span></code>, in the resulting
+<code class="docutils literal notranslate"><span class="pre">Session</span> <span class="pre">settings</span></code> dialog</p>
 <img alt="../../_images/mobaxterm_02.png" class="align-center" src="../../_images/mobaxterm_02.png" />
 </li>
 <li><p>Under <code class="docutils literal notranslate"><span class="pre">Basic</span> <span class="pre">SSH</span> <span class="pre">settings</span></code></p>
 <ol class="arabic simple">
 <li><p>Write <code class="docutils literal notranslate"><span class="pre">esrumhead01fl.unicph.domain</span></code> under <code class="docutils literal notranslate"><span class="pre">Remote</span> <span class="pre">Host</span></code></p></li>
 <li><p>Click the checkbox next to <code class="docutils literal notranslate"><span class="pre">Specify</span> <span class="pre">username</span></code> and enter your
-UCPH username (in the form <code class="docutils literal notranslate"><span class="pre">abc123</span></code>)</p></li>
+UCPH username as shown.</p></li>
 <li><p>Select <code class="docutils literal notranslate"><span class="pre">SCP</span> <span class="pre">(enhanced</span> <span class="pre">speed)</span></code> on the <code class="docutils literal notranslate"><span class="pre">SSH-browser</span></code> type
 drop-down menu. This is required for file-uploads to work.</p></li>
 </ol>
@@ -299,9 +329,10 @@ to Esrum.</p></li>
 </ol>
 <img alt="../../_images/mobaxterm_04.png" class="align-center" src="../../_images/mobaxterm_04.png" />
 </li>
-<li><p>Click OK and you should connect to the server. The first time you
-connect a new server you if you want to proceed. As this is the first
-time we are connecting to Esrum, simply press Accept:</p>
+<li><p>Click OK and you should automatically connect to the server. If not,
+then see <a class="reference internal" href="#s-reconnecting-with-mobaxterm"><span class="std std-ref">Reconnecting with MobaXterm</span></a> below. The first time
+you connect to Esrum (or any other server), you will be asked if you
+want to proceed. Simply press <code class="docutils literal notranslate"><span class="pre">Accept</span></code>:</p>
 <img alt="../../_images/mobaxterm_05.png" class="align-center" src="../../_images/mobaxterm_05.png" />
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -311,7 +342,8 @@ message could indicate that you are not actually connecting to
 Esrum!</p>
 </div>
 </li>
-<li><p>You should now be able to log in to the server:</p>
+<li><p>You should now be able to log in to the server using your UCPH
+account password, and using the NetIQ app to approve the login.</p>
 <img alt="../../_images/mobaxterm_06.png" class="align-center" src="../../_images/mobaxterm_06.png" />
 </li>
 <li><p>For security reasons we recommend that you decline when asked if you
@@ -319,11 +351,12 @@ want to save your password.</p></li>
 </ol>
 </section>
 <section id="reconnecting-with-mobaxterm">
-<h3>Reconnecting with MobaXterm<a class="headerlink" href="#reconnecting-with-mobaxterm" title="Link to this heading">¶</a></h3>
+<span id="s-reconnecting-with-mobaxterm"></span><h3>Reconnecting with MobaXterm<a class="headerlink" href="#reconnecting-with-mobaxterm" title="Link to this heading">¶</a></h3>
 <p>To connect again another time, either use the desktop shortcut (if you
 created it), double-click on <code class="docutils literal notranslate"><span class="pre">Esrum</span></code> in the list of sessions on the
-left side of MobaXterm, or select <code class="docutils literal notranslate"><span class="pre">Esrum</span></code> from the list that appears
-when clicking on the <code class="docutils literal notranslate"><span class="pre">Sessions</span></code> button on the main menu.</p>
+left side of MobaXterm, select <code class="docutils literal notranslate"><span class="pre">Esrum</span></code> from the list that appears when
+clicking on the <code class="docutils literal notranslate"><span class="pre">Sessions</span></code> button on the main menu, or click on
+<code class="docutils literal notranslate"><span class="pre">Esrum</span></code> in the list of <code class="docutils literal notranslate"><span class="pre">Recent</span> <span class="pre">sessions</span></code>.</p>
 <img alt="../../_images/mobaxterm_07.png" class="align-center" src="../../_images/mobaxterm_07.png" />
 </section>
 <section id="accessing-network-drives-via-mobaxterm">
@@ -332,21 +365,21 @@ when clicking on the <code class="docutils literal notranslate"><span class="pre
 via Esrum, you must disable logins using Kerberos (GSSAPI). To do so,
 open the <code class="docutils literal notranslate"><span class="pre">Configuration</span></code> dialog as shown:</p>
 <img alt="../../_images/mobaxterm_08.png" class="align-center" src="../../_images/mobaxterm_08.png" />
-<p>Then untick the <code class="docutils literal notranslate"><span class="pre">GSSAPI</span> <span class="pre">Kerberos</span></code> checkbox as shown and click the
-<code class="docutils literal notranslate"><span class="pre">OK</span></code> button:</p>
+<p>Select the <code class="docutils literal notranslate"><span class="pre">SSH</span></code> tab and then untick the <code class="docutils literal notranslate"><span class="pre">GSSAPI</span> <span class="pre">Kerberos</span></code> checkbox
+as shown. Finally, click the <code class="docutils literal notranslate"><span class="pre">OK</span></code> button to close the options page:</p>
 <img alt="../../_images/mobaxterm_09.png" class="align-center" src="../../_images/mobaxterm_09.png" />
 </section>
 </section>
 <section id="connecting-on-osx">
 <span id="s-connecting-osx"></span><h2>Connecting on OSX<a class="headerlink" href="#connecting-on-osx" title="Link to this heading">¶</a></h2>
 <p>To connect to Esrum you will first have to connect to the UCPH VPN. For
-information about connecting to the VPN, see the support pages on KUnet
-in <a class="reference external" href="https://kunet.ku.dk/medarbejderguide/Sider/It/Fjernadgang-vpn.aspx">Danish</a> and <a class="reference external" href="https://kunet.ku.dk/employee-guide/Pages/IT/Remote-access.aspx">English</a>.</p>
+information about connecting to the VPN using OSX, see the support pages
+on KUnet in <a class="reference external" href="https://kunet.ku.dk/medarbejderguide/Sider/It/Fjernadgang-vpn.aspx">Danish</a> and <a class="reference external" href="https://kunet.ku.dk/employee-guide/Pages/IT/Remote-access.aspx">English</a>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>While we recommend using the official UCPH VPN client for connecting
 to the VPN, as described in the documentation on KUnet, it is also
-possible to use <code class="docutils literal notranslate"><span class="pre">openconnect</span></code> as described in the
+possible to use the command-line <code class="docutils literal notranslate"><span class="pre">openconnect</span></code> as described in the
 <a class="reference internal" href="#s-connecting-linux"><span class="std std-ref">Connecting on Linux</span></a> section below.</p>
 </div>
 <section id="connecting-to-esrum-using-ssh">
@@ -357,12 +390,11 @@ in the following command:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
 </pre></div>
 </div>
-<p>The first time you connect, you will likely be informed that the <code class="docutils literal notranslate"><span class="pre">the</span>
-<span class="pre">authenticity</span> <span class="pre">of</span> <span class="pre">host</span> <span class="pre">...</span> <span class="pre">can't</span> <span class="pre">be</span> <span class="pre">established</span></code>. This is expected <em>the
-first time you connect</em> (see below), and you should simply type <code class="docutils literal notranslate"><span class="pre">yes</span></code>
-and press enter to continue.</p>
-<p>Once you've done so, you can enter your UCPH account password, and
-approve the connection via the NetIQ app.</p>
+<p>You will likely be informed that the <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">authenticity</span> <span class="pre">of</span> <span class="pre">host</span> <span class="pre">...</span>
+<span class="pre">can't</span> <span class="pre">be</span> <span class="pre">established</span></code>. This is expected <em>the first time you connect</em>
+(see below), and you should simply type <code class="docutils literal notranslate"><span class="pre">yes</span></code> and press enter to
+continue. Once you've done so, you can enter your UCPH account password,
+and approve the connection via the NetIQ app.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
 <span class="go">The authenticity of host &#39;esrumhead01fl.unicph.domain (10.84.4.168)&#39; can&#39;t be established.</span>
 <span class="go">ED25519 key fingerprint is SHA256:QslJ02Z/4CrFJ2pKA64lU8WTS8Y+8pGO+748bTkrFhY.</span>
@@ -376,7 +408,6 @@ approve the connection via the NetIQ app.</p>
 <span class="go">  (_)     University of Copenhagen</span>
 <span class="go">_____O______________________________________</span>
 <span class="go">Supported by UCPH IT  it.ku.dk/english</span>
-
 
 <span class="go">    Documentation is available at https://cbmr-data.github.io/esrum/</span>
 <span class="go">        For assistance contact Data Analytics at cbmr-esrum@sund.ku.dk,</span>
@@ -414,7 +445,6 @@ having to specify your username:</p>
 <span class="go">_____O______________________________________</span>
 <span class="go">Supported by UNICPH IT  it.ku.dk/english</span>
 
-
 <span class="go">Last login: Fri Oct 13 01:35:00 1980 from 127.0.0.1</span>
 <span class="gp">$</span>
 </pre></div>
@@ -435,6 +465,22 @@ using KDE5. If that is not the case, or if you prefer a command-line
 solution, then you can also connect using <code class="docutils literal notranslate"><span class="pre">openconnect</span></code>, replacing
 <code class="docutils literal notranslate"><span class="pre">abc123</span></code> with your UCPH username:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>openconnect<span class="w"> </span>-u<span class="w"> </span>abc123<span class="w"> </span>vpn.ku.dk
+<span class="go">POST https://vpn.ku.dk/</span>
+<span class="go">Connected to 130.225.226.54:443</span>
+<span class="go">SSL negotiation with vpn.ku.dk</span>
+<span class="go">Connected to HTTPS on vpn.ku.dk with ciphersuite (TLS1.2)-(RSA)-(AES-256-CBC)-(SHA1)</span>
+<span class="go">XML POST enabled</span>
+<span class="go">Please enter your username and password.</span>
+<span class="hll"><span class="go">Password: ****************</span>
+</span><span class="go">POST https://vpn.ku.dk/</span>
+<span class="go">Please enter the TOTP code generated on your device</span>
+<span class="hll"><span class="go">Response: ****</span>
+</span><span class="go">POST https://vpn.ku.dk/</span>
+<span class="go">Got CONNECT response: HTTP/1.1 200 OK</span>
+<span class="go">CSTP connected. DPD 30, Keepalive 20</span>
+<span class="go">Established DTLS connection (using GnuTLS). Ciphersuite (DTLS1.2)-(ECDHE-RSA)-(AES-256-GCM).</span>
+<span class="go">Configured as 10.203.179.174, with SSL connected and DTLS connected</span>
+<span class="go">Session authentication will expire at Wed May  7 09:19:45 2025</span>
 </pre></div>
 </div>
 <p>Depending on how you have configured <a class="reference external" href="https://mfa.ku.dk">multifactor authentication for
@@ -498,8 +544,8 @@ category.</p>
 <span class="pre">(enhanced</span> <span class="pre">speed)</span></code> browser type. See step 4 in the
 <a class="reference internal" href="#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section.</p>
 </section>
-<section id="ucph-network-folders-in-ucph-are-not-available-when-using-mobaxterm">
-<h3>UCPH network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available when using MobaXterm<a class="headerlink" href="#ucph-network-folders-in-ucph-are-not-available-when-using-mobaxterm" title="Link to this heading">¶</a></h3>
+<section id="network-folders-in-ucph-are-not-available">
+<h3>Network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available<a class="headerlink" href="#network-folders-in-ucph-are-not-available" title="Link to this heading">¶</a></h3>
 <p>Please make sure that you have disabled use of <code class="docutils literal notranslate"><span class="pre">GSSAPI</span> <span class="pre">Kerberos</span></code> as
 described in the <a class="reference internal" href="#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section. Similarly, if
 using Linux or OSX, then you cannot be authenticating using a Kerberos
@@ -578,7 +624,7 @@ ticket.</p>
 <li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
 <li><a class="reference internal" href="#timeout-while-connecting-to-the-cluster">Timeout while connecting to the cluster</a></li>
 <li><a class="reference internal" href="#file-uploads-using-mobaxterm-never-start">File uploads using MobaXterm never start</a></li>
-<li><a class="reference internal" href="#ucph-network-folders-in-ucph-are-not-available-when-using-mobaxterm">UCPH network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available when using MobaXterm</a></li>
+<li><a class="reference internal" href="#network-folders-in-ucph-are-not-available">Network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available</a></li>
 </ul>
 </li>
 </ul>
@@ -598,7 +644,7 @@ ticket.</p>
     <script src="../../_static/scripts/furo.js?v=4e2eecee"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=a7c4b63f"></script>
-    <script src="../../_static/js/custom.js?v=1a77b013"></script>
+    <script src="../../_static/js/custom.js?v=39b97c90"></script>
     <script src="../../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../../_static/js/playback.js?v=d7002ce9"></script>
     </body>

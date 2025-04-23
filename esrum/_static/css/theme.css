@@ -18,3 +18,20 @@ div[class^="highlight-"] {
 .gp {
     color: var(--color-link);
 }
+
+/** :align: center does not align the table itself */
+.image-buttons {
+    text-align: center !important;
+}
+
+/** Erase default borders */
+.image-buttons>tbody>tr>td {
+    vertical-align: top;
+    width: 150px;
+    border: 0px !important;
+}
+
+/** Increase contrast for highlighted code in light mode */
+.highlight .hll {
+    background-color: #fde3bd;
+}
