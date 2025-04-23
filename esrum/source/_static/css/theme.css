@@ -30,3 +30,8 @@ div[class^="highlight-"] {
     width: 150px;
     border: 0px !important;
 }
+
+/** Increase contrast for highlighted code in light mode */
+.highlight .hll {
+    background-color: #fde3bd;
+}
