@@ -102,11 +102,11 @@ When this need arises, DAP will either
 
 -  grant access to the relevant staff member(s), for an appropriate time
    period, after notifying the data owner. This applies to datasets and
-   projects directly administrated by DAP.
+   projects directly administered by DAP.
 
 -  request access to the datasets and/or projects, using the `Identity
    Management system`_. This applies to datasets and projects *not*
-   administrated by DAP.
+   administered by DAP.
 
 A formal data access request will also be made in cases where DAP staff
 member participate in the scientific exploitation of protected data,

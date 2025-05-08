@@ -17,7 +17,8 @@ these, respectively, but you are welcome to :ref:`contact us
 .. warning::
 
    You must be connected to the UCPH VPN to access either of these
-   pages!
+   pages. See the :ref:`p_usage_connecting` page for information about
+   using the VPN.
 
 *********************
  Applying for access

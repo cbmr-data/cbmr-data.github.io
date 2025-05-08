@@ -270,9 +270,12 @@ having to specify your username:
 
 The official instructions for connecting to the VPN under Linux (in
 Danish_ and English_) are written under the assumption that you are
-using KDE5. If that is not the case, or if you prefer a command-line
-solution, then you can also connect using ``openconnect``, replacing
-``abc123`` with your UCPH username:
+using KDE5.
+
+If that is not the case, or if you prefer a command-line solution, then
+you can also connect using ``openconnect``, replacing ``abc123`` with
+your UCPH username. Log in using your UCPH password and using
+NetIQ/entering a TOTP code when prompted:
 
 .. code-block:: console
    :emphasize-lines: 8,11

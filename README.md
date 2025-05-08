@@ -1,6 +1,6 @@
 # CBMR Data Analytics Documentation
 
-This repository contains sources for public documentation and files related to usage of the esrum Esrum cluster administrated by CBMR data analytics. The documentation can be read at [cbmr-data.github.io](https://cbmr-data.github.io).
+This repository contains sources for public documentation and files related to usage of the esrum Esrum cluster administered by CBMR data analytics. The documentation can be read at [cbmr-data.github.io](https://cbmr-data.github.io).
 
 ## Writing documentation
 
