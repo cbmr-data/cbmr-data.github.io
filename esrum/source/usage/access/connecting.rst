@@ -120,13 +120,13 @@ Configuring MobaXterm
       Esrum!
 
 #. You should now be able to log in to the server using your UCPH
-   account password, and using the NetIQ app to approve the login.
+   account password:
 
    .. image:: images/mobaxterm_06.png
       :align: center
 
 #. For security reasons we recommend that you decline when asked if you
-   want to save your password.
+   want to save your password:
 
 .. _s_reconnecting_with_mobaxterm:
 
