@@ -10,8 +10,8 @@ On Linux, this typically results in an ``Operation timed out`` message:
 
 .. code-block:: console
 
-    $ ssh abc123@esrumhead01fl.unicph.domain
-    ssh: connect to host esrumhead01fl.unicph.domain port 22: Operation timed out
+   $ ssh abc123@esrumhead01fl.unicph.domain
+   ssh: connect to host esrumhead01fl.unicph.domain port 22: Operation timed out
 
 On Windows, using MobaXterm, it may result in a ``connection timed out``
 message:

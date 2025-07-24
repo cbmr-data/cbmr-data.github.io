@@ -271,8 +271,9 @@ Please <a class="reference internal" href="../contact.html#p-contact"><span clas
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Data must not be copied out of audited <code class="docutils literal notranslate"><span class="pre">/datasets</span></code> or <code class="docutils literal notranslate"><span class="pre">/projects</span></code>
-folders without permission from the relevant data controller! See the
-<a class="reference internal" href="../guidelines.html#p-guidelines"><span class="std std-ref">Guidelines and policies</span></a> for more information.</p>
+folders without permission from the relevant data controller. This is
+required for GDPR compliance. See the <a class="reference internal" href="../guidelines.html#p-guidelines"><span class="std std-ref">Guidelines and policies</span></a> for more
+information.</p>
 </div>
 <section id="transferring-data-to-from-esrum">
 <h2>Transferring data to/from Esrum<a class="headerlink" href="#transferring-data-to-from-esrum" title="Link to this heading">¶</a></h2>
@@ -348,10 +349,10 @@ cluster.</p>
 successfully authenticated using Two-factor authentication. Furthermore,
 this must be done using the same IP from which the user intends to
 connect, in this case from the Esrum IP.</p>
-<p>This poses some challenges, as running a full-fledged browser over SSH
-performs very poorly. This section therefore describes how to
-authenticate to <a class="reference external" href="https://sif.ku.dk/">SIF</a> or <a class="reference external" href="https://erda.ku.dk/">ERDA</a> using a purely text-based browser
-available on the cluster (<a class="reference external" href="https://en.wikipedia.org/wiki/Lynx_(web_browser)">Lynx</a>):</p>
+<p>This poses some challenges, as graphically intensive programs like a
+full-fledged browser perform poorly over SSH. This section therefore
+describes how to authenticate to <a class="reference external" href="https://sif.ku.dk/">SIF</a> or <a class="reference external" href="https://erda.ku.dk/">ERDA</a> using <a class="reference external" href="https://en.wikipedia.org/wiki/Lynx_(web_browser)">Lynx</a>, a purely
+text-based browser available on the cluster:</p>
 <ol class="arabic">
 <li><p>Start Lynx as follows:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>lynx<span class="w"> </span>-accept_all_cookies<span class="w"> </span><span class="s2">&quot;https://sif.ku.dk&quot;</span>
@@ -439,8 +440,8 @@ account if you keep trying. This applies both to running (for
 example) <code class="docutils literal notranslate"><span class="pre">rsync</span></code> on <code class="docutils literal notranslate"><span class="pre">ssh.computerome.dk</span></code> or if you attempt upload
 data to or download data from this server.</p></li>
 <li><p>While it is possible to transfer data to/from Computerome from/to
-Esrum by running your software on a node, this involves paying for a
-node on Computerome for the duration of the transfer.</p></li>
+Esrum by running your software on a Computerome node, this involves
+paying for a node during the transfer.</p></li>
 </ol>
 </section>
 <section id="secure-emails-using-bluewhale">

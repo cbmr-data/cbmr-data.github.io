@@ -57,7 +57,7 @@ more information.
  Projects and data-shares
 **************************
 
-Access is managed on a per-project level, and is administrated by the
+Access is managed on a per-project level, and is administered by the
 individual project owners, with each project folder containing a
 standard set of sub-folders (``apps``, ``data``, ``people``,
 ``scratch``).

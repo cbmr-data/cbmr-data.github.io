@@ -28,8 +28,9 @@ Please :ref:`contact us <p_contact>` for more information.
 .. warning::
 
    Data must not be copied out of audited ``/datasets`` or ``/projects``
-   folders without permission from the relevant data controller! See the
-   :ref:`p_guidelines` for more information.
+   folders without permission from the relevant data controller. This is
+   required for GDPR compliance. See the :ref:`p_guidelines` for more
+   information.
 
 *********************************
  Transferring data to/from Esrum
@@ -122,10 +123,10 @@ successfully authenticated using Two-factor authentication. Furthermore,
 this must be done using the same IP from which the user intends to
 connect, in this case from the Esrum IP.
 
-This poses some challenges, as running a full-fledged browser over SSH
-performs very poorly. This section therefore describes how to
-authenticate to SIF_ or ERDA_ using a purely text-based browser
-available on the cluster (Lynx_):
+This poses some challenges, as graphically intensive programs like a
+full-fledged browser perform poorly over SSH. This section therefore
+describes how to authenticate to SIF_ or ERDA_ using Lynx_, a purely
+text-based browser available on the cluster:
 
 #. Start Lynx as follows:
 
@@ -234,8 +235,8 @@ This avoids two big issues:
    data to or download data from this server.
 
 #. While it is possible to transfer data to/from Computerome from/to
-   Esrum by running your software on a node, this involves paying for a
-   node on Computerome for the duration of the transfer.
+   Esrum by running your software on a Computerome node, this involves
+   paying for a node during the transfer.
 
 .. _bluewhale:
 

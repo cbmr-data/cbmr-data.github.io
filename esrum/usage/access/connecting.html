@@ -343,11 +343,11 @@ Esrum!</p>
 </div>
 </li>
 <li><p>You should now be able to log in to the server using your UCPH
-account password, and using the NetIQ app to approve the login.</p>
+account password:</p>
 <img alt="../../_images/mobaxterm_06.png" class="align-center" src="../../_images/mobaxterm_06.png" />
 </li>
 <li><p>For security reasons we recommend that you decline when asked if you
-want to save your password.</p></li>
+want to save your password:</p></li>
 </ol>
 </section>
 <section id="reconnecting-with-mobaxterm">
@@ -461,9 +461,11 @@ when connecting to the server.</p>
 <span id="s-connecting-linux"></span><h2>Connecting on Linux<a class="headerlink" href="#connecting-on-linux" title="Link to this heading">¶</a></h2>
 <p>The official instructions for connecting to the VPN under Linux (in
 <a class="reference external" href="https://kunet.ku.dk/medarbejderguide/Sider/It/Fjernadgang-vpn.aspx">Danish</a> and <a class="reference external" href="https://kunet.ku.dk/employee-guide/Pages/IT/Remote-access.aspx">English</a>) are written under the assumption that you are
-using KDE5. If that is not the case, or if you prefer a command-line
-solution, then you can also connect using <code class="docutils literal notranslate"><span class="pre">openconnect</span></code>, replacing
-<code class="docutils literal notranslate"><span class="pre">abc123</span></code> with your UCPH username:</p>
+using KDE5.</p>
+<p>If that is not the case, or if you prefer a command-line solution, then
+you can also connect using <code class="docutils literal notranslate"><span class="pre">openconnect</span></code>, replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code> with
+your UCPH username. Log in using your UCPH password and using
+NetIQ/entering a TOTP code when prompted:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>openconnect<span class="w"> </span>-u<span class="w"> </span>abc123<span class="w"> </span>vpn.ku.dk
 <span class="go">POST https://vpn.ku.dk/</span>
 <span class="go">Connected to 130.225.226.54:443</span>

@@ -65,7 +65,7 @@ IDM
    :align: center
 
 In this section you have to enter two ``IDM Role Administrators``. These
-are the people responsible for administrating access to the project via
+are the people responsible for administering access to the project via
 the `Identity Management System`_. We highly recommend that *at least*
 one of these two people are a permanent employee at CBMR (e.g. a PI or
 staff scientist), to ease transitions if an employee on a temporary
