@@ -14,8 +14,20 @@ The Rstudio servers can be found at
 
 To access the RStudio servers, you *must* have applied for access as
 described on the :ref:`p_usage_access_applying` page, and you *must* be
-connected via the UCPH VPN. Once connected, use the short form of your
-UCPH username to log in:
+connected via the UCPH VPN.
+
+.. warning::
+
+   If you use a non-UCPH device to access the above URLs, then you may
+   receive a warning that "your connection is not private" (Chrome) or
+   about a "potential security risk" (Firefox). This is due to the
+   domains using certificates provided by KU-IT, that are only installed
+   on KU-IT managed hardware. You can proceed by clicking the "Advanced"
+   button and then clicking either the ``Proceed to esrumweb??fl
+   (unsafe)`` (Chrome) link or the ``Accept the Risk and Continue``
+   button (Firefox).
+
+Once connected, use the short form of your UCPH username to log in:
 
 .. image:: images/rstudio_login.png
    :align: center
