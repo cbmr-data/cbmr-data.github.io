@@ -46,6 +46,15 @@ can't be reached``. See :ref:`p_usage_connecting` for more information.
    negatively impact everyone using the service, and we may therefore
    terminate such tasks without warning if we deem it necessary.
 
+***************************************
+ Accessing network drives from RStudio
+***************************************
+
+By default, you will not be able to access the network drives (``H:``,
+``N:``, and ``S:``) from the RStudio nodes. For information on how to
+enable access and where to find the network drives on the RStudio nodes,
+see the :ref:`p_network_drives` page.
+
 ******************************
  RStudio server best practice
 ******************************

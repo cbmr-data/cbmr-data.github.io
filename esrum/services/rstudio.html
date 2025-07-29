@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="search" title="Search" href="../search.html" /><link rel="next" title="Jupyter Notebooks" href="jupyter.html" /><link rel="prev" title="Common datasets" href="../resources/common.html" />
+<link rel="search" title="Search" href="../search.html" /><link rel="next" title="Network drives (H:, N:, S:)" href="networkdrives.html" /><link rel="prev" title="Common datasets" href="../resources/common.html" />
 
     <!-- Generated with Sphinx 7.4.7 and Furo 2024.04.27 -->
         <title>RStudio - Esrum Cluster documentation</title>
@@ -191,6 +191,7 @@
 <p class="caption" role="heading"><span class="caption-text">Other services</span></p>
 <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="networkdrives.html">Network drives (H:, N:, S:)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jupyter.html">Jupyter Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="containers.html">Containerized software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shiny.html">Shiny servers</a></li>
@@ -290,6 +291,13 @@ using Slurm as described in <a class="reference internal" href="../usage/slurm/i
 negatively impact everyone using the service, and we may therefore
 terminate such tasks without warning if we deem it necessary.</p>
 </div>
+<section id="accessing-network-drives-from-rstudio">
+<h2>Accessing network drives from RStudio<a class="headerlink" href="#accessing-network-drives-from-rstudio" title="Link to this heading">¶</a></h2>
+<p>By default, you will not be able to access the network drives (<code class="docutils literal notranslate"><span class="pre">H:</span></code>,
+<code class="docutils literal notranslate"><span class="pre">N:</span></code>, and <code class="docutils literal notranslate"><span class="pre">S:</span></code>) from the RStudio nodes. For information on how to
+enable access and where to find the network drives on the RStudio nodes,
+see the <a class="reference internal" href="networkdrives.html#p-network-drives"><span class="std std-ref">Network drives (H:, N:, S:)</span></a> page.</p>
+</section>
 <section id="rstudio-server-best-practice">
 <h2>RStudio server best practice<a class="headerlink" href="#rstudio-server-best-practice" title="Link to this heading">¶</a></h2>
 <p>Since the RStudio server is a shared resource where that many users may
@@ -426,12 +434,12 @@ while using RStudio.</p></li>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="jupyter.html">
+          <a class="next-page" href="networkdrives.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Jupyter Notebooks</div>
+                <div class="title">Network drives (H:, N:, S:)</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -477,6 +485,7 @@ while using RStudio.</p></li>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">RStudio</a><ul>
+<li><a class="reference internal" href="#accessing-network-drives-from-rstudio">Accessing network drives from RStudio</a></li>
 <li><a class="reference internal" href="#rstudio-server-best-practice">RStudio server best practice</a></li>
 <li><a class="reference internal" href="#preserving-loaded-data">Preserving loaded data</a></li>
 <li><a class="reference internal" href="#use-of-github-copilot">Use of GitHub Copilot</a></li>

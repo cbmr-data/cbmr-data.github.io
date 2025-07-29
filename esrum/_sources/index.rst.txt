@@ -33,6 +33,7 @@
    :caption: Other services
 
    services/rstudio
+   services/networkdrives
    services/jupyter
    services/containers
    services/shiny

@@ -32,21 +32,35 @@ further instructions on how to connect to the cluster.
 
 .. _s_identity_management_system:
 
-**************************************
- Using the identity management system
-**************************************
+********************************************
+ Using the identity management system (IDM)
+********************************************
 
 Should you need to apply for access to projects or datasets that are
-*not* managed by the Data Analytics Platform, then this may require
-using the `Identity Management System`_ (IDM). If possible, we recommend
-simply asking the project/dataset owner to add you to the project or
-dataset in question, but the following provides a brief summary of how
-to apply through the IDM:
+*not* managed by the Data Analytics Platform, or if you need to add a
+user to a project that *you* control, then this may require using the
+`Identity Management System`_ (IDM).
+
+An official guide to the identity system used is available here_.
+
+Applying for access using the IDM
+=================================
+
+If possible, we recommend simply asking the project/dataset owner to add
+you to the project or dataset in question, but the following provides a
+brief summary of how to apply through the IDM:
 
 #. Log in at identity.ku.dk_.
 
-#. Click on the ``Manage My Access`` button. See below if you instead
-   have a ``Manage User Access`` button.
+#. Click on the ``Manage My Access`` or the ``Manage User Access``
+   button. Which button you see will depend on whether you own any
+   groups yourself.
+
+   #. If you clicked on the ``Manage User Access`` button then you must
+      next search for your own UCPH username (e.g. ``abc123``) and then
+      click on the check mark to the left your name *once*. Wait for the
+      check mark to turn green, click the ``Next`` button, and then
+      proceed with the steps described above.
 
 #. Search for and locate the group corresponding to the resource you
    wish to access. Depending on the kind of resource you wish to apply
@@ -79,21 +93,40 @@ to apply through the IDM:
    already assigned``, then you have already been granted access to this
    resource.
 
+   #. If you get a ``Select Role`` popup, asking you to ``Select the
+      business role to assign to this permitted role.``, then we
+      recommend that you pick a ``STAFF-ORG`` role from the list.
+
 #. Finally, click the ``Submit`` button to submit your request.
 
 #. Wait for your request to be processed.
 
-.. note::
+Adding users to a group using the IDM
+=====================================
 
-   Users with project/group ownership will see a ``Manage User Access``
-   button instead of the ``Manage User Access`` mentioned above.
+#. Log in at identity.ku.dk_.
 
-   In that case, start by searching for your own UCPH username (e.g.
-   ``abc123``) and then click on the check mark to the left your name
-   *once*. Wait for the check mark to turn green, click the ``Next``
-   button, and then proceed with the steps described above.
+#. Click on the ``Manage User Access`` button. If you instead have a
+   ``Manage My Access`` button, then you do not control access to any
+   groups and will not able to carry out these steps.
 
-An official guide to the identity system used is available here_.
+#. Search for the username of the user you want to add to a group, click
+   *once* on the check-mark to the left of the name of the user in the
+   resulting list. Wait for the check mark to turn green and then click
+   the ``Next`` button.
+
+#. Search for and locate the group corresponding to the resource you
+   wish to grant access to. See the corresponding step in the previous
+   guide, for a brief description of how groups are named.
+
+#. Click *once* on the check-mark to the left of the name of the group
+   in the resulting list. Wait for the check mark to turn green and then
+   click the ``Next`` button. See above if you get a ``Cannot Add Access
+   Item.`` or a ``Select Role`` popup.
+
+#. Finally, click the ``Submit`` button to submit your request.
+
+#. Wait for your request to be processed.
 
 .. _here: https://kunet.ku.dk/medarbejderguide/ITvejl/KU%20IdM%20-%20S%C3%A5dan%20anmodes%20om%20funktionsrolle.pdf
 

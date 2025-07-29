@@ -191,6 +191,7 @@
 <p class="caption" role="heading"><span class="caption-text">Other services</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../services/rstudio.html">RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../services/networkdrives.html">Network drives (H:, N:, S:)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../services/jupyter.html">Jupyter Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../services/containers.html">Containerized software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../services/shiny.html">Shiny servers</a></li>
@@ -275,18 +276,31 @@ email described above. In that case, logging in will result in a
 warning that your home folder does not exist. If so, then simply wait
 a few hours before trying again. This process may take up to a day.</p>
 </div>
-<section id="using-the-identity-management-system">
-<span id="s-identity-management-system"></span><h2>Using the identity management system<a class="headerlink" href="#using-the-identity-management-system" title="Link to this heading">¶</a></h2>
+<section id="using-the-identity-management-system-idm">
+<span id="s-identity-management-system"></span><h2>Using the identity management system (IDM)<a class="headerlink" href="#using-the-identity-management-system-idm" title="Link to this heading">¶</a></h2>
 <p>Should you need to apply for access to projects or datasets that are
-<em>not</em> managed by the Data Analytics Platform, then this may require
-using the <a class="reference external" href="https://identity.ku.dk/">Identity Management System</a> (IDM). If possible, we recommend
-simply asking the project/dataset owner to add you to the project or
-dataset in question, but the following provides a brief summary of how
-to apply through the IDM:</p>
+<em>not</em> managed by the Data Analytics Platform, or if you need to add a
+user to a project that <em>you</em> control, then this may require using the
+<a class="reference external" href="https://identity.ku.dk/">Identity Management System</a> (IDM).</p>
+<p>An official guide to the identity system used is available <a class="reference external" href="https://kunet.ku.dk/medarbejderguide/ITvejl/KU%20IdM%20-%20S%C3%A5dan%20anmodes%20om%20funktionsrolle.pdf">here</a>.</p>
+<section id="applying-for-access-using-the-idm">
+<h3>Applying for access using the IDM<a class="headerlink" href="#applying-for-access-using-the-idm" title="Link to this heading">¶</a></h3>
+<p>If possible, we recommend simply asking the project/dataset owner to add
+you to the project or dataset in question, but the following provides a
+brief summary of how to apply through the IDM:</p>
 <ol class="arabic">
 <li><p>Log in at <a class="reference external" href="https://identity.ku.dk/">identity.ku.dk</a>.</p></li>
-<li><p>Click on the <code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">My</span> <span class="pre">Access</span></code> button. See below if you instead
-have a <code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">User</span> <span class="pre">Access</span></code> button.</p></li>
+<li><p>Click on the <code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">My</span> <span class="pre">Access</span></code> or the <code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">User</span> <span class="pre">Access</span></code>
+button. Which button you see will depend on whether you own any
+groups yourself.</p>
+<ol class="arabic simple">
+<li><p>If you clicked on the <code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">User</span> <span class="pre">Access</span></code> button then you must
+next search for your own UCPH username (e.g. <code class="docutils literal notranslate"><span class="pre">abc123</span></code>) and then
+click on the check mark to the left your name <em>once</em>. Wait for the
+check mark to turn green, click the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button, and then
+proceed with the steps described above.</p></li>
+</ol>
+</li>
 <li><p>Search for and locate the group corresponding to the resource you
 wish to access. Depending on the kind of resource you wish to apply
 for access to, the names will differ somewhat:</p>
@@ -315,20 +329,39 @@ in the resulting list. Wait for the check mark to turn green and then
 click the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button. If you get a yellow popup with the message
 <code class="docutils literal notranslate"><span class="pre">Cannot</span> <span class="pre">Add</span> <span class="pre">Access</span> <span class="pre">Item.</span> <span class="pre">The</span> <span class="pre">item</span> <span class="pre">you</span> <span class="pre">are</span> <span class="pre">trying</span> <span class="pre">to</span> <span class="pre">select</span> <span class="pre">is</span>
 <span class="pre">already</span> <span class="pre">assigned</span></code>, then you have already been granted access to this
-resource.</p></li>
+resource.</p>
+<ol class="arabic simple">
+<li><p>If you get a <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">Role</span></code> popup, asking you to <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">the</span>
+<span class="pre">business</span> <span class="pre">role</span> <span class="pre">to</span> <span class="pre">assign</span> <span class="pre">to</span> <span class="pre">this</span> <span class="pre">permitted</span> <span class="pre">role.</span></code>, then we
+recommend that you pick a <code class="docutils literal notranslate"><span class="pre">STAFF-ORG</span></code> role from the list.</p></li>
+</ol>
+</li>
 <li><p>Finally, click the <code class="docutils literal notranslate"><span class="pre">Submit</span></code> button to submit your request.</p></li>
 <li><p>Wait for your request to be processed.</p></li>
 </ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Users with project/group ownership will see a <code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">User</span> <span class="pre">Access</span></code>
-button instead of the <code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">User</span> <span class="pre">Access</span></code> mentioned above.</p>
-<p>In that case, start by searching for your own UCPH username (e.g.
-<code class="docutils literal notranslate"><span class="pre">abc123</span></code>) and then click on the check mark to the left your name
-<em>once</em>. Wait for the check mark to turn green, click the <code class="docutils literal notranslate"><span class="pre">Next</span></code>
-button, and then proceed with the steps described above.</p>
-</div>
-<p>An official guide to the identity system used is available <a class="reference external" href="https://kunet.ku.dk/medarbejderguide/ITvejl/KU%20IdM%20-%20S%C3%A5dan%20anmodes%20om%20funktionsrolle.pdf">here</a>.</p>
+</section>
+<section id="adding-users-to-a-group-using-the-idm">
+<h3>Adding users to a group using the IDM<a class="headerlink" href="#adding-users-to-a-group-using-the-idm" title="Link to this heading">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Log in at <a class="reference external" href="https://identity.ku.dk/">identity.ku.dk</a>.</p></li>
+<li><p>Click on the <code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">User</span> <span class="pre">Access</span></code> button. If you instead have a
+<code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">My</span> <span class="pre">Access</span></code> button, then you do not control access to any
+groups and will not able to carry out these steps.</p></li>
+<li><p>Search for the username of the user you want to add to a group, click
+<em>once</em> on the check-mark to the left of the name of the user in the
+resulting list. Wait for the check mark to turn green and then click
+the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button.</p></li>
+<li><p>Search for and locate the group corresponding to the resource you
+wish to grant access to. See the corresponding step in the previous
+guide, for a brief description of how groups are named.</p></li>
+<li><p>Click <em>once</em> on the check-mark to the left of the name of the group
+in the resulting list. Wait for the check mark to turn green and then
+click the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button. See above if you get a <code class="docutils literal notranslate"><span class="pre">Cannot</span> <span class="pre">Add</span> <span class="pre">Access</span>
+<span class="pre">Item.</span></code> or a <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">Role</span></code> popup.</p></li>
+<li><p>Finally, click the <code class="docutils literal notranslate"><span class="pre">Submit</span></code> button to submit your request.</p></li>
+<li><p>Wait for your request to be processed.</p></li>
+</ol>
+</section>
 </section>
 </section>
 
@@ -388,7 +421,11 @@ button, and then proceed with the steps described above.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Applying for access</a><ul>
-<li><a class="reference internal" href="#using-the-identity-management-system">Using the identity management system</a></li>
+<li><a class="reference internal" href="#using-the-identity-management-system-idm">Using the identity management system (IDM)</a><ul>
+<li><a class="reference internal" href="#applying-for-access-using-the-idm">Applying for access using the IDM</a></li>
+<li><a class="reference internal" href="#adding-users-to-a-group-using-the-idm">Adding users to a group using the IDM</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

@@ -191,6 +191,7 @@
 <p class="caption" role="heading"><span class="caption-text">Other services</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../services/rstudio.html">RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../services/networkdrives.html">Network drives (H:, N:, S:)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../services/jupyter.html">Jupyter Notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../services/containers.html">Containerized software</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../services/shiny.html">Shiny servers</a></li>
@@ -312,43 +313,19 @@ home folder!</p>
 </div>
 <section id="ucph-network-drives-h-n-and-s">
 <span id="s-ucph-network-drives"></span><h3>UCPH network drives (<code class="docutils literal notranslate"><span class="pre">H:</span></code>, <code class="docutils literal notranslate"><span class="pre">N:</span></code>, and <code class="docutils literal notranslate"><span class="pre">S:</span></code>)<a class="headerlink" href="#ucph-network-drives-h-n-and-s" title="Link to this heading">¶</a></h3>
-<p>When you log in to Esrum for the first time, your home folder should
-contain a (link to a) single folder named <code class="docutils literal notranslate"><span class="pre">ucph</span></code>. This folder in turn
-contains (links to) your UCPH network drives:</p>
+<p>The &quot;old&quot; UCPH network drives are available in your home folder under
+the <code class="docutils literal notranslate"><span class="pre">ucph</span></code> subfolder:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">~/ucph/hdir</span></code>: The H-drive is your personal drive for storing data
-that is not shared with anyone else. This may include personal and
-confidential data.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">~/ucph/ndir</span></code>: The N-drive is used shared data that is neither
-personal nor confidential. You will have access to any number of
-subfolders depending on your affiliations, including the
-<code class="docutils literal notranslate"><span class="pre">SUN-CBMR-Shared-Info</span></code> containing files shared across the entire
-center.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">~/ucph/sdir</span></code>: The S-drive (<code class="docutils literal notranslate"><span class="pre">S:</span></code>) is meant for sharing of
-sensitive and personal data with other employees at UCPH. For more
-information, see the <a class="reference external" href="https://kunet.ku.dk/employee-guide/Pages/IT/S-drive.aspx">official documentation</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">H:</span></code> as <code class="docutils literal notranslate"><span class="pre">~/ucph/hdir</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">N:</span></code> as <code class="docutils literal notranslate"><span class="pre">~/ucph/ndir</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">S:</span></code> as <code class="docutils literal notranslate"><span class="pre">~/ucph/sdir</span></code>.</p></li>
 </ul>
-<p>These network drives are only accessible from the head node and access
-is furthermore time-limited: Your access expires about 10 hours after
-logging in.</p>
-<p>It is therefore recommended to always copy data that you are working to
-the corresponding <cite>/projects</cite> folder. If you don't have a <cite>/projects</cite>
-folder, then see the <a class="reference internal" href="projects.html#p-usage-projects"><span class="std std-ref">Creating projects and datasets</span></a> page for instructions on
-how to request a new project. Never use your home folder for this and
-remember that projects have to be audited (indicated by the <code class="docutils literal notranslate"><span class="pre">-AUDIT</span></code>
-suffix) if you are working on sensitive/protected data.</p>
-<p>Should you be missing any of these folders, or should you be unable to
-access the folders, then please see the
-<a class="reference internal" href="#s-filesystem-troubleshooting"><span class="std std-ref">Troubleshooting</span></a> section below.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Because access to these network drives are time-limited, you should
-never leave a terminal or other process (e.g. tmux or screen) running
-<em>in</em> a network drive folder. Doing so results a lot of error messages
-being written to the system logs, and to avoid this we may either
-contact you to terminate those processes or simply terminate them
-ourselves.</p>
-</div>
+<p>By default, these network drives are only accessible from the head node,
+and access is furthermore limited to about 10 hours after you logged in.
+Additionally, these drives may not be available if you do not log in by
+typing your password.</p>
+<p>For more information, including instructions on how to make these drives
+accessible (again) on other nodes, see the <a class="reference internal" href="../services/networkdrives.html#p-network-drives"><span class="std std-ref">Network drives (H:, N:, S:)</span></a> page.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>You can also access your network drives online via
@@ -501,7 +478,11 @@ deleted data.</p>
 <span id="s-filesystem-troubleshooting"></span><h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">¶</a></h2>
 <section id="the-ucph-folder-or-subfolders-are-missing">
 <h3>The <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> folder or subfolders are missing<a class="headerlink" href="#the-ucph-folder-or-subfolders-are-missing" title="Link to this heading">¶</a></h3>
-<p>Firstly, make sure that you are not using GSSAPI (Kerberos) to log in.
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> folder is only available on the head node
+(<code class="docutils literal notranslate"><span class="pre">esrumhead01fl</span></code>), and not on the RStudio servers nor on the compute
+nodes. See the <a class="reference internal" href="../services/networkdrives.html#s-network-drives-compute-nodes"><span class="std std-ref">Accessing network drives from compute nodes</span></a> section for how to
+access the drives elsewhere.</p>
+<p>If you are connected to the head node, then firstly make sure that you are not using GSSAPI (Kerberos) to log in.
 See the <a class="reference internal" href="access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page for instructions for how to
 disable this feature if you are using MobaXterm.</p>
 <p>Once you have logged in to Esrum <em>without</em> GSSAPI enabled, and if the
@@ -521,27 +502,23 @@ access the network drives (<code class="docutils literal notranslate"><span clas
 <code class="docutils literal notranslate"><span class="pre">~/ucph/sdir</span></code>), then please make sure that you are not logging in
 using Kerberos (GSSAPI). See the <a class="reference internal" href="access/connecting.html#s-network-drives-mobaxterm"><span class="std std-ref">Accessing network drives via MobaXterm</span></a>
 section for instructions for how to disable this feature if you are
-using MobaXterm. Note, however, that your login is also valid for about
-10 hours, after which you will lose access to the network drives.</p>
-<p>In either case, you can also re-authenticate after connecting to Esrum,
-by running the <code class="docutils literal notranslate"><span class="pre">kinit</span></code> command in your terminal on Esrum:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>kinit
-<span class="go">Password for abc123@UNICPH.DOMAIN: *********</span>
-</pre></div>
-</div>
-<p>After a minute or two your <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> drives should be accessible again.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><code class="docutils literal notranslate"><span class="pre">kinit</span></code> may fail if you are using a <code class="docutils literal notranslate"><span class="pre">conda</span></code> environment:</p>
+using MobaXterm.</p>
+<p>Note also that your login is also valid for about 10 hours, after which
+you will lose access to the network drives. See the section
+<a class="reference internal" href="../services/networkdrives.html#s-network-drives-reactivation"><span class="std std-ref">(Re)activating access to the network drives</span></a> for how to re-authenticate if your
+access has timed out.</p>
+</section>
+<section id="kinit-unknown-credential-cache-type-while-getting-default-ccache">
+<h3><code class="docutils literal notranslate"><span class="pre">kinit:</span> <span class="pre">Unknown</span> <span class="pre">credential</span> <span class="pre">cache</span> <span class="pre">type</span> <span class="pre">while</span> <span class="pre">getting</span> <span class="pre">default</span> <span class="pre">ccache</span></code><a class="headerlink" href="#kinit-unknown-credential-cache-type-while-getting-default-ccache" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">kinit</span></code> command may fail if you are using a <code class="docutils literal notranslate"><span class="pre">conda</span></code> environment:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(base)</span> <span class="gp">$ </span>kinit
 <span class="go">kinit: Unknown credential cache type while getting default ccache</span>
 </pre></div>
 </div>
 <p>In that case, run the command <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code> to deactivate the
-current/base environment. This may require running <code class="docutils literal notranslate"><span class="pre">conda</span>
-<span class="pre">deactivate</span></code> multiple times; your terminal line should not start with
-<code class="docutils literal notranslate"><span class="pre">(base)</span></code> or similar.</p>
-</div>
+current/base environment. This may require running <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code>
+multiple times; your terminal line should not start with <code class="docutils literal notranslate"><span class="pre">(base)</span></code> or
+similar.</p>
 </section>
 </section>
 </section>
@@ -613,6 +590,7 @@ current/base environment. This may require running <code class="docutils literal
 <li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
 <li><a class="reference internal" href="#the-ucph-folder-or-subfolders-are-missing">The <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> folder or subfolders are missing</a></li>
 <li><a class="reference internal" href="#no-such-file-or-directory-when-accessing-network-drives"><code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory</span></code> when accessing network drives</a></li>
+<li><a class="reference internal" href="#kinit-unknown-credential-cache-type-while-getting-default-ccache"><code class="docutils literal notranslate"><span class="pre">kinit:</span> <span class="pre">Unknown</span> <span class="pre">credential</span> <span class="pre">cache</span> <span class="pre">type</span> <span class="pre">while</span> <span class="pre">getting</span> <span class="pre">default</span> <span class="pre">ccache</span></code></a></li>
 </ul>
 </li>
 </ul>
