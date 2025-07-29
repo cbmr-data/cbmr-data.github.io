@@ -79,48 +79,20 @@ that your colleagues may depend on should be stored there.
 UCPH network drives (``H:``, ``N:``, and ``S:``)
 ================================================
 
-When you log in to Esrum for the first time, your home folder should
-contain a (link to a) single folder named ``ucph``. This folder in turn
-contains (links to) your UCPH network drives:
+The "old" UCPH network drives are available in your home folder under
+the ``ucph`` subfolder:
 
--  ``~/ucph/hdir``: The H-drive is your personal drive for storing data
-   that is not shared with anyone else. This may include personal and
-   confidential data.
+-  ``H:`` as ``~/ucph/hdir``.
+-  ``N:`` as ``~/ucph/ndir``.
+-  ``S:`` as ``~/ucph/sdir``.
 
--  ``~/ucph/ndir``: The N-drive is used shared data that is neither
-   personal nor confidential. You will have access to any number of
-   subfolders depending on your affiliations, including the
-   ``SUN-CBMR-Shared-Info`` containing files shared across the entire
-   center.
+By default, these network drives are only accessible from the head node,
+and access is furthermore limited to about 10 hours after you logged in.
+Additionally, these drives may not be available if you do not log in by
+typing your password.
 
--  ``~/ucph/sdir``: The S-drive (``S:``) is meant for sharing of
-   sensitive and personal data with other employees at UCPH. For more
-   information, see the `official documentation
-   <https://kunet.ku.dk/employee-guide/Pages/IT/S-drive.aspx>`_.
-
-These network drives are only accessible from the head node and access
-is furthermore time-limited: Your access expires about 10 hours after
-logging in.
-
-It is therefore recommended to always copy data that you are working to
-the corresponding `/projects` folder. If you don't have a `/projects`
-folder, then see the :ref:`p_usage_projects` page for instructions on
-how to request a new project. Never use your home folder for this and
-remember that projects have to be audited (indicated by the ``-AUDIT``
-suffix) if you are working on sensitive/protected data.
-
-Should you be missing any of these folders, or should you be unable to
-access the folders, then please see the
-:ref:`s_filesystem_troubleshooting` section below.
-
-.. warning::
-
-   Because access to these network drives are time-limited, you should
-   never leave a terminal or other process (e.g. tmux or screen) running
-   *in* a network drive folder. Doing so results a lot of error messages
-   being written to the system logs, and to avoid this we may either
-   contact you to terminate those processes or simply terminate them
-   ourselves.
+For more information, including instructions on how to make these drives
+accessible (again) on other nodes, see the :ref:`p_network_drives` page.
 
 .. tip::
 
@@ -302,7 +274,7 @@ for such projects.
  Troubleshooting
 *****************
 
-.. include:: filesystem_troubleshooting.rst
+.. include:: /services/networkdrives_troubleshooting.rst
 
 .. _red hat enterprise linux: https://en.wikipedia.org/wiki/Red_Hat_Enterprise_Linux
 
