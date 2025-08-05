@@ -47,7 +47,6 @@ The ``kinit`` command may fail if you are using a ``conda`` environment:
    (base) $ kinit
    kinit: Unknown credential cache type while getting default ccache
 
-In that case, run the command ``conda deactivate`` to deactivate the
-current/base environment. This may require running ``conda deactivate``
-multiple times; your terminal line should not start with ``(base)`` or
-similar.
+To circumvent this problem, either specify the full path to the ``kinit``
+executable (i.e. ``/usr/bin/kinit``) or deactivate the current/base
+environment by ``conda deactivate``.
