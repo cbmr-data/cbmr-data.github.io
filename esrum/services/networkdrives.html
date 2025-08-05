@@ -326,32 +326,51 @@ authenticated as described below.</p>
 <span id="s-network-drives-reactivation"></span><h2>(Re)activating access to the network drives<a class="headerlink" href="#re-activating-access-to-the-network-drives" title="Link to this heading">¶</a></h2>
 <p>Should your login have timed out, should you have logged on to Esrum
 without having entered your password, or should you be connected to a
-compute node/RStudio server, then the network drives may be
+compute node or an RStudio server, then the network drives may be
 inaccessible. This will typically result in <code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span>
 <span class="pre">directory</span></code> errors when attempting to access files/folders on the
 network drives.</p>
 <p>To (re-)authenticate and thereby enable access to the network drives,
-run the <code class="docutils literal notranslate"><span class="pre">kinit</span></code> command and enter the password for your UCPH account:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>kinit
+run <code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span></code> and enter the password for your UCPH account:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>/usr/bin/kinit
 <span class="go">abc123@UNICPH.DOMAIN&#39;s password: ************</span>
 <span class="gp">$</span>
 </pre></div>
 </div>
-<p>See the troubleshooting section below, if you get the error message
-<code class="docutils literal notranslate"><span class="pre">kinit:</span> <span class="pre">Unknown</span> <span class="pre">credential</span> <span class="pre">cache</span> <span class="pre">type</span> <span class="pre">while</span> <span class="pre">getting</span> <span class="pre">default</span> <span class="pre">ccache</span></code>.</p>
-<p>Once you have successfully run <code class="docutils literal notranslate"><span class="pre">kinit</span></code>, you should be able to access
-the folders under <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> on the head node, or at their canonical
-locations on other nodes (see <a class="reference internal" href="#s-network-drives-compute-nodes"><span class="std std-ref">Accessing network drives from compute nodes</span></a>).
+<p>This command <em>must</em> be run on the server from which you wish to access
+the network drives:</p>
+<ul class="simple">
+<li><p><strong>From the head node:</strong> Simply run <code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span></code> while connected
+to the head node.</p></li>
+<li><p><strong>From a compute node:</strong> Start an interactive session as described in
+the <a class="reference internal" href="../usage/slurm/basics.html#s-interactive-session"><span class="std std-ref">Interactive sessions</span></a> section, <em>and then</em> run
+<code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span></code>. You will then be able to access the network
+drives <em>in that session</em>.</p></li>
+<li><p><strong>From an RStudio server</strong>: Log in to the RStudio server as described
+on the <a class="reference internal" href="rstudio.html#p-service-rstudio"><span class="std std-ref">RStudio</span></a> page and open the <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> tab.
+Run the command <code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span></code> in that terminal.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The explicit path in <code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span></code> is required to make sure that
+you call the correct executable, even if you are using a Conda
+environment or similar. Running <code class="docutils literal notranslate"><span class="pre">kinit</span></code> without the full path may
+otherwise result in errors like <code class="docutils literal notranslate"><span class="pre">kinit:</span> <span class="pre">Unknown</span> <span class="pre">credential</span> <span class="pre">cache</span>
+<span class="pre">type</span> <span class="pre">while</span> <span class="pre">getting</span> <span class="pre">default</span> <span class="pre">ccache</span></code>.</p>
+</div>
+<p>Once you have successfully run <code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span></code>, you should be able to
+access the folders under <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> (only on the head node), or at their
+canonical locations (see <a class="reference internal" href="#s-network-drives-compute-nodes"><span class="std std-ref">Accessing network drives from compute nodes</span></a>).
 However, if you have tried to access these folders within the last few
-minutes, before running <code class="docutils literal notranslate"><span class="pre">kinit</span></code>, then you may have to wait a few
-minutes before the folders become accessible again.</p>
+minutes, before running <code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span></code>, then you may have to wait a
+few minutes before the folders become accessible again.</p>
 </section>
 <section id="extending-your-access-to-the-network-drives">
 <h2>Extending your access to the network drives<a class="headerlink" href="#extending-your-access-to-the-network-drives" title="Link to this heading">¶</a></h2>
 <p>The maximum duration of your current session (Kerberos ticket) is about
-10 hours, and the time at which it expires can be viewed via the
-<code class="docutils literal notranslate"><span class="pre">klist</span></code> command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>klist
+10 hours, and the time at which it expires can be viewed via the command
+<code class="docutils literal notranslate"><span class="pre">/usr/bin/klist</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>/usr/bin/klist
 <span class="go">Ticket cache: KEYRING:persistent:436828696:krb_ccache_nBciOlx</span>
 <span class="go">Default principal: abc123@UNICPH.DOMAIN</span>
 
@@ -363,10 +382,11 @@ minutes before the folders become accessible again.</p>
 <p>In this case the current session expires at <code class="docutils literal notranslate"><span class="pre">07/29/2025</span> <span class="pre">21:22:49</span></code>, but
 you can renew it for another 10 hours, until the time specified on the
 <code class="docutils literal notranslate"><span class="pre">renew</span> <span class="pre">until</span></code> line.</p>
-<p>To renew your session, use the <code class="docutils literal notranslate"><span class="pre">kinit</span> <span class="pre">-R</span></code> command. Unlike the basic
-<code class="docutils literal notranslate"><span class="pre">kinit</span></code> command, this does not require that you enter your password:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>kinit<span class="w"> </span>-R
-<span class="gp">abc123@esrumhead01fl:~$ </span>klist
+<p>To renew your session, use the <code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span> <span class="pre">-R</span></code> command. Unlike the
+basic <code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span></code> command, this does not require that you enter
+your password:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>/usr/bin/kinit<span class="w"> </span>-R
+<span class="gp">$ </span>/usr/bin/klist
 <span class="go">Ticket cache: KEYRING:persistent:436828696:krb_ccache_nBciOlx</span>
 <span class="go">Default principal: abc123@UNICPH.DOMAIN</span>
 
@@ -375,9 +395,9 @@ you can renew it for another 10 hours, until the time specified on the
 <span class="go"> renew until 08/03/2025 21:55:43</span>
 </pre></div>
 </div>
-<p>If <code class="docutils literal notranslate"><span class="pre">kinit</span> <span class="pre">-R</span></code> fails with the message <code class="docutils literal notranslate"><span class="pre">kinit:</span> <span class="pre">No</span> <span class="pre">credentials</span> <span class="pre">cache</span>
-<span class="pre">found</span> <span class="pre">while</span> <span class="pre">renewing</span> <span class="pre">credentials</span></code>, then you are not authenticated and
-need to run <code class="docutils literal notranslate"><span class="pre">kinit</span></code> without the <code class="docutils literal notranslate"><span class="pre">-R</span></code> as described in
+<p>If <code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span> <span class="pre">-R</span></code> fails with the message <code class="docutils literal notranslate"><span class="pre">kinit:</span> <span class="pre">No</span> <span class="pre">credentials</span>
+<span class="pre">cache</span> <span class="pre">found</span> <span class="pre">while</span> <span class="pre">renewing</span> <span class="pre">credentials</span></code>, then you are not authenticated
+and need to run <code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span></code> without the <code class="docutils literal notranslate"><span class="pre">-R</span></code> as described in
 <a class="reference internal" href="#s-network-drives-reactivation"><span class="std std-ref">(Re)activating access to the network drives</span></a>.</p>
 </section>
 <section id="troubleshooting">
@@ -421,10 +441,9 @@ access has timed out.</p>
 <span class="go">kinit: Unknown credential cache type while getting default ccache</span>
 </pre></div>
 </div>
-<p>In that case, run the command <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code> to deactivate the
-current/base environment. This may require running <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code>
-multiple times; your terminal line should not start with <code class="docutils literal notranslate"><span class="pre">(base)</span></code> or
-similar.</p>
+<p>To circumvent this problem, either specify the full path to the <code class="docutils literal notranslate"><span class="pre">kinit</span></code>
+executable (i.e. <code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span></code>) or deactivate the current/base
+environment by <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code>.</p>
 </section>
 </section>
 </section>

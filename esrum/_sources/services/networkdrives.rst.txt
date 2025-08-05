@@ -83,41 +83,61 @@ authenticated as described below.
 
 Should your login have timed out, should you have logged on to Esrum
 without having entered your password, or should you be connected to a
-compute node/RStudio server, then the network drives may be
+compute node or an RStudio server, then the network drives may be
 inaccessible. This will typically result in ``No such file or
 directory`` errors when attempting to access files/folders on the
 network drives.
 
 To (re-)authenticate and thereby enable access to the network drives,
-run the ``kinit`` command and enter the password for your UCPH account:
+run ``/usr/bin/kinit`` and enter the password for your UCPH account:
 
 .. code-block:: console
 
-   $ kinit
+   $ /usr/bin/kinit
    abc123@UNICPH.DOMAIN's password: ************
    $
 
-See the troubleshooting section below, if you get the error message
-``kinit: Unknown credential cache type while getting default ccache``.
+This command *must* be run on the server from which you wish to access
+the network drives:
 
-Once you have successfully run ``kinit``, you should be able to access
-the folders under ``~/ucph`` on the head node, or at their canonical
-locations on other nodes (see :ref:`s_network_drives_compute_nodes`).
+-  **From the head node:** Simply run ``/usr/bin/kinit`` while connected
+   to the head node.
+
+-  **From a compute node:** Start an interactive session as described in
+   the :ref:`s_interactive_session` section, *and then* run
+   ``/usr/bin/kinit``. You will then be able to access the network
+   drives *in that session*.
+
+-  **From an RStudio server**: Log in to the RStudio server as described
+   on the :ref:`p_service_rstudio` page and open the ``Terminal`` tab.
+   Run the command ``/usr/bin/kinit`` in that terminal.
+
+.. warning::
+
+   The explicit path in ``/usr/bin/kinit`` is required to make sure that
+   you call the correct executable, even if you are using a Conda
+   environment or similar. Running ``kinit`` without the full path may
+   otherwise result in errors like ``kinit: Unknown credential cache
+   type while getting default ccache``.
+
+Once you have successfully run ``/usr/bin/kinit``, you should be able to
+access the folders under ``~/ucph`` (only on the head node), or at their
+canonical locations (see :ref:`s_network_drives_compute_nodes`).
 However, if you have tried to access these folders within the last few
-minutes, before running ``kinit``, then you may have to wait a few
-minutes before the folders become accessible again.
+minutes, before running ``/usr/bin/kinit``, then you may have to wait a
+few minutes before the folders become accessible again.
 
 *********************************************
  Extending your access to the network drives
 *********************************************
 
 The maximum duration of your current session (Kerberos ticket) is about
-10 hours, and the time at which it expires can be viewed via the
-``klist`` command:
+10 hours, and the time at which it expires can be viewed via the command
+``/usr/bin/klist``:
 
 .. code-block:: console
 
-   $ klist
+   $ /usr/bin/klist
    Ticket cache: KEYRING:persistent:436828696:krb_ccache_nBciOlx
    Default principal: abc123@UNICPH.DOMAIN
 
@@ -129,13 +149,14 @@ In this case the current session expires at ``07/29/2025 21:22:49``, but
 you can renew it for another 10 hours, until the time specified on the
 ``renew until`` line.
 
-To renew your session, use the ``kinit -R`` command. Unlike the basic
-``kinit`` command, this does not require that you enter your password:
+To renew your session, use the ``/usr/bin/kinit -R`` command. Unlike the
+basic ``/usr/bin/kinit`` command, this does not require that you enter
+your password:
 
 .. code-block:: console
 
-   $ kinit -R
-   abc123@esrumhead01fl:~$ klist
+   $ /usr/bin/kinit -R
+   $ /usr/bin/klist
    Ticket cache: KEYRING:persistent:436828696:krb_ccache_nBciOlx
    Default principal: abc123@UNICPH.DOMAIN
 
@@ -143,9 +164,9 @@ To renew your session, use the ``kinit -R`` command. Unlike the basic
    07/29/2025 12:44:10  07/29/2025 22:44:10  krbtgt/UNICPH.DOMAIN@UNICPH.DOMAIN
     renew until 08/03/2025 21:55:43
 
-If ``kinit -R`` fails with the message ``kinit: No credentials cache
-found while renewing credentials``, then you are not authenticated and
-need to run ``kinit`` without the ``-R`` as described in
+If ``/usr/bin/kinit -R`` fails with the message ``kinit: No credentials
+cache found while renewing credentials``, then you are not authenticated
+and need to run ``/usr/bin/kinit`` without the ``-R`` as described in
 :ref:`s_network_drives_reactivation`.
 
 *****************
