@@ -19,6 +19,12 @@ to the cluster.
 
 .. include:: usage/slurm/basics_troubleshooting.rst
 
+****************
+ Network drives
+****************
+
+.. include:: services/networkdrives_troubleshooting.rst
+
 ***
  R
 ***
