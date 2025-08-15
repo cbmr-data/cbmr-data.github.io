@@ -10,7 +10,7 @@ will be queuing your analyses using the Slurm job management system, as
 described on the :ref:`p_usage_slurm` pages.
 
 Additionally, the two RStudio servers are accessible at
-https://esrumweb01fl/rstudio/ and https://esrumweb02fl/rstudio/. See the
+https://esrumweb01fl/ and https://esrumweb02fl/. See the
 :ref:`p_service_rstudio` page for more information.
 
 However, to connect to any of these, you must
