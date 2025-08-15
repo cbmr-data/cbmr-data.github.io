@@ -5,6 +5,7 @@
 .. toctree::
    :hidden:
 
+   Front page <self>
    contact
    overview
    guidelines
@@ -62,9 +63,11 @@ Esrum cluster is managed by the `Data Analytics Platform`_ (formerly the
 Phenomics Platform) and is available to employees at CBMR as well as
 collaborators visiting CBMR.
 
-You are always welcome to :ref:`contact us <p_contact>` if you have
-questions or problems relating to the cluster, cohorts, other services
-or resources provided by the platform.
+For information about other services provided by Data Analytics, please
+see our `the landing page <https://cbmr-data.github.io/>`_. You are
+always welcome to :ref:`contact us <p_contact>` if you have questions or
+problems relating to the cluster, cohorts, other services or resources
+provided by the platform.
 
 We kindly ask that you acknowledge the use of services or resources
 provided by the Data Analytics Platform. See :ref:`p_guidelines` for
@@ -77,7 +80,8 @@ more information.
    benefit from taking the `Mastering the terminal with Bash and Unix`_
    course offered by the Center for Health Data Science (HeaDS_) at
    SUND. If you intend to make use of R or the RStudio servers, then you
-   may also benefit from the `From Excel to R`_ offered by HeaDS.
+   may also benefit from the `From Excel to R`_ and `R for Data
+   Science`_ courses offered by HeaDS.
 
 *****************
  Getting started
@@ -133,6 +137,8 @@ various other services accessible as part of the HPC cluster, such as
 .. _heads: https://heads.ku.dk/
 
 .. _mastering the terminal with bash and unix: https://heads.ku.dk/course/unix_bash_terminal/
+
+.. _r for data science: https://heads.ku.dk/course/r4ds/
 
 .. _slurm: https://slurm.schedmd.com/overview.html
 
