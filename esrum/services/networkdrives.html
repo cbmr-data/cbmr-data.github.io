@@ -160,6 +160,7 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Front page</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact us</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview of cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guidelines.html">Guidelines and policies</a></li>
@@ -408,9 +409,10 @@ and need to run <code class="docutils literal notranslate"><span class="pre">/us
 (<code class="docutils literal notranslate"><span class="pre">esrumhead01fl</span></code>), and not on the RStudio servers nor on the compute
 nodes. See the <a class="reference internal" href="#s-network-drives-compute-nodes"><span class="std std-ref">Accessing network drives from compute nodes</span></a> section for how to
 access the drives elsewhere.</p>
-<p>If you are connected to the head node, then firstly make sure that you are not using GSSAPI (Kerberos) to log in.
-See the <a class="reference internal" href="../usage/access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page for instructions for how to
-disable this feature if you are using MobaXterm.</p>
+<p>If you are connected to the head node, then firstly make sure that you
+are not using GSSAPI (Kerberos) to log in. See the
+<a class="reference internal" href="../usage/access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page for instructions for how to disable this
+feature if you are using MobaXterm.</p>
 <p>Once you have logged in to Esrum <em>without</em> GSSAPI enabled, and if the
 folder(s) are still missing, then run the following command to create
 any missing network folders:</p>
@@ -441,9 +443,9 @@ access has timed out.</p>
 <span class="go">kinit: Unknown credential cache type while getting default ccache</span>
 </pre></div>
 </div>
-<p>To circumvent this problem, either specify the full path to the <code class="docutils literal notranslate"><span class="pre">kinit</span></code>
-executable (i.e. <code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span></code>) or deactivate the current/base
-environment by <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code>.</p>
+<p>To circumvent this problem, either specify the full path to the
+<code class="docutils literal notranslate"><span class="pre">kinit</span></code> executable (i.e. <code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span></code>) or deactivate the
+current/base environment by <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code>.</p>
 </section>
 </section>
 </section>

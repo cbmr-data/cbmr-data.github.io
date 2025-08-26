@@ -1,3 +1,11 @@
+"Error: Unexpected response from server" when uploading files
+==============================================================
+
+Using RStudio to upload files that are 50 MB or larger may fail with the
+error message ``Unexpected response from server``. Instead, use the
+methods described on the :ref:`p_transfers` page to transfer files to
+Esrum.
+
 Incorrect or invalid username/password
 ======================================
 

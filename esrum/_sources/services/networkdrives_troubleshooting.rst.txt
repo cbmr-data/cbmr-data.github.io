@@ -6,9 +6,10 @@ Note that the ``~/ucph`` folder is only available on the head node
 nodes. See the :ref:`s_network_drives_compute_nodes` section for how to
 access the drives elsewhere.
 
-If you are connected to the head node, then firstly make sure that you are not using GSSAPI (Kerberos) to log in.
-See the :ref:`p_usage_connecting` page for instructions for how to
-disable this feature if you are using MobaXterm.
+If you are connected to the head node, then firstly make sure that you
+are not using GSSAPI (Kerberos) to log in. See the
+:ref:`p_usage_connecting` page for instructions for how to disable this
+feature if you are using MobaXterm.
 
 Once you have logged in to Esrum *without* GSSAPI enabled, and if the
 folder(s) are still missing, then run the following command to create
@@ -47,6 +48,6 @@ The ``kinit`` command may fail if you are using a ``conda`` environment:
    (base) $ kinit
    kinit: Unknown credential cache type while getting default ccache
 
-To circumvent this problem, either specify the full path to the ``kinit``
-executable (i.e. ``/usr/bin/kinit``) or deactivate the current/base
-environment by ``conda deactivate``.
+To circumvent this problem, either specify the full path to the
+``kinit`` executable (i.e. ``/usr/bin/kinit``) or deactivate the
+current/base environment by ``conda deactivate``.

@@ -160,6 +160,7 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Front page</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contact.html">Contact us</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview of cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../guidelines.html">Guidelines and policies</a></li>
@@ -499,12 +500,17 @@ for a job (see <a class="reference internal" href="basics.html#s-best-practice-r
 <img alt="../../_images/slurmboard.png" class="align-center" src="../../_images/slurmboard.png" />
 <p>Briefly, this utility displays every node in the cluster, their status,
 and available resources for each of these. The resources (CPUs, Memory,
-and GPUs) columns are colored as follows: Yellow indicates resources
-that have been reserved; green indicates resources that are actively
-being used; purple indicates resources that may be inaccessible due to
-other resources being reserved (e.g. RAM being inaccessible due to all
-CPUs being reserved vice versa); and black indicates resources that are
-unavailable due to nodes being offline or under maintenance.</p>
+and GPUs) columns are colored as follows:</p>
+<ul class="simple">
+<li><p>Yellow indicates resources that have been reserved;</p></li>
+<li><p>Green indicates resources that are actively being used;</p></li>
+<li><p>Purple indicates resources that may be inaccessible due to other
+resources being reserved. This is based on the assumption that each
+job gets ~16 GB of RAM by default, and the resources may therefore
+still be usable for jobs with custom requirements.</p></li>
+<li><p>Black indicates resources that are unavailable due to nodes being
+offline or under maintenance.</p></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Data Analytics Platform uses this utility to monitor how busy the

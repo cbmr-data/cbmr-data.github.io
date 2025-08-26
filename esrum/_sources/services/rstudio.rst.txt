@@ -9,8 +9,8 @@ users of Esrum. For general tips on using R, see the :ref:`p_tips_r`
 page.
 
 The Rstudio servers can be found at
-   #. https://esrumweb01fl/rstudio/
-   #. https://esrumweb02fl/rstudio/
+   #. https://esrumweb01fl/
+   #. https://esrumweb02fl/
 
 To access the RStudio servers, you *must* have applied for access as
 described on the :ref:`p_usage_access_applying` page, and you *must* be
