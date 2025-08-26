@@ -152,6 +152,9 @@ be used to submit/call any of your R-scripts:
  Installing R modules
 **********************
 
+Basics of installing packages
+=============================
+
 Modules may be installed in your home folder using the
 ``install.packages`` command:
 
@@ -180,6 +183,70 @@ you and press enter:
    [...]
 
    Selection: 1
+
+Selecting a default mirror
+==========================
+
+It is possible to select a default package mirror and thereby simplify
+the installation process. To set the default to ``0-Cloud``, add the
+following command to your ``~/.Rprofile`` file:
+
+.. code-block:: r
+
+   options(repos=c(CRAN="https://cloud.r-project.org/"))
+
+This can be done by running the following command in your (bash) shell:
+
+.. code-block:: bash
+
+   echo -e '\noptions(repos=c(CRAN="https://cloud.r-project.org/"))' | tee -a ~/.Rprofile
+
+Note that this does not affect already running R shells.
+
+Speeding up package installs
+============================
+
+By default, R only uses a single thread when compiling packages and for
+large packages, this can result in very long installation times. To
+improve this situation, we can tell the build system to use more than
+one thread by setting the ``GNUMAKEFLAGS`` environment variable.
+
+For example, to install the ``ape`` package:
+
+.. code-block:: shell
+
+   $ srun --pty -c 8 -- bash
+   $ export GNUMAKEFLAGS="-j${SLURM_CPUS_PER_TASK}"
+   $ R
+   > install.packages("ape")
+
+This starts an interactive session on Slurm with 8 CPUs reserved,
+configure the ``make`` command (used to build R packages) to use up to 8
+CPUs at once, and then install the package(s) we are interested in.
+
+To automatically set use the number of CPUs you've reserved, add the
+following command to your ``~/.Rprofile`` file:
+
+.. code-block:: text
+
+   Sys.setenv("GNUMAKEFLAGS" = sprintf("-j%i", max(2, as.numeric(Sys.getenv("SLURM_CPUS_PER_TASK", "2")))))
+
+This can be done by running the following command in bash:
+
+.. code-block:: r
+
+   echo 'Sys.setenv("GNUMAKEFLAGS" = sprintf("-j%i", max(2, as.numeric(Sys.getenv("SLURM_CPUS_PER_TASK", "2")))))' | tee -a ~/.Rprofile
+
+This command sets the number of CPUs ``make`` can use in R to the number
+you've reserved via Slurm, but no less than 2. This is an acceptable
+number on the head node, and generally gives better performance even if
+you've only reserved a single CPU.
+
+.. warning::
+
+   Installing R packages on the head node while using more than 2 CPUs,
+   may result in your processes getting killed without warning. Remember
+   to use an interactive session.
 
 .. _s_service_rstudio:
 
