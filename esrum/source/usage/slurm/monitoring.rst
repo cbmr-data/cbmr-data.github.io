@@ -307,12 +307,19 @@ for a job (see :ref:`s_best_practice_resources`):
 
 Briefly, this utility displays every node in the cluster, their status,
 and available resources for each of these. The resources (CPUs, Memory,
-and GPUs) columns are colored as follows: Yellow indicates resources
-that have been reserved; green indicates resources that are actively
-being used; purple indicates resources that may be inaccessible due to
-other resources being reserved (e.g. RAM being inaccessible due to all
-CPUs being reserved vice versa); and black indicates resources that are
-unavailable due to nodes being offline or under maintenance.
+and GPUs) columns are colored as follows:
+
+-  Yellow indicates resources that have been reserved;
+
+-  Green indicates resources that are actively being used;
+
+-  Purple indicates resources that may be inaccessible due to other
+   resources being reserved. This is based on the assumption that each
+   job gets ~16 GB of RAM by default, and the resources may therefore
+   still be usable for jobs with custom requirements.
+
+-  Black indicates resources that are unavailable due to nodes being
+   offline or under maintenance.
 
 .. note::
 
