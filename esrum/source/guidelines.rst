@@ -121,10 +121,10 @@ not considered establishing privileged access.
 ******************
 
 If you make use of the Esrum HPC cluster, human cohorts managed by Data
-Analytics, or otherwise receive support from the platform, then we ask
-that you kindly acknowledge the platform in any resulting publications,
-presentations, or other scientific output. For example via an
-acknowledgement such as,
+Analytics, or otherwise receive support from the platform, then we
+kindly ask that you acknowledge the platform in any resulting
+publications, presentations, or other scientific output. For example via
+an acknowledgement such as,
 
    HPC facilities and technical expertise was provided by the Data
    Analytics Platform at the Novo Nordisk Foundation Center for Basic
