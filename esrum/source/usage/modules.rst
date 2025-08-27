@@ -10,15 +10,11 @@ you "load" specific software, and specific *versions* of software, as
 needed. If used correctly this can help to both document your analyses
 and to make them more reproducible.
 
-Modules on Esrum are primarily provided by UCPH-IT, who add new tools
-and new versions of tools when requested (see
-:ref:`s_requesting_missing_modules`). A browser-based `list of modules`_
-provided by UCPH-IT is available. Users can also set up their own
-private or shared environment modules as described in the
-:ref:`p_tips_modules` section.
-
-A collection of software managed by the Data Analytics team is also
-available. See the :ref:`s_shared_modules` section below.
+Modules on Esrum are primarily provided by UCPH-IT (`list of modules`_),
+as well as Data Analytics (see the :ref:`s_shared_modules` section
+below). New software modules and new versions are added on request, as
+described below. Users can also set up their own private or shared
+environment modules as described in the :ref:`p_tips_modules` section.
 
 *************
  Basic usage
@@ -308,8 +304,8 @@ Simply running the script with ``bash modules.sh`` will not work.
 The Data Analytics team manages a small collection of modules for custom
 tools in the ``cbmr_shared`` project, located under
 ``/projects/cbmr_shared/apps/modules``. You should have access to these
-modules by default. If that is not the case, then please contact
-:ref:`contact us <p_contact>`.
+modules by default. If that is not the case, then please :ref:`contact
+us <p_contact>`.
 
 These modules should be listed first when you use the ``module avail``
 command:
@@ -344,56 +340,21 @@ Esrum.
 *****************************
 
 If the software you need is not available as a module, or if the
-specific version you need is not available, then you can request it
-through UCPH-IT as described below.
+specific version you need is not available, then you can simply
+:ref:`contact us <p_contact>` for assistance.
 
-Software modules managed by UCPH-IT are available to the entirety of
-UCPH, so if you need modules for software with licenses that do not
-permit this, or if you need modules tailored for your specific needs,
-then you are also welcome to :ref:`contact us <p_contact>` for
-assistance.
+We will need the following information:
 
-To request software through UCPH-IT,
+#. The name and version of the software you would like to request
+#. A link to where the software can be downloaded (if applicable)
+#. Any special considerations, like optional features to be enabled and
+   the like
 
-#. Log in to the UCPH `IT Serviceportal`_.
-#. Click the ``Create Ticket`` / ``Opret Sag`` button.
-#. Tick/select the ``Research IT`` / ``Forsknings IT`` category in the
-   category/filters list on the left side of the screen.
-#. Click the ``Research Applications Counseling and Support`` /
-   ``Forskningsapplikationer Rådgivning og support`` button.
-#. Click the ``REQUEST`` / ``Bestil`` button.
-#. List what software you wish to have installed in the "Please
-   describe" text-box (see below).
-#. Write "esrumhead01fl.unicph.domain" in the System name text-box.
-#. Click the ``Review & submit`` / ``Gennemse & bestil`` button.
-#. Review your ticket and then click the ``Submit`` / ``Bestil`` button.
-
-Your request should include the following information:
-
-#. The name of the software.
-#. The specific version requested (if any).
-#. The homepage of the software.
-
-A request may look like the following:
-
-.. code-block:: text
-
-   Requesting the addition of environment modules for the following software:
-
-   1. seqtk v1.4 (https://github.com/lh3/seqtk)
-   2. jq v1.5 (https://stedolan.github.io/jq/)
-   3. igzip v2.30.0 (https://github.com/intel/isa-l)
-
-.. warning::
-
-   If you are not an employee at CBMR you may not have permission to
-   open a ticket as described above. In that case simply
-   :ref:`p_contact` us with your request, and we will forward it to
-   UCPH-IT.
+Depending on the software you requested, it can either be made available
+to all of UCPH, to all of CBMR, or to a specific group of people,
+depending on your needs and what the license of the software permits.
 
 .. _environment modules: https://modules.sourceforge.net/
-
-.. _it serviceportal: https://serviceportal.ku.dk/
 
 .. _list of modules: https://fssw.ku.dk/envmod.html
 
