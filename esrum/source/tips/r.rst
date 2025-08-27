@@ -209,14 +209,14 @@ Speeding up package installs
 By default, R only uses a single thread when compiling packages and for
 large packages, this can result in very long installation times. To
 improve this situation, we can tell the build system to use more than
-one thread by setting the ``GNUMAKEFLAGS`` environment variable.
+one thread by setting the ``MAKEFLAGS`` environment variable.
 
 For example, to install the ``ape`` package:
 
 .. code-block:: shell
 
    $ srun --pty -c 8 -- bash
-   $ export GNUMAKEFLAGS="-j${SLURM_CPUS_PER_TASK}"
+   $ export MAKEFLAGS="-j${SLURM_CPUS_PER_TASK}"
    $ R
    > install.packages("ape")
 
@@ -229,13 +229,13 @@ following command to your ``~/.Rprofile`` file:
 
 .. code-block:: text
 
-   Sys.setenv("GNUMAKEFLAGS" = sprintf("-j%i", max(2, as.numeric(Sys.getenv("SLURM_CPUS_PER_TASK", "2")))))
+   Sys.setenv("MAKEFLAGS" = sprintf("-j%i", max(2, as.numeric(Sys.getenv("SLURM_CPUS_PER_TASK", "2")))))
 
 This can be done by running the following command in bash:
 
 .. code-block:: r
 
-   echo 'Sys.setenv("GNUMAKEFLAGS" = sprintf("-j%i", max(2, as.numeric(Sys.getenv("SLURM_CPUS_PER_TASK", "2")))))' | tee -a ~/.Rprofile
+   echo 'Sys.setenv("MAKEFLAGS" = sprintf("-j%i", max(2, as.numeric(Sys.getenv("SLURM_CPUS_PER_TASK", "2")))))' | tee -a ~/.Rprofile
 
 This command sets the number of CPUs ``make`` can use in R to the number
 you've reserved via Slurm, but no less than 2. This is an acceptable
