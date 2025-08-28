@@ -43,6 +43,7 @@
    :hidden:
    :caption: Tips and tricks
 
+   tips/ports
    tips/modules
    tips/tmux
    tips/batching_commands
