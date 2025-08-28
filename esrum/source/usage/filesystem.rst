@@ -191,38 +191,42 @@ folder.
  Scratch folders
 *****************
 
-Every node on Esrum (including the head node) has a 1.5-3 TB scratch
-drive available at ``/scratch``. This is intended for short-lived
-temporary files generated as part of jobs running on the cluster, and
-can provide a significant performance benefit if a job, for example,
-writes a lot of small temporary files.
+Every node on Esrum (including the head node) has at least 1.5 TB
+scratch drive available at ``/scratch``, located in the root folder.
 
-.. note::
+These ``/scratch`` drives should not be confused for the per-project
+scratch-folders described above. Unlike your home folder, ``/projects``,
+``/datasets``, and network drives, the root ``/scratch`` folders are
+physically located on each node. Files written to ``/scratch`` on one
+node are therefore *not* accessible on other nodes.
 
-   Note that unlike your home folder, ``/projects``, and ``/datasets``,
-   the ``/scratch`` folders are physically located on each node. Files
-   written to ``/scratch`` on one node are therefore *not* accessible on
-   other nodes.
+These drives are intended for short-lived, temporary files generated as
+part of jobs running on the cluster, and can provide a significant
+performance boost compared to reading to and writing to temporary files
+on UCPH's network based storage system.
 
-It is recommended that you create a sub-folder containing your UCPH-IT
-username when using the scratch-drive as part of your scripts:
+.. tip::
 
-.. code-block:: bash
-   :linenos:
+   It is recommended that you create a sub-folder containing your
+   UCPH-IT username when using the scratch-drive as part of your
+   scripts:
 
-   # Create temporary folder in the form /scratch/abc123
-   mkdir -p "/scratch/${USER}"
-   # Some software use the TMPDIR to place temporary files
-   export TMPDIR="/scratch/${USER}"
-   # Other software has options for where to place temporary files
-   mysoftware --in "mydata" --out "myresults" --temp "/scratch/${USER}"
+   .. code-block:: bash
+      :linenos:
+
+      # Create temporary folder in the form /scratch/abc123
+      mkdir -p "/scratch/${USER}"
+      # Some software use the TMPDIR to place temporary files
+      export TMPDIR="/scratch/${USER}"
+      # Other software has options for where to place temporary files
+      mysoftware --in "mydata" --out "myresults" --temp "/scratch/${USER}"
 
 .. warning::
 
    The scratch-drives have limited capacity and are *only* intended for
    short-lived, temporary files. Do not use it to store results, and
    please remember to clean up after your jobs. Files left on the
-   scratch-drive *will* be deleted.
+   scratch-drives *will* be deleted.
 
 *********
  Backups
