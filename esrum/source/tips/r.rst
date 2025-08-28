@@ -242,11 +242,27 @@ you've reserved via Slurm, but no less than 2. This is an acceptable
 number on the head node, and generally gives better performance even if
 you've only reserved a single CPU.
 
+You can further speed up installations involving multiple packages by
+calling ``options(Ncpus=2)`` *before* calling ``ìnstall.packages``. To
+enable this option by default, append it to your ``~/.Rprofile`` file.
+This can be done by running the following command in bash:
+
+.. code-block:: bash
+
+   echo 'options(Ncpus=2)' | tee -a ~/.Rprofile
+
+Note, however, that this changes how R prints the output from the
+packages it is installing: Instead of showing live output, R prints the
+complete output *after* a package has been installed, which may give the
+impression that the installation processing has frozen.
+
 .. warning::
 
-   Installing R packages on the head node while using more than 2 CPUs,
-   may result in your processes getting killed without warning. Remember
-   to use an interactive session.
+   Installing R packages on the head node while using more resources
+   than the equivalent of ``MAKEFLAGS=-j2`` and ``options(Ncpus=2)``,
+   may result in your R session getting killed without warning. If you
+   use the suggested commands above, then this won't happen. Please use
+   :ref:`interactive sessions <s_interactive_session>` otherwise.
 
 .. _s_service_rstudio:
 
