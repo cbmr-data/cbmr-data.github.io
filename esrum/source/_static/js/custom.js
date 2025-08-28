@@ -34,8 +34,8 @@ function createElementUpdaters(elem, pattern) {
         });
     } else if (elem.textContent && elem.textContent.includes(pattern)) {
         const updater = (elem, content) => {
-            return (replacment) => {
-                elem.textContent = content.replaceAll(pattern, replacment);
+            return (replacement) => {
+                elem.textContent = content.replaceAll(pattern, replacement);
             }
         };
 
