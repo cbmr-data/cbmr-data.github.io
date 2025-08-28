@@ -116,6 +116,8 @@ Immediate intervention under the supervision of a user with appropriate
 access to protected data, for example while providing direct support, is
 not considered establishing privileged access.
 
+.. _s_acknowledgements:
+
 ******************
  Acknowledgements
 ******************
