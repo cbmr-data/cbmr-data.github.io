@@ -243,9 +243,12 @@ number on the head node, and generally gives better performance even if
 you've only reserved a single CPU.
 
 You can further speed up installations involving multiple packages by
-calling ``options(Ncpus=2)`` *before* calling ``ìnstall.packages``. To
-enable this option by default, append it to your ``~/.Rprofile`` file.
-This can be done by running the following command in bash:
+calling ``options(Ncpus=2)`` *before* calling ``ìnstall.packages``. This
+enables R to build and install two packages simultaneously, in addition
+to using more CPUs to build each package.
+
+To enable this option by default, append it to your ``~/.Rprofile``
+file. This can be done by running the following command in bash:
 
 .. code-block:: bash
 
