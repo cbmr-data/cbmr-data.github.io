@@ -453,11 +453,24 @@ following command to your <code class="docutils literal notranslate"><span class
 you've reserved via Slurm, but no less than 2. This is an acceptable
 number on the head node, and generally gives better performance even if
 you've only reserved a single CPU.</p>
+<p>You can further speed up installations involving multiple packages by
+calling <code class="docutils literal notranslate"><span class="pre">options(Ncpus=2)</span></code> <em>before</em> calling <code class="docutils literal notranslate"><span class="pre">ìnstall.packages</span></code>. To
+enable this option by default, append it to your <code class="docutils literal notranslate"><span class="pre">~/.Rprofile</span></code> file.
+This can be done by running the following command in bash:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;options(Ncpus=2)&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>~/.Rprofile
+</pre></div>
+</div>
+<p>Note, however, that this changes how R prints the output from the
+packages it is installing: Instead of showing live output, R prints the
+complete output <em>after</em> a package has been installed, which may give the
+impression that the installation processing has frozen.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Installing R packages on the head node while using more than 2 CPUs,
-may result in your processes getting killed without warning. Remember
-to use an interactive session.</p>
+<p>Installing R packages on the head node while using more resources
+than the equivalent of <code class="docutils literal notranslate"><span class="pre">MAKEFLAGS=-j2</span></code> and <code class="docutils literal notranslate"><span class="pre">options(Ncpus=2)</span></code>,
+may result in your R session getting killed without warning. If you
+use the suggested commands above, then this won't happen. Please use
+<a class="reference internal" href="../usage/slurm/basics.html#s-interactive-session"><span class="std std-ref">interactive sessions</span></a> otherwise.</p>
 </div>
 </section>
 </section>
