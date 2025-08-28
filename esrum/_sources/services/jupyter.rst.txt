@@ -55,22 +55,14 @@ instructions on how to reserve GPUs or large amounts of memory. The
    lose connection to the head node. See :ref:`p_tips_tmux` for more
    information.
 
-.. tip::
-
-   You can also start your Jupyter notebook in an interactive Slurm
-   session, as described in the :ref:`s_interactive_session` section, if
-   you prefer. If you do so, then it is recommended to use the arguments
-   ``--name jupyter`` or similar, so that you can easily identify the
-   job (see below). It is still recommended that you start this session
-   in a ``tmux`` or ``screen`` session (see the previous tip).
-
 ************************************
  Connecting to the Jupyter Notebook
 ************************************
 
 To connect to the notebook server, you will first need to set up a
-connection from your PC to the compute node where your notebook is
-running. This is called "port forwarding" and is described below.
+connection from your PC to the compute node on which your notebook is
+running. This is called "port forwarding" and is described on the
+:ref:`p_tips_forwarding` page.
 
 However, to do so you must first determine on which compute node your
 job is running. This can be done in a couple of ways:
@@ -102,138 +94,9 @@ job is running. This can be done in a couple of ways:
    By looking in the ``NODELIST`` column, we can see that the notebook
    is running on ``esrumcmpn07fl``, as above.
 
-.. _s_ports_osx_linux:
-
-Port forwarding for OSX/Linux users
-===================================
-
-The following instructions describe how to set up port forwarding to
-Esrum from your laptop or PC running OSX or Linux.
-
-This is accomplished by running the following command-line *on your
-laptop or PC*, replacing ``esrumcmpn07fl`` with the name of the node on
-which your notebook is running (see above), and replacing ``abc123``
-with your UCPH short username:
-
-.. code-block:: console
-
-   $ ssh -S none -N -L 'XXXXX:esrumcmpn07fl:XXXXX' abc123@esrumhead01fl.unicph.domain
-
-.. note::
-
-   The ``-S none`` option ensures that SSH opens a new connection even
-   if shared connections are enabled (see the ``ControlMaster`` section
-   in ``man ssh``), which is required to forward the requested ports.
-   The ``-N`` option prevents ``ssh`` from open a shell on Esrum, which
-   ensures that you do not accidentally use this terminal and then close
-   it, while still using the notebook, and the ``-L`` option configures
-   the actual port forwarding.
-
-While this command is running, you can open your notebook via the
-``http://127.0.0.1:XXXXX/?token=${long_text_here}`` URL that Jupyter
-Notebook printed in your terminal on Esrum:
-
-.. code-block:: text
-   :emphasize-lines: 5
-
-   To access the notebook, open this file in a browser:
-       file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html
-     Or copy and paste one of these URLs:
-         http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
-      or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
-
-Typically, this can be done by pressing Ctrl and left-clicking on the
-URL in the terminal:
-
-.. warning::
-
-   The URL including the node name
-   (`http://esrumcmpn07fl.unicph.domain:XXXXX/`) will not work, since
-   you do not have direct access to the node! You must use the URL
-   starting with `http://127.0.0.1:XXXXX/`
-
-.. tip::
-
-   If you created a ``~/.ssh/config`` file as suggested in the
-   :ref:`s_connecting_linux` section, then you can use the shorter
-   command ``ssh -S none -N -L 'XXXXX:esrumcmpn07fl:XXXXX' esrum``.
-
-.. _s_ports_windows:
-
-Port forwarding for Windows users
-=================================
-
-The following instructions describe how to set up port forwarding to
-Esrum from your laptop or PC running Windows. It is furthermore assumed
-that you are using MobaXterm to connect to Esrum (see the
-:ref:`s_configure_mobaxterm` section). If not, then please refer to the
-documentation for your software of choice.
-
-#. Install and configure MobaXterm as described in
-   :ref:`s_configure_mobaxterm`.
-
-#. Click the middle ``Tunneling`` button on the toolbar.
-
-   .. image:: images/mobaxterm_tunnel_01.png
-      :align: center
-
-#. Click the bottom-left ``New SSH Tunnel`` button.
-
-   .. image:: images/mobaxterm_tunnel_02.png
-      :align: center
-
-#. Follow these steps to configure the tunnel:
-
-   .. image:: images/mobaxterm_tunnel_03.png
-      :align: center
-
-   #. In middle-left box, write your chosen port number (e.g. ``XXXXX``)
-      where the screenshot shows ``12345``.
-
-   #. In the top-right pair of boxes, replace ``localhost`` with the
-      name of the node where your notebook is running (this was
-      ``esrumcmpn07fl`` in the example above, but your notebook will
-      likely be running on a different node), and replace ``12345`` with
-      your chosen port number (e.g. ``XXXXX``).
-
-   #. In the middle-right trio of boxes, write the full name of the head
-      node (``esrumhead01fl.unicph.domain``), write your UCPH username
-      where the screenshot has ``abc123``, and make sure that the value
-      is ``22``.
-
-   #. Finally, click ``Save``.
-
-#. If the tunnel does not start automatically, press either the
-   Play-icon button or the ``Start all tunnels`` button:
-
-   .. image:: images/mobaxterm_tunnel_04.png
-      :align: center
-
-#. Enter your password and your SSH tunnel should now be active.
-
-Once you have configured MobaXterm and enabled port forwarding, you can
-open your notebook via the
-``http://127.0.0.1:XXXXX/?token=${long_text_here}`` URL that Jupyter
-Notebook printed in your terminal on Esrum:
-
-.. code-block:: text
-   :emphasize-lines: 5
-
-   To access the notebook, open this file in a browser:
-       file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html
-     Or copy and paste one of these URLs:
-         http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
-      or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
-
-Typically, this can be done by pressing Ctrl and left-clicking on the
-URL in the terminal.
-
-.. warning::
-
-   The URL including the node name
-   (`http://esrumcmpn07fl.unicph.domain:XXXXX/`) will not work, since
-   you do not have direct access to the node! You must use the URL
-   starting with `http://127.0.0.1:XXXXX/`
+Once you've determined what node your notebook is running on, go to the
+:ref:`p_tips_forwarding` page and setup port forwarding to that node and
+the port you used when starting Jupyter (e.g. ``XXXXX``).
 
 .. _s_jupyter_kernels:
 

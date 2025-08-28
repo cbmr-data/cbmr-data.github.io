@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="../_static/css/playback.css?v=2c0b8537" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=8d9e8310" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=14071cef" />
     
     
 
@@ -171,7 +171,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../usage/access/access.html">Applying for access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/access/connecting.html">Connecting to the cluster</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../usage/filesystem.html">Data storage on Esrum</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Data storage on Esrum</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../usage/projects.html">Creating projects and datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/projects.html">Requesting projects and datasets</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../usage/slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -199,6 +199,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tips and tricks</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../tips/ports.html">Port forwarding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tips/modules.html">Creating environment modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tips/tmux.html">Persistent sessions with tmux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tips/batching_commands.html">Batching commands in bash</a></li>
@@ -293,21 +294,13 @@ or <code class="docutils literal notranslate"><span class="pre">screen</span></c
 lose connection to the head node. See <a class="reference internal" href="../tips/tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> for more
 information.</p>
 </div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>You can also start your Jupyter notebook in an interactive Slurm
-session, as described in the <a class="reference internal" href="../usage/slurm/basics.html#s-interactive-session"><span class="std std-ref">Interactive sessions</span></a> section, if
-you prefer. If you do so, then it is recommended to use the arguments
-<code class="docutils literal notranslate"><span class="pre">--name</span> <span class="pre">jupyter</span></code> or similar, so that you can easily identify the
-job (see below). It is still recommended that you start this session
-in a <code class="docutils literal notranslate"><span class="pre">tmux</span></code> or <code class="docutils literal notranslate"><span class="pre">screen</span></code> session (see the previous tip).</p>
-</div>
 </section>
 <section id="connecting-to-the-jupyter-notebook">
 <h2>Connecting to the Jupyter Notebook<a class="headerlink" href="#connecting-to-the-jupyter-notebook" title="Link to this heading">¶</a></h2>
 <p>To connect to the notebook server, you will first need to set up a
-connection from your PC to the compute node where your notebook is
-running. This is called &quot;port forwarding&quot; and is described below.</p>
+connection from your PC to the compute node on which your notebook is
+running. This is called &quot;port forwarding&quot; and is described on the
+<a class="reference internal" href="../tips/ports.html#p-tips-forwarding"><span class="std std-ref">Port forwarding</span></a> page.</p>
 <p>However, to do so you must first determine on which compute node your
 job is running. This can be done in a couple of ways:</p>
 <ul>
@@ -334,113 +327,9 @@ separate terminal:</p>
 is running on <code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl</span></code>, as above.</p>
 </li>
 </ul>
-<section id="port-forwarding-for-osx-linux-users">
-<span id="s-ports-osx-linux"></span><h3>Port forwarding for OSX/Linux users<a class="headerlink" href="#port-forwarding-for-osx-linux-users" title="Link to this heading">¶</a></h3>
-<p>The following instructions describe how to set up port forwarding to
-Esrum from your laptop or PC running OSX or Linux.</p>
-<p>This is accomplished by running the following command-line <em>on your
-laptop or PC</em>, replacing <code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl</span></code> with the name of the node on
-which your notebook is running (see above), and replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code>
-with your UCPH short username:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>-S<span class="w"> </span>none<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="s1">&#39;XXXXX:esrumcmpn07fl:XXXXX&#39;</span><span class="w"> </span>abc123@esrumhead01fl.unicph.domain
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">-S</span> <span class="pre">none</span></code> option ensures that SSH opens a new connection even
-if shared connections are enabled (see the <code class="docutils literal notranslate"><span class="pre">ControlMaster</span></code> section
-in <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">ssh</span></code>), which is required to forward the requested ports.
-The <code class="docutils literal notranslate"><span class="pre">-N</span></code> option prevents <code class="docutils literal notranslate"><span class="pre">ssh</span></code> from open a shell on Esrum, which
-ensures that you do not accidentally use this terminal and then close
-it, while still using the notebook, and the <code class="docutils literal notranslate"><span class="pre">-L</span></code> option configures
-the actual port forwarding.</p>
-</div>
-<p>While this command is running, you can open your notebook via the
-<code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:XXXXX/?token=${long_text_here}</span></code> URL that Jupyter
-Notebook printed in your terminal on Esrum:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>To access the notebook, open this file in a browser:
-    file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html
-  Or copy and paste one of these URLs:
-      http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
-<span class="hll">   or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
-</span></pre></div>
-</div>
-<p>Typically, this can be done by pressing Ctrl and left-clicking on the
-URL in the terminal:</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The URL including the node name
-(<cite>http://esrumcmpn07fl.unicph.domain:XXXXX/</cite>) will not work, since
-you do not have direct access to the node! You must use the URL
-starting with <cite>http://127.0.0.1:XXXXX/</cite></p>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>If you created a <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> file as suggested in the
-<a class="reference internal" href="../usage/access/connecting.html#s-connecting-linux"><span class="std std-ref">Connecting on Linux</span></a> section, then you can use the shorter
-command <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-S</span> <span class="pre">none</span> <span class="pre">-N</span> <span class="pre">-L</span> <span class="pre">'XXXXX:esrumcmpn07fl:XXXXX'</span> <span class="pre">esrum</span></code>.</p>
-</div>
-</section>
-<section id="port-forwarding-for-windows-users">
-<span id="s-ports-windows"></span><h3>Port forwarding for Windows users<a class="headerlink" href="#port-forwarding-for-windows-users" title="Link to this heading">¶</a></h3>
-<p>The following instructions describe how to set up port forwarding to
-Esrum from your laptop or PC running Windows. It is furthermore assumed
-that you are using MobaXterm to connect to Esrum (see the
-<a class="reference internal" href="../usage/access/connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section). If not, then please refer to the
-documentation for your software of choice.</p>
-<ol class="arabic">
-<li><p>Install and configure MobaXterm as described in
-<a class="reference internal" href="../usage/access/connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a>.</p></li>
-<li><p>Click the middle <code class="docutils literal notranslate"><span class="pre">Tunneling</span></code> button on the toolbar.</p>
-<img alt="../_images/mobaxterm_tunnel_01.png" class="align-center" src="../_images/mobaxterm_tunnel_01.png" />
-</li>
-<li><p>Click the bottom-left <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">SSH</span> <span class="pre">Tunnel</span></code> button.</p>
-<img alt="../_images/mobaxterm_tunnel_02.png" class="align-center" src="../_images/mobaxterm_tunnel_02.png" />
-</li>
-<li><p>Follow these steps to configure the tunnel:</p>
-<img alt="../_images/mobaxterm_tunnel_03.png" class="align-center" src="../_images/mobaxterm_tunnel_03.png" />
-<ol class="arabic simple">
-<li><p>In middle-left box, write your chosen port number (e.g. <code class="docutils literal notranslate"><span class="pre">XXXXX</span></code>)
-where the screenshot shows <code class="docutils literal notranslate"><span class="pre">12345</span></code>.</p></li>
-<li><p>In the top-right pair of boxes, replace <code class="docutils literal notranslate"><span class="pre">localhost</span></code> with the
-name of the node where your notebook is running (this was
-<code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl</span></code> in the example above, but your notebook will
-likely be running on a different node), and replace <code class="docutils literal notranslate"><span class="pre">12345</span></code> with
-your chosen port number (e.g. <code class="docutils literal notranslate"><span class="pre">XXXXX</span></code>).</p></li>
-<li><p>In the middle-right trio of boxes, write the full name of the head
-node (<code class="docutils literal notranslate"><span class="pre">esrumhead01fl.unicph.domain</span></code>), write your UCPH username
-where the screenshot has <code class="docutils literal notranslate"><span class="pre">abc123</span></code>, and make sure that the value
-is <code class="docutils literal notranslate"><span class="pre">22</span></code>.</p></li>
-<li><p>Finally, click <code class="docutils literal notranslate"><span class="pre">Save</span></code>.</p></li>
-</ol>
-</li>
-<li><p>If the tunnel does not start automatically, press either the
-Play-icon button or the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">all</span> <span class="pre">tunnels</span></code> button:</p>
-<img alt="../_images/mobaxterm_tunnel_04.png" class="align-center" src="../_images/mobaxterm_tunnel_04.png" />
-</li>
-<li><p>Enter your password and your SSH tunnel should now be active.</p></li>
-</ol>
-<p>Once you have configured MobaXterm and enabled port forwarding, you can
-open your notebook via the
-<code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:XXXXX/?token=${long_text_here}</span></code> URL that Jupyter
-Notebook printed in your terminal on Esrum:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>To access the notebook, open this file in a browser:
-    file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html
-  Or copy and paste one of these URLs:
-      http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
-<span class="hll">   or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
-</span></pre></div>
-</div>
-<p>Typically, this can be done by pressing Ctrl and left-clicking on the
-URL in the terminal.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The URL including the node name
-(<cite>http://esrumcmpn07fl.unicph.domain:XXXXX/</cite>) will not work, since
-you do not have direct access to the node! You must use the URL
-starting with <cite>http://127.0.0.1:XXXXX/</cite></p>
-</div>
-</section>
+<p>Once you've determined what node your notebook is running on, go to the
+<a class="reference internal" href="../tips/ports.html#p-tips-forwarding"><span class="std std-ref">Port forwarding</span></a> page and setup port forwarding to that node and
+the port you used when starting Jupyter (e.g. <code class="docutils literal notranslate"><span class="pre">XXXXX</span></code>).</p>
 </section>
 <section id="adding-an-r-kernel-to-jupyter">
 <span id="s-jupyter-kernels"></span><h2>Adding an R kernel to Jupyter<a class="headerlink" href="#adding-an-r-kernel-to-jupyter" title="Link to this heading">¶</a></h2>
@@ -501,9 +390,9 @@ you have entered the wrong port number in your browser. Therefore,</p>
 <ul>
 <li><p>Verify that port forwarding is active: On OSX/Linux that means
 verifying that an <code class="docutils literal notranslate"><span class="pre">ssh</span></code> command is running as described in the
-<a class="reference internal" href="#s-ports-osx-linux"><span class="std std-ref">Port forwarding for OSX/Linux users</span></a> section, and on Windows that means
+<a class="reference internal" href="../tips/ports.html#s-ports-osx-linux"><span class="std std-ref">Port forwarding for OSX/Linux users</span></a> section, and on Windows that means
 activating port forwarding in MobaXterm as described in the
-<a class="reference internal" href="#s-ports-windows"><span class="std std-ref">Port forwarding for Windows users</span></a> section.</p></li>
+<a class="reference internal" href="../tips/ports.html#s-ports-windows"><span class="std std-ref">Port forwarding for Windows users</span></a> section.</p></li>
 <li><p>If using the instructions for Linux/OSX, verify that you ran the
 <code class="docutils literal notranslate"><span class="pre">ssh</span></code> command on your laptop or desktop, and <em>not</em> on the Esrum
 head node.</p></li>
@@ -591,11 +480,7 @@ compute nodes.</p>
             <ul>
 <li><a class="reference internal" href="#">Jupyter Notebooks</a><ul>
 <li><a class="reference internal" href="#starting-a-jupyter-notebook">Starting a Jupyter notebook</a></li>
-<li><a class="reference internal" href="#connecting-to-the-jupyter-notebook">Connecting to the Jupyter Notebook</a><ul>
-<li><a class="reference internal" href="#port-forwarding-for-osx-linux-users">Port forwarding for OSX/Linux users</a></li>
-<li><a class="reference internal" href="#port-forwarding-for-windows-users">Port forwarding for Windows users</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#connecting-to-the-jupyter-notebook">Connecting to the Jupyter Notebook</a></li>
 <li><a class="reference internal" href="#adding-an-r-kernel-to-jupyter">Adding an R kernel to Jupyter</a></li>
 <li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
 <li><a class="reference internal" href="#jupyter-notebooks-browser-error-when-opening-url">Jupyter Notebooks: Browser error when opening URL</a></li>
@@ -618,7 +503,7 @@ compute nodes.</p>
     <script src="../_static/scripts/furo.js?v=4e2eecee"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=a7c4b63f"></script>
-    <script src="../_static/js/custom.js?v=39b97c90"></script>
+    <script src="../_static/js/custom.js?v=d3d7fd27"></script>
     <script src="../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../_static/js/playback.js?v=d7002ce9"></script>
     </body>

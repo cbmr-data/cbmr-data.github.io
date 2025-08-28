@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="../_static/css/playback.css?v=2c0b8537" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=8d9e8310" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=14071cef" />
     
     
 
@@ -171,7 +171,7 @@
 <li class="toctree-l1"><a class="reference internal" href="access/access.html">Applying for access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="access/connecting.html">Connecting to the cluster</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="filesystem.html">Data storage on Esrum</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Data storage on Esrum</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="projects.html">Creating projects and datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Requesting projects and datasets</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -199,6 +199,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tips and tricks</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../tips/ports.html">Port forwarding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tips/modules.html">Creating environment modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tips/tmux.html">Persistent sessions with tmux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tips/batching_commands.html">Batching commands in bash</a></li>
@@ -259,14 +260,11 @@ Esrum via so-called <a class="reference external" href="https://modules.sourcefo
 you &quot;load&quot; specific software, and specific <em>versions</em> of software, as
 needed. If used correctly this can help to both document your analyses
 and to make them more reproducible.</p>
-<p>Modules on Esrum are primarily provided by UCPH-IT, who add new tools
-and new versions of tools when requested (see
-<a class="reference internal" href="#s-requesting-missing-modules"><span class="std std-ref">Requesting software modules</span></a>). A browser-based <a class="reference external" href="https://fssw.ku.dk/envmod.html">list of modules</a>
-provided by UCPH-IT is available. Users can also set up their own
-private or shared environment modules as described in the
-<a class="reference internal" href="../tips/modules.html#p-tips-modules"><span class="std std-ref">Creating environment modules</span></a> section.</p>
-<p>A collection of software managed by the Data Analytics team is also
-available. See the <a class="reference internal" href="#s-shared-modules"><span class="std std-ref">Shared CBMR modules</span></a> section below.</p>
+<p>Modules on Esrum are primarily provided by UCPH-IT (<a class="reference external" href="https://fssw.ku.dk/envmod.html">list of modules</a>),
+as well as Data Analytics (see the <a class="reference internal" href="#s-shared-modules"><span class="std std-ref">Shared CBMR modules</span></a> section
+below). New software modules and new versions are added on request, as
+described below. Users can also set up their own private or shared
+environment modules as described in the <a class="reference internal" href="../tips/modules.html#p-tips-modules"><span class="std std-ref">Creating environment modules</span></a> section.</p>
 <section id="basic-usage">
 <h2>Basic usage<a class="headerlink" href="#basic-usage" title="Link to this heading">¶</a></h2>
 <p>This section briefly describe how to carry out common tasks using the
@@ -504,8 +502,8 @@ as running <code class="docutils literal notranslate"><span class="pre">module</
 <p>The Data Analytics team manages a small collection of modules for custom
 tools in the <code class="docutils literal notranslate"><span class="pre">cbmr_shared</span></code> project, located under
 <code class="docutils literal notranslate"><span class="pre">/projects/cbmr_shared/apps/modules</span></code>. You should have access to these
-modules by default. If that is not the case, then please contact
-<a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">contact us</span></a>.</p>
+modules by default. If that is not the case, then please <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">contact
+us</span></a>.</p>
 <p>These modules should be listed first when you use the <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code>
 command:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">---------------- /projects/cbmr_shared/apps/modules/modulefiles ----------------</span>
@@ -531,49 +529,18 @@ Esrum.</p>
 <section id="requesting-software-modules">
 <span id="s-requesting-missing-modules"></span><h2>Requesting software modules<a class="headerlink" href="#requesting-software-modules" title="Link to this heading">¶</a></h2>
 <p>If the software you need is not available as a module, or if the
-specific version you need is not available, then you can request it
-through UCPH-IT as described below.</p>
-<p>Software modules managed by UCPH-IT are available to the entirety of
-UCPH, so if you need modules for software with licenses that do not
-permit this, or if you need modules tailored for your specific needs,
-then you are also welcome to <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">contact us</span></a> for
-assistance.</p>
-<p>To request software through UCPH-IT,</p>
+specific version you need is not available, then you can simply
+<a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">contact us</span></a> for assistance.</p>
+<p>We will need the following information:</p>
 <ol class="arabic simple">
-<li><p>Log in to the UCPH <a class="reference external" href="https://serviceportal.ku.dk/">IT Serviceportal</a>.</p></li>
-<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Ticket</span></code> / <code class="docutils literal notranslate"><span class="pre">Opret</span> <span class="pre">Sag</span></code> button.</p></li>
-<li><p>Tick/select the <code class="docutils literal notranslate"><span class="pre">Research</span> <span class="pre">IT</span></code> / <code class="docutils literal notranslate"><span class="pre">Forsknings</span> <span class="pre">IT</span></code> category in the
-category/filters list on the left side of the screen.</p></li>
-<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Research</span> <span class="pre">Applications</span> <span class="pre">Counseling</span> <span class="pre">and</span> <span class="pre">Support</span></code> /
-<code class="docutils literal notranslate"><span class="pre">Forskningsapplikationer</span> <span class="pre">Rådgivning</span> <span class="pre">og</span> <span class="pre">support</span></code> button.</p></li>
-<li><p>Click the <code class="docutils literal notranslate"><span class="pre">REQUEST</span></code> / <code class="docutils literal notranslate"><span class="pre">Bestil</span></code> button.</p></li>
-<li><p>List what software you wish to have installed in the &quot;Please
-describe&quot; text-box (see below).</p></li>
-<li><p>Write &quot;esrumhead01fl.unicph.domain&quot; in the System name text-box.</p></li>
-<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Review</span> <span class="pre">&amp;</span> <span class="pre">submit</span></code> / <code class="docutils literal notranslate"><span class="pre">Gennemse</span> <span class="pre">&amp;</span> <span class="pre">bestil</span></code> button.</p></li>
-<li><p>Review your ticket and then click the <code class="docutils literal notranslate"><span class="pre">Submit</span></code> / <code class="docutils literal notranslate"><span class="pre">Bestil</span></code> button.</p></li>
+<li><p>The name and version of the software you would like to request</p></li>
+<li><p>A link to where the software can be downloaded (if applicable)</p></li>
+<li><p>Any special considerations, like optional features to be enabled and
+the like</p></li>
 </ol>
-<p>Your request should include the following information:</p>
-<ol class="arabic simple">
-<li><p>The name of the software.</p></li>
-<li><p>The specific version requested (if any).</p></li>
-<li><p>The homepage of the software.</p></li>
-</ol>
-<p>A request may look like the following:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Requesting the addition of environment modules for the following software:
-
-1. seqtk v1.4 (https://github.com/lh3/seqtk)
-2. jq v1.5 (https://stedolan.github.io/jq/)
-3. igzip v2.30.0 (https://github.com/intel/isa-l)
-</pre></div>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>If you are not an employee at CBMR you may not have permission to
-open a ticket as described above. In that case simply
-<a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">Contact us</span></a> us with your request, and we will forward it to
-UCPH-IT.</p>
-</div>
+<p>Depending on the software you requested, it can either be made available
+to all of UCPH, to all of CBMR, or to a specific group of people,
+depending on your needs and what the license of the software permits.</p>
 </section>
 </section>
 
@@ -663,7 +630,7 @@ UCPH-IT.</p>
     <script src="../_static/scripts/furo.js?v=4e2eecee"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=a7c4b63f"></script>
-    <script src="../_static/js/custom.js?v=39b97c90"></script>
+    <script src="../_static/js/custom.js?v=d3d7fd27"></script>
     <script src="../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../_static/js/playback.js?v=d7002ce9"></script>
     </body>

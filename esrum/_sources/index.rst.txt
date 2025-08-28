@@ -43,6 +43,7 @@
    :hidden:
    :caption: Tips and tricks
 
+   tips/ports
    tips/modules
    tips/tmux
    tips/batching_commands
@@ -58,20 +59,25 @@
    communications/presentations
 
 Welcome to the Esrum high-performance computing (HPC) cluster at The
-Novo Nordisk Foundation Center for Basic Metabolic Research (CBMR_). The
-Esrum cluster is managed by the `Data Analytics Platform`_ (formerly the
-Phenomics Platform) and is available to employees at CBMR as well as
-collaborators visiting CBMR.
+Novo Nordisk Foundation Center for Basic Metabolic Research (CBMR_).
+Esrum is managed by the `Data Analytics Platform`_ (DAP), and is
+available to all employees at CBMR and their collaborators.
 
-For information about other services provided by Data Analytics, please
-see our `the landing page <https://cbmr-data.github.io/>`_. You are
-always welcome to :ref:`contact us <p_contact>` if you have questions or
-problems relating to the cluster, cohorts, other services or resources
-provided by the platform.
+In addition to the Esrum HPC cluster, the DAP also provides
 
-We kindly ask that you acknowledge the use of services or resources
-provided by the Data Analytics Platform. See :ref:`p_guidelines` for
-more information.
+-  two :ref:`RStudio <p_service_rstudio>` servers
+-  access to more than 80 :ref:`human cohorts <p_human_cohorts>`
+-  a `project registry`_ for tracking your projects at CBMR
+-  `open source tools and pipeline`_
+
+You are also always welcome to :ref:`contact us <p_contact>` if you have
+questions or problems relating to the cluster, cohorts, other services
+or resources provided by the platform.
+
+We also kindly ask that you acknowledge the use of services and
+resources that we provide. See the :ref:`acknowledgements
+<s_acknowledgements>` section on the :ref:`p_guidelines` page for more
+information.
 
 .. note::
 
@@ -79,9 +85,9 @@ more information.
    (the default command-line). Users who lack this familiarity may
    benefit from taking the `Mastering the terminal with Bash and Unix`_
    course offered by the Center for Health Data Science (HeaDS_) at
-   SUND. If you intend to make use of R or the RStudio servers, then you
-   may also benefit from the `From Excel to R`_ and `R for Data
-   Science`_ courses offered by HeaDS.
+   SUND. If you intend to make use of `R <p_tips_r>`_ or the `RStudio
+   <p_service_rstudio>`_ servers, then you may also benefit from the
+   `From Excel to R`_ and `R for Data Science`_ courses.
 
 *****************
  Getting started
@@ -90,41 +96,36 @@ more information.
 We hold an intro-workshop for the Esrum cluster a few times a year,
 based on interest, so please :ref:`let us know <p_contact>` if you'd
 like to attend a workshop. Future workshops will be announced to all
-employees at CBMR, while slides from past workshops are made available
-on the :ref:`presentations <p_outreach_presentations>` page.
+employees at CBMR. Slides from past workshops are made available on the
+:ref:`presentations <p_outreach_presentations>` page.
 
 However, this documentation is explicitly written to help you get
 started with using Esrum, so you do not need to wait for the intro
 workshop to be announced:
 
--  Before you continue, please read our :ref:`p_guidelines`. You are
-   expected our guidelines while using the Esrum cluster.
+#. Please read the :ref:`p_guidelines` for using Esrum before you
+   continue.
 
--  To get access to Esrum, you must first apply for access as described
-   in :ref:`p_usage_access_applying`. Once you have access, you can
-   connect to the cluster as described in :ref:`connecting to the
-   cluster <p_usage_connecting>` page.
+#. To get access to Esrum and related resources, see the
+   :ref:`p_usage_access_applying` page. Once you have been granted
+   access, you can connect to the cluster as described in
+   :ref:`connecting to the cluster <p_usage_connecting>` page.
 
--  Connecting to Esrum gives you access to your personal home folder and
-   to project and data set folders as described in
-   :ref:`p_usage_filesystem`.
+#. On Esrum, you'll find your home folder, datasets, projects, and
+   network drives laid out as described on the :ref:`p_usage_filesystem`
+   page.
 
--  Users of Esrum have access to a large library of scientific and other
-   software. This software is available via environment modules as
-   described in :ref:`p_usage_modules`.
+#. Users of Esrum have access to a large library of software provided by
+   DAP and UCPH-IT. The :ref:`p_usage_modules` page describes how to
+   access this software, and how to request software that is not
+   currently available.
 
--  To run this or other software on Esrum, you must make use of the
-   Slurm_ queuing system as described in :ref:`p_usage_slurm`.
+#. To run software on Esrum, you must make use of the Slurm_ queuing
+   system as described in :ref:`p_usage_slurm`.
 
--  Finally, :ref:`p_transfers` describes how to transfer your data to
-   and from Esrum, to and from services like SIF and Computerome.
-
-In addition, this documentation contains an overview of the
-:ref:`cluster architecture and features <p_overview>`, describes the
-various other services accessible as part of the HPC cluster, such as
-:ref:`Rstudio servers <p_service_rstudio>`, :ref:`Shiny servers
-<p_usage_shiny>`, and :ref:`persistent podman containers
-<p_containers>`.
+#. Finally, the :ref:`p_transfers` page describes how to transfer your
+   data to and from Esrum, and to and from services like SIF or
+   Computerome.
 
 .. _cbmr: https://cbmr.ku.dk/
 
@@ -137,6 +138,10 @@ various other services accessible as part of the HPC cluster, such as
 .. _heads: https://heads.ku.dk/
 
 .. _mastering the terminal with bash and unix: https://heads.ku.dk/course/unix_bash_terminal/
+
+.. _open source tools and pipeline: https://github.com/cbmr-data/
+
+.. _project registry: https://cbmrcat.unicph.domain/projects/
 
 .. _r for data science: https://heads.ku.dk/course/r4ds/
 

@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
     <link rel="stylesheet" type="text/css" href="_static/css/playback.css?v=2c0b8537" />
-    <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=8d9e8310" />
+    <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=14071cef" />
     
     
 
@@ -171,7 +171,7 @@
 <li class="toctree-l1"><a class="reference internal" href="usage/access/access.html">Applying for access</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/access/connecting.html">Connecting to the cluster</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="usage/filesystem.html">Data storage on Esrum</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Data storage on Esrum</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="usage/projects.html">Creating projects and datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage/projects.html">Requesting projects and datasets</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="usage/slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -199,6 +199,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tips and tricks</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="tips/ports.html">Port forwarding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tips/modules.html">Creating environment modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tips/tmux.html">Persistent sessions with tmux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tips/batching_commands.html">Batching commands in bash</a></li>
@@ -267,60 +268,61 @@
 <div class="toctree-wrapper compound">
 </div>
 <p>Welcome to the Esrum high-performance computing (HPC) cluster at The
-Novo Nordisk Foundation Center for Basic Metabolic Research (<a class="reference external" href="https://cbmr.ku.dk/">CBMR</a>). The
-Esrum cluster is managed by the <a class="reference external" href="https://cbmr.ku.dk/research-facilities/data-analytics/">Data Analytics Platform</a> (formerly the
-Phenomics Platform) and is available to employees at CBMR as well as
-collaborators visiting CBMR.</p>
-<p>For information about other services provided by Data Analytics, please
-see our <a class="reference external" href="https://cbmr-data.github.io/">the landing page</a>. You are
-always welcome to <a class="reference internal" href="contact.html#p-contact"><span class="std std-ref">contact us</span></a> if you have questions or
-problems relating to the cluster, cohorts, other services or resources
-provided by the platform.</p>
-<p>We kindly ask that you acknowledge the use of services or resources
-provided by the Data Analytics Platform. See <a class="reference internal" href="guidelines.html#p-guidelines"><span class="std std-ref">Guidelines and policies</span></a> for
-more information.</p>
+Novo Nordisk Foundation Center for Basic Metabolic Research (<a class="reference external" href="https://cbmr.ku.dk/">CBMR</a>).
+Esrum is managed by the <a class="reference external" href="https://cbmr.ku.dk/research-facilities/data-analytics/">Data Analytics Platform</a> (DAP), and is
+available to all employees at CBMR and their collaborators.</p>
+<p>In addition to the Esrum HPC cluster, the DAP also provides</p>
+<ul class="simple">
+<li><p>two <a class="reference internal" href="services/rstudio.html#p-service-rstudio"><span class="std std-ref">RStudio</span></a> servers</p></li>
+<li><p>access to more than 80 <a class="reference internal" href="resources/cohorts.html#p-human-cohorts"><span class="std std-ref">human cohorts</span></a></p></li>
+<li><p>a <a class="reference external" href="https://cbmrcat.unicph.domain/projects/">project registry</a> for tracking your projects at CBMR</p></li>
+<li><p><a class="reference external" href="https://github.com/cbmr-data/">open source tools and pipeline</a></p></li>
+</ul>
+<p>You are also always welcome to <a class="reference internal" href="contact.html#p-contact"><span class="std std-ref">contact us</span></a> if you have
+questions or problems relating to the cluster, cohorts, other services
+or resources provided by the platform.</p>
+<p>We also kindly ask that you acknowledge the use of services and
+resources that we provide. See the <a class="reference internal" href="guidelines.html#s-acknowledgements"><span class="std std-ref">acknowledgements</span></a> section on the <a class="reference internal" href="guidelines.html#p-guidelines"><span class="std std-ref">Guidelines and policies</span></a> page for more
+information.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This documentation assumes some familiarity with using Linux and bash
 (the default command-line). Users who lack this familiarity may
 benefit from taking the <a class="reference external" href="https://heads.ku.dk/course/unix_bash_terminal/">Mastering the terminal with Bash and Unix</a>
 course offered by the Center for Health Data Science (<a class="reference external" href="https://heads.ku.dk/">HeaDS</a>) at
-SUND. If you intend to make use of R or the RStudio servers, then you
-may also benefit from the <a class="reference external" href="https://heads.ku.dk/course/from-excel-to-r/">From Excel to R</a> and <a class="reference external" href="https://heads.ku.dk/course/r4ds/">R for Data
-Science</a> courses offered by HeaDS.</p>
+SUND. If you intend to make use of <a class="reference external" href="p_tips_r">R</a> or the <a class="reference external" href="p_service_rstudio">RStudio</a> servers, then you may also benefit from the
+<a class="reference external" href="https://heads.ku.dk/course/from-excel-to-r/">From Excel to R</a> and <a class="reference external" href="https://heads.ku.dk/course/r4ds/">R for Data Science</a> courses.</p>
 </div>
 <section id="getting-started">
 <h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">¶</a></h2>
 <p>We hold an intro-workshop for the Esrum cluster a few times a year,
 based on interest, so please <a class="reference internal" href="contact.html#p-contact"><span class="std std-ref">let us know</span></a> if you'd
 like to attend a workshop. Future workshops will be announced to all
-employees at CBMR, while slides from past workshops are made available
-on the <a class="reference internal" href="communications/presentations.html#p-outreach-presentations"><span class="std std-ref">presentations</span></a> page.</p>
+employees at CBMR. Slides from past workshops are made available on the
+<a class="reference internal" href="communications/presentations.html#p-outreach-presentations"><span class="std std-ref">presentations</span></a> page.</p>
 <p>However, this documentation is explicitly written to help you get
 started with using Esrum, so you do not need to wait for the intro
 workshop to be announced:</p>
-<ul class="simple">
-<li><p>Before you continue, please read our <a class="reference internal" href="guidelines.html#p-guidelines"><span class="std std-ref">Guidelines and policies</span></a>. You are
-expected our guidelines while using the Esrum cluster.</p></li>
-<li><p>To get access to Esrum, you must first apply for access as described
-in <a class="reference internal" href="usage/access/access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a>. Once you have access, you can
-connect to the cluster as described in <a class="reference internal" href="usage/access/connecting.html#p-usage-connecting"><span class="std std-ref">connecting to the
-cluster</span></a> page.</p></li>
-<li><p>Connecting to Esrum gives you access to your personal home folder and
-to project and data set folders as described in
-<a class="reference internal" href="usage/filesystem.html#p-usage-filesystem"><span class="std std-ref">Data storage on Esrum</span></a>.</p></li>
-<li><p>Users of Esrum have access to a large library of scientific and other
-software. This software is available via environment modules as
-described in <a class="reference internal" href="usage/modules.html#p-usage-modules"><span class="std std-ref">Software on Esrum</span></a>.</p></li>
-<li><p>To run this or other software on Esrum, you must make use of the
-<a class="reference external" href="https://slurm.schedmd.com/overview.html">Slurm</a> queuing system as described in <a class="reference internal" href="usage/slurm/index.html#p-usage-slurm"><span class="std std-ref">Running jobs using Slurm</span></a>.</p></li>
-<li><p>Finally, <a class="reference internal" href="usage/transfers.html#p-transfers"><span class="std std-ref">Transferring data</span></a> describes how to transfer your data to
-and from Esrum, to and from services like SIF and Computerome.</p></li>
-</ul>
-<p>In addition, this documentation contains an overview of the
-<a class="reference internal" href="overview.html#p-overview"><span class="std std-ref">cluster architecture and features</span></a>, describes the
-various other services accessible as part of the HPC cluster, such as
-<a class="reference internal" href="services/rstudio.html#p-service-rstudio"><span class="std std-ref">Rstudio servers</span></a>, <a class="reference internal" href="services/shiny.html#p-usage-shiny"><span class="std std-ref">Shiny servers</span></a>, and <a class="reference internal" href="services/containers.html#p-containers"><span class="std std-ref">persistent podman containers</span></a>.</p>
+<ol class="arabic simple">
+<li><p>Please read the <a class="reference internal" href="guidelines.html#p-guidelines"><span class="std std-ref">Guidelines and policies</span></a> for using Esrum before you
+continue.</p></li>
+<li><p>To get access to Esrum and related resources, see the
+<a class="reference internal" href="usage/access/access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a> page. Once you have been granted
+access, you can connect to the cluster as described in
+<a class="reference internal" href="usage/access/connecting.html#p-usage-connecting"><span class="std std-ref">connecting to the cluster</span></a> page.</p></li>
+<li><p>On Esrum, you'll find your home folder, datasets, projects, and
+network drives laid out as described on the <a class="reference internal" href="usage/filesystem.html#p-usage-filesystem"><span class="std std-ref">Data storage on Esrum</span></a>
+page.</p></li>
+<li><p>Users of Esrum have access to a large library of software provided by
+DAP and UCPH-IT. The <a class="reference internal" href="usage/modules.html#p-usage-modules"><span class="std std-ref">Software on Esrum</span></a> page describes how to
+access this software, and how to request software that is not
+currently available.</p></li>
+<li><p>To run software on Esrum, you must make use of the <a class="reference external" href="https://slurm.schedmd.com/overview.html">Slurm</a> queuing
+system as described in <a class="reference internal" href="usage/slurm/index.html#p-usage-slurm"><span class="std std-ref">Running jobs using Slurm</span></a>.</p></li>
+<li><p>Finally, the <a class="reference internal" href="usage/transfers.html#p-transfers"><span class="std std-ref">Transferring data</span></a> page describes how to transfer your
+data to and from Esrum, and to and from services like SIF or
+Computerome.</p></li>
+</ol>
 </section>
 </section>
 
@@ -388,7 +390,7 @@ various other services accessible as part of the HPC cluster, such as
     <script src="_static/scripts/furo.js?v=4e2eecee"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=a7c4b63f"></script>
-    <script src="_static/js/custom.js?v=39b97c90"></script>
+    <script src="_static/js/custom.js?v=d3d7fd27"></script>
     <script src="_static/js/libgif.js?v=7adcb026"></script>
     <script src="_static/js/playback.js?v=d7002ce9"></script>
     </body>

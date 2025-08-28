@@ -35,3 +35,17 @@ div[class^="highlight-"] {
 .highlight .hll {
     background-color: #fde3bd;
 }
+
+/** Container for images overlaid with dynamic ports **/
+.port-container {
+    position: relative;
+    container: ports / inline-size;
+}
+
+/** Dynamially generated/updated port number */
+.port {
+    position: absolute;
+    color: black;
+    font-weight: bold;
+    font-size: 1.5cqw;
+}

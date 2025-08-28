@@ -22,8 +22,31 @@ function replaceTextContent(elem, pattern, replacement) {
     }
 };
 
+/**
+ * Return list of lambda functions that replace `pattern` in element
+ * text, while supporting repeated invocations.
+ */
+function createElementUpdaters(elem, pattern) {
+    const elems = [];
+    if (elem.childNodes.length) {
+        elem.childNodes.forEach(function (child) {
+            elems.push(createElementUpdaters(child, pattern));
+        });
+    } else if (elem.textContent && elem.textContent.includes(pattern)) {
+        const updater = (elem, content) => {
+            return (replacement) => {
+                elem.textContent = content.replaceAll(pattern, replacement);
+            }
+        };
+
+        elems.push(updater(elem, elem.textContent));
+    }
+
+    return elems.flat();
+};
+
 /** Open external links in a new window */
-let origin = (new URL(document.url)).origin;
+let origin = (new URL(document.URL)).origin;
 document.querySelectorAll('a.reference.external').forEach(
     function (elem) {
         if (new URL(elem.href).origin !== origin) {

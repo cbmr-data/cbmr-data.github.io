@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="search" title="Search" href="../search.html" /><link rel="next" title="Running jobs using Slurm" href="slurm/index.html" /><link rel="prev" title="Data storage on Esrum" href="filesystem.html" />
+<link rel="search" title="Search" href="../search.html" /><link rel="next" title="Creating environment modules" href="modules.html" /><link rel="prev" title="Shiny servers" href="../services/shiny.html" />
 
     <!-- Generated with Sphinx 7.4.7 and Furo 2024.04.27 -->
-        <title>Requesting projects and datasets - Esrum Cluster documentation</title>
+        <title>Port forwarding - Esrum Cluster documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -167,22 +167,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Using the cluster</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="access/access.html">Applying for access</a></li>
-<li class="toctree-l1"><a class="reference internal" href="access/connecting.html">Connecting to the cluster</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="filesystem.html">Data storage on Esrum</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Data storage on Esrum</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Requesting projects and datasets</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage/access/access.html">Applying for access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/access/connecting.html">Connecting to the cluster</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/filesystem.html">Data storage on Esrum</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Data storage on Esrum</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../usage/projects.html">Requesting projects and datasets</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="slurm/basics.html">Basic Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="slurm/advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="slurm/monitoring.html">Monitoring slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="slurm/gpu.html">GPU / high-memory jobs</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../usage/slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/basics.html">Basic Slurm jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/advanced.html">Advanced Slurm jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/monitoring.html">Monitoring slurm jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../usage/slurm/gpu.html">GPU / high-memory jobs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">Software on Esrum</a></li>
-<li class="toctree-l1"><a class="reference internal" href="transfers.html">Transferring data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/modules.html">Software on Esrum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/transfers.html">Transferring data</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul>
@@ -198,14 +198,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../services/shiny.html">Shiny servers</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tips and tricks</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../tips/ports.html">Port forwarding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tips/modules.html">Creating environment modules</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tips/tmux.html">Persistent sessions with tmux</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tips/batching_commands.html">Batching commands in bash</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tips/robust_scripts.html">Writing robust bash scripts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tips/snakemake.html">Using Snakemake on Esrum</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tips/r.html">Using R on Esrum</a></li>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Port forwarding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Creating environment modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tmux.html">Persistent sessions with tmux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="batching_commands.html">Batching commands in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="robust_scripts.html">Writing robust bash scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="snakemake.html">Using Snakemake on Esrum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="r.html">Using R on Esrum</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Outreach</span></p>
 <ul>
@@ -231,7 +231,7 @@
         </a>
         <div class="content-icon-container">
           <div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/cbmr-data/cbmr-data.github.io/edit/main/esrum/source/usage/projects.rst" title="Edit this page">
+  <a class="muted-link" href="https://github.com/cbmr-data/cbmr-data.github.io/edit/main/esrum/source/tips/ports.rst" title="Edit this page">
     <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
@@ -253,64 +253,122 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="requesting-projects-and-datasets">
-<span id="p-usage-projects"></span><h1>Requesting projects and datasets<a class="headerlink" href="#requesting-projects-and-datasets" title="Link to this heading">¶</a></h1>
-<p>This page describes how to request new projects (located in
-<code class="docutils literal notranslate"><span class="pre">/projects</span></code>) and datasets (<code class="docutils literal notranslate"><span class="pre">/datasets</span></code>). For a detailed description
-of these, see the <a class="reference internal" href="filesystem.html#p-usage-filesystem"><span class="std std-ref">Data storage on Esrum</span></a> page.</p>
-<p>Briefly,</p>
-<ul class="simple">
-<li><p>Projects are meant to house apps, data, and results for individual
-projects and the people working on those projects. Every member of a
-project will have write access to the standard subfolder in the
-project folder, and will be able to deposit data.</p></li>
-<li><p>Datasets are meant for static data and as such only the owner has the
-ability to add or modify files in a dataset. This is useful for both
-raw data and for results that are intended to be shared across
-different projects.</p></li>
-</ul>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>When dealing with GDPR projected data, the project and datasets
-should correspond to the data processing agreement in place for each
-dataset. <em>Do not</em> store datasets under different GDPR data processing
-agreement in the same project or dataset. Similarly, do not place
-GDPR protected and non-GDPR protected data in the same
-project/dataset, if different people needs access to the GDPR and
-non-GDPR data. Keeping datasets separate ensures that only people
-with relevant permissions from the data owner are able to access the
-GDPR protected data.</p>
+          <section id="port-forwarding">
+<span id="p-tips-forwarding"></span><h1>Port forwarding<a class="headerlink" href="#port-forwarding" title="Link to this heading">¶</a></h1>
+<p>This page describes how to set up port forwarding from your PC or
+laptop, to the Esrum head node or to a compute node on Esrum. Before you
+continue, please select the port you wish to forward. The following
+examples will be updated to match that choice.</p>
+<center>
+  <label for="port">Port to forward:</label>
+  <input id="port-input" name="port" min=1024 max=65535 type="number">
+</center><p>Once you have selected a port, please select your operating system of
+choice:</p>
+<div class="table-wrapper image-buttons docutils container">
+<table class="image-buttons docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../usage/access/connecting.html#s-connecting-windows"><span class="std std-ref">Windows</span></a></p>
+<a class="reference external image-reference" href="#connecting-on-windows"><img alt="../_images/os_windows.png" src="../_images/os_windows.png" style="width: 128px;" />
+</a>
+</td>
+<td><p><a class="reference internal" href="../usage/access/connecting.html#s-connecting-osx"><span class="std std-ref">OSX</span></a></p>
+<a class="reference external image-reference" href="#connecting-on-osx"><img alt="../_images/os_macosx.png" src="../_images/os_macosx.png" style="width: 128px;" />
+</a>
+</td>
+<td><p><a class="reference internal" href="../usage/access/connecting.html#s-connecting-linux"><span class="std std-ref">Linux</span></a></p>
+<a class="reference external image-reference" href="#connecting-on-linux"><img alt="../_images/os_linux.png" src="../_images/os_linux.png" style="width: 128px;" />
+</a>
+</td>
+</tr>
+</tbody>
+</table>
 </div>
-<section id="requesting-a-new-project-or-dataset">
-<h2>Requesting a new project or dataset<a class="headerlink" href="#requesting-a-new-project-or-dataset" title="Link to this heading">¶</a></h2>
-<p>To request the creation of a new project or dataset, please <a class="reference external" href="p_contact">contact us</a> with the following information.</p>
-<ol class="arabic simple">
-<li><p><strong>Who should be the owner of the project?</strong> We highly recommend that
-the person chosen for this role is a permanent employee at CBMR (e.g.
-a PI or staff scientist) or on a long-term contract. A member of DAP
-will be added as a second owner, so that we can provide support for
-managing membership.</p></li>
-<li><p><strong>Who should have access to the project?</strong> Who, other than the owner
-of the project or dataset, should be given access once it has been
-created?</p></li>
-<li><p><strong>How much data do you expect to use?</strong> UCPH-IT needs a rough
-estimate of how much data you expect to store in project or dataset
-in the first six months: 1 TB or less, 100 TB or less, or more than
-100 TB.</p></li>
-<li><p><strong>What is the name of the project?</strong> This name will be used for the
-project or dataset folder, has to be unique across UCPH, so it may be
-helpful to include either a center name (<em>e.g.</em> <code class="docutils literal notranslate"><span class="pre">cbmr_</span></code>) or group
-name (<em>e.g.</em> <code class="docutils literal notranslate"><span class="pre">dap_</span></code>) as a prefix. Note that this name is public.
-Only letters (<code class="docutils literal notranslate"><span class="pre">a</span></code> to <code class="docutils literal notranslate"><span class="pre">z</span></code>), digits (<code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">9</span></code>), and
-underscores (<code class="docutils literal notranslate"><span class="pre">_</span></code>) are allowed. It is recommended to pick a
-reasonably short name.</p></li>
-<li><p><strong>Will your project contain sensitive data?</strong> You must let us know if
-you intend to store <em>any</em> sensitive data in the project, GDPR
-protected or otherwise. As a rule of thumb, you should say &quot;yes&quot; if
-you work with human data.</p></li>
+<section id="port-forwarding-for-windows-users">
+<span id="s-ports-windows"></span><h2>Port forwarding for Windows users<a class="headerlink" href="#port-forwarding-for-windows-users" title="Link to this heading">¶</a></h2>
+<p>The following instructions describe how to set up port forwarding to
+Esrum from your laptop or PC running Windows. It is furthermore assumed
+that you are using MobaXterm to connect to Esrum (see the
+<a class="reference internal" href="../usage/access/connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section). If not, then please refer to the
+documentation for your software of choice.</p>
+<ol class="arabic">
+<li><p>Install and configure MobaXterm as described in
+<a class="reference internal" href="../usage/access/connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a>.</p></li>
+<li><p>Click the middle <code class="docutils literal notranslate"><span class="pre">Tunneling</span></code> button on the toolbar.</p>
+<img alt="../_images/mobaxterm_tunnel_01.png" class="align-center" src="../_images/mobaxterm_tunnel_01.png" />
+</li>
+<li><p>Click the bottom-left <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">SSH</span> <span class="pre">Tunnel</span></code> button.</p>
+<img alt="../_images/mobaxterm_tunnel_02.png" class="align-center" src="../_images/mobaxterm_tunnel_02.png" />
+</li>
+<li><p>Follow these steps to configure the tunnel:</p>
+<p class="port-container">
+  <span class="port" style="left: 58.5%;top: 22cqw;">XXXXX</span>
+  <span class="port" style="left: 19.5%;top: 35.5cqw;">XXXXX</span>
+  <span class="port" style="left: 77%;top: 58.5cqw;">XXXXX</span><img alt="../_images/mobaxterm_tunnel_03.png" class="align-center" src="../_images/mobaxterm_tunnel_03.png" />
+</p><ol class="arabic simple">
+<li><p>In middle-left box, write your chosen port number as shown above.</p></li>
+<li><p>If the service you wish to connect to is running on a compute
+note, then replace <code class="docutils literal notranslate"><span class="pre">localhost</span></code> in the top-right pair of boxes
+with the name of that node (such as
+<code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl.unicph.domain</span></code>), and enter your chosen port
+number.</p></li>
+<li><p>In the middle-right trio of boxes, write the full name of the head
+node (<code class="docutils literal notranslate"><span class="pre">esrumhead01fl.unicph.domain</span></code>), write your UCPH username
+where the screenshot has <code class="docutils literal notranslate"><span class="pre">abc123</span></code>, and make sure that the value
+is <code class="docutils literal notranslate"><span class="pre">22</span></code>.</p></li>
+<li><p>Finally, click <code class="docutils literal notranslate"><span class="pre">Save</span></code>.</p></li>
 </ol>
-<p>You are always welcome to reach out if you are unsure about any of this.</p>
+</li>
+<li><p>If the tunnel does not start automatically, press either the
+Play-icon button or the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">all</span> <span class="pre">tunnels</span></code> button:</p>
+<img alt="../_images/mobaxterm_tunnel_04.png" class="align-center" src="../_images/mobaxterm_tunnel_04.png" />
+</li>
+<li><p>Enter your password and your SSH tunnel should now be active.</p></li>
+</ol>
 </section>
+<section id="port-forwarding-for-osx-linux-users">
+<span id="s-ports-osx-linux"></span><h2>Port forwarding for OSX/Linux users<a class="headerlink" href="#port-forwarding-for-osx-linux-users" title="Link to this heading">¶</a></h2>
+<p>The following instructions describe how to set up port forwarding to
+Esrum from your laptop or PC running OSX or Linux.</p>
+<p>This is accomplished by running the following command-line <em>on your
+laptop or PC</em>, replacing <code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl</span></code> with the name of the node to
+which you want to forward a port, and replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code> with your
+UCPH short username:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>-S<span class="w"> </span>none<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="s1">&#39;XXXXX:esrumcmpn07fl:XXXXX&#39;</span><span class="w"> </span>abc123@esrumhead01fl.unicph.domain
+</pre></div>
+</div>
+<p>If the service you wish to connect to is instead running on the head
+node, then use the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>-S<span class="w"> </span>none<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="s1">&#39;XXXXX:localhost:XXXXX&#39;</span><span class="w"> </span>abc123@esrumhead01fl.unicph.domain
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">-S</span> <span class="pre">none</span></code> option ensures that SSH opens a new connection even if
+shared connections are enabled (see the <code class="docutils literal notranslate"><span class="pre">ControlMaster</span></code> section in
+<code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">ssh</span></code>), which is required to forward the requested ports. The
+<code class="docutils literal notranslate"><span class="pre">-N</span></code> option prevents <code class="docutils literal notranslate"><span class="pre">ssh</span></code> from opening a shell on Esrum, which
+ensures that you do not accidentally use this terminal and then close
+it, while still using the forwarded port, and the <code class="docutils literal notranslate"><span class="pre">-L</span></code> option
+configures the actual port forwarding.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you created a <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> file as suggested in the
+<a class="reference internal" href="../usage/access/connecting.html#s-connecting-linux"><span class="std std-ref">Connecting on Linux</span></a> section, then you can use the shorter
+command <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-S</span> <span class="pre">none</span> <span class="pre">-N</span> <span class="pre">-L</span> <span class="pre">'XXXXX:esrumcmpn07fl:XXXXX'</span> <span class="pre">esrum</span></code>.</p>
+</div>
+<script defer>
+ document.addEventListener('DOMContentLoaded', function() {
+   const portInput = document.querySelector("#port-input");
+   const updaters = createElementUpdaters(document.body, "XXXXX");
+
+   portInput.addEventListener("change", (event) => {
+     for (updater of updaters) {
+       updater(portInput.value);
+     }
+   });
+
+   portInput.value = getEphemeralPort();
+   portInput.dispatchEvent(new Event("change"));
+ });
+</script></section>
 </section>
 
         </article>
@@ -318,23 +376,23 @@ you work with human data.</p></li>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="slurm/index.html">
+          <a class="next-page" href="modules.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Running jobs using Slurm</div>
+                <div class="title">Creating environment modules</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="filesystem.html">
+          <a class="prev-page" href="../services/shiny.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Data storage on Esrum</div>
+                <div class="title">Shiny servers</div>
                 
               </div>
             </a>
@@ -368,8 +426,9 @@ you work with human data.</p></li>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Requesting projects and datasets</a><ul>
-<li><a class="reference internal" href="#requesting-a-new-project-or-dataset">Requesting a new project or dataset</a></li>
+<li><a class="reference internal" href="#">Port forwarding</a><ul>
+<li><a class="reference internal" href="#port-forwarding-for-windows-users">Port forwarding for Windows users</a></li>
+<li><a class="reference internal" href="#port-forwarding-for-osx-linux-users">Port forwarding for OSX/Linux users</a></li>
 </ul>
 </li>
 </ul>
