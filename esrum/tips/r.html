@@ -454,9 +454,11 @@ you've reserved via Slurm, but no less than 2. This is an acceptable
 number on the head node, and generally gives better performance even if
 you've only reserved a single CPU.</p>
 <p>You can further speed up installations involving multiple packages by
-calling <code class="docutils literal notranslate"><span class="pre">options(Ncpus=2)</span></code> <em>before</em> calling <code class="docutils literal notranslate"><span class="pre">ìnstall.packages</span></code>. To
-enable this option by default, append it to your <code class="docutils literal notranslate"><span class="pre">~/.Rprofile</span></code> file.
-This can be done by running the following command in bash:</p>
+calling <code class="docutils literal notranslate"><span class="pre">options(Ncpus=2)</span></code> <em>before</em> calling <code class="docutils literal notranslate"><span class="pre">ìnstall.packages</span></code>. This
+enables R to build and install two packages simultaneously, in addition
+to using more CPUs to build each package.</p>
+<p>To enable this option by default, append it to your <code class="docutils literal notranslate"><span class="pre">~/.Rprofile</span></code>
+file. This can be done by running the following command in bash:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;options(Ncpus=2)&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>~/.Rprofile
 </pre></div>
 </div>

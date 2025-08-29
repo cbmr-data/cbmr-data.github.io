@@ -181,8 +181,34 @@ Running this script produces the following, helpful output:
 Prevent bash from updating running scripts
 ==========================================
 
-..
-   TODO
+A surprising fact about bash is that changes to a script can affect
+already running instances of that script:
+
+.. code-block:: bash
+
+   $ cat example.sh
+   sleep 5
+   $ bash example.sh &
+   $ echo 'echo "Hello, world!"' >> example.sh
+   $ wait
+   Hello, world!
+
+This happens since bash reads the script line-by-line, and will
+therefore pick up changes after the current line, if the script is
+changed in place.
+
+To force bash to load the entire thing up front, one can wrap the body
+of the script in curly brackets. This prevents changes to existing
+lines. To furthermore prevent newly added lines from being run, one can
+add an explicit `exit` statement at the end of the script:
+
+.. code-block:: bash
+
+   #!/bin/bash
+   {
+       # Commands go here!
+       exit $?
+   }
 
 Putting it all together
 =======================
@@ -194,7 +220,7 @@ thereby helps avoid *some* pitfalls of using bash
    :linenos:
 
    #!/bin/bash
-   # FIXME: SBATCH commands go here!
+   # NOTE: SBATCH commands go here!
    {
    set -o nounset  # Exit on unset variables
    set -o pipefail # Exit on unhandled failure in pipes
@@ -202,16 +228,60 @@ thereby helps avoid *some* pitfalls of using bash
    # Print debug message and terminate script on non-zero return codes
    trap 's=$?; echo >&2 "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 
-   # FIXME: Your commands go here!
+   # NOTE: Your commands go here!
 
-   # Prevent the script from continuing if the file has changed
-   exit $?
+   exit $? # Prevent the script from continuing if the file has changed
+   }
+
+A slightly more compact version is
+
+.. code-block:: bash
+   :linenos:
+
+   #!/bin/bash
+   # NOTE: SBATCH commands go here!
+   {
+   set -Euo pipefail # Exit on unset variables and failures
+   trap 's=$?; echo >&2 "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
+
+   # NOTE: Your commands go here!
+
+   exit $? # Prevent the script from continuing if the file has changed
    }
 
 Note however that is not guaranteed to catch all errors (see the `bash
 pitfalls`_ page for more information). Using a more robust programming
 language, or proper a pipeline, is therefore recommended for more
 complicated tasks.
+
+**********************************
+ Using `trap` to clean up on exit
+**********************************
+
+The `trap` command offers an easy way to automatically clean up when a
+script exits. For example, if we created a temporary file, that we wish
+to delete when the script is done running:
+
+.. code-block:: bash
+
+   #!/bin/bash
+   my_temp_file="$(mktemp)"
+   trap "rm -v '${my_temp_file}'" EXIT
+
+   echo "Do something with '${my_temp_file}' here!"
+
+Running the script looks like this:
+
+.. code-block:: console
+
+   $ bash example.sh
+   Do something with '/tmp/tmp.BaH9GKP50J' here!
+   removed '/tmp/tmp.BaH9GKP50J'
+
+A major advantage is that the `trap` command is always executed, even if
+the script terminates early due to an error. The `trap` command will
+also be run if the script is killed by a signal, for example via the
+`kill` command, except if the signal `SIGTERM` is used.
 
 *******************************************
  Checking your scripts for common mistakes

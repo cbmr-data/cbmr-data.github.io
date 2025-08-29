@@ -284,50 +284,59 @@ the individual compute nodes using the <a class="reference external" href="https
 <tr class="row-even"><td><p>1</p></td>
 <td><p>Head</p></td>
 <td><p>2 TB</p></td>
-<td><p>2x24 core AMD EPYC 7413</p></td>
+<td><p>48 cores</p></td>
 <td></td>
 <td><p><em>esrumhead01fl</em></p></td>
 </tr>
 <tr class="row-odd"><td><p>12</p></td>
 <td><p>Compute</p></td>
 <td><p>2 TB</p></td>
-<td><p>2x32 core AMD EPYC 7543</p></td>
+<td><p>64 cores</p></td>
 <td></td>
 <td><p><em>esrumcmpn01fl</em> - <em>esrumcmpn12fl</em></p></td>
 </tr>
 <tr class="row-even"><td><p>1</p></td>
 <td><p>GPU / high-memory</p></td>
 <td><p>4 TB</p></td>
-<td><p>2x32 core AMD EPYC 75F3</p></td>
+<td><p>64 cores</p></td>
 <td><p>2x NVIDIA A100 80GB</p></td>
 <td><p><em>esrumgpun01fl</em></p></td>
 </tr>
 <tr class="row-odd"><td><p>3</p></td>
 <td><p>GPU</p></td>
 <td><p>2 TB</p></td>
-<td><p>2x32 core AMD EPYC 9354</p></td>
+<td><p>64 cores</p></td>
 <td><p>2x NVIDIA H100 80GB</p></td>
 <td><p><em>esrumgpun02fl</em> - <em>esrumgpun04fl</em></p></td>
 </tr>
 <tr class="row-even"><td><p>2</p></td>
 <td><p>Rstudio</p></td>
 <td><p>2 TB</p></td>
-<td><p>2x32 core AMD EPYC 7543</p></td>
+<td><p>64 cores</p></td>
 <td></td>
 <td><p><em>esrumweb01fl</em>, <em>esrumweb02fl</em></p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
 <td><p>Container*</p></td>
 <td><p>2 TB</p></td>
-<td><p>2x32 core AMD EPYC 7543</p></td>
+<td><p>64 cores</p></td>
 <td></td>
 <td><p><em>esrumcont01fl</em></p></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>* <em>The container node is made available as a compute node when not in
-use.</em></p>
+<p>* <em>The container node is used as a compute node when not being used to
+run containers.</em></p>
+<section id="scratch-space">
+<h3>Scratch space<a class="headerlink" href="#scratch-space" title="Link to this heading">¶</a></h3>
+<p>Each node furthermore has at least 1.5 TB of local scratch space:</p>
+<ul class="simple">
+<li><p>Most nodes have ~3 TB of local scratch</p></li>
+<li><p><em>esrumcmpn07fl</em> to <em>esrumcmpn07fl</em> each have ~1.5 TB of local scratch</p></li>
+<li><p><em>esrumcmpn12fl</em> has ~18 TB of local scratch</p></li>
+</ul>
+</section>
 </section>
 <section id="software">
 <h2>Software<a class="headerlink" href="#software" title="Link to this heading">¶</a></h2>
@@ -437,7 +446,10 @@ VPN.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Overview of cluster</a><ul>
-<li><a class="reference internal" href="#architecture">Architecture</a></li>
+<li><a class="reference internal" href="#architecture">Architecture</a><ul>
+<li><a class="reference internal" href="#scratch-space">Scratch space</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#software">Software</a></li>
 <li><a class="reference internal" href="#projects-and-data-shares">Projects and data-shares</a></li>
 <li><a class="reference internal" href="#backup-policies-and-quotas">Backup policies and quotas</a></li>

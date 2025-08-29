@@ -401,13 +401,37 @@ the <code class="docutils literal notranslate"><span class="pre">gzip</span></co
 </section>
 <section id="prevent-bash-from-updating-running-scripts">
 <h3>Prevent bash from updating running scripts<a class="headerlink" href="#prevent-bash-from-updating-running-scripts" title="Link to this heading">¶</a></h3>
+<p>A surprising fact about bash is that changes to a script can affect
+already running instances of that script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>example.sh
+sleep<span class="w"> </span><span class="m">5</span>
+$<span class="w"> </span>bash<span class="w"> </span>example.sh<span class="w"> </span><span class="p">&amp;</span>
+$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;echo &quot;Hello, world!&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>example.sh
+$<span class="w"> </span><span class="nb">wait</span>
+Hello,<span class="w"> </span>world!
+</pre></div>
+</div>
+<p>This happens since bash reads the script line-by-line, and will
+therefore pick up changes after the current line, if the script is
+changed in place.</p>
+<p>To force bash to load the entire thing up front, one can wrap the body
+of the script in curly brackets. This prevents changes to existing
+lines. To furthermore prevent newly added lines from being run, one can
+add an explicit <cite>exit</cite> statement at the end of the script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="o">{</span>
+<span class="w">    </span><span class="c1"># Commands go here!</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="nv">$?</span>
+<span class="o">}</span>
+</pre></div>
+</div>
 </section>
 <section id="putting-it-all-together">
 <h3>Putting it all together<a class="headerlink" href="#putting-it-all-together" title="Link to this heading">¶</a></h3>
 <p>The following bash script template combines the suggestions above and
 thereby helps avoid <em>some</em> pitfalls of using bash</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="ch">#!/bin/bash</span>
-<span class="linenos"> 2</span><span class="c1"># FIXME: SBATCH commands go here!</span>
+<span class="linenos"> 2</span><span class="c1"># NOTE: SBATCH commands go here!</span>
 <span class="linenos"> 3</span><span class="o">{</span>
 <span class="linenos"> 4</span><span class="nb">set</span><span class="w"> </span>-o<span class="w"> </span>nounset<span class="w">  </span><span class="c1"># Exit on unset variables</span>
 <span class="linenos"> 5</span><span class="nb">set</span><span class="w"> </span>-o<span class="w"> </span>pipefail<span class="w"> </span><span class="c1"># Exit on unhandled failure in pipes</span>
@@ -415,11 +439,23 @@ thereby helps avoid <em>some</em> pitfalls of using bash</p>
 <span class="linenos"> 7</span><span class="c1"># Print debug message and terminate script on non-zero return codes</span>
 <span class="linenos"> 8</span><span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;s=$?; echo &gt;&amp;2 &quot;$0: Error on line &quot;$LINENO&quot;: $BASH_COMMAND&quot;; exit $s&#39;</span><span class="w"> </span>ERR
 <span class="linenos"> 9</span>
-<span class="linenos">10</span><span class="c1"># FIXME: Your commands go here!</span>
+<span class="linenos">10</span><span class="c1"># NOTE: Your commands go here!</span>
 <span class="linenos">11</span>
-<span class="linenos">12</span><span class="c1"># Prevent the script from continuing if the file has changed</span>
-<span class="linenos">13</span><span class="nb">exit</span><span class="w"> </span><span class="nv">$?</span>
-<span class="linenos">14</span><span class="o">}</span>
+<span class="linenos">12</span><span class="nb">exit</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span><span class="c1"># Prevent the script from continuing if the file has changed</span>
+<span class="linenos">13</span><span class="o">}</span>
+</pre></div>
+</div>
+<p>A slightly more compact version is</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="ch">#!/bin/bash</span>
+<span class="linenos"> 2</span><span class="c1"># NOTE: SBATCH commands go here!</span>
+<span class="linenos"> 3</span><span class="o">{</span>
+<span class="linenos"> 4</span><span class="nb">set</span><span class="w"> </span>-Euo<span class="w"> </span>pipefail<span class="w"> </span><span class="c1"># Exit on unset variables and failures</span>
+<span class="linenos"> 5</span><span class="nb">trap</span><span class="w"> </span><span class="s1">&#39;s=$?; echo &gt;&amp;2 &quot;$0: Error on line &quot;$LINENO&quot;: $BASH_COMMAND&quot;; exit $s&#39;</span><span class="w"> </span>ERR
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="c1"># NOTE: Your commands go here!</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="nb">exit</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span><span class="c1"># Prevent the script from continuing if the file has changed</span>
+<span class="linenos">10</span><span class="o">}</span>
 </pre></div>
 </div>
 <p>Note however that is not guaranteed to catch all errors (see the <a class="reference external" href="https://mywiki.wooledge.org/BashPitfalls">bash
@@ -427,6 +463,29 @@ pitfalls</a> page for more information). Using a more robust programming
 language, or proper a pipeline, is therefore recommended for more
 complicated tasks.</p>
 </section>
+</section>
+<section id="using-trap-to-clean-up-on-exit">
+<h2>Using <cite>trap</cite> to clean up on exit<a class="headerlink" href="#using-trap-to-clean-up-on-exit" title="Link to this heading">¶</a></h2>
+<p>The <cite>trap</cite> command offers an easy way to automatically clean up when a
+script exits. For example, if we created a temporary file, that we wish
+to delete when the script is done running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="nv">my_temp_file</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>mktemp<span class="k">)</span><span class="s2">&quot;</span>
+<span class="nb">trap</span><span class="w"> </span><span class="s2">&quot;rm -v &#39;</span><span class="si">${</span><span class="nv">my_temp_file</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="w"> </span>EXIT
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Do something with &#39;</span><span class="si">${</span><span class="nv">my_temp_file</span><span class="si">}</span><span class="s2">&#39; here!&quot;</span>
+</pre></div>
+</div>
+<p>Running the script looks like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>bash<span class="w"> </span>example.sh
+<span class="go">Do something with &#39;/tmp/tmp.BaH9GKP50J&#39; here!</span>
+<span class="go">removed &#39;/tmp/tmp.BaH9GKP50J&#39;</span>
+</pre></div>
+</div>
+<p>A major advantage is that the <cite>trap</cite> command is always executed, even if
+the script terminates early due to an error. The <cite>trap</cite> command will
+also be run if the script is killed by a signal, for example via the
+<cite>kill</cite> command, except if the signal <cite>SIGTERM</cite> is used.</p>
 </section>
 <section id="checking-your-scripts-for-common-mistakes">
 <h2>Checking your scripts for common mistakes<a class="headerlink" href="#checking-your-scripts-for-common-mistakes" title="Link to this heading">¶</a></h2>
@@ -541,6 +600,7 @@ cases like multiple filenames.</p>
 <li><a class="reference internal" href="#putting-it-all-together">Putting it all together</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#using-trap-to-clean-up-on-exit">Using <cite>trap</cite> to clean up on exit</a></li>
 <li><a class="reference internal" href="#checking-your-scripts-for-common-mistakes">Checking your scripts for common mistakes</a></li>
 <li><a class="reference internal" href="#running-commands-in-snakemake">Running commands in Snakemake</a></li>
 </ul>

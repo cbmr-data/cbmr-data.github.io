@@ -407,20 +407,22 @@ folder.</p>
 </section>
 <section id="scratch-folders">
 <h2>Scratch folders<a class="headerlink" href="#scratch-folders" title="Link to this heading">¶</a></h2>
-<p>Every node on Esrum (including the head node) has a 1.5-3 TB scratch
-drive available at <code class="docutils literal notranslate"><span class="pre">/scratch</span></code>. This is intended for short-lived
-temporary files generated as part of jobs running on the cluster, and
-can provide a significant performance benefit if a job, for example,
-writes a lot of small temporary files.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Note that unlike your home folder, <code class="docutils literal notranslate"><span class="pre">/projects</span></code>, and <code class="docutils literal notranslate"><span class="pre">/datasets</span></code>,
-the <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> folders are physically located on each node. Files
-written to <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> on one node are therefore <em>not</em> accessible on
-other nodes.</p>
-</div>
-<p>It is recommended that you create a sub-folder containing your UCPH-IT
-username when using the scratch-drive as part of your scripts:</p>
+<p>Every node on Esrum (including the head node) has at least 1.5 TB
+scratch drive available at <code class="docutils literal notranslate"><span class="pre">/scratch</span></code>, located in the root folder.</p>
+<p>These <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> drives should not be confused for the per-project
+scratch-folders described above. Unlike your home folder, <code class="docutils literal notranslate"><span class="pre">/projects</span></code>,
+<code class="docutils literal notranslate"><span class="pre">/datasets</span></code>, and network drives, the root <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> folders are
+physically located on each node. Files written to <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> on one
+node are therefore <em>not</em> accessible on other nodes.</p>
+<p>These drives are intended for short-lived, temporary files generated as
+part of jobs running on the cluster, and can provide a significant
+performance boost compared to reading to and writing to temporary files
+on UCPH's network based storage system.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It is recommended that you create a sub-folder containing your
+UCPH-IT username when using the scratch-drive as part of your
+scripts:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># Create temporary folder in the form /scratch/abc123</span>
 <span class="linenos">2</span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;/scratch/</span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="linenos">3</span><span class="c1"># Some software use the TMPDIR to place temporary files</span>
@@ -429,12 +431,13 @@ username when using the scratch-drive as part of your scripts:</p>
 <span class="linenos">6</span>mysoftware<span class="w"> </span>--in<span class="w"> </span><span class="s2">&quot;mydata&quot;</span><span class="w"> </span>--out<span class="w"> </span><span class="s2">&quot;myresults&quot;</span><span class="w"> </span>--temp<span class="w"> </span><span class="s2">&quot;/scratch/</span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The scratch-drives have limited capacity and are <em>only</em> intended for
 short-lived, temporary files. Do not use it to store results, and
 please remember to clean up after your jobs. Files left on the
-scratch-drive <em>will</em> be deleted.</p>
+scratch-drives <em>will</em> be deleted.</p>
 </div>
 </section>
 <section id="backups">
