@@ -281,7 +281,7 @@ Running the script looks like this:
 A major advantage is that the `trap` command is always executed, even if
 the script terminates early due to an error. The `trap` command will
 also be run if the script is killed by a signal, for example via the
-`kill` command, except if the signal `SIGTERM` is used.
+`kill` command, except if the signal `SIGKILL` is used.
 
 *******************************************
  Checking your scripts for common mistakes
