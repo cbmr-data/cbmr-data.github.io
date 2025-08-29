@@ -39,28 +39,34 @@ Briefly,
 To request the creation of a new project or dataset, please `contact us
 <p_contact>`_ with the following information.
 
-#. **Who should be the owner of the project?** We highly recommend that
-   the person chosen for this role is a permanent employee at CBMR (e.g.
-   a PI or staff scientist) or on a long-term contract. A member of DAP
-   will be added as a second owner, so that we can provide support for
-   managing membership.
+#. **Who should administer the project/dataset?** This person will be
+   responsible controlling access to the project via the `Identity
+   Management System`_; we recommend that the person chosen for this
+   role is on a long-term contract. A member of DAP will be added as a
+   co-admin, so that we can provide support.
+
+   DAP can also take sole responsibility for administration of the
+   project/dataset. This is recommended for projects/datasets involving
+   data for which access requires permission from one or more
+   data-owners. In this case, we need the contact information for the
+   data owner(s), so that we can collect these permissions as required.
 
 #. **Who should have access to the project?** Who, other than the owner
    of the project or dataset, should be given access once it has been
    created?
 
-#. **How much data do you expect to use?** UCPH-IT needs a rough
+#. **How much data do you expect to store?** UCPH-IT needs a rough
    estimate of how much data you expect to store in project or dataset
    in the first six months: 1 TB or less, 100 TB or less, or more than
    100 TB.
 
 #. **What is the name of the project?** This name will be used for the
-   project or dataset folder, has to be unique across UCPH, so it may be
-   helpful to include either a center name (*e.g.* ``cbmr_``) or group
-   name (*e.g.* ``dap_``) as a prefix. Note that this name is public.
-   Only letters (``a`` to ``z``), digits (``0`` to ``9``), and
-   underscores (``_``) are allowed. It is recommended to pick a
-   reasonably short name.
+   project or dataset folder, and has to be unique across UCPH. It may
+   be helpful to include either a center name (*e.g.* ``cbmr_``) or
+   group name (*e.g.* ``dap_``) as a prefix. Only letters (``a`` to
+   ``z``), digits (``0`` to ``9``), and underscores (``_``) are allowed,
+   and it is recommended to pick a reasonably short name. Note that the
+   name is visible to everyone with a UCPH account.
 
 #. **Will your project contain sensitive data?** You must let us know if
    you intend to store *any* sensitive data in the project, GDPR
@@ -68,3 +74,5 @@ To request the creation of a new project or dataset, please `contact us
    you work with human data.
 
 You are always welcome to reach out if you are unsure about any of this.
+
+.. _identity management system: https://identity.ku.dk
