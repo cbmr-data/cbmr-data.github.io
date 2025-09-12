@@ -52,11 +52,22 @@ possible values for ``--mail-type`` are ``NONE`` (the default),
 ``BEGIN``, ``END``, ``FAIL``, ``REQUEUE``, ``ALL``, or some combination
 as shown above.
 
+The email contains the ID of the job, the name you specified using
+``--job-name``, the status (e.g. ``Completed`` or ``Failed``), how long
+it ran (not counting time spent queued), and the return-code of the
+script or command:
+
+.. image:: images/notification.png
+   :align: center
+
+The Slurm notification emails typically, but not always, arrive
+instantly.
+
 .. warning::
 
    Remember to use your own ``@ku.dk`` email address as the recipient,
    instead of ``abc123@ku.dk``. It is possible to use email addresses
-   outside ``@ku.dk``, but some providers will silently block these
+   outside ``@ku.dk``, but some providers will silently block the Slurm
    emails, and we therefore recommend using your ``@ku.dk`` address.
 
 *******************************************

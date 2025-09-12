@@ -291,11 +291,18 @@ by using the <code class="docutils literal notranslate"><span class="pre">--mail
 possible values for <code class="docutils literal notranslate"><span class="pre">--mail-type</span></code> are <code class="docutils literal notranslate"><span class="pre">NONE</span></code> (the default),
 <code class="docutils literal notranslate"><span class="pre">BEGIN</span></code>, <code class="docutils literal notranslate"><span class="pre">END</span></code>, <code class="docutils literal notranslate"><span class="pre">FAIL</span></code>, <code class="docutils literal notranslate"><span class="pre">REQUEUE</span></code>, <code class="docutils literal notranslate"><span class="pre">ALL</span></code>, or some combination
 as shown above.</p>
+<p>The email contains the ID of the job, the name you specified using
+<code class="docutils literal notranslate"><span class="pre">--job-name</span></code>, the status (e.g. <code class="docutils literal notranslate"><span class="pre">Completed</span></code> or <code class="docutils literal notranslate"><span class="pre">Failed</span></code>), how long
+it ran (not counting time spent queued), and the return-code of the
+script or command:</p>
+<img alt="../../_images/notification.png" class="align-center" src="../../_images/notification.png" />
+<p>The Slurm notification emails typically, but not always, arrive
+instantly.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Remember to use your own <code class="docutils literal notranslate"><span class="pre">&#64;ku.dk</span></code> email address as the recipient,
 instead of <code class="docutils literal notranslate"><span class="pre">abc123&#64;ku.dk</span></code>. It is possible to use email addresses
-outside <code class="docutils literal notranslate"><span class="pre">&#64;ku.dk</span></code>, but some providers will silently block these
+outside <code class="docutils literal notranslate"><span class="pre">&#64;ku.dk</span></code>, but some providers will silently block the Slurm
 emails, and we therefore recommend using your <code class="docutils literal notranslate"><span class="pre">&#64;ku.dk</span></code> address.</p>
 </div>
 </section>
