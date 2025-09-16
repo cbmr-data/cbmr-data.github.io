@@ -19,6 +19,12 @@ to the cluster.
 
 .. include:: usage/slurm/basics_troubleshooting.rst
 
+***********************
+ Monitoring slurm jobs
+***********************
+
+.. include:: usage/slurm/monitoring_troubleshooting.rst
+
 ****************
  Network drives
 ****************

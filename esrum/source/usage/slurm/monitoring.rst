@@ -74,58 +74,32 @@ instantly.
  Monitoring overall resource usage by jobs
 *******************************************
 
-The ``sacct`` command may be used to review the average CPU usage, the
-peak memory usage, disk I/O, and more for completed jobs. This makes it
-easier to verify that you are not needlessly reserving resources:
+The sacct_ command reports detailed statistics about completed jobs,
+while the sstat_ command reports statistics about *your* running jobs.
+Note that ``sacct``, and the script below, can only be run on the head
+node.
+
+However, the output from these tools may be difficult to interpret, and
+for that reason we provide a helper script, ``sacct-usage``, that
+summarizes some of this information in a more easily readable form.
 
 .. code-block:: console
 
-   $ sacct -o JobID,Elapsed,State,AllocCPUS,AveCPU,ReqMem,MaxVMSize
-
-A full description of the data printed by ``sacct`` command can be found
-in the `sacct manual`_, but briefly, this prints the job ID, the amount
-of time the job has been running, the state of the job (queued, running,
-completed, etc.), number of CPUs allocated, the CPU utilization
-(preferably this should be the number of CPUs allocated times the
-elapsed time), the amount of memory requested, and the peak virtual
-memory size.
-
-Alternatively, we provide a helper that summarizes some of this
-information in a more easily readable form:
-
-.. code-block:: console
-
-   $ module load sacct-usage
    $ sacct-usage
-         Age  User    Job   State         Elapsed  CPUs  CPUsWasted  ExtraMem  ExtraMemWasted  CPUHoursWasted
-   13:32:04s  abc123  1     FAILED     252:04:52s     8         6.9     131.4           131.4         4012.14
-   10:54:32s  abc123  2[1]  COMPLETED   02:49:25s    32        15.7       0.0             0.0           44.38
-   01:48:43s  abc123  3     COMPLETED   01:00:53s    24         2.4       0.0             0.0            2.43
+   User    Job   Start                   Elapsed  State      CPUsReserved  CPUsUsed  MemReserved  MemUsed  Name
+   abc123  1     2025-09-01 10:15:01  252:04:52s  FAILED                8       1.1        124.6    105.9  python3
+   abc123  2[1]  2025-09-15 16:02:35   02:49:25s  COMPLETED            32      16.3        512.0    358.7  paleomix
+   abc123  3     2025-09-23 12:35:19   01:00:53s  RUNNING              24      22.6         64.0     16.0  bash
 
-The important information is found in the ``CPUsWasted`` column and the
-``ExtraMemWasted`` column, which show the number CPUs that went unused
-on average, and the amount of *extra* memory that went unused. Note that
-``ExtraMem`` only counts memory above the default allocation of ~16 GB
-of RAM per CPU, as our policy is that you shouldn't have to worry about
-using less than that. If you want to see the full memory usage, then use
-the ``--verbose`` option.
+Briefly, ``sacct-usage`` reports how many CPUs and how much memory you
+reserved for your jobs, and how many CPUs and how much memory your job
+actually utilized.
 
-The final column indicates that number of CPU hours your job wasted,
-calculated as the length of time your job ran multiplied by the number
-of reserved CPUs and the number of CPUs that would have been able to get
-the default 16 GB of RAM had ``ExtraMemWasted`` been zero.
-
-Aim for your jobs to resemble the third job, not the second job and
-especially not the first job in the example!
-
-.. warning::
-
-   The ``Wasted`` statistics are based on snapshots of resource usage
-   produced by Slurm and are therefore not 100% accurate. Notably, the
-   memory usage statistics are based on maximum memory usage of
-   individual processes, rather than the maximum cumulative memory
-   usage, and may therefore greatly overestimate wasted memory if you
-   are running multiple simultaneous processes in a pipeline.
+We ask that you please try to keep your CPU and memory reservations in
+line with the amount of resources your jobs actually use. In particular,
+do not reserve CPUs that you are not using. However, you do not need to
+reduce your memory reservations below the default ~16 GB of RAM per CPU,
+as we consider that the baseline.
 
 ******************************************
  Monitoring individual processes in a job
@@ -340,6 +314,8 @@ and GPUs) columns are colored as follows:
    fewer resources than the amount reserved, in order to optimize
    resource utilization on the cluster.
 
-.. _sacct manual: https://slurm.schedmd.com/archive/slurm-20.11.9/sacct.html
+.. _sacct: https://slurm.schedmd.com/archive/slurm-20.11.9/sacct.html
 
 .. _slurmboard: https://github.com/cbmr-data/slurmboard
+
+.. _sstat: https://slurm.schedmd.com/archive/slurm-20.11.9/sstat.html
