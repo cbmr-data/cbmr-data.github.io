@@ -1,5 +1,13 @@
+######################################
+ Dummy header to prevent reformatting
+######################################
+
+**************************************
+ Dummy header to prevent reformatting
+**************************************
+
 "Error: Unexpected response from server" when uploading files
-==============================================================
+=============================================================
 
 Using RStudio to upload files that are 50 MB or larger may fail with the
 error message ``Unexpected response from server``. Instead, use the

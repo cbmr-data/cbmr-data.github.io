@@ -1,3 +1,11 @@
+######################################
+ Dummy header to prevent reformatting
+######################################
+
+**************************************
+ Dummy header to prevent reformatting
+**************************************
+
 Error: Requested node configuration is not available
 ====================================================
 
@@ -47,9 +55,8 @@ To solve this error, simply avoid requesting more than 2 GPUs, and
 remember to include the ``--partition`` option. See also the
 :ref:`p_usage_slurm_gpu` section.
 
-
 X11 forwarding is working in MobaXterm
-=======================================
+======================================
 
 Firstly right-click on ``Esrum`` in the list of ``User sessions`` and
 select ``Edit session``. Make sure that the ``Advanced SSH settings``

@@ -1,8 +1,16 @@
+######################################
+ Dummy header to prevent reformatting
+######################################
+
+**************************************
+ Dummy header to prevent reformatting
+**************************************
+
 If you have not already been granted access to the server, then please
 see the :ref:`p_usage_access_applying` page before continuing!
 
 Timeout while connecting to the cluster
-========================================
+=======================================
 
 You may experience timeout errors when you attempt to connect to Esrum.
 
@@ -41,14 +49,12 @@ Serviceportal_, using the ``Research Applications Counseling and
 Support`` / ``Forskningsapplikationer Rådgivning og support`` ticket
 category.
 
-
 File uploads using MobaXterm never start
 ========================================
 
 Please make sure that your session is configured to use the ``SCP
 (enhanced speed)`` browser type. See step 4 in the
 :ref:`s_configure_mobaxterm` section.
-
 
 Network-folders in ``~/ucph`` are not available
 ===============================================

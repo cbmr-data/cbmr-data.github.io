@@ -327,6 +327,7 @@ itself.
 *****************
 
 .. include:: connecting_troubleshooting.rst
+   :start-line: 8
 
 .. _danish: https://kunet.ku.dk/medarbejderguide/Sider/It/Fjernadgang-vpn.aspx
 

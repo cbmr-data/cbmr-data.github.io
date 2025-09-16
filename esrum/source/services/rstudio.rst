@@ -151,6 +151,7 @@ AI and LLMs <s_guidelines_llms>` before doing so.
 *****************
 
 .. include:: rstudio_troubleshooting.rst
+   :start-line: 8
 
 .. _copilot: https://github.com/features/copilot
 

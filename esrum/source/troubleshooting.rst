@@ -12,45 +12,53 @@ to the cluster.
 *********************
 
 .. include:: usage/access/connecting_troubleshooting.rst
+   :start-line: 8
 
 **************
  Slurm basics
 **************
 
 .. include:: usage/slurm/basics_troubleshooting.rst
+   :start-line: 8
 
 ***********************
  Monitoring slurm jobs
 ***********************
 
 .. include:: usage/slurm/monitoring_troubleshooting.rst
+   :start-line: 8
 
 ****************
  Network drives
 ****************
 
 .. include:: services/networkdrives_troubleshooting.rst
+   :start-line: 8
 
 ***
  R
 ***
 
 .. include:: tips/r_troubleshooting.rst
+   :start-line: 8
 
 *********
  Rstudio
 *********
 
 .. include:: services/rstudio_troubleshooting.rst
+   :start-line: 8
 
 *******************
  Jupyter Notebooks
 *******************
 
 .. include:: services/jupyter_troubleshooting.rst
+   :start-line: 8
 
 ***********
  Snakemake
 ***********
 
 .. include:: tips/snakemake_troubleshooting.rst
+   :start-line: 8

@@ -1,3 +1,10 @@
+######################################
+ Dummy header to prevent reformatting
+######################################
+
+**************************************
+ Dummy header to prevent reformatting
+**************************************
 
 libtk8.6.so: cannot open shared object file
 ===========================================
