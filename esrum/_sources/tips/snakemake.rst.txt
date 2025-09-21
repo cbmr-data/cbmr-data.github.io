@@ -260,3 +260,4 @@ simply by specifying the option again:
 *****************
 
 .. include:: snakemake_troubleshooting.rst
+   :start-line: 8

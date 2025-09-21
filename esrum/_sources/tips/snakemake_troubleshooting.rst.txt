@@ -1,3 +1,11 @@
+######################################
+ Dummy header to prevent reformatting
+######################################
+
+**************************************
+ Dummy header to prevent reformatting
+**************************************
+
 sacct: error: Problem talking to the database: Connection refused
 =================================================================
 

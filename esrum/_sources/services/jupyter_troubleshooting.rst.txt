@@ -1,3 +1,11 @@
+######################################
+ Dummy header to prevent reformatting
+######################################
+
+**************************************
+ Dummy header to prevent reformatting
+**************************************
+
 Jupyter Notebooks: Browser error when opening URL
 =================================================
 

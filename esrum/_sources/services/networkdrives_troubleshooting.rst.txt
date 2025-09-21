@@ -1,5 +1,13 @@
+######################################
+ Dummy header to prevent reformatting
+######################################
+
+**************************************
+ Dummy header to prevent reformatting
+**************************************
+
 The ``~/ucph`` folder or subfolders are missing
-================================================
+===============================================
 
 Note that the ``~/ucph`` folder is only available on the head node
 (``esrumhead01fl``), and not on the RStudio servers nor on the compute
@@ -24,7 +32,7 @@ folder containing links to ``hdir`` (``H:``), ``ndir`` (``N:``), and
 ``sdir`` (``S:``).
 
 ``No such file or directory`` when accessing network drives
-============================================================
+===========================================================
 
 If you get a ``No such file or directory`` error when attempting to
 access the network drives (``~/ucph/hdir``, ``~/ucph/ndir``, or
@@ -39,7 +47,7 @@ you will lose access to the network drives. See the section
 access has timed out.
 
 ``kinit: Unknown credential cache type while getting default ccache``
-======================================================================
+=====================================================================
 
 The ``kinit`` command may fail if you are using a ``conda`` environment:
 

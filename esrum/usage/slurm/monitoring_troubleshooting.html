@@ -168,17 +168,17 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Using the cluster</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="access.html">Applying for access</a></li>
-<li class="toctree-l1"><a class="reference internal" href="connecting.html">Connecting to the cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../access/access.html">Applying for access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../access/connecting.html">Connecting to the cluster</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../filesystem.html">Data storage on Esrum</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Data storage on Esrum</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../projects.html">Requesting projects and datasets</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../slurm/index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../slurm/basics.html">Basic Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../slurm/advanced.html">Advanced Slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../slurm/monitoring.html">Monitoring slurm jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../slurm/gpu.html">GPU / high-memory jobs</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="index.html">Running jobs using Slurm</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Running jobs using Slurm</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="basics.html">Basic Slurm jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.html">Advanced Slurm jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monitoring.html">Monitoring slurm jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html">GPU / high-memory jobs</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html">Software on Esrum</a></li>
@@ -231,7 +231,7 @@
         </a>
         <div class="content-icon-container">
           <div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/cbmr-data/cbmr-data.github.io/edit/main/esrum/source/usage/access/connecting_troubleshooting.rst" title="Edit this page">
+  <a class="muted-link" href="https://github.com/cbmr-data/cbmr-data.github.io/edit/main/esrum/source/usage/slurm/monitoring_troubleshooting.rst" title="Edit this page">
     <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
@@ -257,50 +257,16 @@
 <h1>Dummy header to prevent reformatting<a class="headerlink" href="#dummy-header-to-prevent-reformatting" title="Link to this heading">¶</a></h1>
 <section id="id1">
 <h2>Dummy header to prevent reformatting<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
-<p>If you have not already been granted access to the server, then please
-see the <a class="reference internal" href="access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a> page before continuing!</p>
-<section id="timeout-while-connecting-to-the-cluster">
-<h3>Timeout while connecting to the cluster<a class="headerlink" href="#timeout-while-connecting-to-the-cluster" title="Link to this heading">¶</a></h3>
-<p>You may experience timeout errors when you attempt to connect to Esrum.</p>
-<p>On Linux, this typically results in an <code class="docutils literal notranslate"><span class="pre">Operation</span> <span class="pre">timed</span> <span class="pre">out</span></code> message:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
-<span class="go">ssh: connect to host esrumhead01fl.unicph.domain port 22: Operation timed out</span>
+<section id="connection-refused-when-running-sacct-sacct-usage">
+<h3><code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">refused</span></code> when running <code class="docutils literal notranslate"><span class="pre">sacct</span></code> / <code class="docutils literal notranslate"><span class="pre">sacct-usage</span></code><a class="headerlink" href="#connection-refused-when-running-sacct-sacct-usage" title="Link to this heading">¶</a></h3>
+<p>If you attempt to run <code class="docutils literal notranslate"><span class="pre">sacct</span></code> or <code class="docutils literal notranslate"><span class="pre">sacct-usage</span></code> on any other node
+than the head node, then you may get an error message like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sacct: error: slurm_persist_conn_open_without_init: failed to open persistent connection to host:localhost:6819: Connection refused</span>
+<span class="go">sacct: error: Sending PersistInit msg: Connection refused</span>
+<span class="go">sacct: error: Problem talking to the database: Connection refused</span>
 </pre></div>
 </div>
-<p>On Windows, using MobaXterm, it may result in a <code class="docutils literal notranslate"><span class="pre">connection</span> <span class="pre">timed</span> <span class="pre">out</span></code>
-message:</p>
-<img alt="../../_images/connecting_mobaxterm_timeout.png" class="align-center" src="../../_images/connecting_mobaxterm_timeout.png" />
-<p>Firstly verify that you are correctly connected to the UCPH VPN. This is
-required to connect to Esrum. See the <a class="reference internal" href="connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page for
-more information.</p>
-<p>If you are still unable to connect to Esrum after verifying that you are
-correctly connected to the UCPH network, then please try to visit either
-our <a class="reference external" href="https://cbmrcat.unicph.domain/projects/">Project Manager</a> or our
-<a class="reference external" href="https://cbmrcat.unicph.domain/">Cohort Catalog</a>.</p>
-<p>If you are able to visit either of the Project Manager or Cohort Catalog
-pages, then you most likely do not have proper permissions to connect to
-Esrum. Please <a class="reference internal" href="../../contact.html#p-contact"><span class="std std-ref">contact us</span></a> and we will provide further
-guidance.</p>
-<p>If you are unable to connect to the VPN or to either of the above pages
-while connected to the VPN, then there may be other problems with your
-account. We recommend that you either <a class="reference internal" href="../../contact.html#p-contact"><span class="std std-ref">contact us</span></a> for
-assistance or, if you prefer, that you submit a ticket to the UCPH-IT
-<a class="reference external" href="https://serviceportal.ku.dk/">Serviceportal</a>, using the <code class="docutils literal notranslate"><span class="pre">Research</span> <span class="pre">Applications</span> <span class="pre">Counseling</span> <span class="pre">and</span>
-<span class="pre">Support</span></code> / <code class="docutils literal notranslate"><span class="pre">Forskningsapplikationer</span> <span class="pre">Rådgivning</span> <span class="pre">og</span> <span class="pre">support</span></code> ticket
-category.</p>
-</section>
-<section id="file-uploads-using-mobaxterm-never-start">
-<h3>File uploads using MobaXterm never start<a class="headerlink" href="#file-uploads-using-mobaxterm-never-start" title="Link to this heading">¶</a></h3>
-<p>Please make sure that your session is configured to use the <code class="docutils literal notranslate"><span class="pre">SCP</span>
-<span class="pre">(enhanced</span> <span class="pre">speed)</span></code> browser type. See step 4 in the
-<a class="reference internal" href="connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section.</p>
-</section>
-<section id="network-folders-in-ucph-are-not-available">
-<h3>Network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available<a class="headerlink" href="#network-folders-in-ucph-are-not-available" title="Link to this heading">¶</a></h3>
-<p>Please make sure that you have disabled use of <code class="docutils literal notranslate"><span class="pre">GSSAPI</span> <span class="pre">Kerberos</span></code> as
-described in the <a class="reference internal" href="connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section. Similarly, if
-using Linux or OSX, then you cannot be authenticating using a Kerberos
-ticket.</p>
+<p>To avoid this, only run <code class="docutils literal notranslate"><span class="pre">sacct</span></code> and <code class="docutils literal notranslate"><span class="pre">sacct-usage</span></code> on the head node.</p>
 </section>
 </section>
 </section>
@@ -344,9 +310,7 @@ ticket.</p>
             <ul>
 <li><a class="reference internal" href="#">Dummy header to prevent reformatting</a><ul>
 <li><a class="reference internal" href="#id1">Dummy header to prevent reformatting</a><ul>
-<li><a class="reference internal" href="#timeout-while-connecting-to-the-cluster">Timeout while connecting to the cluster</a></li>
-<li><a class="reference internal" href="#file-uploads-using-mobaxterm-never-start">File uploads using MobaXterm never start</a></li>
-<li><a class="reference internal" href="#network-folders-in-ucph-are-not-available">Network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available</a></li>
+<li><a class="reference internal" href="#connection-refused-when-running-sacct-sacct-usage"><code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">refused</span></code> when running <code class="docutils literal notranslate"><span class="pre">sacct</span></code> / <code class="docutils literal notranslate"><span class="pre">sacct-usage</span></code></a></li>
 </ul>
 </li>
 </ul>

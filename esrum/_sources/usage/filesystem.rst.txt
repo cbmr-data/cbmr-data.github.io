@@ -279,6 +279,7 @@ for such projects.
 *****************
 
 .. include:: /services/networkdrives_troubleshooting.rst
+   :start-line: 8
 
 .. _red hat enterprise linux: https://en.wikipedia.org/wiki/Red_Hat_Enterprise_Linux
 

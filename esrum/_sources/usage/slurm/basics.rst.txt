@@ -598,6 +598,7 @@ system on Esrum to load the software you need for your work.
 *****************
 
 .. include:: basics_troubleshooting.rst
+   :start-line: 8
 
 **********************
  Additional resources

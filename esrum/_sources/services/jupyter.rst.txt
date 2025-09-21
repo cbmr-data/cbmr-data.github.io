@@ -150,6 +150,7 @@ notebook:
 *****************
 
 .. include:: jupyter_troubleshooting.rst
+   :start-line: 8
 
 .. _jupyter notebooks: https://jupyter.org/
 

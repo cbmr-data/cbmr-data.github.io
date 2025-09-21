@@ -274,6 +274,7 @@ impression that the installation processing has frozen.
 *****************
 
 .. include:: r_troubleshooting.rst
+   :start-line: 8
 
 .. _argparser: https://cran.r-project.org/web/packages/argparser/index.html
 

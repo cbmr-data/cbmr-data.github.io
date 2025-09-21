@@ -308,51 +308,28 @@ emails, and we therefore recommend using your <code class="docutils literal notr
 </section>
 <section id="monitoring-overall-resource-usage-by-jobs">
 <h2>Monitoring overall resource usage by jobs<a class="headerlink" href="#monitoring-overall-resource-usage-by-jobs" title="Link to this heading">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">sacct</span></code> command may be used to review the average CPU usage, the
-peak memory usage, disk I/O, and more for completed jobs. This makes it
-easier to verify that you are not needlessly reserving resources:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sacct<span class="w"> </span>-o<span class="w"> </span>JobID,Elapsed,State,AllocCPUS,AveCPU,ReqMem,MaxVMSize
+<p>The <a class="reference external" href="https://slurm.schedmd.com/archive/slurm-20.11.9/sacct.html">sacct</a> command reports detailed statistics about completed jobs,
+while the <a class="reference external" href="https://slurm.schedmd.com/archive/slurm-20.11.9/sstat.html">sstat</a> command reports statistics about <em>your</em> running jobs.
+Note that <code class="docutils literal notranslate"><span class="pre">sacct</span></code>, and the script below, can only be run on the head
+node.</p>
+<p>However, the output from these tools may be difficult to interpret, and
+for that reason we provide a helper script, <code class="docutils literal notranslate"><span class="pre">sacct-usage</span></code>, that
+summarizes some of this information in a more easily readable form.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sacct-usage
+<span class="go">User    Job   Start                   Elapsed  State      CPUsReserved  CPUsUsed  MemReserved  MemUsed  Name</span>
+<span class="go">abc123  1     2025-09-01 10:15:01  252:04:52s  FAILED                8       1.1        124.6    105.9  python3</span>
+<span class="go">abc123  2[1]  2025-09-15 16:02:35   02:49:25s  COMPLETED            32      16.3        512.0    358.7  paleomix</span>
+<span class="go">abc123  3     2025-09-23 12:35:19   01:00:53s  RUNNING              24      22.6         64.0     16.0  bash</span>
 </pre></div>
 </div>
-<p>A full description of the data printed by <code class="docutils literal notranslate"><span class="pre">sacct</span></code> command can be found
-in the <a class="reference external" href="https://slurm.schedmd.com/archive/slurm-20.11.9/sacct.html">sacct manual</a>, but briefly, this prints the job ID, the amount
-of time the job has been running, the state of the job (queued, running,
-completed, etc.), number of CPUs allocated, the CPU utilization
-(preferably this should be the number of CPUs allocated times the
-elapsed time), the amount of memory requested, and the peak virtual
-memory size.</p>
-<p>Alternatively, we provide a helper that summarizes some of this
-information in a more easily readable form:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>sacct-usage
-<span class="gp">$ </span>sacct-usage
-<span class="go">      Age  User    Job   State         Elapsed  CPUs  CPUsWasted  ExtraMem  ExtraMemWasted  CPUHoursWasted</span>
-<span class="go">13:32:04s  abc123  1     FAILED     252:04:52s     8         6.9     131.4           131.4         4012.14</span>
-<span class="go">10:54:32s  abc123  2[1]  COMPLETED   02:49:25s    32        15.7       0.0             0.0           44.38</span>
-<span class="go">01:48:43s  abc123  3     COMPLETED   01:00:53s    24         2.4       0.0             0.0            2.43</span>
-</pre></div>
-</div>
-<p>The important information is found in the <code class="docutils literal notranslate"><span class="pre">CPUsWasted</span></code> column and the
-<code class="docutils literal notranslate"><span class="pre">ExtraMemWasted</span></code> column, which show the number CPUs that went unused
-on average, and the amount of <em>extra</em> memory that went unused. Note that
-<code class="docutils literal notranslate"><span class="pre">ExtraMem</span></code> only counts memory above the default allocation of ~16 GB
-of RAM per CPU, as our policy is that you shouldn't have to worry about
-using less than that. If you want to see the full memory usage, then use
-the <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> option.</p>
-<p>The final column indicates that number of CPU hours your job wasted,
-calculated as the length of time your job ran multiplied by the number
-of reserved CPUs and the number of CPUs that would have been able to get
-the default 16 GB of RAM had <code class="docutils literal notranslate"><span class="pre">ExtraMemWasted</span></code> been zero.</p>
-<p>Aim for your jobs to resemble the third job, not the second job and
-especially not the first job in the example!</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">Wasted</span></code> statistics are based on snapshots of resource usage
-produced by Slurm and are therefore not 100% accurate. Notably, the
-memory usage statistics are based on maximum memory usage of
-individual processes, rather than the maximum cumulative memory
-usage, and may therefore greatly overestimate wasted memory if you
-are running multiple simultaneous processes in a pipeline.</p>
-</div>
+<p>Briefly, <code class="docutils literal notranslate"><span class="pre">sacct-usage</span></code> reports how many CPUs and how much memory you
+reserved for your jobs, and how many CPUs and how much memory your job
+actually utilized.</p>
+<p>We ask that you please try to keep your CPU and memory reservations in
+line with the amount of resources your jobs actually use. In particular,
+do not reserve CPUs that you are not using. However, you do not need to
+reduce your memory reservations below the default ~16 GB of RAM per CPU,
+as we consider that the baseline.</p>
 </section>
 <section id="monitoring-individual-processes-in-a-job">
 <h2>Monitoring individual processes in a job<a class="headerlink" href="#monitoring-individual-processes-in-a-job" title="Link to this heading">¶</a></h2>

@@ -358,6 +358,20 @@ that X11 support is configured as shown:</p>
 <img alt="_images/mobaxterm_x11_settings.png" class="align-center" src="_images/mobaxterm_x11_settings.png" />
 </section>
 </section>
+<section id="monitoring-slurm-jobs">
+<h2>Monitoring slurm jobs<a class="headerlink" href="#monitoring-slurm-jobs" title="Link to this heading">¶</a></h2>
+<section id="connection-refused-when-running-sacct-sacct-usage">
+<h3><code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">refused</span></code> when running <code class="docutils literal notranslate"><span class="pre">sacct</span></code> / <code class="docutils literal notranslate"><span class="pre">sacct-usage</span></code><a class="headerlink" href="#connection-refused-when-running-sacct-sacct-usage" title="Link to this heading">¶</a></h3>
+<p>If you attempt to run <code class="docutils literal notranslate"><span class="pre">sacct</span></code> or <code class="docutils literal notranslate"><span class="pre">sacct-usage</span></code> on any other node
+than the head node, then you may get an error message like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sacct: error: slurm_persist_conn_open_without_init: failed to open persistent connection to host:localhost:6819: Connection refused</span>
+<span class="go">sacct: error: Sending PersistInit msg: Connection refused</span>
+<span class="go">sacct: error: Problem talking to the database: Connection refused</span>
+</pre></div>
+</div>
+<p>To avoid this, only run <code class="docutils literal notranslate"><span class="pre">sacct</span></code> and <code class="docutils literal notranslate"><span class="pre">sacct-usage</span></code> on the head node.</p>
+</section>
+</section>
 <section id="network-drives">
 <h2>Network drives<a class="headerlink" href="#network-drives" title="Link to this heading">¶</a></h2>
 <section id="the-ucph-folder-or-subfolders-are-missing">
@@ -714,6 +728,10 @@ when using the <code class="docutils literal notranslate"><span class="pre">--sl
 <li><a class="reference internal" href="#slurm-basics">Slurm basics</a><ul>
 <li><a class="reference internal" href="#error-requested-node-configuration-is-not-available">Error: Requested node configuration is not available</a></li>
 <li><a class="reference internal" href="#x11-forwarding-is-working-in-mobaxterm">X11 forwarding is working in MobaXterm</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#monitoring-slurm-jobs">Monitoring slurm jobs</a><ul>
+<li><a class="reference internal" href="#connection-refused-when-running-sacct-sacct-usage"><code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">refused</span></code> when running <code class="docutils literal notranslate"><span class="pre">sacct</span></code> / <code class="docutils literal notranslate"><span class="pre">sacct-usage</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#network-drives">Network drives</a><ul>
