@@ -72,7 +72,8 @@ In addition to the Esrum HPC cluster, the DAP also provides
 
 You are also always welcome to :ref:`contact us <p_contact>` if you have
 questions or problems relating to the cluster, cohorts, other services
-or resources provided by the platform.
+or resources provided by the platform. Additionally, we will gladly
+assist with general bioinformatics issues.
 
 We also kindly ask that you acknowledge the use of services and
 resources that we provide. See the :ref:`acknowledgements

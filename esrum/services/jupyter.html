@@ -367,6 +367,265 @@ notebook:</p>
 </pre></div>
 </div>
 </section>
+<section id="running-slurm-jobs-from-jupyter-notebooks">
+<h2>Running Slurm jobs from Jupyter notebooks<a class="headerlink" href="#running-slurm-jobs-from-jupyter-notebooks" title="Link to this heading">¶</a></h2>
+<p>We provide a Python module (<a class="reference external" href="https://github.com/cbmr-data/esrum-utils/tree/main/jupyter-slurm">jupyter_slurm</a>) for submitting Slurm jobs
+from Jupyter notebooks. This allows you to perform computationally
+expensive analyses in a notebook, potentially across multiple nodes,
+without having to reserve the resources required for this for the
+duration of your notebook.</p>
+<section id="installing-jupyter-slurm">
+<h3>Installing <code class="docutils literal notranslate"><span class="pre">jupyter_slurm</span></code><a class="headerlink" href="#installing-jupyter-slurm" title="Link to this heading">¶</a></h3>
+<p>To use this module, you need to either install it together with Jupyter,
+or you can &quot;inject&quot; it into your notebook. The former option is
+recommended, and also allows you to install other libraries that you
+need.</p>
+<section id="option-a-installing-the-module-with-jupyter">
+<h4>Option A: Installing the module with Jupyter<a class="headerlink" href="#option-a-installing-the-module-with-jupyter" title="Link to this heading">¶</a></h4>
+<ol class="arabic">
+<li><p>Deactivate any currently active <cite>conda</cite> and python environments</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>to<span class="w"> </span>deactivate<span class="w"> </span>Conda<span class="w"> </span>environments:
+<span class="go">conda deactivate</span>
+<span class="gp"># </span>to<span class="w"> </span>deactivate<span class="w"> </span>Python<span class="w"> </span>environments:
+<span class="go">deactivate</span>
+</pre></div>
+</div>
+</li>
+<li><p>Load the python version you wish to use</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module load python/3.11.3</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create a virtual environment for <cite>jupyter</cite> / <cite>jupyter_slurm</cite>. The
+name <cite>jupyter_slurm</cite> may be replaced by any name that you prefer</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 -m venv jupyter_slurm</span>
+</pre></div>
+</div>
+</li>
+<li><p>Install <cite>jupyter</cite> in the environment. You can install either the
+latest version or, if you prefer, a specific version of <cite>jupyter</cite>
+notebook:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./jupyter_slurm/bin/pip install notebook # the latest version, or</span>
+<span class="go">./jupyter_slurm/bin/pip install notebook==7.4.5 # a specific version</span>
+</pre></div>
+</div>
+<p>Install any other python modules you need in the same manner.</p>
+</li>
+<li><p>Install <cite>jupyter_slurm</cite> in the environment</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># install the latest version of the module</span>
+<span class="o">./</span><span class="n">jupyter_slurm</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">pip</span> <span class="n">install</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">cbmr_shared</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">dap</span><span class="o">/</span><span class="n">jupyter_slurm</span><span class="o">/</span><span class="n">latest</span>
+<span class="c1"># or, alternatively, a specific version</span>
+<span class="c1"># ./jupyter_slurm/bin/pip install /projects/cbmr_shared/apps/dap/jupyter_slurm/0.0.1</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>To start the notebook, run, replacing <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> with the port number you
+are using (see above for more information)</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">shell srun --pty -- ./jupyter_slurm/bin/jupyter notebook --no-browser --ip=0.0.0.0 --port=XYZ</span>
+</pre></div>
+</div>
+<p>You can now import and use the <code class="docutils literal notranslate"><span class="pre">jupyter_slurm</span></code> module as described
+below.</p>
+</section>
+<section id="option-b-injecting-the-module-into-your-notebook">
+<h4>Option B: &quot;Injecting&quot; the module into your notebook<a class="headerlink" href="#option-b-injecting-the-module-into-your-notebook" title="Link to this heading">¶</a></h4>
+<p>This method is not recommended, but allows you make use of
+<code class="docutils literal notranslate"><span class="pre">jupyter_slurm</span></code> if you are using the <code class="docutils literal notranslate"><span class="pre">jupyter</span></code> environment module on
+Esrum, or another version of Jupyter where you cannot install your own
+python modules.</p>
+<p>Instead of installing the module, we add it to Python's <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>
+list as shown below. This list defines where Python looks when importing
+modules and this code therefore has to be run before attempting to
+import the module:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="c1"># to load the latest version</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/projects/cbmr_shared/apps/dap/jupyter_slurm/latest/src&quot;</span><span class="p">)</span>
+<span class="c1"># or, alternatively, to load a specific version</span>
+<span class="c1"># sys.path.append(&quot;/projects/cbmr_shared/apps/dap/jupyter_slurm/0.0.1/src&quot;)</span>
+</pre></div>
+</div>
+<p>You can now import / use <code class="docutils literal notranslate"><span class="pre">jupyter_slurm</span></code> as described below.</p>
+</section>
+</section>
+<section id="running-slurm-jobs-using-jupyter-slurm">
+<h3>Running Slurm jobs using <code class="docutils literal notranslate"><span class="pre">jupyter_slurm</span></code><a class="headerlink" href="#running-slurm-jobs-using-jupyter-slurm" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">jupyter_slurm</span></code> provides wrapper functions for <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> and for
+<code class="docutils literal notranslate"><span class="pre">srun</span></code>. For example, to queue a job using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>, use the function
+with the same name:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">jupyter_slurm</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jp</span>
+
+<span class="n">jobid</span> <span class="o">=</span> <span class="n">jp</span><span class="o">.</span><span class="n">sbatch</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">[</span><span class="s2">&quot;samtools&quot;</span><span class="p">,</span> <span class="s2">&quot;markdup&quot;</span><span class="p">,</span> <span class="s2">&quot;my data.sam&quot;</span><span class="p">,</span> <span class="s2">&quot;--output&quot;</span><span class="p">,</span> <span class="s2">&quot;my data.markdup.bam&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;samtools&quot;</span><span class="p">,</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="s2">&quot;my data.markdup.bam&quot;</span><span class="p">],</span>
+    <span class="p">],</span>
+    <span class="n">modules</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;samtools&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Started job with ID&quot;</span><span class="p">,</span> <span class="n">jobid</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This generates an <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> script in which the <code class="docutils literal notranslate"><span class="pre">samtools</span></code> module is
+loaded, and then runs the two <code class="docutils literal notranslate"><span class="pre">samtools</span></code> commands. The Job ID for this
+job is returned the function. See below for how to pass shell commands
+to the script.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">jupyter_slurm</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jp</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">jp</span><span class="o">.</span><span class="n">srun</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;samtools&quot;</span><span class="p">,</span> <span class="s2">&quot;idxstats&quot;</span><span class="p">,</span> <span class="s2">&quot;my data.markdup.bam&quot;</span><span class="p">],</span>
+    <span class="n">modules</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;samtools&quot;</span><span class="p">],</span>
+    <span class="n">capture</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Command &quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;failed&quot;</span> <span class="k">if</span> <span class="n">result</span> <span class="k">else</span> <span class="s2">&quot;completed&quot;</span><span class="p">),</span> <span class="s2">&quot; with return code&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  STDOUT =&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  STDERR =&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="writing-shell-commands-for-the-sbatch-and-srun-functions">
+<h4>Writing shell commands for the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> and <code class="docutils literal notranslate"><span class="pre">srun</span></code> functions<a class="headerlink" href="#writing-shell-commands-for-the-sbatch-and-srun-functions" title="Link to this heading">¶</a></h4>
+<p>In the above examples, shell commands have been specified as lists of
+strings:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">[</span><span class="s2">&quot;samtools&quot;</span><span class="p">,</span> <span class="s2">&quot;markdup&quot;</span><span class="p">,</span> <span class="s2">&quot;my data.sam&quot;</span><span class="p">,</span> <span class="s2">&quot;--output&quot;</span><span class="p">,</span> <span class="s2">&quot;my data.markdup.bam&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;samtools&quot;</span><span class="p">,</span> <span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="s2">&quot;my data.markdup.bam&quot;</span><span class="p">],</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>This has the advantage that <code class="docutils literal notranslate"><span class="pre">jupyter_slurm</span></code> can automatically escape
+special characters such as spaces for you. This ensures that your
+commands work regardless of what your filenames look like.</p>
+<p>Alternatively, you can pass shell commands as strings, but in that case
+you <em>must</em> manually quote/escape special characters:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="s2">&quot;samtools markdup &#39;my data.sam&#39; --output &#39;my data.markdup.bam&#39;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;samtools index &#39;my data.markdup.bam&#39;&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>This is equivalent to what gets generated automatically when passing
+arguments as lists of strings.</p>
+</section>
+</section>
+<section id="function-reference">
+<h3>Function reference<a class="headerlink" href="#function-reference" title="Link to this heading">¶</a></h3>
+<section id="sbatch-function">
+<h4><code class="docutils literal notranslate"><span class="pre">sbatch</span></code> function<a class="headerlink" href="#sbatch-function" title="Link to this heading">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sbatch</span><span class="p">(</span><span class="n">commands</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
+           <span class="o">*</span><span class="p">,</span>
+           <span class="n">cpus</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+           <span class="n">gpus</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+           <span class="n">gpu_type</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;a100&quot;</span><span class="p">,</span> <span class="s2">&quot;h100&quot;</span><span class="p">,</span> <span class="s2">&quot;A100&quot;</span><span class="p">,</span> <span class="s2">&quot;H100&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+           <span class="n">memory</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+           <span class="n">job_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+           <span class="n">modules</span><span class="p">:</span> <span class="n">SequenceNotStr</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+           <span class="n">extra_args</span><span class="p">:</span> <span class="n">SequenceNotStr</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+           <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+           <span class="n">array_params</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+           <span class="n">wait</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+           <span class="n">mail_user</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+           <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+</pre></div>
+</div>
+<p>Submit an sbatch script for running one or more commands.</p>
+<p><strong>Arguments</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">commands</span></code> - One or more commands to be run using sbatch. May be a
+list of strings, in which case the strings are assumed to be properly
+formatted commands and included as is, or a list of list of strings,
+in which case the each list of strings is assumed to represent a
+single command, and each argument is quoted/escaped to ensure that
+special characters are properly handled.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cpus</span></code> - The number of CPUs to reserve. Must be a number in the
+range 1 to 128. Defaults to 1.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">memory</span></code> - The amount of memory to reserve. Must be a positive
+number (in MB) or a string ending with a unit (K, M, G, T). Defaults
+to ~16G per CPU.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpus</span></code> - The number of CPUs to reserve, either 0, 1, or 2. Jobs
+that reserve CPUs will be run on the GPU queue. Defaults to 0.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpu_type</span></code> - Preferred GPU type, if any, either ‘a100’ or ‘h100’.
+Defaults to None.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">job_name</span></code> - An optional string naming the current Slurm job.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">modules</span></code> - A list of zero or more environment modules to load
+before running the commands specified above. Defaults to ().</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">extra_args</span></code> - A list of arguments passed directly to srun/sbatch.
+Multi-part arguments must therefore be split into multiple values:
+[“–foo”, “bar”] and not [“–foo bar”]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output_file</span></code> - Optional name of log-file foom the job.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">array_params</span></code> - Optional job-array parameters (see “–array”).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mail_user</span></code> - Send an email to user on failures or completion of
+the job. May either be an email address, or <code class="docutils literal notranslate"><span class="pre">True</span></code> to send an email
+to <code class="docutils literal notranslate"><span class="pre">$USER&#64;ku.dk</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wait</span></code> - If true, wait for the job to complete before returning.
+Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">strict</span></code> - If true, the script is configured to terminate on the
+first error. Defaults to true.</p></li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span></code> - The JobID of the submitted job.</p></li>
+</ul>
+</section>
+<section id="srun-function">
+<h4><code class="docutils literal notranslate"><span class="pre">srun</span></code> function<a class="headerlink" href="#srun-function" title="Link to this heading">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">srun</span><span class="p">(</span>
+    <span class="n">command</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">cpus</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">gpus</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">memory</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">modules</span><span class="p">:</span> <span class="n">SequenceNotStr</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="n">extra_args</span><span class="p">:</span> <span class="n">SequenceNotStr</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="n">capture</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">text</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SrunResult</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">|</span> <span class="n">SrunResult</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">SrunResult</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Run command via <code class="docutils literal notranslate"><span class="pre">srun</span></code>, and optionally capture its output.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function can only be used from esrumhead01fl!</p>
+</div>
+<p><strong>Arguments</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">command</span></code> - The command to run, either as a single string that is
+assumed to contain a properly formatted shell command, or as a list
+of strings, that is assumed to present each argument in the command.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cpus</span></code> - The number of CPUs to reserve. Must be a number in the
+range 1 to 128. Defaults to 1.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">memory</span></code> - The amount of memory to reserve. Must be a positive
+number (in MB) or a string ending with a unit (K, M, G, T). Defaults
+to ~16G per CPU.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpus</span></code> - The number of CPUs to reserve, either 0, 1, or 2. Jobs
+that reserve CPUs will be run on the GPU queue. Defaults to 0.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpu_type</span></code> - Preferred GPU type, if any, either ‘a100’ or ‘h100’.
+Defaults to None.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">extra_args</span></code> - A list of arguments passed directly to srun/sbatch.
+Multi-part arguments must therefore be split into multiple values:
+[“–foo”, “bar”] and not [“–foo bar”]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">modules</span></code> - A list of zero or more environment modules to load
+before running the commands specified above. Defaults to ().</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">capture</span></code> - If true, srun’s stdout and stderr is captured and
+returned. Defaults to False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">text</span></code> - If true, output captured by <code class="docutils literal notranslate"><span class="pre">capture</span></code> is assumed to be
+UTF8 and decoded to strings. Otherwise bytes are returned. Defaults
+to True.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">strict</span></code> - If true, the script is configured to terminate on the
+first error. Defaults to true.</p></li>
+</ul>
+<p><strong>Raises</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SlurmError</span></code> - Raised if this command is invoked on a compute node.</p></li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span></code> - The exit-code from running <code class="docutils literal notranslate"><span class="pre">srun</span></code> (non-zero on error)
+int, str, str: The srun exit-code, stdout, and stderr, if <code class="docutils literal notranslate"><span class="pre">capture</span></code>
+is True. int, bytes, bytes: As above, but <code class="docutils literal notranslate"><span class="pre">text</span></code> is False.</p></li>
+</ul>
+</section>
+</section>
+</section>
 <section id="troubleshooting">
 <h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">¶</a></h2>
 <section id="jupyter-notebooks-browser-error-when-opening-url">
@@ -482,6 +741,23 @@ compute nodes.</p>
 <li><a class="reference internal" href="#starting-a-jupyter-notebook">Starting a Jupyter notebook</a></li>
 <li><a class="reference internal" href="#connecting-to-the-jupyter-notebook">Connecting to the Jupyter Notebook</a></li>
 <li><a class="reference internal" href="#adding-an-r-kernel-to-jupyter">Adding an R kernel to Jupyter</a></li>
+<li><a class="reference internal" href="#running-slurm-jobs-from-jupyter-notebooks">Running Slurm jobs from Jupyter notebooks</a><ul>
+<li><a class="reference internal" href="#installing-jupyter-slurm">Installing <code class="docutils literal notranslate"><span class="pre">jupyter_slurm</span></code></a><ul>
+<li><a class="reference internal" href="#option-a-installing-the-module-with-jupyter">Option A: Installing the module with Jupyter</a></li>
+<li><a class="reference internal" href="#option-b-injecting-the-module-into-your-notebook">Option B: &quot;Injecting&quot; the module into your notebook</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#running-slurm-jobs-using-jupyter-slurm">Running Slurm jobs using <code class="docutils literal notranslate"><span class="pre">jupyter_slurm</span></code></a><ul>
+<li><a class="reference internal" href="#writing-shell-commands-for-the-sbatch-and-srun-functions">Writing shell commands for the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> and <code class="docutils literal notranslate"><span class="pre">srun</span></code> functions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#function-reference">Function reference</a><ul>
+<li><a class="reference internal" href="#sbatch-function"><code class="docutils literal notranslate"><span class="pre">sbatch</span></code> function</a></li>
+<li><a class="reference internal" href="#srun-function"><code class="docutils literal notranslate"><span class="pre">srun</span></code> function</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
 <li><a class="reference internal" href="#jupyter-notebooks-browser-error-when-opening-url">Jupyter Notebooks: Browser error when opening URL</a></li>
 </ul>

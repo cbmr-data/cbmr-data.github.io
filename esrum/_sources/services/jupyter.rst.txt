@@ -145,6 +145,314 @@ notebook:
    $ module load --auto R/4.3.3
    $ srun --pty -- jupyter notebook --no-browser --port=XXXXX
 
+*******************************************
+ Running Slurm jobs from Jupyter notebooks
+*******************************************
+
+We provide a Python module (jupyter_slurm_) for submitting Slurm jobs
+from Jupyter notebooks. This allows you to perform computationally
+expensive analyses in a notebook, potentially across multiple nodes,
+without having to reserve the resources required for this for the
+duration of your notebook.
+
+Installing ``jupyter_slurm``
+============================
+
+To use this module, you need to either install it together with Jupyter,
+or you can "inject" it into your notebook. The former option is
+recommended, and also allows you to install other libraries that you
+need.
+
+Option A: Installing the module with Jupyter
+--------------------------------------------
+
+#. Deactivate any currently active `conda` and python environments
+
+   .. code-block:: console
+
+      # to deactivate Conda environments:
+      conda deactivate
+      # to deactivate Python environments:
+      deactivate
+
+#. Load the python version you wish to use
+
+   .. code-block:: console
+
+      module load python/3.11.3
+
+#. Create a virtual environment for `jupyter` / `jupyter_slurm`. The
+   name `jupyter_slurm` may be replaced by any name that you prefer
+
+   .. code-block:: console
+
+      python3 -m venv jupyter_slurm
+
+#. Install `jupyter` in the environment. You can install either the
+   latest version or, if you prefer, a specific version of `jupyter`
+   notebook:
+
+   .. code-block:: console
+
+      ./jupyter_slurm/bin/pip install notebook # the latest version, or
+      ./jupyter_slurm/bin/pip install notebook==7.4.5 # a specific version
+
+   Install any other python modules you need in the same manner.
+
+#. Install `jupyter_slurm` in the environment
+
+   .. code-block:: python
+
+      # install the latest version of the module
+      ./jupyter_slurm/bin/pip install /projects/cbmr_shared/apps/dap/jupyter_slurm/latest
+      # or, alternatively, a specific version
+      # ./jupyter_slurm/bin/pip install /projects/cbmr_shared/apps/dap/jupyter_slurm/0.0.1
+
+To start the notebook, run, replacing ``XYZ`` with the port number you
+are using (see above for more information)
+
+.. code-block:: console
+
+   shell srun --pty -- ./jupyter_slurm/bin/jupyter notebook --no-browser --ip=0.0.0.0 --port=XYZ
+
+You can now import and use the ``jupyter_slurm`` module as described
+below.
+
+Option B: "Injecting" the module into your notebook
+---------------------------------------------------
+
+This method is not recommended, but allows you make use of
+``jupyter_slurm`` if you are using the ``jupyter`` environment module on
+Esrum, or another version of Jupyter where you cannot install your own
+python modules.
+
+Instead of installing the module, we add it to Python's ``sys.path``
+list as shown below. This list defines where Python looks when importing
+modules and this code therefore has to be run before attempting to
+import the module:
+
+.. code-block:: python
+
+   import sys
+   # to load the latest version
+   sys.path.append("/projects/cbmr_shared/apps/dap/jupyter_slurm/latest/src")
+   # or, alternatively, to load a specific version
+   # sys.path.append("/projects/cbmr_shared/apps/dap/jupyter_slurm/0.0.1/src")
+
+You can now import / use ``jupyter_slurm`` as described below.
+
+Running Slurm jobs using ``jupyter_slurm``
+==========================================
+
+The ``jupyter_slurm`` provides wrapper functions for ``sbatch`` and for
+``srun``. For example, to queue a job using ``sbatch``, use the function
+with the same name:
+
+.. code-block:: python
+
+   import jupyter_slurm as jp
+
+   jobid = jp.sbatch(
+       [
+           ["samtools", "markdup", "my data.sam", "--output", "my data.markdup.bam"],
+           ["samtools", "index", "my data.markdup.bam"],
+       ],
+       modules=["samtools"],
+   )
+   print("Started job with ID", jobid)
+
+This generates an ``sbatch`` script in which the ``samtools`` module is
+loaded, and then runs the two ``samtools`` commands. The Job ID for this
+job is returned the function. See below for how to pass shell commands
+to the script.
+
+.. code-block:: python
+
+   import jupyter_slurm as jp
+
+   result = jp.srun(
+       ["samtools", "idxstats", "my data.markdup.bam"],
+       modules=["samtools"],
+       capture=True,
+   )
+   print("Command ", ("failed" if result else "completed"), " with return code", result.returncode)
+   print("  STDOUT =", result.stdout)
+   print("  STDERR =", result.stderr)
+
+Writing shell commands for the ``sbatch`` and ``srun`` functions
+----------------------------------------------------------------
+
+In the above examples, shell commands have been specified as lists of
+strings:
+
+.. code-block:: python
+
+   [
+       ["samtools", "markdup", "my data.sam", "--output", "my data.markdup.bam"],
+       ["samtools", "index", "my data.markdup.bam"],
+   ]
+
+This has the advantage that ``jupyter_slurm`` can automatically escape
+special characters such as spaces for you. This ensures that your
+commands work regardless of what your filenames look like.
+
+Alternatively, you can pass shell commands as strings, but in that case
+you *must* manually quote/escape special characters:
+
+.. code-block:: python
+
+   [
+       "samtools markdup 'my data.sam' --output 'my data.markdup.bam'",
+       "samtools index 'my data.markdup.bam'",
+   ]
+
+This is equivalent to what gets generated automatically when passing
+arguments as lists of strings.
+
+Function reference
+==================
+
+``sbatch`` function
+-------------------
+
+.. code:: python
+
+   def sbatch(commands: Sequence[str] | Sequence[Sequence[str]],
+              *,
+              cpus: int = 1,
+              gpus: int = 0,
+              gpu_type: Literal["a100", "h100", "A100", "H100"] | None = None,
+              memory: int | str | None = None,
+              job_name: str | None = None,
+              modules: SequenceNotStr[str] = (),
+              extra_args: SequenceNotStr[str] = (),
+              output_file: str | Path | None = None,
+              array_params: str | None = None,
+              wait: bool = False,
+              mail_user: str | bool = False,
+              strict: bool = True) -> int
+
+Submit an sbatch script for running one or more commands.
+
+**Arguments**:
+
+-  ``commands`` - One or more commands to be run using sbatch. May be a
+   list of strings, in which case the strings are assumed to be properly
+   formatted commands and included as is, or a list of list of strings,
+   in which case the each list of strings is assumed to represent a
+   single command, and each argument is quoted/escaped to ensure that
+   special characters are properly handled.
+
+-  ``cpus`` - The number of CPUs to reserve. Must be a number in the
+   range 1 to 128. Defaults to 1.
+
+-  ``memory`` - The amount of memory to reserve. Must be a positive
+   number (in MB) or a string ending with a unit (K, M, G, T). Defaults
+   to ~16G per CPU.
+
+-  ``gpus`` - The number of CPUs to reserve, either 0, 1, or 2. Jobs
+   that reserve CPUs will be run on the GPU queue. Defaults to 0.
+
+-  ``gpu_type`` - Preferred GPU type, if any, either ‘a100’ or ‘h100’.
+   Defaults to None.
+
+-  ``job_name`` - An optional string naming the current Slurm job.
+
+-  ``modules`` - A list of zero or more environment modules to load
+   before running the commands specified above. Defaults to ().
+
+-  ``extra_args`` - A list of arguments passed directly to srun/sbatch.
+   Multi-part arguments must therefore be split into multiple values:
+   [“–foo”, “bar”] and not [“–foo bar”]
+
+-  ``output_file`` - Optional name of log-file foom the job.
+
+-  ``array_params`` - Optional job-array parameters (see “–array”).
+
+-  ``mail_user`` - Send an email to user on failures or completion of
+   the job. May either be an email address, or ``True`` to send an email
+   to ``$USER@ku.dk``.
+
+-  ``wait`` - If true, wait for the job to complete before returning.
+   Defaults to False.
+
+-  ``strict`` - If true, the script is configured to terminate on the
+   first error. Defaults to true.
+
+**Returns**:
+
+-  ``int`` - The JobID of the submitted job.
+
+``srun`` function
+-----------------
+
+.. code:: python
+
+   def srun(
+       command: Sequence[str],
+       *,
+       cpus: int = 1,
+       gpus: int = 0,
+       memory: int | str | None = None,
+       modules: SequenceNotStr[str] = (),
+       extra_args: SequenceNotStr[str] = (),
+       capture: bool = False,
+       text: bool = True,
+       strict: bool = True
+   ) -> SrunResult[None] | SrunResult[str] | SrunResult[bytes]
+
+Run command via ``srun``, and optionally capture its output.
+
+.. warning::
+
+   This function can only be used from esrumhead01fl!
+
+**Arguments**:
+
+-  ``command`` - The command to run, either as a single string that is
+   assumed to contain a properly formatted shell command, or as a list
+   of strings, that is assumed to present each argument in the command.
+
+-  ``cpus`` - The number of CPUs to reserve. Must be a number in the
+   range 1 to 128. Defaults to 1.
+
+-  ``memory`` - The amount of memory to reserve. Must be a positive
+   number (in MB) or a string ending with a unit (K, M, G, T). Defaults
+   to ~16G per CPU.
+
+-  ``gpus`` - The number of CPUs to reserve, either 0, 1, or 2. Jobs
+   that reserve CPUs will be run on the GPU queue. Defaults to 0.
+
+-  ``gpu_type`` - Preferred GPU type, if any, either ‘a100’ or ‘h100’.
+   Defaults to None.
+
+-  ``extra_args`` - A list of arguments passed directly to srun/sbatch.
+   Multi-part arguments must therefore be split into multiple values:
+   [“–foo”, “bar”] and not [“–foo bar”]
+
+-  ``modules`` - A list of zero or more environment modules to load
+   before running the commands specified above. Defaults to ().
+
+-  ``capture`` - If true, srun’s stdout and stderr is captured and
+   returned. Defaults to False.
+
+-  ``text`` - If true, output captured by ``capture`` is assumed to be
+   UTF8 and decoded to strings. Otherwise bytes are returned. Defaults
+   to True.
+
+-  ``strict`` - If true, the script is configured to terminate on the
+   first error. Defaults to true.
+
+**Raises**:
+
+-  ``SlurmError`` - Raised if this command is invoked on a compute node.
+
+**Returns**:
+
+-  ``int`` - The exit-code from running ``srun`` (non-zero on error)
+   int, str, str: The srun exit-code, stdout, and stderr, if ``capture``
+   is True. int, bytes, bytes: As above, but ``text`` is False.
+
 *****************
  Troubleshooting
 *****************
@@ -153,6 +461,8 @@ notebook:
    :start-line: 8
 
 .. _jupyter notebooks: https://jupyter.org/
+
+.. _jupyter_slurm: https://github.com/cbmr-data/esrum-utils/tree/main/jupyter-slurm
 
 .. _rstudio: https://posit.co/products/open-source/rstudio/
 

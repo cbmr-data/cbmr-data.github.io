@@ -124,8 +124,19 @@ running in the container.
 
 The ``esrumcont01fl`` node is dedicated to running containerized
 software that is not suitable for conversion to/running via Singularity.
-Please :ref:`p_contact` us if you wish to run containers on the
-container node.
+
+However, before you can use this node to run Podman containers, we have
+to make changes both to the node configuration and to your own Podman
+configuration. Therefore, please :ref:`p_contact` us if you wish to run
+Podman containers.
+
+Once these changes have been made, you can run containers on
+``esrumcont01fl`` via ``sbatch`` or ``srun`` (see the
+:ref:`s_interactive_session` section). The container *must* either be
+run in the foreground when using ``sbatch`` (i.e. do *not* use
+``--detach``), or you must remain connected to the node when using
+``srun``, as Slurm will otherwise terminate your container when the
+job/session exists.
 
 .. _containerization: https://www.ibm.com/topics/containerization
 
