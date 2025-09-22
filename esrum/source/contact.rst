@@ -4,13 +4,18 @@
  Contact us
 ############
 
-The Esrum HPC cluster is supported by the `Data Analytics Platform`_,
-formerly known as the Phenomics Platform.
+The `Data Analytics Platform`_, formerly known as the Phenomics
+Platform, provides support for the Esrum HPC cluster,
+:ref:`p_human_cohorts`, the `Project Registry`_, the
+:ref:`p_service_rstudio` servers, and related services. Additionally, we
+will gladly assist with general bioinformatics issues, including
+installing libraries and other software, debugging problems, performance
+improvements, data integration, QC, GWAS, NGS, and more.
 
 We have an open-door policy, and you are always welcome to drop by room
 07-8-29 (Unit 8E) at the Maersk Tower, if you need help and/or have
-questions about the cluster. Our office is located directly across from
-the kitchen on the 8th floor.
+questions about any of our services. Our office is located directly
+across from the kitchen on the 8th floor.
 
 You can also contact us via email at `SUND-CBMR-Esrum
 <mailto:cbmr-esrum@sund.ku.dk>`_. Note that you *must* use a UCPH e-mail
@@ -24,3 +29,5 @@ channel.
 .. _cbmr slack server: https://cbmr.slack.com
 
 .. _data analytics platform: https://cbmr.ku.dk/research-facilities/data-analytics/
+
+.. _project registry: https://cbmrcat.unicph.domain/projects/
