@@ -266,6 +266,13 @@ loaded, and then runs the two ``samtools`` commands. The Job ID for this
 job is returned the function. See below for how to pass shell commands
 to the script.
 
+.. note::
+
+   You can see the script that the ``sbatch`` function generates by
+   calling the ``sbatch_script`` function instead. The two functions
+   take the same arguments, but ``sbatch_script`` returns a list of
+   lines in the resulting script.
+
 .. code-block:: python
 
    import jupyter_slurm as jp
