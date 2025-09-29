@@ -11,7 +11,8 @@ simply by :ref:`contacting us <p_contact>` and asking for access. If you
 are an external researcher, student, guest, and otherwise collaborating
 with researchers at CBMR, then you should ask for one of your
 collaborators at CBMR to :ref:`contact us <p_contact>` and request for
-access.
+access. Make sure that you have a project registered in our project registry
+before submitting your request: https://cbmrcat/projects/ (VPN connection needed).
 
 Please note that access to (GDPR) protected data managed by DAP requires
 additional approval from the data owners. For more information, please

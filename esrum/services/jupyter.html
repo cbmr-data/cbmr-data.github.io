@@ -469,6 +469,13 @@ with the same name:</p>
 loaded, and then runs the two <code class="docutils literal notranslate"><span class="pre">samtools</span></code> commands. The Job ID for this
 job is returned the function. See below for how to pass shell commands
 to the script.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can see the script that the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> function generates by
+calling the <code class="docutils literal notranslate"><span class="pre">sbatch_script</span></code> function instead. The two functions
+take the same arguments, but <code class="docutils literal notranslate"><span class="pre">sbatch_script</span></code> returns a list of
+lines in the resulting script.</p>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">jupyter_slurm</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jp</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">jp</span><span class="o">.</span><span class="n">srun</span><span class="p">(</span>
