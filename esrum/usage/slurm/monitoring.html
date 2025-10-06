@@ -330,6 +330,14 @@ line with the amount of resources your jobs actually use. In particular,
 do not reserve CPUs that you are not using. However, you do not need to
 reduce your memory reservations below the default ~16 GB of RAM per CPU,
 as we consider that the baseline.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">MemUsed</span></code> values may not be accurate in cases where
+processes were killed due to requesting/using excess amounts of
+memory. When &quot;out of memory&quot; errors occur, you will have to increase
+the amount of memory reserved even though your apparent usage may be
+less than your current reservations.</p>
+</div>
 </section>
 <section id="monitoring-individual-processes-in-a-job">
 <h2>Monitoring individual processes in a job<a class="headerlink" href="#monitoring-individual-processes-in-a-job" title="Link to this heading">¶</a></h2>

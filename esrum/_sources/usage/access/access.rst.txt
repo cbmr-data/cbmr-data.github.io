@@ -4,25 +4,59 @@
  Applying for access
 #####################
 
+.. note::
+
+   If you are an external researcher, student, guest, and otherwise
+   collaborating with researchers at CBMR, then you should ask for one
+   of your collaborators or supervisors at CBMR to apply for access for
+   you, as described below.
+
 Access to the Esrum HPC cluster and a number of related services,
-projects, and datasets are managed by the Data Analytics Platform.
-Access to the cluster and non-protected (non-GDPR) data can be obtained
-simply by :ref:`contacting us <p_contact>` and asking for access. If you
-are an external researcher, student, guest, and otherwise collaborating
-with researchers at CBMR, then you should ask for one of your
-collaborators at CBMR to :ref:`contact us <p_contact>` and request for
-access. Make sure that you have a project registered in our project registry
-before submitting your request: https://cbmrcat/projects/ (VPN connection needed).
+projects, and datasets are managed by the Data Analytics Platform. To
+get access, please
 
-Please note that access to (GDPR) protected data managed by DAP requires
-additional approval from the data owners. For more information, please
-see the :ref:`p_human_cohorts` for an overview of available datasets and
-for instructions on how to apply for access.
+#. Register descriptions of the scientific projects that you intend to
+   work on using Esrum, if you have not already done so. To do so, for
+   each of your projects,
 
-Once you have been granted access to Esrum or a related resource you
-will receive an automated email that ``Changes to your Identity were
-processed``. Please refer to the :ref:`p_usage_connecting` page for
-further instructions on how to connect to the cluster.
+   #. Visit the `Project Manager`_ page and click the `Add Project`_
+      tab.
+
+   #. Enter the title of your project, the contact person for the
+      project (typically yourself), the contact information for the
+      PI/group-leader of the project, and a brief description of the
+      project.
+
+   #. Click the ``Add Project`` button, below the project description.
+      You will be taken to a page that allows you update your newly
+      created project, with the first field showing the ID of your new
+      project (e.g. ``CBMR-ABCD12``). Write down this ID.
+
+#. If you have already registered your project(s), then you can look up
+   the project IDs via the `Search Project`_ tab in the `Project
+   Manager`_.
+
+#. (Optional) To access human cohorts managed by Data Analytics, please
+   fill out this `data access form`_. For more information about
+   available cohorts, please see the :ref:`p_human_cohorts` page.
+
+#. Email us at `SUND-CBMR-Esrum <mailto:cbmr-esrum@sund.ku.dk>`_, and
+   include the IDs of your project(s) and, optionally, the data access
+   form describing the human cohorts that you wish to access.
+
+   .. warning::
+
+      You *must* use a UCPH e-mail account when writing to us on this
+      address. Mail from external addresses is currently blocked.
+
+Do not hesitate to :ref:`contact us <p_contact>`, if you have any
+questions regarding the above instructions.
+
+Once you have been granted access to Esrum and/or related resources, you
+will receive an automated email stating that ``Changes to your Identity
+were processed``. Please refer to the :ref:`p_usage_connecting` page for
+further instructions on how to connect to the cluster, once you have
+received this email.
 
 .. warning::
 
@@ -129,12 +163,20 @@ Adding users to a group using the IDM
 
 #. Wait for your request to be processed.
 
+.. _add project: https://cbmrcat/projects/add_project/
+
+.. _data access form: https://cbmrcat/static/esrum_data_access_form.docx
+
 .. _here: https://kunet.ku.dk/medarbejderguide/ITvejl/KU%20IdM%20-%20S%C3%A5dan%20anmodes%20om%20funktionsrolle.pdf
 
 .. _identity management system: https://identity.ku.dk/
 
 .. _identity.ku.dk: https://identity.ku.dk/
 
+.. _project manager: https://cbmrcat/projects/
+
 .. _s_applying_for_projects:
+
+.. _search project: https://cbmrcat/projects/search_project/
 
 .. _wsl: https://learn.microsoft.com/en-us/windows/wsl/about

@@ -101,6 +101,14 @@ do not reserve CPUs that you are not using. However, you do not need to
 reduce your memory reservations below the default ~16 GB of RAM per CPU,
 as we consider that the baseline.
 
+.. note::
+
+   Note that the ``MemUsed`` values may not be accurate in cases where
+   processes were killed due to requesting/using excess amounts of
+   memory. When "out of memory" errors occur, you will have to increase
+   the amount of memory reserved even though your apparent usage may be
+   less than your current reservations.
+
 ******************************************
  Monitoring individual processes in a job
 ******************************************
