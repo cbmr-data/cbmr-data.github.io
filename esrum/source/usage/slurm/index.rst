@@ -27,6 +27,11 @@ The documentation for running jobs is split into three sections:
    multiple, similar jobs using ``sbatch``, how to use ``srun`` for
    executing singular commands, and more.
 
+#. The :ref:`p_usage_slurm_monitor` section describes how to monitor
+   your Slurm jobs, including how see their state, how to inspect
+   processes running in your jobs, and how to get email notifications
+   when your jobs start or finish.
+
 #. The :ref:`p_usage_slurm_gpu` section describes how to run jobs on the
    GPU / high-memory node, including best practices for using this
    limited resource.
