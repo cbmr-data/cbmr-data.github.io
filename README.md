@@ -15,7 +15,9 @@ To add additional sources of documentation, modify `.github/workflows/default.ya
 
 ### Automatically rebuild documentation
 
-The `sphinx-autobuild` command can be used to automatically rebuild the documentation when you make changes:
+The `sphinx-autobuild` command can be used to automatically rebuild the documentation when you make changes. If [uv](https://docs.astral.sh/uv/) is installed, then simply run `make` in the documentation root to run `sphinx-autobuild` in an ephemeral virtual environment.
+
+Alternatively, requirements can be installed and run as follows:
 
 ```console
 pip install --user sphinx-autobuild furo==2024.1.29
@@ -58,8 +60,6 @@ If using VSCode, the [Custom Local Formatters](https://marketplace.visualstudio.
   "editor.formatOnSave": true
 }
 ```
-
-WARNING: Currently this breaks the header formatting in troubleshooting sections, since these files are inserted verbatim into other RST files and therefore should not start with top-level headers.
 
 ### Recording console output
 
