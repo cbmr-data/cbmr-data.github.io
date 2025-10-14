@@ -26,20 +26,31 @@ these, respectively, but you are welcome to :ref:`contact us
 
 In order to get access to a cohort managed by DAP, the data owner must
 first grant approval. This step varies between cohorts, as data owners
-have different methods of governing access, but often involves a simple
-email exchange. Other requests may require review by a committee or
-another type of review.
+have different methods of governing access, and may involve a simple
+email exchange, a review by committee, or another type of review.
 
-To initiate this process, fill out the `data access form`_ and send it
-to `SUND-CBMR-Esrum <mailto:cbmr-esrum@sund.ku.dk>`_. Note that you
-*must* use a UCPH e-mail account when writing to us on this address:
-Mail from external addresses is currently blocked.
+To initiate this process,
+
+#. ensure that your scientific project(s) are registered in the CBMR
+   Project Manager, as described on the :ref:`p_usage_access_applying`
+   page. You will need the Project IDs when filling out the data access
+   form.
+
+#. fill out the `data access form`_ and send it to `SUND-CBMR-Esrum
+   <mailto:cbmr-esrum@sund.ku.dk>`_. Note that you *must* use a UCPH
+   e-mail account when writing to us on this address: Mail from external
+   addresses is currently blocked.
 
 Access will be granted once permission to access the cohort has been
-formally granted and DAP has been informed. You will receive an
-automated email that ``Changes to your Identity were processed``, after
-which it may take up to 24 hours before you can access the project
-folder(s) on Esrum.
+formally approved by the data owners. You will receive an automated
+email that ``Changes to your Identity were processed``, after which it
+may take up to 24 hours before you can access the data on Esrum.
+
+.. tip::
+
+   It may be necessary to disconnect from, and reconnect to, Esrum for
+   the changes to your permissions to take effect, once you have
+   received the notification mentioned above.
 
 .. _catalog of cohort variables: https://cbmrcat.unicph.domain/search
 

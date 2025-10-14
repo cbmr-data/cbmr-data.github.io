@@ -36,9 +36,9 @@ get access, please
    the project IDs via the `Search Project`_ tab in the `Project
    Manager`_.
 
-#. (Optional) To access human cohorts managed by Data Analytics, please
-   fill out this `data access form`_. For more information about
-   available cohorts, please see the :ref:`p_human_cohorts` page.
+#. (Optional) To access human cohort data managed by Data Analytics,
+   please fill out a data access form, as described on the
+   :ref:`p_human_cohorts` page.
 
 #. Email us at `SUND-CBMR-Esrum <mailto:cbmr-esrum@sund.ku.dk>`_, and
    include the IDs of your project(s) and, optionally, the data access
@@ -164,8 +164,6 @@ Adding users to a group using the IDM
 #. Wait for your request to be processed.
 
 .. _add project: https://cbmrcat/projects/add_project/
-
-.. _data access form: https://cbmrcat/static/esrum_data_access_form.docx
 
 .. _here: https://kunet.ku.dk/medarbejderguide/ITvejl/KU%20IdM%20-%20S%C3%A5dan%20anmodes%20om%20funktionsrolle.pdf
 
