@@ -80,7 +80,7 @@ Note that ``sacct``, and the script below, can only be run on the head
 node.
 
 However, the output from these tools may be difficult to interpret, and
-for that reason we provide a helper script, ``sacct-usage``, that
+for that reason we provide a helper script, sacct-usage_, that
 summarizes some of this information in a more easily readable form.
 
 .. code-block:: console
@@ -323,6 +323,8 @@ and GPUs) columns are colored as follows:
    resource utilization on the cluster.
 
 .. _sacct: https://slurm.schedmd.com/archive/slurm-20.11.9/sacct.html
+
+.. _sacct-usage: https://github.com/cbmr-data/esrum-utils/tree/main/sacct-usage
 
 .. _slurmboard: https://github.com/cbmr-data/slurmboard
 
