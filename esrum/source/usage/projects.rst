@@ -36,8 +36,8 @@ Briefly,
  Requesting a new project or dataset
 *************************************
 
-To request the creation of a new project or dataset, please `contact us
-<p_contact>`_ with the following information.
+To request the creation of a new project or dataset, please
+:ref:`contact us <p_contact>` with the following information.
 
 #. **Who should administer the project/dataset?** This person will be
    responsible controlling access to the project via the `Identity
