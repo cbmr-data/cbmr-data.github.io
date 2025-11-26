@@ -127,8 +127,8 @@ software that is not suitable for conversion to/running via Singularity.
 
 However, before you can use this node to run Podman containers, we have
 to make changes both to the node configuration and to your own Podman
-configuration. Therefore, please :ref:`p_contact` us if you wish to run
-Podman containers.
+configuration. Therefore, please :ref:`contact us <p_contact>` if you
+wish to run Podman containers.
 
 Once these changes have been made, you can run containers on
 ``esrumcont01fl`` via ``sbatch`` or ``srun`` (see the

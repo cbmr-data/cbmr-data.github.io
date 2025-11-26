@@ -272,15 +272,28 @@ The official instructions for connecting to the VPN under Linux (in
 Danish_ and English_) are written under the assumption that you are
 using KDE5.
 
-If that is not the case, or if you prefer a command-line solution, then
-you can also connect using ``openconnect``, replacing ``abc123`` with
-your UCPH username. Log in using your UCPH password and using
-NetIQ/entering a TOTP code when prompted:
+Alternatively, you can open https://vpn.ku.dk in your browser, log in
+with your KU ID, and download the "Cisco Secure Client" for Linux. Once
+downloaded, open a terminal in the folder in which you downloaded the
+installer, and run the following command:
 
 .. code-block:: console
-   :emphasize-lines: 8,11
 
-   $ sudo openconnect -u abc123 vpn.ku.dk
+   $ sudo bash cisco-secure-client-linux64-*.sh
+
+Once the installer has finished running, you should be able to find the
+"Cisco Secure Client" in your start menu. Enter ``vpn.ku.dk`` as the VPN
+server, use your short KU ID (e.g ``abc123``) as your username.
+
+If you prefer a command-line solution, then you can also connect using
+``openconnect``, replacing ``abc123`` with your UCPH username. You will
+need to enter your password and use the authentication method you have
+configured (here a TOTP code generator):
+
+.. code-block:: console
+   :emphasize-lines: 7,10
+
+   $ sudo openconnect -u abc123 --useragent=AnyConnect --no-external-auth vpn.ku.dk
    POST https://vpn.ku.dk/
    Connected to 130.225.226.54:443
    SSL negotiation with vpn.ku.dk

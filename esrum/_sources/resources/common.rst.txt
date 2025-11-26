@@ -26,8 +26,8 @@ to generate the dataset, as appropriate.
 
 New datasets and new releases of datasets are added by request. To
 request that a dataset, including new releases of an existing dataset,
-be added simply `contact us <p_contact>`_ with the location (URL) of the
-dataset and the specific release you are interested in. For datasets
+be added simply :ref:`contact us <p_contact>` with the location (URL) of
+the dataset and the specific release you are interested in. For datasets
 with multiple versions, e.g. for different genomic builds, please
 specify the version you are interested in.
 

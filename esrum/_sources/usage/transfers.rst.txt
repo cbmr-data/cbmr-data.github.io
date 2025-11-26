@@ -105,7 +105,7 @@ The following command, for example, recursively copies the files in
    off from Esrum. See the :ref:`p_tips_tmux` page for more information.
 
 If you have need to transfer amounts of data that are not feasible with
-this rate limit in place, then please :ref:`p_contact` us for
+this rate limit in place, then please :ref:`contact us <p_contact>` for
 assistance.
 
 .. warning::

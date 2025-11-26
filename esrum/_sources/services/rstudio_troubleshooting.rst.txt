@@ -20,7 +20,7 @@ Incorrect or invalid username/password
 Please make sure that you are entering your username in the short form
 (i.e. ``abc123``) and that you have applied for and been given access to
 the Esrum HPC (see :ref:`p_usage_access_applying`). If the problem
-persists, please :ref:`p_contact` us for assistance.
+persists, please :ref:`contact us <p_contact>` for assistance.
 
 Logging in takes a very long time
 =================================
@@ -81,7 +81,8 @@ locations:
    This is where RStudio saves your data should your login time out
    while using RStudio.
 
-Please :ref:`p_contact` us if you need help removing the correct files.
+Please :ref:`contact us <p_contact>` us if you need help removing the
+correct files.
 
 libstdc++.so.6: version ``'GLIBCXX_3.4.26'`` not found
 ======================================================

@@ -465,22 +465,32 @@ when connecting to the server.</p>
 <p>The official instructions for connecting to the VPN under Linux (in
 <a class="reference external" href="https://kunet.ku.dk/medarbejderguide/Sider/It/Fjernadgang-vpn.aspx">Danish</a> and <a class="reference external" href="https://kunet.ku.dk/employee-guide/Pages/IT/Remote-access.aspx">English</a>) are written under the assumption that you are
 using KDE5.</p>
-<p>If that is not the case, or if you prefer a command-line solution, then
-you can also connect using <code class="docutils literal notranslate"><span class="pre">openconnect</span></code>, replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code> with
-your UCPH username. Log in using your UCPH password and using
-NetIQ/entering a TOTP code when prompted:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>openconnect<span class="w"> </span>-u<span class="w"> </span>abc123<span class="w"> </span>vpn.ku.dk
+<p>Alternatively, you can open <a class="reference external" href="https://vpn.ku.dk">https://vpn.ku.dk</a> in your browser, log in
+with your KU ID, and download the &quot;Cisco Secure Client&quot; for Linux. Once
+downloaded, open a terminal in the folder in which you downloaded the
+installer, and run the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>bash<span class="w"> </span>cisco-secure-client-linux64-*.sh
+</pre></div>
+</div>
+<p>Once the installer has finished running, you should be able to find the
+&quot;Cisco Secure Client&quot; in your start menu. Enter <code class="docutils literal notranslate"><span class="pre">vpn.ku.dk</span></code> as the VPN
+server, use your short KU ID (e.g <code class="docutils literal notranslate"><span class="pre">abc123</span></code>) as your username.</p>
+<p>If you prefer a command-line solution, then you can also connect using
+<code class="docutils literal notranslate"><span class="pre">openconnect</span></code>, replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code> with your UCPH username. You will
+need to enter your password and use the authentication method you have
+configured (here a TOTP code generator):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>openconnect<span class="w"> </span>-u<span class="w"> </span>abc123<span class="w"> </span>--useragent<span class="o">=</span>AnyConnect<span class="w"> </span>--no-external-auth<span class="w"> </span>vpn.ku.dk
 <span class="go">POST https://vpn.ku.dk/</span>
 <span class="go">Connected to 130.225.226.54:443</span>
 <span class="go">SSL negotiation with vpn.ku.dk</span>
 <span class="go">Connected to HTTPS on vpn.ku.dk with ciphersuite (TLS1.2)-(RSA)-(AES-256-CBC)-(SHA1)</span>
 <span class="go">XML POST enabled</span>
-<span class="go">Please enter your username and password.</span>
-<span class="hll"><span class="go">Password: ****************</span>
-</span><span class="go">POST https://vpn.ku.dk/</span>
-<span class="go">Please enter the TOTP code generated on your device</span>
-<span class="hll"><span class="go">Response: ****</span>
-</span><span class="go">POST https://vpn.ku.dk/</span>
+<span class="hll"><span class="go">Please enter your username and password.</span>
+</span><span class="go">Password: ****************</span>
+<span class="go">POST https://vpn.ku.dk/</span>
+<span class="hll"><span class="go">Please enter the TOTP code generated on your device</span>
+</span><span class="go">Response: ****</span>
+<span class="go">POST https://vpn.ku.dk/</span>
 <span class="go">Got CONNECT response: HTTP/1.1 200 OK</span>
 <span class="go">CSTP connected. DPD 30, Keepalive 20</span>
 <span class="go">Established DTLS connection (using GnuTLS). Ciphersuite (DTLS1.2)-(ECDHE-RSA)-(AES-256-GCM).</span>
