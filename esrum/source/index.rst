@@ -20,7 +20,7 @@
    usage/filesystem
    usage/slurm/index
    usage/modules
-   usage/transfers
+   usage/transfers/index
 
 .. toctree::
    :hidden:
