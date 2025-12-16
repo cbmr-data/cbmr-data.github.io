@@ -55,8 +55,36 @@ To solve this error, simply avoid requesting more than 2 GPUs, and
 remember to include the ``--partition`` option. See also the
 :ref:`p_usage_slurm_gpu` section.
 
-X11 forwarding is working in MobaXterm
-======================================
+``srun`` fails with ``/bin/slurm_bcast_123456.0_esrumcmpn01fl: No such file or directory``
+==========================================================================================
+
+If you accidentally specify a folder as the first component of an
+``srun`` command, then Slurm will fail with an error message complaining
+that a ``slurm_bcast_*`` executable in that folder could not be found,
+where the executable name contains the job ID and the node on which it
+was run:
+
+.. code-block::
+
+   $ srun --pty /bin/
+   slurmstepd: error: execve(): /bin/slurm_bcast_123456.0_esrumcmpn01fl: No such file or directory
+   srun: error: esrumcmpn01fl: task 0: Exited with exit code 2
+
+To fix this, ensure that you are running an executable and not a folder:
+
+.. code-block::
+
+   $ srun --pty /bin/bash
+
+.. note::
+
+   This failure relates to the ``--bcast`` option, that allow you to
+   copy an executable from the head node to a folder on the node on
+   which the job is executed. This is typically not required on Esrum,
+   since all home, project, and dataset folders are shared across nodes.
+
+X11 forwarding not working in MobaXterm
+=======================================
 
 Firstly right-click on ``Esrum`` in the list of ``User sessions`` and
 select ``Edit session``. Make sure that the ``Advanced SSH settings``

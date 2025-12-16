@@ -37,6 +37,29 @@ your (bash) terminal:
 
    $ echo 'options(menu.graphics=FALSE)' | tee -a ~/.Rprofile
 
+libicui18n.so.73: cannot open shared object file: No such file or directory
+===========================================================================
+
+If you have conda installed, and if you are using R from an environment
+module, then libraries may fail to install with the error message that
+``libicui18n.so.73: cannot open shared object file: No such file or
+directory``:
+
+.. code-block:: text
+
+   Error: package or namespace load failed for 'xml2' in dyn.load(file, DLLpath = DLLpath, ...): unable to load shared object '/home/abc1232/R/x86_64-pc-linux-gnu-library/4.5/00LOCK-xml2/00new/xml2/libs/xml2.so': libicui18n.so.73: cannot open shared object file: No such file or directory
+
+To fix this, deactivate your conda environments (including ``base``)
+before installing the library. For example, to install the ``xml2``
+library:
+
+.. code-block::
+
+   (my-env) $ conda deactivate
+   (base) $ conda deactivate
+   $ R
+   > install.packages("xml2")
+
 libstdc++.so.6: version ``'GLIBCXX_3.4.26'`` not found
 ======================================================
 

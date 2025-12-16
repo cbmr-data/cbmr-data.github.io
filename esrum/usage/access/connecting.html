@@ -182,7 +182,13 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html">Software on Esrum</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../transfers.html">Transferring data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../transfers/index.html">Transferring data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Transferring data</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transfers/internal.html">Internal data transfers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transfers/external.html">External data transfers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transfers/services.html">Cloud services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transfers/misc.html">Miscellaneous</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul>
@@ -476,9 +482,9 @@ installer, and run the following command:</p>
 &quot;Cisco Secure Client&quot; in your start menu. Enter <code class="docutils literal notranslate"><span class="pre">vpn.ku.dk</span></code> as the VPN
 server, use your short KU ID (e.g <code class="docutils literal notranslate"><span class="pre">abc123</span></code>) as your username.</p>
 <p>If you prefer a command-line solution, then you can also connect using
-<code class="docutils literal notranslate"><span class="pre">openconnect</span></code>, replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code> with your UCPH username. You will
-need to enter your password and use the authentication method you have
-configured (here a TOTP code generator):</p>
+<code class="docutils literal notranslate"><span class="pre">openconnect</span></code> v9.10 or later, replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code> with your UCPH
+username. You will need to enter your password and use the
+authentication method you have configured (here a TOTP code generator):</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>openconnect<span class="w"> </span>-u<span class="w"> </span>abc123<span class="w"> </span>--useragent<span class="o">=</span>AnyConnect<span class="w"> </span>--no-external-auth<span class="w"> </span>vpn.ku.dk
 <span class="go">POST https://vpn.ku.dk/</span>
 <span class="go">Connected to 130.225.226.54:443</span>
@@ -566,6 +572,42 @@ described in the <a class="reference internal" href="#s-configure-mobaxterm"><sp
 using Linux or OSX, then you cannot be authenticating using a Kerberos
 ticket.</p>
 </section>
+<section id="openconnect-fails-to-perform-two-factor-authentication">
+<h3>OpenConnect fails to perform two-factor authentication<a class="headerlink" href="#openconnect-fails-to-perform-two-factor-authentication" title="Link to this heading">¶</a></h3>
+<p>OpenConnect may fail to connect to the KU VPN when using the default
+Configuration. In that case, when connecting, OpenConnect will make
+several connection attempts, allow you to enter your password, and then
+fail before you are able to use your two-factor authentication method:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>POST https://vpn.ku.dk/
+Connected to 130.225.226.54:443
+SSL negotiation with vpn.ku.dk
+Connected to HTTPS on vpn.ku.dk with ciphersuite (TLS1.3)-(ECDHE-SECP256R1)-(RSA-PSS-RSAE-SHA256)-(AES-128-GCM)
+Got HTTP response: HTTP/1.1 404 Not Found
+Unexpected 404 result from server
+GET https://vpn.ku.dk/
+Connected to 130.225.226.54:443
+SSL negotiation with vpn.ku.dk
+Connected to HTTPS on vpn.ku.dk with ciphersuite (TLS1.3)-(ECDHE-SECP256R1)-(RSA-PSS-RSAE-SHA256)-(AES-128-GCM)
+Got HTTP response: HTTP/1.0 302 Temporary moved
+GET https://vpn.ku.dk/+webvpn+/index.html
+SSL negotiation with vpn.ku.dk
+Connected to HTTPS on vpn.ku.dk with ciphersuite (TLS1.3)-(ECDHE-SECP256R1)-(RSA-PSS-RSAE-SHA256)-(AES-128-GCM)
+Please enter your username and password.
+Password: ************
+POST https://vpn.ku.dk/+webvpn+/index.html
+Please enter the TOTP code generated on your device
+POST https://vpn.ku.dk/+webvpn+/login/challenge.html
+Please enter the TOTP code generated on your device
+POST https://vpn.ku.dk/+webvpn+/login/challenge.html
+Please enter the TOTP code generated on your device
+3 consecutive empty forms, aborting loop
+Failed to complete authentication
+</pre></div>
+</div>
+<p>In this happens, then make sure that you are using the
+<code class="docutils literal notranslate"><span class="pre">--useragent=AnyConnect</span> <span class="pre">--no-external-auth</span></code> options as shown in the
+<a class="reference internal" href="#s-connecting-linux"><span class="std std-ref">Connecting on Linux</span></a> section.</p>
+</section>
 </section>
 </section>
 
@@ -640,6 +682,7 @@ ticket.</p>
 <li><a class="reference internal" href="#timeout-while-connecting-to-the-cluster">Timeout while connecting to the cluster</a></li>
 <li><a class="reference internal" href="#file-uploads-using-mobaxterm-never-start">File uploads using MobaXterm never start</a></li>
 <li><a class="reference internal" href="#network-folders-in-ucph-are-not-available">Network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available</a></li>
+<li><a class="reference internal" href="#openconnect-fails-to-perform-two-factor-authentication">OpenConnect fails to perform two-factor authentication</a></li>
 </ul>
 </li>
 </ul>

@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="search" title="Search" href="../../search.html" />
+<link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Cloud services" href="services.html" /><link rel="prev" title="Internal data transfers" href="internal.html" />
 
     <!-- Generated with Sphinx 7.4.7 and Furo 2024.04.27 -->
-        <title>Dummy header to prevent reformatting - Esrum Cluster documentation</title>
+        <title>External data transfers - Esrum Cluster documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=437aa6ec" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -167,9 +167,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../troubleshooting.html">Troubleshooting</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Using the cluster</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="access.html">Applying for access</a></li>
-<li class="toctree-l1"><a class="reference internal" href="connecting.html">Connecting to the cluster</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../access/access.html">Applying for access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../access/connecting.html">Connecting to the cluster</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../filesystem.html">Data storage on Esrum</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Data storage on Esrum</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../projects.html">Requesting projects and datasets</a></li>
 </ul>
@@ -182,11 +182,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html">Software on Esrum</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../transfers/index.html">Transferring data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Transferring data</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../transfers/internal.html">Internal data transfers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../transfers/external.html">External data transfers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../transfers/services.html">Cloud services</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../transfers/misc.html">Miscellaneous</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Transferring data</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Transferring data</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="internal.html">Internal data transfers</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">External data transfers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="services.html">Cloud services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html">Miscellaneous</a></li>
 </ul>
 </li>
 </ul>
@@ -237,7 +237,7 @@
         </a>
         <div class="content-icon-container">
           <div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/cbmr-data/cbmr-data.github.io/edit/main/esrum/source/usage/access/connecting_troubleshooting.rst" title="Edit this page">
+  <a class="muted-link" href="https://github.com/cbmr-data/cbmr-data.github.io/edit/main/esrum/source/usage/transfers/external.rst" title="Edit this page">
     <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
@@ -259,91 +259,125 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="dummy-header-to-prevent-reformatting">
-<h1>Dummy header to prevent reformatting<a class="headerlink" href="#dummy-header-to-prevent-reformatting" title="Link to this heading">¶</a></h1>
-<section id="id1">
-<h2>Dummy header to prevent reformatting<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
-<p>If you have not already been granted access to the server, then please
-see the <a class="reference internal" href="access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a> page before continuing!</p>
-<section id="timeout-while-connecting-to-the-cluster">
-<h3>Timeout while connecting to the cluster<a class="headerlink" href="#timeout-while-connecting-to-the-cluster" title="Link to this heading">¶</a></h3>
-<p>You may experience timeout errors when you attempt to connect to Esrum.</p>
-<p>On Linux, this typically results in an <code class="docutils literal notranslate"><span class="pre">Operation</span> <span class="pre">timed</span> <span class="pre">out</span></code> message:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
-<span class="go">ssh: connect to host esrumhead01fl.unicph.domain port 22: Operation timed out</span>
+          <section id="external-data-transfers">
+<span id="p-external-transfers"></span><h1>External data transfers<a class="headerlink" href="#external-data-transfers" title="Link to this heading">¶</a></h1>
+<p>This page describes methods for transferring data between Esrum and
+other servers, local computers such as UCPH desktops and laptops, and
+external services.</p>
+<section id="sharing-projects-and-datasets-between-ucph-clusters">
+<span id="s-sharing-projects"></span><h2>Sharing projects and datasets between UCPH clusters<a class="headerlink" href="#sharing-projects-and-datasets-between-ucph-clusters" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">/projects</span></code> and <code class="docutils literal notranslate"><span class="pre">/datasets</span></code> can be shared between multiple UCPH
+clusters, similarly to how these are accessible from all Esrum nodes,
+and it is therefore typically not necessary to transfer data between
+different UCPH clusters.</p>
+<p>To make a <code class="docutils literal notranslate"><span class="pre">/projects</span></code> or <code class="docutils literal notranslate"><span class="pre">/datasets</span></code> available on Esrum, or on
+another UCPH cluster, contact UCPH-IT via the <a class="reference external" href="https://serviceportal.ku.dk/">Serviceportal</a>, using the
+<code class="docutils literal notranslate"><span class="pre">Research</span> <span class="pre">Applications</span> <span class="pre">Counseling</span> <span class="pre">and</span> <span class="pre">Support</span></code> /
+<code class="docutils literal notranslate"><span class="pre">Forskningsapplikationer</span> <span class="pre">Rådgivning</span> <span class="pre">og</span> <span class="pre">support</span></code> ticket category.</p>
+</section>
+<section id="transferring-data-between-esrum-and-another-server">
+<span id="s-external-updownload"></span><h2>Transferring data between Esrum and another server<a class="headerlink" href="#transferring-data-between-esrum-and-another-server" title="Link to this heading">¶</a></h2>
+<p>If you wish to transfer data from another server to Esrum, or vice
+versa, then you have two options:</p>
+<ol class="arabic simple">
+<li><p>From Esrum, you can upload data to the other server or download data
+to Esrum. This requires that you can connect to the other server from
+Esrum. This option is preferable if it is expensive or otherwise
+difficult to run transfers on the other server.</p></li>
+<li><p>From the other server, you can upload data to Esrum or download data
+from Esrum. This requires that you can run transfers on that server,
+and that it has internet/SSH access, which is typically the case.
+This option is preferable if it is difficult or impossible to connect
+to the server from Esrum.</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not attempt to transfer data using <code class="docutils literal notranslate"><span class="pre">esrumhead01fl</span></code> as the source
+or destination; small transfers to/from your home folder are
+permitted, but your home folder is also not intended to contain data.
+Larger transfers involving <code class="docutils literal notranslate"><span class="pre">esrumhead01fl</span></code> will be terminated
+without warning, due to the impact on other users</p>
+</div>
+<section id="running-transfers-on-esrum">
+<span id="s-external-from-esrum"></span><h3>Running transfers on Esrum<a class="headerlink" href="#running-transfers-on-esrum" title="Link to this heading">¶</a></h3>
+<p>Transfers from Esrum to another server must be run on compute node,
+using either an <a class="reference internal" href="../slurm/basics.html#p-usage-slurm-basics"><span class="std std-ref">sbatch script</span></a> or the
+<a class="reference internal" href="../slurm/advanced.html#p-usage-srun"><span class="std std-ref">srun command</span></a>.</p>
+<ul class="simple">
+<li><p>It is recommended to use <code class="docutils literal notranslate"><span class="pre">rsync</span></code> when possible. Additionally, you
+will need to use the <code class="docutils literal notranslate"><span class="pre">--no-perms</span></code> option if transferring data from
+a <code class="docutils literal notranslate"><span class="pre">/datasets</span></code> folder. See the <a class="reference internal" href="internal.html#s-rsync-basics"><span class="std std-ref">Rsync basics</span></a> for more
+information.</p></li>
+<li><p>If the destination server only supports SFTP, then it is recommended
+to use the <code class="docutils literal notranslate"><span class="pre">lftp</span></code> to perform the transfer. This tool has a built-in
+<code class="docutils literal notranslate"><span class="pre">mirror</span></code> command, that allows you to upload/download directories
+recursively. See the <a class="reference internal" href="services.html#s-sif-erda-sftp"><span class="std std-ref">Transferring files using SFTP</span></a> section for example usage
+and see the <a class="reference external" href="https://lftp.yar.ru/lftp-man.html">lftp manual</a> for more information.</p></li>
+</ul>
+</section>
+<section id="running-transfers-on-another-server-laptop-or-desktop">
+<span id="s-transfer-from-external"></span><h3>Running transfers on another server, laptop, or desktop<a class="headerlink" href="#running-transfers-on-another-server-laptop-or-desktop" title="Link to this heading">¶</a></h3>
+<p>If you wish to run the transfers from another server, or from a laptop
+or desktop, then you can connect to the server at <code class="docutils literal notranslate"><span class="pre">sftp.ku.dk</span></code>. This
+server allows you to access your projects, datasets, and network drives,
+but <em>not</em> your home folder on Esrum (i.e. <code class="docutils literal notranslate"><span class="pre">/home/abc123</span></code>). Unlike the
+head node and RStudio nodes, you do not need to be connected to the UCPH
+VPN to connect to <code class="docutils literal notranslate"><span class="pre">sftp.ku.dk</span></code>.</p>
+<p>OSX and Linux users can use tools such as <code class="docutils literal notranslate"><span class="pre">sftp</span></code>, <code class="docutils literal notranslate"><span class="pre">scp</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">rsync</span></code>. For most part, we recommend using <code class="docutils literal notranslate"><span class="pre">rsync</span></code> to transfer data
+to/from <code class="docutils literal notranslate"><span class="pre">sftp.ku.dk</span></code>, as described in the <a class="reference internal" href="internal.html#s-rsync-basics"><span class="std std-ref">Rsync basics</span></a>
+section. You can also use graphical SFTP clients like <a class="reference external" href="https://filezilla-project.org/">FileZilla</a>. If you
+use <a class="reference external" href="https://mobaxterm.mobatek.net/">MobaXterm</a> to connect to Esrum, as described in the <a class="reference internal" href="../access/connecting.html#s-connecting-windows"><span class="std std-ref">connecting
+using Windows</span></a> section, then you also have access
+to its built-in file manager.</p>
+<p>Uploading/downloading data is done as shown above, except that you have
+to use 2-factor authentication when connecting to <code class="docutils literal notranslate"><span class="pre">sftp.ku.dk</span></code>,
+depending on how you have configured <a class="reference external" href="https://mfa.ku.dk/">UCPH two-factor authentication</a>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rsync<span class="w"> </span>-av<span class="w"> </span>my-data/<span class="w"> </span>abc123@sftp.ku.dk:/projects/my-project-AUDIT/data/my-data/
+<span class="gp gp-VirtualEnv">(abc123@sftp.ku.dk)</span> <span class="go">Enter password</span>
+<span class="go">Password: **************</span>
+<span class="gp gp-VirtualEnv">(abc123@sftp.ku.dk)</span> <span class="go">Enter one-time password</span>
+<span class="go">Enter one-time password: ****</span>
 </pre></div>
 </div>
-<p>On Windows, using MobaXterm, it may result in a <code class="docutils literal notranslate"><span class="pre">connection</span> <span class="pre">timed</span> <span class="pre">out</span></code>
-message:</p>
-<img alt="../../_images/connecting_mobaxterm_timeout.png" class="align-center" src="../../_images/connecting_mobaxterm_timeout.png" />
-<p>Firstly verify that you are correctly connected to the UCPH VPN. This is
-required to connect to Esrum. See the <a class="reference internal" href="connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page for
-more information.</p>
-<p>If you are still unable to connect to Esrum after verifying that you are
-correctly connected to the UCPH network, then please try to visit either
-our <a class="reference external" href="https://cbmrcat.unicph.domain/projects/">Project Manager</a> or our
-<a class="reference external" href="https://cbmrcat.unicph.domain/">Cohort Catalog</a>.</p>
-<p>If you are able to visit either of the Project Manager or Cohort Catalog
-pages, then you most likely do not have proper permissions to connect to
-Esrum. Please <a class="reference internal" href="../../contact.html#p-contact"><span class="std std-ref">contact us</span></a> and we will provide further
-guidance.</p>
-<p>If you are unable to connect to the VPN or to either of the above pages
-while connected to the VPN, then there may be other problems with your
-account. We recommend that you either <a class="reference internal" href="../../contact.html#p-contact"><span class="std std-ref">contact us</span></a> for
-assistance or, if you prefer, that you submit a ticket to the UCPH-IT
-<a class="reference external" href="https://serviceportal.ku.dk/">Serviceportal</a>, using the <code class="docutils literal notranslate"><span class="pre">Research</span> <span class="pre">Applications</span> <span class="pre">Counseling</span> <span class="pre">and</span>
-<span class="pre">Support</span></code> / <code class="docutils literal notranslate"><span class="pre">Forskningsapplikationer</span> <span class="pre">Rådgivning</span> <span class="pre">og</span> <span class="pre">support</span></code> ticket
-category.</p>
+<p>Official documentation is provided on the <a class="reference external" href="https://kunet.ku.dk/work-areas/research/Research%20Infrastructure/research-it/ucph-computing-hpc-systems/Pages/default.aspx">UCPH computing/HPC Systems</a>
+pages on KUnet.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Not all software can be used to connect to <code class="docutils literal notranslate"><span class="pre">sftp.ku.dk</span></code>, due to the
+use of two-factor authentication. For example, <code class="docutils literal notranslate"><span class="pre">lftp</span></code> is known to
+fail to log in because of this.</p>
+</div>
 </section>
-<section id="file-uploads-using-mobaxterm-never-start">
-<h3>File uploads using MobaXterm never start<a class="headerlink" href="#file-uploads-using-mobaxterm-never-start" title="Link to this heading">¶</a></h3>
-<p>Please make sure that your session is configured to use the <code class="docutils literal notranslate"><span class="pre">SCP</span>
-<span class="pre">(enhanced</span> <span class="pre">speed)</span></code> browser type. See step 4 in the
-<a class="reference internal" href="connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section.</p>
 </section>
-<section id="network-folders-in-ucph-are-not-available">
-<h3>Network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available<a class="headerlink" href="#network-folders-in-ucph-are-not-available" title="Link to this heading">¶</a></h3>
-<p>Please make sure that you have disabled use of <code class="docutils literal notranslate"><span class="pre">GSSAPI</span> <span class="pre">Kerberos</span></code> as
-described in the <a class="reference internal" href="connecting.html#s-configure-mobaxterm"><span class="std std-ref">Configuring MobaXterm</span></a> section. Similarly, if
-using Linux or OSX, then you cannot be authenticating using a Kerberos
-ticket.</p>
-</section>
-<section id="openconnect-fails-to-perform-two-factor-authentication">
-<h3>OpenConnect fails to perform two-factor authentication<a class="headerlink" href="#openconnect-fails-to-perform-two-factor-authentication" title="Link to this heading">¶</a></h3>
-<p>OpenConnect may fail to connect to the KU VPN when using the default
-Configuration. In that case, when connecting, OpenConnect will make
-several connection attempts, allow you to enter your password, and then
-fail before you are able to use your two-factor authentication method:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>POST https://vpn.ku.dk/
-Connected to 130.225.226.54:443
-SSL negotiation with vpn.ku.dk
-Connected to HTTPS on vpn.ku.dk with ciphersuite (TLS1.3)-(ECDHE-SECP256R1)-(RSA-PSS-RSAE-SHA256)-(AES-128-GCM)
-Got HTTP response: HTTP/1.1 404 Not Found
-Unexpected 404 result from server
-GET https://vpn.ku.dk/
-Connected to 130.225.226.54:443
-SSL negotiation with vpn.ku.dk
-Connected to HTTPS on vpn.ku.dk with ciphersuite (TLS1.3)-(ECDHE-SECP256R1)-(RSA-PSS-RSAE-SHA256)-(AES-128-GCM)
-Got HTTP response: HTTP/1.0 302 Temporary moved
-GET https://vpn.ku.dk/+webvpn+/index.html
-SSL negotiation with vpn.ku.dk
-Connected to HTTPS on vpn.ku.dk with ciphersuite (TLS1.3)-(ECDHE-SECP256R1)-(RSA-PSS-RSAE-SHA256)-(AES-128-GCM)
-Please enter your username and password.
-Password: ************
-POST https://vpn.ku.dk/+webvpn+/index.html
-Please enter the TOTP code generated on your device
-POST https://vpn.ku.dk/+webvpn+/login/challenge.html
-Please enter the TOTP code generated on your device
-POST https://vpn.ku.dk/+webvpn+/login/challenge.html
-Please enter the TOTP code generated on your device
-3 consecutive empty forms, aborting loop
-Failed to complete authentication
+<section id="transferring-data-between-esrum-and-computerome">
+<span id="p-transfers-computerome"></span><h2>Transferring data between Esrum and Computerome<a class="headerlink" href="#transferring-data-between-esrum-and-computerome" title="Link to this heading">¶</a></h2>
+<p>When transferring data/to from Computerome you should <em>always</em> run the
+transfer software on Esrum (or on your PC/laptop) and you should
+<em>always</em> connect to Computerome via <code class="docutils literal notranslate"><span class="pre">transfer.computerome.dk</span></code> instead
+of <code class="docutils literal notranslate"><span class="pre">ssh.computerome.dk</span></code>. For more information, see the <a class="reference external" href="https://www.computerome.dk/wiki/high-performance-computing-hpc/file-transfer">official
+Computerome documentation</a>.</p>
+<p>For example, to transfer data from Esrum to Computerome, you might run</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>rsync<span class="w"> </span>-av<span class="w"> </span>./<span class="w"> </span><span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>@transfer.computerome.dk:/home/projects/ab_12345/people/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/
 </pre></div>
 </div>
-<p>In this happens, then make sure that you are using the
-<code class="docutils literal notranslate"><span class="pre">--useragent=AnyConnect</span> <span class="pre">--no-external-auth</span></code> options as shown in the
-<a class="reference internal" href="connecting.html#s-connecting-linux"><span class="std std-ref">Connecting on Linux</span></a> section.</p>
-</section>
+<p>This recursively transfers the current folder to a project folder on
+Computerome using <code class="docutils literal notranslate"><span class="pre">rsync</span></code>, with <code class="docutils literal notranslate"><span class="pre">srun</span></code> ensuring that the transfer is
+run on a compute node on Esrum. <code class="docutils literal notranslate"><span class="pre">${USERNAME}</span></code> in the above is your
+username on Computerome. For more information, see the
+<a class="reference internal" href="#s-external-from-esrum"><span class="std std-ref">Running transfers on Esrum</span></a> section.</p>
+<p>This avoids two big issues:</p>
+<ol class="arabic simple">
+<li><p>The Computerome administrators will terminate any attempts at
+transferring data via <code class="docutils literal notranslate"><span class="pre">ssh.computerome.dk</span></code> and may suspend your
+account if you keep trying. This applies both to running <code class="docutils literal notranslate"><span class="pre">rsync</span></code> on
+<code class="docutils literal notranslate"><span class="pre">ssh.computerome.dk</span></code> or if you attempt upload data to or download
+data from Esrum to <code class="docutils literal notranslate"><span class="pre">ssh.computerome.dk</span></code>.</p></li>
+<li><p>While it is possible to run a transfer on Computerome by running
+<code class="docutils literal notranslate"><span class="pre">rsync</span></code> or similar software on a Computerome node, this means
+paying for a Computerome node for the duration of the transfer.</p></li>
+</ol>
+<p>See <a class="reference internal" href="#s-external-from-esrum"><span class="std std-ref">Running transfers on Esrum</span></a> above for more information.</p>
 </section>
 </section>
 
@@ -352,8 +386,26 @@ Failed to complete authentication
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="services.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Cloud services</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="internal.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Internal data transfers</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -384,14 +436,14 @@ Failed to complete authentication
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Dummy header to prevent reformatting</a><ul>
-<li><a class="reference internal" href="#id1">Dummy header to prevent reformatting</a><ul>
-<li><a class="reference internal" href="#timeout-while-connecting-to-the-cluster">Timeout while connecting to the cluster</a></li>
-<li><a class="reference internal" href="#file-uploads-using-mobaxterm-never-start">File uploads using MobaXterm never start</a></li>
-<li><a class="reference internal" href="#network-folders-in-ucph-are-not-available">Network-folders in <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> are not available</a></li>
-<li><a class="reference internal" href="#openconnect-fails-to-perform-two-factor-authentication">OpenConnect fails to perform two-factor authentication</a></li>
+<li><a class="reference internal" href="#">External data transfers</a><ul>
+<li><a class="reference internal" href="#sharing-projects-and-datasets-between-ucph-clusters">Sharing projects and datasets between UCPH clusters</a></li>
+<li><a class="reference internal" href="#transferring-data-between-esrum-and-another-server">Transferring data between Esrum and another server</a><ul>
+<li><a class="reference internal" href="#running-transfers-on-esrum">Running transfers on Esrum</a></li>
+<li><a class="reference internal" href="#running-transfers-on-another-server-laptop-or-desktop">Running transfers on another server, laptop, or desktop</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#transferring-data-between-esrum-and-computerome">Transferring data between Esrum and Computerome</a></li>
 </ul>
 </li>
 </ul>

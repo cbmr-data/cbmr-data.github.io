@@ -286,9 +286,9 @@ Once the installer has finished running, you should be able to find the
 server, use your short KU ID (e.g ``abc123``) as your username.
 
 If you prefer a command-line solution, then you can also connect using
-``openconnect``, replacing ``abc123`` with your UCPH username. You will
-need to enter your password and use the authentication method you have
-configured (here a TOTP code generator):
+``openconnect`` v9.10 or later, replacing ``abc123`` with your UCPH
+username. You will need to enter your password and use the
+authentication method you have configured (here a TOTP code generator):
 
 .. code-block:: console
    :emphasize-lines: 7,10

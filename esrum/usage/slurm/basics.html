@@ -182,7 +182,13 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../modules.html">Software on Esrum</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../transfers.html">Transferring data</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../transfers/index.html">Transferring data</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Transferring data</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transfers/internal.html">Internal data transfers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transfers/external.html">External data transfers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transfers/services.html">Cloud services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transfers/misc.html">Miscellaneous</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul>
@@ -776,8 +782,32 @@ specifying the correct queue or if you request too many GPUs.</p>
 remember to include the <code class="docutils literal notranslate"><span class="pre">--partition</span></code> option. See also the
 <a class="reference internal" href="gpu.html#p-usage-slurm-gpu"><span class="std std-ref">GPU / high-memory jobs</span></a> section.</p>
 </section>
-<section id="x11-forwarding-is-working-in-mobaxterm">
-<h3>X11 forwarding is working in MobaXterm<a class="headerlink" href="#x11-forwarding-is-working-in-mobaxterm" title="Link to this heading">¶</a></h3>
+<section id="srun-fails-with-bin-slurm-bcast-123456-0-esrumcmpn01fl-no-such-file-or-directory">
+<h3><code class="docutils literal notranslate"><span class="pre">srun</span></code> fails with <code class="docutils literal notranslate"><span class="pre">/bin/slurm_bcast_123456.0_esrumcmpn01fl:</span> <span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory</span></code><a class="headerlink" href="#srun-fails-with-bin-slurm-bcast-123456-0-esrumcmpn01fl-no-such-file-or-directory" title="Link to this heading">¶</a></h3>
+<p>If you accidentally specify a folder as the first component of an
+<code class="docutils literal notranslate"><span class="pre">srun</span></code> command, then Slurm will fail with an error message complaining
+that a <code class="docutils literal notranslate"><span class="pre">slurm_bcast_*</span></code> executable in that folder could not be found,
+where the executable name contains the job ID and the node on which it
+was run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>/bin/
+<span class="go">slurmstepd: error: execve(): /bin/slurm_bcast_123456.0_esrumcmpn01fl: No such file or directory</span>
+<span class="go">srun: error: esrumcmpn01fl: task 0: Exited with exit code 2</span>
+</pre></div>
+</div>
+<p>To fix this, ensure that you are running an executable and not a folder:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>/bin/bash
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This failure relates to the <code class="docutils literal notranslate"><span class="pre">--bcast</span></code> option, that allow you to
+copy an executable from the head node to a folder on the node on
+which the job is executed. This is typically not required on Esrum,
+since all home, project, and dataset folders are shared across nodes.</p>
+</div>
+</section>
+<section id="x11-forwarding-not-working-in-mobaxterm">
+<h3>X11 forwarding not working in MobaXterm<a class="headerlink" href="#x11-forwarding-not-working-in-mobaxterm" title="Link to this heading">¶</a></h3>
 <p>Firstly right-click on <code class="docutils literal notranslate"><span class="pre">Esrum</span></code> in the list of <code class="docutils literal notranslate"><span class="pre">User</span> <span class="pre">sessions</span></code> and
 select <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">session</span></code>. Make sure that the <code class="docutils literal notranslate"><span class="pre">Advanced</span> <span class="pre">SSH</span> <span class="pre">settings</span></code>
 tab is open and verify that X11 forwarding is enabled as shown:</p>
@@ -876,7 +906,8 @@ that X11 support is configured as shown:</p>
 <li><a class="reference internal" href="#what-s-next">What's next</a></li>
 <li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
 <li><a class="reference internal" href="#error-requested-node-configuration-is-not-available">Error: Requested node configuration is not available</a></li>
-<li><a class="reference internal" href="#x11-forwarding-is-working-in-mobaxterm">X11 forwarding is working in MobaXterm</a></li>
+<li><a class="reference internal" href="#srun-fails-with-bin-slurm-bcast-123456-0-esrumcmpn01fl-no-such-file-or-directory"><code class="docutils literal notranslate"><span class="pre">srun</span></code> fails with <code class="docutils literal notranslate"><span class="pre">/bin/slurm_bcast_123456.0_esrumcmpn01fl:</span> <span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory</span></code></a></li>
+<li><a class="reference internal" href="#x11-forwarding-not-working-in-mobaxterm">X11 forwarding not working in MobaXterm</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#additional-resources">Additional resources</a></li>
