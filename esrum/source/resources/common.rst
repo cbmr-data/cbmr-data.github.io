@@ -1,3 +1,5 @@
+.. _p_common_datasets:
+
 #################
  Common datasets
 #################
