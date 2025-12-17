@@ -305,8 +305,6 @@ more storage than necessary:
 You are always welcome to :ref:`contact us <p_contact>` if you need help
 with cleaning up your data.
 
-.. _s_filesystem_troubleshooting:
-
 Locating uncompressed data
 ==========================
 
@@ -344,6 +342,8 @@ than gzip. For example, to gzip a file using four CPUs:
 .. code-block::
 
    $ srun -c 4 pigz -c 4 /projects/my-project/qctool/chr_4_qctool_filtered.gen
+
+.. _s_filesystem_troubleshooting:
 
 *****************
  Troubleshooting
