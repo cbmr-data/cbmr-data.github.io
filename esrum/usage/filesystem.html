@@ -291,6 +291,8 @@ access to your home folder, the scratch folders on each node, and the
 CBMR wide project folder (<code class="docutils literal notranslate"><span class="pre">/projects/cbmr_shared</span></code>). Please see the
 <a class="reference internal" href="access/access.html#p-usage-access-applying"><span class="std std-ref">Applying for access</span></a> page for information about applying for
 access to additional projects and datasets.</p>
+<p>Storage is paid for by CBMR, so please take care to avoid wasting space.
+See the <a class="reference internal" href="#s-optimizing-storage"><span class="std std-ref">Optimizing storage</span></a> section below.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Every folder described below is located on a network drive, except
@@ -485,8 +487,65 @@ for such projects.</p>
 deleted data.</p>
 </div>
 </section>
+<section id="optimizing-storage">
+<span id="s-optimizing-storage"></span><h2>Optimizing storage<a class="headerlink" href="#optimizing-storage" title="Link to this heading">¶</a></h2>
+<p>UCPH IT charges CBMR for data kept in projects, datasets, home folders,
+and on network drives. For that reason it is important to avoid using
+more storage than necessary:</p>
+<ul class="simple">
+<li><p>Do not save data that is no longer needed. In particular,
+intermediate and temporary file should be deleted when they are no
+longer being used, typically after an analysis has been completed.
+Large result files that can easily/quickly be recreated should also
+be considered candidates for deletion.</p></li>
+<li><p>Large files must be compressed, as uncompressed files can easily take
+up 10-20 times more space, if possible also while they are being
+used. If it is not possible to compress the files while analyses are
+ongoing, then they must be compressed afterward (or deleted). See
+below for a way to locate uncompressed data.</p></li>
+<li><p>Common public datasets, such as dbSNP, 1000 Genomes, should be stored
+in the <code class="docutils literal notranslate"><span class="pre">/datasets/cbmr_shared</span></code> folder. This avoids having multiple
+copies on Esrum and ensures that there is a canonical location for
+these. See the <a class="reference internal" href="../resources/common.html#p-common-datasets"><span class="std std-ref">Common datasets</span></a> page for more information.</p></li>
+</ul>
+<p>You are always welcome to <a class="reference internal" href="../contact.html#p-contact"><span class="std std-ref">contact us</span></a> if you need help
+with cleaning up your data.</p>
+<section id="locating-uncompressed-data">
+<span id="s-filesystem-troubleshooting"></span><h3>Locating uncompressed data<a class="headerlink" href="#locating-uncompressed-data" title="Link to this heading">¶</a></h3>
+<p>The <a class="reference external" href="https://github.com/MikkelSchubert/big_text">big_text</a> utility on Esrum helps locate files that can be compressed
+to save space: By default, it attempts to compress the first 64 KB of
+all files that are at least 1 GB in size, and lists files where the
+compressed size is at least 25% smaller than the uncompressed size:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>big_text
+<span class="gp">$ </span>srun<span class="w"> </span>big_text<span class="w"> </span>/projects/my-project/data/<span class="w"> </span>&gt;<span class="w"> </span>my-big-files.txt
+<span class="go">Now skipping files with extension *.gz</span>
+<span class="go">Files checked = 5132</span>
+<span class="go">Small files skipped = 5028</span>
+<span class="go">Non-files skipped = 981</span>
+<span class="go">Files ignored = 48</span>
+<span class="go">Candidate files found = 5</span>
+<span class="go">Size of candidate files = 10358387942</span>
+<span class="go">Est. size saved by compression = 8147853264</span>
+<span class="gp">$ </span>cat<span class="w"> </span>my-big-files.txt
+<span class="go">1816042275  /projects/my-project/qctool/chr_9_qctool_filtered.gen</span>
+<span class="go">1161245765  /projects/my-project/qctool/chr_17_qctool_filtered.gen</span>
+<span class="go">1343357381  /projects/my-project/qctool/chr_16_qctool_filtered.gen</span>
+<span class="go">2993533431  /projects/my-project/qctool/chr_3_qctool_filtered.gen</span>
+<span class="go">3044209090  /projects/my-project/qctool/chr_4_qctool_filtered.gen</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">big_text</span></code> option <code class="docutils literal notranslate"><span class="pre">--filenames-only</span></code> can be used to omit the
+sizes of candidate files, which can make automatic processing easier.</p>
+<p>One option for compressing the identified files is <code class="docutils literal notranslate"><span class="pre">pigz</span></code>, a
+multithreaded gzip compatible compressor that can run many times faster
+than gzip. For example, to gzip a file using four CPUs:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>-c<span class="w"> </span><span class="m">4</span><span class="w"> </span>pigz<span class="w"> </span>-c<span class="w"> </span><span class="m">4</span><span class="w"> </span>/projects/my-project/qctool/chr_4_qctool_filtered.gen
+</pre></div>
+</div>
+</section>
+</section>
 <section id="troubleshooting">
-<span id="s-filesystem-troubleshooting"></span><h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">¶</a></h2>
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">¶</a></h2>
 <section id="the-ucph-folder-or-subfolders-are-missing">
 <h3>The <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> folder or subfolders are missing<a class="headerlink" href="#the-ucph-folder-or-subfolders-are-missing" title="Link to this heading">¶</a></h3>
 <p>Note that the <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> folder is only available on the head node
@@ -529,7 +588,8 @@ access has timed out.</p>
 </div>
 <p>To circumvent this problem, either specify the full path to the
 <code class="docutils literal notranslate"><span class="pre">kinit</span></code> executable (i.e. <code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span></code>) or deactivate the
-current/base environment by <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code>.</p>
+current/base environment by running <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code> until conda is
+completely deactivated.</p>
 </section>
 </section>
 </section>
@@ -598,6 +658,10 @@ current/base environment by <code class="docutils literal notranslate"><span cla
 <li><a class="reference internal" href="#datasets">Datasets</a></li>
 <li><a class="reference internal" href="#scratch-folders">Scratch folders</a></li>
 <li><a class="reference internal" href="#backups">Backups</a></li>
+<li><a class="reference internal" href="#optimizing-storage">Optimizing storage</a><ul>
+<li><a class="reference internal" href="#locating-uncompressed-data">Locating uncompressed data</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
 <li><a class="reference internal" href="#the-ucph-folder-or-subfolders-are-missing">The <code class="docutils literal notranslate"><span class="pre">~/ucph</span></code> folder or subfolders are missing</a></li>
 <li><a class="reference internal" href="#no-such-file-or-directory-when-accessing-network-drives"><code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory</span></code> when accessing network drives</a></li>

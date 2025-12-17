@@ -40,6 +40,9 @@ CBMR wide project folder (``/projects/cbmr_shared``). Please see the
 :ref:`p_usage_access_applying` page for information about applying for
 access to additional projects and datasets.
 
+Storage is paid for by CBMR, so please take care to avoid wasting space.
+See the :ref:`s_optimizing_storage` section below.
+
 .. warning::
 
    Every folder described below is located on a network drive, except
@@ -272,7 +275,75 @@ for such projects.
    Please contact UCPH-IT should you need to restore a large amount of
    deleted data.
 
+.. _s_optimizing_storage:
+
+********************
+ Optimizing storage
+********************
+
+UCPH IT charges CBMR for data kept in projects, datasets, home folders,
+and on network drives. For that reason it is important to avoid using
+more storage than necessary:
+
+-  Do not save data that is no longer needed. In particular,
+   intermediate and temporary file should be deleted when they are no
+   longer being used, typically after an analysis has been completed.
+   Large result files that can easily/quickly be recreated should also
+   be considered candidates for deletion.
+
+-  Large files must be compressed, as uncompressed files can easily take
+   up 10-20 times more space, if possible also while they are being
+   used. If it is not possible to compress the files while analyses are
+   ongoing, then they must be compressed afterward (or deleted). See
+   below for a way to locate uncompressed data.
+
+-  Common public datasets, such as dbSNP, 1000 Genomes, should be stored
+   in the ``/datasets/cbmr_shared`` folder. This avoids having multiple
+   copies on Esrum and ensures that there is a canonical location for
+   these. See the :ref:`p_common_datasets` page for more information.
+
+You are always welcome to :ref:`contact us <p_contact>` if you need help
+with cleaning up your data.
+
 .. _s_filesystem_troubleshooting:
+
+Locating uncompressed data
+==========================
+
+The big_text_ utility on Esrum helps locate files that can be compressed
+to save space: By default, it attempts to compress the first 64 KB of
+all files that are at least 1 GB in size, and lists files where the
+compressed size is at least 25% smaller than the uncompressed size:
+
+.. code-block:: console
+
+   $ module load big_text
+   $ srun big_text /projects/my-project/data/ > my-big-files.txt
+   Now skipping files with extension *.gz
+   Files checked = 5132
+   Small files skipped = 5028
+   Non-files skipped = 981
+   Files ignored = 48
+   Candidate files found = 5
+   Size of candidate files = 10358387942
+   Est. size saved by compression = 8147853264
+   $ cat my-big-files.txt
+   1816042275  /projects/my-project/qctool/chr_9_qctool_filtered.gen
+   1161245765  /projects/my-project/qctool/chr_17_qctool_filtered.gen
+   1343357381  /projects/my-project/qctool/chr_16_qctool_filtered.gen
+   2993533431  /projects/my-project/qctool/chr_3_qctool_filtered.gen
+   3044209090  /projects/my-project/qctool/chr_4_qctool_filtered.gen
+
+The ``big_text`` option ``--filenames-only`` can be used to omit the
+sizes of candidate files, which can make automatic processing easier.
+
+One option for compressing the identified files is ``pigz``, a
+multithreaded gzip compatible compressor that can run many times faster
+than gzip. For example, to gzip a file using four CPUs:
+
+.. code-block::
+
+   $ srun -c 4 pigz -c 4 /projects/my-project/qctool/chr_4_qctool_filtered.gen
 
 *****************
  Troubleshooting
@@ -280,6 +351,8 @@ for such projects.
 
 .. include:: /services/networkdrives_troubleshooting.rst
    :start-line: 8
+
+.. _big_text: https://github.com/MikkelSchubert/big_text
 
 .. _red hat enterprise linux: https://en.wikipedia.org/wiki/Red_Hat_Enterprise_Linux
 

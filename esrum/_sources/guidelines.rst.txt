@@ -46,6 +46,10 @@ data`_.
    folder. Your home folder is accessible only to you, unless you have
    provided written consent to UCPH-IT.
 
+-  Storage on Esrum is not free, so please remember to delete data that
+   you no longer need, and make sure to compress data that you do need
+   to keep around.
+
 See :ref:`p_usage_filesystem` for more information.
 
 .. _s_guidelines_llms:

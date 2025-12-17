@@ -58,4 +58,5 @@ The ``kinit`` command may fail if you are using a ``conda`` environment:
 
 To circumvent this problem, either specify the full path to the
 ``kinit`` executable (i.e. ``/usr/bin/kinit``) or deactivate the
-current/base environment by ``conda deactivate``.
+current/base environment by running ``conda deactivate`` until conda is
+completely deactivated.
