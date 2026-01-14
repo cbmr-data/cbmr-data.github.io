@@ -42,7 +42,7 @@ is located and to where you want to transfer it:
 -  **My data is located on Esrum or on a network drive (H:, N:, S:)**
       -  I want to :ref:`copy data between projects or datasets
          <p_transfer_projects_datasets>`
-      -  I want to :ref:`copy data to/from a network drives (H:, N:, S:)
+      -  I want to :ref:`copy data to/from a network drive (H:, N:, S:)
          <p_transfer_network_drives>`
       -  I want to :ref:`copy data to another UCPH cluster
          <s_sharing_projects>`
