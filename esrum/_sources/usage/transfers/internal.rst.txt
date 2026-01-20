@@ -131,6 +131,39 @@ You *must* run ``rsync`` command on a compute node, either in an
 ``srun`` to automatically run the command on a compute node. See the
 :ref:`p_usage_srun` section for more information about using ``srun``.
 
+.. _s_transfer_instruments:
+
+*************************************************
+ Copying instrument data to projects or datasets
+*************************************************
+
+As the `/labs` folders are currently only accessible from the head node,
+it is necessary to run the transfers directly on the head node. This is
+the *only* case where it is permitted to run transfers on the head node,
+and these transfers *must* be rate-limited to at most 50 MB/s (total)
+using the ``rsync --bwlimit`` option:
+
+.. code-block:: shell
+
+   $ rsync -av --no-perms --progress=summary --bwlimit=50M /from/path/ /to/path/
+
+.. warning::
+
+   Similarly to ``/datasets`` folders, all files and folders on
+   ``/labs`` drives have permissions ``000``, i.e. no read and no write
+   access, even when you have access to the data. For this reason, you
+   *must* include the ``--no-perms`` option when running ``rsync``, to
+   prevent ``rsync`` from recreating these permissions. If you omit
+   ``--no-perms``, then ``rsync`` normally fails during the transfer due
+   not being able to write to the destination.
+
+If you run transfers without rate limits (include using `cp` or `mv` to
+copy/move data in or out of `/labs` folders), or if you run transfers
+with a total rate limit above 50 MB/s, then these will be terminated to
+prevent them from impacting other users of Esrum.
+
+See :ref:`s_transfer_instruments` for more information.
+
 *****************
  Troubleshooting
 *****************

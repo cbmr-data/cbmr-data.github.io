@@ -404,6 +404,32 @@ add this option.</p>
 <code class="docutils literal notranslate"><span class="pre">srun</span></code> to automatically run the command on a compute node. See the
 <a class="reference internal" href="../slurm/advanced.html#p-usage-srun"><span class="std std-ref">Running commands using srun</span></a> section for more information about using <code class="docutils literal notranslate"><span class="pre">srun</span></code>.</p>
 </section>
+<section id="copying-instrument-data-to-projects-or-datasets">
+<span id="s-transfer-instruments"></span><h2>Copying instrument data to projects or datasets<a class="headerlink" href="#copying-instrument-data-to-projects-or-datasets" title="Link to this heading">¶</a></h2>
+<p>As the <cite>/labs</cite> folders are currently only accessible from the head node,
+it is necessary to run the transfers directly on the head node. This is
+the <em>only</em> case where it is permitted to run transfers on the head node,
+and these transfers <em>must</em> be rate-limited to at most 50 MB/s (total)
+using the <code class="docutils literal notranslate"><span class="pre">rsync</span> <span class="pre">--bwlimit</span></code> option:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>rsync<span class="w"> </span>-av<span class="w"> </span>--no-perms<span class="w"> </span>--progress<span class="o">=</span>summary<span class="w"> </span>--bwlimit<span class="o">=</span>50M<span class="w"> </span>/from/path/<span class="w"> </span>/to/path/
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Similarly to <code class="docutils literal notranslate"><span class="pre">/datasets</span></code> folders, all files and folders on
+<code class="docutils literal notranslate"><span class="pre">/labs</span></code> drives have permissions <code class="docutils literal notranslate"><span class="pre">000</span></code>, i.e. no read and no write
+access, even when you have access to the data. For this reason, you
+<em>must</em> include the <code class="docutils literal notranslate"><span class="pre">--no-perms</span></code> option when running <code class="docutils literal notranslate"><span class="pre">rsync</span></code>, to
+prevent <code class="docutils literal notranslate"><span class="pre">rsync</span></code> from recreating these permissions. If you omit
+<code class="docutils literal notranslate"><span class="pre">--no-perms</span></code>, then <code class="docutils literal notranslate"><span class="pre">rsync</span></code> normally fails during the transfer due
+not being able to write to the destination.</p>
+</div>
+<p>If you run transfers without rate limits (include using <cite>cp</cite> or <cite>mv</cite> to
+copy/move data in or out of <cite>/labs</cite> folders), or if you run transfers
+with a total rate limit above 50 MB/s, then these will be terminated to
+prevent them from impacting other users of Esrum.</p>
+<p>See <a class="reference internal" href="#s-transfer-instruments"><span class="std std-ref">Copying instrument data to projects or datasets</span></a> for more information.</p>
+</section>
 <section id="troubleshooting">
 <h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">¶</a></h2>
 <section id="rsync-fails-with-permission-denied-when-copying-from-datasets">
@@ -534,6 +560,7 @@ completely deactivated.</p>
 <li><a class="reference internal" href="#transferring-data-between-projects-or-datasets">Transferring data between projects or datasets</a></li>
 <li><a class="reference internal" href="#copying-data-to-from-the-h-n-and-s-drives">Copying data to/from the H:, N:, and S: drives</a></li>
 <li><a class="reference internal" href="#rsync-basics">Rsync basics</a></li>
+<li><a class="reference internal" href="#copying-instrument-data-to-projects-or-datasets">Copying instrument data to projects or datasets</a></li>
 <li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
 <li><a class="reference internal" href="#rsync-fails-with-permission-denied-when-copying-from-datasets"><code class="docutils literal notranslate"><span class="pre">rsync</span></code> fails with <code class="docutils literal notranslate"><span class="pre">Permission</span> <span class="pre">denied</span></code> when copying from <code class="docutils literal notranslate"><span class="pre">/datasets</span></code></a></li>
 <li><a class="reference internal" href="#permission-denied-when-accessing-data-copied-from-datasets"><code class="docutils literal notranslate"><span class="pre">Permission</span> <span class="pre">denied</span></code> when accessing data copied from <code class="docutils literal notranslate"><span class="pre">/datasets</span></code></a></li>
