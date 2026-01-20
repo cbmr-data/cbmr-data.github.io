@@ -32,6 +32,9 @@ as the location and layout of projects, shared datasets, and per-node
    /datasets/
      my-dataset/
      my-human-dataset-AUDIT/
+   /labs/
+     backup/
+     ...
    /scratch/
 
 When you are first given access to Esrum, you will by default have
@@ -189,6 +192,17 @@ future, we recommend only storing data that you actually need.
 
 See the :ref:`p_usage_projects` page for how to request a new dataset
 folder.
+
+****************************
+ Laboratory/instrument data
+****************************
+
+The `/labs` folder provides access to storage for laboratory
+instruments. If you wish to be able to access the storage for
+instruments that are connected to network storage, then please submit a
+ticket to the UCPH-IT Serviceportal_, using the ``Research Applications
+Counseling and Support`` / ``Forskningsapplikationer Rådgivning og
+support`` ticket category.
 
 *****************
  Scratch folders

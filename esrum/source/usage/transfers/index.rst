@@ -44,7 +44,9 @@ is located and to where you want to transfer it:
          <p_transfer_projects_datasets>`
       -  I want to :ref:`copy data to/from a network drive (H:, N:, S:)
          <p_transfer_network_drives>`
-      -  I want to :ref:`copy data to another UCPH cluster
+      -  I want to :ref:`copy instrument data (/labs)
+         <s_transfer_instruments>`
+      -  I want to :ref:`copy data to/from another UCPH cluster
          <s_sharing_projects>`
       -  I want to :ref:`download data from Esrum
          <s_external_updownload>`
