@@ -322,6 +322,13 @@ and GPUs) columns are colored as follows:
    fewer resources than the amount reserved, in order to optimize
    resource utilization on the cluster.
 
+*****************
+ Troubleshooting
+*****************
+
+.. include:: monitoring_troubleshooting.rst
+   :start-line: 8
+
 .. _sacct: https://slurm.schedmd.com/archive/slurm-20.11.9/sacct.html
 
 .. _sacct-usage: https://github.com/cbmr-data/esrum-utils/tree/main/sacct-usage

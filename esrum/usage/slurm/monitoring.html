@@ -519,6 +519,20 @@ fewer resources than the amount reserved, in order to optimize
 resource utilization on the cluster.</p>
 </div>
 </section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">¶</a></h2>
+<section id="connection-refused-when-running-sacct-sacct-usage">
+<h3><code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">refused</span></code> when running <code class="docutils literal notranslate"><span class="pre">sacct</span></code> / <code class="docutils literal notranslate"><span class="pre">sacct-usage</span></code><a class="headerlink" href="#connection-refused-when-running-sacct-sacct-usage" title="Link to this heading">¶</a></h3>
+<p>If you attempt to run <code class="docutils literal notranslate"><span class="pre">sacct</span></code> or <code class="docutils literal notranslate"><span class="pre">sacct-usage</span></code> on any other node
+than the head node, then you may get an error message like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sacct: error: slurm_persist_conn_open_without_init: failed to open persistent connection to host:localhost:6819: Connection refused</span>
+<span class="go">sacct: error: Sending PersistInit msg: Connection refused</span>
+<span class="go">sacct: error: Problem talking to the database: Connection refused</span>
+</pre></div>
+</div>
+<p>To avoid this, only run <code class="docutils literal notranslate"><span class="pre">sacct</span></code> and <code class="docutils literal notranslate"><span class="pre">sacct-usage</span></code> on the head node.</p>
+</section>
+</section>
 </section>
 
         </article>
@@ -587,6 +601,10 @@ resource utilization on the cluster.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#monitoring-the-cluster">Monitoring the cluster</a></li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li><a class="reference internal" href="#connection-refused-when-running-sacct-sacct-usage"><code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">refused</span></code> when running <code class="docutils literal notranslate"><span class="pre">sacct</span></code> / <code class="docutils literal notranslate"><span class="pre">sacct-usage</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
