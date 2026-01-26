@@ -19,7 +19,10 @@ extensions = [
 ]
 
 templates_path = ["_templates"]
-exclude_patterns = []
+exclude_patterns = [
+    # Troubleshooting pages are included using `.. include` statements
+    "**/*_troubleshooting.rst"
+]
 
 # Default language for code blocks (terminal sessions)
 highlight_language = "console"
