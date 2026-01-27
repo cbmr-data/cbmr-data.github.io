@@ -22,19 +22,19 @@ choice:
 .. list-table::
    :class: image-buttons
 
-   -  -  :ref:`Windows <s_connecting_windows>`
+   -  -  :ref:`Windows <s_ports_windows>`
 
          .. image:: /usage/access/images/os_windows.png
             :width: 128
             :target: #connecting-on-windows
 
-      -  :ref:`OSX <s_connecting_osx>`
+      -  :ref:`OSX <s_ports_osx_linux>`
 
          .. image:: /usage/access/images/os_macosx.png
             :width: 128
             :target: #connecting-on-osx
 
-      -  :ref:`Linux <s_connecting_linux>`
+      -  :ref:`Linux <s_ports_osx_linux>`
 
          .. image:: /usage/access/images/os_linux.png
             :width: 128
