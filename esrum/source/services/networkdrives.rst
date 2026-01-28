@@ -70,10 +70,23 @@ so, you can access the network drives at their canonical locations:
 +---------+-----------------------------+
 
 The variable ``${USER}`` refers to *your* username, in the form
-``abc123``. Note that the same time-limits apply, as when accessing the
-network drives from the head node. These paths work on the head node, on
-compute nodes, and on the RStudio nodes, provided that you have
-authenticated as described below.
+``abc123``. However, these folders will not be created until you
+actually try to access them, for example via ``ls`` or ``cd``:
+
+.. code-block:: console
+
+   $ /usr/bin/kinit
+   abc123@UNICPH.DOMAIN's password: ************
+   $ ls /maps/groupdir
+   $ ls /maps/groupdir/${USER}
+   SUN-CBMR-Platforms         SUN-CBMR-Shared-Info
+   $ ls /maps/groupdir
+   abc123
+
+These paths work on the head node, on compute nodes, and on the RStudio
+nodes, provided that you have authenticated as described below. Note
+that the same time-limits apply, as when accessing the network drives
+from the head node.
 
 .. _s_network_drives_reactivation:
 
