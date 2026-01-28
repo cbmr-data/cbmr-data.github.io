@@ -104,6 +104,11 @@ documentation for your software of choice.
 
 #. Enter your password and your SSH tunnel should now be active.
 
+While the port is active, you should, for example, be able to access the
+tunnel via http://localhost:XXXXX. When using Jupyter notebooks, open
+the URL starting with ``http://localhost`` or with ``http://127.0.0.1``
+that Jupyter printed.
+
 .. _s_ports_osx_linux:
 
 *************************************
@@ -121,6 +126,18 @@ UCPH short username:
 .. code-block:: console
 
    $ ssh -S none -N -L 'XXXXX:esrumcmpn07fl:XXXXX' abc123@esrumhead01fl.unicph.domain
+   abc123@esrumhead01fl.unicph.domain's password: ****************
+
+There will be no output beyond the prompt asking for your password, but
+once you have entered that the tunnel will be active as long as the
+process is running, and you can access it via notebook via
+http://localhost:XXXXX.
+
+When using a Jupyter notebook, open the URL starting with
+``http://localhost`` or with ``http://127.0.0.1`` that Jupyter printed.
+
+To close the tunnel, press Ctrl+C in the terminal or simply close the
+terminal.
 
 If the service you wish to connect to is instead running on the head
 node, then use the following command:
@@ -128,14 +145,22 @@ node, then use the following command:
 .. code-block:: console
 
    $ ssh -S none -N -L 'XXXXX:localhost:XXXXX' abc123@esrumhead01fl.unicph.domain
+   abc123@esrumhead01fl.unicph.domain's password: ****************
 
-The ``-S none`` option ensures that SSH opens a new connection even if
-shared connections are enabled (see the ``ControlMaster`` section in
-``man ssh``), which is required to forward the requested ports. The
-``-N`` option prevents ``ssh`` from opening a shell on Esrum, which
-ensures that you do not accidentally use this terminal and then close
-it, while still using the forwarded port, and the ``-L`` option
-configures the actual port forwarding.
+As above, you should be able to access the tunnel via
+http://localhost:XXXXX, while this command is running. When using
+Jupyter notebooks, open the URL starting with ``http://localhost`` or
+with ``http://127.0.0.1`` that Jupyter printed.
+
+.. tip::
+
+   The ``-S none`` option ensures that SSH opens a new connection even
+   if shared connections are enabled (see the ``ControlMaster`` section
+   in ``man ssh``), which is required to forward the requested ports.
+   The ``-N`` option prevents ``ssh`` from opening a shell on Esrum,
+   which ensures that you do not accidentally use this terminal and then
+   close it, while still using the forwarded port, and the ``-L`` option
+   configures the actual port forwarding.
 
 .. tip::
 
