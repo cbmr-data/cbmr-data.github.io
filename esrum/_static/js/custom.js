@@ -42,7 +42,18 @@ function createElementUpdaters(elem, pattern) {
         elems.push(updater(elem, elem.textContent));
     }
 
+    if (elem.nodeName == 'A' && elem.href && elem.href.includes(pattern)) {
+        const updater = (elem, content) => {
+            return (replacement) => {
+                elem.href = content.replaceAll(pattern, replacement);
+            }
+        };
+
+        elems.push(updater(elem, elem.href));
+    }
+
     return elems.flat();
+
 };
 
 /** Open external links in a new window */

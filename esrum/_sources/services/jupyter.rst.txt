@@ -96,7 +96,10 @@ job is running. This can be done in a couple of ways:
 
 Once you've determined what node your notebook is running on, go to the
 :ref:`p_tips_forwarding` page and setup port forwarding to that node and
-the port you used when starting Jupyter (e.g. ``XXXXX``).
+the port you used when starting Jupyter (e.g. ``XXXXX``), then you can
+open the URL starting with ``http://127.0.0.1``, that Jupyter printed.
+Typically, this can be done simply by holding Ctrl and left-clicking on
+the URL.
 
 .. _s_jupyter_kernels:
 
@@ -346,9 +349,9 @@ Submit an sbatch script for running one or more commands.
 -  ``commands`` - One or more commands to be run using sbatch. May be a
    list of strings, in which case the strings are assumed to be properly
    formatted commands and included as is, or a list of list of strings,
-   in which case the each list of strings is assumed to represent a
-   single command, and each argument is quoted/escaped to ensure that
-   special characters are properly handled.
+   in which case each list of strings is assumed to represent a single
+   command, and each argument is quoted/escaped to ensure that special
+   characters are properly handled.
 
 -  ``cpus`` - The number of CPUs to reserve. Must be a number in the
    range 1 to 128. Defaults to 1.

@@ -32,6 +32,12 @@ boils down to the following considerations:
    GPUs are a very limited resource on Esrum. See below for how to
    reserve GPUs for your rules.
 
+To summarize:
+
+-  Short jobs, few resources: Run Snakemake *in* a Slurm job.
+-  Longer jobs, more resources, or GPUs: Run Snakemake with Slurm
+   support enabled.
+
 For most bioinformatics pipelines, the most efficient choice is to run
 Snakemake with Slurm support enabled.
 
@@ -39,9 +45,37 @@ Snakemake with Slurm support enabled.
  Running Snakemake with Slurm support
 **************************************
 
-To run Snakemake with Slurm support enabled, simply pass the options
-``--slurm`` and ``--jobs N``, where the ``N`` is the maximum number of
-jobs you want to queue simultaneously. For example,
+How you enable Slurm support in Snakemake depends on the version of
+Snakemake that you use. You can check this via ``snakemake --version``,
+if you are unsure:
+
+.. code-block:: console
+
+   $ snakemake --version
+   9.6.0
+
+The following two subsections describe how to use Slurm depending on the
+version of Snakemake you use. For the above example, you would follow
+the instructions in the second subsection.
+
+Note also that you *must* run Snakemake on the head node when using the
+``--slurm`` option. This is required for Snakemake to be able to
+interact with Slurm. Furthermore, you *should* be running it a ``tmux``
+or ``screen`` session to ensure that Snakemake keeps running after you
+log out. See the :ref:`p_tips_tmux` page for more information.
+
+.. warning::
+
+   Some older tutorials may suggest setting Slurm options via
+   ``--cluster`` or similar command-line option. These tutorials are
+   outdated, and should not be followed.
+
+Snakemake version 7 or older
+============================
+
+To run Snakemake 7 or older with Slurm support enabled, simply pass the
+options ``--slurm`` and ``--jobs N``, where the ``N`` is the maximum
+number of jobs you want to queue simultaneously. For example,
 
 .. code-block:: console
 
@@ -52,18 +86,34 @@ This command will run your pipeline via Slurm and queue at most 32 jobs
 at once. Note that we do not need to specify the maximum number of CPUs
 (via ``--cores``), since Slurm will take care that (see below).
 
-Note also that you *must* run Snakemake on the head node when using the
-``--slurm`` option. This is required for Snakemake to be able to
-interact with Slurm. Furthermore, you *should* be running it a ``tmux``
-or ``screen`` session to ensure that Snakemake keeps running after you
-log out. See the :ref:`p_tips_tmux` page for more information.
+See the :ref:`snakemake_profile` section below describes how to set
+these settings automatically, as well as other useful settings.
 
-.. note::
+Snakemake version 8 or newer
+============================
 
-   Some older tutorials may suggest setting Slurm options via the
-   ``--cluster`` option. However, with modern versions of Snakemake it
-   is sufficient to add ``--slurm`` when running Snakemake and that is
-   the method we recommend using.
+To run Snakemake 8 or newer with Slurm support, you must pass the
+options ``--executor slurm``, ``--default-resources``, and ``--jobs N``,
+where the ``N`` is the maximum number of jobs you want to queue
+simultaneously. For example,
+
+.. code-block:: console
+
+   $ module load snakemake/9.9.0
+   $ snakemake snakemake --executor slurm --default-resources --jobs 32
+
+The ``--default-resources`` option ensures that Snakemake calculates
+resource requirements automatically, for tasks where you have not
+specified this yourself.
+
+See the :ref:`snakemake_profile` section below describes how to set
+these settings automatically, as well as other useful settings.
+
+.. tip::
+
+   If you install Snakemake yourself, then you need to also install the
+   ``snakemake-executor-plugin-slurm`` plugin. For more information, see
+   the `Snakemake slurm plugin`_ page.
 
 Requesting CPUs
 ===============
@@ -206,21 +256,29 @@ This section describes a handful of settings that we recommend using:
 
 The profile below enables you to automatically set these options.
 
+.. _snakemake_profile:
+
 *******************
  Snakemake profile
 *******************
 
-The recommended profile is also available at
-``/projects/cbmr_shared/apps/config/snakemake/latest``. This is a
-symlink pointing to the latest version of the profile
+Snakemake settings can be set automatically by using profiles. The
+following profile sets the options recommended above and the settings
+required to enable Slurm. Make sure to remove the options that do not
+correspond to your version of Snakemake:
 
 .. code-block:: yaml
    :linenos:
 
    # Maximum number of jobs to queue at once
    jobs: 32
-   # Use slurm for queuing jobs
-   slurm: true
+
+   # FIXME: Remove this line if you DO NOT use Snakemake 7 or older:
+   slurm: true # Enable slurm
+
+   # FIXME: Remove these t wo lines if you DO NOT use Snakemake 8 or newer:
+   executor: slurm # Enable slurm
+   default-resources: true # Calculate resource requirements
 
    # (Optional) Enable the use of environmental modules
    use-envmodules: true
@@ -238,22 +296,41 @@ symlink pointing to the latest version of the profile
      # (Optional) Runtime limit in minutes to catch jobs that hang
      #- "runtime=720"
 
-This profile is also available at
-``/projects/cbmr_shared/apps/config/snakemake/``.
-
-To make use of the profile, run Snakemake with the ``--profile``
-argument and the location of the folder containing your profile:
+To use this profile, save it as ``config.yaml`` in a folder, for example
+in your project folder. Then run Snakemake with the ``--profile`` option
+pointing to the folder in which you saved your profile:
 
 .. code-block:: console
 
-   $ snakemake --profile /projects/cbmr_shared/apps/config/snakemake/latest
+   $ snakemake --profile /path/to/profile/
+
+To simplify using Snakemake, this profile is available at
+``/projects/cbmr_shared/apps/config/``, for different versions of
+Snakemake:
+
++------------+---------------------------------------------------+
+| Snakemake  | Path                                              |
++============+===================================================+
+| Version 7  | ``/projects/cbmr_shared/apps/config/snakemake/7`` |
++------------+---------------------------------------------------+
+| Version 8  | ``/projects/cbmr_shared/apps/config/snakemake/8`` |
++------------+---------------------------------------------------+
+| Version 9  | ``/projects/cbmr_shared/apps/config/snakemake/9`` |
++------------+---------------------------------------------------+
+
+For example, to use the profile for Snakemake 9:
+
+.. code-block:: console
+
+   $ module load snakemake/9.9.0
+   $ snakemake --profile /projects/cbmr_shared/apps/config/snakemake/9
 
 Options specified in this profile can be overridden on the command-line
 simply by specifying the option again:
 
 .. code-block:: console
 
-   $ snakemake --profile /projects/cbmr_shared/apps/config/snakemake/latest --jobs 16
+   $ snakemake --profile /projects/cbmr_shared/apps/config/snakemake/9 --jobs 16
 
 *****************
  Troubleshooting
@@ -261,3 +338,5 @@ simply by specifying the option again:
 
 .. include:: snakemake_troubleshooting.rst
    :start-line: 8
+
+.. _snakemake slurm plugin: https://snakemake.github.io/snakemake-plugin-catalog/plugins/executor/slurm.html

@@ -325,10 +325,21 @@ so, you can access the network drives at their canonical locations:</p>
 </table>
 </div>
 <p>The variable <code class="docutils literal notranslate"><span class="pre">${USER}</span></code> refers to <em>your</em> username, in the form
-<code class="docutils literal notranslate"><span class="pre">abc123</span></code>. Note that the same time-limits apply, as when accessing the
-network drives from the head node. These paths work on the head node, on
-compute nodes, and on the RStudio nodes, provided that you have
-authenticated as described below.</p>
+<code class="docutils literal notranslate"><span class="pre">abc123</span></code>. However, these folders will not be created until you
+actually try to access them, for example via <code class="docutils literal notranslate"><span class="pre">ls</span></code> or <code class="docutils literal notranslate"><span class="pre">cd</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>/usr/bin/kinit
+<span class="go">abc123@UNICPH.DOMAIN&#39;s password: ************</span>
+<span class="gp">$ </span>ls<span class="w"> </span>/maps/groupdir
+<span class="gp">$ </span>ls<span class="w"> </span>/maps/groupdir/<span class="si">${</span><span class="nv">USER</span><span class="si">}</span>
+<span class="go">SUN-CBMR-Platforms         SUN-CBMR-Shared-Info</span>
+<span class="gp">$ </span>ls<span class="w"> </span>/maps/groupdir
+<span class="go">abc123</span>
+</pre></div>
+</div>
+<p>These paths work on the head node, on compute nodes, and on the RStudio
+nodes, provided that you have authenticated as described below. Note
+that the same time-limits apply, as when accessing the network drives
+from the head node.</p>
 </section>
 <section id="re-activating-access-to-the-network-drives">
 <span id="s-network-drives-reactivation"></span><h2>(Re)activating access to the network drives<a class="headerlink" href="#re-activating-access-to-the-network-drives" title="Link to this heading">¶</a></h2>
@@ -541,7 +552,7 @@ completely deactivated.</p>
     <script src="../_static/scripts/furo.js?v=4e2eecee"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=a7c4b63f"></script>
-    <script src="../_static/js/custom.js?v=d3d7fd27"></script>
+    <script src="../_static/js/custom.js?v=df51099a"></script>
     <script src="../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../_static/js/playback.js?v=d7002ce9"></script>
     </body>

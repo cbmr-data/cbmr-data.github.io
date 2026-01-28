@@ -335,7 +335,10 @@ is running on <code class="docutils literal notranslate"><span class="pre">esrum
 </ul>
 <p>Once you've determined what node your notebook is running on, go to the
 <a class="reference internal" href="../tips/ports.html#p-tips-forwarding"><span class="std std-ref">Port forwarding</span></a> page and setup port forwarding to that node and
-the port you used when starting Jupyter (e.g. <code class="docutils literal notranslate"><span class="pre">XXXXX</span></code>).</p>
+the port you used when starting Jupyter (e.g. <code class="docutils literal notranslate"><span class="pre">XXXXX</span></code>), then you can
+open the URL starting with <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1</span></code>, that Jupyter printed.
+Typically, this can be done simply by holding Ctrl and left-clicking on
+the URL.</p>
 </section>
 <section id="adding-an-r-kernel-to-jupyter">
 <span id="s-jupyter-kernels"></span><h2>Adding an R kernel to Jupyter<a class="headerlink" href="#adding-an-r-kernel-to-jupyter" title="Link to this heading">¶</a></h2>
@@ -545,9 +548,9 @@ arguments as lists of strings.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">commands</span></code> - One or more commands to be run using sbatch. May be a
 list of strings, in which case the strings are assumed to be properly
 formatted commands and included as is, or a list of list of strings,
-in which case the each list of strings is assumed to represent a
-single command, and each argument is quoted/escaped to ensure that
-special characters are properly handled.</p></li>
+in which case each list of strings is assumed to represent a single
+command, and each argument is quoted/escaped to ensure that special
+characters are properly handled.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cpus</span></code> - The number of CPUs to reserve. Must be a number in the
 range 1 to 128. Defaults to 1.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">memory</span></code> - The amount of memory to reserve. Must be a positive
@@ -792,7 +795,7 @@ compute nodes.</p>
     <script src="../_static/scripts/furo.js?v=4e2eecee"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=a7c4b63f"></script>
-    <script src="../_static/js/custom.js?v=d3d7fd27"></script>
+    <script src="../_static/js/custom.js?v=df51099a"></script>
     <script src="../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../_static/js/playback.js?v=d7002ce9"></script>
     </body>

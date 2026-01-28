@@ -286,13 +286,42 @@ reserved while they are actively being used, which we require since
 GPUs are a very limited resource on Esrum. See below for how to
 reserve GPUs for your rules.</p></li>
 </ul>
+<p>To summarize:</p>
+<ul class="simple">
+<li><p>Short jobs, few resources: Run Snakemake <em>in</em> a Slurm job.</p></li>
+<li><p>Longer jobs, more resources, or GPUs: Run Snakemake with Slurm
+support enabled.</p></li>
+</ul>
 <p>For most bioinformatics pipelines, the most efficient choice is to run
 Snakemake with Slurm support enabled.</p>
 <section id="running-snakemake-with-slurm-support">
 <h2>Running Snakemake with Slurm support<a class="headerlink" href="#running-snakemake-with-slurm-support" title="Link to this heading">¶</a></h2>
-<p>To run Snakemake with Slurm support enabled, simply pass the options
-<code class="docutils literal notranslate"><span class="pre">--slurm</span></code> and <code class="docutils literal notranslate"><span class="pre">--jobs</span> <span class="pre">N</span></code>, where the <code class="docutils literal notranslate"><span class="pre">N</span></code> is the maximum number of
-jobs you want to queue simultaneously. For example,</p>
+<p>How you enable Slurm support in Snakemake depends on the version of
+Snakemake that you use. You can check this via <code class="docutils literal notranslate"><span class="pre">snakemake</span> <span class="pre">--version</span></code>,
+if you are unsure:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>snakemake<span class="w"> </span>--version
+<span class="go">9.6.0</span>
+</pre></div>
+</div>
+<p>The following two subsections describe how to use Slurm depending on the
+version of Snakemake you use. For the above example, you would follow
+the instructions in the second subsection.</p>
+<p>Note also that you <em>must</em> run Snakemake on the head node when using the
+<code class="docutils literal notranslate"><span class="pre">--slurm</span></code> option. This is required for Snakemake to be able to
+interact with Slurm. Furthermore, you <em>should</em> be running it a <code class="docutils literal notranslate"><span class="pre">tmux</span></code>
+or <code class="docutils literal notranslate"><span class="pre">screen</span></code> session to ensure that Snakemake keeps running after you
+log out. See the <a class="reference internal" href="tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> page for more information.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Some older tutorials may suggest setting Slurm options via
+<code class="docutils literal notranslate"><span class="pre">--cluster</span></code> or similar command-line option. These tutorials are
+outdated, and should not be followed.</p>
+</div>
+<section id="snakemake-version-7-or-older">
+<h3>Snakemake version 7 or older<a class="headerlink" href="#snakemake-version-7-or-older" title="Link to this heading">¶</a></h3>
+<p>To run Snakemake 7 or older with Slurm support enabled, simply pass the
+options <code class="docutils literal notranslate"><span class="pre">--slurm</span></code> and <code class="docutils literal notranslate"><span class="pre">--jobs</span> <span class="pre">N</span></code>, where the <code class="docutils literal notranslate"><span class="pre">N</span></code> is the maximum
+number of jobs you want to queue simultaneously. For example,</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>snakemake/7.30.1
 <span class="gp">$ </span>snakemake<span class="w"> </span>--slurm<span class="w"> </span>--jobs<span class="w"> </span><span class="m">32</span>
 </pre></div>
@@ -300,18 +329,31 @@ jobs you want to queue simultaneously. For example,</p>
 <p>This command will run your pipeline via Slurm and queue at most 32 jobs
 at once. Note that we do not need to specify the maximum number of CPUs
 (via <code class="docutils literal notranslate"><span class="pre">--cores</span></code>), since Slurm will take care that (see below).</p>
-<p>Note also that you <em>must</em> run Snakemake on the head node when using the
-<code class="docutils literal notranslate"><span class="pre">--slurm</span></code> option. This is required for Snakemake to be able to
-interact with Slurm. Furthermore, you <em>should</em> be running it a <code class="docutils literal notranslate"><span class="pre">tmux</span></code>
-or <code class="docutils literal notranslate"><span class="pre">screen</span></code> session to ensure that Snakemake keeps running after you
-log out. See the <a class="reference internal" href="tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> page for more information.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Some older tutorials may suggest setting Slurm options via the
-<code class="docutils literal notranslate"><span class="pre">--cluster</span></code> option. However, with modern versions of Snakemake it
-is sufficient to add <code class="docutils literal notranslate"><span class="pre">--slurm</span></code> when running Snakemake and that is
-the method we recommend using.</p>
+<p>See the <a class="reference internal" href="#snakemake-profile"><span class="std std-ref">Snakemake profile</span></a> section below describes how to set
+these settings automatically, as well as other useful settings.</p>
+</section>
+<section id="snakemake-version-8-or-newer">
+<h3>Snakemake version 8 or newer<a class="headerlink" href="#snakemake-version-8-or-newer" title="Link to this heading">¶</a></h3>
+<p>To run Snakemake 8 or newer with Slurm support, you must pass the
+options <code class="docutils literal notranslate"><span class="pre">--executor</span> <span class="pre">slurm</span></code>, <code class="docutils literal notranslate"><span class="pre">--default-resources</span></code>, and <code class="docutils literal notranslate"><span class="pre">--jobs</span> <span class="pre">N</span></code>,
+where the <code class="docutils literal notranslate"><span class="pre">N</span></code> is the maximum number of jobs you want to queue
+simultaneously. For example,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>snakemake/9.9.0
+<span class="gp">$ </span>snakemake<span class="w"> </span>snakemake<span class="w"> </span>--executor<span class="w"> </span>slurm<span class="w"> </span>--default-resources<span class="w"> </span>--jobs<span class="w"> </span><span class="m">32</span>
+</pre></div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--default-resources</span></code> option ensures that Snakemake calculates
+resource requirements automatically, for tasks where you have not
+specified this yourself.</p>
+<p>See the <a class="reference internal" href="#snakemake-profile"><span class="std std-ref">Snakemake profile</span></a> section below describes how to set
+these settings automatically, as well as other useful settings.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you install Snakemake yourself, then you need to also install the
+<code class="docutils literal notranslate"><span class="pre">snakemake-executor-plugin-slurm</span></code> plugin. For more information, see
+the <a class="reference external" href="https://snakemake.github.io/snakemake-plugin-catalog/plugins/executor/slurm.html">Snakemake slurm plugin</a> page.</p>
+</div>
+</section>
 <section id="requesting-cpus">
 <h3>Requesting CPUs<a class="headerlink" href="#requesting-cpus" title="Link to this heading">¶</a></h3>
 <p>Snakemake will automatically request a number of CPUs corresponding to
@@ -430,42 +472,75 @@ jobs that were not run to completion.</p></li>
 <p>The profile below enables you to automatically set these options.</p>
 </section>
 <section id="snakemake-profile">
-<h2>Snakemake profile<a class="headerlink" href="#snakemake-profile" title="Link to this heading">¶</a></h2>
-<p>The recommended profile is also available at
-<code class="docutils literal notranslate"><span class="pre">/projects/cbmr_shared/apps/config/snakemake/latest</span></code>. This is a
-symlink pointing to the latest version of the profile</p>
+<span id="id1"></span><h2>Snakemake profile<a class="headerlink" href="#snakemake-profile" title="Link to this heading">¶</a></h2>
+<p>Snakemake settings can be set automatically by using profiles. The
+following profile sets the options recommended above and the settings
+required to enable Slurm. Make sure to remove the options that do not
+correspond to your version of Snakemake:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># Maximum number of jobs to queue at once</span>
 <span class="linenos"> 2</span><span class="nt">jobs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32</span>
-<span class="linenos"> 3</span><span class="c1"># Use slurm for queuing jobs</span>
-<span class="linenos"> 4</span><span class="nt">slurm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="linenos"> 5</span>
-<span class="linenos"> 6</span><span class="c1"># (Optional) Enable the use of environmental modules</span>
-<span class="linenos"> 7</span><span class="nt">use-envmodules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="linenos"> 8</span><span class="c1"># Wait up to 60 seconds for the network file system</span>
-<span class="linenos"> 9</span><span class="nt">latency-wait</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span>
-<span class="linenos">10</span><span class="c1"># Re-run incomplete jobs</span>
-<span class="linenos">11</span><span class="nt">rerun-incomplete</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
-<span class="linenos">12</span>
-<span class="linenos">13</span><span class="c1"># Standard slurm resources; these match the `sbatch` defaults:</span>
-<span class="linenos">14</span><span class="nt">default-resources</span><span class="p">:</span>
-<span class="linenos">15</span><span class="w">  </span><span class="c1"># Use standard queue by default (silences warning)</span>
-<span class="linenos">16</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;slurm_partition=standardqueue&quot;</span>
-<span class="linenos">17</span><span class="w">  </span><span class="c1"># Same mem-per-CPU as Slurm defaults</span>
-<span class="linenos">18</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;mem_mb_per_cpu=15948&quot;</span>
-<span class="linenos">19</span><span class="w">  </span><span class="c1"># (Optional) Runtime limit in minutes to catch jobs that hang</span>
-<span class="linenos">20</span><span class="w">  </span><span class="c1">#- &quot;runtime=720&quot;</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="c1"># FIXME: Remove this line if you DO NOT use Snakemake 7 or older:</span>
+<span class="linenos"> 5</span><span class="nt">slurm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># Enable slurm</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="c1"># FIXME: Remove these t wo lines if you DO NOT use Snakemake 8 or newer:</span>
+<span class="linenos"> 8</span><span class="nt">executor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slurm</span><span class="w"> </span><span class="c1"># Enable slurm</span>
+<span class="linenos"> 9</span><span class="nt">default-resources</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># Calculate resource requirements</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="c1"># (Optional) Enable the use of environmental modules</span>
+<span class="linenos">12</span><span class="nt">use-envmodules</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="linenos">13</span><span class="c1"># Wait up to 60 seconds for the network file system</span>
+<span class="linenos">14</span><span class="nt">latency-wait</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span>
+<span class="linenos">15</span><span class="c1"># Re-run incomplete jobs</span>
+<span class="linenos">16</span><span class="nt">rerun-incomplete</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="c1"># Standard slurm resources; these match the `sbatch` defaults:</span>
+<span class="linenos">19</span><span class="nt">default-resources</span><span class="p">:</span>
+<span class="linenos">20</span><span class="w">  </span><span class="c1"># Use standard queue by default (silences warning)</span>
+<span class="linenos">21</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;slurm_partition=standardqueue&quot;</span>
+<span class="linenos">22</span><span class="w">  </span><span class="c1"># Same mem-per-CPU as Slurm defaults</span>
+<span class="linenos">23</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;mem_mb_per_cpu=15948&quot;</span>
+<span class="linenos">24</span><span class="w">  </span><span class="c1"># (Optional) Runtime limit in minutes to catch jobs that hang</span>
+<span class="linenos">25</span><span class="w">  </span><span class="c1">#- &quot;runtime=720&quot;</span>
 </pre></div>
 </div>
-<p>This profile is also available at
-<code class="docutils literal notranslate"><span class="pre">/projects/cbmr_shared/apps/config/snakemake/</span></code>.</p>
-<p>To make use of the profile, run Snakemake with the <code class="docutils literal notranslate"><span class="pre">--profile</span></code>
-argument and the location of the folder containing your profile:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>snakemake<span class="w"> </span>--profile<span class="w"> </span>/projects/cbmr_shared/apps/config/snakemake/latest
+<p>To use this profile, save it as <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> in a folder, for example
+in your project folder. Then run Snakemake with the <code class="docutils literal notranslate"><span class="pre">--profile</span></code> option
+pointing to the folder in which you saved your profile:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>snakemake<span class="w"> </span>--profile<span class="w"> </span>/path/to/profile/
+</pre></div>
+</div>
+<p>To simplify using Snakemake, this profile is available at
+<code class="docutils literal notranslate"><span class="pre">/projects/cbmr_shared/apps/config/</span></code>, for different versions of
+Snakemake:</p>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Snakemake</p></th>
+<th class="head"><p>Path</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Version 7</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/projects/cbmr_shared/apps/config/snakemake/7</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Version 8</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/projects/cbmr_shared/apps/config/snakemake/8</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Version 9</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/projects/cbmr_shared/apps/config/snakemake/9</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>For example, to use the profile for Snakemake 9:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>snakemake/9.9.0
+<span class="gp">$ </span>snakemake<span class="w"> </span>--profile<span class="w"> </span>/projects/cbmr_shared/apps/config/snakemake/9
 </pre></div>
 </div>
 <p>Options specified in this profile can be overridden on the command-line
 simply by specifying the option again:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>snakemake<span class="w"> </span>--profile<span class="w"> </span>/projects/cbmr_shared/apps/config/snakemake/latest<span class="w"> </span>--jobs<span class="w"> </span><span class="m">16</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>snakemake<span class="w"> </span>--profile<span class="w"> </span>/projects/cbmr_shared/apps/config/snakemake/9<span class="w"> </span>--jobs<span class="w"> </span><span class="m">16</span>
 </pre></div>
 </div>
 </section>
@@ -546,6 +621,8 @@ when using the <code class="docutils literal notranslate"><span class="pre">--sl
             <ul>
 <li><a class="reference internal" href="#">Using Snakemake on Esrum</a><ul>
 <li><a class="reference internal" href="#running-snakemake-with-slurm-support">Running Snakemake with Slurm support</a><ul>
+<li><a class="reference internal" href="#snakemake-version-7-or-older">Snakemake version 7 or older</a></li>
+<li><a class="reference internal" href="#snakemake-version-8-or-newer">Snakemake version 8 or newer</a></li>
 <li><a class="reference internal" href="#requesting-cpus">Requesting CPUs</a></li>
 <li><a class="reference internal" href="#requesting-memory">Requesting memory</a></li>
 <li><a class="reference internal" href="#using-the-gpu-high-memory-nodes">Using the GPU / high-memory nodes</a></li>
@@ -575,7 +652,7 @@ when using the <code class="docutils literal notranslate"><span class="pre">--sl
     <script src="../_static/scripts/furo.js?v=4e2eecee"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=a7c4b63f"></script>
-    <script src="../_static/js/custom.js?v=d3d7fd27"></script>
+    <script src="../_static/js/custom.js?v=df51099a"></script>
     <script src="../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../_static/js/playback.js?v=d7002ce9"></script>
     </body>
