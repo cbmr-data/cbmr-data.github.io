@@ -318,10 +318,11 @@ nodes</span></a>.</p></li>
 <section id="running-jobs">
 <h2>Running jobs<a class="headerlink" href="#running-jobs" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>Do not run big jobs on the head node (<code class="docutils literal notranslate"><span class="pre">esrumhead01fl</span></code>), as doing so
-may impact the ability of everyone to use the cluster. However, we do
-permit small jobs on the head node, meaning a few cores <em>in total</em>
-and modest memory usage.</p></li>
+<li><p>The head node (<code class="docutils literal notranslate"><span class="pre">esrumhead01fl</span></code>) is only for very small jobs,
+meaning that you use no more than a couple of cores <em>in total</em>, with
+modest memory usage, as running larger jobs may impact the ability of
+everyone to use the cluster. Similarly, do not run transfers/copies
+on/to/from the head node.</p></li>
 <li><p>Remember to be considerate to other users. For example, limit the
 number of jobs you are running simultaneously, so that others users
 can also run their jobs</p></li>
@@ -331,7 +332,8 @@ system. Resources that you have reserved are not made available for
 other users until your tasks have finished.</p></li>
 </ul>
 <p>See the <a class="reference internal" href="usage/slurm/index.html#p-usage-slurm"><span class="std std-ref">Running jobs using Slurm</span></a> page for more information about how to run
-your tasks on the cluster.</p>
+your tasks on the cluster, and see the <a class="reference internal" href="usage/transfers/index.html#p-transfers"><span class="std std-ref">Transferring data</span></a> for
+instructions for how to transfer data to/from/on Esrum.</p>
 </section>
 <section id="access-to-protected-data-by-staff">
 <h2>Access to protected data by staff<a class="headerlink" href="#access-to-protected-data-by-staff" title="Link to this heading">¶</a></h2>
