@@ -76,10 +76,11 @@ Briefly,
  Running jobs
 **************
 
--  Do not run big jobs on the head node (``esrumhead01fl``), as doing so
-   may impact the ability of everyone to use the cluster. However, we do
-   permit small jobs on the head node, meaning a few cores *in total*
-   and modest memory usage.
+-  The head node (``esrumhead01fl``) is only for very small jobs,
+   meaning that you use no more than a couple of cores *in total*, with
+   modest memory usage, as running larger jobs may impact the ability of
+   everyone to use the cluster. Similarly, do not run transfers/copies
+   on/to/from the head node.
 
 -  Remember to be considerate to other users. For example, limit the
    number of jobs you are running simultaneously, so that others users
@@ -91,7 +92,8 @@ Briefly,
    other users until your tasks have finished.
 
 See the :ref:`p_usage_slurm` page for more information about how to run
-your tasks on the cluster.
+your tasks on the cluster, and see the :ref:`p_transfers` for
+instructions for how to transfer data to/from/on Esrum.
 
 ***********************************
  Access to protected data by staff
