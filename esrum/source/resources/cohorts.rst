@@ -35,7 +35,10 @@ To initiate this process,
    Project Manager, as described on the :ref:`p_usage_access_applying`
    page. You will need the Project IDs when applying for access to data.
 
-#. fill out and submit a data access form in the `Access Management System`_. Note that you *must* be on the VPN to access the system, and use your UCPH credentials to log in. You will also be able to track the status of your form in the system.
+#. fill out and submit a data access form in the `Access Management
+   System`_. Note that you *must* be on the VPN to access the system,
+   and use your UCPH credentials to log in. You will also be able to
+   track the status of your form in the system.
 
 Access will be granted once permission to access the cohort has been
 formally approved by the data owners. You will receive an automated
@@ -48,7 +51,8 @@ may take up to 24 hours before you can access the data on Esrum.
    the changes to your permissions to take effect, once you have
    received the notification mentioned above.
 
+.. _access management system: https://cbmrcat/governance
+
 .. _catalog of cohort variables: https://cbmrcat.unicph.domain/search
 
-.. _Access Management System: https://cbmrcat/governance
 .. _list of cohorts: https://cbmrcat.unicph.domain/cohorts/
