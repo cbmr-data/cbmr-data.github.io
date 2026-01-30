@@ -5,9 +5,17 @@
 #################
 
 This page describes how to set up port forwarding from your PC or
-laptop, to the Esrum head node or to a compute node on Esrum. Before you
-continue, please select the port you wish to forward. The following
-examples will be updated to match that choice.
+laptop, to the Esrum head node or to a compute node on Esrum.
+
+.. note::
+
+   Ports 8800 to 9000 on the compute nodes are open by default, meaning
+   that you do not need to set up port forwarding if you use one of
+   those ports. You could, for example, use port YYYYY. This port was
+   randomly selected for you, and will change if you refresh this page.
+
+Before you continue, please select the port you wish to forward. The
+following examples will be updated to match that choice.
 
 .. raw:: html
 
@@ -183,5 +191,10 @@ with ``http://127.0.0.1`` that Jupyter printed.
 
       portInput.value = getEphemeralPort();
       portInput.dispatchEvent(new Event("change"));
+
+      const openPort = getOpenPort();
+      for (updater of createElementUpdaters(document.body, "YYYYY")) {
+        updater(openPort);
+      }
     });
    </script>

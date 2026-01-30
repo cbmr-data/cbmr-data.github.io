@@ -281,12 +281,16 @@ ready.</p>
 <span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--<span class="w"> </span>jupyter<span class="w"> </span>notebook<span class="w"> </span>--no-browser<span class="w"> </span>--ip<span class="o">=</span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="o">=</span>XXXXX
 </pre></div>
 </div>
-<p>The number used in the argument <code class="docutils literal notranslate"><span class="pre">--port=XXXXX</span></code> must be a value in the
-range 49152 to 65535, and must not be a number used by another user on
-Esrum. The number shown here was randomly selected for you, and you can
-refresh this page for a different suggestion.</p>
+<p>The number used in the argument <code class="docutils literal notranslate"><span class="pre">--port=XXXXX</span></code> should be a value in
+the range 8800 to 9000, and must not be a number used by another user on
+the node your notebook ends up running on. The number shown here was
+randomly selected for you, and you can refresh this page for a different
+suggestion, if Jupyter</p>
+<p>As long as you use a number in the range 8800 to 9000, you will not need
+to set up port forwarding, as described below. This greatly simplifies
+connecting to your notebook.</p>
 <noscript>
-<div class="admonition warning"><p class="admonition-title">Warning</p><p>A random port could not be selected, because Javascript is disabled. Please choose a number in the range 49152 to 65535, and use this number whenever the documentation says <code class="docutils literal notranslate"><span class="pre">XXXXX</span></code></p></div>
+<div class="admonition warning"><p class="admonition-title">Warning</p><p>A random port could not be selected, because Javascript is disabled. Please choose a number in the range 8800 to 9000, and use this number whenever the documentation says <code class="docutils literal notranslate"><span class="pre">XXXXX</span></code></p></div>
 </noscript><p>This will allocate a single CPU and ~16 GB of RAM to your notebook. If
 you need additional resources for your notebook, then please see the
 <a class="reference internal" href="../usage/slurm/basics.html#reserving-resources"><span class="std std-ref">Reserving resources</span></a> section for instructions on how to reserve
@@ -303,10 +307,34 @@ information.</p>
 </section>
 <section id="connecting-to-the-jupyter-notebook">
 <h2>Connecting to the Jupyter Notebook<a class="headerlink" href="#connecting-to-the-jupyter-notebook" title="Link to this heading">¶</a></h2>
-<p>To connect to the notebook server, you will first need to set up a
-connection from your PC to the compute node on which your notebook is
-running. This is called &quot;port forwarding&quot; and is described on the
-<a class="reference internal" href="../tips/ports.html#p-tips-forwarding"><span class="std std-ref">Port forwarding</span></a> page.</p>
+<p>If you used a port in the range 8800 to 9000, then you can connect
+directly to your notebook, by using the URL printed by Jupyter that
+contains the name of the node it is running on. In the following
+example, that would be the URL starting with
+<code class="docutils literal notranslate"><span class="pre">http://esrumcmpn07fl.unicph.domain:XXXXX/</span></code></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>To access the notebook, open this file in a browser:
+    file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html
+Or copy and paste one of these URLs:
+<span class="hll">    http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
+</span>    or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
+</pre></div>
+</div>
+<p>Before you try to connect to your notebook, check that the number at the
+end of <code class="docutils literal notranslate"><span class="pre">http://esrumcmpn07fl.unicph.domain</span></code> is in the range 8800 to
+9000. If the port you selected is already in use, then Jupyter will
+select an adjacent port, which may still work. However, if the port
+Jupyter selects is outside the range 8800 to 9000, then shut down your
+notebook, select another port (for example by refreshing this page), and
+then start Jupyter again.</p>
+<p>Once you have verified that the port is in the range 8800 to 9000, you
+can typically open the link directly by holding the Ctrl button and
+left-clicking on it.</p>
+<section id="connecting-to-ports-outside-the-range-8800-to-9000">
+<h3>Connecting to ports outside the range 8800 to 9000<a class="headerlink" href="#connecting-to-ports-outside-the-range-8800-to-9000" title="Link to this heading">¶</a></h3>
+<p>If you did NOT use a port in the range 8800 to 9900, then you will need
+to set up a connection from your PC to the compute node on which your
+notebook is running. This is called &quot;port forwarding&quot; and is described
+on the <a class="reference internal" href="../tips/ports.html#p-tips-forwarding"><span class="std std-ref">Port forwarding</span></a> page.</p>
 <p>However, to do so you must first determine on which compute node your
 job is running. This can be done in a couple of ways:</p>
 <ul>
@@ -339,6 +367,7 @@ the port you used when starting Jupyter (e.g. <code class="docutils literal notr
 open the URL starting with <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1</span></code>, that Jupyter printed.
 Typically, this can be done simply by holding Ctrl and left-clicking on
 the URL.</p>
+</section>
 </section>
 <section id="adding-an-r-kernel-to-jupyter">
 <span id="s-jupyter-kernels"></span><h2>Adding an R kernel to Jupyter<a class="headerlink" href="#adding-an-r-kernel-to-jupyter" title="Link to this heading">¶</a></h2>
@@ -692,7 +721,7 @@ compute nodes.</p>
 </ul>
 <script defer>
  document.addEventListener('DOMContentLoaded', function() {
-   replaceTextContent(document.body, "XXXXX", getEphemeralPort());
+   replaceTextContent(document.body, "XXXXX", getOpenPort());
  });
 </script></section>
 </section>
@@ -755,7 +784,10 @@ compute nodes.</p>
             <ul>
 <li><a class="reference internal" href="#">Jupyter Notebooks</a><ul>
 <li><a class="reference internal" href="#starting-a-jupyter-notebook">Starting a Jupyter notebook</a></li>
-<li><a class="reference internal" href="#connecting-to-the-jupyter-notebook">Connecting to the Jupyter Notebook</a></li>
+<li><a class="reference internal" href="#connecting-to-the-jupyter-notebook">Connecting to the Jupyter Notebook</a><ul>
+<li><a class="reference internal" href="#connecting-to-ports-outside-the-range-8800-to-9000">Connecting to ports outside the range 8800 to 9000</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#adding-an-r-kernel-to-jupyter">Adding an R kernel to Jupyter</a></li>
 <li><a class="reference internal" href="#running-slurm-jobs-from-jupyter-notebooks">Running Slurm jobs from Jupyter notebooks</a><ul>
 <li><a class="reference internal" href="#installing-jupyter-slurm">Installing <code class="docutils literal notranslate"><span class="pre">jupyter_slurm</span></code></a><ul>
@@ -795,7 +827,7 @@ compute nodes.</p>
     <script src="../_static/scripts/furo.js?v=4e2eecee"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=a7c4b63f"></script>
-    <script src="../_static/js/custom.js?v=df51099a"></script>
+    <script src="../_static/js/custom.js?v=f619db00"></script>
     <script src="../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../_static/js/playback.js?v=d7002ce9"></script>
     </body>

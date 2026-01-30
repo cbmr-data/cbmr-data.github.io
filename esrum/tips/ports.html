@@ -262,9 +262,16 @@
           <section id="port-forwarding">
 <span id="p-tips-forwarding"></span><h1>Port forwarding<a class="headerlink" href="#port-forwarding" title="Link to this heading">¶</a></h1>
 <p>This page describes how to set up port forwarding from your PC or
-laptop, to the Esrum head node or to a compute node on Esrum. Before you
-continue, please select the port you wish to forward. The following
-examples will be updated to match that choice.</p>
+laptop, to the Esrum head node or to a compute node on Esrum.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ports 8800 to 9000 on the compute nodes are open by default, meaning
+that you do not need to set up port forwarding if you use one of
+those ports. You could, for example, use port YYYYY. This port was
+randomly selected for you, and will change if you refresh this page.</p>
+</div>
+<p>Before you continue, please select the port you wish to forward. The
+following examples will be updated to match that choice.</p>
 <center>
   <label for="port">Port to forward:</label>
   <input id="port-input" name="port" min=1024 max=65535 type="number">
@@ -394,6 +401,11 @@ command <code class="docutils literal notranslate"><span class="pre">ssh</span> 
 
    portInput.value = getEphemeralPort();
    portInput.dispatchEvent(new Event("change"));
+
+   const openPort = getOpenPort();
+   for (updater of createElementUpdaters(document.body, "YYYYY")) {
+     updater(openPort);
+   }
  });
 </script></section>
 </section>
@@ -473,7 +485,7 @@ command <code class="docutils literal notranslate"><span class="pre">ssh</span> 
     <script src="../_static/scripts/furo.js?v=4e2eecee"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=a7c4b63f"></script>
-    <script src="../_static/js/custom.js?v=df51099a"></script>
+    <script src="../_static/js/custom.js?v=f619db00"></script>
     <script src="../_static/js/libgif.js?v=7adcb026"></script>
     <script src="../_static/js/playback.js?v=d7002ce9"></script>
     </body>
