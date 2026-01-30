@@ -33,13 +33,9 @@ To initiate this process,
 
 #. ensure that your scientific project(s) are registered in the CBMR
    Project Manager, as described on the :ref:`p_usage_access_applying`
-   page. You will need the Project IDs when filling out the data access
-   form.
+   page. You will need the Project IDs when applying for access to data.
 
-#. fill out the `data access form`_ and send it to `SUND-CBMR-Esrum
-   <mailto:cbmr-esrum@sund.ku.dk>`_. Note that you *must* use a UCPH
-   e-mail account when writing to us on this address: Mail from external
-   addresses is currently blocked.
+#. fill out and submit a data access form in the `Access Management System`_. Note that you *must* be on the VPN to access the system, and use your UCPH credentials to log in. You will also be able to track the status of your form in the system.
 
 Access will be granted once permission to access the cohort has been
 formally approved by the data owners. You will receive an automated
@@ -54,6 +50,5 @@ may take up to 24 hours before you can access the data on Esrum.
 
 .. _catalog of cohort variables: https://cbmrcat.unicph.domain/search
 
-.. _data access form: https://cbmrcat/static/esrum_data_access_form.docx
-
+.. _Access Management System: https://cbmrcat/governance
 .. _list of cohorts: https://cbmrcat.unicph.domain/cohorts/
