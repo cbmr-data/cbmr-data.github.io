@@ -12,6 +12,11 @@ function getEphemeralPort() {
     return getRandomInt(49152, 65535);
 }
 
+function getOpenPort() {
+    // Ports currently open on compute nodes
+    return getRandomInt(8800, 9000);
+}
+
 function replaceTextContent(elem, pattern, replacement) {
     if (elem.childNodes.length) {
         elem.childNodes.forEach(function (child) {

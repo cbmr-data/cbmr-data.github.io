@@ -30,15 +30,20 @@ To start a notebook on a node, run the following commands:
    $ module load jupyter-notebook
    $ srun --pty -- jupyter notebook --no-browser --ip=0.0.0.0 --port=XXXXX
 
-The number used in the argument ``--port=XXXXX`` must be a value in the
-range 49152 to 65535, and must not be a number used by another user on
-Esrum. The number shown here was randomly selected for you, and you can
-refresh this page for a different suggestion.
+The number used in the argument ``--port=XXXXX`` should be a value in
+the range 8800 to 9000, and must not be a number used by another user on
+the node your notebook ends up running on. The number shown here was
+randomly selected for you, and you can refresh this page for a different
+suggestion, if Jupyter
+
+As long as you use a number in the range 8800 to 9000, you will not need
+to set up port forwarding, as described below. This greatly simplifies
+connecting to your notebook.
 
 .. raw:: html
 
    <noscript>
-   <div class="admonition warning"><p class="admonition-title">Warning</p><p>A random port could not be selected, because Javascript is disabled. Please choose a number in the range 49152 to 65535, and use this number whenever the documentation says <code class="docutils literal notranslate"><span class="pre">XXXXX</span></code></p></div>
+   <div class="admonition warning"><p class="admonition-title">Warning</p><p>A random port could not be selected, because Javascript is disabled. Please choose a number in the range 8800 to 9000, and use this number whenever the documentation says <code class="docutils literal notranslate"><span class="pre">XXXXX</span></code></p></div>
    </noscript>
 
 This will allocate a single CPU and ~16 GB of RAM to your notebook. If
@@ -59,10 +64,40 @@ instructions on how to reserve GPUs or large amounts of memory. The
  Connecting to the Jupyter Notebook
 ************************************
 
-To connect to the notebook server, you will first need to set up a
-connection from your PC to the compute node on which your notebook is
-running. This is called "port forwarding" and is described on the
-:ref:`p_tips_forwarding` page.
+If you used a port in the range 8800 to 9000, then you can connect
+directly to your notebook, by using the URL printed by Jupyter that
+contains the name of the node it is running on. In the following
+example, that would be the URL starting with
+``http://esrumcmpn07fl.unicph.domain:XXXXX/``
+
+.. code-block:: text
+   :emphasize-lines: 4
+
+   To access the notebook, open this file in a browser:
+       file:///home/abc123/.local/share/jupyter/runtime/nbserver-2082873-open.html
+   Or copy and paste one of these URLs:
+       http://esrumcmpn07fl.unicph.domain:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
+       or http://127.0.0.1:XXXXX/?token=0123456789abcdefghijklmnopqrstuvwxyz
+
+Before you try to connect to your notebook, check that the number at the
+end of ``http://esrumcmpn07fl.unicph.domain`` is in the range 8800 to
+9000. If the port you selected is already in use, then Jupyter will
+select an adjacent port, which may still work. However, if the port
+Jupyter selects is outside the range 8800 to 9000, then shut down your
+notebook, select another port (for example by refreshing this page), and
+then start Jupyter again.
+
+Once you have verified that the port is in the range 8800 to 9000, you
+can typically open the link directly by holding the Ctrl button and
+left-clicking on it.
+
+Connecting to ports outside the range 8800 to 9000
+==================================================
+
+If you did NOT use a port in the range 8800 to 9900, then you will need
+to set up a connection from your PC to the compute node on which your
+notebook is running. This is called "port forwarding" and is described
+on the :ref:`p_tips_forwarding` page.
 
 However, to do so you must first determine on which compute node your
 job is running. This can be done in a couple of ways:
@@ -480,6 +515,6 @@ Run command via ``srun``, and optionally capture its output.
 
    <script defer>
     document.addEventListener('DOMContentLoaded', function() {
-      replaceTextContent(document.body, "XXXXX", getEphemeralPort());
+      replaceTextContent(document.body, "XXXXX", getOpenPort());
     });
    </script>
