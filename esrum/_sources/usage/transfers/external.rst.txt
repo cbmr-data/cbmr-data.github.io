@@ -151,6 +151,13 @@ This avoids two big issues:
 
 See :ref:`s_external_from_esrum` above for more information.
 
+*****************
+ Troubleshooting
+*****************
+
+.. include:: external_troubleshooting.rst
+   :start-line: 8
+
 .. _filezilla: https://filezilla-project.org/
 
 .. _lftp manual: https://lftp.yar.ru/lftp-man.html

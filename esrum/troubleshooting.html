@@ -438,6 +438,39 @@ than the head node, then you may get an error message like this:</p>
 <p>To avoid this, only run <code class="docutils literal notranslate"><span class="pre">sacct</span></code> and <code class="docutils literal notranslate"><span class="pre">sacct-usage</span></code> on the head node.</p>
 </section>
 </section>
+<section id="internal-data-transfers-on-esrum">
+<h2>Internal data transfers on Esrum<a class="headerlink" href="#internal-data-transfers-on-esrum" title="Link to this heading">¶</a></h2>
+<section id="rsync-fails-with-permission-denied-when-copying-from-datasets">
+<h3><code class="docutils literal notranslate"><span class="pre">rsync</span></code> fails with <code class="docutils literal notranslate"><span class="pre">Permission</span> <span class="pre">denied</span></code> when copying from <code class="docutils literal notranslate"><span class="pre">/datasets</span></code><a class="headerlink" href="#rsync-fails-with-permission-denied-when-copying-from-datasets" title="Link to this heading">¶</a></h3>
+<p>If you forget to use the <code class="docutils literal notranslate"><span class="pre">--no-perms</span></code> option when rsync'ing data out
+of a <code class="docutils literal notranslate"><span class="pre">/datasets</span></code> folder, then all permissions will be set to <code class="docutils literal notranslate"><span class="pre">000</span></code>.
+In other words, nobody can read, write, or execute those files and
+folders.</p>
+<p>To fix this, first run the following commands to fix the permissions,
+where <code class="docutils literal notranslate"><span class="pre">/path/to/copied/data</span></code> is the path to the copy of the data that
+you have created.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">chmod -R +rX,u+w /path/to/copied/data</span>
+</pre></div>
+</div>
+<p>This will recursively mark files and folders readable for everyone, mark
+folders executable for everyone (required to browse them), and mark
+files and folders writable for you (and only you).</p>
+<p>Then re-run <code class="docutils literal notranslate"><span class="pre">rsync</span></code> and remember to include the <code class="docutils literal notranslate"><span class="pre">--no-perms</span></code> option.</p>
+</section>
+<section id="permission-denied-when-accessing-data-copied-from-datasets">
+<h3><code class="docutils literal notranslate"><span class="pre">Permission</span> <span class="pre">denied</span></code> when accessing data copied from <code class="docutils literal notranslate"><span class="pre">/datasets</span></code><a class="headerlink" href="#permission-denied-when-accessing-data-copied-from-datasets" title="Link to this heading">¶</a></h3>
+<p>See above.</p>
+</section>
+</section>
+<section id="external-data-transfers-on-esrum">
+<h2>External data transfers on Esrum<a class="headerlink" href="#external-data-transfers-on-esrum" title="Link to this heading">¶</a></h2>
+<section id="chains-not-found-when-connecting-to-sftp-ku-dk">
+<h3><code class="docutils literal notranslate"><span class="pre">Chains</span> <span class="pre">not</span> <span class="pre">found</span></code> when connecting to sftp.ku.dk<a class="headerlink" href="#chains-not-found-when-connecting-to-sftp-ku-dk" title="Link to this heading">¶</a></h3>
+<p>If you try and fail to log in to sftp.ku.dk too many times in a short
+period of time, then your account may get locked out. In that case,
+please create a ticket using KU-IT <a class="reference external" href="https://serviceportal.ku.dk/">serviceportal</a>.</p>
+</section>
+</section>
 <section id="network-drives">
 <h2>Network drives<a class="headerlink" href="#network-drives" title="Link to this heading">¶</a></h2>
 <section id="the-ucph-folder-or-subfolders-are-missing">
@@ -821,6 +854,15 @@ when using the <code class="docutils literal notranslate"><span class="pre">--sl
 </li>
 <li><a class="reference internal" href="#monitoring-slurm-jobs">Monitoring slurm jobs</a><ul>
 <li><a class="reference internal" href="#connection-refused-when-running-sacct-sacct-usage"><code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">refused</span></code> when running <code class="docutils literal notranslate"><span class="pre">sacct</span></code> / <code class="docutils literal notranslate"><span class="pre">sacct-usage</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#internal-data-transfers-on-esrum">Internal data transfers on Esrum</a><ul>
+<li><a class="reference internal" href="#rsync-fails-with-permission-denied-when-copying-from-datasets"><code class="docutils literal notranslate"><span class="pre">rsync</span></code> fails with <code class="docutils literal notranslate"><span class="pre">Permission</span> <span class="pre">denied</span></code> when copying from <code class="docutils literal notranslate"><span class="pre">/datasets</span></code></a></li>
+<li><a class="reference internal" href="#permission-denied-when-accessing-data-copied-from-datasets"><code class="docutils literal notranslate"><span class="pre">Permission</span> <span class="pre">denied</span></code> when accessing data copied from <code class="docutils literal notranslate"><span class="pre">/datasets</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#external-data-transfers-on-esrum">External data transfers on Esrum</a><ul>
+<li><a class="reference internal" href="#chains-not-found-when-connecting-to-sftp-ku-dk"><code class="docutils literal notranslate"><span class="pre">Chains</span> <span class="pre">not</span> <span class="pre">found</span></code> when connecting to sftp.ku.dk</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#network-drives">Network drives</a><ul>

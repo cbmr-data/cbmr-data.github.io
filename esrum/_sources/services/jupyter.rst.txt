@@ -34,11 +34,9 @@ The number used in the argument ``--port=XXXXX`` should be a value in
 the range 8800 to 9000, and must not be a number used by another user on
 the node your notebook ends up running on. The number shown here was
 randomly selected for you, and you can refresh this page for a different
-suggestion.
-
-As long as you use a number in the range 8800 to 9000, you will not need
-to set up port forwarding. This greatly simplifies connecting to your
-notebook.
+suggestion. As long as you use a number in the range 8800 to 9000, you
+will not need to set up port forwarding. This greatly simplifies
+connecting to your notebook.
 
 .. raw:: html
 

@@ -28,6 +28,20 @@ to the cluster.
 .. include:: usage/slurm/monitoring_troubleshooting.rst
    :start-line: 8
 
+**********************************
+ Internal data transfers on Esrum
+**********************************
+
+.. include:: usage/transfers/internal_troubleshooting.rst
+   :start-line: 8
+
+**********************************
+ External data transfers on Esrum
+**********************************
+
+.. include:: usage/transfers/external_troubleshooting.rst
+   :start-line: 8
+
 ****************
  Network drives
 ****************
