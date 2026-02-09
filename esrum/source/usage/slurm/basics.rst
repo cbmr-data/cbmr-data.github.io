@@ -535,8 +535,11 @@ cluster.
    enabled. If X11 forwarding is not enabled, then see the
    :ref:`s_slurm_basics_troubleshooting` section below.
 
--  On Linux and OSX, when using ``ssh``, you must either include the
-   ``-X`` option when connecting to the server:
+-  On OSX, you must first install XQuartz_. Once you have done so, the
+   instructions are the same as for Linux:
+
+-  On Linux, when using ``ssh``, you must either include the ``-X``
+   option when connecting to the server:
 
    .. code-block:: console
 
@@ -612,3 +615,5 @@ system on Esrum to load the software you need for your work.
 .. _pbs to slurm translation-sheet: https://www.nrel.gov/hpc/assets/pdfs/pbs-to-slurm-translation-sheet.pdf
 
 .. _shebang: https://en.wikipedia.org/wiki/Shebang_(Unix)
+
+.. _xquartz: https://www.xquartz.org/
