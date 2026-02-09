@@ -678,8 +678,10 @@ cluster.</p>
 <li><p>On Windows, if you are using MobaXterm, then X11 should already be
 enabled. If X11 forwarding is not enabled, then see the
 <a class="reference internal" href="#s-slurm-basics-troubleshooting"><span class="std std-ref">Troubleshooting</span></a> section below.</p></li>
-<li><p>On Linux and OSX, when using <code class="docutils literal notranslate"><span class="pre">ssh</span></code>, you must either include the
-<code class="docutils literal notranslate"><span class="pre">-X</span></code> option when connecting to the server:</p>
+<li><p>On OSX, you must first install <a class="reference external" href="https://www.xquartz.org/">XQuartz</a>. Once you have done so, the
+instructions are the same as for Linux:</p></li>
+<li><p>On Linux, when using <code class="docutils literal notranslate"><span class="pre">ssh</span></code>, you must either include the <code class="docutils literal notranslate"><span class="pre">-X</span></code>
+option when connecting to the server:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>-X<span class="w"> </span>esrumhead01fl
 </pre></div>
 </div>
