@@ -6,6 +6,18 @@
  Dummy header to prevent reformatting
 **************************************
 
+Error: Unable to allocate resources: Invalid account or account/partition combination specified
+===============================================================================================
+
+If you get this error while using ``sbatch`` or ``srun``, then ensure
+that your ``sbatch`` or ``srun``, then please ensure that you are not
+manually specifying an account.
+
+If you are not specifying an account, but still get this error, then
+please :ref:`\<contact us <p_contact>>`. Normally, a Slurm account
+should automatically be created for you, but in some cases that may not
+have happened, and we may have to fix it manually.
+
 Error: Requested node configuration is not available
 ====================================================
 
