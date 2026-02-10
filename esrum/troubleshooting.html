@@ -351,6 +351,16 @@ Failed to complete authentication
 </section>
 <section id="slurm-basics">
 <h2>Slurm basics<a class="headerlink" href="#slurm-basics" title="Link to this heading">¶</a></h2>
+<section id="error-unable-to-allocate-resources-invalid-account-or-account-partition-combination-specified">
+<h3>Error: Unable to allocate resources: Invalid account or account/partition combination specified<a class="headerlink" href="#error-unable-to-allocate-resources-invalid-account-or-account-partition-combination-specified" title="Link to this heading">¶</a></h3>
+<p>If you get this error while using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> or <code class="docutils literal notranslate"><span class="pre">srun</span></code>, then ensure
+that your <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> or <code class="docutils literal notranslate"><span class="pre">srun</span></code>, then please ensure that you are not
+manually specifying an account.</p>
+<p>If you are not specifying an account, but still get this error, then
+please <span class="xref std std-ref">&lt;contact us</span>. Normally, a Slurm account
+should automatically be created for you, but in some cases that may not
+have happened, and we may have to fix it manually.</p>
+</section>
 <section id="error-requested-node-configuration-is-not-available">
 <h3>Error: Requested node configuration is not available<a class="headerlink" href="#error-requested-node-configuration-is-not-available" title="Link to this heading">¶</a></h3>
 <p>If you request too many CPUs (more than 128), or too much RAM (more than
@@ -847,6 +857,7 @@ when using the <code class="docutils literal notranslate"><span class="pre">--sl
 </ul>
 </li>
 <li><a class="reference internal" href="#slurm-basics">Slurm basics</a><ul>
+<li><a class="reference internal" href="#error-unable-to-allocate-resources-invalid-account-or-account-partition-combination-specified">Error: Unable to allocate resources: Invalid account or account/partition combination specified</a></li>
 <li><a class="reference internal" href="#error-requested-node-configuration-is-not-available">Error: Requested node configuration is not available</a></li>
 <li><a class="reference internal" href="#srun-fails-with-bin-slurm-bcast-123456-0-esrumcmpn01fl-no-such-file-or-directory"><code class="docutils literal notranslate"><span class="pre">srun</span></code> fails with <code class="docutils literal notranslate"><span class="pre">/bin/slurm_bcast_123456.0_esrumcmpn01fl:</span> <span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory</span></code></a></li>
 <li><a class="reference internal" href="#x11-forwarding-not-working-in-mobaxterm">X11 forwarding not working in MobaXterm</a></li>
