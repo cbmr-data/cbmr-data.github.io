@@ -388,36 +388,32 @@ data/filenames.</p>
 <section id="limiting-simultaneous-jobs">
 <h3>Limiting simultaneous jobs<a class="headerlink" href="#limiting-simultaneous-jobs" title="Link to this heading">¶</a></h3>
 <p>By default, Slurm will attempt to run every job in an array at the same
-time, provided that there are resources available. Since Esrum is a
-shared resource we ask that you consider how much of the cluster you'll
-be using and limit the number of simultaneous jobs to a reasonable
-number.</p>
+time. Since Esrum is a shared resource, we ask that you limit the number
+of simultaneous jobs to a reasonable number. See the <span class="xref std std-ref">guidelines
+for runnnings jobs</span> and feel free to reach out to
+us, if you are in unsure about how many jobs to run simultaneously.</p>
 <p>Limiting the number of simultaneous jobs is done by appending a <code class="docutils literal notranslate"><span class="pre">%</span></code>
-and a number at the end of the <code class="docutils literal notranslate"><span class="pre">--array</span></code> value as shown above. For
-example, in the following script we queue a job array containing 100
-jobs, each requesting 8 CPUs. However, the <code class="docutils literal notranslate"><span class="pre">%16</span></code> appended to the
-<code class="docutils literal notranslate"><span class="pre">--array</span></code> ensures that at most 16 of these jobs are running at the
-same time:</p>
+and a number at the end of the <code class="docutils literal notranslate"><span class="pre">--array</span></code> argument. For example,
+<code class="docutils literal notranslate"><span class="pre">--array=1-100%16</span></code> queues 100 jobs, while allowing at most 16 of these
+to run at the same time:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
 <span class="linenos">2</span><span class="c1">#SBATCH --cpus-per-task=8</span>
 <span class="linenos">3</span><span class="c1">#SBATCH --array=1-100%16</span>
 </pre></div>
 </div>
-<p>This ensures that we use no more than 1 compute node's worth of CPUs
-(128 CPUs per node) and thereby leave plenty of capacity available for
-other users.</p>
-<p>In addition to limiting the number of simultaneously running jobs, you
-can also give your jobs a lower priority using the <code class="docutils literal notranslate"><span class="pre">--nice</span></code> option:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1">#SBATCH --nice</span>
+<p>This ensures that we use no more than 8 * 16 = 128 CPUs at once
+(equivalent to one node) and thereby leave plenty of capacity available
+for other users.</p>
+<p>If a job-array is already running, then you can change the limit by
+using <code class="docutils literal notranslate"><span class="pre">scontrol</span></code>. The following updates the job array with ID
+<code class="docutils literal notranslate"><span class="pre">12345</span></code> and sets its maximum number of simultaneous jobs to 32:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">JobId</span><span class="o">=</span><span class="m">12345</span><span class="w"> </span><span class="nv">ArrayTaskThrottle</span><span class="o">=</span><span class="m">32</span>
 </pre></div>
 </div>
-<p>This ensures that other users' jobs, if any, will be run before jobs in
-your array and thereby prevent your job array from always using the
-maximum number of resources possible. Combined with a reasonable <code class="docutils literal notranslate"><span class="pre">%</span></code>
-limit this allows you to run more jobs simultaneously, than if you just
-used a <code class="docutils literal notranslate"><span class="pre">%</span></code> limit, without negatively impacting other users.</p>
-<p>Please reach out if you are in doubt about how many jobs you can run at
-the same time.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Setting <code class="docutils literal notranslate"><span class="pre">ArrayTaskThrottle</span></code> to 0 removes the limit.</p>
+</div>
 </section>
 <section id="managing-job-arrays">
 <h3>Managing job arrays<a class="headerlink" href="#managing-job-arrays" title="Link to this heading">¶</a></h3>
