@@ -171,17 +171,15 @@ Limiting simultaneous jobs
 ==========================
 
 By default, Slurm will attempt to run every job in an array at the same
-time, provided that there are resources available. Since Esrum is a
-shared resource we ask that you consider how much of the cluster you'll
-be using and limit the number of simultaneous jobs to a reasonable
-number.
+time. Since Esrum is a shared resource, we ask that you limit the number
+of simultaneous jobs to a reasonable number. See the :ref:`guidelines
+for runnnings jobs <s_guidelines_jobs>` and feel free to reach out to
+us, if you are in unsure about how many jobs to run simultaneously.
 
 Limiting the number of simultaneous jobs is done by appending a ``%``
-and a number at the end of the ``--array`` value as shown above. For
-example, in the following script we queue a job array containing 100
-jobs, each requesting 8 CPUs. However, the ``%16`` appended to the
-``--array`` ensures that at most 16 of these jobs are running at the
-same time:
+and a number at the end of the ``--array`` argument. For example,
+``--array=1-100%16`` queues 100 jobs, while allowing at most 16 of these
+to run at the same time:
 
 .. code-block:: bash
    :linenos:
@@ -190,26 +188,21 @@ same time:
    #SBATCH --cpus-per-task=8
    #SBATCH --array=1-100%16
 
-This ensures that we use no more than 1 compute node's worth of CPUs
-(128 CPUs per node) and thereby leave plenty of capacity available for
-other users.
+This ensures that we use no more than 8 * 16 = 128 CPUs at once
+(equivalent to one node) and thereby leave plenty of capacity available
+for other users.
 
-In addition to limiting the number of simultaneously running jobs, you
-can also give your jobs a lower priority using the ``--nice`` option:
+If a job-array is already running, then you can change the limit by
+using ``scontrol``. The following updates the job array with ID
+``12345`` and sets its maximum number of simultaneous jobs to 32:
 
-.. code-block:: bash
-   :linenos:
+.. code-block:: console
 
-   #SBATCH --nice
+   $ scontrol update JobId=12345 ArrayTaskThrottle=32
 
-This ensures that other users' jobs, if any, will be run before jobs in
-your array and thereby prevent your job array from always using the
-maximum number of resources possible. Combined with a reasonable ``%``
-limit this allows you to run more jobs simultaneously, than if you just
-used a ``%`` limit, without negatively impacting other users.
+.. note::
 
-Please reach out if you are in doubt about how many jobs you can run at
-the same time.
+   Setting ``ArrayTaskThrottle`` to 0 removes the limit.
 
 Managing job arrays
 ===================
