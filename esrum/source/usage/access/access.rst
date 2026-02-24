@@ -31,7 +31,7 @@ get access, please
       You will be taken to a page that allows you update your newly
       created project, with the first field showing the ID of your new
       project (e.g. ``CBMR-ABCD12``). Write down this ID.
-   
+
    #. It is encouraged that you update your project information
       as it progresses. External references should be used to
       associate any information related to the project.
