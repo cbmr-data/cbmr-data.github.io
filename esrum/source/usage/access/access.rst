@@ -19,7 +19,7 @@ get access, please
    work on using Esrum, if you have not already done so. To do so, for
    each of your projects,
 
-   #. Visit the `Project Manager`_ page and click the `Add Project`_
+   #. Visit the `Project Manager`_ page and click the `Register Project`_
       tab.
 
    #. Enter the title of your project, the contact person for the
@@ -27,10 +27,25 @@ get access, please
       PI/group-leader of the project, and a brief description of the
       project.
 
-   #. Click the ``Add Project`` button, below the project description.
+   #. Click the ``Register Project`` button, below the project description.
       You will be taken to a page that allows you update your newly
       created project, with the first field showing the ID of your new
       project (e.g. ``CBMR-ABCD12``). Write down this ID.
+   
+   #. It is encouraged that you update your project information
+      as it progresses. External references should be used to
+      associate any information related to the project.
+      There are default external reference types you can choose from.
+      However, you are free to define your own external reference
+      types by writing any free text, setting a value
+      and clicking the ``Register External Reference`` button.
+
+   #.  Upload any PDF documents associated with the project in
+       the Upload Project Documents section. This is done by
+       browsing your local directories, choosing a PDF file
+       relevant for the project and clicking ``Upload Document``.
+       These can for example be ethical approvals, data agreements etc.
+       You are encouraged not to upload any GDPR sensitive data here.
 
 #. If you have already registered your project(s), then you can look up
    the project IDs via the `Search Project`_ tab in the `Project
