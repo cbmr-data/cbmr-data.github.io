@@ -177,7 +177,7 @@ Adding users to a group using the IDM
 
 #. Wait for your request to be processed.
 
-.. _add project: https://cbmrcat/projects/add_project/
+.. _register project: https://cbmrcat/projects/add_project/
 
 .. _here: https://kunet.ku.dk/medarbejderguide/ITvejl/KU%20IdM%20-%20S%C3%A5dan%20anmodes%20om%20funktionsrolle.pdf
 
