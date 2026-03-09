@@ -9,6 +9,10 @@ cluster. Failure to follow these guidelines may result in your tasks
 being terminated and may even result in your access to the cluster being
 revoked.
 
+You are always welcome to :ref:`contact us <p_contact>`, if you have
+questions about any of these guidelines, or about Esrum usage in
+general.
+
 Please also see the general UCPH resources for handling `GDPR sensitive
 data`_.
 
@@ -72,6 +76,8 @@ Briefly,
 -  If possible, run the models locally on Esrum using our :ref:`GPU
    nodes <p_usage_slurm_gpu>`.
 
+.. _s_guidelines_jobs:
+
 **************
  Running jobs
 **************
@@ -82,14 +88,21 @@ Briefly,
    everyone to use the cluster. Similarly, do not run transfers/copies
    on/to/from the head node.
 
--  Remember to be considerate to other users. For example, limit the
-   number of jobs you are running simultaneously, so that others users
-   can also run their jobs
+-  Remember to be considerate to other users. For example, by limiting
+   the number of jobs you are running simultaneously, so that others
+   users can also run their jobs. We do not enforce hard limits on how
+   many resources a single user can use, but please always consider
+   :ref:`how busy the cluster is <s_monitoring_slurm>` before starting
+   many or larger jobs
 
 -  Please remember to close interactive shells, notebooks, containers,
    and other processes that you have started via Slurm or the container
    system. Resources that you have reserved are not made available for
    other users until your tasks have finished.
+
+While it is our goal that everyone should be able to start smaller jobs
+in a reasonable amount of time, it is expected for larger jobs to be
+queued when many people are using the cluster at the same time.
 
 See the :ref:`p_usage_slurm` page for more information about how to run
 your tasks on the cluster, and see the :ref:`p_transfers` for
