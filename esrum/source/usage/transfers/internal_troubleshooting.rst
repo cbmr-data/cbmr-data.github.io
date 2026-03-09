@@ -9,10 +9,9 @@
 ``rsync`` fails with ``Permission denied`` when copying from ``/datasets``
 ==========================================================================
 
-If you forget to use the ``--no-perms`` option when rsync'ing data out
-of a ``/datasets`` folder, then all permissions will be set to ``000``.
-In other words, nobody can read, write, or execute those files and
-folders.
+If you forget to use the appropriate options when rsync'ing data out of
+a ``/datasets`` folder, then all permissions will be set to ``000``. In
+other words, nobody can read, write, or execute those files and folders.
 
 To fix this, first run the following commands to fix the permissions,
 where ``/path/to/copied/data`` is the path to the copy of the data that
@@ -26,7 +25,8 @@ This will recursively mark files and folders readable for everyone, mark
 folders executable for everyone (required to browse them), and mark
 files and folders writable for you (and only you).
 
-Then re-run ``rsync`` and remember to include the ``--no-perms`` option.
+Then re-run ``rsync`` and remember to include the appropriate options,
+as described in the :ref:`s_rsync_basics` section.
 
 ``Permission denied`` when accessing data copied from ``/datasets``
 ===================================================================

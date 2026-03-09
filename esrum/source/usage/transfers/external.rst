@@ -61,8 +61,8 @@ using either an :ref:`sbatch script <p_usage_slurm_basics>` or the
 :ref:`srun command <p_usage_srun>`.
 
 -  It is recommended to use ``rsync`` when possible. Additionally, you
-   will need to use the ``--no-perms`` option if transferring data from
-   a ``/datasets`` folder. See the :ref:`s_rsync_basics` for more
+   will need to set several additional options, when transferring data
+   from a ``/datasets`` folder. See the :ref:`s_rsync_basics` for more
    information.
 
 -  If the destination server only supports SFTP, then it is recommended
