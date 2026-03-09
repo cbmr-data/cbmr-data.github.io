@@ -77,7 +77,7 @@ Briefly,
 **************
 
 -  The head node (``esrumhead01fl``) is only for very small jobs,
-   meaning that you use no more than a couple of cores *in total*, with
+   meaning that you use no more than a couple of CPUs *in total*, with
    modest memory usage, as running larger jobs may impact the ability of
    everyone to use the cluster. Similarly, do not run transfers/copies
    on/to/from the head node.

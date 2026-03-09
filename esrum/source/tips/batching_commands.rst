@@ -108,7 +108,7 @@ Best practices for reserving resources
 ======================================
 
 Note that when you reserve resources for a job using ``parallel`` that
-you generally should not reserve enough cores to run all jobs at once.
+you generally should not reserve enough CPUs to run all jobs at once.
 This is because tasks are likely to take different amount of times to
 run, sometimes significantly so, resulting in a (potentially large)
 number of CPUs being idle until the last task has finished.
