@@ -100,7 +100,7 @@ simultaneously. For example,
 .. code-block:: console
 
    $ module load snakemake/9.9.0
-   $ snakemake snakemake --executor slurm --default-resources --jobs 32
+   $ snakemake --executor slurm --default-resources --jobs 32
 
 The ``--default-resources`` option ensures that Snakemake calculates
 resource requirements automatically, for tasks where you have not
@@ -276,7 +276,7 @@ correspond to your version of Snakemake:
    # FIXME: Remove this line if you DO NOT use Snakemake 7 or older:
    slurm: true # Enable slurm
 
-   # FIXME: Remove these t wo lines if you DO NOT use Snakemake 8 or newer:
+   # FIXME: Remove these two lines if you DO NOT use Snakemake 8 or newer:
    executor: slurm # Enable slurm
    default-resources: true # Calculate resource requirements
 

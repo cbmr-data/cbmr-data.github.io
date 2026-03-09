@@ -26,7 +26,7 @@ find this documentation at https://cbmr-data.github.io/esrum/
 Should you have any questions or encounter any issues, you are welcome
 to contact us in our Slack channel `#data-analytics
 <https://cbmr.slack.com/archives/C06TF9LGD47>`_ or by email via
-`SUND-CBMR-Esrum <mailto:cbmr-esrum@sund.ku.dk.dk>`_. Note that you must
+`SUND-CBMR-Esrum <mailto:cbmr-esrum@sund.ku.dk>`_. Note that you must
 use your UCPH email address when writing to our email address. You are
 also welcome to visit us in person in room 07-8-29.
 

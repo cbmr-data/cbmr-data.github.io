@@ -103,9 +103,9 @@ While UCPH-IT has performed a formal risk assessment of the Esrum HPC
 cluster, this assessment is not publicly available at the time of
 writing. A less formal and non-exhaustive overview of data security at
 Esrum can be found `here
-<https://cbmrcat.unicph.domain/static/esrum-security-2024-02-04-1.docx>`_, in English
-and Danish. This summary was authored by the :ref:`Data Analytics
-Platform <p_contact>`.
+<https://cbmrcat.unicph.domain/static/esrum-security-2024-02-04-1.docx>`_,
+in English and Danish. This summary was authored by the :ref:`Data
+Analytics Platform <p_contact>`.
 
 Note that you must be connected to the UCPH VPN to access this document.
 See the :ref:`p_usage_connecting` page for information about using the

@@ -53,7 +53,7 @@ To fix this, deactivate your conda environments (including ``base``)
 before installing the library. For example, to install the ``xml2``
 library:
 
-.. code-block::
+.. code-block:: console
 
    (my-env) $ conda deactivate
    (base) $ conda deactivate
