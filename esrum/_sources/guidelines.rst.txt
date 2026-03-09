@@ -40,8 +40,9 @@ data`_.
 
 -  Data *must not* be copied out of audited ``/datasets`` or
    ``/projects`` folders without permission from the relevant data
-   controller. Instead, use symbolic links if you need the data to be
-   located in a more convenient location.
+   controller. Instead, place symbolic links pointing to the
+   ``/datasets`` or ``/projects`` folders, in a more convenient
+   location.
 
 -  Data must not leave the cluster without permission from the relevant
    data controllers.

@@ -339,7 +339,7 @@ options <code class="docutils literal notranslate"><span class="pre">--executor<
 where the <code class="docutils literal notranslate"><span class="pre">N</span></code> is the maximum number of jobs you want to queue
 simultaneously. For example,</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>snakemake/9.9.0
-<span class="gp">$ </span>snakemake<span class="w"> </span>snakemake<span class="w"> </span>--executor<span class="w"> </span>slurm<span class="w"> </span>--default-resources<span class="w"> </span>--jobs<span class="w"> </span><span class="m">32</span>
+<span class="gp">$ </span>snakemake<span class="w"> </span>--executor<span class="w"> </span>slurm<span class="w"> </span>--default-resources<span class="w"> </span>--jobs<span class="w"> </span><span class="m">32</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">--default-resources</span></code> option ensures that Snakemake calculates
@@ -483,7 +483,7 @@ correspond to your version of Snakemake:</p>
 <span class="linenos"> 4</span><span class="c1"># FIXME: Remove this line if you DO NOT use Snakemake 7 or older:</span>
 <span class="linenos"> 5</span><span class="nt">slurm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># Enable slurm</span>
 <span class="linenos"> 6</span>
-<span class="linenos"> 7</span><span class="c1"># FIXME: Remove these t wo lines if you DO NOT use Snakemake 8 or newer:</span>
+<span class="linenos"> 7</span><span class="c1"># FIXME: Remove these two lines if you DO NOT use Snakemake 8 or newer:</span>
 <span class="linenos"> 8</span><span class="nt">executor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slurm</span><span class="w"> </span><span class="c1"># Enable slurm</span>
 <span class="linenos"> 9</span><span class="nt">default-resources</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># Calculate resource requirements</span>
 <span class="linenos">10</span>

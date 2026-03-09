@@ -114,9 +114,10 @@ command:
    $ singularity run --bind /maps,/projects,/datasets,/scratch my_image_v1.2.3.sif
 
 Singularity will make your home folder available by default, but the
-``--bind`` option is required to make the ``/maps``, ``/projects``, the
-``/datasets``, and the ``/scratch`` folder accessible to the software
-running in the container.
+``--bind`` option is required additional folder accessible to the
+software running in the container. The above command binds a selection
+of commonly used folders, each separated by a comma, that should allow
+most analyses to work.
 
 *******************
  Podman containers

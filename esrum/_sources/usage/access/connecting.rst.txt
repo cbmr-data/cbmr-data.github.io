@@ -356,6 +356,6 @@ itself.
 
 .. _tabby: https://github.com/Eugeny/tabby
 
-.. _vpn: en.wikipedia.org/wiki/VPN
+.. _vpn: https://en.wikipedia.org/wiki/VPN
 
 .. _wsl: https://learn.microsoft.com/en-us/windows/wsl/about
