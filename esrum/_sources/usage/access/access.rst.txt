@@ -52,8 +52,8 @@ get access, please
    Manager`_.
 
 #. (Optional) To access human cohort data managed by Data Analytics,
-   please apply for access, as described on the
-   :ref:`p_human_cohorts` page.
+   please apply for access, as described on the :ref:`p_human_cohorts`
+   page.
 
 #. Email us at `SUND-CBMR-Esrum <mailto:cbmr-esrum@sund.ku.dk>`_, and
    include the IDs of your project(s).

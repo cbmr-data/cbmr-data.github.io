@@ -37,7 +37,7 @@ command on a compute node, as shown in the examples below. See the
 
    .. code-block:: console
 
-      srun rsync -av --no-perms --progress /copy/this/data/
+      srun rsync -av --no-group --chmod=ugo=rwX --progress /copy/this/data/
       /to/this/location/
 
 .. include:: common_tips.rst
@@ -121,10 +121,10 @@ The basic ``rsync`` command you should be using is
    be placed at ``/to/this/location/data``
 
 However, when copying data from a ``/datasets`` it is necessary to add
-the ``--no-perms`` options, since ``rsync`` would otherwise set all
-permissions to ``000``, due to how access-control is implemented for
-``/datasets``. See the troubleshooting section below if you forget to
-add this option.
+the ``--no-perms --chmod=ugo=rwX`` options, since ``rsync`` would
+otherwise set all permissions to ``000``, due to how access-control is
+implemented for ``/datasets`` folder. See the troubleshooting section
+below if you forget to add this option.
 
 You *must* run ``rsync`` command on a compute node, either in an
 :ref:`interactive sessions <s_interactive_session>`, or by using
@@ -145,17 +145,18 @@ using the ``rsync --bwlimit`` option:
 
 .. code-block:: shell
 
-   $ rsync -av --no-perms --progress=summary --bwlimit=50M /from/path/ /to/path/
+   $ rsync -av --no-perms --chmod=ugo=rwX --progress=summary --bwlimit=50M /from/path/ /to/path/
 
 .. warning::
 
    Similarly to ``/datasets`` folders, all files and folders on
    ``/labs`` drives have permissions ``000``, i.e. no read and no write
    access, even when you have access to the data. For this reason, you
-   *must* include the ``--no-perms`` option when running ``rsync``, to
-   prevent ``rsync`` from recreating these permissions. If you omit
-   ``--no-perms``, then ``rsync`` normally fails during the transfer due
-   not being able to write to the destination.
+   *must* include the ``--no-perms --chmod=ugo=rwX`` options when
+   running ``rsync``, to prevent ``rsync`` from recreating these
+   permissions. If you omit ``--no-perms --chmod=ugo=rwX``, then
+   ``rsync`` normally fails during the transfer, due not being able to
+   write to the destination.
 
 If you run transfers without rate limits (include using `cp` or `mv` to
 copy/move data in or out of `/labs` folders), or if you run transfers

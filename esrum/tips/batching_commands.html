@@ -340,7 +340,7 @@ above could also be written as</p>
 <section id="best-practices-for-reserving-resources">
 <h3>Best practices for reserving resources<a class="headerlink" href="#best-practices-for-reserving-resources" title="Link to this heading">¶</a></h3>
 <p>Note that when you reserve resources for a job using <code class="docutils literal notranslate"><span class="pre">parallel</span></code> that
-you generally should not reserve enough cores to run all jobs at once.
+you generally should not reserve enough CPUs to run all jobs at once.
 This is because tasks are likely to take different amount of times to
 run, sometimes significantly so, resulting in a (potentially large)
 number of CPUs being idle until the last task has finished.</p>

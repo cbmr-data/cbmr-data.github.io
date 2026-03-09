@@ -452,10 +452,9 @@ than the head node, then you may get an error message like this:</p>
 <h2>Internal data transfers on Esrum<a class="headerlink" href="#internal-data-transfers-on-esrum" title="Link to this heading">¶</a></h2>
 <section id="rsync-fails-with-permission-denied-when-copying-from-datasets">
 <h3><code class="docutils literal notranslate"><span class="pre">rsync</span></code> fails with <code class="docutils literal notranslate"><span class="pre">Permission</span> <span class="pre">denied</span></code> when copying from <code class="docutils literal notranslate"><span class="pre">/datasets</span></code><a class="headerlink" href="#rsync-fails-with-permission-denied-when-copying-from-datasets" title="Link to this heading">¶</a></h3>
-<p>If you forget to use the <code class="docutils literal notranslate"><span class="pre">--no-perms</span></code> option when rsync'ing data out
-of a <code class="docutils literal notranslate"><span class="pre">/datasets</span></code> folder, then all permissions will be set to <code class="docutils literal notranslate"><span class="pre">000</span></code>.
-In other words, nobody can read, write, or execute those files and
-folders.</p>
+<p>If you forget to use the appropriate options when rsync'ing data out of
+a <code class="docutils literal notranslate"><span class="pre">/datasets</span></code> folder, then all permissions will be set to <code class="docutils literal notranslate"><span class="pre">000</span></code>. In
+other words, nobody can read, write, or execute those files and folders.</p>
 <p>To fix this, first run the following commands to fix the permissions,
 where <code class="docutils literal notranslate"><span class="pre">/path/to/copied/data</span></code> is the path to the copy of the data that
 you have created.</p>
@@ -465,7 +464,8 @@ you have created.</p>
 <p>This will recursively mark files and folders readable for everyone, mark
 folders executable for everyone (required to browse them), and mark
 files and folders writable for you (and only you).</p>
-<p>Then re-run <code class="docutils literal notranslate"><span class="pre">rsync</span></code> and remember to include the <code class="docutils literal notranslate"><span class="pre">--no-perms</span></code> option.</p>
+<p>Then re-run <code class="docutils literal notranslate"><span class="pre">rsync</span></code> and remember to include the appropriate options,
+as described in the <a class="reference internal" href="usage/transfers/internal.html#s-rsync-basics"><span class="std std-ref">Rsync basics</span></a> section.</p>
 </section>
 <section id="permission-denied-when-accessing-data-copied-from-datasets">
 <h3><code class="docutils literal notranslate"><span class="pre">Permission</span> <span class="pre">denied</span></code> when accessing data copied from <code class="docutils literal notranslate"><span class="pre">/datasets</span></code><a class="headerlink" href="#permission-denied-when-accessing-data-copied-from-datasets" title="Link to this heading">¶</a></h3>
@@ -587,7 +587,7 @@ head/compute nodes:</p>
 <span class="go">/lib64/libstdc++.so.6: version `GLIBCXX_3.4.26&#39; not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so)</span>
 </pre></div>
 </div>
-<p>To fix his, you will need to reinstall the affected R libraries using
+<p>To fix this, you will need to reinstall the affected R libraries using
 one of two methods:</p>
 <ol class="arabic">
 <li><p>Connect to the RStudio server as described in the
@@ -641,7 +641,7 @@ Execution halted
 Testing isoband
 Error: package or namespace load failed for ‘isoband’ in dyn.load(file, DLLpath = DLLpath, ...):
 unable to load shared object &#39;/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so&#39;:
-/opt/software/gcc/8.5.0/lib64/libstdc++.so.6: version`GLIBCXX_3.4.29&#39; not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so)
+/opt/software/gcc/8.5.0/lib64/libstdc++.so.6: version `GLIBCXX_3.4.29&#39; not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so)
 Execution halted
 Testing labeling
 Testing later
@@ -675,7 +675,7 @@ persists, please <a class="reference internal" href="contact.html#p-contact"><sp
 <h3>Logging in takes a very long time<a class="headerlink" href="#logging-in-takes-a-very-long-time" title="Link to this heading">¶</a></h3>
 <p>Similar to regular R, RStudio will automatically save the data you have
 loaded into your R session and will restore it when you return later, so
-that you can continue your work. However, this many result in large
+that you can continue your work. However, this may result in large
 amounts of data being saved and loading this data may result in a large
 delay when you attempt to log in at a later date.</p>
 <p>It is therefore recommended that you regularly clean up your workspace
@@ -697,7 +697,7 @@ session:</p>
 broom icon on the <code class="docutils literal notranslate"><span class="pre">Environment</span></code> tab:</p>
 <img alt="_images/rstudio_gc_01.png" class="align-center" src="_images/rstudio_gc_01.png" />
 <img alt="_images/rstudio_gc_02.png" class="align-center" src="_images/rstudio_gc_02.png" />
-<p>If you wish to prevent this issue in the first case, then you can also
+<p>If you wish to prevent this issue in the first place, then you can also
 turn off saving the data in your session on exit and/or turn off loading
 the saved data on startup. This is accomplished via the <code class="docutils literal notranslate"><span class="pre">Global</span>
 <span class="pre">Options...</span></code> accessible from the <code class="docutils literal notranslate"><span class="pre">Tools</span></code> menu:</p>
@@ -715,7 +715,7 @@ when quitting R.</p></li>
 This is where RStudio saves your data should your login time out
 while using RStudio.</p></li>
 </ol>
-<p>Please <a class="reference internal" href="contact.html#p-contact"><span class="std std-ref">contact us</span></a> us if you need help removing the
+<p>Please <a class="reference internal" href="contact.html#p-contact"><span class="std std-ref">contact us</span></a> if you need help removing the
 correct files.</p>
 </section>
 <section id="id1">

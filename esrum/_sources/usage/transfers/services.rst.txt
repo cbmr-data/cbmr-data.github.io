@@ -39,7 +39,7 @@ before attempting to run a browser (here Firefox):
    verify that both the ``X11-forwarding`` and the ``Compression``
    checkboxes are checked.
 
-As there are currently now browsers installed on Esrum, you will need to
+As there are currently no browsers installed on Esrum, you will need to
 install a copy of Firefox in your home. To do so, perform the following
 steps:
 

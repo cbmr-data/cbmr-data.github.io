@@ -49,7 +49,7 @@ Scratch space
 Each node furthermore has at least 1.5 TB of local scratch space:
 
 -  Most nodes have ~3 TB of local scratch
--  *esrumcmpn07fl* to *esrumcmpn07fl* each have ~1.5 TB of local scratch
+-  *esrumcmpn07fl* to *esrumcmpn11fl* each have ~1.5 TB of local scratch
 -  *esrumcmpn12fl* has ~18 TB of local scratch
 
 **********
@@ -83,7 +83,7 @@ new projects/data-shared.
  Backup policies and quotas
 ****************************
 
-Your ``/home`` folder and the ``apps``. ``data``, and ``people`` folders
+Your ``/home`` folder and the ``apps``, ``data``, and ``people`` folders
 in projects are automatically backed up. The ``scratch`` folders are NOT
 backed up. The specific frequency and duration of backups differ for
 each type of folder and may also differ for individual projects.
@@ -103,7 +103,7 @@ While UCPH-IT has performed a formal risk assessment of the Esrum HPC
 cluster, this assessment is not publicly available at the time of
 writing. A less formal and non-exhaustive overview of data security at
 Esrum can be found `here
-<https://cbmrcat/static/esrum-security-2024-02-04-1.docx>`_, in English
+<https://cbmrcat.unicph.domain/static/esrum-security-2024-02-04-1.docx>`_, in English
 and Danish. This summary was authored by the :ref:`Data Analytics
 Platform <p_contact>`.
 

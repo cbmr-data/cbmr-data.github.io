@@ -26,23 +26,22 @@ another UCPH cluster, contact UCPH-IT via the Serviceportal_, using the
 
 .. _s_external_updownload:
 
-****************************************************
- Transferring data between Esrum and another server
-****************************************************
+*******************************************************************
+ Transferring data between Esrum and another PC, laptop, or server
+*******************************************************************
 
-If you wish to transfer data from another server to Esrum, or vice
-versa, then you have two options:
+If you wish to transfer data from another PC, laptop, or server (system)
+to Esrum, or vice versa, then you have two options:
 
-#. From Esrum, you can upload data to the other server or download data
-   to Esrum. This requires that you can connect to the other server from
+#. From Esrum, you can upload data to the other system or download data
+   to Esrum. This requires that you can connect to the other system from
    Esrum. This option is preferable if it is expensive or otherwise
-   difficult to run transfers on the other server.
+   difficult to run transfers on the other system.
 
-#. From the other server, you can upload data to Esrum or download data
-   from Esrum. This requires that you can run transfers on that server,
-   and that it has internet/SSH access, which is typically the case.
-   This option is preferable if it is difficult or impossible to connect
-   to the server from Esrum.
+#. From the other system, you can upload data to Esrum or download data
+   from Esrum. This requires that you can run transfers on that system,
+   and that it is able to connect over SSH. This option is preferable if
+   it is difficult or impossible to connect to the system from Esrum.
 
 .. warning::
 
@@ -62,8 +61,8 @@ using either an :ref:`sbatch script <p_usage_slurm_basics>` or the
 :ref:`srun command <p_usage_srun>`.
 
 -  It is recommended to use ``rsync`` when possible. Additionally, you
-   will need to use the ``--no-perms`` option if transferring data from
-   a ``/datasets`` folder. See the :ref:`s_rsync_basics` for more
+   will need to set several additional options, when transferring data
+   from a ``/datasets`` folder. See the :ref:`s_rsync_basics` for more
    information.
 
 -  If the destination server only supports SFTP, then it is recommended
@@ -92,9 +91,10 @@ use MobaXterm_ to connect to Esrum, as described in the :ref:`connecting
 using Windows <s_connecting_windows>` section, then you also have access
 to its built-in file manager.
 
-Uploading/downloading data is done as shown above, except that you have
-to use 2-factor authentication when connecting to ``sftp.ku.dk``,
-depending on how you have configured `UCPH two-factor authentication`_.
+Uploading/downloading data is done as in the :ref:`s_rsync_basics`
+section, except that you have to use 2-factor authentication when
+connecting to ``sftp.ku.dk``, depending on how you have configured `UCPH
+two-factor authentication`_.
 
 .. code-block:: console
 

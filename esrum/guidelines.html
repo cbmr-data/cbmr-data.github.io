@@ -265,6 +265,9 @@
 cluster. Failure to follow these guidelines may result in your tasks
 being terminated and may even result in your access to the cluster being
 revoked.</p>
+<p>You are always welcome to <a class="reference internal" href="contact.html#p-contact"><span class="std std-ref">contact us</span></a>, if you have
+questions about any of these guidelines, or about Esrum usage in
+general.</p>
 <p>Please also see the general UCPH resources for handling <a class="reference external" href="https://kunet.ku.dk/work-areas/research/data/personal-data/Pages/default.aspx">GDPR sensitive
 data</a>.</p>
 <section id="basic-security">
@@ -316,21 +319,27 @@ nodes</span></a>.</p></li>
 </ul>
 </section>
 <section id="running-jobs">
-<h2>Running jobs<a class="headerlink" href="#running-jobs" title="Link to this heading">¶</a></h2>
+<span id="s-guidelines-jobs"></span><h2>Running jobs<a class="headerlink" href="#running-jobs" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>The head node (<code class="docutils literal notranslate"><span class="pre">esrumhead01fl</span></code>) is only for very small jobs,
-meaning that you use no more than a couple of cores <em>in total</em>, with
+meaning that you use no more than a couple of CPUs <em>in total</em>, with
 modest memory usage, as running larger jobs may impact the ability of
 everyone to use the cluster. Similarly, do not run transfers/copies
 on/to/from the head node.</p></li>
-<li><p>Remember to be considerate to other users. For example, limit the
-number of jobs you are running simultaneously, so that others users
-can also run their jobs</p></li>
+<li><p>Remember to be considerate to other users. For example, by limiting
+the number of jobs you are running simultaneously, so that other
+users can also run their jobs. We do not enforce hard limits on how
+many resources a single user can use, but please always consider
+<a class="reference internal" href="usage/slurm/monitoring.html#s-monitoring-slurm"><span class="std std-ref">how busy the cluster is</span></a> before starting
+many or larger jobs.</p></li>
 <li><p>Please remember to close interactive shells, notebooks, containers,
 and other processes that you have started via Slurm or the container
 system. Resources that you have reserved are not made available for
 other users until your tasks have finished.</p></li>
 </ul>
+<p>While it is our goal that everyone should be able to start smaller jobs
+in a reasonable amount of time, it is expected for larger jobs to be
+queued when many people are using the cluster at the same time.</p>
 <p>See the <a class="reference internal" href="usage/slurm/index.html#p-usage-slurm"><span class="std std-ref">Running jobs using Slurm</span></a> page for more information about how to run
 your tasks on the cluster, and see the <a class="reference internal" href="usage/transfers/index.html#p-transfers"><span class="std std-ref">Transferring data</span></a> for
 instructions for how to transfer data to/from/on Esrum.</p>
@@ -351,7 +360,7 @@ Management system</a>. This applies to datasets and projects <em>not</em>
 administered by DAP.</p></li>
 </ul>
 <p>A formal data access request will also be made in cases where DAP staff
-member participate in the scientific exploitation of protected data,
+members participate in the scientific exploitation of protected data,
 beyond that required to fulfill technical or service functions.</p>
 <p>Immediate intervention under the supervision of a user with appropriate
 access to protected data, for example while providing direct support, is
