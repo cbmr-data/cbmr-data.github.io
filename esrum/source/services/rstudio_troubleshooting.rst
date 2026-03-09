@@ -27,7 +27,7 @@ Logging in takes a very long time
 
 Similar to regular R, RStudio will automatically save the data you have
 loaded into your R session and will restore it when you return later, so
-that you can continue your work. However, this many result in large
+that you can continue your work. However, this may result in large
 amounts of data being saved and loading this data may result in a large
 delay when you attempt to log in at a later date.
 
@@ -59,7 +59,7 @@ broom icon on the ``Environment`` tab:
 .. image:: /services/images/rstudio_gc_02.png
    :align: center
 
-If you wish to prevent this issue in the first case, then you can also
+If you wish to prevent this issue in the first place, then you can also
 turn off saving the data in your session on exit and/or turn off loading
 the saved data on startup. This is accomplished via the ``Global
 Options...`` accessible from the ``Tools`` menu:
@@ -81,7 +81,7 @@ locations:
    This is where RStudio saves your data should your login time out
    while using RStudio.
 
-Please :ref:`contact us <p_contact>` us if you need help removing the
+Please :ref:`contact us <p_contact>` if you need help removing the
 correct files.
 
 libstdc++.so.6: version ``'GLIBCXX_3.4.26'`` not found

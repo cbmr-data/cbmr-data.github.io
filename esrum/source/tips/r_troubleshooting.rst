@@ -76,7 +76,7 @@ head/compute nodes:
    unable to load shared object '/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so':
    /lib64/libstdc++.so.6: version `GLIBCXX_3.4.26' not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so)
 
-To fix his, you will need to reinstall the affected R libraries using
+To fix this, you will need to reinstall the affected R libraries using
 one of two methods:
 
 #. Connect to the RStudio server as described in the
@@ -138,7 +138,7 @@ Output will look like the following:
    Testing isoband
    Error: package or namespace load failed for ‘isoband’ in dyn.load(file, DLLpath = DLLpath, ...):
    unable to load shared object '/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so':
-   /opt/software/gcc/8.5.0/lib64/libstdc++.so.6: version`GLIBCXX_3.4.29' not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so)
+   /opt/software/gcc/8.5.0/lib64/libstdc++.so.6: version `GLIBCXX_3.4.29' not found (required by /home/abc123/R/x86_64-pc-linux-gnu-library/4.3/isoband/libs/isoband.so)
    Execution halted
    Testing labeling
    Testing later

@@ -94,7 +94,7 @@ Once the image has been exported, you can transfer it to Esrum using
 
 .. code-block:: console
 
-   $ scp ~/my_image_v1.2.3.tar abc1232@esrumhead01fl.unicph.domain:/projects/my_project/scratch/
+   $ scp ~/my_image_v1.2.3.tar abc123@esrumhead01fl.unicph.domain:/projects/my_project/scratch/
 
 Finally, you can convert the image on Esrum to the format used by
 singularity:
@@ -136,7 +136,7 @@ Once these changes have been made, you can run containers on
 run in the foreground when using ``sbatch`` (i.e. do *not* use
 ``--detach``), or you must remain connected to the node when using
 ``srun``, as Slurm will otherwise terminate your container when the
-job/session exists.
+job/session exits.
 
 .. _containerization: https://www.ibm.com/topics/containerization
 

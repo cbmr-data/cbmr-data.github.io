@@ -55,7 +55,7 @@ the module files. This organization is designed to simplify maintenance.
    but *not* in ``modulefiles``!
 
 #. Save the module template shown above as
-   ``/projects/my-project/apps/modules/modulefiles/seqtk/1.23`` and
+   ``/projects/my-project/apps/modules/modulefiles/seqtk/1.4`` and
    update the root path, the description, and the PATH as shown below.
    Note that this file does *not* have an extension.
 

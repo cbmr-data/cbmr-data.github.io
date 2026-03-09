@@ -89,11 +89,11 @@ Briefly,
    on/to/from the head node.
 
 -  Remember to be considerate to other users. For example, by limiting
-   the number of jobs you are running simultaneously, so that others
+   the number of jobs you are running simultaneously, so that other
    users can also run their jobs. We do not enforce hard limits on how
    many resources a single user can use, but please always consider
    :ref:`how busy the cluster is <s_monitoring_slurm>` before starting
-   many or larger jobs
+   many or larger jobs.
 
 -  Please remember to close interactive shells, notebooks, containers,
    and other processes that you have started via Slurm or the container
@@ -128,7 +128,7 @@ When this need arises, DAP will either
    administered by DAP.
 
 A formal data access request will also be made in cases where DAP staff
-member participate in the scientific exploitation of protected data,
+members participate in the scientific exploitation of protected data,
 beyond that required to fulfill technical or service functions.
 
 Immediate intervention under the supervision of a user with appropriate
