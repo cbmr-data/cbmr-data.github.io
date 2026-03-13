@@ -1,8 +1,8 @@
 .. _p_usage_access_applying:
 
-#####################
- Applying for access
-#####################
+##############################
+ Applying for access to Esrum
+##############################
 
 .. note::
 
@@ -52,7 +52,7 @@ get access, please
    Manager`_.
 
 #. (Optional) To access human cohort data managed by Data Analytics,
-   please apply for access, as described on the :ref:`p_human_cohorts`
+   please apply for access to those cohorts as described on the :ref:`p_human_cohorts`
    page.
 
 #. Email us at `SUND-CBMR-Esrum <mailto:cbmr-esrum@sund.ku.dk>`_, and

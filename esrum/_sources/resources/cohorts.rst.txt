@@ -20,9 +20,9 @@ these, respectively, but you are welcome to :ref:`contact us
    pages. See the :ref:`p_usage_connecting` page for information about
    using the VPN.
 
-*********************
- Applying for access
-*********************
+**************************************
+ Applying for access to human cohorts
+**************************************
 
 In order to get access to a cohort managed by DAP, the data owner must
 first grant approval. This step varies between cohorts, as data owners
@@ -38,7 +38,7 @@ To initiate this process,
 #. fill out and submit a data access form in the `Access Management
    System`_. Note that you *must* be on the VPN to access the system,
    and use your UCPH credentials to log in. You will also be able to
-   track the status of your form in the system.
+   track the status of your application.
 
 Access will be granted once permission to access the cohort has been
 formally approved by the data owners. You will receive an automated
