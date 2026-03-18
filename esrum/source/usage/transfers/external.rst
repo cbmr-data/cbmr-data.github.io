@@ -43,6 +43,9 @@ to Esrum, or vice versa, then you have two options:
    and that it is able to connect over SSH. This option is preferable if
    it is difficult or impossible to connect to the system from Esrum.
 
+Additionally, for small transfers to or from the network drives (`H:`,
+`N:`, and `S:`), you can also use the website <https://webfile.ku.dk>.
+
 .. warning::
 
    Do not attempt to transfer data using ``esrumhead01fl`` as the source
