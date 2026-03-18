@@ -13,7 +13,7 @@ services such as cloud storage.
  Transferring data to/from SIF and ERDA
 ****************************************
 
-Connecting to the SIF_or ERDA_ servers requires that the user has
+Connecting to the SIF_ or ERDA_ servers requires that the user has
 successfully authenticated using two-factor authentication. Furthermore,
 this must be done using the same IP from which the user intends to
 connect, in this case from the Esrum IP. Once authenticated, you can
@@ -125,3 +125,5 @@ receiving numerous emails if a transfer fails.
 .. _erda: https://erda.ku.dk/
 
 .. _lynx: https://en.wikipedia.org/wiki/Lynx_(web_browser)
+
+.. _sif: https://sif.ku.dk/
