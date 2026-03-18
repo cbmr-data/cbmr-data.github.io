@@ -40,6 +40,10 @@ the individual compute nodes using the Slurm_ Workload Manager:
 | 1  | Container*         | 2 TB | 64 cores |                     | *esrumcont01fl*                   |
 +----+--------------------+------+----------+---------------------+-----------------------------------+
 
+All nodes use AMD EPYC CPUs, but the exact model differs across nodes,
+according to the role and when they were purchased. See the
+`/proc/cpuinfo` file for per-node information.
+
 \* *The container node is used as a compute node when not being used to
 run containers.*
 
