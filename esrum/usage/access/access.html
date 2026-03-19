@@ -139,7 +139,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -212,11 +212,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tips/robust_scripts.html">Writing robust bash scripts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tips/snakemake.html">Using Snakemake on Esrum</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tips/r.html">Using R on Esrum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tips/idm.html">Identity Management System</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Outreach</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../communications/messages.html">Welcome email</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../communications/presentations.html">Presentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../communications/presentations.html">Presentations by The Data Analytics Platform</a></li>
 </ul>
 
 </div>
@@ -253,7 +253,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -264,159 +264,53 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you are an external researcher, student, guest, and otherwise
-collaborating with researchers at CBMR, then you should ask for one
-of your collaborators or supervisors at CBMR to apply for access for
-you, as described below.</p>
+collaborating with researchers at CBMR, then you should ask for your
+collaborator or supervisor at CBMR to apply for access for you, as
+described below.</p>
 </div>
 <p>Access to the Esrum HPC cluster and a number of related services,
 projects, and datasets are managed by the Data Analytics Platform. To
-get access, please</p>
-<ol class="arabic">
-<li><p>Register descriptions of the scientific projects that you intend to
-work on using Esrum, if you have not already done so. To do so, for
-each of your projects,</p>
+get access,</p>
 <ol class="arabic simple">
-<li><p>Visit the <a class="reference external" href="https://cbmrcat/projects/">Project Manager</a> page and click the <a class="reference external" href="https://cbmrcat/projects/add_project/">Register
-Project</a> tab.</p></li>
-<li><p>Enter the title of your project, the contact person for the
-project (typically yourself), the contact information for the
-PI/group-leader of the project, and a brief description of the
-project.</p></li>
-<li><p>Click the <code class="docutils literal notranslate"><span class="pre">Register</span> <span class="pre">Project</span></code> button, below the project
-description. You will be taken to a page that allows you update
-your newly created project, with the first field showing the ID of
-your new project (e.g. <code class="docutils literal notranslate"><span class="pre">CBMR-ABCD12</span></code>). Write down this ID.</p></li>
-<li><p>It is encouraged that you update your project information as it
-progresses. External references should be used to associate any
-information related to the project. There are default external
-reference types you can choose from. However, you are free to
-define your own external reference types by writing any free text,
-setting a value and clicking the <code class="docutils literal notranslate"><span class="pre">Register</span> <span class="pre">External</span> <span class="pre">Reference</span></code>
-button.</p></li>
-<li><p>Upload any PDF documents associated with the project in the Upload
-Project Documents section. This is done by browsing your local
-directories, choosing a PDF file relevant for the project and
-clicking <code class="docutils literal notranslate"><span class="pre">Upload</span> <span class="pre">Document</span></code>. These can for example be ethical
-approvals, data agreements etc. You are encouraged not to upload
-any GDPR sensitive data here.</p></li>
-</ol>
+<li><p>Retrieve the IDs of your scientific projects from the CBMR Project
+Manager (e.g. <code class="docutils literal notranslate"><span class="pre">CBMR-ABCD12</span></code>):</p>
+<ul class="simple">
+<li><p>If you have previously registered your scientific project(s), then
+you can look up the project IDs via the <a class="reference external" href="https://cbmrcat/projects/search_project/">Search Project</a> tab in
+the <a class="reference external" href="https://cbmrcat/projects/">Project Manager</a>.</p></li>
+<li><p>If you haven't registered the scientific projects that you intend
+to work on using Esrum, then visit the <a class="reference external" href="https://cbmrcat/projects/">Project Manager</a> and
+register your project as shown.</p></li>
+</ul>
 </li>
-<li><p>If you have already registered your project(s), then you can look up
-the project IDs via the <a class="reference external" href="https://cbmrcat/projects/search_project/">Search Project</a> tab in the <a class="reference external" href="https://cbmrcat/projects/">Project
-Manager</a>.</p></li>
-<li><p>(Optional) To access human cohort data managed by Data Analytics,
-please apply for access to those cohorts as described on the <a class="reference internal" href="../../resources/cohorts.html#p-human-cohorts"><span class="std std-ref">Human cohorts</span></a>
-page.</p></li>
 <li><p>Email us at <a class="reference external" href="mailto:cbmr-esrum&#37;&#52;&#48;sund&#46;ku&#46;dk">SUND-CBMR-Esrum</a>, and
-include the IDs of your project(s).</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>You <em>must</em> use a UCPH e-mail account when writing to us on this
-address. Mail from external addresses is currently blocked.</p>
-</div>
-</li>
+include the IDs of your scientific project(s) from the Project
+Manager.</p></li>
+<li><p>(Optional) To get access to human cohort data managed by the Data
+Analytics Platform, follow the instructions on the
+<a class="reference internal" href="../../resources/cohorts.html#p-human-cohorts"><span class="std std-ref">Human cohorts</span></a> page.</p></li>
 </ol>
-<p>Do not hesitate to <a class="reference internal" href="../../contact.html#p-contact"><span class="std std-ref">contact us</span></a>, if you have any
-questions regarding the above instructions.</p>
 <p>Once you have been granted access to Esrum and/or related resources, you
 will receive an automated email stating that <code class="docutils literal notranslate"><span class="pre">Changes</span> <span class="pre">to</span> <span class="pre">your</span> <span class="pre">Identity</span>
 <span class="pre">were</span> <span class="pre">processed</span></code>. Please refer to the <a class="reference internal" href="connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page for
 further instructions on how to connect to the cluster, once you have
 received this email.</p>
+<p>Do not hesitate to <a class="reference internal" href="../../contact.html#p-contact"><span class="std std-ref">contact us</span></a>, if you have any
+questions regarding the above instructions.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Note that your account may not be ready by the time you receive the
-email described above. In that case, logging in will result in a
-warning that your home folder does not exist. If so, then simply wait
-a few hours before trying again. This process may take up to a day.</p>
+<p>Your account may not be ready by the time you receive the email
+described above, in which case logging in will result in a warning
+that your home folder does not exist. If so, then simply wait a few
+hours before trying again.</p>
 </div>
-<section id="using-the-identity-management-system-idm">
-<span id="s-identity-management-system"></span><h2>Using the identity management system (IDM)<a class="headerlink" href="#using-the-identity-management-system-idm" title="Link to this heading">¶</a></h2>
-<p>Should you need to apply for access to projects or datasets that are
-<em>not</em> managed by the Data Analytics Platform, or if you need to add a
-user to a project that <em>you</em> control, then this may require using the
-<a class="reference external" href="https://identity.ku.dk/">Identity Management System</a> (IDM).</p>
-<p>An official guide to the identity system used is available <a class="reference external" href="https://kunet.ku.dk/medarbejderguide/ITvejl/KU%20IdM%20-%20S%C3%A5dan%20anmodes%20om%20funktionsrolle.pdf">here</a>.</p>
-<section id="applying-for-access-using-the-idm">
-<h3>Applying for access using the IDM<a class="headerlink" href="#applying-for-access-using-the-idm" title="Link to this heading">¶</a></h3>
-<p>If possible, we recommend simply asking the project/dataset owner to add
-you to the project or dataset in question, but the following provides a
-brief summary of how to apply through the IDM:</p>
-<ol class="arabic">
-<li><p>Log in at <a class="reference external" href="https://identity.ku.dk/">identity.ku.dk</a>.</p></li>
-<li><p>Click on the <code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">My</span> <span class="pre">Access</span></code> or the <code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">User</span> <span class="pre">Access</span></code>
-button. Which button you see will depend on whether you own any
-groups yourself.</p>
-<ol class="arabic simple">
-<li><p>If you clicked on the <code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">User</span> <span class="pre">Access</span></code> button then you must
-next search for your own UCPH username (e.g. <code class="docutils literal notranslate"><span class="pre">abc123</span></code>) and then
-click on the check mark to the left your name <em>once</em>. Wait for the
-check mark to turn green, click the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button, and then
-proceed with the steps described above.</p></li>
-</ol>
-</li>
-<li><p>Search for and locate the group corresponding to the resource you
-wish to access. Depending on the kind of resource you wish to apply
-for access to, the names will differ somewhat:</p>
-<ol class="arabic simple">
-<li><p>A server group will typically start with the prefix <code class="docutils literal notranslate"><span class="pre">SRV-</span></code> and
-end with <code class="docutils literal notranslate"><span class="pre">-users</span></code>, for example <code class="docutils literal notranslate"><span class="pre">SRV-esrumhead-users</span></code> for the
-Esrum head node.</p></li>
-<li><p>A project group will typically start with <code class="docutils literal notranslate"><span class="pre">COMP-PRJ-</span></code>, for
-example <code class="docutils literal notranslate"><span class="pre">COMP-PRJ-cbmr_shared</span></code> for the <code class="docutils literal notranslate"><span class="pre">/projects/cbmr_shared</span></code>
-project.</p></li>
-<li><p>A dataset group will typically start with <code class="docutils literal notranslate"><span class="pre">COMP-DATASET-</span></code> and
-end with <code class="docutils literal notranslate"><span class="pre">-ro</span></code>, for example <code class="docutils literal notranslate"><span class="pre">COMP-DATASET-cbmr_shared-ro</span></code> for
-the <code class="docutils literal notranslate"><span class="pre">/datasets/cbmr_shared</span></code> dataset containing shared resources.</p></li>
-</ol>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>In general, you should <em>not</em> be applying for access to projects
-with suffixes like <code class="docutils literal notranslate"><span class="pre">-Owners</span></code>, <code class="docutils literal notranslate"><span class="pre">-admin</span></code>, or <code class="docutils literal notranslate"><span class="pre">-rw</span></code> unless
-explicitly told to do so by the owner(s) of those resources. These
-suffixes indicate administrative groups and your requests will
-therefore be denied if you apply without reason.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you need access to a group that is <em>not</em> controlled by the Data
+Analytics Platform, or if you need to give another person access to a
+group that <em>you</em> control, then please see the
+<a class="reference internal" href="../../tips/idm.html#p-identity-management-system"><span class="std std-ref">Identity Management System</span></a>.</p>
 </div>
-</li>
-<li><p>Click <em>once</em> on the check-mark to the left of the name of the group
-in the resulting list. Wait for the check mark to turn green and then
-click the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button. If you get a yellow popup with the message
-<code class="docutils literal notranslate"><span class="pre">Cannot</span> <span class="pre">Add</span> <span class="pre">Access</span> <span class="pre">Item.</span> <span class="pre">The</span> <span class="pre">item</span> <span class="pre">you</span> <span class="pre">are</span> <span class="pre">trying</span> <span class="pre">to</span> <span class="pre">select</span> <span class="pre">is</span>
-<span class="pre">already</span> <span class="pre">assigned</span></code>, then you have already been granted access to this
-resource.</p>
-<ol class="arabic simple">
-<li><p>If you get a <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">Role</span></code> popup, asking you to <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">the</span>
-<span class="pre">business</span> <span class="pre">role</span> <span class="pre">to</span> <span class="pre">assign</span> <span class="pre">to</span> <span class="pre">this</span> <span class="pre">permitted</span> <span class="pre">role.</span></code>, then we
-recommend that you pick a <code class="docutils literal notranslate"><span class="pre">STAFF-ORG</span></code> role from the list.</p></li>
-</ol>
-</li>
-<li><p>Finally, click the <code class="docutils literal notranslate"><span class="pre">Submit</span></code> button to submit your request.</p></li>
-<li><p>Wait for your request to be processed.</p></li>
-</ol>
-</section>
-<section id="adding-users-to-a-group-using-the-idm">
-<h3>Adding users to a group using the IDM<a class="headerlink" href="#adding-users-to-a-group-using-the-idm" title="Link to this heading">¶</a></h3>
-<ol class="arabic simple">
-<li><p>Log in at <a class="reference external" href="https://identity.ku.dk/">identity.ku.dk</a>.</p></li>
-<li><p>Click on the <code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">User</span> <span class="pre">Access</span></code> button. If you instead have a
-<code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">My</span> <span class="pre">Access</span></code> button, then you do not control access to any
-groups and will not able to carry out these steps.</p></li>
-<li><p>Search for the username of the user you want to add to a group, click
-<em>once</em> on the check-mark to the left of the name of the user in the
-resulting list. Wait for the check mark to turn green and then click
-the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button.</p></li>
-<li><p>Search for and locate the group corresponding to the resource you
-wish to grant access to. See the corresponding step in the previous
-guide, for a brief description of how groups are named.</p></li>
-<li><p>Click <em>once</em> on the check-mark to the left of the name of the group
-in the resulting list. Wait for the check mark to turn green and then
-click the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button. See above if you get a <code class="docutils literal notranslate"><span class="pre">Cannot</span> <span class="pre">Add</span> <span class="pre">Access</span>
-<span class="pre">Item.</span></code> or a <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">Role</span></code> popup.</p></li>
-<li><p>Finally, click the <code class="docutils literal notranslate"><span class="pre">Submit</span></code> button to submit your request.</p></li>
-<li><p>Wait for your request to be processed.</p></li>
-</ol>
-</section>
-</section>
 </section>
 
         </article>
@@ -462,31 +356,8 @@ click the <code class="docutils literal notranslate"><span class="pre">Next</spa
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Applying for access to Esrum</a><ul>
-<li><a class="reference internal" href="#using-the-identity-management-system-idm">Using the identity management system (IDM)</a><ul>
-<li><a class="reference internal" href="#applying-for-access-using-the-idm">Applying for access using the IDM</a></li>
-<li><a class="reference internal" href="#adding-users-to-a-group-using-the-idm">Adding users to a group using the IDM</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>

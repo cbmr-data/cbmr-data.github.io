@@ -27,23 +27,16 @@ these, respectively, but you are welcome to :ref:`contact us
 In order to get access to a cohort managed by DAP, the data owner must
 first grant approval. This step varies between cohorts, as data owners
 have different methods of governing access, and may involve a simple
-email exchange, a review by committee, or another type of review.
+email exchange, a review by committee, or another type of review..
 
-To initiate this process,
+To initiate this process, fill out and submit a data access form in the
+`Access Management System`_. You will receive an automated email that
+``Changes to your Identity were processed``, once your request has been
+approved, after which it may take up to 24 hours before you can access
+the data on Esrum.
 
-#. ensure that your scientific project(s) are registered in the CBMR
-   Project Manager, as described on the :ref:`p_usage_access_applying`
-   page. You will need the Project IDs when applying for access to data.
-
-#. fill out and submit a data access form in the `Access Management
-   System`_. Note that you *must* be on the VPN to access the system,
-   and use your UCPH credentials to log in. You will also be able to
-   track the status of your application.
-
-Access will be granted once permission to access the cohort has been
-formally approved by the data owners. You will receive an automated
-email that ``Changes to your Identity were processed``, after which it
-may take up to 24 hours before you can access the data on Esrum.
+If you haven't already, then you must also :ref:`apply for access to
+Esrum itself <p_usage_access_applying>`
 
 .. tip::
 
