@@ -18,13 +18,9 @@ questions about any of our services. Our office is located directly
 across from the kitchen on the 8th floor.
 
 You can also contact us via email at `SUND-CBMR-Esrum
-<mailto:cbmr-esrum@sund.ku.dk>`_. Note that you *must* use a UCPH e-mail
-account when writing to us on this address. Mail from external addresses
-is currently blocked.
-
-If you are on the `CBMR Slack server`_ then you can find us in the
-`#data-analytics <https://cbmr.slack.com/archives/C06TF9LGD47>`_
-channel.
+<mailto:cbmr-esrum@sund.ku.dk>`_, via the `#data-analytics
+<https://cbmr.slack.com/archives/C06TF9LGD47>`_ channel on `CBMR Slack
+server`_.
 
 .. _cbmr slack server: https://cbmr.slack.com
 
