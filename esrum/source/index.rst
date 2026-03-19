@@ -50,6 +50,7 @@
    tips/robust_scripts
    tips/snakemake
    tips/r
+   tips/idm
 
 .. toctree::
    :hidden:
