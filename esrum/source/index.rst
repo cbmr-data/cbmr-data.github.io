@@ -56,7 +56,6 @@
    :hidden:
    :caption: Outreach
 
-   communications/messages
    communications/presentations
 
 Welcome to the Esrum high-performance computing (HPC) cluster at The
