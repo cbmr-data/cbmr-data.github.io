@@ -279,11 +279,11 @@ connected via the UCPH VPN.</p>
 <p>If you use a non-UCPH device to access the above URLs, then you may
 receive a warning that &quot;your connection is not private&quot; (Chrome) or
 about a &quot;potential security risk&quot; (Firefox). This is due to the
-domains using certificates provided by KU-IT, that are only installed
-on KU-IT managed hardware. You can proceed by clicking the &quot;Advanced&quot;
-button and then clicking either the <code class="docutils literal notranslate"><span class="pre">Proceed</span> <span class="pre">to</span> <span class="pre">esrumweb??fl</span>
-<span class="pre">(unsafe)</span></code> (Chrome) link or the <code class="docutils literal notranslate"><span class="pre">Accept</span> <span class="pre">the</span> <span class="pre">Risk</span> <span class="pre">and</span> <span class="pre">Continue</span></code>
-button (Firefox).</p>
+domains using certificates provided by KU-IT, that are only
+installed on KU-IT managed hardware. You can proceed by clicking the
+&quot;Advanced&quot; button and then clicking either the <code class="docutils literal notranslate"><span class="pre">Proceed</span> <span class="pre">to</span>
+<span class="pre">esrumweb??fl</span> <span class="pre">(unsafe)</span></code> (Chrome) link or the <code class="docutils literal notranslate"><span class="pre">Accept</span> <span class="pre">the</span> <span class="pre">Risk</span> <span class="pre">and</span>
+<span class="pre">Continue</span></code> button (Firefox).</p>
 </div>
 <p>Once connected, use the short form of your UCPH username to log in:</p>
 <img alt="../_images/rstudio_login.png" class="align-center" src="../_images/rstudio_login.png" />
@@ -315,8 +315,8 @@ other users of the server.</p>
 <ul>
 <li><p>Try to limit the size of the data-sets you work with on the RStudio
 server. Since <em>all</em> data has to be read from (or written to) network
-drives, one person reading or writing a large amount of data can
-cause significant slow-downs for <em>everyone</em> using the service.</p>
+drives, one person reading or writing a large amount of data can cause
+significant slow-downs for <em>everyone</em> using the service.</p>
 <p>We therefore recommend that you load a (small) subset of your data in
 RStudio, that you use that subset of data to develop your analyses
 processes, and that you use that to process your complete dataset via
@@ -327,8 +327,8 @@ with Slurm.</p>
 <li><p>Don't keep data in memory that you do not need. Data that you no
 longer need can be freed with the <code class="docutils literal notranslate"><span class="pre">rm</span></code> function or using the broom
 icon on the <code class="docutils literal notranslate"><span class="pre">Environment</span></code> tab in RStudio. This also helps prevent
-RStudio from filling your home folder when your session is closed
-(see Troubleshooting below).</p></li>
+RStudio from filling your home folder when your session is closed (see
+Troubleshooting below).</p></li>
 <li><p>Do not run resource intensive tasks via the embedded terminal. As
 noted above, such tasks will be terminated without warning if deemed
 to have a negative impact on other users. Instead, such tasks should

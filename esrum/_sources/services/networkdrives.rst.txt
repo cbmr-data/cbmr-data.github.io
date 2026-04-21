@@ -8,25 +8,23 @@ When you log in to Esrum for the first time, your home folder should
 contain a (link to a) single folder named ``ucph``. This folder in turn
 contains (links to) your UCPH network drives:
 
--  ``~/ucph/hdir``: The H-drive (``H:``) is your personal drive for
-   storing data that is not shared with anyone else. This may include
-   personal and confidential data.
-
--  ``~/ucph/ndir``: The N-drive (``N:``) is used shared data that is
-   neither personal nor confidential. You will have access to any number
-   of sub-folders depending on your affiliations, including the
-   ``SUN-CBMR-Shared-Info`` folder containing files shared across the
-   entire center.
-
--  ``~/ucph/sdir``: The S-drive (``S:``) is meant for sharing of
-   sensitive and personal data with other employees at UCPH. For more
-   information, see the `official documentation
-   <https://kunet.ku.dk/employee-guide/Pages/IT/S-drive.aspx>`_.
+- ``~/ucph/hdir``: The H-drive (``H:``) is your personal drive for
+  storing data that is not shared with anyone else. This may include
+  personal and confidential data.
+- ``~/ucph/ndir``: The N-drive (``N:``) is used shared data that is
+  neither personal nor confidential. You will have access to any number
+  of sub-folders depending on your affiliations, including the
+  ``SUN-CBMR-Shared-Info`` folder containing files shared across the
+  entire center.
+- ``~/ucph/sdir``: The S-drive (``S:``) is meant for sharing of
+  sensitive and personal data with other employees at UCPH. For more
+  information, see the `official documentation
+  <https://kunet.ku.dk/employee-guide/Pages/IT/S-drive.aspx>`_.
 
 .. tip::
 
-   You can also access your network drives online via
-   https://webfile.ku.dk/.
+    You can also access your network drives online via
+    https://webfile.ku.dk/.
 
 ****************************************
  Limitations on network drives on Esrum
@@ -59,15 +57,13 @@ you first need to authenticate as described in the
 :ref:`s_network_drives_reactivation` section below. Once you have done
 so, you can access the network drives at their canonical locations:
 
-+---------+-----------------------------+
-| Drive   | Location                    |
-+=========+=============================+
-| ``H:``  | ``/maps/hdir/${USER}``      |
-+---------+-----------------------------+
-| ``S:``  | ``/maps/sdir/${USER}``      |
-+---------+-----------------------------+
-| ``N:``  | ``/maps/groupdir/${USER}``  |
-+---------+-----------------------------+
+====== ==========================
+Drive  Location
+====== ==========================
+``H:`` ``/maps/hdir/${USER}``
+``S:`` ``/maps/sdir/${USER}``
+``N:`` ``/maps/groupdir/${USER}``
+====== ==========================
 
 The variable ``${USER}`` refers to *your* username, in the form
 ``abc123``. However, these folders will not be created until you
@@ -75,13 +71,13 @@ actually try to access them, for example via ``ls`` or ``cd``:
 
 .. code-block:: console
 
-   $ /usr/bin/kinit
-   abc123@UNICPH.DOMAIN's password: ************
-   $ ls /maps/groupdir
-   $ ls /maps/groupdir/${USER}
-   SUN-CBMR-Platforms         SUN-CBMR-Shared-Info
-   $ ls /maps/groupdir
-   abc123
+    $ /usr/bin/kinit
+    abc123@UNICPH.DOMAIN's password: ************
+    $ ls /maps/groupdir
+    $ ls /maps/groupdir/${USER}
+    SUN-CBMR-Platforms         SUN-CBMR-Shared-Info
+    $ ls /maps/groupdir
+    abc123
 
 These paths work on the head node, on compute nodes, and on the RStudio
 nodes, provided that you have authenticated as described below. Note
@@ -106,32 +102,30 @@ run ``/usr/bin/kinit`` and enter the password for your UCPH account:
 
 .. code-block:: console
 
-   $ /usr/bin/kinit
-   abc123@UNICPH.DOMAIN's password: ************
-   $
+    $ /usr/bin/kinit
+    abc123@UNICPH.DOMAIN's password: ************
+    $
 
 This command *must* be run on the server from which you wish to access
 the network drives:
 
--  **From the head node:** Simply run ``/usr/bin/kinit`` while connected
-   to the head node.
-
--  **From a compute node:** Start an interactive session as described in
-   the :ref:`s_interactive_session` section, *and then* run
-   ``/usr/bin/kinit``. You will then be able to access the network
-   drives *in that session*.
-
--  **From an RStudio server**: Log in to the RStudio server as described
-   on the :ref:`p_service_rstudio` page and open the ``Terminal`` tab.
-   Run the command ``/usr/bin/kinit`` in that terminal.
+- **From the head node:** Simply run ``/usr/bin/kinit`` while connected
+  to the head node.
+- **From a compute node:** Start an interactive session as described in
+  the :ref:`s_interactive_session` section, *and then* run
+  ``/usr/bin/kinit``. You will then be able to access the network drives
+  *in that session*.
+- **From an RStudio server**: Log in to the RStudio server as described
+  on the :ref:`p_service_rstudio` page and open the ``Terminal`` tab.
+  Run the command ``/usr/bin/kinit`` in that terminal.
 
 .. warning::
 
-   The explicit path in ``/usr/bin/kinit`` is required to make sure that
-   you call the correct executable, even if you are using a Conda
-   environment or similar. Running ``kinit`` without the full path may
-   otherwise result in errors like ``kinit: Unknown credential cache
-   type while getting default ccache``.
+    The explicit path in ``/usr/bin/kinit`` is required to make sure
+    that you call the correct executable, even if you are using a Conda
+    environment or similar. Running ``kinit`` without the full path may
+    otherwise result in errors like ``kinit: Unknown credential cache
+    type while getting default ccache``.
 
 Once you have successfully run ``/usr/bin/kinit``, you should be able to
 access the folders under ``~/ucph`` (only on the head node), or at their
@@ -150,13 +144,13 @@ The maximum duration of your current session (Kerberos ticket) is about
 
 .. code-block:: console
 
-   $ /usr/bin/klist
-   Ticket cache: KEYRING:persistent:436828696:krb_ccache_nBciOlx
-   Default principal: abc123@UNICPH.DOMAIN
+    $ /usr/bin/klist
+    Ticket cache: KEYRING:persistent:436828696:krb_ccache_nBciOlx
+    Default principal: abc123@UNICPH.DOMAIN
 
-   Valid starting       Expires              Service principal
-   07/29/2025 11:22:49  07/29/2025 21:22:49  krbtgt/UNICPH.DOMAIN@UNICPH.DOMAIN
-       renew until 08/03/2025 21:55:43
+    Valid starting       Expires              Service principal
+    07/29/2025 11:22:49  07/29/2025 21:22:49  krbtgt/UNICPH.DOMAIN@UNICPH.DOMAIN
+        renew until 08/03/2025 21:55:43
 
 In this case the current session expires at ``07/29/2025 21:22:49``, but
 you can renew it for another 10 hours, until the time specified on the
@@ -168,14 +162,14 @@ your password:
 
 .. code-block:: console
 
-   $ /usr/bin/kinit -R
-   $ /usr/bin/klist
-   Ticket cache: KEYRING:persistent:436828696:krb_ccache_nBciOlx
-   Default principal: abc123@UNICPH.DOMAIN
+    $ /usr/bin/kinit -R
+    $ /usr/bin/klist
+    Ticket cache: KEYRING:persistent:436828696:krb_ccache_nBciOlx
+    Default principal: abc123@UNICPH.DOMAIN
 
-   Valid starting       Expires              Service principal
-   07/29/2025 12:44:10  07/29/2025 22:44:10  krbtgt/UNICPH.DOMAIN@UNICPH.DOMAIN
-    renew until 08/03/2025 21:55:43
+    Valid starting       Expires              Service principal
+    07/29/2025 12:44:10  07/29/2025 22:44:10  krbtgt/UNICPH.DOMAIN@UNICPH.DOMAIN
+     renew until 08/03/2025 21:55:43
 
 If ``/usr/bin/kinit -R`` fails with the message ``kinit: No credentials
 cache found while renewing credentials``, then you are not authenticated
@@ -187,4 +181,4 @@ and need to run ``/usr/bin/kinit`` without the ``-R`` as described in
 *****************
 
 .. include:: /services/networkdrives_troubleshooting.rst
-   :start-line: 8
+    :start-line: 8

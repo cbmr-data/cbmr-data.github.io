@@ -15,10 +15,10 @@ RStudio on data in access-controlled projects.
 
 .. warning::
 
-   DO NOT put any GDPR projected or otherwise confidential data in your
-   ``SUN-CBMR-shinyapp`` sub-folders, as these folders are publicly
-   accessible. Files and folders in ``SUN-CBMR-shinyapp`` are
-   additionally writable by all users with the access to the folder.
+    DO NOT put any GDPR projected or otherwise confidential data in your
+    ``SUN-CBMR-shinyapp`` sub-folders, as these folders are publicly
+    accessible. Files and folders in ``SUN-CBMR-shinyapp`` are
+    additionally writable by all users with the access to the folder.
 
 UCPH-IT makes a public Shiny_ server available at
 https://shinyapp01.ku.dk/cbmr/. This server is accessible to *everyone*
@@ -37,7 +37,7 @@ It is strongly recommended that you create a folder with your username:
 
 .. code-block:: console
 
-   $ mkdir -p ~/ucph/ndir/SUN-CBMR-shinyapp/$USER
+    $ mkdir -p ~/ucph/ndir/SUN-CBMR-shinyapp/$USER
 
 This creates a folder with your username and adds a shortcut to your
 home folder named ``shiny``. To verify that everything is working
@@ -45,28 +45,28 @@ correctly, create a file name ``app.R`` in
 ``~/ucph/ndir/SUN-CBMR-shinyapp/$USER`` with the following content:
 
 .. code-block:: R
-   :linenos:
+    :linenos:
 
-   library(shiny)
+    library(shiny)
 
-   # Define UI ----
-   ui <- fluidPage(
-   titlePanel("Hello, world!"),
-   )
+    # Define UI ----
+    ui <- fluidPage(
+    titlePanel("Hello, world!"),
+    )
 
-   # Define server logic ----
-   server <- function(input, output) {
+    # Define server logic ----
+    server <- function(input, output) {
 
-   }
+    }
 
-   # Run the app ----
-   shinyApp(ui = ui, server = server)
+    # Run the app ----
+    shinyApp(ui = ui, server = server)
 
 Then visit https://shinyapp01.ku.dk/cbmr/ and click on the folder
 corresponding to your username, and you should see the following in your
 browser:
 
-   .. image:: images/shiny_hello_world.png
-      :align: center
+    .. image:: images/shiny_hello_world.png
+        :align: center
 
 .. _shiny: https://shiny.rstudio.com/

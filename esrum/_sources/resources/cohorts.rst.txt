@@ -16,9 +16,9 @@ these, respectively, but you are welcome to :ref:`contact us
 
 .. warning::
 
-   You must be connected to the UCPH VPN to access either of these
-   pages. See the :ref:`p_usage_connecting` page for information about
-   using the VPN.
+    You must be connected to the UCPH VPN to access either of these
+    pages. See the :ref:`p_usage_connecting` page for information about
+    using the VPN.
 
 **************************************
  Applying for access to human cohorts
@@ -40,9 +40,9 @@ Esrum itself <p_usage_access_applying>`
 
 .. tip::
 
-   It may be necessary to disconnect from, and reconnect to, Esrum for
-   the changes to your permissions to take effect, once you have
-   received the notification mentioned above.
+    It may be necessary to disconnect from, and reconnect to, Esrum for
+    the changes to your permissions to take effect, once you have
+    received the notification mentioned above.
 
 .. _access management system: https://cbmrcat/governance
 

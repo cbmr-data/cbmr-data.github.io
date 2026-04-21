@@ -26,25 +26,25 @@ by using the ``--mail-user`` and ``--mail-type`` options:
 
 .. code-block:: console
 
-   $ sbatch --mail-user=abc123@ku.dk --mail-type=END,FAIL my_script.sh
-   Submitted batch job 8503
+    $ sbatch --mail-user=abc123@ku.dk --mail-type=END,FAIL my_script.sh
+    Submitted batch job 8503
 
 These options can naturally also be embedded in your sbatch script:
 
 .. code-block:: bash
-   :linenos:
+    :linenos:
 
-   #!/bin/bash
-   #SBATCH --mail-user=abc123@ku.dk --mail-type=END,FAIL
+    #!/bin/bash
+    #SBATCH --mail-user=abc123@ku.dk --mail-type=END,FAIL
 
-   my-commands
+    my-commands
 
 and queued as usual:
 
 .. code-block:: console
 
-   $ sbatch my-script.sh
-   Submitted batch job 8504
+    $ sbatch my-script.sh
+    Submitted batch job 8504
 
 When these options are enabled, Slurm will send a notification to
 ``abc123@ku.dk`` account when the job is completed or if it fails. The
@@ -58,17 +58,17 @@ it ran (not counting time spent queued), and the return-code of the
 script or command:
 
 .. image:: images/notification.png
-   :align: center
+    :align: center
 
 The Slurm notification emails typically, but not always, arrive
 instantly.
 
 .. warning::
 
-   Remember to use your own ``@ku.dk`` email address as the recipient,
-   instead of ``abc123@ku.dk``. It is possible to use email addresses
-   outside ``@ku.dk``, but some providers will silently block the Slurm
-   emails, and we therefore recommend using your ``@ku.dk`` address.
+    Remember to use your own ``@ku.dk`` email address as the recipient,
+    instead of ``abc123@ku.dk``. It is possible to use email addresses
+    outside ``@ku.dk``, but some providers will silently block the Slurm
+    emails, and we therefore recommend using your ``@ku.dk`` address.
 
 *******************************************
  Monitoring overall resource usage by jobs
@@ -85,11 +85,11 @@ summarizes some of this information in a more easily readable form.
 
 .. code-block:: console
 
-   $ sacct-usage
-   User    Job   Start                   Elapsed  State      CPUsReserved  CPUsUsed  MemReserved  MemUsed  Name
-   abc123  1     2025-09-01 10:15:01  252:04:52s  FAILED                8       1.1        124.6    105.9  python3
-   abc123  2[1]  2025-09-15 16:02:35   02:49:25s  COMPLETED            32      16.3        512.0    358.7  paleomix
-   abc123  3     2025-09-23 12:35:19   01:00:53s  RUNNING              24      22.6         64.0     16.0  bash
+    $ sacct-usage
+    User    Job   Start                   Elapsed  State      CPUsReserved  CPUsUsed  MemReserved  MemUsed  Name
+    abc123  1     2025-09-01 10:15:01  252:04:52s  FAILED                8       1.1        124.6    105.9  python3
+    abc123  2[1]  2025-09-15 16:02:35   02:49:25s  COMPLETED            32      16.3        512.0    358.7  paleomix
+    abc123  3     2025-09-23 12:35:19   01:00:53s  RUNNING              24      22.6         64.0     16.0  bash
 
 Briefly, ``sacct-usage`` reports how many CPUs and how much memory you
 reserved for your jobs, and how many CPUs and how much memory your job
@@ -103,11 +103,11 @@ as we consider that the baseline.
 
 .. note::
 
-   Note that the ``MemUsed`` values may not be accurate in cases where
-   processes were killed due to requesting/using excess amounts of
-   memory. When "out of memory" errors occur, you will have to increase
-   the amount of memory reserved even though your apparent usage may be
-   less than your current reservations.
+    Note that the ``MemUsed`` values may not be accurate in cases where
+    processes were killed due to requesting/using excess amounts of
+    memory. When "out of memory" errors occur, you will have to increase
+    the amount of memory reserved even though your apparent usage may be
+    less than your current reservations.
 
 ******************************************
  Monitoring individual processes in a job
@@ -127,12 +127,12 @@ this example, where we wish to measure the resource usage of the
 
 .. code-block:: console
 
-   $ /usr/bin/time -f "CPU = %P, MEM = %M" my-command --threads 1 ...
-   CPU = 99%, MEM = 840563KB
-   $ /usr/bin/time -f "CPU = %P, MEM = %M" my-command --threads 4 ...
-   CPU = 345%, MEM = 892341KB
-   $ /usr/bin/time -f "CPU = %P, MEM = %M" my-command --threads 8 ...
-   CPU = 605%, MEM = 936324KB
+    $ /usr/bin/time -f "CPU = %P, MEM = %M" my-command --threads 1 ...
+    CPU = 99%, MEM = 840563KB
+    $ /usr/bin/time -f "CPU = %P, MEM = %M" my-command --threads 4 ...
+    CPU = 345%, MEM = 892341KB
+    $ /usr/bin/time -f "CPU = %P, MEM = %M" my-command --threads 8 ...
+    CPU = 605%, MEM = 936324KB
 
 In this example, increasing the number of threads/CPUs to 4 did not
 result in a 4x increase in CPU usage, but only an 3.5x increase with 4
@@ -168,10 +168,10 @@ column), as shown here:
 
 .. code-block:: console
 
-   $ squeue --me
-   JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-    8503 standardq my_scrip   abc123  R       0:02      1 esrumcmpn03fl
-   $ srun --pty --overlap --jobid 8503 --gres=none htop
+    $ squeue --me
+    JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+     8503 standardq my_scrip   abc123  R       0:02      1 esrumcmpn03fl
+    $ srun --pty --overlap --jobid 8503 --gres=none htop
 
 The ``--pty`` option gives us an interactive session, which allows us to
 interact directly with ``htop``. See the :ref:`s_interactive_session`
@@ -206,31 +206,31 @@ directly using the ``nvidia-smi`` command:
 
 .. code-block:: console
 
-   $ nvidia-smi -l 5
-   Thu Apr  4 14:30:46 2024
-   +---------------------------------------------------------------------------------------+
-   | NVIDIA-SMI 545.23.08              Driver Version: 545.23.08    CUDA Version: 12.3     |
-   |-----------------------------------------+----------------------+----------------------+
-   | GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
-   | Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
-   |                                         |                      |               MIG M. |
-   |=========================================+======================+======================|
-   |   0  NVIDIA A100 80GB PCIe          On  | 00000000:27:00.0 Off |                    0 |
-   | N/A   57C    P0             307W / 300W |  52357MiB / 81920MiB |         99%  Default |
-   |                                         |                      |             Disabled |
-   +-----------------------------------------+----------------------+----------------------+
-   |   1  NVIDIA A100 80GB PCIe          On  | 00000000:A3:00.0 Off |                    0 |
-   | N/A   56C    P0             298W / 300W |  58893MiB / 81920MiB |        100%  Default |
-   |                                         |                      |             Disabled |
-   +-----------------------------------------+----------------------+----------------------+
-   +---------------------------------------------------------------------------------------+
-   | Processes:                                                                            |
-   |  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
-   |        ID   ID                                                                 Usage  |
-   |=======================================================================================|
-   |    0   N/A  N/A   2807877  C   dorado                                        52344MiB |
-   |    1   N/A  N/A   2807849  C   dorado                                        58880MiB |
-   +---------------------------------------------------------------------------------------+
+    $ nvidia-smi -l 5
+    Thu Apr  4 14:30:46 2024
+    +---------------------------------------------------------------------------------------+
+    | NVIDIA-SMI 545.23.08              Driver Version: 545.23.08    CUDA Version: 12.3     |
+    |-----------------------------------------+----------------------+----------------------+
+    | GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+    | Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+    |                                         |                      |               MIG M. |
+    |=========================================+======================+======================|
+    |   0  NVIDIA A100 80GB PCIe          On  | 00000000:27:00.0 Off |                    0 |
+    | N/A   57C    P0             307W / 300W |  52357MiB / 81920MiB |         99%  Default |
+    |                                         |                      |             Disabled |
+    +-----------------------------------------+----------------------+----------------------+
+    |   1  NVIDIA A100 80GB PCIe          On  | 00000000:A3:00.0 Off |                    0 |
+    | N/A   56C    P0             298W / 300W |  58893MiB / 81920MiB |        100%  Default |
+    |                                         |                      |             Disabled |
+    +-----------------------------------------+----------------------+----------------------+
+    +---------------------------------------------------------------------------------------+
+    | Processes:                                                                            |
+    |  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+    |        ID   ID                                                                 Usage  |
+    |=======================================================================================|
+    |    0   N/A  N/A   2807877  C   dorado                                        52344MiB |
+    |    1   N/A  N/A   2807849  C   dorado                                        58880MiB |
+    +---------------------------------------------------------------------------------------+
 
 This will print resource usage for the GPUs you have reserved for your
 interactive session (and only for those GPUs), and continue to print it
@@ -253,9 +253,9 @@ your job running on the GPU node:
 
 .. code-block:: console
 
-   $ squeue --me --partition=gpuqueue
-    JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-   570316  gpuqueue     bash   abc123  R      13:55      1 esrumgpun01fl
+    $ squeue --me --partition=gpuqueue
+     JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+    570316  gpuqueue     bash   abc123  R      13:55      1 esrumgpun01fl
 
 Then we use ``srun`` with the ``--overlap`` option to run a command
 *inside* this job, which we specify using the ``--jobid 570316`` option.
@@ -264,11 +264,11 @@ to reserve the GPU our job already uses and eventually time out.
 
 .. code-block:: console
 
-   $ srun --overlap --jobid 570316 --gres=none --pty -- watch -n 15 -d cat /scratch/gpus/nvidia-smi.txt
+    $ srun --overlap --jobid 570316 --gres=none --pty -- watch -n 15 -d cat /scratch/gpus/nvidia-smi.txt
 
 .. warning::
 
-   Remember to replace the ``570316`` with the ID of *your* job!
+    Remember to replace the ``570316`` with the ID of *your* job!
 
 This prints the contents of the log-file every 15 seconds (which is how
 often the files are updated) and optionally highlights the changes since
@@ -292,42 +292,39 @@ for a job (see :ref:`s_best_practice_resources`):
 
 .. code-block:: console
 
-   $ module load slurmboard
-   $ slurmboard
+    $ module load slurmboard
+    $ slurmboard
 
 .. image:: /usage/slurm/images/slurmboard.png
-   :align: center
+    :align: center
 
 Briefly, this utility displays every node in the cluster, their status,
 and available resources for each of these. The resources (CPUs, Memory,
 and GPUs) columns are colored as follows:
 
--  Yellow indicates resources that have been reserved;
-
--  Green indicates resources that are actively being used;
-
--  Purple indicates resources that may be inaccessible due to other
-   resources being reserved. This is based on the assumption that each
-   job gets ~16 GB of RAM by default, and the resources may therefore
-   still be usable for jobs with custom requirements.
-
--  Black indicates resources that are unavailable due to nodes being
-   offline or under maintenance.
+- Yellow indicates resources that have been reserved;
+- Green indicates resources that are actively being used;
+- Purple indicates resources that may be inaccessible due to other
+  resources being reserved. This is based on the assumption that each
+  job gets ~16 GB of RAM by default, and the resources may therefore
+  still be usable for jobs with custom requirements.
+- Black indicates resources that are unavailable due to nodes being
+  offline or under maintenance.
 
 .. note::
 
-   The Data Analytics Platform uses this utility to monitor how busy the
-   cluster is and how job are performing. In particular, we may reach
-   out to you if we notice that your jobs consistently use significantly
-   fewer resources than the amount reserved, in order to optimize
-   resource utilization on the cluster.
+    The Data Analytics Platform uses this utility to monitor how busy
+    the cluster is and how job are performing. In particular, we may
+    reach out to you if we notice that your jobs consistently use
+    significantly fewer resources than the amount reserved, in order to
+    optimize resource utilization on the cluster.
 
 *****************
  Troubleshooting
 *****************
 
 .. include:: monitoring_troubleshooting.rst
-   :start-line: 8
+    :start-line: 8
 
 .. _sacct: https://slurm.schedmd.com/archive/slurm-20.11.9/sacct.html
 

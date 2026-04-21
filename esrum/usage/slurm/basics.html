@@ -484,13 +484,13 @@ options specified using <code class="docutils literal notranslate"><span class="
 <p class="admonition-title">Note</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> lines must be at the top of the file, before any
 other commands or the like. Moreover, there must be no spaces before
-or after the <code class="docutils literal notranslate"><span class="pre">#</span></code> in the <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> comments. Other comments (lines
-starting with <code class="docutils literal notranslate"><span class="pre">#</span></code>) are allowed before and after the <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code>
-comments.</p>
-<p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> comments can also be used with other scripting languages,
-provided that you follow the rules described above, but note that
-source-code formatters like <code class="docutils literal notranslate"><span class="pre">black</span></code> may add spaces after the <code class="docutils literal notranslate"><span class="pre">#</span></code>
-and thereby break the <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> comments.</p>
+or after the <code class="docutils literal notranslate"><span class="pre">#</span></code> in the <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> comments. Other comments
+(lines starting with <code class="docutils literal notranslate"><span class="pre">#</span></code>) are allowed before and after the
+<code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> comments.</p>
+<p><code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> comments can also be used with other scripting
+languages, provided that you follow the rules described above, but
+note that source-code formatters like <code class="docutils literal notranslate"><span class="pre">black</span></code> may add spaces after
+the <code class="docutils literal notranslate"><span class="pre">#</span></code> and thereby break the <code class="docutils literal notranslate"><span class="pre">#SBATCH</span></code> comments.</p>
 </div>
 </section>
 <section id="reserving-resources">
@@ -559,8 +559,8 @@ without reserving a GPU.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">--nodes</span></code> option and the <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code> option will start
 <em>identical</em> tasks on one or more nodes, so you should <em>not</em> be using
 these options unless your tools are specifically designed for this!
-Otherwise, each instance will try to write to the same output file(s)
-and will produce results that are very likely corrupt.</p>
+Otherwise, each instance will try to write to the same output
+file(s) and will produce results that are very likely corrupt.</p>
 <p>If you need to run the same command on a set of files/samples, then
 see the <a class="reference internal" href="advanced.html#s-job-arrays"><span class="std std-ref">Running multiple tasks using arrays</span></a> section.</p>
 </div>
@@ -575,18 +575,18 @@ Maximum throughput is often limited by how fast the software can
 read/write data.</p>
 <p>We therefore recommended that you</p>
 <ul class="simple">
-<li><p>Always refer to the documentation and recommendations for the
-specific software you are using!</p></li>
-<li><p>Test the effect of the number of threads you are using before
-starting a lot of jobs.</p></li>
+<li><p>Always refer to the documentation and recommendations for the specific
+software you are using!</p></li>
+<li><p>Test the effect of the number of threads you are using before starting
+a lot of jobs.</p></li>
 <li><p>Start with fewer CPUs and increase it only when there is a benefit to
-doing so. You can for example start with 2, 4, or 8 CPUs per task,
-and only increasing the number after it has been determined that the
+doing so. You can for example start with 2, 4, or 8 CPUs per task, and
+only increasing the number after it has been determined that the
 software benefits from the additional CPUs.</p></li>
-<li><p>See if you can split your job into multiple (sub-)jobs that can run
-in parallel via Slurm, for example by submitting one job per
-chromosome or one job per sample. See the <a class="reference internal" href="advanced.html#s-job-arrays"><span class="std std-ref">Running multiple tasks using arrays</span></a> section
-for more information about batching jobs.</p></li>
+<li><p>See if you can split your job into multiple (sub-)jobs that can run in
+parallel via Slurm, for example by submitting one job per chromosome
+or one job per sample. See the <a class="reference internal" href="advanced.html#s-job-arrays"><span class="std std-ref">Running multiple tasks using arrays</span></a> section for more
+information about batching jobs.</p></li>
 </ul>
 <p>In addition, we ask that you consider the impact of your job on other
 users: While it isn't a problem if you reserve a lot of resources for a
@@ -609,13 +609,13 @@ shows up when using <code class="docutils literal notranslate"><span class="pre"
 the name of your script is used instead.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">--output</span></code> and <code class="docutils literal notranslate"><span class="pre">--error</span></code> options allow you to specify where
 Slurm writes your scripts STDOUT and STDERR. The filenames should
-always include the text <code class="docutils literal notranslate"><span class="pre">%j</span></code>, which is replaced with the job ID.
-See the manual page for usage. Note also that the destination folder
+always include the text <code class="docutils literal notranslate"><span class="pre">%j</span></code>, which is replaced with the job ID. See
+the manual page for usage. Note also that the destination folder
 <em>must</em> exist or no output will be saved!</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--time</span></code> can be used to limit the maximum running time of your
-script. We do not require that <code class="docutils literal notranslate"><span class="pre">--time</span></code> is set, but it may be
-useful to automatically stop jobs that unexpectedly take too long to
-run. See the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> manual page for how to specify time limits.</p></li>
+script. We do not require that <code class="docutils literal notranslate"><span class="pre">--time</span></code> is set, but it may be useful
+to automatically stop jobs that unexpectedly take too long to run. See
+the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> manual page for how to specify time limits.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--test-only</span></code> can be used to test your batch scripts. Combine it
 with <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> to verify that your options are correctly set
 before queuing your job:</p>
@@ -634,8 +634,8 @@ before queuing your job:</p>
 </div>
 </li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">--wait</span></code> option can be used to make the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> block until
-the queued tasks have completed. This can be useful if you want to
-run sbatch from another script.</p></li>
+the queued tasks have completed. This can be useful if you want to run
+sbatch from another script.</p></li>
 </ul>
 </section>
 </section>
@@ -815,7 +815,8 @@ was run:</p>
 <p>This failure relates to the <code class="docutils literal notranslate"><span class="pre">--bcast</span></code> option, that allow you to
 copy an executable from the head node to a folder on the node on
 which the job is executed. This is typically not required on Esrum,
-since all home, project, and dataset folders are shared across nodes.</p>
+since all home, project, and dataset folders are shared across
+nodes.</p>
 </div>
 </section>
 <section id="x11-forwarding-not-working-in-mobaxterm">

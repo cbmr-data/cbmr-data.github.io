@@ -17,32 +17,29 @@ necessary to prevent them from impacting users of the cluster.
 
 The documentation for running jobs is split into three sections:
 
-#. The :ref:`p_usage_slurm_basics` section describes the basic procedure
+1. The :ref:`p_usage_slurm_basics` section describes the basic procedure
    of queuing jobs using the ``sbatch`` command, how to request
    resources for your jobs, how to monitor your jobs, and how to run a
    shell on a compute node when you need to work interactively.
-
-#. The :ref:`p_usage_slurm_advanced` section describes additional ways
+2. The :ref:`p_usage_slurm_advanced` section describes additional ways
    to monitor your jobs and the cluster as a whole, how to batch
    multiple, similar jobs using ``sbatch``, how to use ``srun`` for
    executing singular commands, and more.
-
-#. The :ref:`p_usage_slurm_monitor` section describes how to monitor
+3. The :ref:`p_usage_slurm_monitor` section describes how to monitor
    your Slurm jobs, including how see their state, how to inspect
    processes running in your jobs, and how to get email notifications
    when your jobs start or finish.
-
-#. The :ref:`p_usage_slurm_gpu` section describes how to run jobs on the
+4. The :ref:`p_usage_slurm_gpu` section describes how to run jobs on the
    GPU / high-memory node, including best practices for using this
    limited resource.
 
 .. toctree::
-   :maxdepth: 2
-   :titlesonly:
+    :maxdepth: 2
+    :titlesonly:
 
-   basics
-   advanced
-   monitoring
-   gpu
+    basics
+    advanced
+    monitoring
+    gpu
 
 .. _slurm: https://slurm.schedmd.com/overview.html

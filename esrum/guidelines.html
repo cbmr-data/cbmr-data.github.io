@@ -287,21 +287,20 @@ recognized by the <code class="docutils literal notranslate"><span class="pre">-
 <li><p>Directory names and file names <em>must not</em> contain GDPR protected data
 or other confidential information, even if placed in an audited
 folder. This is because common operations expose this information to
-<em>all</em> users of the cluster. For the same reason, <em>do not</em> include
-such information in command-line arguments.</p></li>
+<em>all</em> users of the cluster. For the same reason, <em>do not</em> include such
+information in command-line arguments.</p></li>
 <li><p>Data <em>must not</em> be copied out of audited <code class="docutils literal notranslate"><span class="pre">/datasets</span></code> or
 <code class="docutils literal notranslate"><span class="pre">/projects</span></code> folders without permission from the relevant data
 controller. Instead, place symbolic links pointing to the
-<code class="docutils literal notranslate"><span class="pre">/datasets</span></code> or <code class="docutils literal notranslate"><span class="pre">/projects</span></code> folders, in a more convenient
-location.</p></li>
+<code class="docutils literal notranslate"><span class="pre">/datasets</span></code> or <code class="docutils literal notranslate"><span class="pre">/projects</span></code> folders, in a more convenient location.</p></li>
 <li><p>Data must not leave the cluster without permission from the relevant
 data controllers.</p></li>
 <li><p>Do not store data or other files related to projects in your home
 folder. Your home folder is accessible only to you, unless you have
 provided written consent to UCPH-IT.</p></li>
 <li><p>Storage on Esrum is not free, so please remember to delete data that
-you no longer need, and make sure to compress data that you do need
-to keep around.</p></li>
+you no longer need, and make sure to compress data that you do need to
+keep around.</p></li>
 </ul>
 <p>See <a class="reference internal" href="usage/filesystem.html#p-usage-filesystem"><span class="std std-ref">Data storage on Esrum</span></a> for more information.</p>
 </section>
@@ -313,26 +312,25 @@ similar technologies at UCPH: In <a class="reference external" href="https://kun
 and in <a class="reference external" href="https://kunet.ku.dk/work-areas/teaching/digital-learning/chatgpt-and-ai/guidelines-and-rules-for-chatgpt/Pages/default.aspx">English</a>.</p>
 <p>Briefly,</p>
 <ul class="simple">
-<li><p>It is your responsibility that no sensitive information is
-transmitted to external systems.</p></li>
-<li><p>If possible, run the models locally on Esrum using our <a class="reference internal" href="usage/slurm/gpu.html#p-usage-slurm-gpu"><span class="std std-ref">GPU
-nodes</span></a>.</p></li>
+<li><p>It is your responsibility that no sensitive information is transmitted
+to external systems.</p></li>
+<li><p>If possible, run the models locally on Esrum using our <a class="reference internal" href="usage/slurm/gpu.html#p-usage-slurm-gpu"><span class="std std-ref">GPU nodes</span></a>.</p></li>
 </ul>
 </section>
 <section id="running-jobs">
 <span id="s-guidelines-jobs"></span><h2>Running jobs<a class="headerlink" href="#running-jobs" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>The head node (<code class="docutils literal notranslate"><span class="pre">esrumhead01fl</span></code>) is only for very small jobs,
-meaning that you use no more than a couple of CPUs <em>in total</em>, with
-modest memory usage, as running larger jobs may impact the ability of
+<li><p>The head node (<code class="docutils literal notranslate"><span class="pre">esrumhead01fl</span></code>) is only for very small jobs, meaning
+that you use no more than a couple of CPUs <em>in total</em>, with modest
+memory usage, as running larger jobs may impact the ability of
 everyone to use the cluster. Similarly, do not run transfers/copies
 on/to/from the head node.</p></li>
 <li><p>Remember to be considerate to other users. For example, by limiting
-the number of jobs you are running simultaneously, so that other
-users can also run their jobs. We do not enforce hard limits on how
-many resources a single user can use, but please always consider
-<a class="reference internal" href="usage/slurm/monitoring.html#s-monitoring-slurm"><span class="std std-ref">how busy the cluster is</span></a> before starting
-many or larger jobs.</p></li>
+the number of jobs you are running simultaneously, so that other users
+can also run their jobs. We do not enforce hard limits on how many
+resources a single user can use, but please always consider <a class="reference internal" href="usage/slurm/monitoring.html#s-monitoring-slurm"><span class="std std-ref">how
+busy the cluster is</span></a> before starting many or
+larger jobs.</p></li>
 <li><p>Please remember to close interactive shells, notebooks, containers,
 and other processes that you have started via Slurm or the container
 system. Resources that you have reserved are not made available for

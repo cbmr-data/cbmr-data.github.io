@@ -24,11 +24,11 @@ In the following example we just run a single command, ``echo "Hello,
 slurm!"``, but scripts can contain any number of commands.
 
 .. code-block:: bash
-   :linenos:
+    :linenos:
 
-   #!/bin/bash
+    #!/bin/bash
 
-   echo "Hello, slurm!"
+    echo "Hello, slurm!"
 
 The script can be named anything you like and does not need to be
 executable (via ``chmod +x``), but the first line *must* contain a
@@ -40,12 +40,12 @@ that they are bash scripts, but it is also possible to use other
 scripting languages by using the appropriate shebang (highlighted):
 
 .. code-block:: python
-   :linenos:
-   :emphasize-lines: 1
+    :linenos:
+    :emphasize-lines: 1
 
-   #!/usr/bin/env python3
+    #!/usr/bin/env python3
 
-   print("Hello, slurm!")
+    print("Hello, slurm!")
 
 Slurm scripts function like regular scripts for most part, meaning that
 the current directory corresponds to the directory in which you executed
@@ -67,48 +67,46 @@ We start with a simple script, with which we will compress the FASTA
 file ``chr1.fasta``. This script is saved as ``my_script.sh``:
 
 .. code-block:: bash
-   :linenos:
+    :linenos:
 
-   #!/bin/bash
+    #!/bin/bash
 
-   module purge
-   module load igzip/2.30.0
-   igzip --keep "chr1.fasta"
+    module purge
+    module load igzip/2.30.0
+    igzip --keep "chr1.fasta"
 
 This script consists of three parts:
 
-#. Firstly we run ``module purge`` to unload any modules we have already
+1. Firstly we run ``module purge`` to unload any modules we have already
    loaded. The advantage of this is that it ensures that we are only
    using the modules we ask for, and exactly the versions we ask for.
-
-#. Secondly, we use the ``module load`` command to load the ``igzip``
+2. Secondly, we use the ``module load`` command to load the ``igzip``
    module from the UCPH-IT software library, which makes the ``igzip``
    tool available to us. See the :ref:`p_usage_modules` page for an
    introduction to using modules on Esrum.
-
-#. And finally, we run the ``igzip`` command on our FASTA file. The
+3. And finally, we run the ``igzip`` command on our FASTA file. The
    ``--keep`` option for ``igzip`` is used to prevent ``igzip`` from
    deleting our input file when it is done.
 
 .. tip::
 
-   We could also have loaded the module on the command-line before
-   queuing the command, and skipped the ``module purge`` and ``module
-   load`` commands, as Slurm remembers what modules we have loaded when
-   we run ``sbatch``. However, loading all required software *in* your
-   ``sbatch`` scripts ensures that the script is reproducible. See the
-   :ref:`s_sbatch_environment` section for additional information about
-   controlling what ``sbatch`` inherits from your current environment.
+    We could also have loaded the module on the command-line before
+    queuing the command, and skipped the ``module purge`` and ``module
+    load`` commands, as Slurm remembers what modules we have loaded when
+    we run ``sbatch``. However, loading all required software *in* your
+    ``sbatch`` scripts ensures that the script is reproducible. See the
+    :ref:`s_sbatch_environment` section for additional information about
+    controlling what ``sbatch`` inherits from your current environment.
 
 To queue this script, run the ``sbatch`` command with the filename of
 the script as an argument:
 
 .. code-block:: console
 
-   $ ls
-   chr1.fasta  my_script.sh
-   $ sbatch my_script.sh
-   Submitted batch job 8503
+    $ ls
+    chr1.fasta  my_script.sh
+    $ sbatch my_script.sh
+    Submitted batch job 8503
 
 This will queue your script to be run using 1 CPU and about 16 GB of
 RAM. See the :ref:`reserving_resources` section below, for how to
@@ -122,10 +120,10 @@ manipulate your job (see below).
 
 .. note::
 
-   We do not need to set the current working directory in our script
-   (unlike PBS): ``sbatch`` uses the current directory as the working
-   directory, as if we had run the script directly using `bash
-   my_script.sh`.
+    We do not need to set the current working directory in our script
+    (unlike PBS): ``sbatch`` uses the current directory as the working
+    directory, as if we had run the script directly using `bash
+    my_script.sh`.
 
 Once the job has started running (or has completed running), you will
 also find a file named ``slurm-${JOBID}.out`` in the current folder,
@@ -134,8 +132,8 @@ example:
 
 .. code-block:: console
 
-   $ ls
-   chr1.fasta  chr1.fasta.gz  my_script.sh  slurm-8503.out
+    $ ls
+    chr1.fasta  chr1.fasta.gz  my_script.sh  slurm-8503.out
 
 The ``slurm-8503.out`` file contains any console output produced by your
 script/commands. This includes both STDOUT and STDERR by default, but
@@ -145,8 +143,8 @@ would be found in the ``out`` file:
 
 .. code-block:: console
 
-   $ cat slurm-8503.out
-   igzip: chr1.fast does not exist
+    $ cat slurm-8503.out
+    igzip: chr1.fast does not exist
 
 Passing arguments to sbatch scripts
 ===================================
@@ -157,20 +155,20 @@ to update our script above to take a filename on the command line
 instead of hard-coding that filename:
 
 .. code-block:: bash
-   :linenos:
+    :linenos:
 
-   #!/bin/bash
+    #!/bin/bash
 
-   module purge
-   module load igzip/2.30.0
-   igzip --keep "${1}"
+    module purge
+    module load igzip/2.30.0
+    igzip --keep "${1}"
 
 We can then invoke the script using ``sbatch`` as above, specifying the
 name of the file we wanted to compress on the command-line:
 
 .. code-block:: console
 
-   $ sbatch my_script.sh "chr1.fasta"
+    $ sbatch my_script.sh "chr1.fasta"
 
 This is equivalent to the original script, except that we can now easily
 submit a job for any file that we want to process, without having to
@@ -191,9 +189,9 @@ jobs are shown, rather than everyone's jobs:
 
 .. code-block:: console
 
-   $ squeue --me
-   JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-    8503 standardq my_scrip   abc123  R       0:02      1 esrumcmpn01fl
+    $ squeue --me
+    JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+     8503 standardq my_scrip   abc123  R       0:02      1 esrumcmpn01fl
 
 The ST column indicating the status of the job (R for running, PD for
 pending, `and so on
@@ -204,11 +202,11 @@ listed using ``sacct``:
 
 .. code-block:: console
 
-   $ sacct
-          JobID    JobName  Partition    Account  AllocCPUS      State ExitCode
-   ------------ ---------- ---------- ---------- ---------- ---------- --------
-   8503         my_script+ standardq+                     1  COMPLETED      0:0
-   8503.batch        batch                                1  COMPLETED      0:0
+    $ sacct
+           JobID    JobName  Partition    Account  AllocCPUS      State ExitCode
+    ------------ ---------- ---------- ---------- ---------- ---------- --------
+    8503         my_script+ standardq+                     1  COMPLETED      0:0
+    8503.batch        batch                                1  COMPLETED      0:0
 
 For more ways to monitor your jobs and the processes running in your
 jobs, see the :ref:`p_usage_slurm_monitor` page.
@@ -224,16 +222,16 @@ the ID of the job you want to cancel:
 
 .. code-block:: console
 
-   $ squeue --me
-   JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
-    8503 standardq my_scrip   abc123  R       0:02      1 esrumcmpn01fl
-   $ scancel 8503
+    $ squeue --me
+    JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+     8503 standardq my_scrip   abc123  R       0:02      1 esrumcmpn01fl
+    $ scancel 8503
 
 Should you wish to cancel *all* your jobs, use the ``-u`` option:
 
 .. code-block:: console
 
-   $ scancel -u ${USER}
+    $ scancel -u ${USER}
 
 When running batch jobs you can either cancel the entire job (array, see
 below) or individual sub-tasks. See the :ref:`s_job_arrays` section.
@@ -260,21 +258,21 @@ For example, instead of queuing our job with the command
 
 .. code-block:: console
 
-   $ sbatch --my-option my_script.sh
+    $ sbatch --my-option my_script.sh
 
 We could instead modify ``my_script.sh`` by adding a line containing
 ``#SBATCH --my-option`` near the top of the file:
 
 .. code-block:: bash
-   :linenos:
-   :emphasize-lines: 2
+    :linenos:
+    :emphasize-lines: 2
 
-   #!/bin/bash
-   #SBATCH --my-option
+    #!/bin/bash
+    #SBATCH --my-option
 
-   module purge
-   module load igzip/2.30.0
-   igzip --keep "chr1.fasta"
+    module purge
+    module load igzip/2.30.0
+    igzip --keep "chr1.fasta"
 
 If we do so, then running ``sbatch my_script.sh`` becomes the equivalent
 of running ``sbatch --my-option my_script.sh``. This had the advantage
@@ -289,16 +287,16 @@ options specified using ``#SBATCH`` comments.
 
 .. note::
 
-   The ``#SBATCH`` lines must be at the top of the file, before any
-   other commands or the like. Moreover, there must be no spaces before
-   or after the ``#`` in the ``#SBATCH`` comments. Other comments (lines
-   starting with ``#``) are allowed before and after the ``#SBATCH``
-   comments.
+    The ``#SBATCH`` lines must be at the top of the file, before any
+    other commands or the like. Moreover, there must be no spaces before
+    or after the ``#`` in the ``#SBATCH`` comments. Other comments
+    (lines starting with ``#``) are allowed before and after the
+    ``#SBATCH`` comments.
 
-   ``#SBATCH`` comments can also be used with other scripting languages,
-   provided that you follow the rules described above, but note that
-   source-code formatters like ``black`` may add spaces after the ``#``
-   and thereby break the ``#SBATCH`` comments.
+    ``#SBATCH`` comments can also be used with other scripting
+    languages, provided that you follow the rules described above, but
+    note that source-code formatters like ``black`` may add spaces after
+    the ``#`` and thereby break the ``#SBATCH`` comments.
 
 .. _reserving_resources:
 
@@ -317,15 +315,15 @@ with 8 CPUs, and is therefore automatically assigned 8 * 15 ~= 120
 gigabytes of RAM:
 
 .. code-block:: bash
-   :linenos:
-   :emphasize-lines: 2,6
+    :linenos:
+    :emphasize-lines: 2,6
 
-   #!/bin/bash
-   #SBATCH --cpus-per-task 8
+    #!/bin/bash
+    #SBATCH --cpus-per-task 8
 
-   module purge
-   module load igzip/2.30.0
-   igzip --keep --threads 8 "chr1.fasta"
+    module purge
+    module load igzip/2.30.0
+    igzip --keep --threads 8 "chr1.fasta"
 
 Notice that we need to not only reserve the CPUs, but we in almost all
 cases also need to tell to our programs to actually use those CPUs. With
@@ -338,15 +336,15 @@ can instead use the ``${SLURM_CPUS_PER_TASK}`` variable, which is
 automatically set to the number of CPUs we've requested:
 
 .. code-block:: bash
-   :linenos:
-   :emphasize-lines: 6
+    :linenos:
+    :emphasize-lines: 6
 
-   #!/bin/bash
-   #SBATCH --cpus-per-task 8
+    #!/bin/bash
+    #SBATCH --cpus-per-task 8
 
-   module purge
-   module load igzip/2.30.0
-   igzip --keep --threads ${SLURM_CPUS_PER_TASK} "chr1.fasta"
+    module purge
+    module load igzip/2.30.0
+    igzip --keep --threads ${SLURM_CPUS_PER_TASK} "chr1.fasta"
 
 The amount of RAM allocated by default should be sufficient for most
 tasks, but when needed you can request additional RAM using either the
@@ -359,16 +357,16 @@ regardless of how many (or how few) CPUs you reserve.
 The following script a task with 8 CPUs and 512 gigabytes of RAM:
 
 .. code-block:: bash
-   :linenos:
-   :emphasize-lines: 4
+    :linenos:
+    :emphasize-lines: 4
 
-   #!/bin/bash
-   #SBATCH --cpus-per-task 8
-   #SBATCH --mem 512G
+    #!/bin/bash
+    #SBATCH --cpus-per-task 8
+    #SBATCH --mem 512G
 
-   module purge
-   module load igzip/2.30.0
-   igzip --keep --threads ${SLURM_CPUS_PER_TASK} "chr1.fasta"
+    module purge
+    module load igzip/2.30.0
+    igzip --keep --threads ${SLURM_CPUS_PER_TASK} "chr1.fasta"
 
 The same total could have been requested by using ``#SBATCH
 --mem-per-cpu 64G`` instead of ``#SBATCH --mem 512G``.
@@ -384,14 +382,14 @@ without reserving a GPU.
 
 .. warning::
 
-   The ``--nodes`` option and the ``--ntasks`` option will start
-   *identical* tasks on one or more nodes, so you should *not* be using
-   these options unless your tools are specifically designed for this!
-   Otherwise, each instance will try to write to the same output file(s)
-   and will produce results that are very likely corrupt.
+    The ``--nodes`` option and the ``--ntasks`` option will start
+    *identical* tasks on one or more nodes, so you should *not* be using
+    these options unless your tools are specifically designed for this!
+    Otherwise, each instance will try to write to the same output
+    file(s) and will produce results that are very likely corrupt.
 
-   If you need to run the same command on a set of files/samples, then
-   see the :ref:`s_job_arrays` section.
+    If you need to run the same command on a set of files/samples, then
+    see the :ref:`s_job_arrays` section.
 
 .. _s_best_practice_resources:
 
@@ -409,21 +407,18 @@ read/write data.
 
 We therefore recommended that you
 
--  Always refer to the documentation and recommendations for the
-   specific software you are using!
-
--  Test the effect of the number of threads you are using before
-   starting a lot of jobs.
-
--  Start with fewer CPUs and increase it only when there is a benefit to
-   doing so. You can for example start with 2, 4, or 8 CPUs per task,
-   and only increasing the number after it has been determined that the
-   software benefits from the additional CPUs.
-
--  See if you can split your job into multiple (sub-)jobs that can run
-   in parallel via Slurm, for example by submitting one job per
-   chromosome or one job per sample. See the :ref:`s_job_arrays` section
-   for more information about batching jobs.
+- Always refer to the documentation and recommendations for the specific
+  software you are using!
+- Test the effect of the number of threads you are using before starting
+  a lot of jobs.
+- Start with fewer CPUs and increase it only when there is a benefit to
+  doing so. You can for example start with 2, 4, or 8 CPUs per task, and
+  only increasing the number after it has been determined that the
+  software benefits from the additional CPUs.
+- See if you can split your job into multiple (sub-)jobs that can run in
+  parallel via Slurm, for example by submitting one job per chromosome
+  or one job per sample. See the :ref:`s_job_arrays` section for more
+  information about batching jobs.
 
 In addition, we ask that you consider the impact of your job on other
 users: While it isn't a problem if you reserve a lot of resources for a
@@ -445,26 +440,23 @@ The following provides a brief overview of common options for ``sbatch``
 not mentioned above. All of these options may be specified using
 ``#SBATCH`` comments.
 
--  The ``--job-name`` option allows you to give a name to your job. This
-   shows up when using ``squeue``, ``sacct`` and more. If not specified,
-   the name of your script is used instead.
+- The ``--job-name`` option allows you to give a name to your job. This
+  shows up when using ``squeue``, ``sacct`` and more. If not specified,
+  the name of your script is used instead.
+- The ``--output`` and ``--error`` options allow you to specify where
+  Slurm writes your scripts STDOUT and STDERR. The filenames should
+  always include the text ``%j``, which is replaced with the job ID. See
+  the manual page for usage. Note also that the destination folder
+  *must* exist or no output will be saved!
+- ``--time`` can be used to limit the maximum running time of your
+  script. We do not require that ``--time`` is set, but it may be useful
+  to automatically stop jobs that unexpectedly take too long to run. See
+  the ``sbatch`` manual page for how to specify time limits.
+- ``--test-only`` can be used to test your batch scripts. Combine it
+  with ``--verbose`` to verify that your options are correctly set
+  before queuing your job:
 
--  The ``--output`` and ``--error`` options allow you to specify where
-   Slurm writes your scripts STDOUT and STDERR. The filenames should
-   always include the text ``%j``, which is replaced with the job ID.
-   See the manual page for usage. Note also that the destination folder
-   *must* exist or no output will be saved!
-
--  ``--time`` can be used to limit the maximum running time of your
-   script. We do not require that ``--time`` is set, but it may be
-   useful to automatically stop jobs that unexpectedly take too long to
-   run. See the ``sbatch`` manual page for how to specify time limits.
-
--  ``--test-only`` can be used to test your batch scripts. Combine it
-   with ``--verbose`` to verify that your options are correctly set
-   before queuing your job:
-
-   .. code-block:: console
+  .. code-block:: console
 
       $ sbatch --test-only --verbose my_script.sh
       sbatch: defined options
@@ -478,9 +470,9 @@ not mentioned above. All of these options may be specified using
       [...]
       sbatch: Job 8568 to start at 2023-06-28T12:15:32 using 8 processors on nodes esrumcmpn02fl in partition standardqueue
 
--  The ``--wait`` option can be used to make the ``sbatch`` block until
-   the queued tasks have completed. This can be useful if you want to
-   run sbatch from another script.
+- The ``--wait`` option can be used to make the ``sbatch`` block until
+  the queued tasks have completed. This can be useful if you want to run
+  sbatch from another script.
 
 .. _s_interactive_session:
 
@@ -495,8 +487,8 @@ you can start a shell on one of the compute nodes as follows:
 
 .. code-block:: console
 
-   [abc123@esrumhead01fl ~] $ srun --pty -- /bin/bash
-   [abc123@esrumcmpn07fl ~] $
+    [abc123@esrumhead01fl ~] $ srun --pty -- /bin/bash
+    [abc123@esrumcmpn07fl ~] $
 
 Note how the hostname displayed changes from ``esrumhead01fl`` to
 ``esrumcmpn07fl``, where ``esrumcmpn07fl`` may be any one of the Esrum
@@ -513,7 +505,7 @@ default 1 CPU and 15 GB of RAM:
 
 .. code-block:: console
 
-   $ srun --cpus-per-task 4 --mem 128G --pty -- /bin/bash
+    $ srun --cpus-per-task 4 --mem 128G --pty -- /bin/bash
 
 It is also possible to start an interactive session on the GPU /
 high-memory nodes. See the :ref:`p_usage_slurm_gpu` page for more
@@ -531,23 +523,21 @@ Should you need to run a graphical program in an interactive session,
 then you must firstly enable X11 forwarding when connecting to the
 cluster.
 
--  On Windows, if you are using MobaXterm, then X11 should already be
-   enabled. If X11 forwarding is not enabled, then see the
-   :ref:`s_slurm_basics_troubleshooting` section below.
+- On Windows, if you are using MobaXterm, then X11 should already be
+  enabled. If X11 forwarding is not enabled, then see the
+  :ref:`s_slurm_basics_troubleshooting` section below.
+- On OSX, you must first install XQuartz_. Once you have done so, the
+  instructions are the same as for Linux:
+- On Linux, when using ``ssh``, you must either include the ``-X``
+  option when connecting to the server:
 
--  On OSX, you must first install XQuartz_. Once you have done so, the
-   instructions are the same as for Linux:
-
--  On Linux, when using ``ssh``, you must either include the ``-X``
-   option when connecting to the server:
-
-   .. code-block:: console
+  .. code-block:: console
 
       $ ssh -X esrumhead01fl
 
-   Or you must enable X11 forwarding in your ``~/.ssh/config`` file:
+  Or you must enable X11 forwarding in your ``~/.ssh/config`` file:
 
-   .. code-block:: text
+  .. code-block:: text
       :emphasize-lines: 4
 
       Host esrum esrumhead01fl esrumhead01fl.unicph.domain
@@ -560,14 +550,14 @@ start an interactive session with the ``--x11`` option:
 
 .. code-block:: console
 
-   $ srun --pty --x11 -- /bin/bash
-   $ xclock
+    $ srun --pty --x11 -- /bin/bash
+    $ xclock
 
 If X11 forwarding is correctly enabled in your client, then you should
 see a small clock application on your desktop:
 
 .. image:: /usage/slurm/images/xclock.png
-   :align: center
+    :align: center
 
 ****************************
  ``sbatch`` template script
@@ -578,7 +568,7 @@ This script can also be downloaded :download:`here
 <scripts/my_sbatch.sh>`.
 
 .. literalinclude:: scripts/my_sbatch.sh
-   :language: sh
+    :language: sh
 
 See also the :ref:`p_tips_robustscripts` page for tips on how to write
 more robust bash scripts. A template using those recommendations is
@@ -601,16 +591,16 @@ system on Esrum to load the software you need for your work.
 *****************
 
 .. include:: basics_troubleshooting.rst
-   :start-line: 8
+    :start-line: 8
 
 **********************
  Additional resources
 **********************
 
--  Slurm `documentation <https://slurm.schedmd.com/overview.html>`_
--  Slurm `summary <https://slurm.schedmd.com/pdfs/summary.pdf>`_ (PDF)
--  The `sbatch manual page <https://slurm.schedmd.com/sbatch.html>`_
--  The `srun manual page <https://slurm.schedmd.com/srun.html>`_
+- Slurm `documentation <https://slurm.schedmd.com/overview.html>`_
+- Slurm `summary <https://slurm.schedmd.com/pdfs/summary.pdf>`_ (PDF)
+- The `sbatch manual page <https://slurm.schedmd.com/sbatch.html>`_
+- The `srun manual page <https://slurm.schedmd.com/srun.html>`_
 
 .. _pbs to slurm translation-sheet: https://www.nrel.gov/hpc/assets/pdfs/pbs-to-slurm-translation-sheet.pdf
 

@@ -289,8 +289,8 @@ reserve GPUs for your rules.</p></li>
 <p>To summarize:</p>
 <ul class="simple">
 <li><p>Short jobs, few resources: Run Snakemake <em>in</em> a Slurm job.</p></li>
-<li><p>Longer jobs, more resources, or GPUs: Run Snakemake with Slurm
-support enabled.</p></li>
+<li><p>Longer jobs, more resources, or GPUs: Run Snakemake with Slurm support
+enabled.</p></li>
 </ul>
 <p>For most bioinformatics pipelines, the most efficient choice is to run
 Snakemake with Slurm support enabled.</p>
@@ -350,18 +350,18 @@ these settings automatically, as well as other useful settings.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>If you install Snakemake yourself, then you need to also install the
-<code class="docutils literal notranslate"><span class="pre">snakemake-executor-plugin-slurm</span></code> plugin. For more information, see
-the <a class="reference external" href="https://snakemake.github.io/snakemake-plugin-catalog/plugins/executor/slurm.html">Snakemake slurm plugin</a> page.</p>
+<code class="docutils literal notranslate"><span class="pre">snakemake-executor-plugin-slurm</span></code> plugin. For more information,
+see the <a class="reference external" href="https://snakemake.github.io/snakemake-plugin-catalog/plugins/executor/slurm.html">Snakemake slurm plugin</a> page.</p>
 </div>
 </section>
 <section id="requesting-cpus">
 <h3>Requesting CPUs<a class="headerlink" href="#requesting-cpus" title="Link to this heading">¶</a></h3>
 <p>Snakemake will automatically request a number of CPUs corresponding to
 the number of threads used by a rule:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">rule</span> <span class="n">my_rule</span><span class="p">:</span>
-<span class="linenos">2</span>    <span class="nb">input</span><span class="p">:</span> <span class="o">...</span>
-<span class="linenos">3</span>    <span class="n">output</span><span class="p">:</span> <span class="o">...</span>
-<span class="linenos">4</span>    <span class="n">threads</span><span class="p">:</span> <span class="mi">8</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="go">rule my_rule:</span>
+<span class="linenos">2</span><span class="go">    input: ...</span>
+<span class="linenos">3</span><span class="go">    output: ...</span>
+<span class="linenos">4</span><span class="go">    threads: 8</span>
 </pre></div>
 </div>
 <p>Snakemake will in other words reserve 8 CPUs for the above rule when
@@ -383,11 +383,11 @@ the <code class="docutils literal notranslate"><span class="pre">--default-resou
 <p>Should a job require more memory than the default ~16 GB per CPU, then
 you can request additional memory using the <code class="docutils literal notranslate"><span class="pre">resources</span></code> section of
 your rule:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">rule</span> <span class="n">my_rule</span><span class="p">:</span>
-<span class="linenos">2</span>    <span class="nb">input</span><span class="p">:</span> <span class="o">...</span>
-<span class="linenos">3</span>    <span class="n">output</span><span class="p">:</span> <span class="o">...</span>
-<span class="linenos">4</span>    <span class="n">resources</span><span class="p">:</span>
-<span class="linenos">5</span>        <span class="n">mem_mb</span><span class="p">:</span> <span class="mi">64</span> <span class="o">*</span> <span class="mi">1024</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="go">rule my_rule:</span>
+<span class="linenos">2</span><span class="go">    input: ...</span>
+<span class="linenos">3</span><span class="go">    output: ...</span>
+<span class="linenos">4</span><span class="go">    resources:</span>
+<span class="linenos">5</span><span class="go">        mem_mb: 64 * 1024</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">mem_mb</span></code> specifies a <em>total</em> amount of memory to reserve in MB and
@@ -400,29 +400,29 @@ specifying that you want to use the <code class="docutils literal notranslate"><
 <code class="docutils literal notranslate"><span class="pre">slurm_partition=&quot;gpuqueue&quot;</span></code> to the <code class="docutils literal notranslate"><span class="pre">resources</span></code> section of your
 rule. Once you have done so, you can reserve GPUs using the
 <code class="docutils literal notranslate"><span class="pre">slurm_extra</span></code> resource:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">rule</span> <span class="n">gpu_example</span><span class="p">:</span>
-<span class="linenos">2</span>    <span class="nb">input</span><span class="p">:</span> <span class="s2">&quot;my_input.dat&quot;</span>
-<span class="linenos">3</span>    <span class="n">output</span><span class="p">:</span> <span class="s2">&quot;my_output.dat&quot;</span>
-<span class="linenos">4</span>    <span class="n">shell</span><span class="p">:</span> <span class="s2">&quot;my-command </span><span class="si">{input}</span><span class="s2"> &gt; </span><span class="si">{output}</span><span class="s2">&quot;</span>
-<span class="linenos">5</span>    <span class="n">resources</span><span class="p">:</span>
-<span class="linenos">6</span>        <span class="c1"># Run this rule on the GPU queue</span>
-<span class="linenos">7</span>        <span class="n">slurm_partition</span><span class="o">=</span><span class="s2">&quot;gpuqueue&quot;</span><span class="p">,</span>
-<span class="linenos">8</span>        <span class="c1"># Reserve 1 GPU for this job</span>
-<span class="linenos">9</span>        <span class="n">slurm_extra</span><span class="o">=</span><span class="s2">&quot;--gres=gpu:1&quot;</span><span class="p">,</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="go">rule gpu_example:</span>
+<span class="linenos">2</span><span class="go">    input: &quot;my_input.dat&quot;</span>
+<span class="linenos">3</span><span class="go">    output: &quot;my_output.dat&quot;</span>
+<span class="linenos">4</span><span class="go">    shell: &quot;my-command {input} &gt; {output}&quot;</span>
+<span class="linenos">5</span><span class="go">    resources:</span>
+<span class="linenos">6</span><span class="gp">        # </span>Run<span class="w"> </span>this<span class="w"> </span>rule<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>GPU<span class="w"> </span>queue
+<span class="linenos">7</span><span class="go">        slurm_partition=&quot;gpuqueue&quot;,</span>
+<span class="linenos">8</span><span class="gp">        # </span>Reserve<span class="w"> </span><span class="m">1</span><span class="w"> </span>GPU<span class="w"> </span><span class="k">for</span><span class="w"> </span>this<span class="w"> </span>job
+<span class="linenos">9</span><span class="go">        slurm_extra=&quot;--gres=gpu:1&quot;,</span>
 </pre></div>
 </div>
 <p>If you need memory rather than GPUs, then omit the <code class="docutils literal notranslate"><span class="pre">slurm_extra</span></code>
 resource and instead specify the amount of RAM needed in MB, using the
 <code class="docutils literal notranslate"><span class="pre">mem_mb</span></code> resource as described above:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">rule</span> <span class="n">high_mem_example</span><span class="p">:</span>
-<span class="linenos">2</span>    <span class="nb">input</span><span class="p">:</span> <span class="s2">&quot;my_input.dat&quot;</span>
-<span class="linenos">3</span>    <span class="n">output</span><span class="p">:</span> <span class="s2">&quot;my_output.dat&quot;</span>
-<span class="linenos">4</span>    <span class="n">shell</span><span class="p">:</span> <span class="s2">&quot;my-command </span><span class="si">{input}</span><span class="s2"> &gt; </span><span class="si">{output}</span><span class="s2">&quot;</span>
-<span class="linenos">5</span>    <span class="n">resources</span><span class="p">:</span>
-<span class="linenos">6</span>        <span class="c1"># Run this rule on the GPU queue</span>
-<span class="linenos">7</span>        <span class="n">slurm_partition</span><span class="o">=</span><span class="s2">&quot;gpuqueue&quot;</span><span class="p">,</span>
-<span class="linenos">8</span>        <span class="c1"># Reserve 3 TB of memory (specified in MB)</span>
-<span class="linenos">9</span>        <span class="n">mem_mb</span><span class="o">=</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">,</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="go">rule high_mem_example:</span>
+<span class="linenos">2</span><span class="go">    input: &quot;my_input.dat&quot;</span>
+<span class="linenos">3</span><span class="go">    output: &quot;my_output.dat&quot;</span>
+<span class="linenos">4</span><span class="go">    shell: &quot;my-command {input} &gt; {output}&quot;</span>
+<span class="linenos">5</span><span class="go">    resources:</span>
+<span class="linenos">6</span><span class="gp">        # </span>Run<span class="w"> </span>this<span class="w"> </span>rule<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>GPU<span class="w"> </span>queue
+<span class="linenos">7</span><span class="go">        slurm_partition=&quot;gpuqueue&quot;,</span>
+<span class="linenos">8</span><span class="gp">        # </span>Reserve<span class="w"> </span><span class="m">3</span><span class="w"> </span>TB<span class="w"> </span>of<span class="w"> </span>memory<span class="w"> </span><span class="o">(</span>specified<span class="w"> </span><span class="k">in</span><span class="w"> </span>MB<span class="o">)</span>
+<span class="linenos">9</span><span class="go">        mem_mb=3 * 1024 * 1024,</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -441,13 +441,13 @@ command-line or that <code class="docutils literal notranslate"><span class="pre
 profile (see below). When that is done, Snakemake will automatically
 load the environment modules listed in the <code class="docutils literal notranslate"><span class="pre">envmodules</span></code> section of a
 rule:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">rule</span> <span class="n">my_rule</span><span class="p">:</span>
-<span class="linenos">2</span>    <span class="nb">input</span><span class="p">:</span> <span class="s2">&quot;my_input.bam&quot;</span>
-<span class="linenos">3</span>    <span class="n">output</span><span class="p">:</span> <span class="s2">&quot;my_output.stats.txt&quot;</span>
-<span class="linenos">4</span>    <span class="n">shell</span><span class="p">:</span> <span class="s2">&quot;samtools stats </span><span class="si">{input}</span><span class="s2"> &gt; </span><span class="si">{output}</span><span class="s2">&quot;</span>
-<span class="linenos">5</span>    <span class="n">envmodules</span><span class="p">:</span>
-<span class="linenos">6</span>        <span class="s2">&quot;libdeflate/1.18&quot;</span><span class="p">,</span>
-<span class="linenos">7</span>        <span class="s2">&quot;samtools-libdeflate/1.18&quot;</span><span class="p">,</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="go">rule my_rule:</span>
+<span class="linenos">2</span><span class="go">    input: &quot;my_input.bam&quot;</span>
+<span class="linenos">3</span><span class="go">    output: &quot;my_output.stats.txt&quot;</span>
+<span class="linenos">4</span><span class="go">    shell: &quot;samtools stats {input} &gt; {output}&quot;</span>
+<span class="linenos">5</span><span class="go">    envmodules:</span>
+<span class="linenos">6</span><span class="go">        &quot;libdeflate/1.18&quot;,</span>
+<span class="linenos">7</span><span class="go">        &quot;samtools-libdeflate/1.18&quot;,</span>
 </pre></div>
 </div>
 <div class="admonition tip">
@@ -464,10 +464,10 @@ won't suddenly break when new versions of modules are added.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">--latency-wait</span> <span class="pre">60</span></code>: This option increases the length of time
 snakemake will wait for missing output files to appear. This is
 required when using <code class="docutils literal notranslate"><span class="pre">--slurm</span></code> since a job will be running on a
-different node than snakemake itself and since it may take some
-amount of times for files to propagate over the network file system.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--rerun-incomplete</span></code>: This option ensures that snakemake reruns
-jobs that were not run to completion.</p></li>
+different node than snakemake itself and since it may take some amount
+of times for files to propagate over the network file system.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--rerun-incomplete</span></code>: This option ensures that snakemake reruns jobs
+that were not run to completion.</p></li>
 </ul>
 <p>The profile below enables you to automatically set these options.</p>
 </section>

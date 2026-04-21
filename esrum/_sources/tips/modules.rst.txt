@@ -15,9 +15,9 @@ file (available for download :download:`here
 lines need to be changed:
 
 .. literalinclude:: scripts/moduletemplate.tcl
-   :language: tcl
-   :linenos:
-   :emphasize-lines: 7-10,13-16
+    :language: tcl
+    :linenos:
+    :emphasize-lines: 7-10,13-16
 
 For the purpose of this example we will make our own module for
 ``seqtk`` version 1.4.
@@ -37,55 +37,55 @@ folder containing the scripts needed to load software, and a
 ``software`` folder in which we will place the actual software loaded by
 the module files. This organization is designed to simplify maintenance.
 
-#. Create a subfolder in the ``apps`` for your modules:
+1. Create a subfolder in the ``apps`` for your modules:
 
    .. code-block:: console
 
-      $ mkdir -p /projects/my-project/apps/modules
+       $ mkdir -p /projects/my-project/apps/modules
 
-#. Create a subfolder for the ``seqtk`` module scripts and a folder in
+2. Create a subfolder for the ``seqtk`` module scripts and a folder in
    which we can build our own copy of ``seqtk``:
 
    .. code-block:: console
 
-      $ mkdir -p /projects/my-project/apps/modules/modulefiles/seqtk
-      $ mkdir -p /projects/my-project/apps/modules/software/seqtk/1.4
+       $ mkdir -p /projects/my-project/apps/modules/modulefiles/seqtk
+       $ mkdir -p /projects/my-project/apps/modules/software/seqtk/1.4
 
    Note that we create a folder containing the version in ``software``
    but *not* in ``modulefiles``!
 
-#. Save the module template shown above as
+3. Save the module template shown above as
    ``/projects/my-project/apps/modules/modulefiles/seqtk/1.4`` and
    update the root path, the description, and the PATH as shown below.
    Note that this file does *not* have an extension.
 
    .. literalinclude:: scripts/moduletemplate.seqtk.tcl
-      :language: tcl
-      :linenos:
-      :emphasize-lines: 7-8,10
+       :language: tcl
+       :linenos:
+       :emphasize-lines: 7-8,10
 
    As this is a very simple module we only need to set the ``PATH``
    environment variable.
 
-#. Next download and compile ``seqtk 1.4``:
+4. Next download and compile ``seqtk 1.4``:
 
    .. code-block:: console
 
-      $ cd /projects/my-project/apps/modules/software/seqtk/1.4
-      $ wget "https://github.com/lh3/seqtk/archive/refs/tags/v1.4.tar.gz"
-      $ tar xvzf v1.4.tar.gz
-      $ cd seqtk-1.4
-      $ module load gcc
-      $ make
+       $ cd /projects/my-project/apps/modules/software/seqtk/1.4
+       $ wget "https://github.com/lh3/seqtk/archive/refs/tags/v1.4.tar.gz"
+       $ tar xvzf v1.4.tar.gz
+       $ cd seqtk-1.4
+       $ module load gcc
+       $ make
 
-#. Place a symlink to the executable in a separate ``bin`` folder:
+5. Place a symlink to the executable in a separate ``bin`` folder:
 
    .. code-block:: console
 
-      $ cd /projects/my-project/apps/modules/software/seqtk/1.4
-      $ mkdir bin
-      $ cd bin
-      $ ln -s ../seqtk-1.4/seqtk
+       $ cd /projects/my-project/apps/modules/software/seqtk/1.4
+       $ mkdir bin
+       $ cd bin
+       $ ln -s ../seqtk-1.4/seqtk
 
    You can also make a copy of the executable in the ``bin`` folder, but
    using a symlink makes it simpler to recompile the software if needed.
@@ -96,20 +96,20 @@ the module files. This organization is designed to simplify maintenance.
    *not* recommended as it often includes files that do not belong in
    your PATH.
 
-#. Finally, run ``module use`` to registers your module repository so
+6. Finally, run ``module use`` to registers your module repository so
    that you can load your modules:
 
    .. code-block:: console
 
-      $ module use --prepend /projects/my-project/apps/modules/modulefiles/
-      $ module avail
-      ----------- /projects/my-project/apps/modules/modulefiles/ -----------
-      seqtk/1.4
-      $ module load seqtk/1.4
-      ./seqtk
+       $ module use --prepend /projects/my-project/apps/modules/modulefiles/
+       $ module avail
+       ----------- /projects/my-project/apps/modules/modulefiles/ -----------
+       seqtk/1.4
+       $ module load seqtk/1.4
+       ./seqtk
 
-      Usage:   seqtk <command> <arguments>
-      Version: 1.4-r122
+       Usage:   seqtk <command> <arguments>
+       Version: 1.4-r122
 
    The ``module use`` command can optionally be added to your
    ``.profile``, ``.bashrc``, or similar to automatically enable this
@@ -143,10 +143,10 @@ example might look like the following:
 
 .. code-block:: console
 
-   $ tar xvzf my-software-1.23.tar.gz
-   $ cd my-software-1.23
-   $ ./configure --prefix=/projects/my-project/apps/modules/software/my-software/1.23
-   $ make install
+    $ tar xvzf my-software-1.23.tar.gz
+    $ cd my-software-1.23
+    $ ./configure --prefix=/projects/my-project/apps/modules/software/my-software/1.23
+    $ make install
 
 Refer to the documentation for the software you are installing for more
 information.
@@ -158,37 +158,37 @@ information.
 Making modules for python software is a bit more complicated, but can
 typically be accomplished as follows (using VisiData_ as an example):
 
-#. Basic setup
+1. Basic setup
 
    .. code-block:: console
 
-      $ mkdir -p /projects/my-project/apps/modules/software/visidata/2.11
-      $ cd /projects/my-project/apps/modules/software/visidata/2.11
+       $ mkdir -p /projects/my-project/apps/modules/software/visidata/2.11
+       $ cd /projects/my-project/apps/modules/software/visidata/2.11
 
-#. Load the required version of Python (if any)
-
-   .. code-block:: console
-
-      $ module load python/3.9.16
-
-#. Create a virtual environment in `./venv` to contain our software
+2. Load the required version of Python (if any)
 
    .. code-block:: console
 
-      $ python3 -m venv ./venv
+       $ module load python/3.9.16
 
-#. Install our desired software
-
-   .. code-block:: console
-
-      $ ./venv/bin/pip install visidata
-
-#. Create a bin folder as described above
+3. Create a virtual environment in `./venv` to contain our software
 
    .. code-block:: console
 
-      $ mkdir bin
-      $ ln -s ../venv/bin/visidata bin/
+       $ python3 -m venv ./venv
+
+4. Install our desired software
+
+   .. code-block:: console
+
+       $ ./venv/bin/pip install visidata
+
+5. Create a bin folder as described above
+
+   .. code-block:: console
+
+       $ mkdir bin
+       $ ln -s ../venv/bin/visidata bin/
 
 Then all you need to do is to create a matching module file and save it
 as ``/projects/my-project/apps/modules/modulefiles/visidata/2.11``. The
@@ -197,9 +197,9 @@ this software.
 
 .. warning::
 
-   Do not add the ``venv/bin`` folder to your PATH. This will override
-   your default Python version and may result in accidental changes to
-   the virtual environment, if you run ``pip`` or similar tools.
+    Do not add the ``venv/bin`` folder to your PATH. This will override
+    your default Python version and may result in accidental changes to
+    the virtual environment, if you run ``pip`` or similar tools.
 
 .. _environment modules: https://modules.sourceforge.net/
 

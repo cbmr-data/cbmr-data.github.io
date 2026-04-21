@@ -293,8 +293,8 @@ command on a compute node, as shown in the examples below. See the
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Do not copy data out of <code class="docutils literal notranslate"><span class="pre">-AUDIT</span></code> folders without the explicit
-permission from the data controller and never store sensitive data in
-a non-<code class="docutils literal notranslate"><span class="pre">-AUDIT</span></code> folder!</p>
+permission from the data controller and never store sensitive data
+in a non-<code class="docutils literal notranslate"><span class="pre">-AUDIT</span></code> folder!</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -305,7 +305,8 @@ warning, due to the impact on other users of the cluster.</p>
 <p class="admonition-title">Tip</p>
 <p>Running your transfer in a <code class="docutils literal notranslate"><span class="pre">tmux</span></code> or <code class="docutils literal notranslate"><span class="pre">screen</span></code> session is
 recommended. This allows your transfer to keep running after you log
-off from Esrum. See the <a class="reference internal" href="../../tips/tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> page for more information.</p>
+off from Esrum. See the <a class="reference internal" href="../../tips/tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> page for more
+information.</p>
 </div>
 </section>
 <section id="copying-data-to-from-the-h-n-and-s-drives">
@@ -357,8 +358,8 @@ session if you followed the instructions above.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Do not copy data out of <code class="docutils literal notranslate"><span class="pre">-AUDIT</span></code> folders without the explicit
-permission from the data controller and never store sensitive data in
-a non-<code class="docutils literal notranslate"><span class="pre">-AUDIT</span></code> folder!</p>
+permission from the data controller and never store sensitive data
+in a non-<code class="docutils literal notranslate"><span class="pre">-AUDIT</span></code> folder!</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -369,7 +370,8 @@ warning, due to the impact on other users of the cluster.</p>
 <p class="admonition-title">Tip</p>
 <p>Running your transfer in a <code class="docutils literal notranslate"><span class="pre">tmux</span></code> or <code class="docutils literal notranslate"><span class="pre">screen</span></code> session is
 recommended. This allows your transfer to keep running after you log
-off from Esrum. See the <a class="reference internal" href="../../tips/tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> page for more information.</p>
+off from Esrum. See the <a class="reference internal" href="../../tips/tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> page for more
+information.</p>
 </div>
 </section>
 <section id="rsync-basics">
@@ -386,11 +388,11 @@ interrupted, simply by running <code class="docutils literal notranslate"><span 
 <li><p>The <code class="docutils literal notranslate"><span class="pre">-a</span></code> option enables &quot;archive&quot; mode, which preserves
 meta-information such as timestamps and permissions.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">-v</span></code> option and the <code class="docutils literal notranslate"><span class="pre">--progress</span></code> options are optional, but
-make <code class="docutils literal notranslate"><span class="pre">rsync</span></code> list the last copied file and the progress when
-copying (large) files.</p></li>
+make <code class="docutils literal notranslate"><span class="pre">rsync</span></code> list the last copied file and the progress when copying
+(large) files.</p></li>
 <li><p>The paths in the above example both ends in a <code class="docutils literal notranslate"><span class="pre">/</span></code>. This is
-intentional, and makes <code class="docutils literal notranslate"><span class="pre">rsync</span></code> copy the content of <code class="docutils literal notranslate"><span class="pre">data</span></code> into
-the folder <code class="docutils literal notranslate"><span class="pre">location</span></code>. If you instead ran <code class="docutils literal notranslate"><span class="pre">rsync</span> <span class="pre">-av</span> <span class="pre">--progress</span>
+intentional, and makes <code class="docutils literal notranslate"><span class="pre">rsync</span></code> copy the content of <code class="docutils literal notranslate"><span class="pre">data</span></code> into the
+folder <code class="docutils literal notranslate"><span class="pre">location</span></code>. If you instead ran <code class="docutils literal notranslate"><span class="pre">rsync</span> <span class="pre">-av</span> <span class="pre">--progress</span>
 <span class="pre">/copy/this/data</span> <span class="pre">/to/this/location/</span></code>, then the <code class="docutils literal notranslate"><span class="pre">data</span></code> folder would
 be placed at <code class="docutils literal notranslate"><span class="pre">/to/this/location/data</span></code></p></li>
 </ul>

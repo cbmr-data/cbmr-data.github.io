@@ -363,16 +363,16 @@ the network drives:</p>
 to the head node.</p></li>
 <li><p><strong>From a compute node:</strong> Start an interactive session as described in
 the <a class="reference internal" href="../usage/slurm/basics.html#s-interactive-session"><span class="std std-ref">Interactive sessions</span></a> section, <em>and then</em> run
-<code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span></code>. You will then be able to access the network
-drives <em>in that session</em>.</p></li>
+<code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span></code>. You will then be able to access the network drives
+<em>in that session</em>.</p></li>
 <li><p><strong>From an RStudio server</strong>: Log in to the RStudio server as described
 on the <a class="reference internal" href="rstudio.html#p-service-rstudio"><span class="std std-ref">RStudio</span></a> page and open the <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> tab.
 Run the command <code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span></code> in that terminal.</p></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The explicit path in <code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span></code> is required to make sure that
-you call the correct executable, even if you are using a Conda
+<p>The explicit path in <code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span></code> is required to make sure
+that you call the correct executable, even if you are using a Conda
 environment or similar. Running <code class="docutils literal notranslate"><span class="pre">kinit</span></code> without the full path may
 otherwise result in errors like <code class="docutils literal notranslate"><span class="pre">kinit:</span> <span class="pre">Unknown</span> <span class="pre">credential</span> <span class="pre">cache</span>
 <span class="pre">type</span> <span class="pre">while</span> <span class="pre">getting</span> <span class="pre">default</span> <span class="pre">ccache</span></code>.</p>

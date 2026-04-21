@@ -9,42 +9,42 @@ laptop, to the Esrum head node or to a compute node on Esrum.
 
 .. note::
 
-   Ports 8800 to 9000 on the compute nodes are open by default, meaning
-   that you do not need to set up port forwarding if you use one of
-   those ports. You could, for example, use port YYYYY. This port was
-   randomly selected for you, and will change if you refresh this page.
+    Ports 8800 to 9000 on the compute nodes are open by default, meaning
+    that you do not need to set up port forwarding if you use one of
+    those ports. You could, for example, use port YYYYY. This port was
+    randomly selected for you, and will change if you refresh this page.
 
 Before you continue, please select the port you wish to forward. The
 following examples will be updated to match that choice.
 
 .. raw:: html
 
-   <center>
-     <label for="port">Port to forward:</label>
-     <input id="port-input" name="port" min=1024 max=65535 type="number">
-   </center>
+    <center>
+      <label for="port">Port to forward:</label>
+      <input id="port-input" name="port" min=1024 max=65535 type="number">
+    </center>
 
 Once you have selected a port, please select your operating system of
 choice:
 
 .. list-table::
-   :class: image-buttons
+    :class: image-buttons
 
-   -  -  :ref:`Windows <s_ports_windows>`
+    - - :ref:`Windows <s_ports_windows>`
 
-         .. image:: /usage/access/images/os_windows.png
+        .. image:: /usage/access/images/os_windows.png
             :width: 128
             :target: #connecting-on-windows
 
-      -  :ref:`OSX <s_ports_osx_linux>`
+      - :ref:`OSX <s_ports_osx_linux>`
 
-         .. image:: /usage/access/images/os_macosx.png
+        .. image:: /usage/access/images/os_macosx.png
             :width: 128
             :target: #connecting-on-osx
 
-      -  :ref:`Linux <s_ports_osx_linux>`
+      - :ref:`Linux <s_ports_osx_linux>`
 
-         .. image:: /usage/access/images/os_linux.png
+        .. image:: /usage/access/images/os_linux.png
             :width: 128
             :target: #connecting-on-linux
 
@@ -60,57 +60,53 @@ that you are using MobaXterm to connect to Esrum (see the
 :ref:`s_configure_mobaxterm` section). If not, then please refer to the
 documentation for your software of choice.
 
-#. Install and configure MobaXterm as described in
+1. Install and configure MobaXterm as described in
    :ref:`s_configure_mobaxterm`.
-
-#. Click the middle ``Tunneling`` button on the toolbar.
+2. Click the middle ``Tunneling`` button on the toolbar.
 
    .. image:: images/mobaxterm_tunnel_01.png
-      :align: center
+       :align: center
 
-#. Click the bottom-left ``New SSH Tunnel`` button.
+3. Click the bottom-left ``New SSH Tunnel`` button.
 
    .. image:: images/mobaxterm_tunnel_02.png
-      :align: center
+       :align: center
 
-#. Follow these steps to configure the tunnel:
+4. Follow these steps to configure the tunnel:
 
    .. raw:: html
 
-      <p class="port-container">
-        <span class="port" style="left: 58.5%;top: 22cqw;">XXXXX</span>
-        <span class="port" style="left: 19.5%;top: 35.5cqw;">XXXXX</span>
-        <span class="port" style="left: 77%;top: 58.5cqw;">XXXXX</span>
+       <p class="port-container">
+         <span class="port" style="left: 58.5%;top: 22cqw;">XXXXX</span>
+         <span class="port" style="left: 19.5%;top: 35.5cqw;">XXXXX</span>
+         <span class="port" style="left: 77%;top: 58.5cqw;">XXXXX</span>
 
    .. image:: images/mobaxterm_tunnel_03.png
-      :align: center
+       :align: center
 
    .. raw:: html
 
-      </p>
+       </p>
 
-   #. In middle-left box, write your chosen port number as shown above.
-
-   #. If the service you wish to connect to is running on a compute
+   1. In middle-left box, write your chosen port number as shown above.
+   2. If the service you wish to connect to is running on a compute
       note, then replace ``localhost`` in the top-right pair of boxes
       with the name of that node (such as
       ``esrumcmpn07fl.unicph.domain``), and enter your chosen port
       number.
-
-   #. In the middle-right trio of boxes, write the full name of the head
+   3. In the middle-right trio of boxes, write the full name of the head
       node (``esrumhead01fl.unicph.domain``), write your UCPH username
       where the screenshot has ``abc123``, and make sure that the value
       is ``22``.
+   4. Finally, click ``Save``.
 
-   #. Finally, click ``Save``.
-
-#. If the tunnel does not start automatically, press either the
+5. If the tunnel does not start automatically, press either the
    Play-icon button or the ``Start all tunnels`` button:
 
    .. image:: images/mobaxterm_tunnel_04.png
-      :align: center
+       :align: center
 
-#. Enter your password and your SSH tunnel should now be active.
+6. Enter your password and your SSH tunnel should now be active.
 
 While the port is active, you should, for example, be able to access the
 tunnel via http://localhost:XXXXX. When using Jupyter notebooks, open
@@ -133,8 +129,8 @@ UCPH short username:
 
 .. code-block:: console
 
-   $ ssh -S none -N -L 'XXXXX:esrumcmpn07fl:XXXXX' abc123@esrumhead01fl.unicph.domain
-   abc123@esrumhead01fl.unicph.domain's password: ****************
+    $ ssh -S none -N -L 'XXXXX:esrumcmpn07fl:XXXXX' abc123@esrumhead01fl.unicph.domain
+    abc123@esrumhead01fl.unicph.domain's password: ****************
 
 There will be no output beyond the prompt asking for your password, but
 once you have entered that the tunnel will be active as long as the
@@ -152,8 +148,8 @@ node, then use the following command:
 
 .. code-block:: console
 
-   $ ssh -S none -N -L 'XXXXX:localhost:XXXXX' abc123@esrumhead01fl.unicph.domain
-   abc123@esrumhead01fl.unicph.domain's password: ****************
+    $ ssh -S none -N -L 'XXXXX:localhost:XXXXX' abc123@esrumhead01fl.unicph.domain
+    abc123@esrumhead01fl.unicph.domain's password: ****************
 
 As above, you should be able to access the tunnel via
 http://localhost:XXXXX, while this command is running. When using
@@ -162,39 +158,39 @@ with ``http://127.0.0.1`` that Jupyter printed.
 
 .. tip::
 
-   The ``-S none`` option ensures that SSH opens a new connection even
-   if shared connections are enabled (see the ``ControlMaster`` section
-   in ``man ssh``), which is required to forward the requested ports.
-   The ``-N`` option prevents ``ssh`` from opening a shell on Esrum,
-   which ensures that you do not accidentally use this terminal and then
-   close it, while still using the forwarded port, and the ``-L`` option
-   configures the actual port forwarding.
+    The ``-S none`` option ensures that SSH opens a new connection even
+    if shared connections are enabled (see the ``ControlMaster`` section
+    in ``man ssh``), which is required to forward the requested ports.
+    The ``-N`` option prevents ``ssh`` from opening a shell on Esrum,
+    which ensures that you do not accidentally use this terminal and
+    then close it, while still using the forwarded port, and the ``-L``
+    option configures the actual port forwarding.
 
 .. tip::
 
-   If you created a ``~/.ssh/config`` file as suggested in the
-   :ref:`s_connecting_linux` section, then you can use the shorter
-   command ``ssh -S none -N -L 'XXXXX:esrumcmpn07fl:XXXXX' esrum``.
+    If you created a ``~/.ssh/config`` file as suggested in the
+    :ref:`s_connecting_linux` section, then you can use the shorter
+    command ``ssh -S none -N -L 'XXXXX:esrumcmpn07fl:XXXXX' esrum``.
 
 .. raw:: html
 
-   <script defer>
-    document.addEventListener('DOMContentLoaded', function() {
-      const portInput = document.querySelector("#port-input");
-      const updaters = createElementUpdaters(document.body, "XXXXX");
+    <script defer>
+     document.addEventListener('DOMContentLoaded', function() {
+       const portInput = document.querySelector("#port-input");
+       const updaters = createElementUpdaters(document.body, "XXXXX");
 
-      portInput.addEventListener("change", (event) => {
-        for (updater of updaters) {
-          updater(portInput.value);
-        }
-      });
+       portInput.addEventListener("change", (event) => {
+         for (updater of updaters) {
+           updater(portInput.value);
+         }
+       });
 
-      portInput.value = getEphemeralPort();
-      portInput.dispatchEvent(new Event("change"));
+       portInput.value = getEphemeralPort();
+       portInput.dispatchEvent(new Event("change"));
 
-      const openPort = getOpenPort();
-      for (updater of createElementUpdaters(document.body, "YYYYY")) {
-        updater(openPort);
-      }
-    });
-   </script>
+       const openPort = getOpenPort();
+       for (updater of createElementUpdaters(document.body, "YYYYY")) {
+         updater(openPort);
+       }
+     });
+    </script>

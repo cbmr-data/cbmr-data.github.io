@@ -298,10 +298,10 @@ instructions on how to reserve GPUs or large amounts of memory. The
 <code class="docutils literal notranslate"><span class="pre">srun</span></code> accepts the same options as <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>It is recommended that you execute the <code class="docutils literal notranslate"><span class="pre">srun</span></code> command in a <code class="docutils literal notranslate"><span class="pre">tmux</span></code>
-or <code class="docutils literal notranslate"><span class="pre">screen</span></code> session, to avoid the notebook shutting down if you
-lose connection to the head node. See <a class="reference internal" href="../tips/tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> for more
-information.</p>
+<p>It is recommended that you execute the <code class="docutils literal notranslate"><span class="pre">srun</span></code> command in a
+<code class="docutils literal notranslate"><span class="pre">tmux</span></code> or <code class="docutils literal notranslate"><span class="pre">screen</span></code> session, to avoid the notebook shutting down
+if you lose connection to the head node. See <a class="reference internal" href="../tips/tmux.html#p-tips-tmux"><span class="std std-ref">Persistent sessions with tmux</span></a> for
+more information.</p>
 </div>
 </section>
 <section id="connecting-to-the-jupyter-notebook">
@@ -356,8 +356,8 @@ separate terminal:</p>
 <span class="go">551600 standardq  jupyter   abc123  R       8:49      1 esrumcmpn07fl</span>
 </pre></div>
 </div>
-<p>By looking in the <code class="docutils literal notranslate"><span class="pre">NODELIST</span></code> column, we can see that the notebook
-is running on <code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl</span></code>, as above.</p>
+<p>By looking in the <code class="docutils literal notranslate"><span class="pre">NODELIST</span></code> column, we can see that the notebook is
+running on <code class="docutils literal notranslate"><span class="pre">esrumcmpn07fl</span></code>, as above.</p>
 </li>
 </ul>
 <p>Once you've determined what node your notebook is running on, go to the
@@ -449,10 +449,10 @@ notebook:</p>
 <p>Install any other python modules you need in the same manner.</p>
 </li>
 <li><p>Install <cite>jupyter_slurm</cite> in the environment</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># install the latest version of the module</span>
-<span class="o">./</span><span class="n">jupyter_slurm</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">pip</span> <span class="n">install</span> <span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">cbmr_shared</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">dap</span><span class="o">/</span><span class="n">jupyter_slurm</span><span class="o">/</span><span class="n">latest</span>
-<span class="c1"># or, alternatively, a specific version</span>
-<span class="c1"># ./jupyter_slurm/bin/pip install /projects/cbmr_shared/apps/dap/jupyter_slurm/0.0.1</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>install<span class="w"> </span>the<span class="w"> </span>latest<span class="w"> </span>version<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>module
+<span class="go">./jupyter_slurm/bin/pip install /projects/cbmr_shared/apps/dap/jupyter_slurm/latest</span>
+<span class="gp"># </span>or,<span class="w"> </span>alternatively,<span class="w"> </span>a<span class="w"> </span>specific<span class="w"> </span>version
+<span class="gp"># </span>./jupyter_slurm/bin/pip<span class="w"> </span>install<span class="w"> </span>/projects/cbmr_shared/apps/dap/jupyter_slurm/0.0.1
 </pre></div>
 </div>
 </li>
@@ -476,6 +476,7 @@ list as shown below. This list defines where Python looks when importing
 modules and this code therefore has to be run before attempting to
 import the module:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
 <span class="c1"># to load the latest version</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/projects/cbmr_shared/apps/dap/jupyter_slurm/latest/src&quot;</span><span class="p">)</span>
 <span class="c1"># or, alternatively, to load a specific version</span>
@@ -520,7 +521,12 @@ lines in the resulting script.</p>
     <span class="n">modules</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;samtools&quot;</span><span class="p">],</span>
     <span class="n">capture</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Command &quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;failed&quot;</span> <span class="k">if</span> <span class="n">result</span> <span class="k">else</span> <span class="s2">&quot;completed&quot;</span><span class="p">),</span> <span class="s2">&quot; with return code&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">&quot;Command &quot;</span><span class="p">,</span>
+    <span class="p">(</span><span class="s2">&quot;failed&quot;</span> <span class="k">if</span> <span class="n">result</span> <span class="k">else</span> <span class="s2">&quot;completed&quot;</span><span class="p">),</span>
+    <span class="s2">&quot; with return code&quot;</span><span class="p">,</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">returncode</span><span class="p">,</span>
+<span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  STDOUT =&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  STDERR =&quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
 </pre></div>
@@ -554,20 +560,22 @@ arguments as lists of strings.</p>
 <h3>Function reference<a class="headerlink" href="#function-reference" title="Link to this heading">¶</a></h3>
 <section id="sbatch-function">
 <h4><code class="docutils literal notranslate"><span class="pre">sbatch</span></code> function<a class="headerlink" href="#sbatch-function" title="Link to this heading">¶</a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sbatch</span><span class="p">(</span><span class="n">commands</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
-           <span class="o">*</span><span class="p">,</span>
-           <span class="n">cpus</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-           <span class="n">gpus</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-           <span class="n">gpu_type</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;a100&quot;</span><span class="p">,</span> <span class="s2">&quot;h100&quot;</span><span class="p">,</span> <span class="s2">&quot;A100&quot;</span><span class="p">,</span> <span class="s2">&quot;H100&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-           <span class="n">memory</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-           <span class="n">job_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-           <span class="n">modules</span><span class="p">:</span> <span class="n">SequenceNotStr</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
-           <span class="n">extra_args</span><span class="p">:</span> <span class="n">SequenceNotStr</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
-           <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-           <span class="n">array_params</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-           <span class="n">wait</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-           <span class="n">mail_user</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-           <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sbatch</span><span class="p">(</span>
+    <span class="n">commands</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">cpus</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">gpus</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">gpu_type</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;a100&quot;</span><span class="p">,</span> <span class="s2">&quot;h100&quot;</span><span class="p">,</span> <span class="s2">&quot;A100&quot;</span><span class="p">,</span> <span class="s2">&quot;H100&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">memory</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">job_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">modules</span><span class="p">:</span> <span class="n">SequenceNotStr</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="n">extra_args</span><span class="p">:</span> <span class="n">SequenceNotStr</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">array_params</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">wait</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">mail_user</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span> <span class="o">...</span>
 </pre></div>
 </div>
 <p>Submit an sbatch script for running one or more commands.</p>
@@ -584,8 +592,8 @@ range 1 to 128. Defaults to 1.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">memory</span></code> - The amount of memory to reserve. Must be a positive
 number (in MB) or a string ending with a unit (K, M, G, T). Defaults
 to ~16G per CPU.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">gpus</span></code> - The number of CPUs to reserve, either 0, 1, or 2. Jobs
-that reserve CPUs will be run on the GPU queue. Defaults to 0.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpus</span></code> - The number of CPUs to reserve, either 0, 1, or 2. Jobs that
+reserve CPUs will be run on the GPU queue. Defaults to 0.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">gpu_type</span></code> - Preferred GPU type, if any, either ‘a100’ or ‘h100’.
 Defaults to None.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">job_name</span></code> - An optional string naming the current Slurm job.</p></li>
@@ -596,9 +604,9 @@ Multi-part arguments must therefore be split into multiple values:
 [“–foo”, “bar”] and not [“–foo bar”]</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">output_file</span></code> - Optional name of log-file foom the job.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">array_params</span></code> - Optional job-array parameters (see “–array”).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">mail_user</span></code> - Send an email to user on failures or completion of
-the job. May either be an email address, or <code class="docutils literal notranslate"><span class="pre">True</span></code> to send an email
-to <code class="docutils literal notranslate"><span class="pre">$USER&#64;ku.dk</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mail_user</span></code> - Send an email to user on failures or completion of the
+job. May either be an email address, or <code class="docutils literal notranslate"><span class="pre">True</span></code> to send an email to
+<code class="docutils literal notranslate"><span class="pre">$USER&#64;ku.dk</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">wait</span></code> - If true, wait for the job to complete before returning.
 Defaults to False.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">strict</span></code> - If true, the script is configured to terminate on the
@@ -622,7 +630,7 @@ first error. Defaults to true.</p></li>
     <span class="n">capture</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">text</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SrunResult</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">|</span> <span class="n">SrunResult</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">SrunResult</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SrunResult</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">|</span> <span class="n">SrunResult</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">SrunResult</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]:</span> <span class="o">...</span>
 </pre></div>
 </div>
 <p>Run command via <code class="docutils literal notranslate"><span class="pre">srun</span></code>, and optionally capture its output.</p>
@@ -633,15 +641,15 @@ first error. Defaults to true.</p></li>
 <p><strong>Arguments</strong>:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">command</span></code> - The command to run, either as a single string that is
-assumed to contain a properly formatted shell command, or as a list
-of strings, that is assumed to present each argument in the command.</p></li>
+assumed to contain a properly formatted shell command, or as a list of
+strings, that is assumed to present each argument in the command.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cpus</span></code> - The number of CPUs to reserve. Must be a number in the
 range 1 to 128. Defaults to 1.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">memory</span></code> - The amount of memory to reserve. Must be a positive
 number (in MB) or a string ending with a unit (K, M, G, T). Defaults
 to ~16G per CPU.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">gpus</span></code> - The number of CPUs to reserve, either 0, 1, or 2. Jobs
-that reserve CPUs will be run on the GPU queue. Defaults to 0.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gpus</span></code> - The number of CPUs to reserve, either 0, 1, or 2. Jobs that
+reserve CPUs will be run on the GPU queue. Defaults to 0.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">gpu_type</span></code> - Preferred GPU type, if any, either ‘a100’ or ‘h100’.
 Defaults to None.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">extra_args</span></code> - A list of arguments passed directly to srun/sbatch.
@@ -652,8 +660,8 @@ before running the commands specified above. Defaults to ().</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">capture</span></code> - If true, srun’s stdout and stderr is captured and
 returned. Defaults to False.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">text</span></code> - If true, output captured by <code class="docutils literal notranslate"><span class="pre">capture</span></code> is assumed to be
-UTF8 and decoded to strings. Otherwise bytes are returned. Defaults
-to True.</p></li>
+UTF8 and decoded to strings. Otherwise bytes are returned. Defaults to
+True.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">strict</span></code> - If true, the script is configured to terminate on the
 first error. Defaults to true.</p></li>
 </ul>
@@ -663,9 +671,9 @@ first error. Defaults to true.</p></li>
 </ul>
 <p><strong>Returns</strong>:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">int</span></code> - The exit-code from running <code class="docutils literal notranslate"><span class="pre">srun</span></code> (non-zero on error)
-int, str, str: The srun exit-code, stdout, and stderr, if <code class="docutils literal notranslate"><span class="pre">capture</span></code>
-is True. int, bytes, bytes: As above, but <code class="docutils literal notranslate"><span class="pre">text</span></code> is False.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span></code> - The exit-code from running <code class="docutils literal notranslate"><span class="pre">srun</span></code> (non-zero on error) int,
+str, str: The srun exit-code, stdout, and stderr, if <code class="docutils literal notranslate"><span class="pre">capture</span></code> is
+True. int, bytes, bytes: As above, but <code class="docutils literal notranslate"><span class="pre">text</span></code> is False.</p></li>
 </ul>
 </section>
 </section>
@@ -699,9 +707,9 @@ activating port forwarding in MobaXterm as described in the
 <li><p>If using the instructions for Linux/OSX, verify that you ran the
 <code class="docutils literal notranslate"><span class="pre">ssh</span></code> command on your laptop or desktop, and <em>not</em> on the Esrum
 head node.</p></li>
-<li><p>Verify that either of these are using the same port number as in
-the <code class="docutils literal notranslate"><span class="pre">jupyter</span></code> command you ran or as in the <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1</span></code>
-URL printed by Jupyter.</p></li>
+<li><p>Verify that either of these are using the same port number as in the
+<code class="docutils literal notranslate"><span class="pre">jupyter</span></code> command you ran or as in the <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1</span></code> URL
+printed by Jupyter.</p></li>
 <li><p>Verify that you are using the <em>second</em> URL that Jupyter prints on
 the terminal, namely the URL starting with
 <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:XXXX</span></code>:</p>
