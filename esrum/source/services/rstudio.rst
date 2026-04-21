@@ -9,8 +9,8 @@ users of Esrum. For general tips on using R, see the :ref:`p_tips_r`
 page.
 
 The Rstudio servers can be found at
-   #. https://esrumweb01fl/ with R v4.3.3
-   #. https://esrumweb02fl/ with R v4.5.1
+    1. https://esrumweb01fl/ with R v4.3.3
+    2. https://esrumweb02fl/ with R v4.5.1
 
 To access the RStudio servers, you *must* have applied for access as
 described on the :ref:`p_usage_access_applying` page, and you *must* be
@@ -18,19 +18,19 @@ connected via the UCPH VPN.
 
 .. warning::
 
-   If you use a non-UCPH device to access the above URLs, then you may
-   receive a warning that "your connection is not private" (Chrome) or
-   about a "potential security risk" (Firefox). This is due to the
-   domains using certificates provided by KU-IT, that are only installed
-   on KU-IT managed hardware. You can proceed by clicking the "Advanced"
-   button and then clicking either the ``Proceed to esrumweb??fl
-   (unsafe)`` (Chrome) link or the ``Accept the Risk and Continue``
-   button (Firefox).
+    If you use a non-UCPH device to access the above URLs, then you may
+    receive a warning that "your connection is not private" (Chrome) or
+    about a "potential security risk" (Firefox). This is due to the
+    domains using certificates provided by KU-IT, that are only
+    installed on KU-IT managed hardware. You can proceed by clicking the
+    "Advanced" button and then clicking either the ``Proceed to
+    esrumweb??fl (unsafe)`` (Chrome) link or the ``Accept the Risk and
+    Continue`` button (Firefox).
 
 Once connected, use the short form of your UCPH username to log in:
 
 .. image:: images/rstudio_login.png
-   :align: center
+    :align: center
 
 If you have not been granted access, or if you are not connected via the
 VPN, then you will likely see a browser error message like ``This site
@@ -38,13 +38,13 @@ can't be reached``. See :ref:`p_usage_connecting` for more information.
 
 .. warning::
 
-   The RStudio servers are *only* for running R. If you need to run
-   other tasks then you *must* connect to the head node and run them
-   using Slurm as described in :ref:`p_usage_slurm`.
+    The RStudio servers are *only* for running R. If you need to run
+    other tasks then you *must* connect to the head node and run them
+    using Slurm as described in :ref:`p_usage_slurm`.
 
-   Resource intensive tasks running on the RStudio server will likely
-   negatively impact everyone using the service, and we may therefore
-   terminate such tasks without warning if we deem it necessary.
+    Resource intensive tasks running on the RStudio server will likely
+    negatively impact everyone using the service, and we may therefore
+    terminate such tasks without warning if we deem it necessary.
 
 ***************************************
  Accessing network drives from RStudio
@@ -65,29 +65,28 @@ other users of the server.
 
 In particular,
 
--  Try to limit the size of the data-sets you work with on the RStudio
-   server. Since *all* data has to be read from (or written to) network
-   drives, one person reading or writing a large amount of data can
-   cause significant slow-downs for *everyone* using the service.
+- Try to limit the size of the data-sets you work with on the RStudio
+  server. Since *all* data has to be read from (or written to) network
+  drives, one person reading or writing a large amount of data can cause
+  significant slow-downs for *everyone* using the service.
 
-   We therefore recommend that you load a (small) subset of your data in
-   RStudio, that you use that subset of data to develop your analyses
-   processes, and that you use that to process your complete dataset via
-   an R-script submitted to Slurm as described in :ref:`p_usage_slurm`.
+  We therefore recommend that you load a (small) subset of your data in
+  RStudio, that you use that subset of data to develop your analyses
+  processes, and that you use that to process your complete dataset via
+  an R-script submitted to Slurm as described in :ref:`p_usage_slurm`.
 
-   See the :ref:`p_tips_r` page for additional guidance on how to use R
-   with Slurm.
+  See the :ref:`p_tips_r` page for additional guidance on how to use R
+  with Slurm.
 
--  Don't keep data in memory that you do not need. Data that you no
-   longer need can be freed with the ``rm`` function or using the broom
-   icon on the ``Environment`` tab in RStudio. This also helps prevent
-   RStudio from filling your home folder when your session is closed
-   (see Troubleshooting below).
-
--  Do not run resource intensive tasks via the embedded terminal. As
-   noted above, such tasks will be terminated without warning if deemed
-   to have a negative impact on other users. Instead, such tasks should
-   be run using Slurm as described in :ref:`p_usage_slurm`.
+- Don't keep data in memory that you do not need. Data that you no
+  longer need can be freed with the ``rm`` function or using the broom
+  icon on the ``Environment`` tab in RStudio. This also helps prevent
+  RStudio from filling your home folder when your session is closed (see
+  Troubleshooting below).
+- Do not run resource intensive tasks via the embedded terminal. As
+  noted above, such tasks will be terminated without warning if deemed
+  to have a negative impact on other users. Instead, such tasks should
+  be run using Slurm as described in :ref:`p_usage_slurm`.
 
 ************************
  Preserving loaded data
@@ -98,7 +97,7 @@ are visible on the ``Environment`` tab in RStudio along with the amount
 of memory used (here 143 MiB):
 
 .. image:: images/rstudio_environment.png
-   :align: center
+    :align: center
 
 By default, this data will be saved to your RStudio folder on the
 ``/scratch`` drive when you quit your session or when it automatically
@@ -112,7 +111,7 @@ For this reason we recommend disabling the saving and loading of
 as shown:
 
 .. image:: images/rstudio_workspace_data.png
-   :align: center
+    :align: center
 
 This ensures that you always start with a fresh session and that you
 therefore are able to log in quickly to the RStudio server.
@@ -131,27 +130,27 @@ You can make use of GitHub Copilot_ in RStudio, provided that you have a
 valid license. Please refer to the :ref:`guidelines on use of generative
 AI and LLMs <s_guidelines_llms>` before doing so.
 
--  To enable Copilot_, click on the ``Tools`` menu and select ``Global
-   Options``:
+- To enable Copilot_, click on the ``Tools`` menu and select ``Global
+  Options``:
 
-   .. image:: images/rstudio_copilot_1.png
+  .. image:: images/rstudio_copilot_1.png
       :align: center
 
--  Open the ``Copilot`` tab and tick the ``Enable Github Copilot``
-   checkbox. Then click the ``Sign In`` button:
+- Open the ``Copilot`` tab and tick the ``Enable Github Copilot``
+  checkbox. Then click the ``Sign In`` button:
 
-   .. image:: images/rstudio_copilot_2.png
+  .. image:: images/rstudio_copilot_2.png
       :align: center
 
--  Finally, copy the verification code you are shown, click on the
-   displayed link, and follow the instructions on Github.
+- Finally, copy the verification code you are shown, click on the
+  displayed link, and follow the instructions on Github.
 
 *****************
  Troubleshooting
 *****************
 
 .. include:: rstudio_troubleshooting.rst
-   :start-line: 8
+    :start-line: 8
 
 .. _copilot: https://github.com/features/copilot
 

@@ -18,14 +18,14 @@ On Linux, this typically results in an ``Operation timed out`` message:
 
 .. code-block:: console
 
-   $ ssh abc123@esrumhead01fl.unicph.domain
-   ssh: connect to host esrumhead01fl.unicph.domain port 22: Operation timed out
+    $ ssh abc123@esrumhead01fl.unicph.domain
+    ssh: connect to host esrumhead01fl.unicph.domain port 22: Operation timed out
 
 On Windows, using MobaXterm, it may result in a ``connection timed out``
 message:
 
 .. image:: /usage/access/images/connecting_mobaxterm_timeout.png
-   :align: center
+    :align: center
 
 Firstly verify that you are correctly connected to the UCPH VPN. This is
 required to connect to Esrum. See the :ref:`p_usage_connecting` page for
@@ -74,30 +74,30 @@ fail before you are able to use your two-factor authentication method:
 
 .. code-block:: text
 
-   POST https://vpn.ku.dk/
-   Connected to 130.225.226.54:443
-   SSL negotiation with vpn.ku.dk
-   Connected to HTTPS on vpn.ku.dk with ciphersuite (TLS1.3)-(ECDHE-SECP256R1)-(RSA-PSS-RSAE-SHA256)-(AES-128-GCM)
-   Got HTTP response: HTTP/1.1 404 Not Found
-   Unexpected 404 result from server
-   GET https://vpn.ku.dk/
-   Connected to 130.225.226.54:443
-   SSL negotiation with vpn.ku.dk
-   Connected to HTTPS on vpn.ku.dk with ciphersuite (TLS1.3)-(ECDHE-SECP256R1)-(RSA-PSS-RSAE-SHA256)-(AES-128-GCM)
-   Got HTTP response: HTTP/1.0 302 Temporary moved
-   GET https://vpn.ku.dk/+webvpn+/index.html
-   SSL negotiation with vpn.ku.dk
-   Connected to HTTPS on vpn.ku.dk with ciphersuite (TLS1.3)-(ECDHE-SECP256R1)-(RSA-PSS-RSAE-SHA256)-(AES-128-GCM)
-   Please enter your username and password.
-   Password: ************
-   POST https://vpn.ku.dk/+webvpn+/index.html
-   Please enter the TOTP code generated on your device
-   POST https://vpn.ku.dk/+webvpn+/login/challenge.html
-   Please enter the TOTP code generated on your device
-   POST https://vpn.ku.dk/+webvpn+/login/challenge.html
-   Please enter the TOTP code generated on your device
-   3 consecutive empty forms, aborting loop
-   Failed to complete authentication
+    POST https://vpn.ku.dk/
+    Connected to 130.225.226.54:443
+    SSL negotiation with vpn.ku.dk
+    Connected to HTTPS on vpn.ku.dk with ciphersuite (TLS1.3)-(ECDHE-SECP256R1)-(RSA-PSS-RSAE-SHA256)-(AES-128-GCM)
+    Got HTTP response: HTTP/1.1 404 Not Found
+    Unexpected 404 result from server
+    GET https://vpn.ku.dk/
+    Connected to 130.225.226.54:443
+    SSL negotiation with vpn.ku.dk
+    Connected to HTTPS on vpn.ku.dk with ciphersuite (TLS1.3)-(ECDHE-SECP256R1)-(RSA-PSS-RSAE-SHA256)-(AES-128-GCM)
+    Got HTTP response: HTTP/1.0 302 Temporary moved
+    GET https://vpn.ku.dk/+webvpn+/index.html
+    SSL negotiation with vpn.ku.dk
+    Connected to HTTPS on vpn.ku.dk with ciphersuite (TLS1.3)-(ECDHE-SECP256R1)-(RSA-PSS-RSAE-SHA256)-(AES-128-GCM)
+    Please enter your username and password.
+    Password: ************
+    POST https://vpn.ku.dk/+webvpn+/index.html
+    Please enter the TOTP code generated on your device
+    POST https://vpn.ku.dk/+webvpn+/login/challenge.html
+    Please enter the TOTP code generated on your device
+    POST https://vpn.ku.dk/+webvpn+/login/challenge.html
+    Please enter the TOTP code generated on your device
+    3 consecutive empty forms, aborting loop
+    Failed to complete authentication
 
 In this happens, then make sure that you are using the
 ``--useragent=AnyConnect --no-external-auth`` options as shown in the

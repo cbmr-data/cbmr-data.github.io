@@ -25,7 +25,7 @@ any missing network folders:
 
 .. code-block:: console
 
-   $ bash /etc/profile.d/symlink-ucphmaps.sh
+    $ bash /etc/profile.d/symlink-ucphmaps.sh
 
 Once this is done, you should have a ``ucph`` symlink in your home
 folder containing links to ``hdir`` (``H:``), ``ndir`` (``N:``), and
@@ -53,8 +53,8 @@ The ``kinit`` command may fail if you are using a ``conda`` environment:
 
 .. code-block:: console
 
-   (base) $ kinit
-   kinit: Unknown credential cache type while getting default ccache
+    (base) $ kinit
+    kinit: Unknown credential cache type while getting default ccache
 
 To circumvent this problem, either specify the full path to the
 ``kinit`` executable (i.e. ``/usr/bin/kinit``) or deactivate the

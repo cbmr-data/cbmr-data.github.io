@@ -19,7 +19,7 @@ you have created.
 
 .. code-block::
 
-   chmod -R +rX,u+w /path/to/copied/data
+    chmod -R +rX,u+w /path/to/copied/data
 
 This will recursively mark files and folders readable for everyone, mark
 folders executable for everyone (required to browse them), and mark

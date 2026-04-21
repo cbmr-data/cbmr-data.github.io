@@ -3,60 +3,60 @@
 ###############################
 
 .. toctree::
-   :hidden:
+    :hidden:
 
-   Front page <self>
-   contact
-   overview
-   guidelines
-   troubleshooting
-
-.. toctree::
-   :hidden:
-   :caption: Using the cluster
-
-   usage/access/access
-   usage/access/connecting
-   usage/filesystem
-   usage/slurm/index
-   usage/modules
-   usage/transfers/index
+    Front page <self>
+    contact
+    overview
+    guidelines
+    troubleshooting
 
 .. toctree::
-   :hidden:
-   :caption: Resources
+    :hidden:
+    :caption: Using the cluster
 
-   resources/cohorts
-   resources/common
-
-.. toctree::
-   :hidden:
-   :caption: Other services
-
-   services/rstudio
-   services/networkdrives
-   services/jupyter
-   services/containers
-   services/shiny
+    usage/access/access
+    usage/access/connecting
+    usage/filesystem
+    usage/slurm/index
+    usage/modules
+    usage/transfers/index
 
 .. toctree::
-   :hidden:
-   :caption: Tips and tricks
+    :hidden:
+    :caption: Resources
 
-   tips/ports
-   tips/modules
-   tips/tmux
-   tips/batching_commands
-   tips/robust_scripts
-   tips/snakemake
-   tips/r
-   tips/idm
+    resources/cohorts
+    resources/common
 
 .. toctree::
-   :hidden:
-   :caption: Outreach
+    :hidden:
+    :caption: Other services
 
-   communications/presentations
+    services/rstudio
+    services/networkdrives
+    services/jupyter
+    services/containers
+    services/shiny
+
+.. toctree::
+    :hidden:
+    :caption: Tips and tricks
+
+    tips/ports
+    tips/modules
+    tips/tmux
+    tips/batching_commands
+    tips/robust_scripts
+    tips/snakemake
+    tips/r
+    tips/idm
+
+.. toctree::
+    :hidden:
+    :caption: Outreach
+
+    communications/presentations
 
 Welcome to the Esrum high-performance computing (HPC) cluster at The
 Novo Nordisk Foundation Center for Basic Metabolic Research (CBMR_).
@@ -89,29 +89,23 @@ However, this documentation is explicitly written to help you get
 started with using Esrum, so you do not need to wait for the next intro
 workshop to use Esrum:
 
-#. Please read the :ref:`p_guidelines` for using Esrum before you
+1. Please read the :ref:`p_guidelines` for using Esrum before you
    continue.
-
-#. To get access to Esrum and related resources, please see the
+2. To get access to Esrum and related resources, please see the
    :ref:`p_usage_access_applying` page
-
-#. Once your request has been approved, you can connect to the cluster
+3. Once your request has been approved, you can connect to the cluster
    as described in the :ref:`connecting to the cluster
    <p_usage_connecting>` page.
-
-#. On Esrum, you'll find your home folder, datasets, projects, and
+4. On Esrum, you'll find your home folder, datasets, projects, and
    network drives laid out as described on the :ref:`p_usage_filesystem`
    page.
-
-#. Users of Esrum have access to a large library of software provided by
+5. Users of Esrum have access to a large library of software provided by
    DAP and UCPH-IT. The :ref:`p_usage_modules` page describes how to
    access this software, and how to request software that is not
    currently available.
-
-#. To run software on Esrum, you must make use of the Slurm_ queuing
+6. To run software on Esrum, you must make use of the Slurm_ queuing
    system as described in :ref:`p_usage_slurm`.
-
-#. Finally, the :ref:`p_transfers` page describes how to transfer your
+7. Finally, the :ref:`p_transfers` page describes how to transfer your
    data to and from Esrum, and to and from services like SIF or
    Computerome.
 
@@ -120,13 +114,13 @@ using Esrum, and more.
 
 .. tip::
 
-   This documentation assumes some familiarity with using Linux and bash
-   (the default command-line). Users who lack this familiarity may
-   benefit from taking the `Mastering the terminal with Bash and Unix`_
-   course offered by the Center for Health Data Science (HeaDS_) at
-   SUND. If you intend to make use of `R <p_tips_r>`_ or the `RStudio
-   <p_service_rstudio>`_ servers, then you may also benefit from the
-   `From Excel to R`_ and `R for Data Science`_ courses.
+    This documentation assumes some familiarity with using Linux and
+    bash (the default command-line). Users who lack this familiarity may
+    benefit from taking the `Mastering the terminal with Bash and Unix`_
+    course offered by the Center for Health Data Science (HeaDS_) at
+    SUND. If you intend to make use of `R <p_tips_r>`_ or the `RStudio
+    <p_service_rstudio>`_ servers, then you may also benefit from the
+    `From Excel to R`_ and `R for Data Science`_ courses.
 
 .. _cbmr: https://cbmr.ku.dk/
 

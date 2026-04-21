@@ -8,8 +8,8 @@
  Esrum Workshop [2026-01-27]
 *****************************
 
-#. Introduction to Esrum
-#. Working on Esrum
+1. Introduction to Esrum
+2. Working on Esrum
 
 `Download slides
 <https://github.com/cbmr-data/cbmr-data.github.io/releases/download/20260127_workshop/esrum_workshop_20260127.pdf>`__

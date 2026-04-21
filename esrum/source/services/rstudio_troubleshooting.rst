@@ -42,22 +42,22 @@ a single variable and the other removing *all* variables in the current
 session:
 
 .. code-block:: r
-   :linenos:
+    :linenos:
 
-   # 1. Remove the variable `my_variable`
-   rm(my_variable)
+    # 1. Remove the variable `my_variable`
+    rm(my_variable)
 
-   # 2. Remove all variables from your R session
-   rm(list = ls())
+    # 2. Remove all variables from your R session
+    rm(list = ls())
 
 Alternatively you can remove all data saved in your R session using the
 broom icon on the ``Environment`` tab:
 
 .. image:: /services/images/rstudio_gc_01.png
-   :align: center
+    :align: center
 
 .. image:: /services/images/rstudio_gc_02.png
-   :align: center
+    :align: center
 
 If you wish to prevent this issue in the first place, then you can also
 turn off saving the data in your session on exit and/or turn off loading
@@ -65,18 +65,17 @@ the saved data on startup. This is accomplished via the ``Global
 Options...`` accessible from the ``Tools`` menu:
 
 .. image:: /services/images/rstudio_gc_03.png
-   :align: center
+    :align: center
 
 Should your R session have grown to such a size that you simply cannot
 log in and clean it up, then it may be necessary to remove the files
 containing the data that R/RStudio has saved. This data is stored in two
 locations:
 
-#. In the ``.RData`` file in your home (``~/.RData``). This is where R
+1. In the ``.RData`` file in your home (``~/.RData``). This is where R
    saves your data if you answer yes ``Save workspace image? [y/n/c]``
    when quitting R.
-
-#. In the ``environment`` file in your RStudio session folder
+2. In the ``environment`` file in your RStudio session folder
    (``~/.local/share/rstudio/sessions/active/session-*/suspended-session-data/environment``).
    This is where RStudio saves your data should your login time out
    while using RStudio.

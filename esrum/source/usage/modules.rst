@@ -34,22 +34,22 @@ available modules by default:
 
 .. code-block:: console
 
-   $ module avail
-   -------------------------- /opt/software/modules --------------------------
-   anaconda2/4.0.0            libpng/1.6.39               texlive/2023
-   anaconda3/4.0.0            libtool/2.4.7               tiff/4.5.0
-   anaconda3/5.3.1            libuv/1.44.2                topspin/4.1.4
-   anaconda3/2020.11          libxkbcommon/1.3.0          trimgalore/0.6.6
-   anaconda3/2021.05          libxscrnsaver/1.0.0         trnascan-se/2.0.11
-   [...]
+    $ module avail
+    -------------------------- /opt/software/modules --------------------------
+    anaconda2/4.0.0            libpng/1.6.39               texlive/2023
+    anaconda3/4.0.0            libtool/2.4.7               tiff/4.5.0
+    anaconda3/5.3.1            libuv/1.44.2                topspin/4.1.4
+    anaconda3/2020.11          libxkbcommon/1.3.0          trimgalore/0.6.6
+    anaconda3/2021.05          libxscrnsaver/1.0.0         trnascan-se/2.0.11
+    [...]
 
 The ``avail`` command can also be used to list module versions by name:
 
 .. code-block:: console
 
-   $ module avail samtools
-   -------------------------- /opt/software/modules --------------------------
-   samtools/1.12  samtools/1.17
+    $ module avail samtools
+    -------------------------- /opt/software/modules --------------------------
+    samtools/1.12  samtools/1.17
 
 Additionally, auto-completion is available in the bash shell if you
 press tab after a module (partial) name when running `module load` (see
@@ -60,22 +60,22 @@ command can be used to search module names and descriptions:
 
 .. code-block:: console
 
-   $ module search conda
-    -------------------------- /opt/software/modules ---------------------------
-        cellranger/3.1.0: a set of analysis pipelines that process [...]
-        cellranger/6.1.1: a set of analysis pipelines that process [...]
-        cellranger/6.1.2: a set of analysis pipelines that process [...]
-             mamba/1.4.1: a fast, robust, and cross-platform package [...]
-            mamba/23.3.1: a fast, robust, and cross-platform package [...]
-         miniconda/4.9.2: free minimal installer for conda
-        miniconda/4.10.4: free minimal installer for conda
+    $ module search conda
+     -------------------------- /opt/software/modules ---------------------------
+         cellranger/3.1.0: a set of analysis pipelines that process [...]
+         cellranger/6.1.1: a set of analysis pipelines that process [...]
+         cellranger/6.1.2: a set of analysis pipelines that process [...]
+              mamba/1.4.1: a fast, robust, and cross-platform package [...]
+             mamba/23.3.1: a fast, robust, and cross-platform package [...]
+          miniconda/4.9.2: free minimal installer for conda
+         miniconda/4.10.4: free minimal installer for conda
 
 .. warning::
 
-   Software modules are added/updated on request and not necessarily
-   when a new version of a tool is released. It is therefore highly
-   recommended to always check that the available versions of tools fit
-   your needs before starting a project.
+    Software modules are added/updated on request and not necessarily
+    when a new version of a tool is released. It is therefore highly
+    recommended to always check that the available versions of tools fit
+    your needs before starting a project.
 
 If the software you need or the *version* of the software you need is
 missing, then you can request that a module be added for that software
@@ -90,59 +90,59 @@ to run the software.
 
 .. code-block:: console
 
-   $ samtools
-   -bash: samtools: command not found
-   $ module load samtools
-   $ samtools
-   Program: samtools (Tools for alignments in the SAM format)
-   Version: 1.17 (using htslib 1.17)
-   [...]
+    $ samtools
+    -bash: samtools: command not found
+    $ module load samtools
+    $ samtools
+    Program: samtools (Tools for alignments in the SAM format)
+    Version: 1.17 (using htslib 1.17)
+    [...]
 
 Specifying the exact version of a module that you want to load is highly
 recommended. This ensures that your results are reproducible:
 
 .. code-block:: console
 
-   $ module load samtools/1.12
-   $ samtools
-   Program: samtools (Tools for alignments in the SAM format)
-   Version: 1.12 (using htslib 1.12)
-   [...]
+    $ module load samtools/1.12
+    $ samtools
+    Program: samtools (Tools for alignments in the SAM format)
+    Version: 1.12 (using htslib 1.12)
+    [...]
 
 .. warning::
 
-   New versions of software are added whenever people request them. This
-   means that, if you do *not* specify a version when loading software,
-   the results of your analyses may change in subtle or not so subtle
-   ways while you are still working on a project.
+    New versions of software are added whenever people request them.
+    This means that, if you do *not* specify a version when loading
+    software, the results of your analyses may change in subtle or not
+    so subtle ways while you are still working on a project.
 
-   You should therefore *always* specify exact versions for the tools
-   you use when loading modules.
+    You should therefore *always* specify exact versions for the tools
+    you use when loading modules.
 
 In some cases one module will require another module:
 
 .. code-block:: console
 
-   $ module load bcftools/1.16
-   Loading bcftools/1.16
-   ERROR: bcftools/1.16 cannot be loaded due to missing prereq.
-      HINT: the following module must be loaded first: perl
+    $ module load bcftools/1.16
+    Loading bcftools/1.16
+    ERROR: bcftools/1.16 cannot be loaded due to missing prereq.
+       HINT: the following module must be loaded first: perl
 
 In that case you simply need to load the required module first. This can
 be done in done manually:
 
 .. code-block:: console
 
-   $ module load perl
-   $ module load bcftools/1.16
+    $ module load perl
+    $ module load bcftools/1.16
 
 Or automatically:
 
 .. code-block:: console
 
-   $ module load --auto bcftools
-   Loading bcftools/1.16
-     Loading requirement: perl/5.26.3
+    $ module load --auto bcftools
+    Loading bcftools/1.16
+      Loading requirement: perl/5.26.3
 
 Additional activation steps
 ===========================
@@ -151,37 +151,38 @@ Some modules require additional steps before you can use them. If so,
 then this is typically described in the ``module display`` text:
 
 .. code-block:: console
-   :emphasize-lines: 11
+    :emphasize-lines: 11
 
-   $ module display cellect/1.0
+    $ module display cellect/1.0
 
-       /opt/software/modules/cellect/1.0:
+        /opt/software/modules/cellect/1.0:
 
-       module-whatis   {CELL-type Expression-specific integration for Complex Traits (CELLECT) is a computational toolkit for identifying likely etiologic cell-types underlying complex traits.}
-       conflict        cellect
-       prereq          miniconda/4.12.0
-       prepend-path    PATH /opt/software/cellect/1.0
-       setenv          CELLECT /opt/software/cellect/1.0
+        module-whatis   {CELL-type Expression-specific integration for Complex Traits (CELLECT) is a computational toolkit for identifying likely etiologic cell-types underlying complex traits.}
+        conflict        cellect
+        prereq          miniconda/4.12.0
+        prepend-path    PATH /opt/software/cellect/1.0
+        setenv          CELLECT /opt/software/cellect/1.0
 
-       This module relies on snakemake which is available using: module load miniconda/4.12.0 followed by conda activate snakemake. You will need to provide your own config-file specifying an outdir.
-       To read more about cellect go to https://github.com/perslab/CELLECT?tab=readme-ov-file
+        This module relies on snakemake which is available using: module load miniconda/4.12.0 followed by conda activate snakemake. You will need to provide your own config-file specifying an outdir.
+        To read more about cellect go to https://github.com/perslab/CELLECT?tab=readme-ov-file
 
 Thus, if we wanted to use ``cellect/1.0``, we would need to perform the
 following steps:
 
 .. code-block:: console
 
-   $ module display cellect/1.0
-   $ module load miniconda/4.12.0
-   $ conda activate snakemake
+    $ module display cellect/1.0
+    $ module load miniconda/4.12.0
+    $ conda activate snakemake
 
 .. warning::
 
-   Modules that make use of conda environments may cause conflict with
-   other modules and/or your own conda environments. For this reason, if
-   you need to use multiple modules and one or more of them uses conda,
-   creating a personal conda environment containing all the software you
-   need is recommended. This minimizes the risk of conflicts and errors.
+    Modules that make use of conda environments may cause conflict with
+    other modules and/or your own conda environments. For this reason,
+    if you need to use multiple modules and one or more of them uses
+    conda, creating a personal conda environment containing all the
+    software you need is recommended. This minimizes the risk of
+    conflicts and errors.
 
 Listing and unloading loaded modules
 ====================================
@@ -191,25 +192,25 @@ command:
 
 .. code-block:: console
 
-   $ modules list
-   Currently Loaded Modulefiles:
-    1) perl/5.26.3   2) bcftools/1.16   3) samtools/1.12
+    $ modules list
+    Currently Loaded Modulefiles:
+     1) perl/5.26.3   2) bcftools/1.16   3) samtools/1.12
 
 To remove a module that you no longer need, use the ``module unload``
 command to unload a single module:
 
 .. code-block:: console
 
-   $ module unload samtools
+    $ module unload samtools
 
 Alternatively, you can use the ``module purge`` command to unload all
 modules:
 
 .. code-block:: console
 
-   $ module purge
-   $ modules list
-   No Modulefiles Currently Loaded.
+    $ module purge
+    $ modules list
+    No Modulefiles Currently Loaded.
 
 ***********************************
  Making your analyses reproducible
@@ -220,9 +221,9 @@ specified. For a lot of software it is not very important that a
 specific version used, but even so it is highly recommended that you
 keep using the same versions of modules throughout a project.
 
-#. This ensures that your results do not suddenly change if a new
+1. This ensures that your results do not suddenly change if a new
    version of a piece of software is installed.
-#. It ensures that you can accurately report what versions of software
+2. It ensures that you can accurately report what versions of software
    were used when it is time to publish your results.
 
 The following section describes using the built-in ``save/restore``
@@ -237,8 +238,8 @@ command:
 
 .. code-block:: console
 
-   $ module config collection_pin_version 1
-   $ module save ./modules.txt
+    $ module config collection_pin_version 1
+    $ module save ./modules.txt
 
 There are two important points here: Firstly, the ``module config
 collection_pin_version 1`` command *must* be run first. If this is not
@@ -255,29 +256,29 @@ loaded modules, e.g:
 
 .. code-block:: console
 
-   $ module list
-   Currently Loaded Modulefiles:
-   1) gcc/11.2.0   2) samtools/1.17   3) perl/5.26.3   4) bcftools/1.16
-   $ module config collection_pin_version 1
-   $ module save ./modules.txt
-   $ cat modules.txt
-   module use --append /opt/software/modules
-   module load gcc/11.2.0
-   module load samtools/1.17
-   module load perl/5.26.3
-   module load bcftools/1.16
+    $ module list
+    Currently Loaded Modulefiles:
+    1) gcc/11.2.0   2) samtools/1.17   3) perl/5.26.3   4) bcftools/1.16
+    $ module config collection_pin_version 1
+    $ module save ./modules.txt
+    $ cat modules.txt
+    module use --append /opt/software/modules
+    module load gcc/11.2.0
+    module load samtools/1.17
+    module load perl/5.26.3
+    module load bcftools/1.16
 
 To load the saved modules, simply run ``module restore`` with the same
 filename (and a directory component):
 
 .. code-block:: console
 
-   $ module list
-   No Modulefiles Currently Loaded.
-   $ module restore ./modules.txt
-   $ module list
-   Currently Loaded Modulefiles:
-   1) gcc/11.2.0   2) samtools/1.17   3) perl/5.26.3   4) bcftools/1.16
+    $ module list
+    No Modulefiles Currently Loaded.
+    $ module restore ./modules.txt
+    $ module list
+    Currently Loaded Modulefiles:
+    1) gcc/11.2.0   2) samtools/1.17   3) perl/5.26.3   4) bcftools/1.16
 
 Alternative, use the ``.`` command or the ``source`` command to execute
 the content of the file in your current shell. This has the same effect
@@ -285,13 +286,13 @@ as running ``module restore``:
 
 .. code-block:: console
 
-   $ . ./modules.txt
+    $ . ./modules.txt
 
 or
 
 .. code-block:: console
 
-   $ source ./modules.txt
+    $ source ./modules.txt
 
 Simply running the script with ``bash modules.sh`` will not work.
 
@@ -312,22 +313,22 @@ command:
 
 .. code-block:: console
 
-   ---------------- /projects/cbmr_shared/apps/modules/modulefiles ----------------
-   add_dbsnp_ids/20231206_1  msconvert/20250218_1    sacct-usage/20240603_1
-   annovep/20230808          pgs-calc/1.5.4          slurmboard/0.0.1
-   [...]
+    ---------------- /projects/cbmr_shared/apps/modules/modulefiles ----------------
+    add_dbsnp_ids/20231206_1  msconvert/20250218_1    sacct-usage/20240603_1
+    annovep/20230808          pgs-calc/1.5.4          slurmboard/0.0.1
+    [...]
 
-   ---------------------------- /opt/software/modules -----------------------------
-   ABC/1.0.0                         macs/3.0.0                       zlib/1.2.11
-   adapterremoval/2.3.3              mageck/0.5.9.4                   zlib/1.2.13
-   [...]
+    ---------------------------- /opt/software/modules -----------------------------
+    ABC/1.0.0                         macs/3.0.0                       zlib/1.2.11
+    adapterremoval/2.3.3              mageck/0.5.9.4                   zlib/1.2.13
+    [...]
 
 Should the modules not be listed, then you can manually register them
 using the ``module use`` command:
 
 .. code-block:: console
 
-   $ module use --prepend /projects/cbmr_shared/apps/modules/modulefiles/
+    $ module use --prepend /projects/cbmr_shared/apps/modules/modulefiles/
 
 You can add the ``module use`` command to the end of your ``~/.bashrc``
 file to make the shared modules available every time you connect to
@@ -345,9 +346,9 @@ specific version you need is not available, then you can simply
 
 We will need the following information:
 
-#. The name and version of the software you would like to request
-#. A link to where the software can be downloaded (if applicable)
-#. Any special considerations, like optional features to be enabled and
+1. The name and version of the software you would like to request
+2. A link to where the software can be downloaded (if applicable)
+3. Any special considerations, like optional features to be enabled and
    the like
 
 Depending on the software you requested, it can either be made available

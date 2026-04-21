@@ -24,21 +24,19 @@ available.
 Users connect to the "head" node, from which jobs can be submitted to
 the individual compute nodes using the Slurm_ Workload Manager:
 
-+----+--------------------+------+----------+---------------------+-----------------------------------+
-|    | Node               | RAM  | CPUs     | GPUs                | Name(s)                           |
-+====+====================+======+==========+=====================+===================================+
-| 1  | Head               | 2 TB | 48 cores |                     | *esrumhead01fl*                   |
-+----+--------------------+------+----------+---------------------+-----------------------------------+
-| 12 | Compute            | 2 TB | 64 cores |                     | *esrumcmpn01fl* - *esrumcmpn12fl* |
-+----+--------------------+------+----------+---------------------+-----------------------------------+
-| 1  | GPU / high-memory  | 4 TB | 64 cores | 2x NVIDIA A100 80GB | *esrumgpun01fl*                   |
-+----+--------------------+------+----------+---------------------+-----------------------------------+
-| 3  | GPU                | 2 TB | 64 cores | 2x NVIDIA H100 80GB | *esrumgpun02fl* - *esrumgpun04fl* |
-+----+--------------------+------+----------+---------------------+-----------------------------------+
-| 2  | Rstudio            | 2 TB | 64 cores |                     | *esrumweb01fl*, *esrumweb02fl*    |
-+----+--------------------+------+----------+---------------------+-----------------------------------+
-| 1  | Container*         | 2 TB | 64 cores |                     | *esrumcont01fl*                   |
-+----+--------------------+------+----------+---------------------+-----------------------------------+
+== ================= ==== ======== =================== =================
+#  Node              RAM  CPUs     GPUs                Name(s)
+== ================= ==== ======== =================== =================
+1  Head              2 TB 48 cores                     *esrumhead01fl*
+12 Compute           2 TB 64 cores                     *esrumcmpn01fl* -
+                                                       *esrumcmpn12fl*
+1  GPU / high-memory 4 TB 64 cores 2x NVIDIA A100 80GB *esrumgpun01fl*
+3  GPU               2 TB 64 cores 2x NVIDIA H100 80GB *esrumgpun02fl* -
+                                                       *esrumgpun04fl*
+2  Rstudio           2 TB 64 cores                     *esrumweb01fl*,
+                                                       *esrumweb02fl*
+1  Container*        2 TB 64 cores                     *esrumcont01fl*
+== ================= ==== ======== =================== =================
 
 All nodes use AMD EPYC CPUs, but the exact model differs across nodes,
 according to the role and when they were purchased. See the
@@ -52,9 +50,9 @@ Scratch space
 
 Each node furthermore has at least 1.5 TB of local scratch space:
 
--  Most nodes have ~3 TB of local scratch
--  *esrumcmpn07fl* to *esrumcmpn11fl* each have ~1.5 TB of local scratch
--  *esrumcmpn12fl* has ~18 TB of local scratch
+- Most nodes have ~3 TB of local scratch
+- *esrumcmpn07fl* to *esrumcmpn11fl* each have ~1.5 TB of local scratch
+- *esrumcmpn12fl* has ~18 TB of local scratch
 
 **********
  Software
@@ -119,7 +117,7 @@ VPN.
  Additional resources
 **********************
 
--  Official `UCPH computing/HPC Systems`_ documentation on KUnet.
+- Official `UCPH computing/HPC Systems`_ documentation on KUnet.
 
 .. _cbmr: https://cbmr.ku.dk/
 

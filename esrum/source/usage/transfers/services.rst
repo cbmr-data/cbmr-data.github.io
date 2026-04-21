@@ -27,17 +27,16 @@ intensive programs like a full-fledged browser perform poorly over SSH.
 Therefore, you must enable both X11-forwarding and SSH-compression
 before attempting to run a browser (here Firefox):
 
--  Linux and OSX users can connect to Esrum using the command ``ssh -S
-   none -C -X abc123@esrumhead01fl``, replacing ``abc123`` with your
-   username. This ensures that we open a new connection (``-S none``),
-   enables compression (``-C``), and enables X11-forwarding (``-X``).
-
--  Windows users using Mobaxterm should have both X11-forwarding and
-   compression enabled by default. To verify this, right-click on your
-   entry for Esrum in your session list and select ``Edit session``.
-   Then open the ``Advanced SSH settings`` tab on the ``SSH`` page and
-   verify that both the ``X11-forwarding`` and the ``Compression``
-   checkboxes are checked.
+- Linux and OSX users can connect to Esrum using the command ``ssh -S
+  none -C -X abc123@esrumhead01fl``, replacing ``abc123`` with your
+  username. This ensures that we open a new connection (``-S none``),
+  enables compression (``-C``), and enables X11-forwarding (``-X``).
+- Windows users using Mobaxterm should have both X11-forwarding and
+  compression enabled by default. To verify this, right-click on your
+  entry for Esrum in your session list and select ``Edit session``. Then
+  open the ``Advanced SSH settings`` tab on the ``SSH`` page and verify
+  that both the ``X11-forwarding`` and the ``Compression`` checkboxes
+  are checked.
 
 As there are currently no browsers installed on Esrum, you will need to
 install a copy of Firefox in your home. To do so, perform the following
@@ -45,8 +44,8 @@ steps:
 
 .. code-block:: bash
 
-   module load pixi/latest
-   pixi global install firefox
+    module load pixi/latest
+    pixi global install firefox
 
 Once you have verified that you are connected with both X11-forwarding
 and compression enabled, and you have installed Firefox in your home,
@@ -54,8 +53,8 @@ start an interactive session on Esrum and start Firefox:
 
 .. code-block:: bash
 
-   srun --pty --x11 -- /bin/bash
-   firefox "https://sif.ku.dk/"
+    srun --pty --x11 -- /bin/bash
+    firefox "https://sif.ku.dk/"
 
 Log in to SIF using your KU ID, once the browser window has opened, and
 make sure to open the project you wish to transfer files to or from. You
@@ -64,10 +63,10 @@ or SIF will complain that you are not authenticated.
 
 .. note::
 
-   The Firefox browser will most likely be a bit sluggish, as a
-   consequence of it running over SSH. If it is so sluggish that it is
-   hard to interact with it, then double-check that you are connected
-   with compression enabled.
+    The Firefox browser will most likely be a bit sluggish, as a
+    consequence of it running over SSH. If it is so sluggish that it is
+    hard to interact with it, then double-check that you are connected
+    with compression enabled.
 
 .. _s_sif_erda_sftp:
 
@@ -88,15 +87,15 @@ project, you might run the following:
 
 .. code-block:: console
 
-   $ mkdir /projects/my_project-AUDIT/data/my_data
-   $ cd /projects/my_project-AUDIT/data/my_data
-   $ lftp sftp://sif-io.erda.dk
-   > user ${YOUR_PROJECT_USERNAME}
-   Password: ***********
-   > set net:connection-limit 1
-   > set net:max-retries 1;
-   > cd my_data
-   > mirror
+    $ mkdir /projects/my_project-AUDIT/data/my_data
+    $ cd /projects/my_project-AUDIT/data/my_data
+    $ lftp sftp://sif-io.erda.dk
+    > user ${YOUR_PROJECT_USERNAME}
+    Password: ***********
+    > set net:connection-limit 1
+    > set net:max-retries 1;
+    > cd my_data
+    > mirror
 
 Your project username (``${YOUR_PROJECT_USERNAME}``) is available via
 the ``Setup`` page for each project once you log into SIF and typically
@@ -104,8 +103,8 @@ looks something like ``Johann.Gambolputty@sund.ku.dk@MyProject``.
 
 .. warning::
 
-   Remember to set a password for the project on SIF before attempting
-   to log in! This is done on the ``Setup`` page described above.
+    Remember to set a password for the project on SIF before attempting
+    to log in! This is done on the ``Setup`` page described above.
 
 The two ``set`` commands are required to prevent ``lftp`` from
 performing simultaneous downloads (not supported by SIF) and to prevent
@@ -116,11 +115,11 @@ receiving numerous emails if a transfer fails.
 .. _s_transfers_google_cloud:
 
 ..
-   ****************************************
-   Transferring data to/from Google Cloud
-   ****************************************
+    ****************************************
+    Transferring data to/from Google Cloud
+    ****************************************
 
-   TODO
+    TODO
 
 .. _erda: https://erda.ku.dk/
 

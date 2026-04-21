@@ -29,13 +29,13 @@ these resources. You must therefore select use the option
 follows in a sbatch script:
 
 .. code-block:: bash
-   :linenos:
-   :emphasize-lines: 2
+    :linenos:
+    :emphasize-lines: 2
 
-   #!/bin/bash
-   #SBATCH --partition=gpuqueue
+    #!/bin/bash
+    #SBATCH --partition=gpuqueue
 
-   my-memory-hungry-command
+    my-memory-hungry-command
 
 While running on the GPU queue, you can reserve up to 3920 GB of RAM and
 up to two GPUs (see below) per job. The GPU / high-memory nodes
@@ -46,21 +46,21 @@ For example, to run a job using 2.5 TB of RAM on the GPU / high-memory
 node:
 
 .. code-block:: bash
-   :linenos:
-   :emphasize-lines: 2
+    :linenos:
+    :emphasize-lines: 2
 
-   #!/bin/bash
-   #SBATCH --partition=gpuqueue
-   #SBATCH --mem 2560G
+    #!/bin/bash
+    #SBATCH --partition=gpuqueue
+    #SBATCH --mem 2560G
 
-   my-memory-hungry-command
+    my-memory-hungry-command
 
 This script can then be submitted as usual:
 
 .. code-block:: console
 
-   $ sbatch my_hi_mem_job.sh
-   Submitted batch job 217217
+    $ sbatch my_hi_mem_job.sh
+    Submitted batch job 217217
 
 See the :ref:`p_usage_slurm_basics` and :ref:`p_usage_slurm_advanced`
 pages for information about reserving additional CPUs, more RAM, and for
@@ -81,13 +81,13 @@ queue, as described above. This might look as follows in a ``sbatch``
 script:
 
 .. code-block:: bash
-   :linenos:
-   :emphasize-lines: 2
+    :linenos:
+    :emphasize-lines: 2
 
-   #!/bin/bash
-   #SBATCH --partition=gpuqueue --gres=gpu:1
+    #!/bin/bash
+    #SBATCH --partition=gpuqueue --gres=gpu:1
 
-   nvidia-smi -L
+    nvidia-smi -L
 
 The ``--gres=gpu:1`` in the above asks Slurm to make 1 GPU available to
 our job. This can be increased to ``2`` to reserve both GPUs on the
@@ -98,10 +98,10 @@ This script can then be submitted as usual:
 
 .. code-block:: console
 
-   $ sbatch my_gpu_job.sh
-   Submitted batch job 217218
-   $ cat slurm-217218.out
-   GPU 0: NVIDIA A100 80GB PCIe (UUID: GPU-4f2ff8df-0d18-a99b-9fb8-67aa0867f7a3)
+    $ sbatch my_gpu_job.sh
+    Submitted batch job 217218
+    $ cat slurm-217218.out
+    GPU 0: NVIDIA A100 80GB PCIe (UUID: GPU-4f2ff8df-0d18-a99b-9fb8-67aa0867f7a3)
 
 Requesting specific GPUs
 ========================
@@ -115,22 +115,22 @@ To request an A100 GPU, replace the ``--gres=gpu:1`` option with
 ``--gres=gpu:1`` option with ``--gres=gpu:h100:1``. For example,
 
 .. code-block:: bash
-   :linenos:
-   :emphasize-lines: 2
+    :linenos:
+    :emphasize-lines: 2
 
-   #!/bin/bash
-   #SBATCH --partition=gpuqueue --gres=gpu:h100:1
+    #!/bin/bash
+    #SBATCH --partition=gpuqueue --gres=gpu:h100:1
 
-   nvidia-smi -L
+    nvidia-smi -L
 
 This script can then be submitted as usual:
 
 .. code-block:: console
 
-   $ sbatch my_h100_job.sh
-   Submitted batch job 217219
-   $ cat slurm-217219.out
-   GPU 0: NVIDIA H100 NVL (UUID: GPU-c43d0655-2d15-7e66-90b3-9b732a1d13ba)
+    $ sbatch my_h100_job.sh
+    Submitted batch job 217219
+    $ cat slurm-217219.out
+    GPU 0: NVIDIA H100 NVL (UUID: GPU-c43d0655-2d15-7e66-90b3-9b732a1d13ba)
 
 We recommend looking at current GPU utilization before submitting your
 job, as any time saved by running on a faster (H100) GPU may be lost
@@ -154,7 +154,7 @@ you need a GPU, as well as other resource options described in the
 
 .. code-block:: console
 
-   $ srun --pty --partition=gpuqueue -- /bin/bash
+    $ srun --pty --partition=gpuqueue -- /bin/bash
 
 See the :ref:`s_interactive_session` section for information about
 interactive sessions, including information about running programs with
@@ -162,8 +162,8 @@ graphical interfaces.
 
 .. warning::
 
-   Interactive sessions left running on the GPU node may be terminated
-   without warning.
+    Interactive sessions left running on the GPU node may be terminated
+    without warning.
 
 ****************************
  Monitoring GPU utilization

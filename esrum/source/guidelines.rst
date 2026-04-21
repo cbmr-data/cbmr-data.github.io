@@ -20,40 +20,34 @@ data`_.
  Basic security
 ****************
 
--  Your account on Esrum is strictly personal and must not be shared.
--  Never leave your computer unsecured while logged onto the cluster.
-   Your computer *must* be locked or turned off whenever you leave it.
+- Your account on Esrum is strictly personal and must not be shared.
+- Never leave your computer unsecured while logged onto the cluster.
+  Your computer *must* be locked or turned off whenever you leave it.
 
 **************
  Data storage
 **************
 
--  GDPR protected data *must* be stored in audited folders. These can be
-   recognized by the ``-AUDIT`` suffix, for example
-   ``/projects/name-AUDIT`` or ``/datasets/name-AUDIT``.
-
--  Directory names and file names *must not* contain GDPR protected data
-   or other confidential information, even if placed in an audited
-   folder. This is because common operations expose this information to
-   *all* users of the cluster. For the same reason, *do not* include
-   such information in command-line arguments.
-
--  Data *must not* be copied out of audited ``/datasets`` or
-   ``/projects`` folders without permission from the relevant data
-   controller. Instead, place symbolic links pointing to the
-   ``/datasets`` or ``/projects`` folders, in a more convenient
-   location.
-
--  Data must not leave the cluster without permission from the relevant
-   data controllers.
-
--  Do not store data or other files related to projects in your home
-   folder. Your home folder is accessible only to you, unless you have
-   provided written consent to UCPH-IT.
-
--  Storage on Esrum is not free, so please remember to delete data that
-   you no longer need, and make sure to compress data that you do need
-   to keep around.
+- GDPR protected data *must* be stored in audited folders. These can be
+  recognized by the ``-AUDIT`` suffix, for example
+  ``/projects/name-AUDIT`` or ``/datasets/name-AUDIT``.
+- Directory names and file names *must not* contain GDPR protected data
+  or other confidential information, even if placed in an audited
+  folder. This is because common operations expose this information to
+  *all* users of the cluster. For the same reason, *do not* include such
+  information in command-line arguments.
+- Data *must not* be copied out of audited ``/datasets`` or
+  ``/projects`` folders without permission from the relevant data
+  controller. Instead, place symbolic links pointing to the
+  ``/datasets`` or ``/projects`` folders, in a more convenient location.
+- Data must not leave the cluster without permission from the relevant
+  data controllers.
+- Do not store data or other files related to projects in your home
+  folder. Your home folder is accessible only to you, unless you have
+  provided written consent to UCPH-IT.
+- Storage on Esrum is not free, so please remember to delete data that
+  you no longer need, and make sure to compress data that you do need to
+  keep around.
 
 See :ref:`p_usage_filesystem` for more information.
 
@@ -72,10 +66,10 @@ and in `English
 
 Briefly,
 
--  It is your responsibility that no sensitive information is
-   transmitted to external systems.
--  If possible, run the models locally on Esrum using our :ref:`GPU
-   nodes <p_usage_slurm_gpu>`.
+- It is your responsibility that no sensitive information is transmitted
+  to external systems.
+- If possible, run the models locally on Esrum using our :ref:`GPU nodes
+  <p_usage_slurm_gpu>`.
 
 .. _s_guidelines_jobs:
 
@@ -83,23 +77,21 @@ Briefly,
  Running jobs
 **************
 
--  The head node (``esrumhead01fl``) is only for very small jobs,
-   meaning that you use no more than a couple of CPUs *in total*, with
-   modest memory usage, as running larger jobs may impact the ability of
-   everyone to use the cluster. Similarly, do not run transfers/copies
-   on/to/from the head node.
-
--  Remember to be considerate to other users. For example, by limiting
-   the number of jobs you are running simultaneously, so that other
-   users can also run their jobs. We do not enforce hard limits on how
-   many resources a single user can use, but please always consider
-   :ref:`how busy the cluster is <s_monitoring_slurm>` before starting
-   many or larger jobs.
-
--  Please remember to close interactive shells, notebooks, containers,
-   and other processes that you have started via Slurm or the container
-   system. Resources that you have reserved are not made available for
-   other users until your tasks have finished.
+- The head node (``esrumhead01fl``) is only for very small jobs, meaning
+  that you use no more than a couple of CPUs *in total*, with modest
+  memory usage, as running larger jobs may impact the ability of
+  everyone to use the cluster. Similarly, do not run transfers/copies
+  on/to/from the head node.
+- Remember to be considerate to other users. For example, by limiting
+  the number of jobs you are running simultaneously, so that other users
+  can also run their jobs. We do not enforce hard limits on how many
+  resources a single user can use, but please always consider :ref:`how
+  busy the cluster is <s_monitoring_slurm>` before starting many or
+  larger jobs.
+- Please remember to close interactive shells, notebooks, containers,
+  and other processes that you have started via Slurm or the container
+  system. Resources that you have reserved are not made available for
+  other users until your tasks have finished.
 
 While it is our goal that everyone should be able to start smaller jobs
 in a reasonable amount of time, it is expected for larger jobs to be
@@ -120,13 +112,12 @@ and more.
 
 When this need arises, DAP will either
 
--  grant access to the relevant staff member(s), for an appropriate time
-   period, after notifying the data owner. This applies to datasets and
-   projects directly administered by DAP.
-
--  request access to the datasets and/or projects, using the `Identity
-   Management system`_. This applies to datasets and projects *not*
-   administered by DAP.
+- grant access to the relevant staff member(s), for an appropriate time
+  period, after notifying the data owner. This applies to datasets and
+  projects directly administered by DAP.
+- request access to the datasets and/or projects, using the `Identity
+  Management system`_. This applies to datasets and projects *not*
+  administered by DAP.
 
 A formal data access request will also be made in cases where DAP staff
 members participate in the scientific exploitation of protected data,
@@ -148,9 +139,9 @@ kindly ask that you acknowledge the platform in any resulting
 publications, presentations, or other scientific output. For example via
 an acknowledgement such as,
 
-   HPC facilities and technical expertise was provided by the Data
-   Analytics Platform at the Novo Nordisk Foundation Center for Basic
-   Metabolic Research.
+    HPC facilities and technical expertise was provided by the Data
+    Analytics Platform at the Novo Nordisk Foundation Center for Basic
+    Metabolic Research.
 
 .. _gdpr sensitive data: https://kunet.ku.dk/work-areas/research/data/personal-data/Pages/default.aspx
 
