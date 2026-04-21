@@ -27,27 +27,27 @@ script. For example, this script runs the ``plonk`` command on a number
 of population VCF files:
 
 .. code-block:: bash
-   :linenos:
+    :linenos:
 
-   #!/bin/bash
-   module load plonk/3.14
+    #!/bin/bash
+    module load plonk/3.14
 
-   for pop in CHB FIN GBR JPT PUR YRI; do
-     plonk --input "./my_data/${pop}.vcf" --output "./my_results/${pop}.out"
-   done
+    for pop in CHB FIN GBR JPT PUR YRI; do
+      plonk --input "./my_data/${pop}.vcf" --output "./my_results/${pop}.out"
+    done
 
 The following command indexes a number of (small) BAM files in the
 current directory:
 
 .. code-block:: bash
-   :linenos:
+    :linenos:
 
-   #!/bin/bash
-   module load samtools/1.17
+    #!/bin/bash
+    module load samtools/1.17
 
-   for filename in ./*.bam; do
-     samtools index ${filename}
-   done
+    for filename in ./*.bam; do
+      samtools index ${filename}
+    done
 
 However, it is important to remember that the total runtime will be the
 *sum* of run-times for each task, since they are run one after the
@@ -62,15 +62,15 @@ The GNU parallel_ commands offers a range of options for running
 commands in parallel.
 
 .. code-block:: bash
-   :linenos:
+    :linenos:
 
-   #!/bin/bash
-   module load plonk/3.14
-   module load parallel/20230822
+    #!/bin/bash
+    module load plonk/3.14
+    module load parallel/20230822
 
-   parallel -P ${SLURM_CPUS_PER_TASK} \
-     plonk --input "./my_data/{}.vcf" --output "./my_results/{}.out" \
-     ::: CHB FIN GBR JPT PUR YRI
+    parallel -P ${SLURM_CPUS_PER_TASK} \
+      plonk --input "./my_data/{}.vcf" --output "./my_results/{}.out" \
+      ::: CHB FIN GBR JPT PUR YRI
 
 The ``parallel`` command will then execute ``plonk`` once for each of
 the values we specified after the ``:::`` and replace the text ``{}``
@@ -79,28 +79,28 @@ with the current value.
 The second ``xargs`` example above can be run in parallel as follows:
 
 .. code-block:: bash
-   :linenos:
+    :linenos:
 
-   #!/bin/bash
-   module load samtools/1.17
-   module load parallel/20230822
+    #!/bin/bash
+    module load samtools/1.17
+    module load parallel/20230822
 
-   parallel -P ${SLURM_CPUS_PER_TASK} \
-     samtools index "{}" \
-     ::: ./*.bam
+    parallel -P ${SLURM_CPUS_PER_TASK} \
+      samtools index "{}" \
+      ::: ./*.bam
 
 If no ``{}`` is specified the value will be appended to the command.
 Additionally, ``parallel`` can read values from STDIN, meaning that the
 above could also be written as
 
 .. code-block:: bash
-   :linenos:
+    :linenos:
 
-   #!/bin/bash
-   module load samtools/1.17
-   module load parallel/20230822
+    #!/bin/bash
+    module load samtools/1.17
+    module load parallel/20230822
 
-   ls ./*.bam | parallel -P ${SLURM_CPUS_PER_TASK} samtools index
+    ls ./*.bam | parallel -P ${SLURM_CPUS_PER_TASK} samtools index
 
 Each line on STDIN is treated as one value.
 
@@ -122,15 +122,15 @@ number of processes with ``parallel``.
 Using the ``plonk`` example from above:
 
 .. code-block:: bash
-   :linenos:
+    :linenos:
 
-   #!/bin/bash
-   module load plonk/3.14
-   module load parallel/20230822
+    #!/bin/bash
+    module load plonk/3.14
+    module load parallel/20230822
 
-   parallel -P ${SLURM_CPUS_PER_TASK} \
-     plonk --input "./my_data/{}.vcf" --output "./my_results/{}.out" \
-     ::: CHB FIN GBR JPT PUR YRI
+    parallel -P ${SLURM_CPUS_PER_TASK} \
+      plonk --input "./my_data/{}.vcf" --output "./my_results/{}.out" \
+      ::: CHB FIN GBR JPT PUR YRI
 
 Let's say that ``plonk`` is able to use multiple threads and that I
 decide to use 4 threads per process. In that case, I could reserve 12
@@ -138,16 +138,16 @@ threads for my job and then run 3 instances of ``plonk`` using
 ``parallel``.
 
 .. code-block:: bash
-   :linenos:
+    :linenos:
 
-   #!/bin/bash
-   #SBATCH --cpus-per-task=12
-   module load plonk/3.14
-   module load parallel/20230822
+    #!/bin/bash
+    #SBATCH --cpus-per-task=12
+    module load plonk/3.14
+    module load parallel/20230822
 
-   parallel -P 3 \
-     plonk --threads 4 --input "./my_data/{}.vcf" --output "./my_results/{}.out" \
-     ::: CHB FIN GBR JPT PUR YRI
+    parallel -P 3 \
+      plonk --threads 4 --input "./my_data/{}.vcf" --output "./my_results/{}.out" \
+      ::: CHB FIN GBR JPT PUR YRI
 
 This however has the disadvantage that you have to make sure that
 ``--cpus-per-task``, ``-P``, and ``--threads`` (or whatever option your

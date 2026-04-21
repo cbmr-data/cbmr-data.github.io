@@ -12,11 +12,10 @@ virtualization.
 The Esrum cluster supports two different methods for running
 containerized software:
 
-#. Singularity_ (now renamed to ``AppTainer``) for running containerized
+1. Singularity_ (now renamed to ``AppTainer``) for running containerized
    applications using the SLURM queuing system. Instructions are
    provided below for converting existing Docker/Podman containers.
-
-#. Podman_ for longer-running services on the specialized container
+2. Podman_ for longer-running services on the specialized container
    node. Podman is Docker_ compatible, but is designed from the ground
    up for running in user-space and therefore offers better security
    guarantees.
@@ -42,8 +41,8 @@ of the `pegi3s/bwa`_ image on `Docker Hub`_:
 
 .. code-block:: console
 
-   $ module load --auto singularity
-   $ singularity build --disable-cache pegi3s_bwa_0.7.17.sif docker://pegi3s/bwa:0.7.17
+    $ module load --auto singularity
+    $ singularity build --disable-cache pegi3s_bwa_0.7.17.sif docker://pegi3s/bwa:0.7.17
 
 This fetches the ``pegi3s/bwa`` image with the tag ``0.7.17`` and saves
 it to the local file ``pegi3s_bwa_0.7.17.sif``. It is recommended that
@@ -61,18 +60,18 @@ Once you have run the ``build`` command, the image can be run using the
 
 .. code-block:: console
 
-   $ singularity run pegi3s_bwa_0.7.17.sif bwa
+    $ singularity run pegi3s_bwa_0.7.17.sif bwa
 
-   Program: bwa (alignment via Burrows-Wheeler transformation)
-   Version: 0.7.17-r1188
-   Contact: Heng Li <lh3@sanger.ac.uk>
+    Program: bwa (alignment via Burrows-Wheeler transformation)
+    Version: 0.7.17-r1188
+    Contact: Heng Li <lh3@sanger.ac.uk>
 
 It is also possible to run `Docker Hub`_ images "directly" by using a
 ``docker://`` URL instead of the path to a singularity image:
 
 .. code-block:: console
 
-   $ singularity run docker://pegi3s/bwa:0.7.17 bwa
+    $ singularity run docker://pegi3s/bwa:0.7.17 bwa
 
 However, this caches the image in your home folder, and it is therefore
 not recommended for the reasons described above.
@@ -87,31 +86,31 @@ a single file:
 
 .. code-block:: console
 
-   $ podman save my-image:v1.2.3 --output ~/my_image_v1.2.3.tar
+    $ podman save my-image:v1.2.3 --output ~/my_image_v1.2.3.tar
 
 Once the image has been exported, you can transfer it to Esrum using
 ``scp`` or another such method:
 
 .. code-block:: console
 
-   $ scp ~/my_image_v1.2.3.tar abc123@esrumhead01fl.unicph.domain:/projects/my_project/scratch/
+    $ scp ~/my_image_v1.2.3.tar abc123@esrumhead01fl.unicph.domain:/projects/my_project/scratch/
 
 Finally, you can convert the image on Esrum to the format used by
 singularity:
 
 .. code-block:: console
 
-   $ ssh abc123@esrumhead01fl.unicph.domain
-   $ module load --auto singularity
-   $ cd /projects/my_project/scratch/
-   $ singularity build my_image_v1.2.3.sif docker-archive://my_image_v1.2.3.tar
+    $ ssh abc123@esrumhead01fl.unicph.domain
+    $ module load --auto singularity
+    $ cd /projects/my_project/scratch/
+    $ singularity build my_image_v1.2.3.sif docker-archive://my_image_v1.2.3.tar
 
 The singularity image can then be run using the ``singularity run``
 command:
 
 .. code-block:: console
 
-   $ singularity run --bind /maps,/projects,/datasets,/scratch my_image_v1.2.3.sif
+    $ singularity run --bind /maps,/projects,/datasets,/scratch my_image_v1.2.3.sif
 
 Singularity will make your home folder available by default, but the
 ``--bind`` option is required additional folder accessible to the

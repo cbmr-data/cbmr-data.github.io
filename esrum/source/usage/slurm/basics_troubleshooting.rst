@@ -29,17 +29,17 @@ If more than 128 CPUs requested:
 
 .. code-block:: console
 
-   $ sbatch --cpus-per-task 200 my_script.sh
-   sbatch: error: CPU count per node can not be satisfied
-   sbatch: error: Batch job submission failed: Requested node configuration is not available
+    $ sbatch --cpus-per-task 200 my_script.sh
+    sbatch: error: CPU count per node can not be satisfied
+    sbatch: error: Batch job submission failed: Requested node configuration is not available
 
 More than 1993 GB RAM requested on compute node:
 
 .. code-block:: console
 
-   $ sbatch --mem 2000G my_script.sh
-   sbatch: error: Memory specification can not be satisfied
-   sbatch: error: Batch job submission failed: Requested node configuration is not available
+    $ sbatch --mem 2000G my_script.sh
+    sbatch: error: Memory specification can not be satisfied
+    sbatch: error: Batch job submission failed: Requested node configuration is not available
 
 To solve this, simply reduce the number of CPUs and/or the amount of RAM
 requested to fit within the limits described above. If your task does
@@ -53,15 +53,15 @@ If ``--partition=gpuqueue`` not specified:
 
 .. code-block:: console
 
-   $ srun --gres=gpu:2 -- echo "Hello world!"
-   srun: error: Unable to allocate resources: Requested node configuration is not available
+    $ srun --gres=gpu:2 -- echo "Hello world!"
+    srun: error: Unable to allocate resources: Requested node configuration is not available
 
 If more than 2 GPUs requested:
 
 .. code-block:: console
 
-   $ srun --partition=gpuqueue --gres=gpu:3 -- echo "Hello world!"
-   srun: error: Unable to allocate resources: Requested node configuration is not available
+    $ srun --partition=gpuqueue --gres=gpu:3 -- echo "Hello world!"
+    srun: error: Unable to allocate resources: Requested node configuration is not available
 
 To solve this error, simply avoid requesting more than 2 GPUs, and
 remember to include the ``--partition`` option. See also the
@@ -78,22 +78,23 @@ was run:
 
 .. code-block::
 
-   $ srun --pty /bin/
-   slurmstepd: error: execve(): /bin/slurm_bcast_123456.0_esrumcmpn01fl: No such file or directory
-   srun: error: esrumcmpn01fl: task 0: Exited with exit code 2
+    $ srun --pty /bin/
+    slurmstepd: error: execve(): /bin/slurm_bcast_123456.0_esrumcmpn01fl: No such file or directory
+    srun: error: esrumcmpn01fl: task 0: Exited with exit code 2
 
 To fix this, ensure that you are running an executable and not a folder:
 
 .. code-block::
 
-   $ srun --pty /bin/bash
+    $ srun --pty /bin/bash
 
 .. note::
 
-   This failure relates to the ``--bcast`` option, that allow you to
-   copy an executable from the head node to a folder on the node on
-   which the job is executed. This is typically not required on Esrum,
-   since all home, project, and dataset folders are shared across nodes.
+    This failure relates to the ``--bcast`` option, that allow you to
+    copy an executable from the head node to a folder on the node on
+    which the job is executed. This is typically not required on Esrum,
+    since all home, project, and dataset folders are shared across
+    nodes.
 
 X11 forwarding not working in MobaXterm
 =======================================
@@ -103,11 +104,11 @@ select ``Edit session``. Make sure that the ``Advanced SSH settings``
 tab is open and verify that X11 forwarding is enabled as shown:
 
 .. image:: /usage/slurm/images/mobaxterm_x11_session.png
-   :align: center
+    :align: center
 
 Secondly, press the ``OK`` button and open the ``Settings`` via the
 gears icon on the main toolbar. Then select the ``X11`` tab and verify
 that X11 support is configured as shown:
 
 .. image:: /usage/slurm/images/mobaxterm_x11_settings.png
-   :align: center
+    :align: center

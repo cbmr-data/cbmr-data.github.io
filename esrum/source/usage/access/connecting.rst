@@ -15,34 +15,32 @@ https://esrumweb01fl/ and https://esrumweb02fl/. See the
 
 However, to connect to any of these, you must
 
-#. Have been granted access by the Data Analytics team. If that is not
+1. Have been granted access by the Data Analytics team. If that is not
    the case, then please see the :ref:`p_usage_access_applying` page
    before continuing
-
-#. Be connected to the official UCPH VPN_. See below for more
+2. Be connected to the official UCPH VPN_. See below for more
    information.
-
-#. Follow the instructions for your operating system to configure an SSH
+3. Follow the instructions for your operating system to configure an SSH
    client:
 
 .. list-table::
-   :class: image-buttons
+    :class: image-buttons
 
-   -  -  :ref:`Windows <s_connecting_windows>`
+    - - :ref:`Windows <s_connecting_windows>`
 
-         .. image:: images/os_windows.png
+        .. image:: images/os_windows.png
             :width: 128
             :target: #connecting-on-windows
 
-      -  :ref:`OSX <s_connecting_osx>`
+      - :ref:`OSX <s_connecting_osx>`
 
-         .. image:: images/os_macosx.png
+        .. image:: images/os_macosx.png
             :width: 128
             :target: #connecting-on-osx
 
-      -  :ref:`Linux <s_connecting_linux>`
+      - :ref:`Linux <s_connecting_linux>`
 
-         .. image:: images/os_linux.png
+        .. image:: images/os_linux.png
             :width: 128
             :target: #connecting-on-linux
 
@@ -69,63 +67,61 @@ the :ref:`s_connecting_linux` section.
 Configuring MobaXterm
 =====================
 
-#. Install and open MobaXterm_.
-
-#. Click left-most button, labeled ``Session``, on the toolbar.
+1. Install and open MobaXterm_.
+2. Click left-most button, labeled ``Session``, on the toolbar.
 
    .. image:: images/mobaxterm_01.png
-      :align: center
+       :align: center
 
-#. Click on the left-most button, labeled ``SSH``, in the resulting
+3. Click on the left-most button, labeled ``SSH``, in the resulting
    ``Session settings`` dialog
 
    .. image:: images/mobaxterm_02.png
-      :align: center
+       :align: center
 
-#. Under ``Basic SSH settings``
+4. Under ``Basic SSH settings``
 
-   #. Write ``esrumhead01fl.unicph.domain`` under ``Remote Host``
-   #. Click the checkbox next to ``Specify username`` and enter your
+   1. Write ``esrumhead01fl.unicph.domain`` under ``Remote Host``
+   2. Click the checkbox next to ``Specify username`` and enter your
       UCPH username as shown.
-   #. Select ``SCP (enhanced speed)`` on the ``SSH-browser`` type
+   3. Select ``SCP (enhanced speed)`` on the ``SSH-browser`` type
       drop-down menu. This is required for file-uploads to work.
 
    .. image:: images/mobaxterm_03.png
-      :align: center
+       :align: center
 
-#. Click on the ``Bookmark settings`` tab and
+5. Click on the ``Bookmark settings`` tab and
 
-   #. Write ``Esrum`` or a name you prefer under ``Session Name``
-
-   #. Optionally click the ``Create a desktop shortcut to this session``
+   1. Write ``Esrum`` or a name you prefer under ``Session Name``
+   2. Optionally click the ``Create a desktop shortcut to this session``
       button. This will create a shortcut on your desktop that connects
       to Esrum.
 
    .. image:: images/mobaxterm_04.png
-      :align: center
+       :align: center
 
-#. Click OK and you should automatically connect to the server. If not,
+6. Click OK and you should automatically connect to the server. If not,
    then see :ref:`s_reconnecting_with_mobaxterm` below. The first time
    you connect to Esrum (or any other server), you will be asked if you
    want to proceed. Simply press ``Accept``:
 
    .. image:: images/mobaxterm_05.png
-      :align: center
+       :align: center
 
    .. warning::
 
-      If you receive this question again later, then stop and
-      double-check that you are connected via the UCPH VPN, as the
-      message could indicate that you are not actually connecting to
-      Esrum!
+       If you receive this question again later, then stop and
+       double-check that you are connected via the UCPH VPN, as the
+       message could indicate that you are not actually connecting to
+       Esrum!
 
-#. You should now be able to log in to the server using your UCPH
+7. You should now be able to log in to the server using your UCPH
    account password:
 
    .. image:: images/mobaxterm_06.png
-      :align: center
+       :align: center
 
-#. For security reasons we recommend that you decline when asked if you
+8. For security reasons we recommend that you decline when asked if you
    want to save your password:
 
 .. _s_reconnecting_with_mobaxterm:
@@ -140,7 +136,7 @@ clicking on the ``Sessions`` button on the main menu, or click on
 ``Esrum`` in the list of ``Recent sessions``.
 
 .. image:: images/mobaxterm_07.png
-   :align: center
+    :align: center
 
 .. _s_network_drives_mobaxterm:
 
@@ -152,13 +148,13 @@ via Esrum, you must disable logins using Kerberos (GSSAPI). To do so,
 open the ``Configuration`` dialog as shown:
 
 .. image:: images/mobaxterm_08.png
-   :align: center
+    :align: center
 
 Select the ``SSH`` tab and then untick the ``GSSAPI Kerberos`` checkbox
 as shown. Finally, click the ``OK`` button to close the options page:
 
 .. image:: images/mobaxterm_09.png
-   :align: center
+    :align: center
 
 .. _s_connecting_osx:
 
@@ -172,10 +168,10 @@ on KUnet in Danish_ and English_.
 
 .. tip::
 
-   While we recommend using the official UCPH VPN client for connecting
-   to the VPN, as described in the documentation on KUnet, it is also
-   possible to use the command-line ``openconnect`` as described in the
-   :ref:`s_connecting_linux` section below.
+    While we recommend using the official UCPH VPN client for connecting
+    to the VPN, as described in the documentation on KUnet, it is also
+    possible to use the command-line ``openconnect`` as described in the
+    :ref:`s_connecting_linux` section below.
 
 .. _s_connecting_ssh:
 
@@ -188,7 +184,7 @@ in the following command:
 
 .. code-block:: console
 
-   $ ssh abc123@esrumhead01fl.unicph.domain
+    $ ssh abc123@esrumhead01fl.unicph.domain
 
 You will likely be informed that the ``the authenticity of host ...
 can't be established``. This is expected *the first time you connect*
@@ -197,46 +193,46 @@ continue. Once you've done so, you can enter your UCPH account password,
 and approve the connection via the NetIQ app.
 
 .. code-block:: console
-   :emphasize-lines: 5,7
+    :emphasize-lines: 5,7
 
-   $ ssh abc123@esrumhead01fl.unicph.domain
-   The authenticity of host 'esrumhead01fl.unicph.domain (10.84.4.168)' can't be established.
-   ED25519 key fingerprint is SHA256:QslJ02Z/4CrFJ2pKA64lU8WTS8Y+8pGO+748bTkrFhY.
-   This key is not known by any other names.
-   Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
-   Warning: Permanently added 'esrumhead01fl.unicph.domain' (ED25519) to the list of known hosts.
-   abc123@esrumhead01fl.unicph.domain's password: *********
-        __
-       /  \
-      _\__/  Welcome to esrumhead01fl
-     (_)     University of Copenhagen
-   _____O______________________________________
-   Supported by UCPH IT  it.ku.dk/english
+    $ ssh abc123@esrumhead01fl.unicph.domain
+    The authenticity of host 'esrumhead01fl.unicph.domain (10.84.4.168)' can't be established.
+    ED25519 key fingerprint is SHA256:QslJ02Z/4CrFJ2pKA64lU8WTS8Y+8pGO+748bTkrFhY.
+    This key is not known by any other names.
+    Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+    Warning: Permanently added 'esrumhead01fl.unicph.domain' (ED25519) to the list of known hosts.
+    abc123@esrumhead01fl.unicph.domain's password: *********
+         __
+        /  \
+       _\__/  Welcome to esrumhead01fl
+      (_)     University of Copenhagen
+    _____O______________________________________
+    Supported by UCPH IT  it.ku.dk/english
 
-       Documentation is available at https://cbmr-data.github.io/esrum/
-           For assistance contact Data Analytics at cbmr-esrum@sund.ku.dk,
-       in #data-analytics at https://cbmr.slack.com/archives/C06TF9LGD47
-           or find us in room 07-8-29 (Unit 8E) at the Maersk Tower.
+        Documentation is available at https://cbmr-data.github.io/esrum/
+            For assistance contact Data Analytics at cbmr-esrum@sund.ku.dk,
+        in #data-analytics at https://cbmr.slack.com/archives/C06TF9LGD47
+            or find us in room 07-8-29 (Unit 8E) at the Maersk Tower.
 
-   Last login: Tue Apr 22 13:52:08 2025 from 10.203.180.30
-   $
+    Last login: Tue Apr 22 13:52:08 2025 from 10.203.180.30
+    $
 
 .. warning::
 
-   If you get a warning about the authenticity of Esrum at a later date,
-   then please double-check that you are connected to the UCPH VPN. This
-   message could mean that you are connecting to an entirely different
-   server!
+    If you get a warning about the authenticity of Esrum at a later
+    date, then please double-check that you are connected to the UCPH
+    VPN. This message could mean that you are connecting to an entirely
+    different server!
 
 It is recommended to add an entry for the cluster to your
 ``.ssh/config`` file, replacing ``abc123`` with your UCPH username:
 
 .. code-block:: console
 
-   $ cat ~/.ssh/config
-   Host esrum esrumhead01fl esrumhead01fl.unicph.domain
-       HostName esrumhead01fl.unicph.domain
-       User abc123
+    $ cat ~/.ssh/config
+    Host esrum esrumhead01fl esrumhead01fl.unicph.domain
+        HostName esrumhead01fl.unicph.domain
+        User abc123
 
 This allows you to connect to the server using the names ``esrum``,
 ``esrumhead01fl``, or ``esrumhead01fl.unicph.domain``, and without
@@ -244,23 +240,23 @@ having to specify your username:
 
 .. code-block:: console
 
-   $ ssh esrum
-   abc123@esrumhead01fl.unicph.domain's password:
-        __
-       /  \
-      _\__/  Welcome to esrumhead01fl
-     (_)     University of Copenhagen
-   _____O______________________________________
-   Supported by UNICPH IT  it.ku.dk/english
+    $ ssh esrum
+    abc123@esrumhead01fl.unicph.domain's password:
+         __
+        /  \
+       _\__/  Welcome to esrumhead01fl
+      (_)     University of Copenhagen
+    _____O______________________________________
+    Supported by UNICPH IT  it.ku.dk/english
 
-   Last login: Fri Oct 13 01:35:00 1980 from 127.0.0.1
-   $
+    Last login: Fri Oct 13 01:35:00 1980 from 127.0.0.1
+    $
 
 .. note::
 
-   Note that the cluster *does not* support authentication through a
-   public SSH key and that you therefore have to enter your password
-   when connecting to the server.
+    Note that the cluster *does not* support authentication through a
+    public SSH key and that you therefore have to enter your password
+    when connecting to the server.
 
 .. _s_connecting_linux:
 
@@ -279,7 +275,7 @@ installer, and run the following command:
 
 .. code-block:: console
 
-   $ sudo bash cisco-secure-client-linux64-*.sh
+    $ sudo bash cisco-secure-client-linux64-*.sh
 
 Once the installer has finished running, you should be able to find the
 "Cisco Secure Client" in your start menu. Enter ``vpn.ku.dk`` as the VPN
@@ -291,39 +287,39 @@ username. You will need to enter your password and use the
 authentication method you have configured (here a TOTP code generator):
 
 .. code-block:: console
-   :emphasize-lines: 7,10
+    :emphasize-lines: 7,10
 
-   $ sudo openconnect -u abc123 --useragent=AnyConnect --no-external-auth vpn.ku.dk
-   POST https://vpn.ku.dk/
-   Connected to 130.225.226.54:443
-   SSL negotiation with vpn.ku.dk
-   Connected to HTTPS on vpn.ku.dk with ciphersuite (TLS1.2)-(RSA)-(AES-256-CBC)-(SHA1)
-   XML POST enabled
-   Please enter your username and password.
-   Password: ****************
-   POST https://vpn.ku.dk/
-   Please enter the TOTP code generated on your device
-   Response: ****
-   POST https://vpn.ku.dk/
-   Got CONNECT response: HTTP/1.1 200 OK
-   CSTP connected. DPD 30, Keepalive 20
-   Established DTLS connection (using GnuTLS). Ciphersuite (DTLS1.2)-(ECDHE-RSA)-(AES-256-GCM).
-   Configured as 10.203.179.174, with SSL connected and DTLS connected
-   Session authentication will expire at Wed May  7 09:19:45 2025
+    $ sudo openconnect -u abc123 --useragent=AnyConnect --no-external-auth vpn.ku.dk
+    POST https://vpn.ku.dk/
+    Connected to 130.225.226.54:443
+    SSL negotiation with vpn.ku.dk
+    Connected to HTTPS on vpn.ku.dk with ciphersuite (TLS1.2)-(RSA)-(AES-256-CBC)-(SHA1)
+    XML POST enabled
+    Please enter your username and password.
+    Password: ****************
+    POST https://vpn.ku.dk/
+    Please enter the TOTP code generated on your device
+    Response: ****
+    POST https://vpn.ku.dk/
+    Got CONNECT response: HTTP/1.1 200 OK
+    CSTP connected. DPD 30, Keepalive 20
+    Established DTLS connection (using GnuTLS). Ciphersuite (DTLS1.2)-(ECDHE-RSA)-(AES-256-GCM).
+    Configured as 10.203.179.174, with SSL connected and DTLS connected
+    Session authentication will expire at Wed May  7 09:19:45 2025
 
 Depending on how you have configured `multifactor authentication for
 UCPH <https://mfa.ku.dk>`_, you will have to authenticate the login
 using one of the following methods:
 
--  If using NetIQ, open the app on your phone and approve the login.
--  If asked, enter the time based one-time password (TOTP) generated by
-   the app you have enrolled
+- If using NetIQ, open the app on your phone and approve the login.
+- If asked, enter the time based one-time password (TOTP) generated by
+  the app you have enrolled
 
 .. note::
 
-   It may be possible to authenticate using additional methods, such as
-   Yubikeys, but we currently cannot offer a guide to using those with
-   ``openconnect``.
+    It may be possible to authenticate using additional methods, such as
+    Yubikeys, but we currently cannot offer a guide to using those with
+    ``openconnect``.
 
 You will likely have to install ``openconnect`` first, in which case
 please refer to the documentation for the Linux distro you are using.
@@ -340,7 +336,7 @@ itself.
 *****************
 
 .. include:: connecting_troubleshooting.rst
-   :start-line: 8
+    :start-line: 8
 
 .. _danish: https://kunet.ku.dk/medarbejderguide/Sider/It/Fjernadgang-vpn.aspx
 

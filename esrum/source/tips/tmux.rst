@@ -29,11 +29,11 @@ To get started, ``cd`` to the directory you wish to work in and run
 
 .. code-block:: console
 
-   $ cd /projects/my_project/people/abc123
-   $ tmux
+    $ cd /projects/my_project/people/abc123
+    $ tmux
 
 .. image:: images/tmux_new.gif
-   :class: gif
+    :class: gif
 
 This will start tmux and create a new session (group of terminals) with
 a single window (terminal) to begin with, and will make new terminal
@@ -51,23 +51,20 @@ keyboard shortcut. To use this shortcut first press ``Ctrl+b``, then
 release the buttons and press ``c`` and *only* ``c``. Notice how each
 terminal gets listed on the tmux bar.
 
-..
-   TODO: Screenshot
+.. TODO: Screenshot
 
 When you have more than one terminal in a session, you can switch
 between them using ``Ctrl+b n`` to switch to the next terminal and
 ``Ctrl+b p`` to switch to the previous terminal.
 
-..
-   TODO: Screenshot
+.. TODO: Screenshot
 
 To close the terminals you've created, use either the ``exit`` command
 or press ``CTRL+d`` while on an empty line. tmux_ will exit with the
 message ``[exited]`` once the last terminal in the current session has
 been closed.
 
-..
-   TODO: Screenshot
+.. TODO: Screenshot
 
 Detaching from and re-attaching to your sessions
 ================================================
@@ -81,36 +78,34 @@ To disconnect from the current session, use the keyboard shortcut
 ``CTRL+b d``. This returns you to your regular terminal, and you can
 safely disconnect from the server:
 
-..
-   TODO: Screenshot
+.. TODO: Screenshot
 
 Once you wish to resume your work, you can use the ``tmux attach``
 command to re-open your running sessions:
 
 .. code-block:: console
 
-   $ tmux attach
+    $ tmux attach
 
 Once you've connected to tmux, you can use the keyboard shortcut
 ``CTRL+b s`` to switch to the correct session.
 
-..
-   TODO: Screenshot
+.. TODO: Screenshot
 
 Alternatively, you can list your sessions with ``tmux ls`` and attach to
 one of them:
 
 .. code-block:: console
 
-   $ tmux ls
-   0: 1 windows (created Thu Apr 10 16:31:43 2025)
-   mice: 2 windows (created Thu Apr 10 16:32:04 2025)
-   $ tmux attach -t mice
+    $ tmux ls
+    0: 1 windows (created Thu Apr 10 16:31:43 2025)
+    mice: 2 windows (created Thu Apr 10 16:32:04 2025)
+    $ tmux attach -t mice
 
 .. tip::
 
-   Instead of writing ``tmux attach``, you can use the shortcut ``tmux
-   at``.
+    Instead of writing ``tmux attach``, you can use the shortcut ``tmux
+    at``.
 
 Naming your sessions and windows
 ================================
@@ -127,10 +122,10 @@ an active tmux session:
 
 .. code-block:: console
 
-   $ tmux new -s project -n task
+    $ tmux new -s project -n task
 
 .. image:: images/tmux_new_named.gif
-   :class: gif
+    :class: gif
 
 To rename an existing tmux session or window, you instead need to use
 the `basic shortcuts`_ described below.
@@ -149,29 +144,29 @@ releasing those keys, and *then* pressing the specified button and
 
 **Creating new terminals in a session**
 
--  ``CTRL+b c`` Creates a new terminal in the current session.
+- ``CTRL+b c`` Creates a new terminal in the current session.
 
 **Switching between sessions and windows**
 
--  ``CTRL+b n`` Switches to the next window (terminal)
--  ``CTRL+b p`` Switches to the previous window (terminal)
--  ``CTRL+b s`` Switches to a different session (group of terminals)
+- ``CTRL+b n`` Switches to the next window (terminal)
+- ``CTRL+b p`` Switches to the previous window (terminal)
+- ``CTRL+b s`` Switches to a different session (group of terminals)
 
 **Renaming sessions and windows**
 
--  ``CTRL+b ,`` Renames the current window (terminal)
--  ``CTRL+b $`` Renames the current session (group of terminals)
+- ``CTRL+b ,`` Renames the current window (terminal)
+- ``CTRL+b $`` Renames the current session (group of terminals)
 
 **Detaching from tmux**
 
--  ``CTRL+b d`` Detaches from the current session (group of terminals).
-   Tmux keeps running after this along with your terminals.
+- ``CTRL+b d`` Detaches from the current session (group of terminals).
+  Tmux keeps running after this along with your terminals.
 
 **Scrolling in a tmux window**
 
--  ``CTRL+b PageUp`` Enables scrolling with Page Up/Page Down and arrow
-   keys. Press ESC to exit scrolling mode. Current line-number is
-   indicated in yellow in the top right corner.
+- ``CTRL+b PageUp`` Enables scrolling with Page Up/Page Down and arrow
+  keys. Press ESC to exit scrolling mode. Current line-number is
+  indicated in yellow in the top right corner.
 
 **********************
  Additional resources
