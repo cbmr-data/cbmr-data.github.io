@@ -20,3 +20,9 @@ repos:
     rev: ff671d6a030a3141634793e6d1e8909ab6091830 # v1.0.0
     hooks:
       - id: sphinx-lint
+  - repo: https://github.com/LilSpazJoekp/docstrfmt
+    rev: 7653faa707cb660bc80cef0e8433932363b43504 # 2.0.2
+    hooks:
+      - id: docstrfmt
+        types_or: [rst]
+        args: ["--line-length", "72", "--file-type", "rst", "--ignore-cache", "--check"]
