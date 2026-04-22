@@ -43,6 +43,7 @@
     :hidden:
     :caption: Tips and tricks
 
+    tips/data_storage
     tips/ports
     tips/modules
     tips/tmux
