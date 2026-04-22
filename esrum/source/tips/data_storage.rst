@@ -24,6 +24,9 @@ use, and thereby storage costs:
   commonly used, public datasets, and can be accessed by everyone with
   access to Esrum. See the :ref:`p_common_datasets` for more
   information, and for how to request additional datasets.
+- Avoid making copies of datasets. Instead, use symbolic links to refer
+  a shared copy of the dataset, that could for example be stored in
+  ``/datasets/cbmr_shared``, in a ``/data`` folder, or similar location.
 - Always delete intermediate files when they are no longer needed. For
   example, if your workflow looks something like the following, then add
   a step to your workflow that deletes the ``intermediate.dat`` file:
@@ -150,6 +153,12 @@ Large datasets should always be stored using compressed formats, if
 possible. In some cases this is not possible while analyses are being
 performed, in which case the files should be compressed when they are
 not actively being used.
+
+.. tip::
+
+    No compression algorithm can beat not storing the data in the first
+    place. Therefore, always consider whether or not you actually need
+    to keep the files around.
 
 Compressible files can be located using the big_text_ tool available on
 Esrum. For example, to check for compressible files in
