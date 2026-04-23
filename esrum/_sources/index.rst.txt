@@ -2,52 +2,6 @@
  The Esrum HPC cluster at CBMR
 ###############################
 
-.. toctree::
-    :hidden:
-
-    Front page <self>
-    contact
-    overview
-    guidelines
-    troubleshooting
-
-.. toctree::
-    :hidden:
-    :caption: Using the cluster
-
-    usage/access/access
-    usage/access/connecting
-    usage/storage/index
-    usage/slurm/index
-    usage/services/index
-
-.. toctree::
-    :hidden:
-    :caption: Resources
-
-    resources/cohorts
-    resources/common
-    resources/modules
-
-.. toctree::
-    :hidden:
-    :caption: Tips and tricks
-
-    tips/ports
-    tips/modules
-    tips/tmux
-    tips/batching_commands
-    tips/robust_scripts
-    tips/snakemake
-    tips/r
-    tips/idm
-
-.. toctree::
-    :hidden:
-    :caption: Outreach
-
-    communications/presentations
-
 Welcome to the Esrum high-performance computing (HPC) cluster at The
 Novo Nordisk Foundation Center for Basic Metabolic Research (CBMR_).
 Esrum is managed by the `Data Analytics Platform`_ (DAP), and is
@@ -111,6 +65,56 @@ using Esrum, and more.
     SUND. If you intend to make use of `R <p_tips_r>`_ or the `RStudio
     <p_service_rstudio>`_ servers, then you may also benefit from the
     `From Excel to R`_ and `R for Data Science`_ courses.
+
+******************
+ Table of content
+******************
+
+.. toctree::
+    :maxdepth: 1
+
+    Front page <self>
+    contact
+    overview
+    guidelines
+    troubleshooting
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Using the cluster
+
+    usage/access/access
+    usage/access/connecting
+    usage/storage/index
+    usage/slurm/index
+    usage/services/index
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Resources
+
+    resources/cohorts
+    resources/common
+    resources/modules
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Tips and tricks
+
+    tips/ports
+    tips/modules
+    tips/tmux
+    tips/batching_commands
+    tips/robust_scripts
+    tips/snakemake
+    tips/r
+    tips/idm
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Outreach
+
+    communications/presentations
 
 .. _cbmr: https://cbmr.ku.dk/
 
