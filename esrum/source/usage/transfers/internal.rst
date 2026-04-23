@@ -168,5 +168,5 @@ See :ref:`s_transfer_instruments` for more information.
 .. include:: internal_troubleshooting.rst
     :start-line: 8
 
-.. include:: /services/networkdrives_troubleshooting.rst
+.. include:: /usage/services/networkdrives_troubleshooting.rst
     :start-line: 8
