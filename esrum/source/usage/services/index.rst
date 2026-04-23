@@ -8,7 +8,6 @@
     :hidden:
 
     rstudio
-    networkdrives
     jupyter
     containers
     shiny
