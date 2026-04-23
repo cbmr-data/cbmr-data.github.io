@@ -18,7 +18,7 @@ documentation for the `UCPH computing/HPC Systems`_ on KUnet.
 The cluster consists of a head node, 12 compute nodes, 1 GPU /
 high-memory node, 3 GPU nodes, 2 :ref:`RStudio <s_service_rstudio>` web
 servers, and 1 server for running :ref:`containers <p_containers>`. A
-:ref:`Shiny server <p_usage_shiny>` server managed by UCPH-IT is also
+:ref:`Shiny server <p_service_shiny>` server managed by UCPH-IT is also
 available.
 
 Users connect to the "head" node, from which jobs can be submitted to

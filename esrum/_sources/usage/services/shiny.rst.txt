@@ -1,4 +1,4 @@
-.. _p_usage_shiny:
+.. _p_service_shiny:
 
 ###############
  Shiny servers

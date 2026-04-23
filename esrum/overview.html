@@ -223,19 +223,19 @@
 <li class="toctree-l2"><a class="reference internal" href="usage/transfers/misc.html">Miscellaneous</a></li>
 </ul>
 </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="usage/services/index.html">Other services on Esrum</a><input aria-label="Toggle navigation of Other services on Esrum" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage/services/rstudio.html">RStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage/services/networkdrives.html">Network drives (H:, N:, S:)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage/services/jupyter.html">Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage/services/containers.html">Containerized software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage/services/shiny.html">Shiny servers</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Resources</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="resources/cohorts.html">Human cohorts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resources/common.html">Common datasets</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Other services</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="services/rstudio.html">RStudio</a></li>
-<li class="toctree-l1"><a class="reference internal" href="services/networkdrives.html">Network drives (H:, N:, S:)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="services/jupyter.html">Jupyter Notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="services/containers.html">Containerized software</a></li>
-<li class="toctree-l1"><a class="reference internal" href="services/shiny.html">Shiny servers</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tips and tricks</span></p>
 <ul>
@@ -305,8 +305,8 @@ documentation for the <a class="reference external" href="https://kunet.ku.dk/wo
 <h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">¶</a></h2>
 <p>The cluster consists of a head node, 12 compute nodes, 1 GPU /
 high-memory node, 3 GPU nodes, 2 <a class="reference internal" href="tips/r.html#s-service-rstudio"><span class="std std-ref">RStudio</span></a> web
-servers, and 1 server for running <a class="reference internal" href="services/containers.html#p-containers"><span class="std std-ref">containers</span></a>. A
-<a class="reference internal" href="services/shiny.html#p-usage-shiny"><span class="std std-ref">Shiny server</span></a> server managed by UCPH-IT is also
+servers, and 1 server for running <a class="reference internal" href="usage/services/containers.html#p-containers"><span class="std std-ref">containers</span></a>. A
+<a class="reference internal" href="usage/services/shiny.html#p-service-shiny"><span class="std std-ref">Shiny server</span></a> server managed by UCPH-IT is also
 available.</p>
 <p>Users connect to the &quot;head&quot; node, from which jobs can be submitted to
 the individual compute nodes using the <a class="reference external" href="https://slurm.schedmd.com/">Slurm</a> Workload Manager:</p>

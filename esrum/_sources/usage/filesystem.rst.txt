@@ -361,7 +361,7 @@ than gzip. For example, to gzip a file using four CPUs:
  Troubleshooting
 *****************
 
-.. include:: /services/networkdrives_troubleshooting.rst
+.. include:: /usage/services/networkdrives_troubleshooting.rst
     :start-line: 8
 
 .. _big_text: https://github.com/MikkelSchubert/big_text

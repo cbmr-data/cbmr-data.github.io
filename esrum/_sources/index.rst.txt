@@ -21,6 +21,7 @@
     usage/slurm/index
     usage/modules
     usage/transfers/index
+    usage/services/index
 
 .. toctree::
     :hidden:
@@ -28,16 +29,6 @@
 
     resources/cohorts
     resources/common
-
-.. toctree::
-    :hidden:
-    :caption: Other services
-
-    services/rstudio
-    services/networkdrives
-    services/jupyter
-    services/containers
-    services/shiny
 
 .. toctree::
     :hidden:
