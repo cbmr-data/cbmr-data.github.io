@@ -1,10 +1,19 @@
+.. _s_optimizing_storage:
+
 #############################
- Data Storage Best Practices
+ Data storage best practices
 #############################
 
+UCPH IT charges CBMR for data kept in projects, datasets, home folders,
+and on network drives. For that reason it is important to avoid using
+more storage than necessary
+
 This page describes ways in which to clean up your data in order to save
-space (and thereby storage costs), as well as techniques for structuring
-your analyses to make this easier.
+space, as well as techniques for structuring your analyses to make this
+easier.
+
+You are always welcome to :ref:`contact us <p_contact>` if you need help
+with cleaning up your data.
 
 .. attention::
 
@@ -142,6 +151,10 @@ storage:
 
 For most part, it is recommended to use the ``ncdu`` program described
 above.
+
+**************************
+ Locating duplicate files
+**************************
 
 .. _s_compressing_files:
 

@@ -17,10 +17,8 @@
 
     usage/access/access
     usage/access/connecting
-    usage/filesystem
+    usage/storage/index
     usage/slurm/index
-    usage/modules
-    usage/transfers/index
     usage/services/index
 
 .. toctree::
@@ -29,12 +27,12 @@
 
     resources/cohorts
     resources/common
+    resources/modules
 
 .. toctree::
     :hidden:
     :caption: Tips and tricks
 
-    tips/data_storage
     tips/ports
     tips/modules
     tips/tmux
