@@ -47,7 +47,7 @@ CBMR wide project folder (``/projects/cbmr_shared``). Please see the
 access to additional projects and datasets.
 
 Storage is paid for by CBMR, so please take care to avoid wasting space.
-See the :ref:`s_optimizing_storage` section below.
+See the :ref:`s_optimizing_storage` section for more information.
 
 .. warning::
 
