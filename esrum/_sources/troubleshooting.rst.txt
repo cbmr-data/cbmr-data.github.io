@@ -32,21 +32,21 @@ to the cluster.
  Internal data transfers on Esrum
 **********************************
 
-.. include:: usage/transfers/internal_troubleshooting.rst
+.. include:: usage/storage/transfers/internal_troubleshooting.rst
     :start-line: 8
 
 **********************************
  External data transfers on Esrum
 **********************************
 
-.. include:: usage/transfers/external_troubleshooting.rst
+.. include:: usage/storage/transfers/external_troubleshooting.rst
     :start-line: 8
 
 ****************
  Network drives
 ****************
 
-.. include:: usage/services/networkdrives_troubleshooting.rst
+.. include:: usage/storage/networkdrives_troubleshooting.rst
     :start-line: 8
 
 ***
