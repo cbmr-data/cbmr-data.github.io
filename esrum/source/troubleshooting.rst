@@ -46,7 +46,7 @@ to the cluster.
  Network drives
 ****************
 
-.. include:: services/networkdrives_troubleshooting.rst
+.. include:: usage/services/networkdrives_troubleshooting.rst
     :start-line: 8
 
 ***
@@ -60,14 +60,14 @@ to the cluster.
  Rstudio
 *********
 
-.. include:: services/rstudio_troubleshooting.rst
+.. include:: usage/services/rstudio_troubleshooting.rst
     :start-line: 8
 
 *******************
  Jupyter Notebooks
 *******************
 
-.. include:: services/jupyter_troubleshooting.rst
+.. include:: usage/services/jupyter_troubleshooting.rst
     :start-line: 8
 
 ***********

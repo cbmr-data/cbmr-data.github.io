@@ -16,6 +16,8 @@ author = "CBMR Data Analytics"
 extensions = [
     # https://github.com/executablebooks/sphinx-copybutton
     "sphinx_copybutton",
+    # https://documatt.com/sphinx-reredirects/
+    "sphinx_reredirects",
 ]
 
 templates_path = ["_templates"]
@@ -69,3 +71,12 @@ copybutton_exclude = ".linenos, .gp, .go"
 # Handle bash, R, and python prompts
 copybutton_prompt_text = r"\$ |> |>>> "
 copybutton_prompt_is_regexp = True
+
+# Redirects using sphinx-reredirects
+redirects = {
+    "services/containers.html": "/usage/services/containers.html",
+    "services/jupyter.html": "/usage/services/jupyter.html",
+    "services/networkdrives.html": "/usage/services/networkdrives.html",
+    "services/rstudio.html": "/usage/services/rstudio.html",
+    "services/shiny.html": "/usage/services/shiny.html",
+}
