@@ -33,8 +33,11 @@ The documentation for running jobs is split into three sections:
    GPU / high-memory node, including best practices for using this
    limited resource.
 
+******************
+ Table of content
+******************
+
 .. toctree::
-    :maxdepth: 2
     :titlesonly:
 
     basics

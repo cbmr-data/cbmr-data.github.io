@@ -4,14 +4,6 @@
  Other services on Esrum
 #########################
 
-.. toctree::
-    :hidden:
-
-    rstudio
-    jupyter
-    containers
-    shiny
-
 This page describes services available on Esrum, that are not described
 elsewhere:
 
@@ -31,3 +23,15 @@ See also,
   to these.
 - The :ref:`p_common_datasets` page for information about the set of
   commonly used resources/datasets that are available on Esrum.
+
+******************
+ Table of content
+******************
+
+.. toctree::
+    :titlesonly:
+
+    containers
+    jupyter
+    rstudio
+    shiny
