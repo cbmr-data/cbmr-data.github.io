@@ -71,7 +71,7 @@ using Esrum, and more.
 ******************
 
 .. toctree::
-    :maxdepth: 1
+    :titlesonly:
 
     Front page <self>
     contact
@@ -80,7 +80,7 @@ using Esrum, and more.
     troubleshooting
 
 .. toctree::
-    :maxdepth: 1
+    :titlesonly:
     :caption: Using the cluster
 
     usage/access/access
@@ -90,7 +90,7 @@ using Esrum, and more.
     usage/services/index
 
 .. toctree::
-    :maxdepth: 1
+    :titlesonly:
     :caption: Resources
 
     resources/cohorts
@@ -98,7 +98,7 @@ using Esrum, and more.
     resources/modules
 
 .. toctree::
-    :maxdepth: 1
+    :titlesonly:
     :caption: Tips and tricks
 
     tips/ports
@@ -111,7 +111,7 @@ using Esrum, and more.
     tips/idm
 
 .. toctree::
-    :maxdepth: 1
+    :titlesonly:
     :caption: Outreach
 
     communications/presentations

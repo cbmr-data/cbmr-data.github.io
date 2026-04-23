@@ -4,14 +4,6 @@
  Data storage on Esrum
 #######################
 
-.. toctree::
-    :hidden:
-
-    projects
-    networkdrives
-    transfers/index
-    best_practice
-
 This section describes the layout of your home folder on Esrum, as well
 as the location and layout of projects, shared datasets, and per-node
 "scratch" folders. Briefly, the file system looks as follows:
@@ -297,6 +289,18 @@ for such projects.
     $ srun -c 4 pigz -c 4 /projects/my-project/qctool/chr_4_qctool_filtered.gen
 
 .. _s_filesystem_troubleshooting:
+
+******************
+ Table of content
+******************
+
+.. toctree::
+    :titlesonly:
+
+    projects
+    networkdrives
+    transfers/index
+    best_practice
 
 *****************
  Troubleshooting
