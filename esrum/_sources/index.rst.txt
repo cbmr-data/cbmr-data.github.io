@@ -20,6 +20,12 @@ questions or problems relating to the cluster, cohorts, other services
 or resources provided by the platform. Additionally, we will gladly
 assist with general bioinformatics issues.
 
+.. note::
+
+    The Esrum HPC cluster is named after `Esrum Abbey`_. The Data
+    Analytics Platform is not affiliated with Esrum Abbey, but we
+    recommend visiting if you are in the area.
+
 *****************
  Getting started
 *****************
@@ -121,6 +127,8 @@ using Esrum, and more.
 .. _creative commons cc-by 4.0 license: https://creativecommons.org/licenses/by/4.0/
 
 .. _data analytics platform: https://cbmr.ku.dk/research-facilities/data-analytics/
+
+.. _esrum abbey: https://esrum.dk/en/
 
 .. _from excel to r: https://heads.ku.dk/course/from-excel-to-r/
 
