@@ -299,7 +299,6 @@ for such projects.
 
     projects
     networkdrives
-    transfers/index
     best_practice
 
 *****************
