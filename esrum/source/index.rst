@@ -87,7 +87,6 @@ using Esrum, and more.
     usage/storage/index
     usage/slurm/index
     usage/services/index
-    usage/transfers/index
 
 .. toctree::
     :titlesonly:
