@@ -36,22 +36,21 @@ workshop to use Esrum:
 1. Please read the :ref:`p_guidelines` for using Esrum before you
    continue.
 2. To get access to Esrum and related resources, please see the
-   :ref:`p_usage_access_applying` page
-3. Once your request has been approved, you can connect to the cluster
-   as described in the :ref:`connecting to the cluster
-   <p_usage_connecting>` page.
-4. On Esrum, you'll find your home folder, datasets, projects, and
+   :ref:`p_usage_access_applying` page. Once your request has been
+   approved, you can connect to the cluster as described in the
+   :ref:`connecting to the cluster <p_usage_connecting>` page.
+3. On Esrum, you'll find your home folder, datasets, projects, and
    network drives laid out as described on the :ref:`p_usage_filesystem`
-   page.
-5. Users of Esrum have access to a large library of software provided by
-   DAP and UCPH-IT. The :ref:`p_usage_modules` page describes how to
-   access this software, and how to request software that is not
-   currently available.
-6. To run software on Esrum, you must make use of the Slurm_ queuing
-   system as described in :ref:`p_usage_slurm`.
-7. Finally, the :ref:`p_transfers` page describes how to transfer your
-   data to and from Esrum, and to and from services like SIF or
-   Computerome.
+   page. The :ref:`p_transfers` page describes how to transfer your data
+   to and from these.
+4. To run analyses on Esrum, you must either make use of the Slurm_
+   queuing system, as described in :ref:`p_usage_slurm`, or use one of
+   the two :ref:`p_service_rstudio` servers.
+
+Users of Esrum have access to a large library of software provided by
+DAP and UCPH-IT, as described on the :ref:`p_usage_modules` page, as
+well as a collection of :ref:`p_common_datasets`, and a collection of
+:ref:`p_human_cohorts` for which you can apply for access.
 
 See the Table of Content for various other services, tips and trips for
 using Esrum, and more.
@@ -88,6 +87,7 @@ using Esrum, and more.
     usage/storage/index
     usage/slurm/index
     usage/services/index
+    usage/transfers/index
 
 .. toctree::
     :titlesonly:
