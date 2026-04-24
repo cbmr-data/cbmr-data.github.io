@@ -7,6 +7,10 @@ repos:
       - id: check-added-large-files
       - id: check-yaml
         args: [--allow-multiple-documents]
+      - id: check-merge-conflict
+      - id: no-commit-to-branch
+        args: [--branch, main]
+      - id: trailing-whitespace
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: 971923581912ef60a6b70dbf0c3e9a39563c9d47 # v0.11.4
     hooks:
