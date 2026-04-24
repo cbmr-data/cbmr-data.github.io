@@ -24,6 +24,8 @@ data`_.
 - Never leave your computer unsecured while logged onto the cluster.
   Your computer *must* be locked or turned off whenever you leave it.
 
+For more information, see the :ref:`s_security_and_risks` section.
+
 **************
  Data storage
 **************
