@@ -97,6 +97,8 @@ the unauthorized recovery of intentionally deleted data.
 
 See :ref:`p_usage_filesystem` for more information.
 
+.. _s_security_and_risks:
+
 ********************
  Security and risks
 ********************
