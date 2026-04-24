@@ -18,6 +18,7 @@ get access,
 1. Retrieve the IDs of your scientific projects from the CBMR Project
    Manager (e.g. ``CBMR-ABCD12``):
 
+   - You need to be connected to the VPN to access the CBMR Project manager.
    - If you have previously registered your scientific project(s), then
      you can look up the project IDs via the `Search Project`_ tab in
      the `Project Manager`_.
