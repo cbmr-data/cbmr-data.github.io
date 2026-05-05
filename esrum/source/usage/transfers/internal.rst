@@ -48,14 +48,26 @@ command on a compute node, as shown in the examples below. See the
  Copying data to/from the H:, N:, and S: drives
 ************************************************
 
-To avoid impacting other users, you must run transfers on compute nodes.
-However, as described on the :ref:`p_network_drives` page, the ``H:``,
-``N:``, and ``S:`` drives are not accessible from compute nodes by
-default.
+To avoid impacting other users, you should run transfers on compute
+nodes, if at all possible.
+
+However, as of 2026-05-05, most users are unable to access the network
+drives from compute and RStudio nodes. Therefore, if the instructions in
+the :ref:`p_transfer_network_drives_compute` section do not work, then
+please see the :ref:`p_transfer_network_drives_head` below for how to
+run the transfer on the head node.
+
+.. _p_transfer_network_drives_compute:
+
+Copying data to/from network drives and compute nodes
+=====================================================
+
+As described on the :ref:`p_network_drives` page, the ``H:``, ``N:``,
+and ``S:`` drives are not accessible from compute nodes by default.
 
 Therefore, you must start an interactive session, log in using the
 ``/usr/bin/kinit`` command, and then access the network drives via the
-``/maps`` folder:
+``/maps`` folder, after you've started an interactive session:
 
 .. code-block:: bash
 
@@ -85,6 +97,36 @@ It is recommended to use ``rsync`` to copy data to/from the
 network-drives, as described below, but you do *not* need to use
 ``srun`` in this case, as you are already working in an interactive
 session if you followed the instructions above.
+
+.. tip::
+
+    You do *not* need to use ``--bwlimit`` when running transfers on a
+    compute node.
+
+.. _p_transfer_network_drives_head:
+
+Copying data to/from network drives and the head node
+=====================================================
+
+If the instructions in the :ref:`p_transfer_network_drives_compute`
+section do not work, then you have to run the transfer on the head node.
+However, to avoid negatively impacting other users of Esrum, we require
+that these transfers are rate-limited to at most 50 MB/s (total) using
+the ``rsync --bwlimit`` option, and that you run no more than a single
+transfer at a time:
+
+.. code-block:: shell
+
+    $ rsync -av --progress=summary --bwlimit=50M /from/path/ /to/path/
+
+If you run transfers without rate limits (include using `cp` or `mv`),
+or if you run transfers with a total rate limit above 50 MB/s, then
+these will be terminated to prevent them from impacting other users of
+Esrum.
+
+If you have an urgent need to transfer data from a network drive, or if
+the size of the data is so large that 50 MB/s (or roughly 6 hours per
+TB) is not feasible, then please :ref:`contact us <p_contact>`.
 
 .. include:: common_tips.rst
 
@@ -134,10 +176,10 @@ You *must* run ``rsync`` command on a compute node, either in an
 *************************************************
 
 As the `/labs` folders are currently only accessible from the head node,
-it is necessary to run the transfers directly on the head node. This is
-the *only* case where it is permitted to run transfers on the head node,
-and these transfers *must* be rate-limited to at most 50 MB/s (total)
-using the ``rsync --bwlimit`` option:
+it is necessary to run the transfers directly on the head node. These
+transfers *must* be rate-limited to at most 50 MB/s (total) using the
+``rsync --bwlimit`` option, and you must not run more than a single
+transfer at a time:
 
 .. code-block:: shell
 
@@ -154,12 +196,14 @@ using the ``rsync --bwlimit`` option:
     ``rsync`` normally fails during the transfer, due not being able to
     write to the destination.
 
-If you run transfers without rate limits (include using `cp` or `mv` to
-copy/move data in or out of `/labs` folders), or if you run transfers
-with a total rate limit above 50 MB/s, then these will be terminated to
-prevent them from impacting other users of Esrum.
+If you run transfers without rate limits (include using `cp` or `mv`),
+or if you run transfers with a total rate limit above 50 MB/s, then
+these will be terminated to prevent them from impacting other users of
+Esrum.
 
-See :ref:`s_transfer_instruments` for more information.
+If you have an urgent need to transfer instrument data, or if the size
+of the data is so large that 50 MB/s (or roughly 6 hours per TB) is not
+feasible, then please :ref:`contact us <p_contact>`.
 
 *****************
  Troubleshooting

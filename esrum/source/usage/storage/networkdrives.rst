@@ -52,6 +52,14 @@ access the folders from the head node, then please see the
  Accessing network drives from compute nodes
 *********************************************
 
+.. attention::
+
+    As of 2026-05-05, most users are unable to access the network drives
+    from compute and RStudio nodes. If the instructions below do not
+    work for you, then please see the :ref:`p_transfer_network_drives`
+    section for how to transfer data these projects to compute projects
+    or datasets on Esrum.
+
 To access network drives from compute nodes and from RStudio sessions,
 you first need to authenticate as described in the
 :ref:`s_network_drives_reactivation` section below. Once you have done
