@@ -108,6 +108,12 @@ session if you followed the instructions above.
 Copying data to/from network drives and the head node
 =====================================================
 
+.. attention::
+
+    If you are currently in an interactive session on a compute node,
+    you need to either exit that session first, or connect to the
+    head-node again, before following these instructions.
+
 If the instructions in the :ref:`p_transfer_network_drives_compute`
 section do not work, then you have to run the transfer on the head node.
 However, to avoid negatively impacting other users of Esrum, we require
