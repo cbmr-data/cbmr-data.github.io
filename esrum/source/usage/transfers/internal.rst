@@ -40,6 +40,11 @@ command on a compute node, as shown in the examples below. See the
        srun rsync -av --no-group --chmod=ugo=rwX --progress /copy/this/data/
        /to/this/location/
 
+.. warning::
+
+    Transfers running on the head node will be terminated without
+    warning, due to the impact on other users of the cluster.
+
 .. include:: common_tips.rst
 
 .. _p_transfer_network_drives:

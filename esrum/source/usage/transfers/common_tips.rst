@@ -6,11 +6,6 @@
     permission from the data controller and never store sensitive data
     in a non-``-AUDIT`` folder!
 
-.. warning::
-
-    Transfers running on the head node will be terminated without
-    warning, due to the impact on other users of the cluster.
-
 .. tip::
 
     Running your transfer in a ``tmux`` or ``screen`` session is
