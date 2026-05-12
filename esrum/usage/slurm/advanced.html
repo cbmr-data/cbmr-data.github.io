@@ -368,6 +368,14 @@ option if simply you want to be able to wait for your script to finish.</p>
 <p>As suggested by the name, the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command is able to run jobs in
 batches. This is accomplished using &quot;job arrays&quot;, which allows you to
 automatically queue and run the same command on multiple inputs.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Slurm will always reserve an even number of CPUs (rounded up)
+because of <a class="reference external" href="https://en.wikipedia.org/wiki/Simultaneous_multithreading">simultaneous multithreading</a>. It is therefore important
+to batch commands if you need to run many jobs that use only a
+single CPU each, as not doing so wastes about 50% of the reserved
+CPUs! See the <a class="reference internal" href="../../tips/batching_commands.html#p-tips-batching"><span class="std std-ref">Batching commands in bash</span></a> for more information.</p>
+</div>
 <p>For example, we could expand on the example above to gzip multiple
 chromosomes using a job array. To do so, we first need to update the
 script to make use of the <code class="docutils literal notranslate"><span class="pre">SLURM_ARRAY_TASK_ID</span></code> variable, which

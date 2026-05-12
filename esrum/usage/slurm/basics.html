@@ -380,7 +380,7 @@ the script as an argument:</p>
 <span class="go">Submitted batch job 8503</span>
 </pre></div>
 </div>
-<p>This will queue your script to be run using 1 CPU and about 16 GB of
+<p>This will queue your script to be run using 2 CPUs and about 31 GB of
 RAM. See the <a class="reference internal" href="#reserving-resources"><span class="std std-ref">Reserving resources</span></a> section below, for how to
 increase the amount of resources available to your script. By default,
 there is no limit on the maximum running time (&quot;wall time&quot;) for jobs on
@@ -530,10 +530,18 @@ the <code class="docutils literal notranslate"><span class="pre">#</span></code>
 </section>
 <section id="reserving-resources">
 <span id="id1"></span><h2>Reserving resources<a class="headerlink" href="#reserving-resources" title="Link to this heading">¶</a></h2>
-<p>By default, a <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> will request 1 CPU and just under 15 GB of ram
-per reserved CPU. Jobs will not be executed before the requested
-resources are available on a node and your jobs cannot exceed the amount
-of resources you've requested.</p>
+<p>By default, a <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> will request 2 CPUs and just over 31 GB of RAM
+(~15 GB per reserved CPU). Jobs will not be executed before the
+requested resources are available on a node and your jobs cannot exceed
+the amount of resources you've requested.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Slurm will always reserve an even number of CPUs (rounded up)
+because of <a class="reference external" href="https://en.wikipedia.org/wiki/Simultaneous_multithreading">simultaneous multithreading</a>. It is therefore important
+to batch commands if you need to run many jobs that use only a
+single CPU each, as not doing so wastes about 50% of the reserved
+CPUs! See the <a class="reference internal" href="../../tips/batching_commands.html#p-tips-batching"><span class="std std-ref">Batching commands in bash</span></a> for more information.</p>
+</div>
 <p>Should your job require more CPUs, then you can request them using the
 <code class="docutils literal notranslate"><span class="pre">-c</span></code> or <code class="docutils literal notranslate"><span class="pre">--cpus-per-task</span></code> option. The following script runs a job
 with 8 CPUs, and is therefore automatically assigned 8 * 15 ~= 120
@@ -693,7 +701,7 @@ computationally expensive tools or scripts. However, note that you
 be started from the head node.</p>
 <p><code class="docutils literal notranslate"><span class="pre">srun</span></code> takes most of the same arguments as <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>, including those
 used for reserving additional resources if you need more than the
-default 1 CPU and 15 GB of RAM:</p>
+default 2 CPUs and 31 GB of RAM:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--cpus-per-task<span class="w"> </span><span class="m">4</span><span class="w"> </span>--mem<span class="w"> </span>128G<span class="w"> </span>--pty<span class="w"> </span>--<span class="w"> </span>/bin/bash
 </pre></div>
 </div>

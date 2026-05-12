@@ -106,6 +106,14 @@ As suggested by the name, the ``sbatch`` command is able to run jobs in
 batches. This is accomplished using "job arrays", which allows you to
 automatically queue and run the same command on multiple inputs.
 
+.. attention::
+
+    Slurm will always reserve an even number of CPUs (rounded up)
+    because of `simultaneous multithreading`_. It is therefore important
+    to batch commands if you need to run many jobs that use only a
+    single CPU each, as not doing so wastes about 50% of the reserved
+    CPUs! See the :ref:`p_tips_batching` for more information.
+
 For example, we could expand on the example above to gzip multiple
 chromosomes using a job array. To do so, we first need to update the
 script to make use of the ``SLURM_ARRAY_TASK_ID`` variable, which
@@ -346,3 +354,5 @@ filenames in a bash script.
 - Slurm `summary <https://slurm.schedmd.com/pdfs/summary.pdf>`_ (PDF)
 - The `sbatch manual page <https://slurm.schedmd.com/sbatch.html>`_
 - The `squeue manual page <https://slurm.schedmd.com/squeue.html>`_
+
+.. _simultaneous multithreading: https://en.wikipedia.org/wiki/Simultaneous_multithreading
