@@ -109,10 +109,10 @@ automatically queue and run the same command on multiple inputs.
 .. attention::
 
     Slurm will always reserve an even number of CPUs (rounded up)
-    because of hyper-threading_. It is therefore important to batch
-    commands if you need to run many jobs that use only a single CPU
-    each, as not doing so wastes about 50% of the reserved CPUs! See the
-    :ref:`p_tips_batching` for more information.
+    because of `simultaneous multithreading`_. It is therefore important
+    to batch commands if you need to run many jobs that use only a
+    single CPU each, as not doing so wastes about 50% of the reserved
+    CPUs! See the :ref:`p_tips_batching` for more information.
 
 For example, we could expand on the example above to gzip multiple
 chromosomes using a job array. To do so, we first need to update the
@@ -355,4 +355,4 @@ filenames in a bash script.
 - The `sbatch manual page <https://slurm.schedmd.com/sbatch.html>`_
 - The `squeue manual page <https://slurm.schedmd.com/squeue.html>`_
 
-.. _hyper-threading: https://en.wikipedia.org/wiki/Hyper-threading
+.. _simultaneous multithreading: https://en.wikipedia.org/wiki/Simultaneous_multithreading

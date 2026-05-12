@@ -312,10 +312,10 @@ the amount of resources you've requested.
 .. attention::
 
     Slurm will always reserve an even number of CPUs (rounded up)
-    because of hyper-threading_. It is therefore important to batch
-    commands if you need to run many jobs that use only a single CPU
-    each, as not doing so wastes about 50% of the reserved CPUs! See the
-    :ref:`p_tips_batching` for more information.
+    because of `simultaneous multithreading`_. It is therefore important
+    to batch commands if you need to run many jobs that use only a
+    single CPU each, as not doing so wastes about 50% of the reserved
+    CPUs! See the :ref:`p_tips_batching` for more information.
 
 Should your job require more CPUs, then you can request them using the
 ``-c`` or ``--cpus-per-task`` option. The following script runs a job
@@ -610,10 +610,10 @@ system on Esrum to load the software you need for your work.
 - The `sbatch manual page <https://slurm.schedmd.com/sbatch.html>`_
 - The `srun manual page <https://slurm.schedmd.com/srun.html>`_
 
-.. _hyper-threading: https://en.wikipedia.org/wiki/Hyper-threading
-
 .. _pbs to slurm translation-sheet: https://www.nrel.gov/hpc/assets/pdfs/pbs-to-slurm-translation-sheet.pdf
 
 .. _shebang: https://en.wikipedia.org/wiki/Shebang_(Unix)
+
+.. _simultaneous multithreading: https://en.wikipedia.org/wiki/Simultaneous_multithreading
 
 .. _xquartz: https://www.xquartz.org/
