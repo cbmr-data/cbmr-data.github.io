@@ -108,7 +108,7 @@ the script as an argument:
     $ sbatch my_script.sh
     Submitted batch job 8503
 
-This will queue your script to be run using 1 CPU and about 16 GB of
+This will queue your script to be run using 2 CPUs and about 31 GB of
 RAM. See the :ref:`reserving_resources` section below, for how to
 increase the amount of resources available to your script. By default,
 there is no limit on the maximum running time ("wall time") for jobs on
@@ -304,10 +304,18 @@ options specified using ``#SBATCH`` comments.
  Reserving resources
 *********************
 
-By default, a ``sbatch`` will request 1 CPU and just under 15 GB of ram
-per reserved CPU. Jobs will not be executed before the requested
-resources are available on a node and your jobs cannot exceed the amount
-of resources you've requested.
+By default, a ``sbatch`` will request 2 CPUs and just over 31 GB of RAM
+(~15 GB per reserved CPU). Jobs will not be executed before the
+requested resources are available on a node and your jobs cannot exceed
+the amount of resources you've requested.
+
+.. attention::
+
+    Slurm will always reserve an even number of CPUs (rounded up)
+    because of hyper-threading_. It is therefore important to batch
+    commands if you need to run many jobs that use only a single CPU
+    each, as not doing so wastes about 50% of the reserved CPUs! See the
+    :ref:`p_tips_batching` for more information.
 
 Should your job require more CPUs, then you can request them using the
 ``-c`` or ``--cpus-per-task`` option. The following script runs a job
@@ -501,7 +509,7 @@ be started from the head node.
 
 ``srun`` takes most of the same arguments as ``sbatch``, including those
 used for reserving additional resources if you need more than the
-default 1 CPU and 15 GB of RAM:
+default 2 CPUs and 31 GB of RAM:
 
 .. code-block:: console
 
@@ -601,6 +609,8 @@ system on Esrum to load the software you need for your work.
 - Slurm `summary <https://slurm.schedmd.com/pdfs/summary.pdf>`_ (PDF)
 - The `sbatch manual page <https://slurm.schedmd.com/sbatch.html>`_
 - The `srun manual page <https://slurm.schedmd.com/srun.html>`_
+
+.. _hyper-threading: https://en.wikipedia.org/wiki/Hyper-threading
 
 .. _pbs to slurm translation-sheet: https://www.nrel.gov/hpc/assets/pdfs/pbs-to-slurm-translation-sheet.pdf
 
