@@ -210,7 +210,7 @@ and approve the connection via the NetIQ app.
     Supported by UCPH IT  it.ku.dk/english
 
         Documentation is available at https://cbmr-data.github.io/esrum/
-            For assistance contact Data Analytics at cbmr-esrum@sund.ku.dk,
+    For assistance contact Data Analytics at cbmr-data-analytics@sund.ku.dk,
         in #data-analytics at https://cbmr.slack.com/archives/C06TF9LGD47
             or find us in room 07-8-29 (Unit 8E) at the Maersk Tower.
 

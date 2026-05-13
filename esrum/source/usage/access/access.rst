@@ -27,9 +27,9 @@ get access,
      to work on using Esrum, then visit the `Project Manager`_ and
      register your project as shown.
 
-2. Email us at `SUND-CBMR-Esrum <mailto:cbmr-esrum@sund.ku.dk>`_, and
-   include the IDs of your scientific project(s) from the Project
-   Manager.
+2. Email us at `SUND-CBMR-Esrum
+   <mailto:cbmr-data-analytics@sund.ku.dk>`_, and include the IDs of
+   your scientific project(s) from the Project Manager.
 3. (Optional) To get access to human cohort data managed by the Data
    Analytics Platform, follow the instructions on the
    :ref:`p_human_cohorts` page.
