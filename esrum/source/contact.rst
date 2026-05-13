@@ -18,7 +18,7 @@ questions about any of our services. Our office is located directly
 across from the kitchen on the 8th floor.
 
 You can also contact us via email at `SUND-CBMR-Esrum
-<mailto:cbmr-esrum@sund.ku.dk>`_, via the `#data-analytics
+<mailto:cbmr-data-analytics@sund.ku.dk>`_, via the `#data-analytics
 <https://cbmr.slack.com/archives/C06TF9LGD47>`_ channel on `CBMR Slack
 server`_.
 
