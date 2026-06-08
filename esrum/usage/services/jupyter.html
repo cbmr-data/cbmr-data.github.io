@@ -331,6 +331,13 @@ you need additional resources for your notebook, then please see the
 additional CPUs and RAM, and the <a class="reference internal" href="../slurm/gpu.html#p-usage-slurm-gpu"><span class="std std-ref">GPU / high-memory jobs</span></a> page for
 instructions on how to reserve GPUs or large amounts of memory. The
 <code class="docutils literal notranslate"><span class="pre">srun</span></code> accepts the same options as <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you need additional python modules, such as Pandas or numpy, then
+see the <a class="reference internal" href="#s-jupyter-python-modules"><span class="std std-ref">Installing Python modules in your Jupyter Notebook</span></a> section below, for how to
+set up your own Jupyter Notebook installation with the modules you
+need.</p>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>It is recommended that you execute the <code class="docutils literal notranslate"><span class="pre">srun</span></code> command in a
@@ -403,6 +410,59 @@ Typically, this can be done simply by holding Ctrl and left-clicking on
 the URL.</p>
 </section>
 </section>
+<section id="installing-python-modules-in-your-jupyter-notebook">
+<span id="s-jupyter-python-modules"></span><h2>Installing Python modules in your Jupyter Notebook<a class="headerlink" href="#installing-python-modules-in-your-jupyter-notebook" title="Link to this heading">¶</a></h2>
+<p>If you use the <code class="docutils literal notranslate"><span class="pre">jupyter-notebook</span></code> module as described above, then you
+will not be able to install and use your own Python modules. To do so,
+you must create your own Jupyter Notebook installation, in a virtual
+Python environment:</p>
+<ol class="arabic">
+<li><p>Deactivate any currently active <code class="docutils literal notranslate"><span class="pre">conda</span></code> and Python environments.
+This ensures that your Jupyter Notebook install will be
+self-contained:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>to<span class="w"> </span>deactivate<span class="w"> </span>Conda<span class="w"> </span>environments:
+<span class="go">conda deactivate</span>
+<span class="gp"># </span>to<span class="w"> </span>deactivate<span class="w"> </span>Python<span class="w"> </span>environments:
+<span class="go">deactivate</span>
+</pre></div>
+</div>
+</li>
+<li><p>Load the Python version you wish to use, for example 3.11.3:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module load python/3.11.3</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create a virtual environment for Jupyter Notebook. The name
+<code class="docutils literal notranslate"><span class="pre">my_jupyter</span></code> in the following commands may be replaced by any name
+that you prefer:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 -m venv my_jupyter</span>
+</pre></div>
+</div>
+<p>You can now safely unload the Python module.</p>
+</li>
+<li><p>Install <code class="docutils literal notranslate"><span class="pre">jupyter</span></code> in the environment. You can install either the
+latest version or, if you prefer, a specific version of Jupyter
+Notebook:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./my_jupyter/bin/pip install notebook # the latest version, or</span>
+<span class="go">./my_jupyter/bin/pip install notebook==7.4.5 # a specific version</span>
+</pre></div>
+</div>
+</li>
+<li><p>Install any additional modules in the environment, for example
+<code class="docutils literal notranslate"><span class="pre">pandas</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./my_jupyter/bin/pip install pandas</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>To start the notebook, run the following command, replacing <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> with
+the port number you are using (see above for more information)</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun --pty -- ./my_jupyter/bin/jupyter notebook --no-browser --ip=0.0.0.0 --port=XYZ</span>
+</pre></div>
+</div>
+<p>You can now import and use the newly installed Python modules in your
+notebook.</p>
+</section>
 <section id="adding-an-r-kernel-to-jupyter">
 <span id="s-jupyter-kernels"></span><h2>Adding an R kernel to Jupyter<a class="headerlink" href="#adding-an-r-kernel-to-jupyter" title="Link to this heading">¶</a></h2>
 <p>The Jupyter module only comes with a Python kernel. If you instead wish
@@ -454,47 +514,23 @@ recommended, and also allows you to install other libraries that you
 need.</p>
 <section id="option-a-installing-the-module-with-jupyter">
 <h4>Option A: Installing the module with Jupyter<a class="headerlink" href="#option-a-installing-the-module-with-jupyter" title="Link to this heading">¶</a></h4>
+<p>The recommended solution is to install your own copy of Jupyter
+Notebook:</p>
 <ol class="arabic">
-<li><p>Deactivate any currently active <cite>conda</cite> and python environments</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>to<span class="w"> </span>deactivate<span class="w"> </span>Conda<span class="w"> </span>environments:
-<span class="go">conda deactivate</span>
-<span class="gp"># </span>to<span class="w"> </span>deactivate<span class="w"> </span>Python<span class="w"> </span>environments:
-<span class="go">deactivate</span>
-</pre></div>
-</div>
-</li>
-<li><p>Load the python version you wish to use</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module load python/3.11.3</span>
-</pre></div>
-</div>
-</li>
-<li><p>Create a virtual environment for <cite>jupyter</cite> / <cite>jupyter_slurm</cite>. The
-name <cite>jupyter_slurm</cite> may be replaced by any name that you prefer</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 -m venv jupyter_slurm</span>
-</pre></div>
-</div>
-</li>
-<li><p>Install <cite>jupyter</cite> in the environment. You can install either the
-latest version or, if you prefer, a specific version of <cite>jupyter</cite>
-notebook:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./jupyter_slurm/bin/pip install notebook # the latest version, or</span>
-<span class="go">./jupyter_slurm/bin/pip install notebook==7.4.5 # a specific version</span>
-</pre></div>
-</div>
-<p>Install any other python modules you need in the same manner.</p>
-</li>
+<li><p>Install Jupyter Notebook in a virtual environment as described in the
+<a class="reference internal" href="#s-jupyter-python-modules"><span class="std std-ref">Installing Python modules in your Jupyter Notebook</span></a> section above.</p></li>
 <li><p>Install <cite>jupyter_slurm</cite> in the environment</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>install<span class="w"> </span>the<span class="w"> </span>latest<span class="w"> </span>version<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>module
-<span class="go">./jupyter_slurm/bin/pip install /projects/cbmr_shared/apps/dap/jupyter_slurm/latest</span>
+<span class="go">./my_jupyter/bin/pip install /projects/cbmr_shared/apps/dap/jupyter_slurm/latest</span>
 <span class="gp"># </span>or,<span class="w"> </span>alternatively,<span class="w"> </span>a<span class="w"> </span>specific<span class="w"> </span>version
-<span class="gp"># </span>./jupyter_slurm/bin/pip<span class="w"> </span>install<span class="w"> </span>/projects/cbmr_shared/apps/dap/jupyter_slurm/0.0.1
+<span class="gp"># </span>./my_jupyter/bin/pip<span class="w"> </span>install<span class="w"> </span>/projects/cbmr_shared/apps/dap/jupyter_slurm/0.0.1
 </pre></div>
 </div>
 </li>
 </ol>
 <p>To start the notebook, run, replacing <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> with the port number you
 are using (see above for more information)</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">shell srun --pty -- ./jupyter_slurm/bin/jupyter notebook --no-browser --ip=0.0.0.0 --port=XYZ</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun --pty -- ./my_jupyter/bin/jupyter notebook --no-browser --ip=0.0.0.0 --port=XYZ</span>
 </pre></div>
 </div>
 <p>You can now import and use the <code class="docutils literal notranslate"><span class="pre">jupyter_slurm</span></code> module as described
@@ -830,6 +866,7 @@ compute nodes.</p>
 <li><a class="reference internal" href="#connecting-to-ports-outside-the-range-8800-to-9000">Connecting to ports outside the range 8800 to 9000</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#installing-python-modules-in-your-jupyter-notebook">Installing Python modules in your Jupyter Notebook</a></li>
 <li><a class="reference internal" href="#adding-an-r-kernel-to-jupyter">Adding an R kernel to Jupyter</a></li>
 <li><a class="reference internal" href="#running-slurm-jobs-from-jupyter-notebooks">Running Slurm jobs from Jupyter notebooks</a><ul>
 <li><a class="reference internal" href="#installing-jupyter-slurm">Installing <code class="docutils literal notranslate"><span class="pre">jupyter_slurm</span></code></a><ul>
