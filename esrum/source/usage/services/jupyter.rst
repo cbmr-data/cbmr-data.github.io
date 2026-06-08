@@ -51,6 +51,13 @@ additional CPUs and RAM, and the :ref:`p_usage_slurm_gpu` page for
 instructions on how to reserve GPUs or large amounts of memory. The
 ``srun`` accepts the same options as ``sbatch``.
 
+.. note::
+
+    If you need additional python modules, such as Pandas or numpy, then
+    see the :ref:`s_jupyter_python_modules` section below, for how to
+    set up your own Jupyter Notebook installation with the modules you
+    need.
+
 .. tip::
 
     It is recommended that you execute the ``srun`` command in a
@@ -134,6 +141,70 @@ open the URL starting with ``http://127.0.0.1``, that Jupyter printed.
 Typically, this can be done simply by holding Ctrl and left-clicking on
 the URL.
 
+.. _s_jupyter_python_modules:
+
+****************************************************
+ Installing Python modules in your Jupyter Notebook
+****************************************************
+
+If you use the ``jupyter-notebook`` module as described above, then you
+will not be able to install and use your own Python modules. To do so,
+you must create your own Jupyter Notebook installation, in a virtual
+Python environment:
+
+1. Deactivate any currently active ``conda`` and Python environments.
+   This ensures that your Jupyter Notebook install will be
+   self-contained:
+
+   .. code-block:: console
+
+       # to deactivate Conda environments:
+       conda deactivate
+       # to deactivate Python environments:
+       deactivate
+
+2. Load the Python version you wish to use, for example 3.11.3:
+
+   .. code-block:: console
+
+       module load python/3.11.3
+
+3. Create a virtual environment for Jupyter Notebook. The name
+   ``my_jupyter`` in the following commands may be replaced by any name
+   that you prefer:
+
+   .. code-block:: console
+
+       python3 -m venv my_jupyter
+
+   You can now safely unload the Python module.
+
+4. Install ``jupyter`` in the environment. You can install either the
+   latest version or, if you prefer, a specific version of Jupyter
+   Notebook:
+
+   .. code-block:: console
+
+       ./my_jupyter/bin/pip install notebook # the latest version, or
+       ./my_jupyter/bin/pip install notebook==7.4.5 # a specific version
+
+5. Install any additional modules in the environment, for example
+   ``pandas``:
+
+   .. code-block:: console
+
+       ./my_jupyter/bin/pip install pandas
+
+To start the notebook, run the following command, replacing ``XYZ`` with
+the port number you are using (see above for more information)
+
+.. code-block:: console
+
+    srun --pty -- ./my_jupyter/bin/jupyter notebook --no-browser --ip=0.0.0.0 --port=XYZ
+
+You can now import and use the newly installed Python modules in your
+notebook.
+
 .. _s_jupyter_kernels:
 
 *******************************
@@ -202,54 +273,26 @@ need.
 Option A: Installing the module with Jupyter
 --------------------------------------------
 
-1. Deactivate any currently active `conda` and python environments
+The recommended solution is to install your own copy of Jupyter
+Notebook:
 
-   .. code-block:: console
-
-       # to deactivate Conda environments:
-       conda deactivate
-       # to deactivate Python environments:
-       deactivate
-
-2. Load the python version you wish to use
-
-   .. code-block:: console
-
-       module load python/3.11.3
-
-3. Create a virtual environment for `jupyter` / `jupyter_slurm`. The
-   name `jupyter_slurm` may be replaced by any name that you prefer
-
-   .. code-block:: console
-
-       python3 -m venv jupyter_slurm
-
-4. Install `jupyter` in the environment. You can install either the
-   latest version or, if you prefer, a specific version of `jupyter`
-   notebook:
-
-   .. code-block:: console
-
-       ./jupyter_slurm/bin/pip install notebook # the latest version, or
-       ./jupyter_slurm/bin/pip install notebook==7.4.5 # a specific version
-
-   Install any other python modules you need in the same manner.
-
-5. Install `jupyter_slurm` in the environment
+1. Install Jupyter Notebook in a virtual environment as described in the
+   :ref:`s_jupyter_python_modules` section above.
+2. Install `jupyter_slurm` in the environment
 
    .. code-block:: console
 
        # install the latest version of the module
-       ./jupyter_slurm/bin/pip install /projects/cbmr_shared/apps/dap/jupyter_slurm/latest
+       ./my_jupyter/bin/pip install /projects/cbmr_shared/apps/dap/jupyter_slurm/latest
        # or, alternatively, a specific version
-       # ./jupyter_slurm/bin/pip install /projects/cbmr_shared/apps/dap/jupyter_slurm/0.0.1
+       # ./my_jupyter/bin/pip install /projects/cbmr_shared/apps/dap/jupyter_slurm/0.0.1
 
 To start the notebook, run, replacing ``XYZ`` with the port number you
 are using (see above for more information)
 
 .. code-block:: console
 
-    shell srun --pty -- ./jupyter_slurm/bin/jupyter notebook --no-browser --ip=0.0.0.0 --port=XYZ
+    srun --pty -- ./my_jupyter/bin/jupyter notebook --no-browser --ip=0.0.0.0 --port=XYZ
 
 You can now import and use the ``jupyter_slurm`` module as described
 below.
