@@ -155,6 +155,8 @@ you need a GPU, as well as other resource options described in the
 .. code-block:: console
 
     $ srun --pty --partition=gpuqueue -- /bin/bash
+    # or, also reserving a GPU
+    $ srun --pty --partition=gpuqueue --gres:gpu:1 -- /bin/bash
 
 See the :ref:`s_interactive_session` section for information about
 interactive sessions, including information about running programs with
