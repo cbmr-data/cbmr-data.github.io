@@ -9,24 +9,6 @@
 If you have not already been granted access to the server, then please
 see the :ref:`p_usage_access_applying` page before continuing!
 
-Home folder does not exist when connecting to Esrum
-===================================================
-
-It may take several hours between your being granted access to Esrum,
-and your account being ready for use. If you connect to Esrum before
-this, you may see an error regarding your home folder not existing:
-
-.. code-block:: console
-
-    $ ssh abc123@esrumhead01fl.unicph.domain
-    Could not chdir to home directory /home/abc123: No such file or directory
-
-If you have only gotten access within the last couple of hours, then
-simply wait a few more hours before trying again. If it has been more
-than a day since you have gotten access, and you still do not have a
-home folder on Esrum, then please :ref:`contact us <p_contact>` for
-further assistance.
-
 Timeout while connecting to the cluster
 =======================================
 
@@ -67,21 +49,6 @@ Serviceportal_, using the ``Research Applications Counseling and
 Support`` / ``Forskningsapplikationer Rådgivning og support`` ticket
 category.
 
-File uploads using MobaXterm never start
-========================================
-
-Please make sure that your session is configured to use the ``SCP
-(enhanced speed)`` browser type. See step 4 in the
-:ref:`s_configure_mobaxterm` section.
-
-Network-folders in ``~/ucph`` are not available
-===============================================
-
-Please make sure that you have disabled use of ``GSSAPI Kerberos`` as
-described in the :ref:`s_configure_mobaxterm` section. Similarly, if
-using Linux or OSX, then you cannot be authenticating using a Kerberos
-ticket.
-
 OpenConnect fails to perform two-factor authentication
 ======================================================
 
@@ -120,6 +87,24 @@ fail before you are able to use your two-factor authentication method:
 In this happens, then make sure that you are using the
 ``--useragent=AnyConnect --no-external-auth`` options as shown in the
 :ref:`s_connecting_linux` section.
+
+Home folder does not exist when connecting to Esrum
+===================================================
+
+It may take several hours between your being granted access to Esrum,
+and your account being ready for use. If you connect to Esrum before
+this, you may see an error regarding your home folder not existing:
+
+.. code-block:: console
+
+    $ ssh abc123@esrumhead01fl.unicph.domain
+    Could not chdir to home directory /home/abc123: No such file or directory
+
+If you have only gotten access within the last couple of hours, then
+simply wait a few more hours before trying again. If it has been more
+than a day since you have gotten access, and you still do not have a
+home folder on Esrum, then please :ref:`contact us <p_contact>` for
+further assistance.
 
 .. _danish: https://kunet.ku.dk/medarbejderguide/Sider/It/Fjernadgang-vpn.aspx
 
