@@ -9,6 +9,24 @@
 If you have not already been granted access to the server, then please
 see the :ref:`p_usage_access_applying` page before continuing!
 
+Home folder does not exist when connecting to Esrum
+===================================================
+
+It may take several hours between your being granted access to Esrum,
+and your account being ready for use. If you connect to Esrum before
+this, you may see an error regarding your home folder not existing:
+
+.. code-block:: console
+
+    $ ssh abc123@esrumhead01fl.unicph.domain
+    Could not chdir to home directory /home/abc123: No such file or directory
+
+If you have only gotten access within the last couple of hours, then
+simply wait a few more hours before trying again. If it has been more
+than a day since you have gotten access, and you still do not have a
+home folder on Esrum, then please :ref:`contact us <p_contact>` for
+further assistance.
+
 Timeout while connecting to the cluster
 =======================================
 

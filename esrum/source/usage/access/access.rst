@@ -43,13 +43,6 @@ received this email.
 Do not hesitate to :ref:`contact us <p_contact>`, if you have any
 questions regarding the above instructions.
 
-.. warning::
-
-    Your account may not be ready by the time you receive the email
-    described above, in which case logging in will result in a warning
-    that your home folder does not exist. If so, then simply wait a few
-    hours before trying again.
-
 .. tip::
 
     If you need access to a group that is *not* controlled by the Data
