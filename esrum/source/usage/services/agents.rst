@@ -12,8 +12,8 @@ supported agents on Esrum, with the agents only having access to
 directories that you select.
 
 In addition, the sandbox provides a persistent home folder outside of
-your home on Esrum, in you can store agent-specific config files, as
-well as install tools you wish the agent to be able to access.
+your home on Esrum, in which you can store agent-specific config files,
+as well as install tools you wish the agent to be able to access.
 
 This helps prevent the exfiltration of sensitive data, as per our
 :ref:`p_guidelines`.
@@ -87,7 +87,8 @@ For example, to pass the ``--read-only`` option to ``agent-container``:
 As described above, ``agent-container`` only has access to the current
 work directory. Should you need to include additional folders in your
 sandbox, then you can include them via the ``--include`` option. For
-example, to
+example, to include the directory ``/projects/cbmr_shared/apps`` in
+addition to the current working directory,
 
 .. code-block:: console
 
@@ -152,12 +153,12 @@ the sandbox environment:
 
 - ``claude``: Run ``agent-container claude --remote-control`` to start a
   session that you control via your browser or via the desktop app. See
-  `here <claude-remote-control>`_ for more information.
+  `here <claude-remote-control_>`_ for more information.
 - ``codex``: Currently not feasible, due to Codex needing to connect via
   SSH when using remote control.
 - ``copilot``: Run ``agent-container copilot --remote`` to start a
   session that you control via your browser. See `here
-  <copilot-remote-control>`_ for more information.
+  <copilot-remote-control_>`_ for more information.
 - ``gemini``: Not currently supported.
 - ``vibe``: Not currently supported.
 
