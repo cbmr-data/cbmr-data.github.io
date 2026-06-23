@@ -73,6 +73,13 @@ Briefly,
 - If possible, run the models locally on Esrum using our :ref:`GPU nodes
   <p_usage_slurm_gpu>`.
 
+When using AI tools such as OpenAI's `codex`, Anthropic's `claude code`,
+Microsoft's `copilot`, Mistral's `vibe`, or Google's `gemini`, it is
+strongly recommended to run them in a sandbox environment that limits
+access to sensitive data.
+
+For more information, please see the :ref:`p_ai_agents` page.
+
 .. _s_guidelines_jobs:
 
 **************
