@@ -3,10 +3,10 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="search" title="Search" href="../../search.html"><link rel="next" title="Miscellaneous" href="misc.html"><link rel="prev" title="External data transfers" href="external.html">
+<link rel="search" title="Search" href="../../search.html"><link rel="next" title="Containerized software" href="containers.html"><link rel="prev" title="Other services on Esrum" href="index.html">
 
     <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
-        <title>Cloud services - Esrum Cluster documentation</title>
+        <title>Using AI Agents on Esrum - Esrum Cluster documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -217,19 +217,19 @@
 <li class="toctree-l2"><a class="reference internal" href="../slurm/gpu.html">GPU / high-memory jobs</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../services/index.html">Other services on Esrum</a><input aria-label="Toggle navigation of Other services on Esrum" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../services/agents.html">Using AI Agents on Esrum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../services/containers.html">Containerized software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../services/jupyter.html">Jupyter Notebooks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../services/rstudio.html">RStudio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../services/shiny.html">Shiny servers</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Other services on Esrum</a><input aria-label="Toggle navigation of Other services on Esrum" checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Using AI Agents on Esrum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="containers.html">Containerized software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jupyter.html">Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rstudio.html">RStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="shiny.html">Shiny servers</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Transferring data</a><input aria-label="Toggle navigation of Transferring data" checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="internal.html">Internal data transfers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="external.html">External data transfers</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Cloud services</a></li>
-<li class="toctree-l2"><a class="reference internal" href="misc.html">Miscellaneous</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../transfers/index.html">Transferring data</a><input aria-label="Toggle navigation of Transferring data" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transfers/internal.html">Internal data transfers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transfers/external.html">External data transfers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transfers/services.html">Cloud services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transfers/misc.html">Miscellaneous</a></li>
 </ul>
 </li>
 </ul>
@@ -273,12 +273,12 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="https://github.com/cbmr-data/cbmr-data.github.io/blob/main/esrum/source/usage/transfers/services.rst?plain=true" title="View this page">
+  <a class="muted-link" href="https://github.com/cbmr-data/cbmr-data.github.io/blob/main/esrum/source/usage/services/agents.rst?plain=true" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
 </div><div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/cbmr-data/cbmr-data.github.io/edit/main/esrum/source/usage/transfers/services.rst" rel="edit" title="Edit this page">
+  <a class="muted-link" href="https://github.com/cbmr-data/cbmr-data.github.io/edit/main/esrum/source/usage/services/agents.rst" rel="edit" title="Edit this page">
     <svg><use href="#svg-pencil"></use></svg>
     <span class="visually-hidden">Edit this page</span>
   </a>
@@ -295,97 +295,150 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="cloud-services">
-<span id="p-transfers-services"></span><h1>Cloud services<a class="headerlink" href="#cloud-services" title="Link to this heading">¶</a></h1>
-<p>This page describes methods for transferring files between Esrum and
-services such as cloud storage.</p>
-<section id="transferring-data-to-from-sif-and-erda">
-<span id="s-transfers-sif-erda"></span><h2>Transferring data to/from SIF and ERDA<a class="headerlink" href="#transferring-data-to-from-sif-and-erda" title="Link to this heading">¶</a></h2>
-<p>Connecting to the <a class="reference external" href="https://sif.ku.dk/">SIF</a> or <a class="reference external" href="https://erda.ku.dk/">ERDA</a> servers requires that the user has
-successfully authenticated using two-factor authentication. Furthermore,
-this must be done using the same IP from which the user intends to
-connect, in this case from the Esrum IP. Once authenticated, you can
-transfer files using SFTP, as described below.</p>
-<section id="authenticating-on-sif">
-<h3>Authenticating on SIF<a class="headerlink" href="#authenticating-on-sif" title="Link to this heading">¶</a></h3>
-<p>Authenticate with SIF from Esrum poses some challenges, as graphically
-intensive programs like a full-fledged browser perform poorly over SSH.
-Therefore, you must enable both X11-forwarding and SSH-compression
-before attempting to run a browser (here Firefox):</p>
-<ul class="simple">
-<li><p>Linux and OSX users can connect to Esrum using the command <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-S</span>
-<span class="pre">none</span> <span class="pre">-C</span> <span class="pre">-X</span> <span class="pre">abc123&#64;esrumhead01fl</span></code>, replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code> with your
-username. This ensures that we open a new connection (<code class="docutils literal notranslate"><span class="pre">-S</span> <span class="pre">none</span></code>),
-enables compression (<code class="docutils literal notranslate"><span class="pre">-C</span></code>), and enables X11-forwarding (<code class="docutils literal notranslate"><span class="pre">-X</span></code>).</p></li>
-<li><p>Windows users using Mobaxterm should have both X11-forwarding and
-compression enabled by default. To verify this, right-click on your
-entry for Esrum in your session list and select <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">session</span></code>. Then
-open the <code class="docutils literal notranslate"><span class="pre">Advanced</span> <span class="pre">SSH</span> <span class="pre">settings</span></code> tab on the <code class="docutils literal notranslate"><span class="pre">SSH</span></code> page and verify
-that both the <code class="docutils literal notranslate"><span class="pre">X11-forwarding</span></code> and the <code class="docutils literal notranslate"><span class="pre">Compression</span></code> checkboxes
-are checked.</p></li>
-</ul>
-<p>As there are currently no browsers installed on Esrum, you will need to
-install a copy of Firefox in your home. To do so, perform the following
-steps:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>pixi/latest
-pixi<span class="w"> </span>global<span class="w"> </span>install<span class="w"> </span>firefox
+          <section id="using-ai-agents-on-esrum">
+<span id="p-ai-agents"></span><h1>Using AI Agents on Esrum<a class="headerlink" href="#using-ai-agents-on-esrum" title="Link to this heading">¶</a></h1>
+<p>This page describes best practice for using AI agents on Esrum.</p>
+<p>Briefly, it is strongly recommend that you use the provided
+<a class="reference external" href="https://github.com/cbmr-data/agent-container/">agent-container</a> sandbox. This sandbox makes it easy to run any of the
+supported agents on Esrum, with the agents only having access to
+directories that you select.</p>
+<p>In addition, the sandbox provides a persistent home folder outside of
+your home on Esrum, in which you can store agent-specific config files,
+as well as install tools you wish the agent to be able to access.</p>
+<p>This helps prevent the exfiltration of sensitive data, as per our
+<a class="reference internal" href="../../guidelines.html#p-guidelines"><span class="std std-ref">Guidelines and policies</span></a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Please <a class="reference internal" href="../../contact.html#p-contact"><span class="std std-ref">contact us</span></a> if the agent you want to use is
+not available, and we will look at including it in the sandbox.</p>
+</div>
+<section id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">¶</a></h2>
+<p>To start using a sandboxed AI Agent, simply load the module and run
+<code class="docutils literal notranslate"><span class="pre">agent-container</span></code> in the work folder containing your scripts or other
+(non-sensitive) files:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/home/abc123/my-scripts/
+<span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>agent-container<span class="w"> </span>--auto
+<span class="gp">$ </span>agent-container<span class="w"> </span>claude
 </pre></div>
 </div>
-<p>Once you have verified that you are connected with both X11-forwarding
-and compression enabled, and you have installed Firefox in your home,
-start an interactive session on Esrum and start Firefox:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>--<span class="w"> </span>/bin/bash
-firefox<span class="w"> </span><span class="s2">&quot;https://sif.ku.dk/&quot;</span>
-</pre></div>
-</div>
-<p>Log in to SIF using your KU ID, once the browser window has opened, and
-make sure to open the project you wish to transfer files to or from. You
-will need to perform all subsequent steps in this interactive session,
-or SIF will complain that you are not authenticated.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The Firefox browser will most likely be a bit sluggish, as a
-consequence of it running over SSH. If it is so sluggish that it is
-hard to interact with it, then double-check that you are connected
-with compression enabled.</p>
-</div>
-</section>
-<section id="transferring-files-using-sftp">
-<span id="s-sif-erda-sftp"></span><h3>Transferring files using SFTP<a class="headerlink" href="#transferring-files-using-sftp" title="Link to this heading">¶</a></h3>
-<p>Once you have successfully authenticated you may connect to the SIF/ERDA
-servers as normal using the tools available on Esrum.</p>
-<p>The recommended way to transfer data to/from SIF/ERDA is using the
-<code class="docutils literal notranslate"><span class="pre">lftp</span></code> command. This allows you use the built-in <code class="docutils literal notranslate"><span class="pre">mirror</span></code> command to
-recursively download entire folders. If you instead wish to upload a
-folder recursively, simply use the <code class="docutils literal notranslate"><span class="pre">mirror</span> <span class="pre">-R</span></code> command instead of just
-<code class="docutils literal notranslate"><span class="pre">mirror</span></code>.</p>
-<p>For example, to download the contents of the folder <code class="docutils literal notranslate"><span class="pre">my_data</span></code> into a
-project, you might run the following:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>/projects/my_project-AUDIT/data/my_data
-<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/projects/my_project-AUDIT/data/my_data
-<span class="gp">$ </span>lftp<span class="w"> </span>sftp://sif-io.erda.dk
-<span class="go">&gt; user ${YOUR_PROJECT_USERNAME}</span>
-<span class="go">Password: ***********</span>
-<span class="go">&gt; set net:connection-limit 1</span>
-<span class="go">&gt; set net:max-retries 1;</span>
-<span class="go">&gt; cd my_data</span>
-<span class="go">&gt; mirror</span>
-</pre></div>
-</div>
-<p>Your project username (<code class="docutils literal notranslate"><span class="pre">${YOUR_PROJECT_USERNAME}</span></code>) is available via
-the <code class="docutils literal notranslate"><span class="pre">Setup</span></code> page for each project once you log into SIF and typically
-looks something like <code class="docutils literal notranslate"><span class="pre">Johann.Gambolputty&#64;sund.ku.dk&#64;MyProject</span></code>.</p>
+<p>This will run Claude Code in a sandbox environment that only gives it
+access to the <code class="docutils literal notranslate"><span class="pre">/home/abc123/my-scripts/</span></code> folder. No other folder on
+Esrum can be accessed, including your normal home folder.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Remember to set a password for the project on SIF before attempting
-to log in! This is done on the <code class="docutils literal notranslate"><span class="pre">Setup</span></code> page described above.</p>
+<p>It is important that the your work folder does not itself contain
+sensitive data. That is to say that <code class="docutils literal notranslate"><span class="pre">/home/abc123/my-scripts/</span></code> in
+the above example should only contain scripts and other
+non-sensitive files. It is, however, safe to include symlinks to
+data in your work folder, provided that the data itself is located
+elsewhere.</p>
 </div>
-<p>The two <code class="docutils literal notranslate"><span class="pre">set</span></code> commands are required to prevent <code class="docutils literal notranslate"><span class="pre">lftp</span></code> from
-performing simultaneous downloads (not supported by SIF) and to prevent
-<code class="docutils literal notranslate"><span class="pre">lftp</span></code> from re-trying repeatedly on failure. As SIF sends an email
-every time you fail to log in, allowing retries typically means
-receiving numerous emails if a transfer fails.</p>
-<span class="target" id="s-transfers-google-cloud"></span></section>
+<p>The container comes with built-in support for the following agents:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">agent-container</span> <span class="pre">claude</span></code>: Runs <a class="reference external" href="https://claude.com/product/claude-code">Claude Code</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">agent-container</span> <span class="pre">codex</span></code>: Runs <a class="reference external" href="https://openai.com/codex/">OpenAI Codex</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">agent-container</span> <span class="pre">copilot</span></code>: Runs <a class="reference external" href="https://github.com/copilot">GitHub Copilot</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">agent-container</span> <span class="pre">gemini</span></code>: Runs <a class="reference external" href="https://gemini.google.com/">Google Gemini</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">agent-container</span> <span class="pre">vibe</span></code>: Runs <a class="reference external" href="https://mistral.ai/products/vibe/">Mistral Vibe</a></p></li>
+</ul>
+<p>In addition, you can start a <code class="docutils literal notranslate"><span class="pre">bash</span></code> terminal in the sandbox via the
+commands <code class="docutils literal notranslate"><span class="pre">agent-container</span> <span class="pre">bash</span></code> or <code class="docutils literal notranslate"><span class="pre">agent-container</span> <span class="pre">shell</span></code>.</p>
+</section>
+<section id="command-line-arguments">
+<h2>Command-line arguments<a class="headerlink" href="#command-line-arguments" title="Link to this heading">¶</a></h2>
+<p>All command-line arguments written after the agent name, <code class="docutils literal notranslate"><span class="pre">shell</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">bash</span></code>, are passed directly to the process in the sandbox. For
+example, to view the help text for <code class="docutils literal notranslate"><span class="pre">claude</span></code>, simply run</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>agent-container<span class="w"> </span>claude<span class="w"> </span>--help
+</pre></div>
+</div>
+<p>Arguments for <code class="docutils literal notranslate"><span class="pre">agent-container</span></code> itself must go before the agent name.
+For example, to pass the <code class="docutils literal notranslate"><span class="pre">--read-only</span></code> option to <code class="docutils literal notranslate"><span class="pre">agent-container</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>agent-container<span class="w"> </span>--read-only<span class="w"> </span>claude
+</pre></div>
+</div>
+</section>
+<section id="mounting-directories-and-read-only-data">
+<h2>Mounting directories and read-only data<a class="headerlink" href="#mounting-directories-and-read-only-data" title="Link to this heading">¶</a></h2>
+<p>As described above, <code class="docutils literal notranslate"><span class="pre">agent-container</span></code> only has access to the current
+work directory. Should you need to include additional folders in your
+sandbox, then you can include them via the <code class="docutils literal notranslate"><span class="pre">--include</span></code> option. For
+example, to include the directory <code class="docutils literal notranslate"><span class="pre">/projects/cbmr_shared/apps</span></code> in
+addition to the current working directory,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/home/abc123/my-scripts/
+<span class="gp">$ </span>agent-container<span class="w"> </span>--include<span class="w"> </span>/projects/cbmr_shared/apps<span class="w"> </span>claude
+</pre></div>
+</div>
+<p>This allows you to access both <code class="docutils literal notranslate"><span class="pre">/home/abc123/my-scripts/</span></code> and
+<code class="docutils literal notranslate"><span class="pre">/projects/cbmr_shared/apps</span></code> from inside the sandbox. You can specify
+multiple <code class="docutils literal notranslate"><span class="pre">--include</span></code> options in this manner.</p>
+<p>Additionally, you can make all your folders read-only. This includes
+both the current working directory and any folders included via
+<code class="docutils literal notranslate"><span class="pre">--include</span></code>. To do so, pass the <code class="docutils literal notranslate"><span class="pre">--read-only</span></code> option to
+<code class="docutils literal notranslate"><span class="pre">agent-container</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>agent-container<span class="w"> </span>--read-only<span class="w"> </span>claude
+</pre></div>
+</div>
+</section>
+<section id="installing-additional-software">
+<span id="s-agents-installing-software"></span><h2>Installing additional software<a class="headerlink" href="#installing-additional-software" title="Link to this heading">¶</a></h2>
+<p>If you need additional software in the sandbox, then you have two
+options:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="../../contact.html#p-contact"><span class="std std-ref">Contact us</span></a> and ask to have the software added by
+default. This is appropriate for software that has wide usage.</p></li>
+<li><p>For less commonly used software, you can install it in your sandbox
+home, for example using the included <code class="docutils literal notranslate"><span class="pre">uv</span></code>, <code class="docutils literal notranslate"><span class="pre">pixi</span></code>, or <code class="docutils literal notranslate"><span class="pre">npm</span></code>
+command.</p></li>
+</ol>
+<p>For example, to install the Conda package for R, using <code class="docutils literal notranslate"><span class="pre">pixi</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>agent-container<span class="w"> </span>shell
+<span class="gp gp-VirtualEnv">(agent-container)</span> <span class="gp">$ </span>pixi<span class="w"> </span>global<span class="w"> </span>install<span class="w"> </span>r-base
+<span class="gp gp-VirtualEnv">(agent-container)</span> <span class="gp">$ </span>R<span class="w"> </span>--version
+<span class="go">R version 4.6.0 (2026-04-24) -- &quot;Because it was There&quot;</span>
+</pre></div>
+</div>
+<p>Or, to install <code class="docutils literal notranslate"><span class="pre">ruff</span></code> from PyPi using <code class="docutils literal notranslate"><span class="pre">uv</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>agent-container<span class="w"> </span>shell
+<span class="gp gp-VirtualEnv">(agent-container)</span> <span class="gp">$ </span>uv<span class="w"> </span>tool<span class="w"> </span>install<span class="w"> </span>ruff
+<span class="gp gp-VirtualEnv">(agent-container)</span> <span class="gp">$ </span>ruff<span class="w"> </span>--version
+<span class="go">ruff 0.15.18</span>
+</pre></div>
+</div>
+<p>Any software installed in your sandbox home will persist between
+invocations of the sandbox.</p>
+</section>
+<section id="remote-control-of-agents">
+<h2>Remote control of agents<a class="headerlink" href="#remote-control-of-agents" title="Link to this heading">¶</a></h2>
+<p>In some cases, it is possible to remotely control the agent running in
+the sandbox environment:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">claude</span></code>: Run <code class="docutils literal notranslate"><span class="pre">agent-container</span> <span class="pre">claude</span> <span class="pre">--remote-control</span></code> to start a
+session that you control via your browser or via the desktop app. See
+<a class="reference external" href="https://code.claude.com/docs/en/remote-control">here</a> for more information.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">codex</span></code>: Currently not feasible, due to Codex needing to connect via
+SSH when using remote control.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">copilot</span></code>: Run <code class="docutils literal notranslate"><span class="pre">agent-container</span> <span class="pre">copilot</span> <span class="pre">--remote</span></code> to start a
+session that you control via your browser. See <a class="reference external" href="https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/steer-remotely">here</a> for more information.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gemini</span></code>: Not currently supported.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vibe</span></code>: Not currently supported.</p></li>
+</ul>
+</section>
+<section id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>For most part, it is not possible to take advantage of integration of
+agents and IDEs such as VS Code, as these need to be able to directly
+interact with the agents.</p></li>
+<li><p>The sandbox does not have access to any software on Esrum, including
+Slurm. Instead, see the <a class="reference internal" href="#s-agents-installing-software"><span class="std std-ref">Installing additional software</span></a> section
+above for how to add software to the sandbox.</p></li>
+<li><p>While in the sandbox, your home folder is set to
+<code class="docutils literal notranslate"><span class="pre">/home/singularity</span></code>, even if you are started the sandbox in your
+(Esrum) home folder. This means that you must use the full path to
+reference files in your home folder, e.g. <code class="docutils literal notranslate"><span class="pre">/home/abc123</span></code>.</p></li>
+</ul>
 </section>
 </section>
 
@@ -394,23 +447,23 @@ receiving numerous emails if a transfer fails.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="misc.html">
+          <a class="next-page" href="containers.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Miscellaneous</div>
+                <div class="title">Containerized software</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="external.html">
+          <a class="prev-page" href="index.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">External data transfers</div>
+                <div class="title">Other services on Esrum</div>
                 
               </div>
             </a>
@@ -444,12 +497,13 @@ receiving numerous emails if a transfer fails.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Cloud services</a><ul>
-<li><a class="reference internal" href="#transferring-data-to-from-sif-and-erda">Transferring data to/from SIF and ERDA</a><ul>
-<li><a class="reference internal" href="#authenticating-on-sif">Authenticating on SIF</a></li>
-<li><a class="reference internal" href="#transferring-files-using-sftp">Transferring files using SFTP</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#">Using AI Agents on Esrum</a><ul>
+<li><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li><a class="reference internal" href="#command-line-arguments">Command-line arguments</a></li>
+<li><a class="reference internal" href="#mounting-directories-and-read-only-data">Mounting directories and read-only data</a></li>
+<li><a class="reference internal" href="#installing-additional-software">Installing additional software</a></li>
+<li><a class="reference internal" href="#remote-control-of-agents">Remote control of agents</a></li>
+<li><a class="reference internal" href="#limitations">Limitations</a></li>
 </ul>
 </li>
 </ul>

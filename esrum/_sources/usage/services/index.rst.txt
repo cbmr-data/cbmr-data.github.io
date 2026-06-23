@@ -7,6 +7,8 @@
 This page describes services available on Esrum, that are not described
 elsewhere:
 
+- The :ref:`p_ai_agents` page describes how to run AI agents in a
+  sandbox environment with controlled access to files on Esrum.
 - The :ref:`p_containers` page describes how to run containerized
   software on Esrum, using either ``podman`` or ``singularity``.
 - The :ref:`p_service_jupyter` page describes how to use Jupyter
@@ -31,6 +33,7 @@ See also,
 .. toctree::
     :titlesonly:
 
+    agents
     containers
     jupyter
     rstudio
