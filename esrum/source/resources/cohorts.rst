@@ -24,6 +24,12 @@ these, respectively, but you are welcome to :ref:`contact us
  Applying for access to human cohorts
 **************************************
 
+.. attention::
+
+    If you have not done so already, then you must also :ref:`apply for
+    access to Esrum itself <p_usage_access_applying>`. Access to cohorts
+    is handled independently of access to Esrum.
+
 In order to get access to a cohort managed by DAP, the data owner must
 first grant approval. This step varies between cohorts, as data owners
 have different methods of governing access, and may involve a simple
@@ -34,9 +40,6 @@ To initiate this process, fill out and submit a data access form in the
 ``Changes to your Identity were processed``, once your request has been
 approved, after which it may take up to 24 hours before you can access
 the data on Esrum.
-
-If you haven't already, then you must also :ref:`apply for access to
-Esrum itself <p_usage_access_applying>`
 
 .. tip::
 
