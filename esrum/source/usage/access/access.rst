@@ -32,7 +32,8 @@ get access,
    your scientific project(s) from the Project Manager.
 3. (Optional) To get access to human cohort data managed by the Data
    Analytics Platform, follow the instructions on the
-   :ref:`p_human_cohorts` page.
+   :ref:`p_human_cohorts` page. You must have applied for access to
+   Esrum before doing so.
 
 Once you have been granted access to Esrum and/or related resources, you
 will receive an automated email stating that ``Changes to your Identity
