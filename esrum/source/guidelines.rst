@@ -61,10 +61,8 @@ See :ref:`p_usage_filesystem` for more information.
 
 Use of Generative AI / Large Language Models (LLMs) is permitted in
 accordance with the general guidelines and rules for using ChatGPT and
-similar technologies at UCPH: In `Danish
-<https://kunet.ku.dk/arbejdsomraader/undervisning/digital-laering/ai-og-chatgpt/retningslinjer%20og%20regler/Sider/retningslinjer%20og%20regler.aspx>`_
-and in `English
-<https://kunet.ku.dk/work-areas/teaching/digital-learning/chatgpt-and-ai/guidelines-and-rules-for-chatgpt/Pages/default.aspx>`_.
+similar technologies at UCPH: In `Danish <l_ucph_ai_guidelines_da_>`_
+and in `English <l_ucph_ai_guidelines_en_>`_.
 
 Briefly,
 
@@ -155,3 +153,5 @@ an acknowledgement such as,
 .. _gdpr sensitive data: https://kunet.ku.dk/work-areas/research/data/personal-data/Pages/default.aspx
 
 .. _identity management system: https://identity.ku.dk
+
+.. include:: /links.rst

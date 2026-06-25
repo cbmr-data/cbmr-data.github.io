@@ -73,8 +73,4 @@ is located and to where you want to transfer it:
 You are always welcome to :ref:`contact us <p_contact>` if the above
 does not cover your needs.
 
-.. _official computerome documentation: https://www.computerome.dk/wiki/high-performance-computing-hpc/file-transfer
-
-.. _ucph computing/hpc systems: https://kunet.ku.dk/work-areas/research/Research%20Infrastructure/research-it/ucph-computing-hpc-systems/Pages/default.aspx
-
 .. _ucph two-factor authentication: https://mfa.ku.dk/

@@ -313,5 +313,3 @@ for such projects.
 .. _red hat enterprise linux: https://en.wikipedia.org/wiki/Red_Hat_Enterprise_Linux
 
 .. _serviceportal: https://serviceportal.ku.dk/
-
-.. _slurm: https://slurm.schedmd.com/overview.html
