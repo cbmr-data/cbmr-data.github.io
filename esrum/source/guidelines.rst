@@ -66,17 +66,23 @@ and in `English <l_ucph_ai_guidelines_en_>`_.
 
 Briefly,
 
-- It is your responsibility that no sensitive information is transmitted
+- it is your responsibility that no sensitive information is transmitted
   to external systems.
-- If possible, run the models locally on Esrum using our :ref:`GPU nodes
-  <p_usage_slurm_gpu>`.
+- everything that the AI touches should be assumed to be transmitted, in
+  whole or in part, to the company operating the AI.
 
-When using AI tools such as OpenAI's `codex`, Anthropic's `claude code`,
-Microsoft's `copilot`, Mistral's `vibe`, or Google's `gemini`, it is
-strongly recommended to run them in a sandbox environment that limits
-access to sensitive data.
+To reduce the risk of this happening,
 
-For more information, please see the :ref:`p_ai_agents` page.
+- run models locally on Esrum using our :ref:`GPU nodes
+  <p_usage_slurm_gpu>`. More documentation to follow.
+- use full sandboxing to prevent access to sensitive data. The built-in
+  sandboxing that some AI agents offer is not sufficient for this
+  purpose.
+
+For instructions on how to run agents such as OpenAI's `codex`,
+Anthropic's `claude code`, Microsoft's `copilot`, Mistral's `vibe`, or
+Google's `gemini`, in a sandbox environment, please see the
+:ref:`p_ai_agents` page.
 
 .. _s_guidelines_jobs:
 
