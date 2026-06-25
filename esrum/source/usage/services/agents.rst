@@ -1,22 +1,27 @@
 .. _p_ai_agents:
 
-##########################
- Using AI Agents on Esrum
-##########################
+####################
+ AI Agents on Esrum
+####################
 
-This page describes best practice for using AI agents on Esrum.
+This page describes best practice for using AI agents and Large Language
+Models (LLMs) on Esrum.
 
-Briefly, it is strongly recommend that you use the provided
-agent-container_ sandbox. This sandbox makes it easy to run any of the
-supported agents on Esrum, with the agents only having access to
-directories that you select.
+Per the :ref:`UCPH and Esrum guidelines for AIs / LLMs
+<s_guidelines_llms>`, it is *your* responsibility to make sure that no
+sensitive information is transmitted to external systems. In practice,
+this means preventing *any* access to sensitive information, as
+everything that an AI / LLM touches should be assumed to be transmitted,
+in whole or in part, to the company operating the service.
 
-In addition, the sandbox provides a persistent home folder outside of
-your home on Esrum, in which you can store agent-specific config files,
-as well as install tools you wish the agent to be able to access.
+It is therefore strongly recommend that you use the provided
+agent-container_ sandbox to run AI tools. The ``agent-container``
+sandbox makes it easy to run any of the supported tools on Esrum, with
+the tools only having access to directories that you select.
 
-This helps prevent the exfiltration of sensitive data, as per our
-:ref:`p_guidelines`.
+The built-in sandboxing that some AI tools provide are generally not
+sufficient for this. For the same reason, we advice against the AI
+features in editors such as VS Code.
 
 .. tip::
 
@@ -34,11 +39,11 @@ To start using a sandboxed AI Agent, simply load the module and run
 .. code-block:: console
 
     $ cd /home/abc123/my-scripts/
-    $ module load agent-container --auto
+    $ module load agent-container
     $ agent-container claude
 
-This will run Claude Code in a sandbox environment that only gives it
-access to the ``/home/abc123/my-scripts/`` folder. No other folder on
+This will run `Claude Code`_ in a sandbox environment that only gives it
+access to the folder ``/home/abc123/my-scripts/``. No other folder on
 Esrum can be accessed, including your normal home folder.
 
 .. warning::
@@ -52,14 +57,19 @@ Esrum can be accessed, including your normal home folder.
 
 The container comes with built-in support for the following agents:
 
-- ``agent-container claude``: Runs `Claude Code`_
-- ``agent-container codex``: Runs `OpenAI Codex`_
-- ``agent-container copilot``: Runs `GitHub Copilot`_
-- ``agent-container gemini``: Runs `Google Gemini`_
-- ``agent-container vibe``: Runs `Mistral Vibe`_
+- ``agent-container claude`` for `Claude Code`_
+- ``agent-container codex`` for `OpenAI Codex`_
+- ``agent-container copilot`` for `GitHub Copilot`_
+- ``agent-container gemini`` for `Google Gemini`_
+- ``agent-container vibe`` for `Mistral Vibe`_
 
 In addition, you can start a ``bash`` terminal in the sandbox via the
 commands ``agent-container bash`` or ``agent-container shell``.
+
+The ``agent-container`` sandbox also provides a persistent home folder
+outside of your home on Esrum, in which you can store agent-specific
+config files, as well as install tools you wish the tool to be able to
+access.
 
 ************************
  Command-line arguments
@@ -192,3 +202,5 @@ the sandbox environment:
 .. _mistral vibe: https://mistral.ai/products/vibe/
 
 .. _openai codex: https://openai.com/codex/
+
+.. include:: /links.rst
