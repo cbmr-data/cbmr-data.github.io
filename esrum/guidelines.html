@@ -218,7 +218,7 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="usage/services/index.html">Other services on Esrum</a><input aria-label="Toggle navigation of Other services on Esrum" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="usage/services/agents.html">Using AI Agents on Esrum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage/services/agents.html">AI Agents on Esrum</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage/services/containers.html">Containerized software</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage/services/jupyter.html">Jupyter Notebooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage/services/rstudio.html">RStudio</a></li>
@@ -349,15 +349,22 @@ similar technologies at UCPH: In <a class="reference external" href="https://kun
 and in <a class="reference external" href="https://kunet.ku.dk/work-areas/teaching/digital-learning/chatgpt-and-ai/guidelines-and-rules-for-chatgpt/Pages/default.aspx">English</a>.</p>
 <p>Briefly,</p>
 <ul class="simple">
-<li><p>It is your responsibility that no sensitive information is transmitted
+<li><p>it is your responsibility that no sensitive information is transmitted
 to external systems.</p></li>
-<li><p>If possible, run the models locally on Esrum using our <a class="reference internal" href="usage/slurm/gpu.html#p-usage-slurm-gpu"><span class="std std-ref">GPU nodes</span></a>.</p></li>
+<li><p>everything that the AI touches should be assumed to be transmitted, in
+whole or in part, to the company operating the AI.</p></li>
 </ul>
-<p>When using AI tools such as OpenAI's <cite>codex</cite>, Anthropic's <cite>claude code</cite>,
-Microsoft's <cite>copilot</cite>, Mistral's <cite>vibe</cite>, or Google's <cite>gemini</cite>, it is
-strongly recommended to run them in a sandbox environment that limits
-access to sensitive data.</p>
-<p>For more information, please see the <a class="reference internal" href="usage/services/agents.html#p-ai-agents"><span class="std std-ref">Using AI Agents on Esrum</span></a> page.</p>
+<p>To reduce the risk of this happening,</p>
+<ul class="simple">
+<li><p>run models locally on Esrum using our <a class="reference internal" href="usage/slurm/gpu.html#p-usage-slurm-gpu"><span class="std std-ref">GPU nodes</span></a>. More documentation to follow.</p></li>
+<li><p>use full sandboxing to prevent access to sensitive data. The built-in
+sandboxing that some AI agents offer is not sufficient for this
+purpose.</p></li>
+</ul>
+<p>For instructions on how to run agents such as OpenAI's <cite>codex</cite>,
+Anthropic's <cite>claude code</cite>, Microsoft's <cite>copilot</cite>, Mistral's <cite>vibe</cite>, or
+Google's <cite>gemini</cite>, in a sandbox environment, please see the
+<a class="reference internal" href="usage/services/agents.html#p-ai-agents"><span class="std std-ref">AI Agents on Esrum</span></a> page.</p>
 </section>
 <section id="running-jobs">
 <span id="s-guidelines-jobs"></span><h2>Running jobs<a class="headerlink" href="#running-jobs" title="Link to this heading">¶</a></h2>
