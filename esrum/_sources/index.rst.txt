@@ -49,9 +49,10 @@ workshop to use Esrum:
    network drives laid out as described on the :ref:`p_usage_filesystem`
    page. The :ref:`p_transfers` page describes how to transfer your data
    to and from these.
-4. To run analyses on Esrum, you must either make use of the Slurm_
-   queuing system, as described in :ref:`p_usage_slurm`, or use one of
-   the two :ref:`p_service_rstudio` servers.
+4. To run analyses on Esrum, you must either make use of the <Slurm
+   <l_slurm_docs_>`_ queuing system, as described in
+   :ref:`p_usage_slurm`, or use one of the two :ref:`p_service_rstudio`
+   servers.
 
 Users of Esrum have access to a large library of software provided by
 DAP and UCPH-IT, as described on the :ref:`p_usage_modules` page, as
@@ -142,6 +143,4 @@ using Esrum, and more.
 
 .. _r for data science: https://heads.ku.dk/course/r4ds/
 
-.. _slurm: https://slurm.schedmd.com/overview.html
-
-.. _ucph computing/hpc systems: https://kunet.ku.dk/work-areas/research/Research%20Infrastructure/research-it/ucph-computing-hpc-systems/Pages/default.aspx
+.. include:: /links.rst

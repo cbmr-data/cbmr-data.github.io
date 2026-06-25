@@ -9,7 +9,8 @@ The Esrum cluster is a cluster managed by the `Data Analytics Platform`_
 support is handled by UCPH-IT_.
 
 In addition to the documentation provided here, UCPH-IT also provides
-documentation for the `UCPH computing/HPC Systems`_ on KUnet.
+documentation for the `UCPH computing/HPC Systems
+<l_ucph_hpc_overview_>`_ on KUnet.
 
 **************
  Architecture
@@ -22,7 +23,8 @@ servers, and 1 server for running :ref:`containers <p_containers>`. A
 available.
 
 Users connect to the "head" node, from which jobs can be submitted to
-the individual compute nodes using the Slurm_ Workload Manager:
+the individual compute nodes using the `Slurm <l_slurm_>`_ Workload
+Manager:
 
 == ================= ==== ======== =================== =================
 #  Node              RAM  CPUs     GPUs                Name(s)
@@ -127,8 +129,6 @@ VPN.
 
 .. _environment modules: https://modules.readthedocs.io/en/latest/
 
-.. _slurm: https://slurm.schedmd.com/
-
-.. _ucph computing/hpc systems: https://kunet.ku.dk/work-areas/research/Research%20Infrastructure/research-it/ucph-computing-hpc-systems/Pages/default.aspx
-
 .. _ucph-it: https://it.ku.dk
+
+.. include:: /links.rst

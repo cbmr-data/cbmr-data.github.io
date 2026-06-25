@@ -281,5 +281,3 @@ impression that the installation processing has frozen.
 .. _gcc: https://gcc.gnu.org/
 
 .. _heads: https://heads.ku.dk/
-
-.. _rstudio: https://posit.co/products/open-source/rstudio/

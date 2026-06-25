@@ -194,8 +194,7 @@ jobs are shown, rather than everyone's jobs:
      8503 standardq my_scrip   abc123  R       0:02      1 esrumcmpn01fl
 
 The ST column indicating the status of the job (R for running, PD for
-pending, `and so on
-<https://slurm.schedmd.com/squeue.html#SECTION_JOB-STATE-CODES>`_).
+pending, `and so on <l_slurm_docs_squeue_job_codes_>`_).
 
 Completed jobs are removed from the ``squeue`` list and can instead be
 listed using ``sacct``:
@@ -605,10 +604,11 @@ system on Esrum to load the software you need for your work.
  Additional resources
 **********************
 
-- Slurm `documentation <https://slurm.schedmd.com/overview.html>`_
-- Slurm `summary <https://slurm.schedmd.com/pdfs/summary.pdf>`_ (PDF)
-- The `sbatch manual page <https://slurm.schedmd.com/sbatch.html>`_
-- The `srun manual page <https://slurm.schedmd.com/srun.html>`_
+- Slurm `cheat sheet <l_slurm_cheat_sheet_>`_ (PDF)
+- Slurm `documentation <l_slurm_docs_>`_
+- The `sbatch manual page <l_slurm_docs_sbatch_>`_
+- The `squeue manual page <l_slurm_docs_squeue_>`_
+- The `srun manual page <l_slurm_docs_srun_>`_
 
 .. _pbs to slurm translation-sheet: https://www.nrel.gov/hpc/assets/pdfs/pbs-to-slurm-translation-sheet.pdf
 
@@ -617,3 +617,5 @@ system on Esrum to load the software you need for your work.
 .. _simultaneous multithreading: https://en.wikipedia.org/wiki/Simultaneous_multithreading
 
 .. _xquartz: https://www.xquartz.org/
+
+.. include:: /links.rst

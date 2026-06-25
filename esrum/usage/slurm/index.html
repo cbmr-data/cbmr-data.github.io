@@ -298,10 +298,9 @@
           <section id="running-jobs-using-slurm">
 <span id="p-usage-slurm"></span><h1>Running jobs using Slurm<a class="headerlink" href="#running-jobs-using-slurm" title="Link to this heading">¶</a></h1>
 <p>In order to run jobs on the Esrum cluster, you must connect to the head
-node (see <a class="reference internal" href="../access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a>) and queue them using the <a class="reference external" href="https://slurm.schedmd.com/overview.html">Slurm</a> job
-management system. <a class="reference external" href="https://slurm.schedmd.com/overview.html">Slurm</a> takes care of automatically queuing and
-distribute jobs on compute and GPU nodes when the required resources are
-available.</p>
+node (see <a class="reference internal" href="../access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a>) and queue them using the <a class="reference external" href="https://slurm.schedmd.com/">Slurm</a> job management system. Slurm takes care of automatically
+queuing and distribute jobs on compute and GPU nodes when the required
+resources are available.</p>
 <p>While it is permitted to run small jobs directly on the head node, more
 resource intensive jobs <em>must</em> be queued using Slurm. We <em>will</em>
 terminate jobs running on the head node without prior warning, if it is

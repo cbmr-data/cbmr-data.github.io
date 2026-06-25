@@ -105,8 +105,8 @@ two-factor authentication`_.
     (abc123@sftp.ku.dk) Enter one-time password
     Enter one-time password: ****
 
-Official documentation is provided on the `UCPH computing/HPC Systems`_
-pages on KUnet.
+Official documentation is provided on the `UCPH computing/HPC Systems
+<l_ucph_hpc_overview_>`_ pages on KUnet.
 
 .. warning::
 
@@ -168,6 +168,6 @@ See :ref:`s_external_from_esrum` above for more information.
 
 .. _serviceportal: https://serviceportal.ku.dk/
 
-.. _ucph computing/hpc systems: https://kunet.ku.dk/work-areas/research/Research%20Infrastructure/research-it/ucph-computing-hpc-systems/Pages/default.aspx
-
 .. _ucph two-factor authentication: https://mfa.ku.dk/
+
+.. include:: /links.rst

@@ -350,9 +350,12 @@ filenames in a bash script.
  Additional resources
 **********************
 
-- Slurm `documentation <https://slurm.schedmd.com/overview.html>`_
-- Slurm `summary <https://slurm.schedmd.com/pdfs/summary.pdf>`_ (PDF)
-- The `sbatch manual page <https://slurm.schedmd.com/sbatch.html>`_
-- The `squeue manual page <https://slurm.schedmd.com/squeue.html>`_
+- Slurm `cheat sheet <l_slurm_cheat_sheet_>`_ (PDF)
+- Slurm `documentation <l_slurm_docs_>`_
+- The `sbatch manual page <l_slurm_docs_sbatch_>`_
+- The `squeue manual page <l_slurm_docs_squeue_>`_
+- The `srun manual page <l_slurm_docs_srun_>`_
 
 .. _simultaneous multithreading: https://en.wikipedia.org/wiki/Simultaneous_multithreading
+
+.. include:: /links.rst
