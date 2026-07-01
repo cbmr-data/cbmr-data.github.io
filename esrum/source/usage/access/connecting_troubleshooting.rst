@@ -9,6 +9,13 @@
 If you have not already been granted access to the server, then please
 see the :ref:`p_usage_access_applying` page before continuing!
 
+I cannot remember my KU password
+================================
+
+You can reset your password via
+https://password.ku.dk/sspr/public/forgottenpassword. This typically
+requires that you log in using MitID.
+
 Timeout while connecting to the cluster
 =======================================
 
