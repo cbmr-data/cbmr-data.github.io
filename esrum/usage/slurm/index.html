@@ -301,18 +301,22 @@
 node (see <a class="reference internal" href="../access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a>) and queue them using the <a class="reference external" href="https://slurm.schedmd.com/">Slurm</a> job management system. Slurm takes care of automatically
 queuing and distribute jobs on compute and GPU nodes when the required
 resources are available.</p>
-<p>While it is permitted to run small jobs directly on the head node, more
-resource intensive jobs <em>must</em> be queued using Slurm. We <em>will</em>
-terminate jobs running on the head node without prior warning, if it is
-necessary to prevent them from impacting users of the cluster.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>While it is permitted to run small jobs directly on the head node,
+it is not possible to use more 4 CPUs and 64 GB of RAM. These limits
+exist to reduce the impact on other users. For the same reason,
+transfers and jobs that involve reading/writing a lot of data should
+not be run on the head node. For transfers, instead see the
+<a class="reference internal" href="../transfers/index.html#p-transfers"><span class="std std-ref">Transferring data</span></a> page.</p>
+</div>
 <p>The documentation for running jobs is split into three sections:</p>
 <ol class="arabic simple">
 <li><p>The <a class="reference internal" href="basics.html#p-usage-slurm-basics"><span class="std std-ref">Basic Slurm jobs</span></a> section describes the basic procedure
 of queuing jobs using the <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> command, how to request
 resources for your jobs, how to monitor your jobs, and how to run a
 shell on a compute node when you need to work interactively.</p></li>
-<li><p>The <a class="reference internal" href="advanced.html#p-usage-slurm-advanced"><span class="std std-ref">Advanced Slurm jobs</span></a> section describes additional ways
-to monitor your jobs and the cluster as a whole, how to batch
+<li><p>The <a class="reference internal" href="advanced.html#p-usage-slurm-advanced"><span class="std std-ref">Advanced Slurm jobs</span></a> section describes how to batch
 multiple, similar jobs using <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>, how to use <code class="docutils literal notranslate"><span class="pre">srun</span></code> for
 executing singular commands, and more.</p></li>
 <li><p>The <a class="reference internal" href="monitoring.html#p-usage-slurm-monitor"><span class="std std-ref">Monitoring slurm jobs</span></a> section describes how to monitor

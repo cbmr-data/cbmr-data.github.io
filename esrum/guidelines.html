@@ -369,11 +369,10 @@ Google's <cite>gemini</cite>, in a sandbox environment, please see the
 <section id="running-jobs">
 <span id="s-guidelines-jobs"></span><h2>Running jobs<a class="headerlink" href="#running-jobs" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>The head node (<code class="docutils literal notranslate"><span class="pre">esrumhead01fl</span></code>) is only for very small jobs, meaning
-that you use no more than a couple of CPUs <em>in total</em>, with modest
-memory usage, as running larger jobs may impact the ability of
-everyone to use the cluster. Similarly, do not run transfers/copies
-on/to/from the head node.</p></li>
+<li><p>The head node (<code class="docutils literal notranslate"><span class="pre">esrumhead01fl</span></code>) may only be used for very small
+jobs, as running larger jobs may impact the ability of everyone to use
+the cluster. For the same reason, data transfers (<cite>cp</cite>, <cite>rsync</cite>, etc.)
+should not be run on the head node.</p></li>
 <li><p>Remember to be considerate to other users. For example, by limiting
 the number of jobs you are running simultaneously, so that other users
 can also run their jobs. We do not enforce hard limits on how many

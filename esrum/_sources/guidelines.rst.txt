@@ -90,11 +90,10 @@ Google's `gemini`, in a sandbox environment, please see the
  Running jobs
 **************
 
-- The head node (``esrumhead01fl``) is only for very small jobs, meaning
-  that you use no more than a couple of CPUs *in total*, with modest
-  memory usage, as running larger jobs may impact the ability of
-  everyone to use the cluster. Similarly, do not run transfers/copies
-  on/to/from the head node.
+- The head node (``esrumhead01fl``) may only be used for very small
+  jobs, as running larger jobs may impact the ability of everyone to use
+  the cluster. For the same reason, data transfers (`cp`, `rsync`, etc.)
+  should not be run on the head node.
 - Remember to be considerate to other users. For example, by limiting
   the number of jobs you are running simultaneously, so that other users
   can also run their jobs. We do not enforce hard limits on how many
