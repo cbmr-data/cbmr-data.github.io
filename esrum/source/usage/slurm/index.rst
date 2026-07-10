@@ -10,10 +10,14 @@ node (see :ref:`p_usage_connecting`) and queue them using the `Slurm
 queuing and distribute jobs on compute and GPU nodes when the required
 resources are available.
 
-While it is permitted to run small jobs directly on the head node, more
-resource intensive jobs *must* be queued using Slurm. We *will*
-terminate jobs running on the head node without prior warning, if it is
-necessary to prevent them from impacting users of the cluster.
+.. attention::
+
+    While it is permitted to run small jobs directly on the head node,
+    it is not possible to use more 4 CPUs and 64 GB of RAM. These limits
+    exist to reduce the impact on other users. For the same reason,
+    transfers and jobs that involve reading/writing a lot of data should
+    not be run on the head node. For transfers, instead see the
+    :ref:`p_transfers` page.
 
 The documentation for running jobs is split into three sections:
 
@@ -21,8 +25,7 @@ The documentation for running jobs is split into three sections:
    of queuing jobs using the ``sbatch`` command, how to request
    resources for your jobs, how to monitor your jobs, and how to run a
    shell on a compute node when you need to work interactively.
-2. The :ref:`p_usage_slurm_advanced` section describes additional ways
-   to monitor your jobs and the cluster as a whole, how to batch
+2. The :ref:`p_usage_slurm_advanced` section describes how to batch
    multiple, similar jobs using ``sbatch``, how to use ``srun`` for
    executing singular commands, and more.
 3. The :ref:`p_usage_slurm_monitor` section describes how to monitor
