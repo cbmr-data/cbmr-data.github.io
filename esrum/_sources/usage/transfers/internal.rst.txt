@@ -70,18 +70,24 @@ Copying data to/from network drives and compute nodes
 As described on the :ref:`p_network_drives` page, the ``H:``, ``N:``,
 and ``S:`` drives are not accessible from compute nodes by default.
 
-Therefore, you must start an interactive session, log in using the
-``/usr/bin/kinit`` command, and then access the network drives via the
-``/maps`` folder, after you've started an interactive session:
+To access the network drives from a compute node, you must first start
+an interactive session, and *then* log in using the ``/usr/bin/kinit``
+command. Once you have done this, you should be able to access the
+network drives via the ``/maps`` folder:
 
 .. code-block:: bash
 
-    # Start an interactive session
+    # 1. Start an interactive session
     srun --pty -- /bin/bash
-    # Log in to enable the network drives
+    # 2. Log in to enable the network drives
     /usr/bin/kinit
-    # View my H: drive; '${USER}' corresponds to your abc123 username
+    # 3. View my H: drive; '${USER}' corresponds to your abc123 username
     ls /maps/hdir/${USER}/
+
+If you get the error message that ``ls: cannot access
+'maps/hdir/abc123/': No such file or directory``, then skip to the
+:ref:`next section <p_transfer_network_drives_head>`. Otherwise continue
+reading this section:
 
 Your login will expire after about 12 hours, at which point you have to
 run ``/usr/bin/kinit`` on the node again. However, while your login is
@@ -95,18 +101,22 @@ Drive  Location
 ``N:`` ``/maps/groupdir/${USER}``
 ====== ==========================
 
-Note that these folders will be only created once you attempt to access
-them, provided that you have logged in using ``/usr/bin/kinit``.
+Note that these folders will be only appear once you attempt to access
+them, so running ``ls /maps/groupdir`` will not show your folder unless
+you have previously tried to ``cd`` to it, ``ls`` it directly, or
+similar.
 
 It is recommended to use ``rsync`` to copy data to/from the
-network-drives, as described below, but you do *not* need to use
-``srun`` in this case, as you are already working in an interactive
-session if you followed the instructions above.
+network-drives, as described in the :ref:`s_rsync_basics` section below,
+but you do *not* need to use ``srun`` in this case, as you are already
+working in an interactive session if you followed the instructions
+above.
 
 .. tip::
 
-    You do *not* need to use ``--bwlimit`` when running transfers on a
-    compute node.
+    You should not use ``--bwlimit=50M`` when running transfers on a
+    compute node. This limit on the rate of transfers is only required
+    when performing transfers on the head node.
 
 .. _p_transfer_network_drives_head:
 
@@ -123,23 +133,48 @@ If the instructions in the :ref:`p_transfer_network_drives_compute`
 section do not work, then you have to run the transfer on the head node.
 However, to avoid negatively impacting other users of Esrum, we require
 that these transfers are rate-limited to at most 50 MB/s (total) using
-the ``rsync --bwlimit`` option, and that you run no more than a single
-transfer at a time:
+the ``rsync --bwlimit=50M`` option, and that you run no more than a
+single transfer at a time:
 
 .. code-block:: shell
 
     $ rsync -av --progress=summary --bwlimit=50M /from/path/ /to/path/
 
-If you run transfers without rate limits (include using `cp` or `mv`),
-or if you run transfers with a total rate limit above 50 MB/s, then
-these will be terminated to prevent them from impacting other users of
-Esrum.
+If you run transfers without rate limits (include using ``cp`` or
+``mv``), or if you run transfers with a total rate limit above 50 MB/s,
+then these will be terminated to prevent them from impacting other users
+of Esrum.
 
 If you have an urgent need to transfer data from a network drive, or if
 the size of the data is so large that 50 MB/s (or roughly 6 hours per
 TB) is not feasible, then please :ref:`contact us <p_contact>`.
 
 .. include:: common_tips.rst
+
+.. _s_transfer_instruments:
+
+*************************************************
+ Copying instrument data to projects or datasets
+*************************************************
+
+As the ``/labs`` folders are currently only accessible from the head
+node, it is necessary to run the transfers directly on the head node.
+These transfers *must* be rate-limited to at most 50 MB/s (total) using
+the ``rsync --bwlimit=50M`` option, and you must not run more than a
+single transfer at a time:
+
+.. code-block:: shell
+
+    $ rsync -av --no-perms --chmod=ugo=rwX --progress=summary --bwlimit=50M /from/path/ /to/path/
+
+If you run transfers without rate limits (include using ``cp`` or
+``mv``), or if you run transfers with a total rate limit above 50 MB/s,
+then these will be terminated to prevent them from impacting other users
+of Esrum.
+
+If you have an urgent need to transfer instrument data, or if the size
+of the data is so large that 50 MB/s (or roughly 6 hours per TB) is not
+feasible, then please :ref:`contact us <p_contact>`.
 
 .. _s_rsync_basics:
 
@@ -169,52 +204,19 @@ The basic ``rsync`` command you should be using is
   /copy/this/data /to/this/location/``, then the ``data`` folder would
   be placed at ``/to/this/location/data``
 
-However, when copying data from a ``/datasets`` it is necessary to add
-the ``--no-perms --chmod=ugo=rwX`` options, since ``rsync`` would
-otherwise set all permissions to ``000``, due to how access-control is
-implemented for ``/datasets`` folder. See the troubleshooting section
-below if you forget to add this option.
+When transferring data from ``/datasets`` or from ``/labs`` you *must*
+include the ``--no-perms --chmod=ugo=rwX`` options, to prevent ``rsync``
+from setting the permissions on all transferred files and folders to
+``000``. If that happens, then neither you nor ``rsync`` can access the
+transferred data and the transfer will likely fail partway through. See
+the troubleshooting section below if you forgot to add this option.
 
-You *must* run ``rsync`` command on a compute node, either in an
-:ref:`interactive sessions <s_interactive_session>`, or by using
-``srun`` to automatically run the command on a compute node. See the
-:ref:`p_usage_srun` section for more information about using ``srun``.
-
-.. _s_transfer_instruments:
-
-*************************************************
- Copying instrument data to projects or datasets
-*************************************************
-
-As the `/labs` folders are currently only accessible from the head node,
-it is necessary to run the transfers directly on the head node. These
-transfers *must* be rate-limited to at most 50 MB/s (total) using the
-``rsync --bwlimit`` option, and you must not run more than a single
-transfer at a time:
-
-.. code-block:: shell
-
-    $ rsync -av --no-perms --chmod=ugo=rwX --progress=summary --bwlimit=50M /from/path/ /to/path/
-
-.. warning::
-
-    Similarly to ``/datasets`` folders, all files and folders on
-    ``/labs`` drives have permissions ``000``, i.e. no read and no write
-    access, even when you have access to the data. For this reason, you
-    *must* include the ``--no-perms --chmod=ugo=rwX`` options when
-    running ``rsync``, to prevent ``rsync`` from recreating these
-    permissions. If you omit ``--no-perms --chmod=ugo=rwX``, then
-    ``rsync`` normally fails during the transfer, due not being able to
-    write to the destination.
-
-If you run transfers without rate limits (include using `cp` or `mv`),
-or if you run transfers with a total rate limit above 50 MB/s, then
-these will be terminated to prevent them from impacting other users of
-Esrum.
-
-If you have an urgent need to transfer instrument data, or if the size
-of the data is so large that 50 MB/s (or roughly 6 hours per TB) is not
-feasible, then please :ref:`contact us <p_contact>`.
+If you are running the transfer on the head node, which is only
+permitted for transfers to/from the ``N:``, ``H:``, and ``S:`` drives,
+or to/from the ``/labs`` folders, then you *must* use the option
+``--bwlimit=50M`` to limit the rate of the transfer. Transfers running
+without this limit, and simultaneous transfers adding up to more than
+this limit, will be terminated.
 
 *****************
  Troubleshooting
