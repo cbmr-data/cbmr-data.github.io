@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code-blocks.css?v=14cb7052" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=14071cef" />
     
@@ -371,7 +372,7 @@ so, you can access the network drives at their canonical locations:</p>
 <p>The variable <code class="docutils literal notranslate"><span class="pre">${USER}</span></code> refers to <em>your</em> username, in the form
 <code class="docutils literal notranslate"><span class="pre">abc123</span></code>. However, these folders will not be created until you
 actually try to access them, for example via <code class="docutils literal notranslate"><span class="pre">ls</span></code> or <code class="docutils literal notranslate"><span class="pre">cd</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>/usr/bin/kinit
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>/usr/bin/kinit
 <span class="go">abc123@UNICPH.DOMAIN&#39;s password: ************</span>
 <span class="gp">$ </span>ls<span class="w"> </span>/maps/groupdir
 <span class="gp">$ </span>ls<span class="w"> </span>/maps/groupdir/<span class="si">${</span><span class="nv">USER</span><span class="si">}</span>
@@ -395,7 +396,7 @@ inaccessible. This will typically result in <code class="docutils literal notran
 network drives.</p>
 <p>To (re-)authenticate and thereby enable access to the network drives,
 run <code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span></code> and enter the password for your UCPH account:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>/usr/bin/kinit
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>/usr/bin/kinit
 <span class="go">abc123@UNICPH.DOMAIN&#39;s password: ************</span>
 <span class="gp">$</span>
 </pre></div>
@@ -433,7 +434,7 @@ few minutes before the folders become accessible again.</p>
 <p>The maximum duration of your current session (Kerberos ticket) is about
 10 hours, and the time at which it expires can be viewed via the command
 <code class="docutils literal notranslate"><span class="pre">/usr/bin/klist</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>/usr/bin/klist
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>/usr/bin/klist
 <span class="go">Ticket cache: KEYRING:persistent:436828696:krb_ccache_nBciOlx</span>
 <span class="go">Default principal: abc123@UNICPH.DOMAIN</span>
 
@@ -448,7 +449,7 @@ you can renew it for another 10 hours, until the time specified on the
 <p>To renew your session, use the <code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span> <span class="pre">-R</span></code> command. Unlike the
 basic <code class="docutils literal notranslate"><span class="pre">/usr/bin/kinit</span></code> command, this does not require that you enter
 your password:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>/usr/bin/kinit<span class="w"> </span>-R
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>/usr/bin/kinit<span class="w"> </span>-R
 <span class="gp">$ </span>/usr/bin/klist
 <span class="go">Ticket cache: KEYRING:persistent:436828696:krb_ccache_nBciOlx</span>
 <span class="go">Default principal: abc123@UNICPH.DOMAIN</span>
@@ -479,7 +480,7 @@ MobaXterm.</p>
 <p>Once you have logged in to Esrum <em>without</em> GSSAPI enabled, and if the
 folder(s) are still missing, then run the following command to create
 any missing network folders:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>bash<span class="w"> </span>/etc/profile.d/symlink-ucphmaps.sh
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>bash<span class="w"> </span>/etc/profile.d/symlink-ucphmaps.sh
 </pre></div>
 </div>
 <p>Once this is done, you should have a <code class="docutils literal notranslate"><span class="pre">ucph</span></code> symlink in your home
@@ -502,7 +503,7 @@ access has timed out.</p>
 <section id="kinit-unknown-credential-cache-type-while-getting-default-ccache">
 <h3><code class="docutils literal notranslate"><span class="pre">kinit:</span> <span class="pre">Unknown</span> <span class="pre">credential</span> <span class="pre">cache</span> <span class="pre">type</span> <span class="pre">while</span> <span class="pre">getting</span> <span class="pre">default</span> <span class="pre">ccache</span></code><a class="headerlink" href="#kinit-unknown-credential-cache-type-while-getting-default-ccache" title="Link to this heading">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">kinit</span></code> command may fail if you are using a <code class="docutils literal notranslate"><span class="pre">conda</span></code> environment:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(base)</span> <span class="gp">$ </span>kinit
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(base)</span> <span class="gp">$ </span>kinit
 <span class="go">kinit: Unknown credential cache type while getting default ccache</span>
 </pre></div>
 </div>

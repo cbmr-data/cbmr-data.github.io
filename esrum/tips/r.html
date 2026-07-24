@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/code-blocks.css?v=14cb7052" />
     <link rel="stylesheet" type="text/css" href="../_static/css/playback.css?v=2c0b8537" />
     <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=14071cef" />
     
@@ -314,7 +315,7 @@ that you <code class="docutils literal notranslate"><span class="pre">R/4.3.3</s
 compatible between the compute nodes and the RStudio servers.</p>
 <p>By default, the 4.3.x versions of R loads <code class="docutils literal notranslate"><span class="pre">gcc/8.5.0</span></code>, so you can
 simply use the <code class="docutils literal notranslate"><span class="pre">--auto</span></code> option when loading <code class="docutils literal notranslate"><span class="pre">R/4.3.x</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>--auto<span class="w"> </span>R/4.3.3
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>--auto<span class="w"> </span>R/4.3.3
 <span class="go">Loading R/4.3.3</span>
 <span class="go">  Loading requirement: gcc/8.5.0</span>
 </pre></div>
@@ -342,7 +343,7 @@ submitted to slurm. This not only ensures that your analyses do not
 impact other users, but also makes your analyses reproducible.</p>
 <p>To run an R script on the command-line, simply use the <code class="docutils literal notranslate"><span class="pre">Rscript</span></code>
 command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cat<span class="w"> </span>my_script.R
+<div class="generic-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cat<span class="w"> </span>my_script.R
 <span class="go">cat(&quot;Hello, world!\n&quot;)</span>
 <span class="gp">$ </span>Rscript<span class="w"> </span>my_script.R
 <span class="go">Hello, world!</span>
@@ -351,12 +352,12 @@ command:</p>
 <p>For simple scripts you can use the <code class="docutils literal notranslate"><span class="pre">commandArgs</span></code> function to pass
 arguments to your scripts, allowing you to use them to process arbitrary
 data-sets:</p>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">args</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">commandArgs</span><span class="p">(</span><span class="n">trailingOnly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">args</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">commandArgs</span><span class="p">(</span><span class="n">trailingOnly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
 <span class="linenos">2</span>
 <span class="linenos">3</span><span class="nf">cat</span><span class="p">(</span><span class="s">&quot;Hello, &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="s">&quot;!\n&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>Rscript<span class="w"> </span>my_script.R<span class="w"> </span>world
+<div class="generic-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>Rscript<span class="w"> </span>my_script.R<span class="w"> </span>world
 <span class="go">Hello, world!</span>
 </pre></div>
 </div>
@@ -380,7 +381,7 @@ install it using the <code class="docutils literal notranslate"><span class="pre
 </div>
 <p>This allows you to document your command-line options, specify default
 values, and much more:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>Rscript<span class="w"> </span>my_script.R
+<div class="generic-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>Rscript<span class="w"> </span>my_script.R
 <span class="go">usage: my_script.R [--] [--help] [--opts OPTS] [--p-value P-VALUE]</span>
 <span class="go">    input_file</span>
 
@@ -415,7 +416,7 @@ Slurm (using your preferred version of R):</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">&quot;${&#64;}&quot;</span></code> safely passes all your command-line arguments to
 <code class="docutils literal notranslate"><span class="pre">Rscript</span></code>, even if they contain spaces. This wrapper script can then
 be used to submit/call any of your R-scripts:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>run_rscript.sh<span class="w"> </span>my_script.R<span class="w"> </span>my_data.tsv<span class="w"> </span>--p-value<span class="w"> </span><span class="m">0</span>.01
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>run_rscript.sh<span class="w"> </span>my_script.R<span class="w"> </span>my_data.tsv<span class="w"> </span>--p-value<span class="w"> </span><span class="m">0</span>.01
 <span class="go">Submitted batch job 18090212</span>
 <span class="gp">$ </span>cat<span class="w"> </span>slurm-18090212.out
 <span class="go">I would process the file my_data.tsv with a max P-value of 0.01</span>
@@ -428,7 +429,7 @@ be used to submit/call any of your R-scripts:</p>
 <h3>Basics of installing packages<a class="headerlink" href="#basics-of-installing-packages" title="Link to this heading">¶</a></h3>
 <p>Modules may be installed in your home folder using the
 <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.1
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.1
 <span class="gp">$ </span>R
 <span class="go">&gt; install.packages(&quot;ggplot2&quot;)</span>
 <span class="go">Warning in install.packages(&quot;ggplot2&quot;) :</span>
@@ -461,7 +462,7 @@ following command to your <code class="docutils literal notranslate"><span class
 </pre></div>
 </div>
 <p>This can be done by running the following command in your (bash) shell:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;\noptions(repos=c(CRAN=&quot;https://cloud.r-project.org/&quot;))&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>~/.Rprofile
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;\noptions(repos=c(CRAN=&quot;https://cloud.r-project.org/&quot;))&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>~/.Rprofile
 </pre></div>
 </div>
 <p>Note that this does not affect already running R shells.</p>
@@ -473,10 +474,10 @@ large packages, this can result in very long installation times. To
 improve this situation, we can tell the build system to use more than
 one thread by setting the <code class="docutils literal notranslate"><span class="pre">MAKEFLAGS</span></code> environment variable.</p>
 <p>For example, to install the <code class="docutils literal notranslate"><span class="pre">ape</span></code> package:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>srun<span class="w"> </span>--pty<span class="w"> </span>-c<span class="w"> </span><span class="m">8</span><span class="w"> </span>--<span class="w"> </span>bash
-$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">MAKEFLAGS</span><span class="o">=</span><span class="s2">&quot;-j</span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span><span class="s2">&quot;</span>
-$<span class="w"> </span>R
-&gt;<span class="w"> </span>install.packages<span class="o">(</span><span class="s2">&quot;ape&quot;</span><span class="o">)</span>
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>-c<span class="w"> </span><span class="m">8</span><span class="w"> </span>--<span class="w"> </span>bash
+<span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">MAKEFLAGS</span><span class="o">=</span><span class="s2">&quot;-j</span><span class="si">${</span><span class="nv">SLURM_CPUS_PER_TASK</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="gp">$ </span>R
+<span class="go">&gt; install.packages(&quot;ape&quot;)</span>
 </pre></div>
 </div>
 <p>This starts an interactive session on Slurm with 8 CPUs reserved,
@@ -501,7 +502,7 @@ enables R to build and install two packages simultaneously, in addition
 to using more CPUs to build each package.</p>
 <p>To enable this option by default, append it to your <code class="docutils literal notranslate"><span class="pre">~/.Rprofile</span></code>
 file. This can be done by running the following command in bash:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;options(Ncpus=2)&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>~/.Rprofile
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">echo &#39;options(Ncpus=2)&#39; | tee -a ~/.Rprofile</span>
 </pre></div>
 </div>
 <p>Note, however, that this changes how R prints the output from the
@@ -533,14 +534,14 @@ Error: .onLoad failed in loadNamespace() for &#39;tcltk&#39;, details:
 </pre></div>
 </div>
 <p>If so, then you must disable graphical menus before running
-<code class="docutils literal notranslate"><span class="pre">install.packages</span></code> by first entering the following command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; options(menu.graphics=FALSE)</span>
+<code class="docutils literal notranslate"><span class="pre">install.packages</span></code> by first entering the following command in R:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">menu.graphics</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Then simply run <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> again.</p>
 <p>You can also set the R option permanently by running the following in
 your (bash) terminal:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;options(menu.graphics=FALSE)&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>~/.Rprofile
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;options(menu.graphics=FALSE)&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>~/.Rprofile
 </pre></div>
 </div>
 </section>
@@ -556,7 +557,7 @@ module, then libraries may fail to install with the error message that
 <p>To fix this, deactivate your conda environments (including <code class="docutils literal notranslate"><span class="pre">base</span></code>)
 before installing the library. For example, to install the <code class="docutils literal notranslate"><span class="pre">xml2</span></code>
 library:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(my-env)</span> <span class="gp">$ </span>conda<span class="w"> </span>deactivate
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(my-env)</span> <span class="gp">$ </span>conda<span class="w"> </span>deactivate
 <span class="gp gp-VirtualEnv">(base)</span> <span class="gp">$ </span>conda<span class="w"> </span>deactivate
 <span class="gp">$ </span>R
 <span class="go">&gt; install.packages(&quot;xml2&quot;)</span>
@@ -569,7 +570,7 @@ library:</p>
 the GCC module other than <code class="docutils literal notranslate"><span class="pre">gcc/8.5.0</span></code>, then this library may fail to
 load on the RStudio node or when <code class="docutils literal notranslate"><span class="pre">gcc/8.5.0</span></code> is loaded on the
 head/compute nodes:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>R
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>R
 <span class="go">&gt; library(wk)</span>
 <span class="go">Error: package or namespace load failed for ‘wk’ in dyn.load(file, DLLpath = DLLpath, ...):</span>
 <span class="go">unable to load shared object &#39;/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so&#39;:</span>
@@ -581,8 +582,8 @@ one of two methods:</p>
 <ol class="arabic">
 <li><p>Connect to the RStudio server as described in the
 <a class="reference internal" href="#s-service-rstudio"><span class="std std-ref">Troubleshooting</span></a> section, and simply install the affected
-packages using the <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> function:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; install.packages(&quot;wk&quot;)</span>
+packages using the <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> function in R:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;wk&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You may need to repeat this step multiple times, for every package
@@ -590,7 +591,7 @@ that fails to load.</p>
 </li>
 <li><p>Connect to the head node or a compute node, and take care to load the
 correct version of GCC before loading R:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
 <span class="gp">$ </span>R
 <span class="go">&gt; install.packages(&quot;wk&quot;)</span>
 </pre></div>
@@ -605,17 +606,17 @@ which specifies the kind of system we are running on. Immediately after
 that we find the package name, namely <code class="docutils literal notranslate"><span class="pre">wk</span></code> in this case.</p>
 <p>You can identify all affected packages in your &quot;global&quot; R library by
 running the following commands:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
 </pre></div>
 </div>
 <ol class="arabic">
 <li><p><code class="docutils literal notranslate"><span class="pre">cd</span></code> to your R library</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>~/R/x86_64-pc-linux-gnu-library/4.3/
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>~/R/x86_64-pc-linux-gnu-library/4.3/
 </pre></div>
 </div>
 </li>
 <li><p>Test every installed library</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="k">for</span><span class="w"> </span>lib<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>ls<span class="k">)</span><span class="p">;</span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Testing </span><span class="si">${</span><span class="nv">lib</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span>Rscript<span class="w"> </span>&lt;<span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;library(</span><span class="si">${</span><span class="nv">lib</span><span class="si">}</span><span class="s2">)&quot;</span><span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="k">done</span>
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="k">for</span><span class="w"> </span>lib<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>ls<span class="k">)</span><span class="p">;</span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Testing </span><span class="si">${</span><span class="nv">lib</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span>Rscript<span class="w"> </span>&lt;<span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;library(</span><span class="si">${</span><span class="nv">lib</span><span class="si">}</span><span class="s2">)&quot;</span><span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="k">done</span>
 </pre></div>
 </div>
 </li>
@@ -638,7 +639,7 @@ Testing later
 </div>
 <p>Locate the error messages like the one shown above in the output and
 reinstall the affected libraries using the <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>R
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>R
 <span class="go">&gt; install.packages(c(&quot;igraph&quot;, &quot;isoband&quot;))</span>
 </pre></div>
 </div>

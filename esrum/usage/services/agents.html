@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code-blocks.css?v=14cb7052" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=14071cef" />
     
@@ -321,7 +322,7 @@ not available, and we will look at including it in the sandbox.</p>
 <p>To start using a sandboxed AI Agent, simply load the module and run
 <code class="docutils literal notranslate"><span class="pre">agent-container</span></code> in the work folder containing your scripts or other
 (non-sensitive) files:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/home/abc123/my-scripts/
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/home/abc123/my-scripts/
 <span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>agent-container
 <span class="gp">$ </span>agent-container<span class="w"> </span>claude
 </pre></div>
@@ -358,12 +359,12 @@ access.</p>
 <p>All command-line arguments written after the agent name, <code class="docutils literal notranslate"><span class="pre">shell</span></code>, or
 <code class="docutils literal notranslate"><span class="pre">bash</span></code>, are passed directly to the process in the sandbox. For
 example, to view the help text for <code class="docutils literal notranslate"><span class="pre">claude</span></code>, simply run</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>agent-container<span class="w"> </span>claude<span class="w"> </span>--help
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>agent-container<span class="w"> </span>claude<span class="w"> </span>--help
 </pre></div>
 </div>
 <p>Arguments for <code class="docutils literal notranslate"><span class="pre">agent-container</span></code> itself must go before the agent name.
 For example, to pass the <code class="docutils literal notranslate"><span class="pre">--read-only</span></code> option to <code class="docutils literal notranslate"><span class="pre">agent-container</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>agent-container<span class="w"> </span>--read-only<span class="w"> </span>claude
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>agent-container<span class="w"> </span>--read-only<span class="w"> </span>claude
 </pre></div>
 </div>
 </section>
@@ -374,7 +375,7 @@ work directory. Should you need to include additional folders in your
 sandbox, then you can include them via the <code class="docutils literal notranslate"><span class="pre">--include</span></code> option. For
 example, to include the directory <code class="docutils literal notranslate"><span class="pre">/projects/cbmr_shared/apps</span></code> in
 addition to the current working directory,</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/home/abc123/my-scripts/
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/home/abc123/my-scripts/
 <span class="gp">$ </span>agent-container<span class="w"> </span>--include<span class="w"> </span>/projects/cbmr_shared/apps<span class="w"> </span>claude
 </pre></div>
 </div>
@@ -385,7 +386,7 @@ multiple <code class="docutils literal notranslate"><span class="pre">--include<
 both the current working directory and any folders included via
 <code class="docutils literal notranslate"><span class="pre">--include</span></code>. To do so, pass the <code class="docutils literal notranslate"><span class="pre">--read-only</span></code> option to
 <code class="docutils literal notranslate"><span class="pre">agent-container</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>agent-container<span class="w"> </span>--read-only<span class="w"> </span>claude
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>agent-container<span class="w"> </span>--read-only<span class="w"> </span>claude
 </pre></div>
 </div>
 </section>
@@ -401,14 +402,14 @@ home, for example using the included <code class="docutils literal notranslate">
 command.</p></li>
 </ol>
 <p>For example, to install the Conda package for R, using <code class="docutils literal notranslate"><span class="pre">pixi</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>agent-container<span class="w"> </span>shell
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>agent-container<span class="w"> </span>shell
 <span class="gp gp-VirtualEnv">(agent-container)</span> <span class="gp">$ </span>pixi<span class="w"> </span>global<span class="w"> </span>install<span class="w"> </span>r-base
 <span class="gp gp-VirtualEnv">(agent-container)</span> <span class="gp">$ </span>R<span class="w"> </span>--version
 <span class="go">R version 4.6.0 (2026-04-24) -- &quot;Because it was There&quot;</span>
 </pre></div>
 </div>
 <p>Or, to install <code class="docutils literal notranslate"><span class="pre">ruff</span></code> from PyPi using <code class="docutils literal notranslate"><span class="pre">uv</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>agent-container<span class="w"> </span>shell
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>agent-container<span class="w"> </span>shell
 <span class="gp gp-VirtualEnv">(agent-container)</span> <span class="gp">$ </span>uv<span class="w"> </span>tool<span class="w"> </span>install<span class="w"> </span>ruff
 <span class="gp gp-VirtualEnv">(agent-container)</span> <span class="gp">$ </span>ruff<span class="w"> </span>--version
 <span class="go">ruff 0.15.18</span>

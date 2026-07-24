@@ -128,6 +128,7 @@ which you want to forward a port, and replacing ``abc123`` with your
 UCPH short username:
 
 .. code-block:: console
+    :class: local-command
 
     $ ssh -S none -N -L 'XXXXX:esrumcmpn07fl:XXXXX' abc123@esrumhead01fl.unicph.domain
     abc123@esrumhead01fl.unicph.domain's password: ****************
@@ -147,6 +148,7 @@ If the service you wish to connect to is instead running on the head
 node, then use the following command:
 
 .. code-block:: console
+    :class: local-command
 
     $ ssh -S none -N -L 'XXXXX:localhost:XXXXX' abc123@esrumhead01fl.unicph.domain
     abc123@esrumhead01fl.unicph.domain's password: ****************

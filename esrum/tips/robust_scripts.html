@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/code-blocks.css?v=14cb7052" />
     <link rel="stylesheet" type="text/css" href="../_static/css/playback.css?v=2c0b8537" />
     <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=14071cef" />
     
@@ -324,7 +325,7 @@ options in scripts that you import into your shell using the
 access slurm options in batch scripts. However, unlike in most
 programming languages, it is not an error to access a variable that does
 not exist:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cat<span class="w"> </span>myscript.sh
+<div class="generic-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cat<span class="w"> </span>myscript.sh
 <span class="gp">#</span>!/bin/bash
 <span class="go">MY_VARIABLE=&quot;record&quot;</span>
 <span class="go">echo &quot;Tourist: I will not buy this ${MY_VARIABL}, it is scratched.&quot;</span>
@@ -340,7 +341,7 @@ bash silent do the wrong thing.</p>
 <p>While there are cases where it is useful to allow missing variables,
 most of the time this is a mistake. To prevent this, you can set the
 <code class="docutils literal notranslate"><span class="pre">nounset</span></code> option, which causes bash to terminate on unset variables:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cat<span class="w"> </span>myscript.sh
+<div class="generic-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cat<span class="w"> </span>myscript.sh
 <span class="gp">#</span>!/bin/bash
 <span class="go">set -o nounset  # Exit on unset variables</span>
 <span class="go">MY_VARIABLE=&quot;record&quot;</span>
@@ -376,7 +377,7 @@ partially or wholly corrupt data:</p>
 </pre></div>
 </div>
 <p>This produces the following output:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls
+<div class="generic-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls
 <span class="go">my-sketch.sh</span>
 <span class="gp">$ </span>bash<span class="w"> </span>my-sketch.sh
 <span class="go">sed: -e expression #1, char 16: unterminated `s&#39; command</span>
@@ -431,7 +432,7 @@ the <code class="docutils literal notranslate"><span class="pre">gzip</span></co
 </pre></div>
 </div>
 <p>Running this script produces the following, helpful output:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls
+<div class="generic-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls
 <span class="go">my-sketch.sh</span>
 <span class="gp">$ </span>bash<span class="w"> </span>my-sketch.sh
 <span class="go">sed: -e expression #1, char 16: unterminated `s&#39; command</span>
@@ -519,7 +520,7 @@ to delete when the script is done running:</p>
 </pre></div>
 </div>
 <p>Running the script looks like this:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>bash<span class="w"> </span>example.sh
+<div class="generic-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>bash<span class="w"> </span>example.sh
 <span class="go">Do something with &#39;/tmp/tmp.BaH9GKP50J&#39; here!</span>
 <span class="go">removed &#39;/tmp/tmp.BaH9GKP50J&#39;</span>
 </pre></div>
@@ -536,7 +537,7 @@ recommended that you use the <a class="reference external" href="https://github.
 common mistakes.</p>
 <p>For example, if we run shell check on the very first script shown on
 this page:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>shellcheck
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>shellcheck
 <span class="gp">$ </span>shellcheck<span class="w"> </span>myscript.sh
 
 <span class="go">In myscript.sh line 2:</span>
@@ -557,7 +558,7 @@ already running commands in a <a class="reference external" href="https://snakem
 mentioned above, as well as the <code class="docutils literal notranslate"><span class="pre">errexit</span></code> option that is equivalent to
 the <code class="docutils literal notranslate"><span class="pre">trap</span></code> command above but which prints less information about the
 failure:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>snakemake
+<div class="generic-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>snakemake
 <span class="go">sed: -e expression #1, char 16: unterminated `s&#39; command</span>
 <span class="go">[Thu Aug 29 11:26:32 2024]</span>
 <span class="go">Error in rule 1:</span>

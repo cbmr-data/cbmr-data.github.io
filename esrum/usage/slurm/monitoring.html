@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code-blocks.css?v=14cb7052" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=14071cef" />
     
@@ -312,7 +313,7 @@ section.</p>
 possible to receive email notifications when your jobs are started,
 finish, fail, are re-queued, or some combination. This is accomplished
 by using the <code class="docutils literal notranslate"><span class="pre">--mail-user</span></code> and <code class="docutils literal notranslate"><span class="pre">--mail-type</span></code> options:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>--mail-user<span class="o">=</span>abc123@ku.dk<span class="w"> </span>--mail-type<span class="o">=</span>END,FAIL<span class="w"> </span>my_script.sh
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>--mail-user<span class="o">=</span>abc123@ku.dk<span class="w"> </span>--mail-type<span class="o">=</span>END,FAIL<span class="w"> </span>my_script.sh
 <span class="go">Submitted batch job 8503</span>
 </pre></div>
 </div>
@@ -324,7 +325,7 @@ by using the <code class="docutils literal notranslate"><span class="pre">--mail
 </pre></div>
 </div>
 <p>and queued as usual:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>my-script.sh
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>my-script.sh
 <span class="go">Submitted batch job 8504</span>
 </pre></div>
 </div>
@@ -357,7 +358,7 @@ node.</p>
 <p>However, the output from these tools may be difficult to interpret, and
 for that reason we provide a helper script, <a class="reference external" href="https://github.com/cbmr-data/esrum-utils/tree/main/sacct-usage">sacct-usage</a>, that
 summarizes some of this information in a more easily readable form.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sacct-usage
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sacct-usage
 <span class="go">User    Job   Start                   Elapsed  State      CPUsReserved  CPUsUsed  MemReserved  MemUsed  Name</span>
 <span class="go">abc123  1     2025-09-01 10:15:01  252:04:52s  FAILED                8       1.1        124.6    105.9  python3</span>
 <span class="go">abc123  2[1]  2025-09-15 16:02:35   02:49:25s  COMPLETED            32      16.3        512.0    358.7  paleomix</span>
@@ -393,7 +394,7 @@ program used. This is acoomplished by prepending <code class="docutils literal n
 <span class="pre">=</span> <span class="pre">%P,</span> <span class="pre">MEM</span> <span class="pre">=</span> <span class="pre">%MKB&quot;</span></code> to the command that you want to measure, as shown in
 this example, where we wish to measure the resource usage of the
 <code class="docutils literal notranslate"><span class="pre">my-command</span></code> program:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>/usr/bin/time<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;CPU = %P, MEM = %M&quot;</span><span class="w"> </span>my-command<span class="w"> </span>--threads<span class="w"> </span><span class="m">1</span><span class="w"> </span>...
+<div class="generic-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>/usr/bin/time<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;CPU = %P, MEM = %M&quot;</span><span class="w"> </span>my-command<span class="w"> </span>--threads<span class="w"> </span><span class="m">1</span><span class="w"> </span>...
 <span class="go">CPU = 99%, MEM = 840563KB</span>
 <span class="gp">$ </span>/usr/bin/time<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;CPU = %P, MEM = %M&quot;</span><span class="w"> </span>my-command<span class="w"> </span>--threads<span class="w"> </span><span class="m">4</span><span class="w"> </span>...
 <span class="go">CPU = 345%, MEM = 892341KB</span>
@@ -426,7 +427,7 @@ options for <code class="docutils literal notranslate"><span class="pre">srun</s
 an existing job, and the ID of the job to overlap. The job ID can obtain
 using for example the <code class="docutils literal notranslate"><span class="pre">squeue</span> <span class="pre">--me</span></code> command (from the <code class="docutils literal notranslate"><span class="pre">JOBID</span></code>
 column), as shown here:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>squeue<span class="w"> </span>--me
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>squeue<span class="w"> </span>--me
 <span class="go">JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
 <span class="go"> 8503 standardq my_scrip   abc123  R       0:02      1 esrumcmpn03fl</span>
 <span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--overlap<span class="w"> </span>--jobid<span class="w"> </span><span class="m">8503</span><span class="w"> </span>--gres<span class="o">=</span>none<span class="w"> </span>htop
@@ -454,7 +455,7 @@ session:</p>
 <h3>Monitoring an interactive session<a class="headerlink" href="#monitoring-an-interactive-session" title="Link to this heading">¶</a></h3>
 <p>If you are running a job in an <a class="reference internal" href="basics.html#s-interactive-session"><span class="std std-ref">interactive session</span></a>, then you can monitor the reserved GPU(s)
 directly using the <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nvidia-smi<span class="w"> </span>-l<span class="w"> </span><span class="m">5</span>
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nvidia-smi<span class="w"> </span>-l<span class="w"> </span><span class="m">5</span>
 <span class="go">Thu Apr  4 14:30:46 2024</span>
 <span class="go">+---------------------------------------------------------------------------------------+</span>
 <span class="go">| NVIDIA-SMI 545.23.08              Driver Version: 545.23.08    CUDA Version: 12.3     |</span>
@@ -497,7 +498,7 @@ node that contains the output from the <code class="docutils literal notranslate
 above.</p>
 <p>To watch the content of this log-file, firstly determine the job ID of
 your job running on the GPU node:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>squeue<span class="w"> </span>--me<span class="w"> </span>--partition<span class="o">=</span>gpuqueue
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>squeue<span class="w"> </span>--me<span class="w"> </span>--partition<span class="o">=</span>gpuqueue
 <span class="go"> JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
 <span class="go">570316  gpuqueue     bash   abc123  R      13:55      1 esrumgpun01fl</span>
 </pre></div>
@@ -506,7 +507,7 @@ your job running on the GPU node:</p>
 <em>inside</em> this job, which we specify using the <code class="docutils literal notranslate"><span class="pre">--jobid</span> <span class="pre">570316</span></code> option.
 The <code class="docutils literal notranslate"><span class="pre">--gres=none</span></code> option is required, since otherwise Slurm would try
 to reserve the GPU our job already uses and eventually time out.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--overlap<span class="w"> </span>--jobid<span class="w"> </span><span class="m">570316</span><span class="w"> </span>--gres<span class="o">=</span>none<span class="w"> </span>--pty<span class="w"> </span>--<span class="w"> </span>watch<span class="w"> </span>-n<span class="w"> </span><span class="m">15</span><span class="w"> </span>-d<span class="w"> </span>cat<span class="w"> </span>/scratch/gpus/nvidia-smi.txt
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--overlap<span class="w"> </span>--jobid<span class="w"> </span><span class="m">570316</span><span class="w"> </span>--gres<span class="o">=</span>none<span class="w"> </span>--pty<span class="w"> </span>--<span class="w"> </span>watch<span class="w"> </span>-n<span class="w"> </span><span class="m">15</span><span class="w"> </span>-d<span class="w"> </span>cat<span class="w"> </span>/scratch/gpus/nvidia-smi.txt
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -528,7 +529,7 @@ will automatically exit when your job finishes. See the
 project folder, in order to make it easy to monitor activity on the
 cluster, for example to decide how many resources you can reasonably use
 for a job (see <a class="reference internal" href="basics.html#s-best-practice-resources"><span class="std std-ref">Best practice for reserving resources</span></a>):</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>slurmboard
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>slurmboard
 <span class="gp">$ </span>slurmboard
 </pre></div>
 </div>
@@ -561,9 +562,9 @@ optimize resource utilization on the cluster.</p>
 <h3><code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">refused</span></code> when running <code class="docutils literal notranslate"><span class="pre">sacct</span></code> / <code class="docutils literal notranslate"><span class="pre">sacct-usage</span></code><a class="headerlink" href="#connection-refused-when-running-sacct-sacct-usage" title="Link to this heading">¶</a></h3>
 <p>If you attempt to run <code class="docutils literal notranslate"><span class="pre">sacct</span></code> or <code class="docutils literal notranslate"><span class="pre">sacct-usage</span></code> on any other node
 than the head node, then you may get an error message like this:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sacct: error: slurm_persist_conn_open_without_init: failed to open persistent connection to host:localhost:6819: Connection refused</span>
-<span class="go">sacct: error: Sending PersistInit msg: Connection refused</span>
-<span class="go">sacct: error: Problem talking to the database: Connection refused</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sacct: error: slurm_persist_conn_open_without_init: failed to open persistent connection to host:localhost:6819: Connection refused
+sacct: error: Sending PersistInit msg: Connection refused
+sacct: error: Problem talking to the database: Connection refused
 </pre></div>
 </div>
 <p>To avoid this, only run <code class="docutils literal notranslate"><span class="pre">sacct</span></code> and <code class="docutils literal notranslate"><span class="pre">sacct-usage</span></code> on the head node.</p>

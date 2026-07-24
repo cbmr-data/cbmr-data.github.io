@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code-blocks.css?v=14cb7052" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=14071cef" />
     
@@ -313,7 +314,7 @@ ready.</p>
 <section id="starting-a-jupyter-notebook">
 <h2>Starting a Jupyter notebook<a class="headerlink" href="#starting-a-jupyter-notebook" title="Link to this heading">¶</a></h2>
 <p>To start a notebook on a node, run the following commands:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>jupyter-notebook
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>jupyter-notebook
 <span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--<span class="w"> </span>jupyter<span class="w"> </span>notebook<span class="w"> </span>--no-browser<span class="w"> </span>--ip<span class="o">=</span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="o">=</span>XXXXX
 </pre></div>
 </div>
@@ -394,7 +395,7 @@ need to include this part of the name.</p>
 </li>
 <li><p>Alternatively, run the following command on the head node in a
 separate terminal:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>squeue<span class="w"> </span>--me<span class="w"> </span>--name<span class="w"> </span>jupyter
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>squeue<span class="w"> </span>--me<span class="w"> </span>--name<span class="w"> </span>jupyter
 <span class="go">JOBID  PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)</span>
 <span class="go">551600 standardq  jupyter   abc123  R       8:49      1 esrumcmpn07fl</span>
 </pre></div>
@@ -421,7 +422,7 @@ Python environment:</p>
 <li><p>Deactivate any currently active <code class="docutils literal notranslate"><span class="pre">conda</span></code> and Python environments.
 This ensures that your Jupyter Notebook install will be
 self-contained:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>to<span class="w"> </span>deactivate<span class="w"> </span>Conda<span class="w"> </span>environments:
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>to<span class="w"> </span>deactivate<span class="w"> </span>Conda<span class="w"> </span>environments:
 <span class="go">conda deactivate</span>
 <span class="gp"># </span>to<span class="w"> </span>deactivate<span class="w"> </span>Python<span class="w"> </span>environments:
 <span class="go">deactivate</span>
@@ -429,14 +430,14 @@ self-contained:</p>
 </div>
 </li>
 <li><p>Load the Python version you wish to use, for example 3.11.3:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module load python/3.11.3</span>
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module load python/3.11.3</span>
 </pre></div>
 </div>
 </li>
 <li><p>Create a virtual environment for Jupyter Notebook. The name
 <code class="docutils literal notranslate"><span class="pre">my_jupyter</span></code> in the following commands may be replaced by any name
 that you prefer:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 -m venv my_jupyter</span>
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">python3 -m venv my_jupyter</span>
 </pre></div>
 </div>
 <p>You can now safely unload the Python module.</p>
@@ -444,21 +445,21 @@ that you prefer:</p>
 <li><p>Install <code class="docutils literal notranslate"><span class="pre">jupyter</span></code> in the environment. You can install either the
 latest version or, if you prefer, a specific version of Jupyter
 Notebook:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./my_jupyter/bin/pip install notebook # the latest version, or</span>
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./my_jupyter/bin/pip install notebook # the latest version, or</span>
 <span class="go">./my_jupyter/bin/pip install notebook==7.4.5 # a specific version</span>
 </pre></div>
 </div>
 </li>
 <li><p>Install any additional modules in the environment, for example
 <code class="docutils literal notranslate"><span class="pre">pandas</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./my_jupyter/bin/pip install pandas</span>
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./my_jupyter/bin/pip install pandas</span>
 </pre></div>
 </div>
 </li>
 </ol>
 <p>To start the notebook, run the following command, replacing <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> with
 the port number you are using (see above for more information)</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun --pty -- ./my_jupyter/bin/jupyter notebook --no-browser --ip=0.0.0.0 --port=XYZ</span>
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun --pty -- ./my_jupyter/bin/jupyter notebook --no-browser --ip=0.0.0.0 --port=XYZ</span>
 </pre></div>
 </div>
 <p>You can now import and use the newly installed Python modules in your
@@ -471,7 +472,7 @@ to use R in your Jupyter notebook, you can add an R Kernel for the
 specific version of R that you wish to use.</p>
 <p>To do so, run the following commands, replacing <cite>R/4.3.3</cite> with the
 version of R that you wish to use:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>jupyter-notebook/6.5.4
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>jupyter-notebook/6.5.4
 <span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>--auto<span class="w"> </span>R/4.3.3
 <span class="gp">$ </span>R
 <span class="go">&gt; install.packages(&#39;IRkernel&#39;)</span>
@@ -487,14 +488,14 @@ wish to make available as a kernel. Run the command <code class="docutils litera
 between each, to ensure that you have loaded only the expected version
 of R and <code class="docutils literal notranslate"><span class="pre">gcc</span></code> that R depends on.</p>
 <p>Once you are done adding R versions, you start notebook as shown above:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>jupyter-notebook/6.5.4
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>jupyter-notebook/6.5.4
 <span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--<span class="w"> </span>jupyter<span class="w"> </span>notebook<span class="w"> </span>--no-browser<span class="w"> </span>--port<span class="o">=</span>XXXXX
 </pre></div>
 </div>
 <p>While you do not need to load the R module first, if you only wish to
 run R code, you must do so if you wish to install R libraries via the
 notebook:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>jupyter-notebook/6.5.4
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>jupyter-notebook/6.5.4
 <span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>--auto<span class="w"> </span>R/4.3.3
 <span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--<span class="w"> </span>jupyter<span class="w"> </span>notebook<span class="w"> </span>--no-browser<span class="w"> </span>--port<span class="o">=</span>XXXXX
 </pre></div>
@@ -521,7 +522,7 @@ Notebook:</p>
 <li><p>Install Jupyter Notebook in a virtual environment as described in the
 <a class="reference internal" href="#s-jupyter-python-modules"><span class="std std-ref">Installing Python modules in your Jupyter Notebook</span></a> section above.</p></li>
 <li><p>Install <cite>jupyter_slurm</cite> in the environment</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>install<span class="w"> </span>the<span class="w"> </span>latest<span class="w"> </span>version<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>module
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>install<span class="w"> </span>the<span class="w"> </span>latest<span class="w"> </span>version<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>module
 <span class="go">./my_jupyter/bin/pip install /projects/cbmr_shared/apps/dap/jupyter_slurm/latest</span>
 <span class="gp"># </span>or,<span class="w"> </span>alternatively,<span class="w"> </span>a<span class="w"> </span>specific<span class="w"> </span>version
 <span class="gp"># </span>./my_jupyter/bin/pip<span class="w"> </span>install<span class="w"> </span>/projects/cbmr_shared/apps/dap/jupyter_slurm/0.0.1
@@ -531,7 +532,7 @@ Notebook:</p>
 </ol>
 <p>To start the notebook, run, replacing <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> with the port number you
 are using (see above for more information)</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun --pty -- ./my_jupyter/bin/jupyter notebook --no-browser --ip=0.0.0.0 --port=XYZ</span>
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun --pty -- ./my_jupyter/bin/jupyter notebook --no-browser --ip=0.0.0.0 --port=XYZ</span>
 </pre></div>
 </div>
 <p>You can now import and use the <code class="docutils literal notranslate"><span class="pre">jupyter_slurm</span></code> module as described

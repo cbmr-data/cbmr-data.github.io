@@ -25,6 +25,7 @@ finish, fail, are re-queued, or some combination. This is accomplished
 by using the ``--mail-user`` and ``--mail-type`` options:
 
 .. code-block:: console
+    :class: remote-command
 
     $ sbatch --mail-user=abc123@ku.dk --mail-type=END,FAIL my_script.sh
     Submitted batch job 8503
@@ -42,6 +43,7 @@ These options can naturally also be embedded in your sbatch script:
 and queued as usual:
 
 .. code-block:: console
+    :class: remote-command
 
     $ sbatch my-script.sh
     Submitted batch job 8504
@@ -84,6 +86,7 @@ for that reason we provide a helper script, sacct-usage_, that
 summarizes some of this information in a more easily readable form.
 
 .. code-block:: console
+    :class: remote-command
 
     $ sacct-usage
     User    Job   Start                   Elapsed  State      CPUsReserved  CPUsUsed  MemReserved  MemUsed  Name
@@ -126,6 +129,7 @@ this example, where we wish to measure the resource usage of the
 ``my-command`` program:
 
 .. code-block:: console
+    :class: generic-command
 
     $ /usr/bin/time -f "CPU = %P, MEM = %M" my-command --threads 1 ...
     CPU = 99%, MEM = 840563KB
@@ -167,6 +171,7 @@ using for example the ``squeue --me`` command (from the ``JOBID``
 column), as shown here:
 
 .. code-block:: console
+    :class: remote-command
 
     $ squeue --me
     JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -205,6 +210,7 @@ If you are running a job in an :ref:`interactive session
 directly using the ``nvidia-smi`` command:
 
 .. code-block:: console
+    :class: remote-command
 
     $ nvidia-smi -l 5
     Thu Apr  4 14:30:46 2024
@@ -252,6 +258,7 @@ To watch the content of this log-file, firstly determine the job ID of
 your job running on the GPU node:
 
 .. code-block:: console
+    :class: remote-command
 
     $ squeue --me --partition=gpuqueue
      JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -263,6 +270,7 @@ The ``--gres=none`` option is required, since otherwise Slurm would try
 to reserve the GPU our job already uses and eventually time out.
 
 .. code-block:: console
+    :class: remote-command
 
     $ srun --overlap --jobid 570316 --gres=none --pty -- watch -n 15 -d cat /scratch/gpus/nvidia-smi.txt
 
@@ -291,6 +299,7 @@ cluster, for example to decide how many resources you can reasonably use
 for a job (see :ref:`s_best_practice_resources`):
 
 .. code-block:: console
+    :class: remote-command
 
     $ module load slurmboard
     $ slurmboard

@@ -102,6 +102,7 @@ To queue this script, run the ``sbatch`` command with the filename of
 the script as an argument:
 
 .. code-block:: console
+    :class: remote-command
 
     $ ls
     chr1.fasta  my_script.sh
@@ -131,6 +132,7 @@ where ``${JOBID}`` is the ID reported by ``sbatch``, ``8503`` in this
 example:
 
 .. code-block:: console
+    :class: remote-command
 
     $ ls
     chr1.fasta  chr1.fasta.gz  my_script.sh  slurm-8503.out
@@ -142,6 +144,7 @@ misspelled the filename in our command then the resulting error message
 would be found in the ``out`` file:
 
 .. code-block:: console
+    :class: remote-command
 
     $ cat slurm-8503.out
     igzip: chr1.fast does not exist
@@ -167,6 +170,7 @@ We can then invoke the script using ``sbatch`` as above, specifying the
 name of the file we wanted to compress on the command-line:
 
 .. code-block:: console
+    :class: remote-command
 
     $ sbatch my_script.sh "chr1.fasta"
 
@@ -188,6 +192,7 @@ You can check the status of your queued and running jobs using the
 jobs are shown, rather than everyone's jobs:
 
 .. code-block:: console
+    :class: remote-command
 
     $ squeue --me
     JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -200,6 +205,7 @@ Completed jobs are removed from the ``squeue`` list and can instead be
 listed using ``sacct``:
 
 .. code-block:: console
+    :class: remote-command
 
     $ sacct
            JobID    JobName  Partition    Account  AllocCPUS      State ExitCode
@@ -220,6 +226,7 @@ Already running jobs can be cancelled using the ``scancel`` command and
 the ID of the job you want to cancel:
 
 .. code-block:: console
+    :class: remote-command
 
     $ squeue --me
     JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -229,6 +236,7 @@ the ID of the job you want to cancel:
 Should you wish to cancel *all* your jobs, use the ``-u`` option:
 
 .. code-block:: console
+    :class: remote-command
 
     $ scancel -u ${USER}
 
@@ -256,6 +264,7 @@ like, is to use ``#SBATCH`` comments.
 For example, instead of queuing our job with the command
 
 .. code-block:: console
+    :class: remote-command
 
     $ sbatch --my-option my_script.sh
 
@@ -464,6 +473,7 @@ not mentioned above. All of these options may be specified using
   before queuing your job:
 
   .. code-block:: console
+      :class: remote-command
 
       $ sbatch --test-only --verbose my_script.sh
       sbatch: defined options
@@ -493,6 +503,7 @@ need to experiment with running a computationally heavy process, then
 you can start a shell on one of the compute nodes as follows:
 
 .. code-block:: console
+    :class: remote-command
 
     [abc123@esrumhead01fl ~] $ srun --pty -- /bin/bash
     [abc123@esrumcmpn07fl ~] $
@@ -511,6 +522,7 @@ used for reserving additional resources if you need more than the
 default 2 CPUs and 31 GB of RAM:
 
 .. code-block:: console
+    :class: remote-command
 
     $ srun --cpus-per-task 4 --mem 128G --pty -- /bin/bash
 
@@ -539,6 +551,7 @@ cluster.
   option when connecting to the server:
 
   .. code-block:: console
+      :class: local-command
 
       $ ssh -X esrumhead01fl
 
@@ -556,6 +569,7 @@ Once you have connected to Esrum with X11 forwarding enabled, you must
 start an interactive session with the ``--x11`` option:
 
 .. code-block:: console
+    :class: remote-command
 
     $ srun --pty --x11 -- /bin/bash
     $ xclock

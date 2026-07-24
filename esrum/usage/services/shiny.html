@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code-blocks.css?v=14cb7052" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=14071cef" />
     
@@ -322,14 +323,14 @@ cannot access the <code class="docutils literal notranslate"><span class="pre">n
 <a class="reference internal" href="../access/connecting.html#s-connecting-troubleshooting"><span class="std std-ref">Troubleshooting</span></a> section on the
 <a class="reference internal" href="../access/connecting.html#p-usage-connecting"><span class="std std-ref">Connecting to the cluster</span></a> page.</p>
 <p>It is strongly recommended that you create a folder with your username:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/ucph/ndir/SUN-CBMR-shinyapp/<span class="nv">$USER</span>
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/ucph/ndir/SUN-CBMR-shinyapp/<span class="nv">$USER</span>
 </pre></div>
 </div>
 <p>This creates a folder with your username and adds a shortcut to your
 home folder named <code class="docutils literal notranslate"><span class="pre">shiny</span></code>. To verify that everything is working
 correctly, create a file name <code class="docutils literal notranslate"><span class="pre">app.R</span></code> in
 <code class="docutils literal notranslate"><span class="pre">~/ucph/ndir/SUN-CBMR-shinyapp/$USER</span></code> with the following content:</p>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nf">library</span><span class="p">(</span><span class="n">shiny</span><span class="p">)</span>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nf">library</span><span class="p">(</span><span class="n">shiny</span><span class="p">)</span>
 <span class="linenos"> 2</span>
 <span class="linenos"> 3</span><span class="c1"># Define UI ----</span>
 <span class="linenos"> 4</span><span class="n">ui</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">fluidPage</span><span class="p">(</span>

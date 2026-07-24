@@ -33,6 +33,7 @@ that there is plenty capacity for whatever temporary files your programs
 might generate:
 
 .. code-block:: bash
+    :class: remote-command
     :linenos:
 
     #!/bin/bash
@@ -58,6 +59,7 @@ command without Slurm. Simply prefix your command with ``srun`` and the
 queuing system takes care of running it on the first available node:
 
 .. code-block:: console
+    :class: remote-command
 
     $ srun gzip chr20.fasta
 
@@ -70,6 +72,7 @@ to a file or to another command, then you *must* wrap your commands in a
 bash (or similar) script:
 
 .. code-block:: console
+    :class: remote-command
 
     $ srun bash my_script.sh
 
@@ -86,6 +89,7 @@ To cancel a job running with srun, simply press `Ctrl + c` twice within
 1 second:
 
 .. code-block:: console
+    :class: remote-command
 
     $ srun gzip chr20.fasta
     <ctrl+c> srun: interrupt (one more within 1 sec to abort)
@@ -148,6 +152,7 @@ task IDs.
 Our script can then be run as before:
 
 .. code-block:: console
+    :class: remote-command
 
     $ ls
     chr1.fasta chr2.fasta chr3.fasta chr4.fasta chr5.fasta my_script.sh
@@ -205,6 +210,7 @@ using ``scontrol``. The following updates the job array with ID
 ``12345`` and sets its maximum number of simultaneous jobs to 32:
 
 .. code-block:: console
+    :class: remote-command
 
     $ scontrol update JobId=12345 ArrayTaskThrottle=32
 
@@ -220,6 +226,7 @@ entire job (all tasks in the array) simply use the primary job ID before
 the underscore/dot:
 
 .. code-block:: console
+    :class: remote-command
 
     $ scancel 8504
 
@@ -228,6 +235,7 @@ sub-task after the ID of the batch job, using a dot (``.``) to separate
 the two IDs instead of an underscore (``_``):
 
 .. code-block:: console
+    :class: remote-command
 
     $ scancel 8504.1
 

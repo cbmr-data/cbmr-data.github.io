@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code-blocks.css?v=14cb7052" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=14071cef" />
     
@@ -325,7 +326,7 @@ please refer to the official <a class="reference external" href="https://docs.sy
 singularity images in one step using the <code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">build</span></code> command.
 For the following example, we will download and run version <code class="docutils literal notranslate"><span class="pre">0.7.17</span></code>
 of the <a class="reference external" href="https://hub.docker.com/r/pegi3s/bwa">pegi3s/bwa</a> image on <a class="reference external" href="https://hub.docker.com/">Docker Hub</a>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>--auto<span class="w"> </span>singularity
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>--auto<span class="w"> </span>singularity
 <span class="gp">$ </span>singularity<span class="w"> </span>build<span class="w"> </span>--disable-cache<span class="w"> </span>pegi3s_bwa_0.7.17.sif<span class="w"> </span>docker://pegi3s/bwa:0.7.17
 </pre></div>
 </div>
@@ -340,7 +341,7 @@ downloaded in <code class="docutils literal notranslate"><span class="pre">~/.si
 docker images can easily take up gigabytes of space.</p>
 <p>Once you have run the <code class="docutils literal notranslate"><span class="pre">build</span></code> command, the image can be run using the
 <code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">run</span></code> command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>singularity<span class="w"> </span>run<span class="w"> </span>pegi3s_bwa_0.7.17.sif<span class="w"> </span>bwa
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>singularity<span class="w"> </span>run<span class="w"> </span>pegi3s_bwa_0.7.17.sif<span class="w"> </span>bwa
 
 <span class="go">Program: bwa (alignment via Burrows-Wheeler transformation)</span>
 <span class="go">Version: 0.7.17-r1188</span>
@@ -349,7 +350,7 @@ docker images can easily take up gigabytes of space.</p>
 </div>
 <p>It is also possible to run <a class="reference external" href="https://hub.docker.com/">Docker Hub</a> images &quot;directly&quot; by using a
 <code class="docutils literal notranslate"><span class="pre">docker://</span></code> URL instead of the path to a singularity image:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>singularity<span class="w"> </span>run<span class="w"> </span>docker://pegi3s/bwa:0.7.17<span class="w"> </span>bwa
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>singularity<span class="w"> </span>run<span class="w"> </span>docker://pegi3s/bwa:0.7.17<span class="w"> </span>bwa
 </pre></div>
 </div>
 <p>However, this caches the image in your home folder, and it is therefore
@@ -361,17 +362,17 @@ not recommended for the reasons described above.</p>
 converted before they can be run on Esrum. The <code class="docutils literal notranslate"><span class="pre">podman</span> <span class="pre">save</span></code> and the
 corresponding <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">save</span></code> command may be used to export an image to
 a single file:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>podman<span class="w"> </span>save<span class="w"> </span>my-image:v1.2.3<span class="w"> </span>--output<span class="w"> </span>~/my_image_v1.2.3.tar
+<div class="local-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>podman<span class="w"> </span>save<span class="w"> </span>my-image:v1.2.3<span class="w"> </span>--output<span class="w"> </span>~/my_image_v1.2.3.tar
 </pre></div>
 </div>
 <p>Once the image has been exported, you can transfer it to Esrum using
 <code class="docutils literal notranslate"><span class="pre">scp</span></code> or another such method:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>scp<span class="w"> </span>~/my_image_v1.2.3.tar<span class="w"> </span>abc123@esrumhead01fl.unicph.domain:/projects/my_project/scratch/
+<div class="local-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>scp<span class="w"> </span>~/my_image_v1.2.3.tar<span class="w"> </span>abc123@esrumhead01fl.unicph.domain:/projects/my_project/scratch/
 </pre></div>
 </div>
 <p>Finally, you can convert the image on Esrum to the format used by
 singularity:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
+<div class="local-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
 <span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>--auto<span class="w"> </span>singularity
 <span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/projects/my_project/scratch/
 <span class="gp">$ </span>singularity<span class="w"> </span>build<span class="w"> </span>my_image_v1.2.3.sif<span class="w"> </span>docker-archive://my_image_v1.2.3.tar
@@ -379,7 +380,7 @@ singularity:</p>
 </div>
 <p>The singularity image can then be run using the <code class="docutils literal notranslate"><span class="pre">singularity</span> <span class="pre">run</span></code>
 command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>singularity<span class="w"> </span>run<span class="w"> </span>--bind<span class="w"> </span>/maps,/projects,/datasets,/scratch<span class="w"> </span>my_image_v1.2.3.sif
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>singularity<span class="w"> </span>run<span class="w"> </span>--bind<span class="w"> </span>/maps,/projects,/datasets,/scratch<span class="w"> </span>my_image_v1.2.3.sif
 </pre></div>
 </div>
 <p>Singularity will make your home folder available by default, but the

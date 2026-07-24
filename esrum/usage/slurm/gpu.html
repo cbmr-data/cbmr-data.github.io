@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code-blocks.css?v=14cb7052" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=14071cef" />
     
@@ -335,7 +336,7 @@ node:</p>
 </pre></div>
 </div>
 <p>This script can then be submitted as usual:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>my_hi_mem_job.sh
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>my_hi_mem_job.sh
 <span class="go">Submitted batch job 217217</span>
 </pre></div>
 </div>
@@ -364,7 +365,7 @@ our job. This can be increased to <code class="docutils literal notranslate"><sp
 node, but because of the limited number of GPUs we ask that you only
 reserve 1 GPU per job, which is normally also more efficient.</p>
 <p>This script can then be submitted as usual:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>my_gpu_job.sh
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>my_gpu_job.sh
 <span class="go">Submitted batch job 217218</span>
 <span class="gp">$ </span>cat<span class="w"> </span>slurm-217218.out
 <span class="go">GPU 0: NVIDIA A100 80GB PCIe (UUID: GPU-4f2ff8df-0d18-a99b-9fb8-67aa0867f7a3)</span>
@@ -385,7 +386,7 @@ but it is also possible to request a specific GPU type.</p>
 </pre></div>
 </div>
 <p>This script can then be submitted as usual:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>my_h100_job.sh
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>my_h100_job.sh
 <span class="go">Submitted batch job 217219</span>
 <span class="gp">$ </span>cat<span class="w"> </span>slurm-217219.out
 <span class="go">GPU 0: NVIDIA H100 NVL (UUID: GPU-c43d0655-2d15-7e66-90b3-9b732a1d13ba)</span>
@@ -408,7 +409,7 @@ available for use when you (or other users) are not actively using them.</p>
 <code class="docutils literal notranslate"><span class="pre">--partition</span></code> and (optionally) the same <code class="docutils literal notranslate"><span class="pre">--gres</span></code> options as above if
 you need a GPU, as well as other resource options described in the
 <a class="reference internal" href="basics.html#reserving-resources"><span class="std std-ref">Reserving resources</span></a> section:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--<span class="w"> </span>/bin/bash
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--<span class="w"> </span>/bin/bash
 <span class="gp"># </span>or,<span class="w"> </span>also<span class="w"> </span>reserving<span class="w"> </span>a<span class="w"> </span>GPU
 <span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--gres:gpu:1<span class="w"> </span>--<span class="w"> </span>/bin/bash
 </pre></div>

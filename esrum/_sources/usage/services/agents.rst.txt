@@ -37,6 +37,7 @@ To start using a sandboxed AI Agent, simply load the module and run
 (non-sensitive) files:
 
 .. code-block:: console
+    :class: remote-command
 
     $ cd /home/abc123/my-scripts/
     $ module load agent-container
@@ -80,6 +81,7 @@ All command-line arguments written after the agent name, ``shell``, or
 example, to view the help text for ``claude``, simply run
 
 .. code-block:: console
+    :class: remote-command
 
     $ agent-container claude --help
 
@@ -87,6 +89,7 @@ Arguments for ``agent-container`` itself must go before the agent name.
 For example, to pass the ``--read-only`` option to ``agent-container``:
 
 .. code-block:: console
+    :class: remote-command
 
     $ agent-container --read-only claude
 
@@ -101,6 +104,7 @@ example, to include the directory ``/projects/cbmr_shared/apps`` in
 addition to the current working directory,
 
 .. code-block:: console
+    :class: remote-command
 
     $ cd /home/abc123/my-scripts/
     $ agent-container --include /projects/cbmr_shared/apps claude
@@ -115,6 +119,7 @@ both the current working directory and any folders included via
 ``agent-container``:
 
 .. code-block:: console
+    :class: remote-command
 
     $ agent-container --read-only claude
 
@@ -136,6 +141,7 @@ options:
 For example, to install the Conda package for R, using ``pixi``:
 
 .. code-block:: console
+    :class: remote-command
 
     $ agent-container shell
     (agent-container) $ pixi global install r-base
@@ -145,6 +151,7 @@ For example, to install the Conda package for R, using ``pixi``:
 Or, to install ``ruff`` from PyPi using ``uv``:
 
 .. code-block:: console
+    :class: remote-command
 
     $ agent-container shell
     (agent-container) $ uv tool install ruff

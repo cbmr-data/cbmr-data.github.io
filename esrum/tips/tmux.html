@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/code-blocks.css?v=14cb7052" />
     <link rel="stylesheet" type="text/css" href="../_static/css/playback.css?v=2c0b8537" />
     <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=14071cef" />
     
@@ -314,7 +315,7 @@ documentation.</p>
 <h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading">¶</a></h2>
 <p>To get started, <code class="docutils literal notranslate"><span class="pre">cd</span></code> to the directory you wish to work in and run
 <code class="docutils literal notranslate"><span class="pre">tmux</span></code> or the longer (but equivalent) command <code class="docutils literal notranslate"><span class="pre">tmux</span> <span class="pre">new</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/projects/my_project/people/abc123
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/projects/my_project/people/abc123
 <span class="gp">$ </span>tmux
 </pre></div>
 </div>
@@ -351,14 +352,14 @@ once your jobs are running or simply if you need to leave for the day.</p>
 safely disconnect from the server:</p>
 <p>Once you wish to resume your work, you can use the <code class="docutils literal notranslate"><span class="pre">tmux</span> <span class="pre">attach</span></code>
 command to re-open your running sessions:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tmux<span class="w"> </span>attach
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tmux<span class="w"> </span>attach
 </pre></div>
 </div>
 <p>Once you've connected to tmux, you can use the keyboard shortcut
 <code class="docutils literal notranslate"><span class="pre">CTRL+b</span> <span class="pre">s</span></code> to switch to the correct session.</p>
 <p>Alternatively, you can list your sessions with <code class="docutils literal notranslate"><span class="pre">tmux</span> <span class="pre">ls</span></code> and attach to
 one of them:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tmux<span class="w"> </span>ls
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tmux<span class="w"> </span>ls
 <span class="go">0: 1 windows (created Thu Apr 10 16:31:43 2025)</span>
 <span class="go">mice: 2 windows (created Thu Apr 10 16:32:04 2025)</span>
 <span class="gp">$ </span>tmux<span class="w"> </span>attach<span class="w"> </span>-t<span class="w"> </span>mice
@@ -380,7 +381,7 @@ to do so if you work on multiple things at once.</p>
 give the session a name with <code class="docutils literal notranslate"><span class="pre">-s</span></code> and the window can be given a name
 with <code class="docutils literal notranslate"><span class="pre">-n</span></code> as follows. However, this can only if you are not already in
 an active tmux session:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tmux<span class="w"> </span>new<span class="w"> </span>-s<span class="w"> </span>project<span class="w"> </span>-n<span class="w"> </span>task
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tmux<span class="w"> </span>new<span class="w"> </span>-s<span class="w"> </span>project<span class="w"> </span>-n<span class="w"> </span>task
 </pre></div>
 </div>
 <img alt="../_images/tmux_new_named.gif" class="gif" src="../_images/tmux_new_named.gif" />

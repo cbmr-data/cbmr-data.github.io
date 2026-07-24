@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code-blocks.css?v=14cb7052" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=14071cef" />
     
@@ -327,15 +328,15 @@ are checked.</p></li>
 <p>As there are currently no browsers installed on Esrum, you will need to
 install a copy of Firefox in your home. To do so, perform the following
 steps:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>pixi/latest
-pixi<span class="w"> </span>global<span class="w"> </span>install<span class="w"> </span>firefox
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module load pixi/latest</span>
+<span class="go">pixi global install firefox</span>
 </pre></div>
 </div>
 <p>Once you have verified that you are connected with both X11-forwarding
 and compression enabled, and you have installed Firefox in your home,
 start an interactive session on Esrum and start Firefox:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>--pty<span class="w"> </span>--x11<span class="w"> </span>--<span class="w"> </span>/bin/bash
-firefox<span class="w"> </span><span class="s2">&quot;https://sif.ku.dk/&quot;</span>
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun --pty --x11 -- /bin/bash</span>
+<span class="go">firefox &quot;https://sif.ku.dk/&quot;</span>
 </pre></div>
 </div>
 <p>Log in to SIF using your KU ID, once the browser window has opened, and
@@ -361,7 +362,7 @@ folder recursively, simply use the <code class="docutils literal notranslate"><s
 <code class="docutils literal notranslate"><span class="pre">mirror</span></code>.</p>
 <p>For example, to download the contents of the folder <code class="docutils literal notranslate"><span class="pre">my_data</span></code> into a
 project, you might run the following:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>/projects/my_project-AUDIT/data/my_data
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>/projects/my_project-AUDIT/data/my_data
 <span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/projects/my_project-AUDIT/data/my_data
 <span class="gp">$ </span>lftp<span class="w"> </span>sftp://sif-io.erda.dk
 <span class="go">&gt; user ${YOUR_PROJECT_USERNAME}</span>

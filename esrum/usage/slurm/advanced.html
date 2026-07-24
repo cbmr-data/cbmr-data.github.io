@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code-blocks.css?v=14cb7052" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=14071cef" />
     
@@ -317,7 +318,7 @@ variables are inherited via the <code class="docutils literal notranslate"><span
 that we've configured it to point to the <cite>/scratch</cite> folder, ensuring
 that there is plenty capacity for whatever temporary files your programs
 might generate:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
+<div class="remote-command highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="ch">#!/bin/bash</span>
 <span class="linenos">2</span><span class="c1">#SBATCH --export=TMPDIR</span>
 <span class="linenos">3</span>
 <span class="linenos">4</span>module<span class="w"> </span>purge
@@ -335,7 +336,7 @@ modules automatically.</p>
 the nodes, and for most part it should feel no different from running a
 command without Slurm. Simply prefix your command with <code class="docutils literal notranslate"><span class="pre">srun</span></code> and the
 queuing system takes care of running it on the first available node:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>gzip<span class="w"> </span>chr20.fasta
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>gzip<span class="w"> </span>chr20.fasta
 </pre></div>
 </div>
 <img alt="../../_images/srun_minimal.gif" class="gif" src="../../_images/srun_minimal.gif" />
@@ -343,7 +344,7 @@ queuing system takes care of running it on the first available node:</p>
 <code class="docutils literal notranslate"><span class="pre">gzip</span></code> command on the head node. However, if you need to pipe output
 to a file or to another command, then you <em>must</em> wrap your commands in a
 bash (or similar) script:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>bash<span class="w"> </span>my_script.sh
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>bash<span class="w"> </span>my_script.sh
 </pre></div>
 </div>
 <img alt="../../_images/srun_wrapped.gif" class="gif" src="../../_images/srun_wrapped.gif" />
@@ -353,7 +354,7 @@ option if simply you want to be able to wait for your script to finish.</p>
 <h3>Cancelling srun<a class="headerlink" href="#cancelling-srun" title="Link to this heading">¶</a></h3>
 <p>To cancel a job running with srun, simply press <cite>Ctrl + c</cite> twice within
 1 second:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>gzip<span class="w"> </span>chr20.fasta
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>gzip<span class="w"> </span>chr20.fasta
 <span class="go">&lt;ctrl+c&gt; srun: interrupt (one more within 1 sec to abort)</span>
 <span class="go">srun: StepId=8717.0 task 0: running</span>
 <span class="go">&lt;ctrl+c&gt; srun: sending Ctrl-C to StepId=8717.0</span>
@@ -404,7 +405,7 @@ task IDs.</p>
 <p>Values used with <code class="docutils literal notranslate"><span class="pre">--array</span></code> must be in the range 0 to 1000.</p>
 </div>
 <p>Our script can then be run as before:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls
 <span class="go">chr1.fasta chr2.fasta chr3.fasta chr4.fasta chr5.fasta my_script.sh</span>
 <span class="gp">$ </span>sbatch<span class="w"> </span>my_script.sh
 <span class="go">Submitted batch job 8504</span>
@@ -451,7 +452,7 @@ for other users.</p>
 <p>If a job-array is already running, then you can change the limit by
 using <code class="docutils literal notranslate"><span class="pre">scontrol</span></code>. The following updates the job array with ID
 <code class="docutils literal notranslate"><span class="pre">12345</span></code> and sets its maximum number of simultaneous jobs to 32:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">JobId</span><span class="o">=</span><span class="m">12345</span><span class="w"> </span><span class="nv">ArrayTaskThrottle</span><span class="o">=</span><span class="m">32</span>
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>scontrol<span class="w"> </span>update<span class="w"> </span><span class="nv">JobId</span><span class="o">=</span><span class="m">12345</span><span class="w"> </span><span class="nv">ArrayTaskThrottle</span><span class="o">=</span><span class="m">32</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -464,13 +465,13 @@ using <code class="docutils literal notranslate"><span class="pre">scontrol</spa
 <p>Job arrays can either be cancelled as a whole or in part. To cancel the
 entire job (all tasks in the array) simply use the primary job ID before
 the underscore/dot:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>scancel<span class="w"> </span><span class="m">8504</span>
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>scancel<span class="w"> </span><span class="m">8504</span>
 </pre></div>
 </div>
 <p>To cancel part of a batch job/array, instead specify the ID of the
 sub-task after the ID of the batch job, using a dot (<code class="docutils literal notranslate"><span class="pre">.</span></code>) to separate
 the two IDs instead of an underscore (<code class="docutils literal notranslate"><span class="pre">_</span></code>):</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>scancel<span class="w"> </span><span class="m">8504</span>.1
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>scancel<span class="w"> </span><span class="m">8504</span>.1
 </pre></div>
 </div>
 <div class="admonition warning">

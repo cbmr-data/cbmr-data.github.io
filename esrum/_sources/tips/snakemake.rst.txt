@@ -48,6 +48,7 @@ Snakemake that you use. You can check this via ``snakemake --version``,
 if you are unsure:
 
 .. code-block:: console
+    :class: generic-command
 
     $ snakemake --version
     9.6.0
@@ -76,6 +77,7 @@ options ``--slurm`` and ``--jobs N``, where the ``N`` is the maximum
 number of jobs you want to queue simultaneously. For example,
 
 .. code-block:: console
+    :class: remote-command
 
     $ module load snakemake/7.30.1
     $ snakemake --slurm --jobs 32
@@ -96,6 +98,7 @@ where the ``N`` is the maximum number of jobs you want to queue
 simultaneously. For example,
 
 .. code-block:: console
+    :class: remote-command
 
     $ module load snakemake/9.9.0
     $ snakemake --executor slurm --default-resources --jobs 32
@@ -119,7 +122,7 @@ Requesting CPUs
 Snakemake will automatically request a number of CPUs corresponding to
 the number of threads used by a rule:
 
-.. code-block::
+.. code-block:: text
     :linenos:
 
     rule my_rule:
@@ -143,6 +146,7 @@ CPU reserved, and we therefore recommend overriding this default using
 the ``--default-resources`` option:
 
 .. code-block:: console
+    :class: generic-command
 
     $ snakemake --default-resources mem_mb_per_cpu=15948
 
@@ -152,7 +156,7 @@ Should a job require more memory than the default ~16 GB per CPU, then
 you can request additional memory using the ``resources`` section of
 your rule:
 
-.. code-block::
+.. code-block:: text
     :linenos:
 
     rule my_rule:
@@ -173,7 +177,7 @@ specifying that you want to use the ``gpuqueue`` by adding
 rule. Once you have done so, you can reserve GPUs using the
 ``slurm_extra`` resource:
 
-.. code-block::
+.. code-block:: text
     :linenos:
 
     rule gpu_example:
@@ -190,7 +194,7 @@ If you need memory rather than GPUs, then omit the ``slurm_extra``
 resource and instead specify the amount of RAM needed in MB, using the
 ``mem_mb`` resource as described above:
 
-.. code-block::
+.. code-block:: text
     :linenos:
 
     rule high_mem_example:
@@ -220,7 +224,7 @@ profile (see below). When that is done, Snakemake will automatically
 load the environment modules listed in the ``envmodules`` section of a
 rule:
 
-.. code-block::
+.. code-block:: text
     :linenos:
 
     rule my_rule:
@@ -298,6 +302,7 @@ in your project folder. Then run Snakemake with the ``--profile`` option
 pointing to the folder in which you saved your profile:
 
 .. code-block:: console
+    :class: generic-command
 
     $ snakemake --profile /path/to/profile/
 
@@ -316,6 +321,7 @@ Version 9 ``/projects/cbmr_shared/apps/config/snakemake/9``
 For example, to use the profile for Snakemake 9:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module load snakemake/9.9.0
     $ snakemake --profile /projects/cbmr_shared/apps/config/snakemake/9
@@ -324,6 +330,7 @@ Options specified in this profile can be overridden on the command-line
 simply by specifying the option again:
 
 .. code-block:: console
+    :class: remote-command
 
     $ snakemake --profile /projects/cbmr_shared/apps/config/snakemake/9 --jobs 16
 

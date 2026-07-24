@@ -183,6 +183,7 @@ terminal command ``ssh``, replacing ``abc123`` with your UCPH username
 in the following command:
 
 .. code-block:: console
+    :class: local-command
 
     $ ssh abc123@esrumhead01fl.unicph.domain
 
@@ -193,6 +194,7 @@ continue. Once you've done so, you can enter your UCPH account password,
 and approve the connection via the NetIQ app.
 
 .. code-block:: console
+    :class: local-command
     :emphasize-lines: 5,7
 
     $ ssh abc123@esrumhead01fl.unicph.domain
@@ -224,10 +226,11 @@ and approve the connection via the NetIQ app.
     VPN. This message could mean that you are connecting to an entirely
     different server!
 
-It is recommended to add an entry for the cluster to your
-``.ssh/config`` file, replacing ``abc123`` with your UCPH username:
+It is recommended to add an entry for the cluster to the ``.ssh/config``
+file on your own computer, replacing ``abc123`` with your UCPH username:
 
 .. code-block:: console
+    :class: local-command
 
     $ cat ~/.ssh/config
     Host esrum esrumhead01fl esrumhead01fl.unicph.domain
@@ -239,6 +242,7 @@ This allows you to connect to the server using the names ``esrum``,
 having to specify your username:
 
 .. code-block:: console
+    :class: local-command
 
     $ ssh esrum
     abc123@esrumhead01fl.unicph.domain's password:
@@ -274,6 +278,7 @@ downloaded, open a terminal in the folder in which you downloaded the
 installer, and run the following command:
 
 .. code-block:: console
+    :class: local-command
 
     $ sudo bash cisco-secure-client-linux64-*.sh
 
@@ -287,6 +292,7 @@ username. You will need to enter your password and use the
 authentication method you have configured (here a TOTP code generator):
 
 .. code-block:: console
+    :class: local-command
     :emphasize-lines: 7,10
 
     $ sudo openconnect -u abc123 --useragent=AnyConnect --no-external-auth vpn.ku.dk

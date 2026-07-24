@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/code-blocks.css?v=14cb7052" />
     <link rel="stylesheet" type="text/css" href="../_static/css/playback.css?v=2c0b8537" />
     <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=14071cef" />
     
@@ -335,7 +336,7 @@ Snakemake with Slurm support enabled.</p>
 <p>How you enable Slurm support in Snakemake depends on the version of
 Snakemake that you use. You can check this via <code class="docutils literal notranslate"><span class="pre">snakemake</span> <span class="pre">--version</span></code>,
 if you are unsure:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>snakemake<span class="w"> </span>--version
+<div class="generic-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>snakemake<span class="w"> </span>--version
 <span class="go">9.6.0</span>
 </pre></div>
 </div>
@@ -358,7 +359,7 @@ outdated, and should not be followed.</p>
 <p>To run Snakemake 7 or older with Slurm support enabled, simply pass the
 options <code class="docutils literal notranslate"><span class="pre">--slurm</span></code> and <code class="docutils literal notranslate"><span class="pre">--jobs</span> <span class="pre">N</span></code>, where the <code class="docutils literal notranslate"><span class="pre">N</span></code> is the maximum
 number of jobs you want to queue simultaneously. For example,</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>snakemake/7.30.1
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>snakemake/7.30.1
 <span class="gp">$ </span>snakemake<span class="w"> </span>--slurm<span class="w"> </span>--jobs<span class="w"> </span><span class="m">32</span>
 </pre></div>
 </div>
@@ -374,7 +375,7 @@ these settings automatically, as well as other useful settings.</p>
 options <code class="docutils literal notranslate"><span class="pre">--executor</span> <span class="pre">slurm</span></code>, <code class="docutils literal notranslate"><span class="pre">--default-resources</span></code>, and <code class="docutils literal notranslate"><span class="pre">--jobs</span> <span class="pre">N</span></code>,
 where the <code class="docutils literal notranslate"><span class="pre">N</span></code> is the maximum number of jobs you want to queue
 simultaneously. For example,</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>snakemake/9.9.0
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>snakemake/9.9.0
 <span class="gp">$ </span>snakemake<span class="w"> </span>--executor<span class="w"> </span>slurm<span class="w"> </span>--default-resources<span class="w"> </span>--jobs<span class="w"> </span><span class="m">32</span>
 </pre></div>
 </div>
@@ -394,10 +395,10 @@ see the <a class="reference external" href="https://snakemake.github.io/snakemak
 <h3>Requesting CPUs<a class="headerlink" href="#requesting-cpus" title="Link to this heading">¶</a></h3>
 <p>Snakemake will automatically request a number of CPUs corresponding to
 the number of threads used by a rule:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="go">rule my_rule:</span>
-<span class="linenos">2</span><span class="go">    input: ...</span>
-<span class="linenos">3</span><span class="go">    output: ...</span>
-<span class="linenos">4</span><span class="go">    threads: 8</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>rule my_rule:
+<span class="linenos">2</span>    input: ...
+<span class="linenos">3</span>    output: ...
+<span class="linenos">4</span>    threads: 8
 </pre></div>
 </div>
 <p>Snakemake will in other words reserve 8 CPUs for the above rule when
@@ -412,18 +413,18 @@ less than 1000 MB.</p>
 <p>This is, however, frequently less than the Slurm default of ~16 GB per
 CPU reserved, and we therefore recommend overriding this default using
 the <code class="docutils literal notranslate"><span class="pre">--default-resources</span></code> option:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>snakemake<span class="w"> </span>--default-resources<span class="w"> </span><span class="nv">mem_mb_per_cpu</span><span class="o">=</span><span class="m">15948</span>
+<div class="generic-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>snakemake<span class="w"> </span>--default-resources<span class="w"> </span><span class="nv">mem_mb_per_cpu</span><span class="o">=</span><span class="m">15948</span>
 </pre></div>
 </div>
 <p>This corresponds to the behavior of <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> and <code class="docutils literal notranslate"><span class="pre">srun</span></code>.</p>
 <p>Should a job require more memory than the default ~16 GB per CPU, then
 you can request additional memory using the <code class="docutils literal notranslate"><span class="pre">resources</span></code> section of
 your rule:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="go">rule my_rule:</span>
-<span class="linenos">2</span><span class="go">    input: ...</span>
-<span class="linenos">3</span><span class="go">    output: ...</span>
-<span class="linenos">4</span><span class="go">    resources:</span>
-<span class="linenos">5</span><span class="go">        mem_mb: 64 * 1024</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>rule my_rule:
+<span class="linenos">2</span>    input: ...
+<span class="linenos">3</span>    output: ...
+<span class="linenos">4</span>    resources:
+<span class="linenos">5</span>        mem_mb: 64 * 1024
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">mem_mb</span></code> specifies a <em>total</em> amount of memory to reserve in MB and
@@ -436,29 +437,29 @@ specifying that you want to use the <code class="docutils literal notranslate"><
 <code class="docutils literal notranslate"><span class="pre">slurm_partition=&quot;gpuqueue&quot;</span></code> to the <code class="docutils literal notranslate"><span class="pre">resources</span></code> section of your
 rule. Once you have done so, you can reserve GPUs using the
 <code class="docutils literal notranslate"><span class="pre">slurm_extra</span></code> resource:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="go">rule gpu_example:</span>
-<span class="linenos">2</span><span class="go">    input: &quot;my_input.dat&quot;</span>
-<span class="linenos">3</span><span class="go">    output: &quot;my_output.dat&quot;</span>
-<span class="linenos">4</span><span class="go">    shell: &quot;my-command {input} &gt; {output}&quot;</span>
-<span class="linenos">5</span><span class="go">    resources:</span>
-<span class="linenos">6</span><span class="gp">        # </span>Run<span class="w"> </span>this<span class="w"> </span>rule<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>GPU<span class="w"> </span>queue
-<span class="linenos">7</span><span class="go">        slurm_partition=&quot;gpuqueue&quot;,</span>
-<span class="linenos">8</span><span class="gp">        # </span>Reserve<span class="w"> </span><span class="m">1</span><span class="w"> </span>GPU<span class="w"> </span><span class="k">for</span><span class="w"> </span>this<span class="w"> </span>job
-<span class="linenos">9</span><span class="go">        slurm_extra=&quot;--gres=gpu:1&quot;,</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>rule gpu_example:
+<span class="linenos">2</span>    input: &quot;my_input.dat&quot;
+<span class="linenos">3</span>    output: &quot;my_output.dat&quot;
+<span class="linenos">4</span>    shell: &quot;my-command {input} &gt; {output}&quot;
+<span class="linenos">5</span>    resources:
+<span class="linenos">6</span>        # Run this rule on the GPU queue
+<span class="linenos">7</span>        slurm_partition=&quot;gpuqueue&quot;,
+<span class="linenos">8</span>        # Reserve 1 GPU for this job
+<span class="linenos">9</span>        slurm_extra=&quot;--gres=gpu:1&quot;,
 </pre></div>
 </div>
 <p>If you need memory rather than GPUs, then omit the <code class="docutils literal notranslate"><span class="pre">slurm_extra</span></code>
 resource and instead specify the amount of RAM needed in MB, using the
 <code class="docutils literal notranslate"><span class="pre">mem_mb</span></code> resource as described above:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="go">rule high_mem_example:</span>
-<span class="linenos">2</span><span class="go">    input: &quot;my_input.dat&quot;</span>
-<span class="linenos">3</span><span class="go">    output: &quot;my_output.dat&quot;</span>
-<span class="linenos">4</span><span class="go">    shell: &quot;my-command {input} &gt; {output}&quot;</span>
-<span class="linenos">5</span><span class="go">    resources:</span>
-<span class="linenos">6</span><span class="gp">        # </span>Run<span class="w"> </span>this<span class="w"> </span>rule<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>GPU<span class="w"> </span>queue
-<span class="linenos">7</span><span class="go">        slurm_partition=&quot;gpuqueue&quot;,</span>
-<span class="linenos">8</span><span class="gp">        # </span>Reserve<span class="w"> </span><span class="m">3</span><span class="w"> </span>TB<span class="w"> </span>of<span class="w"> </span>memory<span class="w"> </span><span class="o">(</span>specified<span class="w"> </span><span class="k">in</span><span class="w"> </span>MB<span class="o">)</span>
-<span class="linenos">9</span><span class="go">        mem_mb=3 * 1024 * 1024,</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>rule high_mem_example:
+<span class="linenos">2</span>    input: &quot;my_input.dat&quot;
+<span class="linenos">3</span>    output: &quot;my_output.dat&quot;
+<span class="linenos">4</span>    shell: &quot;my-command {input} &gt; {output}&quot;
+<span class="linenos">5</span>    resources:
+<span class="linenos">6</span>        # Run this rule on the GPU queue
+<span class="linenos">7</span>        slurm_partition=&quot;gpuqueue&quot;,
+<span class="linenos">8</span>        # Reserve 3 TB of memory (specified in MB)
+<span class="linenos">9</span>        mem_mb=3 * 1024 * 1024,
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -477,13 +478,13 @@ command-line or that <code class="docutils literal notranslate"><span class="pre
 profile (see below). When that is done, Snakemake will automatically
 load the environment modules listed in the <code class="docutils literal notranslate"><span class="pre">envmodules</span></code> section of a
 rule:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="go">rule my_rule:</span>
-<span class="linenos">2</span><span class="go">    input: &quot;my_input.bam&quot;</span>
-<span class="linenos">3</span><span class="go">    output: &quot;my_output.stats.txt&quot;</span>
-<span class="linenos">4</span><span class="go">    shell: &quot;samtools stats {input} &gt; {output}&quot;</span>
-<span class="linenos">5</span><span class="go">    envmodules:</span>
-<span class="linenos">6</span><span class="go">        &quot;libdeflate/1.18&quot;,</span>
-<span class="linenos">7</span><span class="go">        &quot;samtools-libdeflate/1.18&quot;,</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>rule my_rule:
+<span class="linenos">2</span>    input: &quot;my_input.bam&quot;
+<span class="linenos">3</span>    output: &quot;my_output.stats.txt&quot;
+<span class="linenos">4</span>    shell: &quot;samtools stats {input} &gt; {output}&quot;
+<span class="linenos">5</span>    envmodules:
+<span class="linenos">6</span>        &quot;libdeflate/1.18&quot;,
+<span class="linenos">7</span>        &quot;samtools-libdeflate/1.18&quot;,
 </pre></div>
 </div>
 <div class="admonition tip">
@@ -543,7 +544,7 @@ correspond to your version of Snakemake:</p>
 <p>To use this profile, save it as <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> in a folder, for example
 in your project folder. Then run Snakemake with the <code class="docutils literal notranslate"><span class="pre">--profile</span></code> option
 pointing to the folder in which you saved your profile:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>snakemake<span class="w"> </span>--profile<span class="w"> </span>/path/to/profile/
+<div class="generic-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>snakemake<span class="w"> </span>--profile<span class="w"> </span>/path/to/profile/
 </pre></div>
 </div>
 <p>To simplify using Snakemake, this profile is available at
@@ -570,13 +571,13 @@ Snakemake:</p>
 </table>
 </div>
 <p>For example, to use the profile for Snakemake 9:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>snakemake/9.9.0
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>snakemake/9.9.0
 <span class="gp">$ </span>snakemake<span class="w"> </span>--profile<span class="w"> </span>/projects/cbmr_shared/apps/config/snakemake/9
 </pre></div>
 </div>
 <p>Options specified in this profile can be overridden on the command-line
 simply by specifying the option again:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>snakemake<span class="w"> </span>--profile<span class="w"> </span>/projects/cbmr_shared/apps/config/snakemake/9<span class="w"> </span>--jobs<span class="w"> </span><span class="m">16</span>
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>snakemake<span class="w"> </span>--profile<span class="w"> </span>/projects/cbmr_shared/apps/config/snakemake/9<span class="w"> </span>--jobs<span class="w"> </span><span class="m">16</span>
 </pre></div>
 </div>
 </section>

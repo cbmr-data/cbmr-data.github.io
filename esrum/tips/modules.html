@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/code-blocks.css?v=14cb7052" />
     <link rel="stylesheet" type="text/css" href="../_static/css/playback.css?v=2c0b8537" />
     <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=14071cef" />
     
@@ -353,13 +354,13 @@ folder containing the scripts needed to load software, and a
 the module files. This organization is designed to simplify maintenance.</p>
 <ol class="arabic">
 <li><p>Create a subfolder in the <code class="docutils literal notranslate"><span class="pre">apps</span></code> for your modules:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/projects/my-project/apps/modules
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/projects/my-project/apps/modules
 </pre></div>
 </div>
 </li>
 <li><p>Create a subfolder for the <code class="docutils literal notranslate"><span class="pre">seqtk</span></code> module scripts and a folder in
 which we can build our own copy of <code class="docutils literal notranslate"><span class="pre">seqtk</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/projects/my-project/apps/modules/modulefiles/seqtk
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/projects/my-project/apps/modules/modulefiles/seqtk
 <span class="gp">$ </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/projects/my-project/apps/modules/software/seqtk/1.4
 </pre></div>
 </div>
@@ -402,7 +403,7 @@ Note that this file does <em>not</em> have an extension.</p>
 environment variable.</p>
 </li>
 <li><p>Next download and compile <code class="docutils literal notranslate"><span class="pre">seqtk</span> <span class="pre">1.4</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/projects/my-project/apps/modules/software/seqtk/1.4
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/projects/my-project/apps/modules/software/seqtk/1.4
 <span class="gp">$ </span>wget<span class="w"> </span><span class="s2">&quot;https://github.com/lh3/seqtk/archive/refs/tags/v1.4.tar.gz&quot;</span>
 <span class="gp">$ </span>tar<span class="w"> </span>xvzf<span class="w"> </span>v1.4.tar.gz
 <span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>seqtk-1.4
@@ -412,7 +413,7 @@ environment variable.</p>
 </div>
 </li>
 <li><p>Place a symlink to the executable in a separate <code class="docutils literal notranslate"><span class="pre">bin</span></code> folder:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/projects/my-project/apps/modules/software/seqtk/1.4
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/projects/my-project/apps/modules/software/seqtk/1.4
 <span class="gp">$ </span>mkdir<span class="w"> </span>bin
 <span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>bin
 <span class="gp">$ </span>ln<span class="w"> </span>-s<span class="w"> </span>../seqtk-1.4/seqtk
@@ -428,7 +429,7 @@ your PATH.</p>
 </li>
 <li><p>Finally, run <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">use</span></code> to registers your module repository so
 that you can load your modules:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>use<span class="w"> </span>--prepend<span class="w"> </span>/projects/my-project/apps/modules/modulefiles/
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>use<span class="w"> </span>--prepend<span class="w"> </span>/projects/my-project/apps/modules/modulefiles/
 <span class="gp">$ </span>module<span class="w"> </span>avail
 <span class="go">----------- /projects/my-project/apps/modules/modulefiles/ -----------</span>
 <span class="go">seqtk/1.4</span>
@@ -464,7 +465,7 @@ optionally specify the version of said module, e.g. <code class="docutils litera
 <p>For more complicated software it is recommended to use the functionality
 that is often built to install it directly in the target directory. An
 example might look like the following:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tar<span class="w"> </span>xvzf<span class="w"> </span>my-software-1.23.tar.gz
+<div class="generic-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tar<span class="w"> </span>xvzf<span class="w"> </span>my-software-1.23.tar.gz
 <span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>my-software-1.23
 <span class="gp">$ </span>./configure<span class="w"> </span>--prefix<span class="o">=</span>/projects/my-project/apps/modules/software/my-software/1.23
 <span class="gp">$ </span>make<span class="w"> </span>install
@@ -479,28 +480,28 @@ information.</p>
 typically be accomplished as follows (using <a class="reference external" href="https://www.visidata.org/">VisiData</a> as an example):</p>
 <ol class="arabic">
 <li><p>Basic setup</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/projects/my-project/apps/modules/software/visidata/2.11
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/projects/my-project/apps/modules/software/visidata/2.11
 <span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/projects/my-project/apps/modules/software/visidata/2.11
 </pre></div>
 </div>
 </li>
 <li><p>Load the required version of Python (if any)</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>python/3.9.16
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>python/3.9.16
 </pre></div>
 </div>
 </li>
 <li><p>Create a virtual environment in <cite>./venv</cite> to contain our software</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>./venv
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>./venv
 </pre></div>
 </div>
 </li>
 <li><p>Install our desired software</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./venv/bin/pip<span class="w"> </span>install<span class="w"> </span>visidata
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./venv/bin/pip<span class="w"> </span>install<span class="w"> </span>visidata
 </pre></div>
 </div>
 </li>
 <li><p>Create a bin folder as described above</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>bin
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>bin
 <span class="gp">$ </span>ln<span class="w"> </span>-s<span class="w"> </span>../venv/bin/visidata<span class="w"> </span>bin/
 </pre></div>
 </div>

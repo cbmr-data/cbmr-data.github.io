@@ -98,6 +98,7 @@ connecting to ``sftp.ku.dk``, depending on how you have configured `UCPH
 two-factor authentication`_.
 
 .. code-block:: console
+    :class: local-command
 
     $ rsync -av my-data/ abc123@sftp.ku.dk:/projects/my-project-AUDIT/data/my-data/
     (abc123@sftp.ku.dk) Enter password
@@ -129,6 +130,7 @@ Computerome documentation`_.
 For example, to transfer data from Esrum to Computerome, you might run
 
 .. code-block:: console
+    :class: remote-command
 
     $ srun rsync -av ./ ${USERNAME}@transfer.computerome.dk:/home/projects/ab_12345/people/${USERNAME}/
 

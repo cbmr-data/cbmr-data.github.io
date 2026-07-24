@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code-blocks.css?v=14cb7052" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=14071cef" />
     
@@ -371,7 +372,7 @@ to its built-in file manager.</p>
 section, except that you have to use 2-factor authentication when
 connecting to <code class="docutils literal notranslate"><span class="pre">sftp.ku.dk</span></code>, depending on how you have configured <a class="reference external" href="https://mfa.ku.dk/">UCPH
 two-factor authentication</a>.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rsync<span class="w"> </span>-av<span class="w"> </span>my-data/<span class="w"> </span>abc123@sftp.ku.dk:/projects/my-project-AUDIT/data/my-data/
+<div class="local-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rsync<span class="w"> </span>-av<span class="w"> </span>my-data/<span class="w"> </span>abc123@sftp.ku.dk:/projects/my-project-AUDIT/data/my-data/
 <span class="gp gp-VirtualEnv">(abc123@sftp.ku.dk)</span> <span class="go">Enter password</span>
 <span class="go">Password: **************</span>
 <span class="gp gp-VirtualEnv">(abc123@sftp.ku.dk)</span> <span class="go">Enter one-time password</span>
@@ -395,7 +396,7 @@ transfer software on Esrum (or on your PC/laptop) and you should
 of <code class="docutils literal notranslate"><span class="pre">ssh.computerome.dk</span></code>. For more information, see the <a class="reference external" href="https://www.computerome.dk/wiki/high-performance-computing-hpc/file-transfer">official
 Computerome documentation</a>.</p>
 <p>For example, to transfer data from Esrum to Computerome, you might run</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>rsync<span class="w"> </span>-av<span class="w"> </span>./<span class="w"> </span><span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>@transfer.computerome.dk:/home/projects/ab_12345/people/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>rsync<span class="w"> </span>-av<span class="w"> </span>./<span class="w"> </span><span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>@transfer.computerome.dk:/home/projects/ab_12345/people/<span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>/
 </pre></div>
 </div>
 <p>This recursively transfers the current folder to a project folder on

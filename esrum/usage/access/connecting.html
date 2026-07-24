@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code-blocks.css?v=14cb7052" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=14071cef" />
     
@@ -432,7 +433,7 @@ possible to use the command-line <code class="docutils literal notranslate"><spa
 <p>Once connected to the VPN, you can connect to the cluster using the
 terminal command <code class="docutils literal notranslate"><span class="pre">ssh</span></code>, replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code> with your UCPH username
 in the following command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
+<div class="local-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
 </pre></div>
 </div>
 <p>You will likely be informed that the <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">authenticity</span> <span class="pre">of</span> <span class="pre">host</span> <span class="pre">...</span>
@@ -440,7 +441,7 @@ in the following command:</p>
 (see below), and you should simply type <code class="docutils literal notranslate"><span class="pre">yes</span></code> and press enter to
 continue. Once you've done so, you can enter your UCPH account password,
 and approve the connection via the NetIQ app.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
+<div class="local-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
 <span class="go">The authenticity of host &#39;esrumhead01fl.unicph.domain (10.84.4.168)&#39; can&#39;t be established.</span>
 <span class="go">ED25519 key fingerprint is SHA256:QslJ02Z/4CrFJ2pKA64lU8WTS8Y+8pGO+748bTkrFhY.</span>
 <span class="go">This key is not known by any other names.</span>
@@ -470,9 +471,9 @@ date, then please double-check that you are connected to the UCPH
 VPN. This message could mean that you are connecting to an entirely
 different server!</p>
 </div>
-<p>It is recommended to add an entry for the cluster to your
-<code class="docutils literal notranslate"><span class="pre">.ssh/config</span></code> file, replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code> with your UCPH username:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cat<span class="w"> </span>~/.ssh/config
+<p>It is recommended to add an entry for the cluster to the <code class="docutils literal notranslate"><span class="pre">.ssh/config</span></code>
+file on your own computer, replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code> with your UCPH username:</p>
+<div class="local-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cat<span class="w"> </span>~/.ssh/config
 <span class="go">Host esrum esrumhead01fl esrumhead01fl.unicph.domain</span>
 <span class="go">    HostName esrumhead01fl.unicph.domain</span>
 <span class="go">    User abc123</span>
@@ -481,7 +482,7 @@ different server!</p>
 <p>This allows you to connect to the server using the names <code class="docutils literal notranslate"><span class="pre">esrum</span></code>,
 <code class="docutils literal notranslate"><span class="pre">esrumhead01fl</span></code>, or <code class="docutils literal notranslate"><span class="pre">esrumhead01fl.unicph.domain</span></code>, and without
 having to specify your username:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>esrum
+<div class="local-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>esrum
 <span class="go">abc123@esrumhead01fl.unicph.domain&#39;s password:</span>
 <span class="go">     __</span>
 <span class="go">    /  \</span>
@@ -511,7 +512,7 @@ using KDE5.</p>
 with your KU ID, and download the &quot;Cisco Secure Client&quot; for Linux. Once
 downloaded, open a terminal in the folder in which you downloaded the
 installer, and run the following command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>bash<span class="w"> </span>cisco-secure-client-linux64-*.sh
+<div class="local-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>bash<span class="w"> </span>cisco-secure-client-linux64-*.sh
 </pre></div>
 </div>
 <p>Once the installer has finished running, you should be able to find the
@@ -521,7 +522,7 @@ server, use your short KU ID (e.g <code class="docutils literal notranslate"><sp
 <code class="docutils literal notranslate"><span class="pre">openconnect</span></code> v9.10 or later, replacing <code class="docutils literal notranslate"><span class="pre">abc123</span></code> with your UCPH
 username. You will need to enter your password and use the
 authentication method you have configured (here a TOTP code generator):</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>openconnect<span class="w"> </span>-u<span class="w"> </span>abc123<span class="w"> </span>--useragent<span class="o">=</span>AnyConnect<span class="w"> </span>--no-external-auth<span class="w"> </span>vpn.ku.dk
+<div class="local-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>openconnect<span class="w"> </span>-u<span class="w"> </span>abc123<span class="w"> </span>--useragent<span class="o">=</span>AnyConnect<span class="w"> </span>--no-external-auth<span class="w"> </span>vpn.ku.dk
 <span class="go">POST https://vpn.ku.dk/</span>
 <span class="go">Connected to 130.225.226.54:443</span>
 <span class="go">SSL negotiation with vpn.ku.dk</span>
@@ -575,7 +576,7 @@ requires that you log in using MitID.</p>
 <h3>Timeout while connecting to the cluster<a class="headerlink" href="#timeout-while-connecting-to-the-cluster" title="Link to this heading">¶</a></h3>
 <p>You may experience timeout errors when you attempt to connect to Esrum.</p>
 <p>On Linux, this typically results in an <code class="docutils literal notranslate"><span class="pre">Operation</span> <span class="pre">timed</span> <span class="pre">out</span></code> message:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
+<div class="local-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
 <span class="go">ssh: connect to host esrumhead01fl.unicph.domain port 22: Operation timed out</span>
 </pre></div>
 </div>
@@ -642,7 +643,7 @@ Failed to complete authentication
 <p>It may take several hours between your being granted access to Esrum,
 and your account being ready for use. If you connect to Esrum before
 this, you may see an error regarding your home folder not existing:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
+<div class="local-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
 <span class="go">Could not chdir to home directory /home/abc123: No such file or directory</span>
 </pre></div>
 </div>

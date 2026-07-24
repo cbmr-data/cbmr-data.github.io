@@ -33,6 +33,7 @@ This is accomplished with the ``module avail`` command, that lists all
 available modules by default:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module avail
     -------------------------- /opt/software/modules --------------------------
@@ -46,6 +47,7 @@ available modules by default:
 The ``avail`` command can also be used to list module versions by name:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module avail samtools
     -------------------------- /opt/software/modules --------------------------
@@ -59,6 +61,7 @@ If you are not sure of the exact name of a module, then the ``search``
 command can be used to search module names and descriptions:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module search conda
      -------------------------- /opt/software/modules ---------------------------
@@ -89,6 +92,7 @@ adds the executable to your PATH and performs any other setup required
 to run the software.
 
 .. code-block:: console
+    :class: remote-command
 
     $ samtools
     -bash: samtools: command not found
@@ -102,6 +106,7 @@ Specifying the exact version of a module that you want to load is highly
 recommended. This ensures that your results are reproducible:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module load samtools/1.12
     $ samtools
@@ -122,6 +127,7 @@ recommended. This ensures that your results are reproducible:
 In some cases one module will require another module:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module load bcftools/1.16
     Loading bcftools/1.16
@@ -132,6 +138,7 @@ In that case you simply need to load the required module first. This can
 be done in done manually:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module load perl
     $ module load bcftools/1.16
@@ -139,6 +146,7 @@ be done in done manually:
 Or automatically:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module load --auto bcftools
     Loading bcftools/1.16
@@ -151,6 +159,7 @@ Some modules require additional steps before you can use them. If so,
 then this is typically described in the ``module display`` text:
 
 .. code-block:: console
+    :class: remote-command
     :emphasize-lines: 11
 
     $ module display cellect/1.0
@@ -170,6 +179,7 @@ Thus, if we wanted to use ``cellect/1.0``, we would need to perform the
 following steps:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module display cellect/1.0
     $ module load miniconda/4.12.0
@@ -191,6 +201,7 @@ The modules you have loaded can be listed using the ``module list``
 command:
 
 .. code-block:: console
+    :class: remote-command
 
     $ modules list
     Currently Loaded Modulefiles:
@@ -200,6 +211,7 @@ To remove a module that you no longer need, use the ``module unload``
 command to unload a single module:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module unload samtools
 
@@ -207,6 +219,7 @@ Alternatively, you can use the ``module purge`` command to unload all
 modules:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module purge
     $ modules list
@@ -237,6 +250,7 @@ To export a list of your currently used models, use the following
 command:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module config collection_pin_version 1
     $ module save ./modules.txt
@@ -255,6 +269,7 @@ If used correctly, the ``./modules.txt`` file will contain the currently
 loaded modules, e.g:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module list
     Currently Loaded Modulefiles:
@@ -272,6 +287,7 @@ To load the saved modules, simply run ``module restore`` with the same
 filename (and a directory component):
 
 .. code-block:: console
+    :class: remote-command
 
     $ module list
     No Modulefiles Currently Loaded.
@@ -285,12 +301,14 @@ the content of the file in your current shell. This has the same effect
 as running ``module restore``:
 
 .. code-block:: console
+    :class: remote-command
 
     $ . ./modules.txt
 
 or
 
 .. code-block:: console
+    :class: remote-command
 
     $ source ./modules.txt
 
@@ -312,6 +330,7 @@ These modules should be listed first when you use the ``module avail``
 command:
 
 .. code-block:: console
+    :class: remote-command
 
     ---------------- /projects/cbmr_shared/apps/modules/modulefiles ----------------
     add_dbsnp_ids/20231206_1  msconvert/20250218_1    sacct-usage/20240603_1
@@ -327,6 +346,7 @@ Should the modules not be listed, then you can manually register them
 using the ``module use`` command:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module use --prepend /projects/cbmr_shared/apps/modules/modulefiles/
 

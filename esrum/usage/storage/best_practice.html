@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/code-blocks.css?v=14cb7052" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/playback.css?v=2c0b8537" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=14071cef" />
     
@@ -327,7 +328,7 @@ a shared copy of the dataset, that could for example be stored in
 <li><p>Always delete intermediate files when they are no longer needed. For
 example, if your workflow looks something like the following, then add
 a step to your workflow that deletes the <code class="docutils literal notranslate"><span class="pre">intermediate.dat</span></code> file:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>program1<span class="w"> </span>input.dat<span class="w"> </span>&gt;<span class="w"> </span>intermediate.dat
+<div class="generic-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>program1<span class="w"> </span>input.dat<span class="w"> </span>&gt;<span class="w"> </span>intermediate.dat
 <span class="gp">$ </span>program2<span class="w"> </span>intermediate.dat<span class="w"> </span>&gt;<span class="w"> </span>final.results
 </pre></div>
 </div>
@@ -340,7 +341,7 @@ information.</p>
 the above, a better approach would be to place output in either a
 <code class="docutils literal notranslate"><span class="pre">results</span></code> folder (if we want to keep it) or in a <code class="docutils literal notranslate"><span class="pre">temp</span></code> folder (if
 we do not want to keep it):</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>results<span class="w"> </span>temp
+<div class="generic-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>results<span class="w"> </span>temp
 <span class="gp">$ </span>program1<span class="w"> </span>input/input.dat<span class="w"> </span>&gt;<span class="w"> </span>temp/intermediate.dat
 <span class="gp">$ </span>program2<span class="w"> </span>temp/intermediate.dat<span class="w"> </span>&gt;<span class="w"> </span>results/final.results
 </pre></div>
@@ -357,7 +358,7 @@ few examples of how to do this.</p></li>
 <li><p>When possible, use pipes when decompressing data, instead of saving
 the decompressed data. This is useful when software does not support
 reading compressed data:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class="m">1</span>.<span class="w"> </span>Pipe<span class="w"> </span>decompressed<span class="w"> </span>data<span class="w"> </span>to<span class="w"> </span>STDIN
+<div class="generic-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class="m">1</span>.<span class="w"> </span>Pipe<span class="w"> </span>decompressed<span class="w"> </span>data<span class="w"> </span>to<span class="w"> </span>STDIN
 <span class="gp">$ </span>zcat<span class="w"> </span>my-data.dat.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>my-program
 <span class="gp"># </span><span class="m">2</span>.<span class="w"> </span>Pipe<span class="w"> </span>decompressed<span class="w"> </span>data<span class="w"> </span>to<span class="w"> </span>STDIN<span class="w"> </span>using<span class="w"> </span>filename<span class="w"> </span><span class="k">for</span><span class="w"> </span>STDIN
 <span class="gp">$ </span>zcat<span class="w"> </span>my-data.dat.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>my-program<span class="w"> </span>/dev/stdin
@@ -397,7 +398,7 @@ storage:</p>
 <li><p>The <a class="reference external" href="https://dev.yorhel.nl/ncdu">ncdu</a> command may be used to interactively explore where storage
 is being used in a project or dataset. For example, to explore the
 <code class="docutils literal notranslate"><span class="pre">/datasets/cbmr_shared</span></code> folder,</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/datasets/cbmr_shared
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/datasets/cbmr_shared
 <span class="gp">$ </span>ncdu
 </pre></div>
 </div>
@@ -405,7 +406,7 @@ is being used in a project or dataset. For example, to explore the
 </li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">du</span></code> command does the same thing, but is not interactive. It
 mainly useful if you want to look at a subset of folders:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/datasets/cbmr_shared/resources
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/datasets/cbmr_shared/resources
 <span class="gp">$ </span>du<span class="w"> </span>-chs<span class="w"> </span>*<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-rh
 <span class="go">2.3T    total</span>
 <span class="go">1.3T    gtex</span>
@@ -420,7 +421,7 @@ mainly useful if you want to look at a subset of folders:</p>
 </div>
 </li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">find</span></code> command can be used to find files over a certain size:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/datasets/cbmr_shared
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/datasets/cbmr_shared
 <span class="gp">$ </span>find<span class="w"> </span>.<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-size<span class="w"> </span>+10G
 </pre></div>
 </div>
@@ -447,7 +448,7 @@ to keep the files around.</p>
 <p>Compressible files can be located using the <a class="reference external" href="https://github.com/MikkelSchubert/big_text">big_text</a> tool available on
 Esrum. For example, to check for compressible files in
 <code class="docutils literal notranslate"><span class="pre">/datasets/cbmr_shared</span></code>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--<span class="w"> </span>bash
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>--<span class="w"> </span>bash
 <span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/datasets/cbmr_shared
 <span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>big_text
 <span class="gp">$ </span>big_text<span class="w"> </span>-h<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-rh
@@ -475,7 +476,7 @@ compressed using the most suitable formats for the data type. For
 example,</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">*.sam</span></code> files should be converted to BAM format using <a class="reference external" href="https://samtools.github.io/">samtools</a>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>--auto<span class="w"> </span>samtools
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>--auto<span class="w"> </span>samtools
 <span class="gp">$ </span>samtools<span class="w"> </span>view<span class="w"> </span>-b<span class="w"> </span>input.sam<span class="w"> </span>&gt;<span class="w"> </span>output.bam
 </pre></div>
 </div>
@@ -487,14 +488,14 @@ programs. For more information, see <cite>Using CRAM within Samtools</cite>.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">*.vcf</span></code> and other tabular files containing genomic coordinates
 should be compressed using <a class="reference external" href="https://www.htslib.org/doc/bgzip.html">bgzip</a>, as doing so allows them to be
 indexed using <a class="reference external" href="https://www.htslib.org/doc/tabix.html">tabix</a>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>--auto<span class="w"> </span>htslib
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>--auto<span class="w"> </span>htslib
 <span class="gp">$ </span>bgzip<span class="w"> </span>input.vcf
 </pre></div>
 </div>
 </li>
 <li><p>If there is no standard method for compressing a datatype, simply use
 <a class="reference external" href="https://linux.die.net/man/1/pigz">pigz</a> to compress the data in a <code class="docutils literal notranslate"><span class="pre">gzip</span></code> compatible format:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pigz<span class="w"> </span>input.dat
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pigz<span class="w"> </span>input.dat
 </pre></div>
 </div>
 </li>
@@ -506,7 +507,7 @@ up the compression process. To make use of this feature, you must
 firstly remember to reserve additional threads for your interactive
 session, and then you must supply the appropriate command-line
 option for the tool you are using:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>-c<span class="w"> </span><span class="m">4</span><span class="w"> </span>--<span class="w"> </span>bash<span class="w"> </span><span class="c1"># reserve 4 CPUs</span>
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>-c<span class="w"> </span><span class="m">4</span><span class="w"> </span>--<span class="w"> </span>bash<span class="w"> </span><span class="c1"># reserve 4 CPUs</span>
 <span class="gp">$ </span>samtools<span class="w"> </span>view<span class="w"> </span>-b<span class="w"> </span>-@<span class="w"> </span><span class="m">4</span><span class="w"> </span>input.sam<span class="w"> </span>&gt;<span class="w"> </span>output.bam
 <span class="gp">$ </span>bgzip<span class="w"> </span>-@<span class="w"> </span><span class="m">4</span><span class="w"> </span>input.vcf
 <span class="gp">$ </span>pigz<span class="w"> </span>-p<span class="w"> </span><span class="m">4</span><span class="w"> </span>input.dat

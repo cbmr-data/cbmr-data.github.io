@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="_static/css/code-blocks.css?v=14cb7052" />
     <link rel="stylesheet" type="text/css" href="_static/css/playback.css?v=2c0b8537" />
     <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=14071cef" />
     
@@ -315,7 +316,7 @@ requires that you log in using MitID.</p>
 <h3>Timeout while connecting to the cluster<a class="headerlink" href="#timeout-while-connecting-to-the-cluster" title="Link to this heading">¶</a></h3>
 <p>You may experience timeout errors when you attempt to connect to Esrum.</p>
 <p>On Linux, this typically results in an <code class="docutils literal notranslate"><span class="pre">Operation</span> <span class="pre">timed</span> <span class="pre">out</span></code> message:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
+<div class="local-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
 <span class="go">ssh: connect to host esrumhead01fl.unicph.domain port 22: Operation timed out</span>
 </pre></div>
 </div>
@@ -382,7 +383,7 @@ Failed to complete authentication
 <p>It may take several hours between your being granted access to Esrum,
 and your account being ready for use. If you connect to Esrum before
 this, you may see an error regarding your home folder not existing:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
+<div class="local-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>abc123@esrumhead01fl.unicph.domain
 <span class="go">Could not chdir to home directory /home/abc123: No such file or directory</span>
 </pre></div>
 </div>
@@ -411,13 +412,13 @@ happened, and we may have to fix it manually.</p>
 1993 GB for compute nodes and more than 3920 GB for the GPU node), then
 Slurm will report that the request cannot be satisfied.</p>
 <p>If more than 128 CPUs requested:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>--cpus-per-task<span class="w"> </span><span class="m">200</span><span class="w"> </span>my_script.sh
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>--cpus-per-task<span class="w"> </span><span class="m">200</span><span class="w"> </span>my_script.sh
 <span class="go">sbatch: error: CPU count per node can not be satisfied</span>
 <span class="go">sbatch: error: Batch job submission failed: Requested node configuration is not available</span>
 </pre></div>
 </div>
 <p>More than 1993 GB RAM requested on compute node:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>--mem<span class="w"> </span>2000G<span class="w"> </span>my_script.sh
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sbatch<span class="w"> </span>--mem<span class="w"> </span>2000G<span class="w"> </span>my_script.sh
 <span class="go">sbatch: error: Memory specification can not be satisfied</span>
 <span class="go">sbatch: error: Batch job submission failed: Requested node configuration is not available</span>
 </pre></div>
@@ -429,12 +430,12 @@ GPU queue as described on the <a class="reference internal" href="usage/slurm/gp
 <p>Additionally, you may receive this message if you request GPUs without
 specifying the correct queue or if you request too many GPUs.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">--partition=gpuqueue</span></code> not specified:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--gres<span class="o">=</span>gpu:2<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--gres<span class="o">=</span>gpu:2<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
 <span class="go">srun: error: Unable to allocate resources: Requested node configuration is not available</span>
 </pre></div>
 </div>
 <p>If more than 2 GPUs requested:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--gres<span class="o">=</span>gpu:3<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--partition<span class="o">=</span>gpuqueue<span class="w"> </span>--gres<span class="o">=</span>gpu:3<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello world!&quot;</span>
 <span class="go">srun: error: Unable to allocate resources: Requested node configuration is not available</span>
 </pre></div>
 </div>
@@ -449,13 +450,13 @@ remember to include the <code class="docutils literal notranslate"><span class="
 that a <code class="docutils literal notranslate"><span class="pre">slurm_bcast_*</span></code> executable in that folder could not be found,
 where the executable name contains the job ID and the node on which it
 was run:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>/bin/
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>/bin/
 <span class="go">slurmstepd: error: execve(): /bin/slurm_bcast_123456.0_esrumcmpn01fl: No such file or directory</span>
 <span class="go">srun: error: esrumcmpn01fl: task 0: Exited with exit code 2</span>
 </pre></div>
 </div>
 <p>To fix this, ensure that you are running an executable and not a folder:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>/bin/bash
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>srun<span class="w"> </span>--pty<span class="w"> </span>/bin/bash
 </pre></div>
 </div>
 <div class="admonition note">
@@ -485,9 +486,9 @@ that X11 support is configured as shown:</p>
 <h3><code class="docutils literal notranslate"><span class="pre">Connection</span> <span class="pre">refused</span></code> when running <code class="docutils literal notranslate"><span class="pre">sacct</span></code> / <code class="docutils literal notranslate"><span class="pre">sacct-usage</span></code><a class="headerlink" href="#connection-refused-when-running-sacct-sacct-usage" title="Link to this heading">¶</a></h3>
 <p>If you attempt to run <code class="docutils literal notranslate"><span class="pre">sacct</span></code> or <code class="docutils literal notranslate"><span class="pre">sacct-usage</span></code> on any other node
 than the head node, then you may get an error message like this:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sacct: error: slurm_persist_conn_open_without_init: failed to open persistent connection to host:localhost:6819: Connection refused</span>
-<span class="go">sacct: error: Sending PersistInit msg: Connection refused</span>
-<span class="go">sacct: error: Problem talking to the database: Connection refused</span>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sacct: error: slurm_persist_conn_open_without_init: failed to open persistent connection to host:localhost:6819: Connection refused
+sacct: error: Sending PersistInit msg: Connection refused
+sacct: error: Problem talking to the database: Connection refused
 </pre></div>
 </div>
 <p>To avoid this, only run <code class="docutils literal notranslate"><span class="pre">sacct</span></code> and <code class="docutils literal notranslate"><span class="pre">sacct-usage</span></code> on the head node.</p>
@@ -503,7 +504,7 @@ other words, nobody can read, write, or execute those files and folders.</p>
 <p>To fix this, first run the following commands to fix the permissions,
 where <code class="docutils literal notranslate"><span class="pre">/path/to/copied/data</span></code> is the path to the copy of the data that
 you have created.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">chmod -R +rX,u+w /path/to/copied/data</span>
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">chmod -R +rX,u+w /path/to/copied/data</span>
 </pre></div>
 </div>
 <p>This will recursively mark files and folders readable for everyone, mark
@@ -548,7 +549,7 @@ MobaXterm.</p>
 <p>Once you have logged in to Esrum <em>without</em> GSSAPI enabled, and if the
 folder(s) are still missing, then run the following command to create
 any missing network folders:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>bash<span class="w"> </span>/etc/profile.d/symlink-ucphmaps.sh
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>bash<span class="w"> </span>/etc/profile.d/symlink-ucphmaps.sh
 </pre></div>
 </div>
 <p>Once this is done, you should have a <code class="docutils literal notranslate"><span class="pre">ucph</span></code> symlink in your home
@@ -571,7 +572,7 @@ access has timed out.</p>
 <section id="kinit-unknown-credential-cache-type-while-getting-default-ccache">
 <h3><code class="docutils literal notranslate"><span class="pre">kinit:</span> <span class="pre">Unknown</span> <span class="pre">credential</span> <span class="pre">cache</span> <span class="pre">type</span> <span class="pre">while</span> <span class="pre">getting</span> <span class="pre">default</span> <span class="pre">ccache</span></code><a class="headerlink" href="#kinit-unknown-credential-cache-type-while-getting-default-ccache" title="Link to this heading">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">kinit</span></code> command may fail if you are using a <code class="docutils literal notranslate"><span class="pre">conda</span></code> environment:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(base)</span> <span class="gp">$ </span>kinit
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(base)</span> <span class="gp">$ </span>kinit
 <span class="go">kinit: Unknown credential cache type while getting default ccache</span>
 </pre></div>
 </div>
@@ -596,14 +597,14 @@ Error: .onLoad failed in loadNamespace() for &#39;tcltk&#39;, details:
 </pre></div>
 </div>
 <p>If so, then you must disable graphical menus before running
-<code class="docutils literal notranslate"><span class="pre">install.packages</span></code> by first entering the following command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; options(menu.graphics=FALSE)</span>
+<code class="docutils literal notranslate"><span class="pre">install.packages</span></code> by first entering the following command in R:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">menu.graphics</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Then simply run <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> again.</p>
 <p>You can also set the R option permanently by running the following in
 your (bash) terminal:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;options(menu.graphics=FALSE)&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>~/.Rprofile
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;options(menu.graphics=FALSE)&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>~/.Rprofile
 </pre></div>
 </div>
 </section>
@@ -619,7 +620,7 @@ module, then libraries may fail to install with the error message that
 <p>To fix this, deactivate your conda environments (including <code class="docutils literal notranslate"><span class="pre">base</span></code>)
 before installing the library. For example, to install the <code class="docutils literal notranslate"><span class="pre">xml2</span></code>
 library:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(my-env)</span> <span class="gp">$ </span>conda<span class="w"> </span>deactivate
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(my-env)</span> <span class="gp">$ </span>conda<span class="w"> </span>deactivate
 <span class="gp gp-VirtualEnv">(base)</span> <span class="gp">$ </span>conda<span class="w"> </span>deactivate
 <span class="gp">$ </span>R
 <span class="go">&gt; install.packages(&quot;xml2&quot;)</span>
@@ -632,7 +633,7 @@ library:</p>
 the GCC module other than <code class="docutils literal notranslate"><span class="pre">gcc/8.5.0</span></code>, then this library may fail to
 load on the RStudio node or when <code class="docutils literal notranslate"><span class="pre">gcc/8.5.0</span></code> is loaded on the
 head/compute nodes:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>R
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>R
 <span class="go">&gt; library(wk)</span>
 <span class="go">Error: package or namespace load failed for ‘wk’ in dyn.load(file, DLLpath = DLLpath, ...):</span>
 <span class="go">unable to load shared object &#39;/home/abc123/R/x86_64-pc-linux-gnu-library/4.3/wk/libs/wk.so&#39;:</span>
@@ -644,8 +645,8 @@ one of two methods:</p>
 <ol class="arabic">
 <li><p>Connect to the RStudio server as described in the
 <a class="reference internal" href="tips/r.html#s-service-rstudio"><span class="std std-ref">Troubleshooting</span></a> section, and simply install the affected
-packages using the <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> function:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&gt; install.packages(&quot;wk&quot;)</span>
+packages using the <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> function in R:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;wk&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You may need to repeat this step multiple times, for every package
@@ -653,7 +654,7 @@ that fails to load.</p>
 </li>
 <li><p>Connect to the head node or a compute node, and take care to load the
 correct version of GCC before loading R:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
 <span class="gp">$ </span>R
 <span class="go">&gt; install.packages(&quot;wk&quot;)</span>
 </pre></div>
@@ -668,17 +669,17 @@ which specifies the kind of system we are running on. Immediately after
 that we find the package name, namely <code class="docutils literal notranslate"><span class="pre">wk</span></code> in this case.</p>
 <p>You can identify all affected packages in your &quot;global&quot; R library by
 running the following commands:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>module<span class="w"> </span>load<span class="w"> </span>gcc/8.5.0<span class="w"> </span>R/4.3.2
 </pre></div>
 </div>
 <ol class="arabic">
 <li><p><code class="docutils literal notranslate"><span class="pre">cd</span></code> to your R library</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>~/R/x86_64-pc-linux-gnu-library/4.3/
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>~/R/x86_64-pc-linux-gnu-library/4.3/
 </pre></div>
 </div>
 </li>
 <li><p>Test every installed library</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="k">for</span><span class="w"> </span>lib<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>ls<span class="k">)</span><span class="p">;</span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Testing </span><span class="si">${</span><span class="nv">lib</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span>Rscript<span class="w"> </span>&lt;<span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;library(</span><span class="si">${</span><span class="nv">lib</span><span class="si">}</span><span class="s2">)&quot;</span><span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="k">done</span>
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="k">for</span><span class="w"> </span>lib<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>ls<span class="k">)</span><span class="p">;</span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Testing </span><span class="si">${</span><span class="nv">lib</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span>Rscript<span class="w"> </span>&lt;<span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;library(</span><span class="si">${</span><span class="nv">lib</span><span class="si">}</span><span class="s2">)&quot;</span><span class="o">)</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="k">done</span>
 </pre></div>
 </div>
 </li>
@@ -701,7 +702,7 @@ Testing later
 </div>
 <p>Locate the error messages like the one shown above in the output and
 reinstall the affected libraries using the <code class="docutils literal notranslate"><span class="pre">install.packages</span></code> command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>R
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>R
 <span class="go">&gt; install.packages(c(&quot;igraph&quot;, &quot;isoband&quot;))</span>
 </pre></div>
 </div>

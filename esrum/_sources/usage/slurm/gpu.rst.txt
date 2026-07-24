@@ -58,6 +58,7 @@ node:
 This script can then be submitted as usual:
 
 .. code-block:: console
+    :class: remote-command
 
     $ sbatch my_hi_mem_job.sh
     Submitted batch job 217217
@@ -97,6 +98,7 @@ reserve 1 GPU per job, which is normally also more efficient.
 This script can then be submitted as usual:
 
 .. code-block:: console
+    :class: remote-command
 
     $ sbatch my_gpu_job.sh
     Submitted batch job 217218
@@ -126,6 +128,7 @@ To request an A100 GPU, replace the ``--gres=gpu:1`` option with
 This script can then be submitted as usual:
 
 .. code-block:: console
+    :class: remote-command
 
     $ sbatch my_h100_job.sh
     Submitted batch job 217219
@@ -153,6 +156,7 @@ you need a GPU, as well as other resource options described in the
 :ref:`reserving_resources` section:
 
 .. code-block:: console
+    :class: remote-command
 
     $ srun --pty --partition=gpuqueue -- /bin/bash
     # or, also reserving a GPU
