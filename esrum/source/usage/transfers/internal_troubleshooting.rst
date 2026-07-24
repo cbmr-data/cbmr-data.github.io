@@ -17,7 +17,8 @@ To fix this, first run the following commands to fix the permissions,
 where ``/path/to/copied/data`` is the path to the copy of the data that
 you have created.
 
-.. code-block::
+.. code-block:: console
+    :class: remote-command
 
     chmod -R +rX,u+w /path/to/copied/data
 

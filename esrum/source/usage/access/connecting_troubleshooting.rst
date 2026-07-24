@@ -24,6 +24,7 @@ You may experience timeout errors when you attempt to connect to Esrum.
 On Linux, this typically results in an ``Operation timed out`` message:
 
 .. code-block:: console
+    :class: local-command
 
     $ ssh abc123@esrumhead01fl.unicph.domain
     ssh: connect to host esrumhead01fl.unicph.domain port 22: Operation timed out
@@ -103,6 +104,7 @@ and your account being ready for use. If you connect to Esrum before
 this, you may see an error regarding your home folder not existing:
 
 .. code-block:: console
+    :class: local-command
 
     $ ssh abc123@esrumhead01fl.unicph.domain
     Could not chdir to home directory /home/abc123: No such file or directory

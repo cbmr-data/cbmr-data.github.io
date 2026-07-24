@@ -28,6 +28,7 @@ To get started, ``cd`` to the directory you wish to work in and run
 ``tmux`` or the longer (but equivalent) command ``tmux new``:
 
 .. code-block:: console
+    :class: remote-command
 
     $ cd /projects/my_project/people/abc123
     $ tmux
@@ -84,6 +85,7 @@ Once you wish to resume your work, you can use the ``tmux attach``
 command to re-open your running sessions:
 
 .. code-block:: console
+    :class: remote-command
 
     $ tmux attach
 
@@ -96,6 +98,7 @@ Alternatively, you can list your sessions with ``tmux ls`` and attach to
 one of them:
 
 .. code-block:: console
+    :class: remote-command
 
     $ tmux ls
     0: 1 windows (created Thu Apr 10 16:31:43 2025)
@@ -121,6 +124,7 @@ with ``-n`` as follows. However, this can only if you are not already in
 an active tmux session:
 
 .. code-block:: console
+    :class: remote-command
 
     $ tmux new -s project -n task
 

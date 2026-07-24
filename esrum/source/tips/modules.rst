@@ -40,6 +40,7 @@ the module files. This organization is designed to simplify maintenance.
 1. Create a subfolder in the ``apps`` for your modules:
 
    .. code-block:: console
+       :class: remote-command
 
        $ mkdir -p /projects/my-project/apps/modules
 
@@ -47,6 +48,7 @@ the module files. This organization is designed to simplify maintenance.
    which we can build our own copy of ``seqtk``:
 
    .. code-block:: console
+       :class: remote-command
 
        $ mkdir -p /projects/my-project/apps/modules/modulefiles/seqtk
        $ mkdir -p /projects/my-project/apps/modules/software/seqtk/1.4
@@ -70,6 +72,7 @@ the module files. This organization is designed to simplify maintenance.
 4. Next download and compile ``seqtk 1.4``:
 
    .. code-block:: console
+       :class: remote-command
 
        $ cd /projects/my-project/apps/modules/software/seqtk/1.4
        $ wget "https://github.com/lh3/seqtk/archive/refs/tags/v1.4.tar.gz"
@@ -81,6 +84,7 @@ the module files. This organization is designed to simplify maintenance.
 5. Place a symlink to the executable in a separate ``bin`` folder:
 
    .. code-block:: console
+       :class: remote-command
 
        $ cd /projects/my-project/apps/modules/software/seqtk/1.4
        $ mkdir bin
@@ -100,6 +104,7 @@ the module files. This organization is designed to simplify maintenance.
    that you can load your modules:
 
    .. code-block:: console
+       :class: remote-command
 
        $ module use --prepend /projects/my-project/apps/modules/modulefiles/
        $ module avail
@@ -142,6 +147,7 @@ that is often built to install it directly in the target directory. An
 example might look like the following:
 
 .. code-block:: console
+    :class: generic-command
 
     $ tar xvzf my-software-1.23.tar.gz
     $ cd my-software-1.23
@@ -161,6 +167,7 @@ typically be accomplished as follows (using VisiData_ as an example):
 1. Basic setup
 
    .. code-block:: console
+       :class: remote-command
 
        $ mkdir -p /projects/my-project/apps/modules/software/visidata/2.11
        $ cd /projects/my-project/apps/modules/software/visidata/2.11
@@ -168,24 +175,28 @@ typically be accomplished as follows (using VisiData_ as an example):
 2. Load the required version of Python (if any)
 
    .. code-block:: console
+       :class: remote-command
 
        $ module load python/3.9.16
 
 3. Create a virtual environment in `./venv` to contain our software
 
    .. code-block:: console
+       :class: remote-command
 
        $ python3 -m venv ./venv
 
 4. Install our desired software
 
    .. code-block:: console
+       :class: remote-command
 
        $ ./venv/bin/pip install visidata
 
 5. Create a bin folder as described above
 
    .. code-block:: console
+       :class: remote-command
 
        $ mkdir bin
        $ ln -s ../venv/bin/visidata bin/

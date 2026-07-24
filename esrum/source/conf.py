@@ -53,6 +53,7 @@ html_theme_options = {
 
 html_static_path = ["_static"]
 html_css_files = [
+    "css/code-blocks.css",
     "css/playback.css",
     "css/theme.css",
 ]

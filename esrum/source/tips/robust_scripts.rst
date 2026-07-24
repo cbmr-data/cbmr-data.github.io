@@ -39,6 +39,7 @@ programming languages, it is not an error to access a variable that does
 not exist:
 
 .. code-block:: console
+    :class: generic-command
 
     $ cat myscript.sh
     #!/bin/bash
@@ -58,6 +59,7 @@ most of the time this is a mistake. To prevent this, you can set the
 ``nounset`` option, which causes bash to terminate on unset variables:
 
 .. code-block:: console
+    :class: generic-command
 
     $ cat myscript.sh
     #!/bin/bash
@@ -100,6 +102,7 @@ partially or wholly corrupt data:
 This produces the following output:
 
 .. code-block:: console
+    :class: generic-command
 
     $ ls
     my-sketch.sh
@@ -169,6 +172,7 @@ To mitigate these problems, we can make use of the following options:
 Running this script produces the following, helpful output:
 
 .. code-block:: console
+    :class: generic-command
 
     $ ls
     my-sketch.sh
@@ -273,6 +277,7 @@ to delete when the script is done running:
 Running the script looks like this:
 
 .. code-block:: console
+    :class: generic-command
 
     $ bash example.sh
     Do something with '/tmp/tmp.BaH9GKP50J' here!
@@ -295,6 +300,7 @@ For example, if we run shell check on the very first script shown on
 this page:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module load shellcheck
     $ shellcheck myscript.sh
@@ -319,6 +325,7 @@ the ``trap`` command above but which prints less information about the
 failure:
 
 .. code-block:: console
+    :class: generic-command
 
     $ snakemake
     sed: -e expression #1, char 16: unterminated `s' command

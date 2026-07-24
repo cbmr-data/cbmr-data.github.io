@@ -40,6 +40,7 @@ For the following example, we will download and run version ``0.7.17``
 of the `pegi3s/bwa`_ image on `Docker Hub`_:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module load --auto singularity
     $ singularity build --disable-cache pegi3s_bwa_0.7.17.sif docker://pegi3s/bwa:0.7.17
@@ -59,6 +60,7 @@ Once you have run the ``build`` command, the image can be run using the
 ``singularity run`` command:
 
 .. code-block:: console
+    :class: remote-command
 
     $ singularity run pegi3s_bwa_0.7.17.sif bwa
 
@@ -70,6 +72,7 @@ It is also possible to run `Docker Hub`_ images "directly" by using a
 ``docker://`` URL instead of the path to a singularity image:
 
 .. code-block:: console
+    :class: remote-command
 
     $ singularity run docker://pegi3s/bwa:0.7.17 bwa
 
@@ -85,6 +88,7 @@ corresponding ``docker save`` command may be used to export an image to
 a single file:
 
 .. code-block:: console
+    :class: local-command
 
     $ podman save my-image:v1.2.3 --output ~/my_image_v1.2.3.tar
 
@@ -92,6 +96,7 @@ Once the image has been exported, you can transfer it to Esrum using
 ``scp`` or another such method:
 
 .. code-block:: console
+    :class: local-command
 
     $ scp ~/my_image_v1.2.3.tar abc123@esrumhead01fl.unicph.domain:/projects/my_project/scratch/
 
@@ -99,6 +104,7 @@ Finally, you can convert the image on Esrum to the format used by
 singularity:
 
 .. code-block:: console
+    :class: local-command
 
     $ ssh abc123@esrumhead01fl.unicph.domain
     $ module load --auto singularity
@@ -109,6 +115,7 @@ The singularity image can then be run using the ``singularity run``
 command:
 
 .. code-block:: console
+    :class: remote-command
 
     $ singularity run --bind /maps,/projects,/datasets,/scratch my_image_v1.2.3.sif
 

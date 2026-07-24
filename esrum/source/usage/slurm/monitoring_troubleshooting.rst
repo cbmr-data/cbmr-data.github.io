@@ -12,7 +12,7 @@
 If you attempt to run ``sacct`` or ``sacct-usage`` on any other node
 than the head node, then you may get an error message like this:
 
-.. code-block:: console
+.. code-block:: text
 
     sacct: error: slurm_persist_conn_open_without_init: failed to open persistent connection to host:localhost:6819: Connection refused
     sacct: error: Sending PersistInit msg: Connection refused

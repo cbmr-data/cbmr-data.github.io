@@ -22,11 +22,11 @@ running the ``install.packages``:
       libtk8.6.so: cannot open shared object file: No such file or directory
 
 If so, then you must disable graphical menus before running
-``install.packages`` by first entering the following command:
+``install.packages`` by first entering the following command in R:
 
-.. code-block:: console
+.. code-block:: r
 
-    > options(menu.graphics=FALSE)
+    options(menu.graphics=FALSE)
 
 Then simply run ``install.packages`` again.
 
@@ -34,6 +34,7 @@ You can also set the R option permanently by running the following in
 your (bash) terminal:
 
 .. code-block:: console
+    :class: remote-command
 
     $ echo 'options(menu.graphics=FALSE)' | tee -a ~/.Rprofile
 
@@ -54,6 +55,7 @@ before installing the library. For example, to install the ``xml2``
 library:
 
 .. code-block:: console
+    :class: remote-command
 
     (my-env) $ conda deactivate
     (base) $ conda deactivate
@@ -69,6 +71,7 @@ load on the RStudio node or when ``gcc/8.5.0`` is loaded on the
 head/compute nodes:
 
 .. code-block:: console
+    :class: remote-command
 
     $ R
     > library(wk)
@@ -81,11 +84,11 @@ one of two methods:
 
 1. Connect to the RStudio server as described in the
    :ref:`s_service_rstudio` section, and simply install the affected
-   packages using the ``install.packages`` function:
+   packages using the ``install.packages`` function in R:
 
-   .. code-block:: console
+   .. code-block:: r
 
-       > install.packages("wk")
+       install.packages("wk")
 
    You may need to repeat this step multiple times, for every package
    that fails to load.
@@ -94,6 +97,7 @@ one of two methods:
    correct version of GCC before loading R:
 
    .. code-block:: console
+       :class: remote-command
 
        $ module load gcc/8.5.0 R/4.3.2
        $ R
@@ -110,18 +114,21 @@ You can identify all affected packages in your "global" R library by
 running the following commands:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module load gcc/8.5.0 R/4.3.2
 
 1. ``cd`` to your R library
 
    .. code-block:: console
+       :class: remote-command
 
        $ cd ~/R/x86_64-pc-linux-gnu-library/4.3/
 
 2. Test every installed library
 
    .. code-block:: console
+       :class: remote-command
 
        $ for lib in $(ls);do echo "Testing ${lib}"; Rscript <(echo "library(${lib})") > /dev/null;done
 
@@ -147,6 +154,7 @@ Locate the error messages like the one shown above in the output and
 reinstall the affected libraries using the ``install.packages`` command:
 
 .. code-block:: console
+    :class: remote-command
 
     $ R
     > install.packages(c("igraph", "isoband"))

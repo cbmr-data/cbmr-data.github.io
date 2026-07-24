@@ -29,6 +29,7 @@ By default, the 4.3.x versions of R loads ``gcc/8.5.0``, so you can
 simply use the ``--auto`` option when loading ``R/4.3.x``:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module load --auto R/4.3.3
     Loading R/4.3.3
@@ -64,6 +65,7 @@ To run an R script on the command-line, simply use the ``Rscript``
 command:
 
 .. code-block:: console
+    :class: generic-command
 
     $ cat my_script.R
     cat("Hello, world!\n")
@@ -74,7 +76,7 @@ For simple scripts you can use the ``commandArgs`` function to pass
 arguments to your scripts, allowing you to use them to process arbitrary
 data-sets:
 
-.. code-block:: R
+.. code-block:: r
     :linenos:
 
     args <- commandArgs(trailingOnly = TRUE)
@@ -82,6 +84,7 @@ data-sets:
     cat("Hello, ", args[1], "!\n", sep="")
 
 .. code-block:: console
+    :class: generic-command
 
     $ Rscript my_script.R world
     Hello, world!
@@ -102,6 +105,7 @@ This allows you to document your command-line options, specify default
 values, and much more:
 
 .. code-block:: console
+    :class: generic-command
 
     $ Rscript my_script.R
     usage: my_script.R [--] [--help] [--opts OPTS] [--p-value P-VALUE]
@@ -142,6 +146,7 @@ The ``"${@}"`` safely passes all your command-line arguments to
 be used to submit/call any of your R-scripts:
 
 .. code-block:: console
+    :class: remote-command
 
     $ sbatch run_rscript.sh my_script.R my_data.tsv --p-value 0.01
     Submitted batch job 18090212
@@ -159,6 +164,7 @@ Modules may be installed in your home folder using the
 ``install.packages`` command:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module load gcc/8.5.0 R/4.3.1
     $ R
@@ -197,9 +203,10 @@ following command to your ``~/.Rprofile`` file:
 
 This can be done by running the following command in your (bash) shell:
 
-.. code-block:: bash
+.. code-block:: console
+    :class: remote-command
 
-    echo -e '\noptions(repos=c(CRAN="https://cloud.r-project.org/"))' | tee -a ~/.Rprofile
+    $ echo -e '\noptions(repos=c(CRAN="https://cloud.r-project.org/"))' | tee -a ~/.Rprofile
 
 Note that this does not affect already running R shells.
 
@@ -213,7 +220,8 @@ one thread by setting the ``MAKEFLAGS`` environment variable.
 
 For example, to install the ``ape`` package:
 
-.. code-block:: shell
+.. code-block:: console
+    :class: remote-command
 
     $ srun --pty -c 8 -- bash
     $ export MAKEFLAGS="-j${SLURM_CPUS_PER_TASK}"
@@ -250,7 +258,8 @@ to using more CPUs to build each package.
 To enable this option by default, append it to your ``~/.Rprofile``
 file. This can be done by running the following command in bash:
 
-.. code-block:: bash
+.. code-block:: console
+    :class: remote-command
 
     echo 'options(Ncpus=2)' | tee -a ~/.Rprofile
 

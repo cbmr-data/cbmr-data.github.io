@@ -26,6 +26,7 @@ add support for R.
 To start a notebook on a node, run the following commands:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module load jupyter-notebook
     $ srun --pty -- jupyter notebook --no-browser --ip=0.0.0.0 --port=XXXXX
@@ -126,6 +127,7 @@ job is running. This can be done in a couple of ways:
   separate terminal:
 
   .. code-block:: console
+      :class: remote-command
 
       $ squeue --me --name jupyter
       JOBID  PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
@@ -157,6 +159,7 @@ Python environment:
    self-contained:
 
    .. code-block:: console
+       :class: remote-command
 
        # to deactivate Conda environments:
        conda deactivate
@@ -166,6 +169,7 @@ Python environment:
 2. Load the Python version you wish to use, for example 3.11.3:
 
    .. code-block:: console
+       :class: remote-command
 
        module load python/3.11.3
 
@@ -174,6 +178,7 @@ Python environment:
    that you prefer:
 
    .. code-block:: console
+       :class: remote-command
 
        python3 -m venv my_jupyter
 
@@ -184,6 +189,7 @@ Python environment:
    Notebook:
 
    .. code-block:: console
+       :class: remote-command
 
        ./my_jupyter/bin/pip install notebook # the latest version, or
        ./my_jupyter/bin/pip install notebook==7.4.5 # a specific version
@@ -192,6 +198,7 @@ Python environment:
    ``pandas``:
 
    .. code-block:: console
+       :class: remote-command
 
        ./my_jupyter/bin/pip install pandas
 
@@ -199,6 +206,7 @@ To start the notebook, run the following command, replacing ``XYZ`` with
 the port number you are using (see above for more information)
 
 .. code-block:: console
+    :class: remote-command
 
     srun --pty -- ./my_jupyter/bin/jupyter notebook --no-browser --ip=0.0.0.0 --port=XYZ
 
@@ -219,6 +227,7 @@ To do so, run the following commands, replacing `R/4.3.3` with the
 version of R that you wish to use:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module load jupyter-notebook/6.5.4
     $ module load --auto R/4.3.3
@@ -238,6 +247,7 @@ of R and ``gcc`` that R depends on.
 Once you are done adding R versions, you start notebook as shown above:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module load jupyter-notebook/6.5.4
     $ srun --pty -- jupyter notebook --no-browser --port=XXXXX
@@ -247,6 +257,7 @@ run R code, you must do so if you wish to install R libraries via the
 notebook:
 
 .. code-block:: console
+    :class: remote-command
 
     $ module load jupyter-notebook/6.5.4
     $ module load --auto R/4.3.3
@@ -281,6 +292,7 @@ Notebook:
 2. Install `jupyter_slurm` in the environment
 
    .. code-block:: console
+       :class: remote-command
 
        # install the latest version of the module
        ./my_jupyter/bin/pip install /projects/cbmr_shared/apps/dap/jupyter_slurm/latest
@@ -291,6 +303,7 @@ To start the notebook, run, replacing ``XYZ`` with the port number you
 are using (see above for more information)
 
 .. code-block:: console
+    :class: remote-command
 
     srun --pty -- ./my_jupyter/bin/jupyter notebook --no-browser --ip=0.0.0.0 --port=XYZ
 

@@ -28,6 +28,7 @@ Slurm will report that the request cannot be satisfied.
 If more than 128 CPUs requested:
 
 .. code-block:: console
+    :class: remote-command
 
     $ sbatch --cpus-per-task 200 my_script.sh
     sbatch: error: CPU count per node can not be satisfied
@@ -36,6 +37,7 @@ If more than 128 CPUs requested:
 More than 1993 GB RAM requested on compute node:
 
 .. code-block:: console
+    :class: remote-command
 
     $ sbatch --mem 2000G my_script.sh
     sbatch: error: Memory specification can not be satisfied
@@ -52,6 +54,7 @@ specifying the correct queue or if you request too many GPUs.
 If ``--partition=gpuqueue`` not specified:
 
 .. code-block:: console
+    :class: remote-command
 
     $ srun --gres=gpu:2 -- echo "Hello world!"
     srun: error: Unable to allocate resources: Requested node configuration is not available
@@ -59,6 +62,7 @@ If ``--partition=gpuqueue`` not specified:
 If more than 2 GPUs requested:
 
 .. code-block:: console
+    :class: remote-command
 
     $ srun --partition=gpuqueue --gres=gpu:3 -- echo "Hello world!"
     srun: error: Unable to allocate resources: Requested node configuration is not available
@@ -76,7 +80,8 @@ that a ``slurm_bcast_*`` executable in that folder could not be found,
 where the executable name contains the job ID and the node on which it
 was run:
 
-.. code-block::
+.. code-block:: console
+    :class: remote-command
 
     $ srun --pty /bin/
     slurmstepd: error: execve(): /bin/slurm_bcast_123456.0_esrumcmpn01fl: No such file or directory
@@ -84,7 +89,8 @@ was run:
 
 To fix this, ensure that you are running an executable and not a folder:
 
-.. code-block::
+.. code-block:: console
+    :class: remote-command
 
     $ srun --pty /bin/bash
 

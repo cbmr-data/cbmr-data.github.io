@@ -115,6 +115,7 @@ on how to apply for access to projects.
 Projects on Esrum are located in the ``/projects`` folder:
 
 .. code-block:: console
+    :class: remote-command
 
     $ ls -1 /projects
     phenomics-AUDIT
@@ -263,6 +264,7 @@ folder, even you use ``ls -a``, but they can be accessed like any other
 folder:
 
 .. code-block:: console
+    :class: remote-command
 
     $ cd /projects/cbmr_shared/data/.snapshot
     $ ls
@@ -284,7 +286,8 @@ for such projects.
     Please contact UCPH-IT should you need to restore a large amount of
     deleted data.
 
-.. code-block::
+.. code-block:: console
+    :class: remote-command
 
     $ srun -c 4 pigz -c 4 /projects/my-project/qctool/chr_4_qctool_filtered.gen
 

@@ -30,12 +30,14 @@ command on a compute node, as shown in the examples below. See the
 1. If you are copying data from a ``/projects`` folder, use the command
 
    .. code-block:: console
+       :class: remote-command
 
        srun rsync -av --progress /copy/this/data/ /to/this/location/
 
 2. If you are copying data from a ``/datasets`` folder, use the command
 
    .. code-block:: console
+       :class: remote-command
 
        srun rsync -av --no-group --chmod=ugo=rwX --progress /copy/this/data/
        /to/this/location/
@@ -75,7 +77,8 @@ an interactive session, and *then* log in using the ``/usr/bin/kinit``
 command. Once you have done this, you should be able to access the
 network drives via the ``/maps`` folder:
 
-.. code-block:: bash
+.. code-block:: console
+    :class: remote-command
 
     # 1. Start an interactive session
     srun --pty -- /bin/bash
@@ -136,7 +139,8 @@ that these transfers are rate-limited to at most 50 MB/s (total) using
 the ``rsync --bwlimit=50M`` option, and that you run no more than a
 single transfer at a time:
 
-.. code-block:: shell
+.. code-block:: console
+    :class: remote-command
 
     $ rsync -av --progress=summary --bwlimit=50M /from/path/ /to/path/
 
@@ -163,7 +167,8 @@ These transfers *must* be rate-limited to at most 50 MB/s (total) using
 the ``rsync --bwlimit=50M`` option, and you must not run more than a
 single transfer at a time:
 
-.. code-block:: shell
+.. code-block:: console
+    :class: remote-command
 
     $ rsync -av --no-perms --chmod=ugo=rwX --progress=summary --bwlimit=50M /from/path/ /to/path/
 
@@ -189,7 +194,8 @@ interrupted, simply by running ``rsync`` again.
 
 The basic ``rsync`` command you should be using is
 
-.. code-block:: bash
+.. code-block:: console
+    :class: generic-command
 
     rsync -av --progress /copy/this/data/ /to/this/location/
 

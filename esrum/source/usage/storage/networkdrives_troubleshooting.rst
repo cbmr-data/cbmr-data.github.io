@@ -25,6 +25,7 @@ folder(s) are still missing, then run the following command to create
 any missing network folders:
 
 .. code-block:: console
+    :class: remote-command
 
     $ bash /etc/profile.d/symlink-ucphmaps.sh
 
@@ -53,6 +54,7 @@ access has timed out.
 The ``kinit`` command may fail if you are using a ``conda`` environment:
 
 .. code-block:: console
+    :class: remote-command
 
     (base) $ kinit
     kinit: Unknown credential cache type while getting default ccache
