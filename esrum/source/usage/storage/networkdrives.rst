@@ -78,6 +78,7 @@ The variable ``${USER}`` refers to *your* username, in the form
 actually try to access them, for example via ``ls`` or ``cd``:
 
 .. code-block:: console
+    :class: remote-command
 
     $ /usr/bin/kinit
     abc123@UNICPH.DOMAIN's password: ************
@@ -109,6 +110,7 @@ To (re-)authenticate and thereby enable access to the network drives,
 run ``/usr/bin/kinit`` and enter the password for your UCPH account:
 
 .. code-block:: console
+    :class: remote-command
 
     $ /usr/bin/kinit
     abc123@UNICPH.DOMAIN's password: ************
@@ -151,6 +153,7 @@ The maximum duration of your current session (Kerberos ticket) is about
 ``/usr/bin/klist``:
 
 .. code-block:: console
+    :class: remote-command
 
     $ /usr/bin/klist
     Ticket cache: KEYRING:persistent:436828696:krb_ccache_nBciOlx
@@ -169,6 +172,7 @@ basic ``/usr/bin/kinit`` command, this does not require that you enter
 your password:
 
 .. code-block:: console
+    :class: remote-command
 
     $ /usr/bin/kinit -R
     $ /usr/bin/klist

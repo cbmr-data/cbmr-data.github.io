@@ -42,7 +42,8 @@ As there are currently no browsers installed on Esrum, you will need to
 install a copy of Firefox in your home. To do so, perform the following
 steps:
 
-.. code-block:: bash
+.. code-block:: console
+    :class: remote-command
 
     module load pixi/latest
     pixi global install firefox
@@ -51,7 +52,8 @@ Once you have verified that you are connected with both X11-forwarding
 and compression enabled, and you have installed Firefox in your home,
 start an interactive session on Esrum and start Firefox:
 
-.. code-block:: bash
+.. code-block:: console
+    :class: remote-command
 
     srun --pty --x11 -- /bin/bash
     firefox "https://sif.ku.dk/"
@@ -86,6 +88,7 @@ For example, to download the contents of the folder ``my_data`` into a
 project, you might run the following:
 
 .. code-block:: console
+    :class: remote-command
 
     $ mkdir /projects/my_project-AUDIT/data/my_data
     $ cd /projects/my_project-AUDIT/data/my_data

@@ -30,3 +30,11 @@ repos:
       - id: docstrfmt
         types_or: [rst]
         args: ["--line-length", "72", "--file-type", "rst", "--ignore-cache", "--check"]
+  # Check that all `.. code-block` directives include a `:class:`, etc.
+  - repo: local
+    hooks:
+      - id: rst-checks
+        name: rst-check
+        entry: python3 ./scripts/rst_checks.py
+        language: python
+        files: "\\.rst$"

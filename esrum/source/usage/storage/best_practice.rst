@@ -41,6 +41,7 @@ use, and thereby storage costs:
   a step to your workflow that deletes the ``intermediate.dat`` file:
 
   .. code-block:: console
+      :class: generic-command
 
       $ program1 input.dat > intermediate.dat
       $ program2 intermediate.dat > final.results
@@ -56,6 +57,7 @@ use, and thereby storage costs:
   we do not want to keep it):
 
   .. code-block:: console
+      :class: generic-command
 
       $ mkdir results temp
       $ program1 input/input.dat > temp/intermediate.dat
@@ -75,6 +77,7 @@ use, and thereby storage costs:
   reading compressed data:
 
   .. code-block:: console
+      :class: generic-command
 
       # 1. Pipe decompressed data to STDIN
       $ zcat my-data.dat.gz | my-program
@@ -118,6 +121,7 @@ storage:
   ``/datasets/cbmr_shared`` folder,
 
   .. code-block:: console
+      :class: remote-command
 
       $ cd /datasets/cbmr_shared
       $ ncdu
@@ -129,6 +133,7 @@ storage:
   mainly useful if you want to look at a subset of folders:
 
   .. code-block:: console
+      :class: remote-command
 
       $ cd /datasets/cbmr_shared/resources
       $ du -chs * | sort -rh
@@ -145,6 +150,7 @@ storage:
 - The ``find`` command can be used to find files over a certain size:
 
   .. code-block:: console
+      :class: remote-command
 
       $ cd /datasets/cbmr_shared
       $ find . -type f -size +10G
@@ -178,6 +184,7 @@ Esrum. For example, to check for compressible files in
 ``/datasets/cbmr_shared``:
 
 .. code-block:: console
+    :class: remote-command
 
     $ srun --pty -- bash
     $ cd /datasets/cbmr_shared
@@ -209,6 +216,7 @@ example,
 - ``*.sam`` files should be converted to BAM format using samtools_:
 
   .. code-block:: console
+      :class: remote-command
 
       $ module load --auto samtools
       $ samtools view -b input.sam > output.bam
@@ -223,6 +231,7 @@ example,
   indexed using tabix_:
 
   .. code-block:: console
+      :class: remote-command
 
       $ module load --auto htslib
       $ bgzip input.vcf
@@ -231,6 +240,7 @@ example,
   pigz_ to compress the data in a ``gzip`` compatible format:
 
   .. code-block:: console
+      :class: remote-command
 
       $ pigz input.dat
 
@@ -243,6 +253,7 @@ example,
     option for the tool you are using:
 
     .. code-block:: console
+        :class: remote-command
 
         $ srun --pty -c 4 -- bash # reserve 4 CPUs
         $ samtools view -b -@ 4 input.sam > output.bam

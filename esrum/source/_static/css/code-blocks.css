@@ -1,0 +1,44 @@
+/**
+ * For use with a code-block; indicates command to be On the user's
+ * own computer, not on Esrum.
+ */
+.local-command {
+    position: relative;
+}
+
+.local-command::after {
+    content: "On your computer";
+}
+
+/**
+ * For use with a code-block; indicates command to be On Esrum, not
+ * on the user's own computer.
+ */
+.remote-command {
+    position: relative;
+}
+
+.remote-command::after {
+    content: "On Esrum";
+}
+
+/** Use `:class: generic-command` for code-blocks in neither category */
+
+/** Common formatting for command labels */
+.local-command::after,
+.remote-command::after {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    font-size: 0.6rem;
+    font-weight: bold;
+    color: var(--color-background-primary);
+    background-color: var(--color-foreground-primary);
+    opacity: 0.5;
+    border-radius: 10px;
+    corner-shape: scoop;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
