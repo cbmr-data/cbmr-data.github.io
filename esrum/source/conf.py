@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = "Esrum Cluster"
+project = "Esrum HPC Cluster at CBMR"
 copyright = "2023-%Y, CBMR Data Analytics; licensed under CC-BY 4.0"
 author = "CBMR Data Analytics"
 
@@ -33,6 +33,8 @@ highlight_language = "console"
 html_use_index = False
 # Disable the "View source" link on every page
 html_show_sourcelink = False
+# Use shorter title; omit trailing "documentation"
+html_title = project
 
 # Prevent conversion of -- to emdashes
 smartquotes = False
