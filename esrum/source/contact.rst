@@ -4,8 +4,8 @@
  Contact us
 ############
 
-The `Data Analytics Platform`_ provides support for the Esrum HPC cluster,
-:ref:`p_human_cohorts`, the `Project Registry`_, the
+The `Data Analytics Platform`_ provides support for the Esrum HPC
+cluster, :ref:`p_human_cohorts`, the `Project Registry`_, the
 :ref:`p_service_rstudio` servers, and related services. Additionally, we
 will gladly assist with general bioinformatics issues, including
 installing libraries and other software, debugging problems, performance
