@@ -2,48 +2,48 @@
 
 This repository contains sources for public documentation and files related to usage of the esrum Esrum cluster administered by CBMR data analytics. The documentation can be read at [cbmr-data.github.io](https://cbmr-data.github.io).
 
-## Writing documentation
+## Deployment
 
-Documentation in automatically deployed to `cbmr-data.github.io/`:
+Changes to the `main` branch are automatically deployed to `cbmr-data.github.io/`:
 
 1. Files in the `root/` folder are deployed directly to the root of `cbmr-data.github.io/`.
-2. The [sphinx](https://www.sphinx-doc.org/en/master/) project in the `esrum/` folder is deployed to `cbmr-data.github.io/esrum/`.
+2. The [sphinx](https://www.sphinx-doc.org/en/master/) project in the `esrum/` folder is built and deployed to `cbmr-data.github.io/esrum/`.
 
 To add additional sources of documentation, modify `.github/workflows/default.yaml`.
 
-## Tools for writing documentation
+## Building the documentation
 
-### Automatically rebuild documentation
+To build the documentation, install [uv](https://docs.astral.sh/uv/) and run `make build`. The resulting documentation is saved in the `esrum/build` folder.
 
-The `sphinx-autobuild` command can be used to automatically rebuild the documentation when you make changes. If [uv](https://docs.astral.sh/uv/) is installed, then simply run `make` in the documentation root to run `sphinx-autobuild` in an ephemeral virtual environment.
+## Writing documentation
 
-Alternatively, requirements can be installed and run as follows:
+1. Install [uv](https://docs.astral.sh/uv/).
+2. Enable pre-commit checks using [prek](https://github.com/j178/prek):
+   ```bash
+   make setup
+   ```
+2. Create a branch for your work:
+   ```bash
+   git switch -c name-of-branch
+   ```
+3. Start a live build of the documentation using [sphinx-autobuild](https://github.com/sphinx-doc/sphinx-autobuild):
+   ```bash
+   make  # or `make autobuild`
+   ```
+   Open [127.0.0.1:8000](http://127.0.0.1:8000/) to view the documentation. The page automatically refreshes when you save changes to the documentation.
 
-```console
-pip install --user sphinx-autobuild furo==2024.1.29
-cd /path/to/cbmr-data.github.io/esrum
-pip install -r requirements.txt
-# -a to disable incremental builds as this does not work for all file types
-# -q to slice output when autobuild triggers
-sphinx-autobuild ./source ./build -aq
-```
+4. Commit your changes to the documentation.
+   - Run [docstrfmt](https://github.com/LilSpazJoekp/docstrfmt) if the commit fails due to formatting errors:
+     ```
+     make format
+     ```
+   - The full set of pre-commit checks may be run at any time:
+     ```bash
+     make pre-commit
+     ```
+6. Push your branch and create a pull-request on GitHub.
 
-Then go to [127.0.0.1:8000](http://127.0.0.1:8000/). The page automatically refreshes when you save changes to the documentation.
-
-### Automatically format RST files
-
-The `rstfmt` command can be used to automatically format `.rst` files for consistency. Currently, this requires a custom version of `rstfmt`that supports the `code-block` directive. This can be installed any `pip` compatible tool:
-
-```console
-pip install git+https://github.com/MikkelSchubert/rstfmt.git
-```
-
-This can be run as follows
-
-```console
-cd /path/to/cbmr-data.github.io/esrum
-find -name '*.rst' -exec rstfmt "{}" +
-```
+### Formatting RST files
 
 If using VSCode, the [Custom Local Formatters](https://marketplace.visualstudio.com/items?itemName=jkillian.custom-local-formatters) extension can be used to enable automatic formatting of documentation. This requires merging the following configuration into your workspace configuration:
 
@@ -51,7 +51,7 @@ If using VSCode, the [Custom Local Formatters](https://marketplace.visualstudio.
 {
   "customLocalFormatters.formatters": [
     {
-      "command": "/path/to/rstfmt",
+      "command": "/path/to/docstrfmt",
       "languages": [
         "restructuredtext"
       ]

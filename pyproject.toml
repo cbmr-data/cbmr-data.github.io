@@ -1,0 +1,34 @@
+[project]
+name = "cbmr-data.github.io"
+version = "1"
+license = "CC-BY-4.0"
+readme = "README.md"
+requires-python = ">= 3.12.3"
+
+dependencies = [
+    "accessible-pygments==0.0.5",
+    "furo==2025.12.19",
+    "sphinx-copybutton==0.5.2",
+    "sphinx-reredirects==1.1.0",
+    "sphinx==9.1.0",
+]
+
+[dependency-groups]
+dev = [
+    "prek==0.4.13",
+    "docstrfmt==2.2.0",
+    "sphinx-autobuild==2025.08.25",
+]
+
+[tool.docstrfmt]
+line-length = 72
+file-type = "rst"
+
+# Workaround for https://github.com/LilSpazJoekp/docstrfmt/issues/74
+# This is fixed in 2.0.2, but the setting is left for backwards compatibility
+ignore-cache = true
+
+[tool.uv]
+# This project contains no modules; uv is simply used to manage dependencies
+package = false
+exclude-newer = "1 week"
