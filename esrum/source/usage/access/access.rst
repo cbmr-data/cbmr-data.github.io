@@ -7,9 +7,10 @@
 .. note::
 
     If you are an external researcher, student, guest, and otherwise
-    collaborating with researchers at CBMR, then you should ask for your
+    collaborating with researchers at CBMR, then you must ask for your
     collaborator or supervisor at CBMR to apply for access for you, as
-    described below.
+    described below. Access to Esrum requires a valid UCPH ID (e.g.
+    ``abc123``) with a registered affiliation with CBMR.
 
 Access to the Esrum HPC cluster and a number of related services,
 projects, and datasets are managed by the Data Analytics Platform. To
@@ -28,8 +29,9 @@ get access,
      register your project as shown.
 
 2. Email us at `SUND-CBMR-Esrum
-   <mailto:cbmr-data-analytics@sund.ku.dk>`_, and include the IDs of
-   your scientific project(s) from the Project Manager.
+   <mailto:cbmr-data-analytics@sund.ku.dk>`_, and include your UCPH ID
+   and the IDs of your scientific project(s) from the `Project
+   Manager`_.
 3. (Optional) To get access to human cohort data managed by the Data
    Analytics Platform, follow the instructions on the
    :ref:`p_human_cohorts` page. You must have applied for access to
