@@ -436,7 +436,7 @@ Function reference
         array_params: str | None = None,
         wait: bool = False,
         mail_user: str | bool = False,
-        strict: bool = True
+        strict: bool = True,
     ) -> int: ...
 
 Submit an sbatch script for running one or more commands.
@@ -493,7 +493,7 @@ Submit an sbatch script for running one or more commands.
         extra_args: SequenceNotStr[str] = (),
         capture: bool = False,
         text: bool = True,
-        strict: bool = True
+        strict: bool = True,
     ) -> SrunResult[None] | SrunResult[str] | SrunResult[bytes]: ...
 
 Run command via ``srun``, and optionally capture its output.

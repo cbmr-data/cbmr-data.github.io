@@ -25,11 +25,11 @@ repos:
     hooks:
       - id: sphinx-lint
   - repo: https://github.com/LilSpazJoekp/docstrfmt
-    rev: 7653faa707cb660bc80cef0e8433932363b43504 # 2.0.2
+    rev: a05381030e526dc863e2006d34824271d7681d08 # 2.2.0
     hooks:
       - id: docstrfmt
         types_or: [rst]
-        args: ["--line-length", "72", "--file-type", "rst", "--ignore-cache", "--check"]
+        args: ["--check"]
   # Check that all `.. code-block` directives include a `:class:`, etc.
   - repo: local
     hooks:
