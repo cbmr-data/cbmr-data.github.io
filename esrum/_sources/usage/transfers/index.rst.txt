@@ -68,7 +68,8 @@ is located and to where you want to transfer it:
       - My :ref:`data is located on another server
         <s_external_updownload>`
 - **Miscellaneous**
-      - I want to :ref:`email large files <s_transfers_bluewhale>`
+      - I want to :ref:`send large/sensitive files to another individual
+        <s_transfers_filesender>`
 
 You are always welcome to :ref:`contact us <p_contact>` if the above
 does not cover your needs.
