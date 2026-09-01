@@ -6,11 +6,12 @@
 
 .. note::
 
-    If you are an external researcher, student, guest, and otherwise
+    If you are an external researcher, student, guest, or otherwise
     collaborating with researchers at CBMR, then you must ask for your
-    collaborator or supervisor at CBMR to apply for access for you, as
-    described below. Access to Esrum requires a valid UCPH ID (e.g.
-    ``abc123``) with a registered affiliation with CBMR.
+    contact person at CBMR to apply for access to Esrum for you. This
+    requires that you have a valid UCPH ID (e.g. ``abc123``) with a
+    registered affiliation with CBMR. Once you have access to Esrum, you
+    can apply for access to human cohorts as described in step 3.
 
 Access to the Esrum HPC cluster and a number of related services,
 projects, and datasets are managed by the Data Analytics Platform. To
