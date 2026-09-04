@@ -38,11 +38,11 @@ get access,
    :ref:`p_human_cohorts` page. You must have applied for access to
    Esrum before doing so.
 
-Once you have been granted access to Esrum and/or related resources, you
-will receive an automated email stating that ``Changes to your Identity
-were processed``. Please refer to the :ref:`p_usage_connecting` page for
-further instructions on how to connect to the cluster, once you have
-received this email.
+Once your application for access to Esrum has been approved, you will
+receive a welcome email from the Data Analytics Platform with further
+information about using the cluster, as well as an automated email from
+`NoReply@ku.dk` with the title `Changes to your Identity were
+processed`, which indicates that your account has been updated.
 
 Do not hesitate to :ref:`contact us <p_contact>`, if you have any
 questions regarding the above instructions.
