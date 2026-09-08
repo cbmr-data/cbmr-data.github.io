@@ -16,6 +16,25 @@ general.
 Please also see the general UCPH resources for handling `GDPR sensitive
 data`_.
 
+*********
+ Contact
+*********
+
+The Data Analytics *must* be able to contact you about your usage of the
+Esrum HPC cluster. For that reason it is critical that you regularly
+read emails sent to your UCPH account. Guest researchers and other users
+who do not normally use a UCPH email address are expected to ensure that
+they receive emails sent to this address, whether that involves
+automatic email forwarding or some other solution. We may also contact
+you on the CBMR Slack server (<https://cbmr.slack.com>), but use of
+Slack is not mandatory.
+
+If your jobs are using excessive resources or otherwise causing problems
+on Esrum, and we cannot reach you, then we will take whatever actions
+are necessary to reduce the impact on other users. This may involve
+terminating your jobs, limiting your account, or even terminating your
+account.
+
 ****************
  Basic security
 ****************
@@ -94,16 +113,20 @@ Google's `gemini`, in a sandbox environment, please see the
   jobs, as running larger jobs may impact the ability of everyone to use
   the cluster. For the same reason, data transfers (`cp`, `rsync`, etc.)
   should not be run on the head node.
-- Remember to be considerate to other users. For example, by limiting
-  the number of jobs you are running simultaneously, so that other users
-  can also run their jobs. We do not enforce hard limits on how many
-  resources a single user can use, but please always consider :ref:`how
-  busy the cluster is <s_monitoring_slurm>` before starting many or
-  larger jobs.
-- Please remember to close interactive shells, notebooks, containers,
-  and other processes that you have started via Slurm or the container
-  system. Resources that you have reserved are not made available for
-  other users until your tasks have finished.
+- Regularly check the resource usage of your jobs, as described in
+  :ref:`p_usage_slurm_monitor`, and update your jobs to ensure that
+  resource reservations match your needs, as described in . This is
+  critical to ensure that you make effective use of the resources on
+  Esrum.
+- Be considerate to other users. For example, by limiting the number of
+  jobs you are running simultaneously, so that other users can also run
+  their jobs. We do not enforce hard limits on how many resources a
+  single user can use, but please always consider :ref:`how busy the
+  cluster is <s_monitoring_slurm>` before starting many or larger jobs.
+- Remember to close interactive shells, notebooks, containers, and other
+  processes that you have started via Slurm or the container system.
+  Resources that you have reserved are not made available for other
+  users until your tasks have finished.
 
 While it is our goal that everyone should be able to start smaller jobs
 in a reasonable amount of time, it is expected for larger jobs to be
