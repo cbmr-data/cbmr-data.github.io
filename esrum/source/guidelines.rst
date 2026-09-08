@@ -115,9 +115,9 @@ Google's `gemini`, in a sandbox environment, please see the
   should not be run on the head node.
 - Regularly check the resource usage of your jobs, as described in
   :ref:`p_usage_slurm_monitor`, and update your jobs to ensure that
-  resource reservations match your needs, as described in . This is
-  critical to ensure that you make effective use of the resources on
-  Esrum.
+  resource reservations match your needs, as described in
+  :ref:`s_best_practice_resources`. This is critical to ensure that you
+  make effective use of the resources on Esrum.
 - Be considerate to other users. For example, by limiting the number of
   jobs you are running simultaneously, so that other users can also run
   their jobs. We do not enforce hard limits on how many resources a
