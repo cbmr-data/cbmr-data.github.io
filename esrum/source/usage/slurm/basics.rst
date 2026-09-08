@@ -428,7 +428,7 @@ We therefore recommended that you
 - Test the effect of the number of threads you are using before starting
   a lot of jobs.
 - Start with fewer CPUs and increase it only when there is a benefit to
-  doing so. You can for example start with 2, 4, or 8 CPUs per task, and
+  doing so. You can for example start with 4, 6, or 8 CPUs per task, and
   only increasing the number after it has been determined that the
   software benefits from the additional CPUs.
 - See if you can split your job into multiple (sub-)jobs that can run in
@@ -436,16 +436,38 @@ We therefore recommended that you
   or one job per sample. See the :ref:`s_job_arrays` section for more
   information about batching jobs.
 
+If you do not manually specify how much RAM to reserve, then you will
+get ~16GB of RAM per reserved CPU. This covers the needs of most jobs,
+as you always get at least 32 GB of RAM, due to the CPUs being rounded
+up to an even number. We do not expect you to manually reduce your RAM
+reserverations below this amount, but you must not reserve more than
+this default allocation unless you actually need it.
+
+It is therefore important that you monitor the resource usage of your
+jobs, as described on the :ref:`p_usage_slurm_monitor` page, and that
+you update your jobs to reflect their actual resource usage. Especially
+if you reserving large amounts of resources and/or running many jobs at
+once.
+
 In addition, we ask that you consider the impact of your job on other
 users: While it isn't a problem if you reserve a lot of resources for a
-short amount of time, it will cause problems for other users if you were
-to, for example, reserve all available resources for several days.
+short amount of time, provided that you actually use them, it will cause
+problems for other users if you were to, for example, reserve all
+available resources for several days.
 
 When starting large jobs, it is also worth considering how busy the
 cluster is; while the queuing system should down-prioritize people who
 have been running a lot of jobs recently, nobody enjoys waiting hours or
 days for a short job to be stated. See the :ref:`s_monitoring_slurm`
 section for how to monitor the overall activity of the cluster.
+
+.. warning::
+
+    We will generally reach out to you if we notice that your jobs are
+    wasting resources or if you are otherwise using an excessive amount
+    of resources. However, if necessary then we will terminate jobs or
+    place restrictions on accounts to mitigate such behavior. Make sure
+    to monitor your own jobs to avoid this.
 
 .. _s_common_options:
 
