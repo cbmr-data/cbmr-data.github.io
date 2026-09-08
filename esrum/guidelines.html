@@ -307,6 +307,22 @@ questions about any of these guidelines, or about Esrum usage in
 general.</p>
 <p>Please also see the general UCPH resources for handling <a class="reference external" href="https://kunet.ku.dk/work-areas/research/data/personal-data/Pages/default.aspx">GDPR sensitive
 data</a>.</p>
+<section id="contact">
+<h2>Contact<a class="headerlink" href="#contact" title="Link to this heading">¶</a></h2>
+<p>The Data Analytics <em>must</em> be able to contact you about your usage of the
+Esrum HPC cluster. For that reason it is critical that you regularly
+read emails sent to your UCPH account. Guest researchers and other users
+who do not normally use a UCPH email address are expected to ensure that
+they receive emails sent to this address, whether that involves
+automatic email forwarding or some other solution. We may also contact
+you on the CBMR Slack server (&lt;<a class="reference external" href="https://cbmr.slack.com">https://cbmr.slack.com</a>&gt;), but use of
+Slack is not mandatory.</p>
+<p>If your jobs are using excessive resources or otherwise causing problems
+on Esrum, and we cannot reach you, then we will take whatever actions
+are necessary to reduce the impact on other users. This may involve
+terminating your jobs, limiting your account, or even terminating your
+account.</p>
+</section>
 <section id="basic-security">
 <h2>Basic security<a class="headerlink" href="#basic-security" title="Link to this heading">¶</a></h2>
 <ul class="simple">
@@ -374,16 +390,20 @@ Google's <cite>gemini</cite>, in a sandbox environment, please see the
 jobs, as running larger jobs may impact the ability of everyone to use
 the cluster. For the same reason, data transfers (<cite>cp</cite>, <cite>rsync</cite>, etc.)
 should not be run on the head node.</p></li>
-<li><p>Remember to be considerate to other users. For example, by limiting
-the number of jobs you are running simultaneously, so that other users
-can also run their jobs. We do not enforce hard limits on how many
-resources a single user can use, but please always consider <a class="reference internal" href="usage/slurm/monitoring.html#s-monitoring-slurm"><span class="std std-ref">how
-busy the cluster is</span></a> before starting many or
-larger jobs.</p></li>
-<li><p>Please remember to close interactive shells, notebooks, containers,
-and other processes that you have started via Slurm or the container
-system. Resources that you have reserved are not made available for
-other users until your tasks have finished.</p></li>
+<li><p>Regularly check the resource usage of your jobs, as described in
+<a class="reference internal" href="usage/slurm/monitoring.html#p-usage-slurm-monitor"><span class="std std-ref">Monitoring slurm jobs</span></a>, and update your jobs to ensure that
+resource reservations match your needs, as described in
+<a class="reference internal" href="usage/slurm/basics.html#s-best-practice-resources"><span class="std std-ref">Best practice for reserving resources</span></a>. This is critical to ensure that you
+make effective use of the resources on Esrum.</p></li>
+<li><p>Be considerate to other users. For example, by limiting the number of
+jobs you are running simultaneously, so that other users can also run
+their jobs. We do not enforce hard limits on how many resources a
+single user can use, but please always consider <a class="reference internal" href="usage/slurm/monitoring.html#s-monitoring-slurm"><span class="std std-ref">how busy the
+cluster is</span></a> before starting many or larger jobs.</p></li>
+<li><p>Remember to close interactive shells, notebooks, containers, and other
+processes that you have started via Slurm or the container system.
+Resources that you have reserved are not made available for other
+users until your tasks have finished.</p></li>
 </ul>
 <p>While it is our goal that everyone should be able to start smaller jobs
 in a reasonable amount of time, it is expected for larger jobs to be
@@ -485,6 +505,7 @@ Metabolic Research.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Guidelines and policies</a><ul>
+<li><a class="reference internal" href="#contact">Contact</a></li>
 <li><a class="reference internal" href="#basic-security">Basic security</a></li>
 <li><a class="reference internal" href="#data-storage">Data storage</a></li>
 <li><a class="reference internal" href="#use-of-generative-ai-and-llms">Use of Generative AI and LLMs</a></li>
