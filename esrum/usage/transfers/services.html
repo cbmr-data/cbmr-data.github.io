@@ -335,14 +335,33 @@ steps:</p>
 <p>Once you have verified that you are connected with both X11-forwarding
 and compression enabled, and you have installed Firefox in your home,
 start an interactive session on Esrum and start Firefox:</p>
-<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun --pty --x11 -- /bin/bash</span>
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun --pty --x11 --job-name sif -- /bin/bash</span>
 <span class="go">firefox &quot;https://sif.ku.dk/&quot;</span>
 </pre></div>
 </div>
 <p>Log in to SIF using your KU ID, once the browser window has opened, and
 make sure to open the project you wish to transfer files to or from. You
-will need to perform all subsequent steps in this interactive session,
-or SIF will complain that you are not authenticated.</p>
+can close the browser window once you've logged in, but you should not
+close the interactive session that you started Firefox in.</p>
+<p>You will need to perform all subsequent steps in this interactive
+session, or on the same compute node, otherwise SIF will complain that
+you are not authenticated.</p>
+<p>If you wish to start another interactive session on the same node, for
+example if you closed the above session or if you wish to leave Firefox
+running, then you can use <cite>sacct</cite> to look up what node the job ran on/is
+running on:</p>
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sacct<span class="w"> </span>-X<span class="w"> </span>--format<span class="w"> </span>JobID,Start,End,NodeList<span class="w"> </span>--name<span class="w"> </span>sif
+<span class="go">       JobID               Start                 End        NodeList</span>
+<span class="go">------------ ------------------- ------------------- ---------------</span>
+<span class="go">1234567      2026-10-23T12:53:01             Unknown   esrumcmpn02fl</span>
+</pre></div>
+</div>
+<p>In this case, the job is still running on <cite>esrumcmpn02fl</cite> (shown by the
+unknown <cite>End</cite> value), so we can start a new interactive session there
+using the <cite>srun</cite> option <cite>--nodelist</cite>:</p>
+<div class="remote-command highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">srun --pty --nodelist esrumcmpn02fl -- /bin/bash</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Firefox browser will most likely be a bit sluggish, as a
@@ -355,6 +374,11 @@ with compression enabled.</p>
 <span id="s-sif-erda-sftp"></span><h3>Transferring files using SFTP<a class="headerlink" href="#transferring-files-using-sftp" title="Link to this heading">¶</a></h3>
 <p>Once you have successfully authenticated you may connect to the SIF/ERDA
 servers as normal using the tools available on Esrum.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Remember that you must connect from the same node that you
+authenticated. See above for more instructions.</p>
+</div>
 <p>The recommended way to transfer data to/from SIF/ERDA is using the
 <code class="docutils literal notranslate"><span class="pre">lftp</span></code> command. This allows you use the built-in <code class="docutils literal notranslate"><span class="pre">mirror</span></code> command to
 recursively download entire folders. If you instead wish to upload a

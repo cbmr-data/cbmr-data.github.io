@@ -55,13 +55,39 @@ start an interactive session on Esrum and start Firefox:
 .. code-block:: console
     :class: remote-command
 
-    srun --pty --x11 -- /bin/bash
+    srun --pty --x11 --job-name sif -- /bin/bash
     firefox "https://sif.ku.dk/"
 
 Log in to SIF using your KU ID, once the browser window has opened, and
 make sure to open the project you wish to transfer files to or from. You
-will need to perform all subsequent steps in this interactive session,
-or SIF will complain that you are not authenticated.
+can close the browser window once you've logged in, but you should not
+close the interactive session that you started Firefox in.
+
+You will need to perform all subsequent steps in this interactive
+session, or on the same compute node, otherwise SIF will complain that
+you are not authenticated.
+
+If you wish to start another interactive session on the same node, for
+example if you closed the above session or if you wish to leave Firefox
+running, then you can use `sacct` to look up what node the job ran on/is
+running on:
+
+.. code-block:: console
+    :class: remote-command
+
+    $ sacct -X --format JobID,Start,End,NodeList --name sif
+           JobID               Start                 End        NodeList
+    ------------ ------------------- ------------------- ---------------
+    1234567      2026-10-23T12:53:01             Unknown   esrumcmpn02fl
+
+In this case, the job is still running on `esrumcmpn02fl` (shown by the
+unknown `End` value), so we can start a new interactive session there
+using the `srun` option `--nodelist`:
+
+.. code-block:: console
+    :class: remote-command
+
+    srun --pty --nodelist esrumcmpn02fl -- /bin/bash
 
 .. note::
 
@@ -77,6 +103,11 @@ Transferring files using SFTP
 
 Once you have successfully authenticated you may connect to the SIF/ERDA
 servers as normal using the tools available on Esrum.
+
+.. important::
+
+    Remember that you must connect from the same node that you
+    authenticated. See above for more instructions.
 
 The recommended way to transfer data to/from SIF/ERDA is using the
 ``lftp`` command. This allows you use the built-in ``mirror`` command to
