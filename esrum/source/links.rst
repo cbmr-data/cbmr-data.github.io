@@ -25,3 +25,5 @@
 .. _l_ucph_ai_guidelines_en: https://kunet.ku.dk/work-areas/teaching/digital-learning/chatgpt-and-ai/guidelines-and-rules-for-chatgpt/Pages/default.aspx
 
 .. _l_ucph_hpc_overview: https://kunet.ku.dk/work-areas/research/Research%20Infrastructure/research-it/ucph-computing-hpc-systems/Pages/default.aspx
+
+.. _l_ucph_storage_billing: https://kunet.ku.dk/employee-guide/Pages/IT/Billing-for-storage.aspx
