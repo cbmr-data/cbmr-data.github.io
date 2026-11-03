@@ -70,7 +70,9 @@ For more information, see the :ref:`s_security_and_risks` section.
   you no longer need, and make sure to compress data that you do need to
   keep around.
 
-See :ref:`p_usage_filesystem` for more information.
+See :ref:`p_usage_filesystem` page in the documentation and the `Billing
+for storage <l_ucph_storage_billing>`_ page on KUnet for more
+information.
 
 .. _s_guidelines_llms:
 

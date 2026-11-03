@@ -5,8 +5,9 @@
 #############################
 
 UCPH IT charges CBMR for data kept in projects, datasets, home folders,
-and on network drives. For that reason it is important to avoid using
-more storage than necessary
+and on network drives, as described on the UCPH `Billing for storage
+<l_ucph_storage_billing>`_ page. For that reason it is important to
+avoid using more storage than necessary
 
 This page describes ways in which to clean up your data in order to save
 space, as well as techniques for structuring your analyses to make this
