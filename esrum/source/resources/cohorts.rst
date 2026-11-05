@@ -47,8 +47,19 @@ the data on Esrum.
     the changes to your permissions to take effect, once you have
     received the notification mentioned above.
 
+**********************************
+ Chip genotyping of human cohorts
+**********************************
+
+The Data Analytics Platform offers quality control and imputation
+support for Illumina chip genotype data. If you are interested in using
+this service, please contact us to discuss your project. As part of this
+process, you will need to fill out the `Genotyping Submission Form`_.
+
 .. _access management system: https://cbmrcat/governance
 
 .. _catalog of cohort variables: https://cbmrcat.unicph.domain/search
+
+.. _genotyping submission form: https://cbmrcat/static/Genotyping_Submission_Form_2026_10_28.docx
 
 .. _list of cohorts: https://cbmrcat.unicph.domain/cohorts/
