@@ -9,11 +9,12 @@ available to all employees at CBMR and their collaborators.
 
 In addition to the Esrum HPC cluster, the platform also provides two
 :ref:`RStudio <p_service_rstudio>` servers, access to more than 80
-:ref:`human cohorts <p_human_cohorts>`, a `project registry`_ for
-tracking your projects at CBMR, and `open source tools and pipelines`_.
-We kindly ask that you acknowledge the use of services and resources
-that we provide. See the :ref:`acknowledgements <s_acknowledgements>`
-section on the :ref:`p_guidelines` page for more information.
+:ref:`human cohorts <p_human_cohorts>` as well as chip genotyping of
+human cohorts, a `project registry`_ for tracking your projects at CBMR,
+and `open source tools and pipelines`_. We kindly ask that you
+acknowledge the use of services and resources that we provide. See the
+:ref:`acknowledgements <s_acknowledgements>` section on the
+:ref:`p_guidelines` page for more information.
 
 You are also always welcome to :ref:`contact us <p_contact>` if you have
 questions or problems relating to the cluster, cohorts, other services
