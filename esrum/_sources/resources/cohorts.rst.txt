@@ -39,7 +39,8 @@ to contact us if you have any questions.
 
     If you have not done so already, then you must also :ref:`apply for
     access to Esrum itself <p_usage_access_applying>`. Access to cohorts
-    is handled independently of access to Esrum.
+    is handled independently of access to Esrum. You must also have
+    signed a data processing agreement
 
 In order to get access to a cohort managed by DAP, the data owner must
 first grant approval. This step varies between cohorts, as data owners
