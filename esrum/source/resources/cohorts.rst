@@ -4,15 +4,26 @@
  Human cohorts
 ###############
 
-The Data Analytics Platform maintains a `list of cohorts`_ and an
-associated `catalog of cohort variables`_, in order to help you identify
-relevant cohorts for your research. In many, but not all cases, DAP also
-facilitates access to this data on Esrum.
+The Data Analytics Platform maintains a `catalogue of human cohorts
+<cohortcatalogue>`_ and a searchable `database of associated
+variables`_, in order to help you identify relevant cohorts for your
+research. In many, but not all cases, DAP also facilitates access to
+this data on Esrum.
 
-The `list of cohorts`_ and the `catalog of cohort variables`_ provide
-brief descriptions of the cohorts and of the variables associated with
-these, respectively, but you are welcome to :ref:`contact us
-<p_contact>` if you have any questions regarding these.
+The `cohort catalogue`_ provides brief descriptions of the available
+cohorts and lists their associated variables. You can explore the
+associated variable by pressing the ``EXPLORE PHENO VARIABLES`` link for
+the cohort of interest or by using the `search function`_.
+
+To request data, please select the variables of interest by ticking the
+corresponding check-boxes. After making your selection, click the
+``Export Variables`` button to download a CSV file containing your
+chosen variables, and send us the resulting file.
+
+If you are aware of any variables that exist within a cohort but are not
+currently listed in the catalogue, then please :ref:`contact us
+<p_contact>`, so that we can make them available. You are also welcome
+to contact us if you have any questions.
 
 .. warning::
 
@@ -61,8 +72,10 @@ project. As part of this process, you will need to fill out the
 
 .. _access management system: https://cbmrcat/governance
 
-.. _catalog of cohort variables: https://cbmrcat.unicph.domain/search
+.. _cohort catalogue: https://cbmrcat.unicph.domain/cohorts/
+
+.. _database of assosicated variables: https://cbmrcat.unicph.domain/search
 
 .. _genotyping submission form: https://cbmrcat/static/Genotyping_Submission_Form_2026_10_28.docx
 
-.. _list of cohorts: https://cbmrcat.unicph.domain/cohorts/
+.. _search function: https://cbmrcat.unicph.domain/search
