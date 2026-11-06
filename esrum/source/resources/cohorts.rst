@@ -5,10 +5,10 @@
 ###############
 
 The Data Analytics Platform maintains a `catalogue of human cohorts
-<cohortcatalogue>`_ and a searchable `database of associated
-variables`_, in order to help you identify relevant cohorts for your
-research. In many, but not all cases, DAP also facilitates access to
-this data on Esrum.
+<cohort catalogue_>`_ and a searchable `database of associated variables
+<search function_>`_, in order to help you identify relevant cohorts for
+your research. In many, but not all cases, DAP also facilitates access
+to this data on Esrum.
 
 The `cohort catalogue`_ provides brief descriptions of the available
 cohorts and lists their associated variables. You can explore the
