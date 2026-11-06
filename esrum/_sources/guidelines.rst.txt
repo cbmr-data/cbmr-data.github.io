@@ -26,8 +26,8 @@ read emails sent to your UCPH account. Guest researchers and other users
 who do not normally use a UCPH email address are expected to ensure that
 they receive emails sent to this address, whether that involves
 automatic email forwarding or some other solution. We may also contact
-you on the CBMR Slack server (<https://cbmr.slack.com>), but use of
-Slack is not mandatory.
+you on the CBMR Slack server (https://cbmr.slack.com), but use of Slack
+is not mandatory.
 
 If your jobs are using excessive resources or otherwise causing problems
 on Esrum, and we cannot reach you, then we will take whatever actions
