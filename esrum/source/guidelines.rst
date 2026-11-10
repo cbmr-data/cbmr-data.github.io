@@ -66,6 +66,10 @@ For more information, see the :ref:`s_security_and_risks` section.
 - Do not store data or other files related to projects in your home
   folder. Your home folder is accessible only to you, unless you have
   provided written consent to UCPH-IT.
+- The `cbmr_shared` project folder is only intended to store published
+  data, software, and other resources that may be of use to all users of
+  Esrum. Do not use the `cbmr_shared` project as a workspace or to store
+  other data; you will be forced to remove any files that do not belong.
 - Storage on Esrum is not free, so please remember to delete data that
   you no longer need, and make sure to compress data that you do need to
   keep around.

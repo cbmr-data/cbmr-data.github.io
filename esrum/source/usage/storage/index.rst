@@ -34,9 +34,11 @@ as the location and layout of projects, shared datasets, and per-node
 
 When you are first given access to Esrum, you will by default have
 access to your home folder, the scratch folders on each node, and the
-CBMR wide project folder (``/projects/cbmr_shared``). Please see the
-:ref:`p_usage_access_applying` page for information about applying for
-access to additional projects and datasets.
+CBMR wide project folder (``/projects/cbmr_shared``), that is used to
+store published datasets, resources, and software that may be of use to
+all users of Esrum. Please see the :ref:`p_usage_access_applying` page
+for information about applying for access to additional projects and
+datasets.
 
 Storage is paid for by CBMR, so it is important to avoid using more
 storage than necessary. See the :ref:`s_optimizing_storage` section for
