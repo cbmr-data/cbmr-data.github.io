@@ -5,8 +5,8 @@
 #############################
 
 UCPH IT charges CBMR for data kept in projects, datasets, home folders,
-and on network drives, as described on the UCPH `Billing for storage
-<l_ucph_storage_billing>`_ page. For that reason it is important to
+and on network drives, as described on the UCPH `billing for storage
+<l_ucph_storage_billing_>`_ page. For that reason it is important to
 avoid using more storage than necessary
 
 This page describes ways in which to clean up your data in order to save
@@ -280,3 +280,5 @@ example,
 .. _temp: https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#protected-and-temporary-files
 
 .. _using cram within samtools: https://www.htslib.org/workflow/cram.html
+
+.. include:: /links.rst
