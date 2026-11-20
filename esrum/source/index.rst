@@ -12,15 +12,17 @@ In addition to the Esrum HPC cluster, the platform also provides two
 :ref:`human cohorts <p_human_cohorts>` as well as :ref:`QC and
 imputation of chip genotyping of human cohorts <s_cohorts_qc>`, a
 `project registry`_ for tracking your projects at CBMR, and `open source
-tools and pipelines`_. We kindly ask that you acknowledge the use of
-services and resources that we provide. See the :ref:`acknowledgements
-<s_acknowledgements>` section on the :ref:`p_guidelines` page for more
+tools and pipelines`_. See our `overview of services`_ for more
 information.
 
 You are also always welcome to :ref:`contact us <p_contact>` if you have
 questions or problems relating to the cluster, cohorts, other services
 or resources provided by the platform. Additionally, we will gladly
 assist with general bioinformatics issues.
+
+We kindly ask that you acknowledge the use of services and resources
+that we provide. See the :ref:`acknowledgements <s_acknowledgements>`
+section on the :ref:`p_guidelines` page for more information.
 
 .. note::
 
@@ -146,3 +148,5 @@ using Esrum, and more.
 .. _r for data science: https://heads.ku.dk/course/r4ds/
 
 .. include:: /links.rst
+
+.. _overview of services: https://cbmr-data.github.io/
