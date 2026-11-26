@@ -44,13 +44,18 @@ brief summary of how to apply through the IDM:
       end with ``-ro``, for example ``COMP-DATASET-cbmr_shared-ro`` for
       the ``/datasets/cbmr_shared`` dataset containing shared resources.
 
-   .. warning::
+   .. attention::
 
-       In general, you should *not* be applying for access to projects
-       with suffixes like ``-Owners``, ``-admin``, or ``-rw`` unless
-       explicitly told to do so by the owner(s) of those resources.
-       These suffixes indicate administrative groups and your requests
-       will therefore be denied if you apply without reason.
+       Do *not* be apply for access to groups with suffixes like
+       ``-Owners``, ``-admin``, or ``-rw`` unless explicitly told to do
+       so by the owner(s) of those resources. These suffixes indicate
+       administrative groups and your requests will therefore be denied
+       if you apply without reason.
+
+       Note also that membership of an ``-Owners`` group *does not*
+       grant access to the corresponding project folder. Owners are
+       distinct from users of a project, but can add themselves to the
+       non-owners group if they need access to the project.
 
 4. Click *once* on the check-mark to the left of the name of the group
    in the resulting list. Wait for the check mark to turn green and then
